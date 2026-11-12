@@ -1,0 +1,569 @@
+{
+  "module": "m42244",
+  "source_attribution": {
+    "publisher": "OpenStax",
+    "book": "osbooks-college-physics-bundle",
+    "section": "m42244",
+    "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42244/index.cnxml",
+    "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)",
+    "locator": "CNXML module index.cnxml (typed elements, solutions present)"
+  },
+  "blocks": [
+    {
+      "id": "sec-0",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Learning Objectives",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-1",
+      "type": "paragraph",
+      "content": {
+        "text": "By the end of this section, you will be able to:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-2",
+      "type": "paragraph",
+      "content": {
+        "text": "To study the energy of a simple harmonic oscillator, we first consider all the forms of energy it can have We know from Hooke’s Law: Stress and Strain Revisited that the energy stored in the deformation of a simple harmonic oscillator is a form of potential energy given by:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-3",
+      "type": "paragraph",
+      "content": {
+        "text": "Because a simple harmonic oscillator has no dissipative forces, the other important form of energy is kinetic energy $KE$ . Conservation of energy for these two forms is:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-4",
+      "type": "paragraph",
+      "content": {
+        "text": "This statement of conservation of energy is valid for *all* simple harmonic oscillators, including ones where the gravitational force plays a role",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-5",
+      "type": "paragraph",
+      "content": {
+        "text": "Namely, for a simple pendulum we replace the velocity with $v=Lω$ , the spring constant with $k=mg/L$ , and the displacement term with $x=Lθ$ . Thus",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-6",
+      "type": "paragraph",
+      "content": {
+        "text": "In the case of undamped simple harmonic motion, the energy oscillates back and forth between kinetic and potential, going completely from one to the other as the system oscillates. So for the simple example of an object on a frictionless surface attached to a spring, as shown again in , the motion starts with all of the energy stored in the spring. As the object starts to move, the elastic potential energy is converted to kinetic energy, becoming entirely kinetic energy at the equilibrium position. It is then converted back into elastic potential energy by the spring, the velocity becomes zero when the kinetic energy is completely converted, and so on. This concept provides extra insight here and in later applications of simple harmonic motion, such as alternating current circuits.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-7",
+      "type": "paragraph",
+      "content": {
+        "text": "The transformation of energy in simple harmonic motion is illustrated for an object attached to a spring on a frictionless surface.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-1",
+      "type": "figure",
+      "asset_url": "images/phy_m42244_Figure_17_05_01a.jpg",
+      "caption": {
+        "text": "The transformation of energy in simple harmonic motion is illustrated for an object attached to a spring on a frictionless surface.",
+        "inline": []
+      },
+      "alt": "Figure a shows a spring on a frictionless surface attached to a bar or wall from the left side, and on the right side of it there’s an object attached to it with mass m, its amplitude is given by X, and x equal to zero at the equilibrium level. Force F is applied to it from the right side, shown with left direction pointed red arrow and velocity v is equal to zero. A direction point showing the north and west direction is also given alongside this figure as well as with other four figures. The energy given here for the object is given according to the velocity. In figure b, after the force has been applied, the object moves to the left compressing the spring a bit, and the displaced area of the object from its initial point is shown in sketched dots. F is equal to zero and the V is max in negative direction. The energy given here for the object is given according to the velocity. In figure c, the spring has been compressed to the maximum level, and the amplitude is negative x. Now the direction of force changes to the rightward direction, shown with right direction pointed red arrow and the velocity v zero. The energy given here for the object is given according to the velocity.                In figure d, the spring is shown released from the compressed level and the object has moved toward the right side up to the equilibrium level. F is zero, and the velocity v is maximum. The energy given here for the object is given according to the velocity.               In figure e, the spring has been stretched loose to the maximum level and the object has moved to the far right. Now again the velocity here is equal to zero and the direction of force again is to the left hand side, shown here as F is equal to zero. The energy given here for the object is given according to the velocity.               ",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-9",
+      "type": "paragraph",
+      "content": {
+        "text": "The conservation of energy principle can be used to derive an expression for velocity $v$ . If we start our simple harmonic motion with zero velocity and maximum displacement ( $x=X$ ), then the total energy is",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-10",
+      "type": "paragraph",
+      "content": {
+        "text": "This total energy is constant and is shifted back and forth between kinetic energy and potential energy, at most times being shared by each. The conservation of energy for this system in equation form is thus:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-11",
+      "type": "paragraph",
+      "content": {
+        "text": "Solving this equation for *$v$* yields:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-12",
+      "type": "paragraph",
+      "content": {
+        "text": "Manipulating this expression algebraically gives:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-13",
+      "type": "paragraph",
+      "content": {
+        "text": "From this expression, we see that the velocity is a maximum ( ${v}_{max}$ ) at $x=0$ , as stated earlier in $v(t)=-{v}_{max}sin\\frac{2πt}{T}$ *.* Notice that the maximum velocity depends on three factors. Maximum velocity is directly proportional to amplitude. As you might guess, the greater the maximum displacement the greater the maximum velocity. Maximum velocity is also greater for stiffer systems, because they exert greater force for the same displacement. This observation is seen in the expression for ${v}_{max};$ it is proportional to the square root of the force constant $k$ . Finally, the maximum velocity is smaller for objects that have larger masses, because the maximum velocity is inversely proportional to the square root of $m$ . For a given force, objects that have large masses accelerate more slowly.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-14",
+      "type": "paragraph",
+      "content": {
+        "text": "A similar calculation for the simple pendulum produces a similar result, namely:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "ex-15",
+      "type": "example",
+      "kind": "worked",
+      "title": {
+        "text": "Determine the Maximum Speed of an Oscillating System: A Bumpy Road",
+        "inline": []
+      },
+      "problem": {
+        "text": "",
+        "inline": []
+      },
+      "answer": null,
+      "level": "core"
+    },
+    {
+      "id": "p-16",
+      "type": "paragraph",
+      "content": {
+        "text": "Suppose that a car is 900 kg and has a suspension system that has a force constant $k=6.53×{10}^{4}N/m$ . The car hits a bump and bounces with an amplitude of 0.100 m. What is its maximum vertical velocity if you assume no damping occurs?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-17",
+      "type": "paragraph",
+      "content": {
+        "text": "We can use the expression for ${v}_{max}$ given in ${v}_{max}=X\\sqrt{\\frac{k}{m}}$ to determine the maximum vertical velocity. The variables $m$ and $k$ are given in the problem statement, and the maximum displacement $X$ is 0.100 m.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-18",
+      "type": "paragraph",
+      "content": {
+        "text": "This answer seems reasonable for a bouncing car. There are other ways to use conservation of energy to find ${v}_{max}$ . We could use it directly, as was done in the example featured in Hooke’s Law: Stress and Strain Revisited .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-19",
+      "type": "paragraph",
+      "content": {
+        "text": "The small vertical displacement $y$ of an oscillating simple pendulum, starting from its equilibrium position, is given as",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-20",
+      "type": "paragraph",
+      "content": {
+        "text": "where $a$ is the amplitude, $ω$ is the angular velocity and $t$ is the time taken. Substituting $ω=\\frac{2π}{T}$ , we have",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-21",
+      "type": "paragraph",
+      "content": {
+        "text": "Thus, the displacement of pendulum is a function of time as shown above.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-22",
+      "type": "paragraph",
+      "content": {
+        "text": "Also the velocity of the pendulum is given by",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-23",
+      "type": "paragraph",
+      "content": {
+        "text": "so the motion of the pendulum is a function of time.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-24",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Why does it hurt more if your hand is snapped with a ruler than with a loose spring, even if the displacement of each system is equal?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "The ruler is a stiffer system, which carries greater force for the same amount of displacement. The ruler snaps your hand with greater force, which hurts more.",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-25",
+      "type": "paragraph",
+      "content": {
+        "text": "Why does it hurt more if your hand is snapped with a ruler than with a loose spring, even if the displacement of each system is equal?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-26",
+      "type": "paragraph",
+      "content": {
+        "text": "The ruler is a stiffer system, which carries greater force for the same amount of displacement. The ruler snaps your hand with greater force, which hurts more.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-27",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "You are observing a simple harmonic oscillator. Identify one way you could decrease the maximum velocity of the system.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "You could increase the mass of the object that is oscillating.",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-28",
+      "type": "paragraph",
+      "content": {
+        "text": "You are observing a simple harmonic oscillator. Identify one way you could decrease the maximum velocity of the system.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-29",
+      "type": "paragraph",
+      "content": {
+        "text": "You could increase the mass of the object that is oscillating.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-30",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Test Prep for AP Courses",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-31",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A mass of 1 kg undergoes simple harmonic motion with amplitude of 1 m. If the period of the oscillation is 1 s, calculate the internal energy of the system.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "19.7 J",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-32",
+      "type": "paragraph",
+      "content": {
+        "text": "A mass of 1 kg undergoes simple harmonic motion with amplitude of 1 m. If the period of the oscillation is 1 s, calculate the internal energy of the system.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-33",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Section Summary",
+        "inline": []
+      }
+    },
+    {
+      "id": "sec-34",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Conceptual Questions",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-35",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Explain in terms of energy how dissipative forces such as friction reduce the amplitude of a harmonic oscillator. Also explain how a driving mechanism can compensate. (A pendulum clock is such a system.)",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-36",
+      "type": "paragraph",
+      "content": {
+        "text": "Explain in terms of energy how dissipative forces such as friction reduce the amplitude of a harmonic oscillator. Also explain how a driving mechanism can compensate. (A pendulum clock is such a system.)",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-37",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Problems & Exercises",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-38",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "The length of nylon rope from which a mountain climber is suspended has a force constant of $1.40×{10}^{4}N/m$ (a) What is the frequency at which he bounces, given his mass plus and the mass of his equipment are 90.0 kg? Ignore the change in gravitational potential energy after the cord begins to stretch. (b) How much would this rope stretch to break the climber’s fall if he free-falls 2.00 m before the rope runs out of slack? Hint: Use conservation of energy. (c) Repeat both parts of this problem in the situation where twice this length of nylon rope is used.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a) $1.99 Hz$ (b) 50.2 cm (c) 1.40 Hz, 71.0 cm",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-39",
+      "type": "paragraph",
+      "content": {
+        "text": "The length of nylon rope from which a mountain climber is suspended has a force constant of $1.40×{10}^{4}N/m$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-40",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) What is the frequency at which he bounces, given his mass plus and the mass of his equipment are 90.0 kg? Ignore the change in gravitational potential energy after the cord begins to stretch.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-41",
+      "type": "paragraph",
+      "content": {
+        "text": "(b) How much would this rope stretch to break the climber’s fall if he free-falls 2.00 m before the rope runs out of slack? Hint: Use conservation of energy.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-42",
+      "type": "paragraph",
+      "content": {
+        "text": "(c) Repeat both parts of this problem in the situation where twice this length of nylon rope is used.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-43",
+      "type": "paragraph",
+      "content": {
+        "text": "(c) 1.40 Hz, 71.0 cm",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-44",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Engineering Application Near the top of the Citigroup Center building in New York City, there is an object with mass of $4.00×{10}^{5}kg$ on springs that have adjustable force constants. Its function is to dampen wind-driven oscillations of the building by oscillating at the same frequency as the building is being driven—the driving force is transferred to the object, which oscillates instead of the entire building. (a) What effective force constant should the springs have to make the object oscillate with a period of 2.00 s? (b) What energy is stored in the springs for a 2.00-m displacement from equilibrium?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a) $3.95×{10}^{6}N/m$ (b) $7.90×{10}^{6}J$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-45",
+      "type": "paragraph",
+      "content": {
+        "text": "Engineering Application",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-46",
+      "type": "paragraph",
+      "content": {
+        "text": "Near the top of the Citigroup Center building in New York City, there is an object with mass of $4.00×{10}^{5}kg$ on springs that have adjustable force constants. Its function is to dampen wind-driven oscillations of the building by oscillating at the same frequency as the building is being driven—the driving force is transferred to the object, which oscillates instead of the entire building. (a) What effective force constant should the springs have to make the object oscillate with a period of 2.00 s? (b) What energy is stored in the springs for a 2.00-m displacement from equilibrium?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-47",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) $3.95×{10}^{6}N/m$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-48",
+      "type": "paragraph",
+      "content": {
+        "text": "(b) $7.90×{10}^{6}J$",
+        "inline": []
+      },
+      "level": "core"
+    }
+  ],
+  "solutions": {
+    "osbooks-college-physics-bundle:m42244:exr-24": [
+      [
+        {
+          "kind": "text",
+          "text": "The ruler is a stiffer system, which carries greater force for the same amount of displacement. The ruler snaps your hand with greater force, which hurts more."
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42244:exr-27": [
+      [
+        {
+          "kind": "text",
+          "text": "You could increase the mass of the object that is oscillating."
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42244:exr-31": [
+      [
+        {
+          "kind": "text",
+          "text": "19.7 J"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42244:exr-38": [
+      [
+        {
+          "kind": "text",
+          "text": "(a)"
+        },
+        {
+          "kind": "math",
+          "text": "1.99 Hz"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(b) 50.2 cm"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(c) 1.40 Hz, 71.0 cm"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42244:exr-44": [
+      [
+        {
+          "kind": "text",
+          "text": "(a)"
+        },
+        {
+          "kind": "math",
+          "text": "3.95×{10}^{6}N/m"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(b)"
+        },
+        {
+          "kind": "math",
+          "text": "7.90×{10}^{6}J"
+        }
+      ]
+    ]
+  }
+}

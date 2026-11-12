@@ -5,6 +5,7 @@
   "title": "Forces and Newton's Laws of Motion",
   "book_id": "secondary_physics",
   "part_id": "part-1",
+  "facts_inherited": false,
   "learning_objectives": [
     {
       "id": "lo-1",
@@ -231,6 +232,7 @@
       "slug": "introduction-to-dynamics-newton-s-laws-of-motion",
       "title": "Introduction to Dynamics: Newton's Laws of Motion",
       "est_minutes": 12,
+      "facts_inherited": false,
       "learning_objectives": [
         {
           "id": "lo-1",
@@ -253,7 +255,7 @@
           {
             "id": "b-1",
             "type": "figure",
-            "asset_url": "images/phy_m42129_Figure_04_00_01-eeb3.jpg",
+            "asset_url": "books/secondary_physics/c5d3e0066b75bf247a2dc86b29b1a6223729ed1d1a3e2b34c5dc195cebf1b135.jpg",
             "caption": {
               "text": "Newton’s laws of motion describe the motion of the dolphin’s path. (credit: Jin Jang)",
               "inline": []
@@ -280,7 +282,7 @@
           {
             "id": "b-4",
             "type": "figure",
-            "asset_url": "images/phy_m42129_Figure_04_00_02.jpg",
+            "asset_url": "books/secondary_physics/4cddae72252879e31f70a217a3a1bcd8e4be39c25f3c3e2bc8ee637b7de1e4b9.jpg",
             "caption": {
               "text": "Isaac Newton’s monumental work, *Philosophiae Naturalis Principia Mathematica* , was published in 1687. It proposed scientific laws that are still used today to describe the motion of objects. (credit: Service commun de la documentation de l'Université de Strasbourg)",
               "inline": []
@@ -404,6 +406,7 @@
       "slug": "the-force-concept-and-the-free-body-diagram",
       "title": "The force concept and the free-body diagram",
       "est_minutes": 20,
+      "facts_inherited": false,
       "learning_objectives": [
         {
           "id": "lo-1",
@@ -434,7 +437,7 @@
           {
             "id": "b-2",
             "type": "figure",
-            "asset_url": "images/phy_m42069_Figure_04_01_01a-e066.jpg",
+            "asset_url": "books/secondary_physics/a81038288f7a1aeb1c14747de372fc6157257b2cf0bc9a73913a2eddfea5a67f.jpg",
             "caption": {
               "text": "Part (a) shows an overhead view of two ice skaters pushing on a third. Forces are vectors and add like other vectors, so the total force on the third skater is in the direction shown. In part (b), we see a free-body diagram representing the forces acting on the third skater.",
               "inline": []
@@ -461,7 +464,7 @@
           {
             "id": "b-5",
             "type": "figure",
-            "asset_url": "images/phy_m42069_Figure_04_01_02.jpg",
+            "asset_url": "books/secondary_physics/e1ac16f49d74dab2f62ff3070ab972e9ee8a5b7423a682dbcde46a36221aa491.jpg",
             "caption": {
               "text": "The force exerted by a stretched spring can be used as a standard unit of force. (a) This spring has a length $x$ when undistorted. (b) When stretched a distance $Δx$ , the spring exerts a restoring force, ${F}_{restore}$ , which is reproducible. (c) A spring scale is one device that uses a spring to measure force. The force ${F}_{restore}$ is exerted on whatever is attached to the hook. Here ${F}_{restore}$ has a magnitude of 6 units in the force standard being employed.",
               "inline": []
@@ -480,7 +483,7 @@
           {
             "id": "b-7",
             "type": "figure",
-            "asset_url": "images/phy_m42069_Figure_04_01_03.jpg",
+            "asset_url": "books/secondary_physics/55877085235e2891ec20f5210bc72c285b72d0474a6e7762974b06dd1e1cee46.jpg",
             "caption": {
               "text": "The diagram looks like a solid black oval race track with 16 equally-spaced short perpendicular hash marks crossing the track. The oval is longer than it is tall and the top and bottom parts of the track are horizontal and parallel to the bottom of the page. To complete the oval, the race track starts to curve in a half-circle starting from the second perpendicular hash mark to the right of the top center hash mark. The curve continues for four perpendicular hash marks and the horizontal bottom part of the track starts two perpendicular hash marks to the right of the center bottom hash mark. The half-circle is mirrored on the left side of the track. On the right side of the oval is an arrow curving around the track and pointing up with the text “Direction of Cars’ Motion.” There is one solid line above the track and one to the right outside of the track. Both lines are indicated by the lowercase letter d. One line starts at the first hash mark’s location on a horizontally straight bit of track in the upper right side and indicates that the size of the line goes for 4 additional hash marks. The second line starts at the end of the horizontal stretch on the upper left of the track and curves around for 4 additional hash marks.",
               "inline": []
@@ -507,7 +510,7 @@
           {
             "id": "b-10",
             "type": "figure",
-            "asset_url": "images/phy_m42069_Figure_04_01_04.jpg",
+            "asset_url": "books/secondary_physics/7d3adda5020bfc568a77ad74c46c963a3a7515d46d9cc302023158caf60f7c83.jpg",
             "caption": {
               "text": "There are two dashed oval tracks representative of the larger oval track shown in figure 04_M1_track_img earlier. Both tracks have the same 16 equally spaced perpendicular hash marks shown in the earlier figure but there are dashes around the tracks instead of a solid line. Between each of the perpendicular dashes is one smaller dash at the perpendicular dash and three additional dashes. Centered above the figure on the left is the text Car X and over the figure on the left is Car Y. There are 6 black dots positioned on each of the Car X and Car Y tracks. The position of the six dots on the Car X track on the left are as follows: The first dot is on dashed line on the perpendicular hash mark at the very center left of the track. Moving to the right past three perpendicular hash marks the second dot is on the top horizontal line on the second of four small dashes before the top center perpendicular hash mark. The third dot is one perpendicular hash mark to the right of the center perpendicular hash mark. The fourth dot is two perpendicular hash marks from the third dot and one perpendicular hash mark above the right center perpendicular hash mark. The fifth dot is on the bottom horizontal line of the track and about one and one-third perpendicular hash marks to the right of the center bottom perpendicular hash mark. The sixth dot is on the bottom horizontal line about one and two-third perpendicular hash marks to the left of the center bottom perpendicular dash.",
               "inline": []
@@ -542,7 +545,7 @@
           {
             "id": "b-14",
             "type": "figure",
-            "asset_url": "images/phy_m42069_Figure_04_01_05.jpg",
+            "asset_url": "books/secondary_physics/749abd26398883847741cca84e489248032e8ed584c55305cc78ee9d2fc629c7.jpg",
             "caption": {
               "text": "Two identical diagrams feature oval-shaped dashed paths with alternating plus and minus signs. Each path includes black dots with arrows indicating specific vector directions at points along the loop.",
               "inline": []
@@ -668,6 +671,50 @@
             "locator": "CNXML module m42069, figure of the two skaters pushing on a third, and the paragraph on the free-body diagram",
             "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
           }
+        },
+        {
+          "id": "we-exr-9",
+          "statement": {
+            "text": "The figure above represents a racetrack with semicircular sections connected by straight sections. Each section has length *d* , and markers along the track are spaced *d* /4 apart. Two people drive cars counterclockwise around the track, as shown. Car *X* goes around the curves at constant speed *v* c , increases speed at constant acceleration for half of each straight section to reach a maximum speed of 2 *v* c , then brakes at constant acceleration for the other half of each straight section to return to speed *v* c . Car *Y* also goes around the curves at constant speed *v* c , increases its speed at constant acceleration for one-fourth of each straight section to reach the same maximum speed 2 *v* c , stays at that speed for half of each straight section, then brakes at constant acceleration for the remaining fourth of each straight section to return to speed *v* c . (a) On the figures below, draw an arrow showing the direction of the net force on each of the cars at the positions noted by the dots. If the net force is zero at any position, label the dot with 0. The position of the six dots on the Car Y track on the right are as follows: The first dot on the left center of the track is at the same position as it is on the Car X track.; The second dot is just slight to the right of the Car X dot (less than a dash) past three perpendicular hash marks moving to the right.; The third dot is about one and two-thirds perpendicular hash marks to the right of the center top perpendicular has mark.; The fourth dot is in the same position as the Car X figure (one perpendicular hash mark above the center right perpendicular hash mark).; The fifth dot is about one and two-third perpendicular hash marks to the right of the center bottom perpendicular hash mark.; The sixth dot is in the same position as the Car Y dot (one and two third perpendicular hash marks to the left of the center bottom hash mark). (b) i. Indicate which car, if either, completes one trip around the track in less time, and justify your answer qualitatively without using equations. ii. Justify your answer about which car, if either, completes one trip around the track in less time quantitatively with appropriate equations.",
+            "inline": []
+          },
+          "steps": [
+            {
+              "step_number": 1,
+              "expression": "Car *X* is shown on the left, and Car *Y* is shown on the right."
+            },
+            {
+              "step_number": 2,
+              "expression": "i."
+            },
+            {
+              "step_number": 3,
+              "expression": "Car *X* takes longer to accelerate and does not spend any time traveling at top speed. Car *Y* accelerates over a shorter time and spends time going at top speed. So Car *Y* must cover the straightaways in a shorter time. Curves take the same time, so Car *Y* must overall take a shorter time."
+            },
+            {
+              "step_number": 4,
+              "expression": "ii."
+            },
+            {
+              "step_number": 5,
+              "expression": "The only difference in the calculations for the time of one segment of linear acceleration is the difference in distances. That shows that Car *X* takes longer to accelerate. The equation $\\frac{d}{4{v}_{c}}={t}_{c}$ corresponds to Car *Y* traveling for a time at top speed."
+            },
+            {
+              "step_number": 6,
+              "expression": "Substituting $a=\\frac{{v}_{c}}{{t}_{1}}$ into the displacement equation in part (b) ii gives $D=\\frac{3}{2}{v}_{c}{t}_{1}$ . This shows that a car takes less time to reach its maximum speed when it accelerates over a shorter distance. Therefore, Car *Y* reaches its maximum speed more quickly, and spends more time at its maximum speed than Car *X* does, as argued in part (b) i."
+            }
+          ],
+          "answer": {
+            "text": "Car *X* is shown on the left, and Car *Y* is shown on the right. i. Car *X* takes longer to accelerate and does not spend any time traveling at top speed. Car *Y* accelerates over a shorter time and spends time going at top speed. So Car *Y* must cover the straightaways in a shorter time. Curves take the same time, so Car *Y* must overall take a shorter time. ii. The only difference in the calculations for the time of one segment of linear acceleration is the difference in distances. That shows that Car *X* takes longer to accelerate. The equation $\\frac{d}{4{v}_{c}}={t}_{c}$ corresponds to Car *Y* traveling for a time at top speed. Substituting $a=\\frac{{v}_{c}}{{t}_{1}}$ into the displacement equation in part (b) ii gives $D=\\frac{3}{2}{v}_{c}{t}_{1}$ . This shows that a car takes less time to reach its maximum speed when it accelerates over a shorter distance. Therefore, Car *Y* reaches its maximum speed more quickly, and spends more time at its maximum speed than Car *X* does, as argued in part (b) i.",
+            "inline": []
+          },
+          "provenance": {
+            "publisher": "OpenStax",
+            "title": "osbooks-college-physics-bundle",
+            "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42069/index.cnxml",
+            "locator": "CNXML module m42069, exercise block exr-9",
+            "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
+          }
         }
       ],
       "misconceptions": [
@@ -727,8 +774,7 @@
         }
       ],
       "exercise_ids": [
-        "ex-sec-2-01",
-        "ex-sec-2-02"
+        "ex-sec-2-01"
       ],
       "exam_links": [
         {
@@ -754,6 +800,7 @@
       "slug": "inertia-and-newton-s-first-law",
       "title": "Inertia and Newton's first law",
       "est_minutes": 16,
+      "facts_inherited": false,
       "learning_objectives": [
         {
           "id": "lo-1",
@@ -907,6 +954,30 @@
             "locator": "CNXML module m42130, paragraph on the object sliding along a rough horizontal surface",
             "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
           }
+        },
+        {
+          "id": "we-exr-10",
+          "statement": {
+            "text": "Which has more mass: a kilogram of cotton balls or a kilogram of gold?",
+            "inline": []
+          },
+          "steps": [
+            {
+              "step_number": 1,
+              "expression": "They are equal. A kilogram of one substance is equal in mass to a kilogram of another substance. The quantities that might differ between them are volume and density."
+            }
+          ],
+          "answer": {
+            "text": "They are equal. A kilogram of one substance is equal in mass to a kilogram of another substance. The quantities that might differ between them are volume and density.",
+            "inline": []
+          },
+          "provenance": {
+            "publisher": "OpenStax",
+            "title": "osbooks-college-physics-bundle",
+            "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42130/index.cnxml",
+            "locator": "CNXML module m42130, exercise block exr-10",
+            "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
+          }
         }
       ],
       "misconceptions": [
@@ -965,9 +1036,7 @@
           "inline": []
         }
       ],
-      "exercise_ids": [
-        "ex-sec-3-01"
-      ],
+      "exercise_ids": [],
       "exam_links": [
         {
           "exam": "JAMB",
@@ -1003,6 +1072,7 @@
       "slug": "newton-s-second-law-and-the-choice-of-system",
       "title": "Newton's second law and the choice of system",
       "est_minutes": 26,
+      "facts_inherited": false,
       "learning_objectives": [
         {
           "id": "lo-1",
@@ -1049,7 +1119,7 @@
           {
             "id": "b-4",
             "type": "figure",
-            "asset_url": "images/phy_m42073_Figure_04_03_01.jpg",
+            "asset_url": "books/secondary_physics/ed078d28c3082f1f167d256d0e8a37b692f94fed07d0401ba3245da557e07d78.jpg",
             "caption": {
               "text": "Different forces exerted on the same mass produce different accelerations. (a) Two children push a wagon with a child in it. Arrows representing all external forces are shown. The system of interest is the wagon and its rider. The weight $w$ of the system and the support of the ground $N$ are also shown for completeness and are assumed to cancel. The vector $f$ represents the friction acting on the wagon, and it acts to the left, opposing the motion of the wagon. (b) All of the external forces acting on the system add together to produce a net force, ${F}_{net}$ . The free-body diagram shows all of the forces acting on the system of interest. The dot represents the center of mass of the system. Each force vector extends from this dot. Because there are two forces acting to the right, we draw the vectors collinearly. (c) A larger net external force produces a larger acceleration ( $a′>a$ ) when an adult pushes the child.",
               "inline": []
@@ -1100,7 +1170,7 @@
           {
             "id": "b-10",
             "type": "figure",
-            "asset_url": "images/phy_m42073_Figure_04_03_02.jpg",
+            "asset_url": "books/secondary_physics/fdc8e93042cd0979b4528b58e2bd8084b2d171a88100d1118818179bd3d8616c.jpg",
             "caption": {
               "text": "The same force exerted on systems of different masses produces different accelerations. (a) A basketball player pushes on a basketball to make a pass. (The effect of gravity on the ball is ignored.) (b) The same player exerts an identical force on a stalled SUV and produces a far smaller acceleration (even if friction is negligible). (c) The free-body diagrams are identical, permitting direct comparison of the two situations. A series of patterns for the free-body diagram will emerge as you do more problems.",
               "inline": []
@@ -1319,7 +1389,7 @@
           {
             "id": "b-37",
             "type": "figure",
-            "asset_url": "images/phy_m42073_Figure_04_03_03.jpg",
+            "asset_url": "books/secondary_physics/552cf571b2d2ea3973db8c5b1d532955aead59dda431393aec205bcd938869cd.jpg",
             "caption": {
               "text": "The net force on a lawn mower is 51 N to the right. At what rate does the lawn mower accelerate to the right?",
               "inline": []
@@ -1378,7 +1448,7 @@
           {
             "id": "b-44",
             "type": "figure",
-            "asset_url": "images/phy_m42073_Figure_04_03_04.jpg",
+            "asset_url": "books/secondary_physics/7ef25bf1181e79b1efaf73d147ad5dc1c29d5f5c67aa0391ba3b5857079c426e.jpg",
             "caption": {
               "text": "A sled experiences a rocket thrust that accelerates it to the right. Each rocket creates an identical thrust $T$ . As in other situations where there is only horizontal acceleration, the vertical forces cancel. The ground exerts an upward force $N$ on the system that is equal in magnitude and opposite in direction to its weight, $w$ . The system here is the sled, its rockets, and rider, so none of the forces *between* these objects are considered. The arrow representing friction ( $f$ ) is drawn larger than scale.",
               "inline": []
@@ -1653,7 +1723,7 @@
           {
             "id": "b-78",
             "type": "figure",
-            "asset_url": "images/phy_m42073_Figure_04_03_07-c153.jpg",
+            "asset_url": "books/secondary_physics/d8e06499a3169eb373381a40e127e7c0bfaeb6845d8852be29c573471d8603c6.jpg",
             "caption": {
               "text": "A sled is shown with four rockets. Friction force is represented by an arrow labeled as vector f pointing toward the left on the sled. Weight of the sled is represented by an arrow labeled as vector W, shown pointing downward, and normal force is represented by an arrow labeled as vector N having the same length as W acting upward on the sled.",
               "inline": []
@@ -1680,7 +1750,7 @@
           {
             "id": "b-81",
             "type": "figure",
-            "asset_url": "images/phy_m42073_Figure_04_03_05-1144.jpg",
+            "asset_url": "books/secondary_physics/3a75ff0f5919db4e150f82f9aea9d6e35abd8181ff1cfee11a3d57bddc5e5f49.jpg",
             "caption": {
               "text": "A sled is shown with thrust represented by a vector T pushing the sled toward the right. Friction force is represented by an arrow labeled as vector f pointing toward the left on the sled. The weight of the sled is represented by an arrow labeled as vector W, shown pointing downward, and the normal force is represented by an arrow labeled as vector N having the same length as W acting upward on the sled.",
               "inline": []
@@ -1763,7 +1833,7 @@
           {
             "id": "b-91",
             "type": "figure",
-            "asset_url": "images/phy_m42073_Figure_04_03_07-c153.jpg",
+            "asset_url": "books/secondary_physics/d8e06499a3169eb373381a40e127e7c0bfaeb6845d8852be29c573471d8603c6.jpg",
             "caption": {
               "text": "A sled is shown with four rockets. Friction force is represented by an arrow labeled as vector f pointing toward the left on the sled. The weight of the sled is represented by an arrow labeled as vector W, shown pointing downward, and the normal force is represented by an arrow labeled as vector N having the same length as W acting upward on the sled.",
               "inline": []
@@ -1873,6 +1943,30 @@
             "text": "Prior to space flights carrying astronauts, rocket sleds were used to test aircraft, missile equipment, and physiological effects on human subjects at high speeds. They consisted of a platform that was mounted on one or two rails and propelled by several rockets. Calculate the magnitude of force exerted by each rocket, called its thrust $T$ , for the four-rocket propulsion system shown in . The sled’s initial acceleration is $49{m/s}^{2},$ the mass of the system is 2100 kg, and the force of friction opposing the motion is known to be 650 N.",
             "inline": []
           }
+        },
+        {
+          "id": "we-exr-89",
+          "statement": {
+            "text": "A 63.0-kg sprinter starts a race with an acceleration of $4.20 m{/s}^{2}$ . What is the net external force on him?",
+            "inline": []
+          },
+          "steps": [
+            {
+              "step_number": 1,
+              "expression": "265 N"
+            }
+          ],
+          "answer": {
+            "text": "265 N",
+            "inline": []
+          },
+          "provenance": {
+            "publisher": "OpenStax",
+            "title": "osbooks-college-physics-bundle",
+            "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42073/index.cnxml",
+            "locator": "CNXML module m42073, exercise block exr-89",
+            "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
+          }
         }
       ],
       "misconceptions": [
@@ -1936,8 +2030,7 @@
         "ex-sec-4-02",
         "ex-sec-4-03",
         "ex-sec-4-04",
-        "ex-sec-4-05",
-        "ex-sec-4-06"
+        "ex-sec-4-05"
       ],
       "exam_links": [
         {
@@ -1988,6 +2081,7 @@
       "slug": "newton-s-third-law-and-symmetry-in-forces",
       "title": "Newton's third law and symmetry in forces",
       "est_minutes": 22,
+      "facts_inherited": false,
       "learning_objectives": [
         {
           "id": "lo-1",
@@ -2042,7 +2136,7 @@
           {
             "id": "b-5",
             "type": "figure",
-            "asset_url": "images/phy_m42074_Figure_04_04_01.jpg",
+            "asset_url": "books/secondary_physics/1ec8972d89c480bca4bf0b4d7ee2e191308482314faca6b01915f3f66b96a5c4.jpg",
             "caption": {
               "text": "When the swimmer exerts a force ${F}_{feet on wall}$ on the wall, she accelerates in the direction opposite to that of her push. This means the net external force on her is in the direction opposite to ${F}_{feet on wall}$ . This opposition occurs because, in accordance with Newton’s third law of motion, the wall exerts a force ${F}_{wall on feet}$ on her, equal in magnitude but in the direction opposite to the one she exerts on it. The line around the swimmer indicates the system of interest. Note that ${F}_{feet on wall}$ does not act on this system (the swimmer) and, thus, does not cancel ${F}_{wall on feet}$ . Thus the free-body diagram shows only ${F}_{wall on feet}$ , $w$ , the gravitational force, and $BF$ , the buoyant force of the water supporting the swimmer’s weight. The vertical forces $w$ and $BF$ cancel since there is no vertical motion.",
               "inline": []
@@ -2061,7 +2155,7 @@
           {
             "id": "b-7",
             "type": "figure",
-            "asset_url": "images/phy_m42074_Figure_04_04_02.jpg",
+            "asset_url": "books/secondary_physics/3fbcf04e859d3531dfd3522728bced4cd38d4d09a467e3b9846669d9db03e7b3.jpg",
             "caption": {
               "text": "A professor pushes a cart of demonstration equipment. The lengths of the arrows are proportional to the magnitudes of the forces (except for $f$ , since it is too small to draw to scale). Different questions are asked in each example; thus, the system of interest must be defined differently for each. System 1 is appropriate for this example, since it asks for the acceleration of the entire group of objects. Only ${F}_{floor}$ and $f$ are external forces acting on System 1 along the line of motion. All other forces either cancel or act on the outside world. System 2 is chosen for so that ${F}_{prof}$ will be an external force and enter into Newton’s second law. Note that the free-body diagrams, which allow us to apply Newton’s second law, vary with the system chosen.",
               "inline": []
@@ -2216,7 +2310,7 @@
           {
             "id": "b-26",
             "type": "figure",
-            "asset_url": "images/phy_m42074_Figure_04_04_03.jpg",
+            "asset_url": "books/secondary_physics/0a8df1c904e5b7fec93d05b5383520f21d4c553e892a8d2d08a9b19f75efeda1.jpg",
             "caption": {
               "text": "A free-body diagram illustrating four forces acting on a central point. Fw (13.0 N) points left, Fc (9.0 N) points right, Fb points upward, and Fg points downward.",
               "inline": []
@@ -2606,6 +2700,38 @@
             "text": "Calculate the force the professor exerts on the cart in using data from the previous example if needed. If we now define the system of interest to be the cart plus equipment (System 2 in ), then the net external force on System 2 is the force the professor exerts on the cart minus friction. The force she exerts on the cart, ${F}_{prof}$ , is an external force acting on System 2. ${F}_{prof}$ was internal to System 1, but it is external to System 2 and will enter Newton’s second law for System 2. Newton’s second law can be used to find ${F}_{prof}$ . Starting with \\[$a=\\frac{{F}_{net}}{m}$\\] and noting that the magnitude of the net external force on System 2 is \\[${F}_{net}={F}_{prof}-f,$\\] we solve for ${F}_{prof}$ , the desired quantity: \\[${F}_{prof}={F}_{net}+f.$\\] The value of $f$ is given, so we must calculate net ${F}_{net}$ . That can be done since both the acceleration and mass of System 2 are known. Using Newton’s second law we see that where the mass of System 2 is 19.0 kg ( $m$ = 12.0 kg + 7.0 kg) and its acceleration was found to be $a=1.5{m/s}^{2}$ in the previous example. Thus, \\[${F}_{net}=(19.0 kg)(1.5{m/s}^{2})=29 N.$\\] Now we can find the desired force: \\[${F}_{prof}={F}_{net}+f,$\\] \\[${F}_{prof}=29 N+24.0 N=53 N.$\\] It is interesting that this force is significantly less than the 150-N force the professor exerted backward on the floor. Not all of that 150-N force is transmitted to the cart; some of it accelerates the professor. The choice of a system is an important analytical step both in solving problems and in thoroughly understanding the physics of the situation (which is not necessarily the same thing). Visualize the gravitational force that two objects exert on each other. Change properties of the objects in order to see how it changes the gravity force.",
             "inline": []
           }
+        },
+        {
+          "id": "we-exr-40",
+          "statement": {
+            "text": "What object or objects commonly exert forces on the following objects in motion? (a) a soccer ball being kicked, (b) a dolphin jumping, (c) a parachutist drifting to Earth.",
+            "inline": []
+          },
+          "steps": [
+            {
+              "step_number": 1,
+              "expression": "(a) A soccer player, gravity, air, and friction commonly exert forces on a soccer ball being kicked."
+            },
+            {
+              "step_number": 2,
+              "expression": "(b) Gravity and the surrounding water commonly exert forces on a dolphin jumping. (The dolphin moves its muscles to exert a force on the water. The water exerts an equal force on the dolphin, resulting in the dolphin’s motion.)"
+            },
+            {
+              "step_number": 3,
+              "expression": "(c) Gravity and air exert forces on a parachutist drifting to Earth."
+            }
+          ],
+          "answer": {
+            "text": "(a) A soccer player, gravity, air, and friction commonly exert forces on a soccer ball being kicked. (b) Gravity and the surrounding water commonly exert forces on a dolphin jumping. (The dolphin moves its muscles to exert a force on the water. The water exerts an equal force on the dolphin, resulting in the dolphin’s motion.) (c) Gravity and air exert forces on a parachutist drifting to Earth.",
+            "inline": []
+          },
+          "provenance": {
+            "publisher": "OpenStax",
+            "title": "osbooks-college-physics-bundle",
+            "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42074/index.cnxml",
+            "locator": "CNXML module m42074, exercise block exr-40",
+            "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
+          }
         }
       ],
       "misconceptions": [
@@ -2670,8 +2796,7 @@
         "ex-sec-5-03",
         "ex-sec-5-04",
         "ex-sec-5-05",
-        "ex-sec-5-06",
-        "ex-sec-5-07"
+        "ex-sec-5-06"
       ],
       "exam_links": [
         {
@@ -2706,64 +2831,6 @@
   "exercises": [
     {
       "id": "ex-sec-2-01",
-      "section_id": "sec-2",
-      "tier": "stretch",
-      "kind": "numeric",
-      "difficulty": 2,
-      "marks": 2,
-      "stem": {
-        "text": "The figure above represents a racetrack with semicircular sections connected by straight sections. Each section has length *d* , and markers along the track are spaced *d* /4 apart. Two people drive cars counterclockwise around the track, as shown. Car *X* goes around the curves at constant speed *v* c , increases speed at constant acceleration for half of each straight section to reach a maximum speed of 2 *v* c , then brakes at constant acceleration for the other half of each straight section to return to speed *v* c . Car *Y* also goes around the curves at constant speed *v* c , increases its speed at constant acceleration for one-fourth of each straight section to reach the same maximum speed 2 *v* c , stays at that speed for half of each straight section, then brakes at constant acceleration for the remaining fourth of each straight section to return to speed *v* c . (a) On the figures below, draw an arrow showing the direction of the net force on each of the cars at the positions noted by the dots. If the net force is zero at any position, label the dot with 0. The position of the six dots on the Car Y track on the right are as follows: The first dot on the left center of the track is at the same position as it is on the Car X track.; The second dot is just slight to the right of the Car X dot (less than a dash) past three perpendicular hash marks moving to the right.; The third dot is about one and two-thirds perpendicular hash marks to the right of the center top perpendicular has mark.; The fourth dot is in the same position as the Car X figure (one perpendicular hash mark above the center right perpendicular hash mark).; The fifth dot is about one and two-third perpendicular hash marks to the right of the center bottom perpendicular hash mark.; The sixth dot is in the same position as the Car Y dot (one and two third perpendicular hash marks to the left of the center bottom hash mark). (b) i. Indicate which car, if either, completes one trip around the track in less time, and justify your answer qualitatively without using equations. ii. Justify your answer about which car, if either, completes one trip around the track in less time quantitatively with appropriate equations.",
-        "inline": []
-      },
-      "options": [],
-      "answer": {
-        "text": "Car *X* is shown on the left, and Car *Y* is shown on the right. i. Car *X* takes longer to accelerate and does not spend any time traveling at top speed. Car *Y* accelerates over a shorter time and spends time going at top speed. So Car *Y* must cover the straightaways in a shorter time. Curves take the same time, so Car *Y* must overall take a shorter time. ii. The only difference in the calculations for the time of one segment of linear acceleration is the difference in distances. That shows that Car *X* takes longer to accelerate. The equation $\\frac{d}{4{v}_{c}}={t}_{c}$ corresponds to Car *Y* traveling for a time at top speed. Substituting $a=\\frac{{v}_{c}}{{t}_{1}}$ into the displacement equation in part (b) ii gives $D=\\frac{3}{2}{v}_{c}{t}_{1}$ . This shows that a car takes less time to reach its maximum speed when it accelerates over a shorter distance. Therefore, Car *Y* reaches its maximum speed more quickly, and spends more time at its maximum speed than Car *X* does, as argued in part (b) i.",
-        "inline": []
-      },
-      "answer_kind": "explanation",
-      "solution": [
-        {
-          "step_number": 1,
-          "expression": "Car *X* is shown on the left, and Car *Y* is shown on the right."
-        },
-        {
-          "step_number": 2,
-          "expression": "i."
-        },
-        {
-          "step_number": 3,
-          "expression": "Car *X* takes longer to accelerate and does not spend any time traveling at top speed. Car *Y* accelerates over a shorter time and spends time going at top speed. So Car *Y* must cover the straightaways in a shorter time. Curves take the same time, so Car *Y* must overall take a shorter time."
-        },
-        {
-          "step_number": 4,
-          "expression": "ii."
-        },
-        {
-          "step_number": 5,
-          "expression": "The only difference in the calculations for the time of one segment of linear acceleration is the difference in distances. That shows that Car *X* takes longer to accelerate. The equation $\\frac{d}{4{v}_{c}}={t}_{c}$ corresponds to Car *Y* traveling for a time at top speed."
-        },
-        {
-          "step_number": 6,
-          "expression": "Substituting $a=\\frac{{v}_{c}}{{t}_{1}}$ into the displacement equation in part (b) ii gives $D=\\frac{3}{2}{v}_{c}{t}_{1}$ . This shows that a car takes less time to reach its maximum speed when it accelerates over a shorter distance. Therefore, Car *Y* reaches its maximum speed more quickly, and spends more time at its maximum speed than Car *X* does, as argued in part (b) i."
-        }
-      ],
-      "tags": [
-        "force",
-        "force-standard",
-        "free-body-diagram",
-        "vectors"
-      ],
-      "provenance": {
-        "publisher": "OpenStax",
-        "title": "osbooks-college-physics-bundle",
-        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42069/index.cnxml",
-        "locator": "CNXML module m42069, exercise block exr-9",
-        "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
-      },
-      "solution_provenance": "OpenStax CNXML solution element (in file)"
-    },
-    {
-      "id": "ex-sec-2-02",
       "section_id": "sec-2",
       "tier": "stretch",
       "kind": "verbal",
@@ -2801,82 +2868,7 @@
       "solution_provenance": "OpenStax CNXML solution element (in file)"
     },
     {
-      "id": "ex-sec-3-01",
-      "section_id": "sec-3",
-      "tier": "core",
-      "kind": "algebraic",
-      "difficulty": 2,
-      "marks": 2,
-      "stem": {
-        "text": "Which has more mass: a kilogram of cotton balls or a kilogram of gold?",
-        "inline": []
-      },
-      "options": [],
-      "answer": {
-        "text": "They are equal. A kilogram of one substance is equal in mass to a kilogram of another substance. The quantities that might differ between them are volume and density.",
-        "inline": []
-      },
-      "answer_kind": "explanation",
-      "solution": [
-        {
-          "step_number": 1,
-          "expression": "They are equal. A kilogram of one substance is equal in mass to a kilogram of another substance. The quantities that might differ between them are volume and density."
-        }
-      ],
-      "tags": [
-        "inertia",
-        "mass",
-        "newtons-first-law"
-      ],
-      "provenance": {
-        "publisher": "OpenStax",
-        "title": "osbooks-college-physics-bundle",
-        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42130/index.cnxml",
-        "locator": "CNXML module m42130, exercise block exr-10",
-        "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
-      },
-      "solution_provenance": "OpenStax CNXML solution element (in file)"
-    },
-    {
       "id": "ex-sec-4-01",
-      "section_id": "sec-4",
-      "tier": "core",
-      "kind": "numeric",
-      "difficulty": 3,
-      "marks": 3,
-      "stem": {
-        "text": "A 63.0-kg sprinter starts a race with an acceleration of $4.20 m{/s}^{2}$ . What is the net external force on him?",
-        "inline": []
-      },
-      "options": [],
-      "answer": {
-        "text": "265 N",
-        "inline": []
-      },
-      "answer_kind": "expression",
-      "solution": [
-        {
-          "step_number": 1,
-          "expression": "265 N"
-        }
-      ],
-      "tags": [
-        "acceleration",
-        "free-body-diagram",
-        "newtons-second-law",
-        "system-of-interest"
-      ],
-      "provenance": {
-        "publisher": "OpenStax",
-        "title": "osbooks-college-physics-bundle",
-        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42073/index.cnxml",
-        "locator": "CNXML module m42073, exercise block exr-89",
-        "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
-      },
-      "solution_provenance": "OpenStax CNXML solution element (in file)"
-    },
-    {
-      "id": "ex-sec-4-02",
       "section_id": "sec-4",
       "tier": "core",
       "kind": "numeric",
@@ -2914,7 +2906,7 @@
       "solution_provenance": "OpenStax CNXML solution element (in file)"
     },
     {
-      "id": "ex-sec-4-03",
+      "id": "ex-sec-4-02",
       "section_id": "sec-4",
       "tier": "core",
       "kind": "numeric",
@@ -2956,7 +2948,7 @@
       "solution_provenance": "OpenStax CNXML solution element (in file)"
     },
     {
-      "id": "ex-sec-4-04",
+      "id": "ex-sec-4-03",
       "section_id": "sec-4",
       "tier": "core",
       "kind": "numeric",
@@ -3006,7 +2998,7 @@
       "solution_provenance": "OpenStax CNXML solution element (in file)"
     },
     {
-      "id": "ex-sec-4-05",
+      "id": "ex-sec-4-04",
       "section_id": "sec-4",
       "tier": "core",
       "kind": "numeric",
@@ -3057,7 +3049,7 @@
       ]
     },
     {
-      "id": "ex-sec-4-06",
+      "id": "ex-sec-4-05",
       "section_id": "sec-4",
       "tier": "core",
       "kind": "numeric",
@@ -3108,51 +3100,6 @@
       "section_id": "sec-5",
       "tier": "stretch",
       "kind": "algebraic",
-      "difficulty": 3,
-      "marks": 3,
-      "stem": {
-        "text": "What object or objects commonly exert forces on the following objects in motion? (a) a soccer ball being kicked, (b) a dolphin jumping, (c) a parachutist drifting to Earth.",
-        "inline": []
-      },
-      "options": [],
-      "answer": {
-        "text": "(a) A soccer player, gravity, air, and friction commonly exert forces on a soccer ball being kicked. (b) Gravity and the surrounding water commonly exert forces on a dolphin jumping. (The dolphin moves its muscles to exert a force on the water. The water exerts an equal force on the dolphin, resulting in the dolphin’s motion.) (c) Gravity and air exert forces on a parachutist drifting to Earth.",
-        "inline": []
-      },
-      "answer_kind": "explanation",
-      "solution": [
-        {
-          "step_number": 1,
-          "expression": "(a) A soccer player, gravity, air, and friction commonly exert forces on a soccer ball being kicked."
-        },
-        {
-          "step_number": 2,
-          "expression": "(b) Gravity and the surrounding water commonly exert forces on a dolphin jumping. (The dolphin moves its muscles to exert a force on the water. The water exerts an equal force on the dolphin, resulting in the dolphin’s motion.)"
-        },
-        {
-          "step_number": 3,
-          "expression": "(c) Gravity and air exert forces on a parachutist drifting to Earth."
-        }
-      ],
-      "tags": [
-        "action-reaction",
-        "newtons-third-law",
-        "symmetry"
-      ],
-      "provenance": {
-        "publisher": "OpenStax",
-        "title": "osbooks-college-physics-bundle",
-        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42074/index.cnxml",
-        "locator": "CNXML module m42074, exercise block exr-40",
-        "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
-      },
-      "solution_provenance": "OpenStax CNXML solution element (in file)"
-    },
-    {
-      "id": "ex-sec-5-02",
-      "section_id": "sec-5",
-      "tier": "stretch",
-      "kind": "algebraic",
       "difficulty": 4,
       "marks": 4,
       "stem": {
@@ -3186,7 +3133,7 @@
       "solution_provenance": "OpenStax CNXML solution element (in file)"
     },
     {
-      "id": "ex-sec-5-03",
+      "id": "ex-sec-5-02",
       "section_id": "sec-5",
       "tier": "stretch",
       "kind": "numeric",
@@ -3227,7 +3174,7 @@
       "solution_provenance": "OpenStax CNXML solution element (in file)"
     },
     {
-      "id": "ex-sec-5-04",
+      "id": "ex-sec-5-03",
       "section_id": "sec-5",
       "tier": "stretch",
       "kind": "numeric",
@@ -3301,7 +3248,7 @@
       ]
     },
     {
-      "id": "ex-sec-5-05",
+      "id": "ex-sec-5-04",
       "section_id": "sec-5",
       "tier": "stretch",
       "kind": "algebraic",
@@ -3338,7 +3285,7 @@
       "solution_provenance": "OpenStax CNXML solution element (in file)"
     },
     {
-      "id": "ex-sec-5-06",
+      "id": "ex-sec-5-05",
       "section_id": "sec-5",
       "tier": "stretch",
       "kind": "numeric",
@@ -3404,7 +3351,7 @@
       ]
     },
     {
-      "id": "ex-sec-5-07",
+      "id": "ex-sec-5-06",
       "section_id": "sec-5",
       "tier": "core",
       "kind": "numeric",

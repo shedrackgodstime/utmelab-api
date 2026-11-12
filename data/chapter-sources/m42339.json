@@ -1,0 +1,45 @@
+{
+  "module": "m42339",
+  "source_attribution": {
+    "publisher": "OpenStax",
+    "book": "osbooks-college-physics-bundle",
+    "section": "m42339",
+    "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42339/index.cnxml",
+    "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)",
+    "locator": "CNXML module index.cnxml (typed elements, solutions present)"
+  },
+  "blocks": [
+    {
+      "id": "fig-1",
+      "type": "figure",
+      "asset_url": "images/phy_m42339_Figure_20_00_01.jpg",
+      "caption": {
+        "text": "Electric energy in massive quantities is transmitted from this hydroelectric facility, the Srisailam power station located along the Krishna River in India, by the movement of charge—that is, by electric current. (credit: Chintohere, Wikimedia Commons)",
+        "inline": []
+      },
+      "alt": "A large volume of water gushes out of the gates of a dam at a hydroelectric facility.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-1",
+      "type": "paragraph",
+      "content": {
+        "text": "The flicker of numbers on a handheld calculator, nerve impulses carrying signals of vision to the brain, an ultrasound device sending a signal to a computer screen, the brain sending a message for a baby to twitch its toes, an electric train pulling its load over a mountain pass, a hydroelectric plant sending energy to metropolitan and rural users—these and many other examples of electricity involve *electric current, the movement of charge* . Humankind has indeed harnessed electricity, the basis of technology, to improve our quality of life. Whereas the previous two chapters concentrated on static electricity and the fundamental force underlying its behavior, the next few chapters will be devoted to electric and magnetic phenomena involving current. In addition to exploring applications of electricity, we shall gain new insights into nature—in particular, the fact that all magnetism results from electric current.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-2",
+      "type": "paragraph",
+      "content": {
+        "text": "OpenStax AP Physics Chapter 20: DC Circuits (Physics Concept Trailer™)",
+        "inline": []
+      },
+      "level": "core"
+    }
+  ],
+  "solutions": {}
+}

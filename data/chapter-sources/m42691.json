@@ -1,0 +1,147 @@
+{
+  "module": "m42691",
+  "source_attribution": {
+    "publisher": "OpenStax",
+    "book": "osbooks-college-physics-bundle",
+    "section": "m42691",
+    "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42691/index.cnxml",
+    "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)",
+    "locator": "CNXML module index.cnxml (typed elements, solutions present)"
+  },
+  "blocks": [
+    {
+      "id": "sec-0",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Learning Objectives",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-1",
+      "type": "paragraph",
+      "content": {
+        "text": "By the end of this section, you will be able to:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-2",
+      "type": "paragraph",
+      "content": {
+        "text": "Introduced earlier in GUTS: The Unification of Forces Superstring theory is an attempt to unify gravity with the other three forces and, thus, must contain quantum gravity. The main tenet of Superstring theory is that fundamental particles, including the graviton that carries the gravitational force, act like one-dimensional vibrating strings. Since gravity affects the time and space in which all else exists, Superstring theory is an attempt at a Theory of Everything (TOE). Each independent quantum number is thought of as a separate dimension in some super space (analogous to the fact that the familiar dimensions of space are independent of one another) and is represented by a different type of Superstring. As the universe evolved after the Big Bang and forces became distinct (spontaneous symmetry breaking), some of the dimensions of superspace are imagined to have curled up and become unnoticed.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-3",
+      "type": "paragraph",
+      "content": {
+        "text": "Forces are expected to be unified only at extremely high energies and at particle separations on the order of ${10}^{-35}m$ . This could mean that Superstrings must have dimensions or wavelengths of this size or smaller. Just as quantum gravity may imply that there are no time intervals shorter than some finite value, it also implies that there may be no sizes smaller than some tiny but finite value. That may be about ${10}^{-35}m$ . If so, and if Superstring theory can explain all it strives to, then the structures of Superstrings are at the lower limit of the smallest possible size and can have no further substructure. This would be the ultimate answer to the question the ancient Greeks considered. There is a finite lower limit to space.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-4",
+      "type": "paragraph",
+      "content": {
+        "text": "Not only is Superstring theory in its infancy, it deals with dimensions about 17 orders of magnitude smaller than the ${10}^{-18}m$ details that we have been able to observe directly. It is thus relatively unconstrained by experiment, and there are a host of theoretical possibilities to choose from. This has led theorists to make choices subjectively (as always) on what is the most elegant theory, with less hope than usual that experiment will guide them. It has also led to speculation of alternate universes, with their Big Bangs creating each new universe with a random set of rules. These speculations may not be tested even in principle, since an alternate universe is by definition unattainable. It is something like exploring a self-consistent field of mathematics, with its axioms and rules of logic that are not consistent with nature. Such endeavors have often given insight to mathematicians and scientists alike and occasionally have been directly related to the description of new discoveries.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-5",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Section Summary",
+        "inline": []
+      }
+    },
+    {
+      "id": "sec-6",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Problems & Exercises",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-7",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "The characteristic length of entities in Superstring theory is approximately ${10}^{-35}m$ . (a) Find the energy in GeV of a photon of this wavelength. (b) Compare this with the average particle energy of ${10}^{19}GeV$ needed for unification of forces.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a) $1×{10}^{20}$ (b) 10 times greater",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-8",
+      "type": "paragraph",
+      "content": {
+        "text": "The characteristic length of entities in Superstring theory is approximately ${10}^{-35}m$ .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-9",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) Find the energy in GeV of a photon of this wavelength.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-10",
+      "type": "paragraph",
+      "content": {
+        "text": "(b) Compare this with the average particle energy of ${10}^{19}GeV$ needed for unification of forces.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-11",
+      "type": "paragraph",
+      "content": {
+        "text": "(b) 10 times greater",
+        "inline": []
+      },
+      "level": "core"
+    }
+  ],
+  "solutions": {
+    "osbooks-college-physics-bundle:m42691:exr-7": [
+      [
+        {
+          "kind": "text",
+          "text": "(a)"
+        },
+        {
+          "kind": "math",
+          "text": "1×{10}^{20}"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(b) 10  times greater"
+        }
+      ]
+    ]
+  }
+}

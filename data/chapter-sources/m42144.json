@@ -1,0 +1,1083 @@
+{
+  "module": "m42144",
+  "source_attribution": {
+    "publisher": "OpenStax",
+    "book": "osbooks-college-physics-bundle",
+    "section": "m42144",
+    "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42144/index.cnxml",
+    "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)",
+    "locator": "CNXML module index.cnxml (typed elements, solutions present)"
+  },
+  "blocks": [
+    {
+      "id": "sec-0",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Learning Objectives",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-1",
+      "type": "paragraph",
+      "content": {
+        "text": "By the end of this section, you will be able to:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-2",
+      "type": "paragraph",
+      "content": {
+        "text": "Examples of gravitational orbits abound. Hundreds of artificial satellites orbit Earth together with thousands of pieces of debris. The Moon’s orbit about Earth has intrigued humans from time immemorial. The orbits of planets, asteroids, meteors, and comets about the Sun are no less interesting. If we look further, we see almost unimaginable numbers of stars, galaxies, and other celestial objects orbiting one another and interacting through gravity.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-3",
+      "type": "paragraph",
+      "content": {
+        "text": "All these motions are governed by gravitational force, and it is possible to describe them to various degrees of precision. Precise descriptions of complex systems must be made with large computers. However, we can describe an important class of orbits without the use of computers, and we shall find it instructive to study them. These orbits have the following characteristics:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-4",
+      "type": "paragraph",
+      "content": {
+        "text": "The conditions are satisfied, to good approximation, by Earth’s satellites (including the Moon), by objects orbiting the Sun, and by the satellites of other planets. Historically, planets were studied first, and there is a classical set of three laws, called Kepler’s laws of planetary motion, that describe the orbits of all bodies satisfying the two previous conditions (not just planets in our solar system). These descriptive laws are named for the German astronomer Johannes Kepler (1571–1630), who devised them after careful study (over some 20 years) of a large amount of meticulously recorded observations of planetary motion done by Tycho Brahe (1546–1601). Such careful collection and detailed recording of methods and data are hallmarks of good science. Data constitute the evidence from which new interpretations and meanings can be constructed.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-5",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Kepler’s Laws of Planetary Motion",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-6",
+      "type": "paragraph",
+      "content": {
+        "text": "*Kepler’s First Law*",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-7",
+      "type": "paragraph",
+      "content": {
+        "text": "The orbit of each planet about the Sun is an ellipse with the Sun at one focus.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-8",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) An ellipse is a closed curve such that the sum of the distances from a point on the curve to the two foci ( ${f}_{1}$ and ${f}_{2}$ ) is a constant. You can draw an ellipse as shown by putting a pin at each focus, and then placing a string around a pencil and the pins and tracing a line on paper. A circle is a special case of an ellipse in which the two foci coincide (thus any point on the circle is the same distance from the center). (b) For any closed gravitational orbit, $m$ follows an elliptical path with $M$ at one focus. Kepler’s first law states this fact for planets orbiting the Sun.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-1",
+      "type": "figure",
+      "asset_url": "images/phy_m42144_Figure_07_06_01a.jpg",
+      "caption": {
+        "text": "(a) An ellipse is a closed curve such that the sum of the distances from a point on the curve to the two foci ( ${f}_{1}$ and ${f}_{2}$ ) is a constant. You can draw an ellipse as shown by putting a pin at each focus, and then placing a string around a pencil and the pins and tracing a line on paper. A circle is a special case of an ellipse in which the two foci coincide (thus any point on the circle is the same distance from the center). (b) For any closed gravitational orbit, $m$ follows an elliptical path with $M$ at one focus. Kepler’s first law states this fact for planets orbiting the Sun.",
+        "inline": []
+      },
+      "alt": "In figure a, an ellipse is shown on the coordinate axes. Two foci of the ellipse are joined to a point m on the ellipse. A pencil is shown at the point m. In figure b the elliptical path of a planet is shown. At the left focus f-one of the path the Sun is shown. The planet is shown just above the Sun on the elliptical path.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-10",
+      "type": "paragraph",
+      "content": {
+        "text": "*Kepler’s Second Law*",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-11",
+      "type": "paragraph",
+      "content": {
+        "text": "Each planet moves so that an imaginary line drawn from the Sun to the planet sweeps out equal areas in equal times (see ).",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-12",
+      "type": "paragraph",
+      "content": {
+        "text": "*Kepler’s Third Law*",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-13",
+      "type": "paragraph",
+      "content": {
+        "text": "The ratio of the squares of the periods of any two planets about the Sun is equal to the ratio of the cubes of their average distances from the Sun. In equation form, this is",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-14",
+      "type": "paragraph",
+      "content": {
+        "text": "where $T$ is the period (time for one orbit) and $r$ is the average radius. This equation is valid only for comparing two small masses orbiting the same large one. Most importantly, this is a descriptive equation only, giving no information as to the cause of the equality.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-2",
+      "type": "figure",
+      "asset_url": "images/phy_m42144_Figure_07_06_02a.jpg",
+      "caption": {
+        "text": "The shaded regions have equal areas. It takes equal times for $m$ to go from A to B, from C to D, and from E to F. The mass $m$ moves fastest when it is closest to $M$ . Kepler’s second law was originally devised for planets orbiting the Sun, but it has broader validity.",
+        "inline": []
+      },
+      "alt": "In the figure, the elliptical path of a planet is shown. The Sun is at the left focus. Three shaded regions M A B, M C D and M E F are marked on the figure by joining the Sun to the three pairs of points A B, C D, and E F on the elliptical path. The velocity of the planet is shown on the planet in a direction tangential to the path.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-16",
+      "type": "paragraph",
+      "content": {
+        "text": "Note again that while, for historical reasons, Kepler’s laws are stated for planets orbiting the Sun, they are actually valid for all bodies satisfying the two previously stated conditions.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "ex-17",
+      "type": "example",
+      "kind": "worked",
+      "title": {
+        "text": "Find the Time for One Orbit of an Earth Satellite",
+        "inline": []
+      },
+      "problem": {
+        "text": "",
+        "inline": []
+      },
+      "answer": null,
+      "level": "core"
+    },
+    {
+      "id": "p-18",
+      "type": "paragraph",
+      "content": {
+        "text": "Given that the Moon orbits Earth each 27.3 d and that it is an average distance of $3.84×{10}^{8}m$ from the center of Earth, calculate the period of an artificial satellite orbiting at an average altitude of 1500 km above Earth’s surface.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-19",
+      "type": "paragraph",
+      "content": {
+        "text": "The period, or time for one orbit, is related to the radius of the orbit by Kepler’s third law, given in mathematical form in $\\frac{{T}_{1}^{2}}{{T}_{2}^{2}}=\\frac{{r}_{1}^{3}}{{r}_{2}^{3}}$ . Let us use the subscript 1 for the Moon and the subscript 2 for the satellite. We are asked to find ${T}_{2}$ . The given information tells us that the orbital radius of the Moon is ${r}_{1}=3.84×{10}^{8}m$ , and that the period of the Moon is ${T}_{1}=27.3 d$ . The height of the artificial satellite above Earth’s surface is given, and so we must add the radius of Earth (6380 km) to get ${r}_{2}=(1500+6380)km=7880km$ . Now all quantities are known, and so ${T}_{2}$ can be found.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-20",
+      "type": "paragraph",
+      "content": {
+        "text": "Kepler’s third law is",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-21",
+      "type": "paragraph",
+      "content": {
+        "text": "To solve for ${T}_{2}$ , we cross-multiply and take the square root, yielding",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-22",
+      "type": "paragraph",
+      "content": {
+        "text": "Substituting known values yields",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-23",
+      "type": "paragraph",
+      "content": {
+        "text": "Discussion This is a reasonable period for a satellite in a fairly low orbit. It is interesting that any satellite at this altitude will orbit in the same amount of time. This fact is related to the condition that the satellite’s mass is small compared with that of Earth.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-24",
+      "type": "paragraph",
+      "content": {
+        "text": "People immediately search for deeper meaning when broadly applicable laws, like Kepler’s, are discovered. It was Newton who took the next giant step when he proposed the law of universal gravitation. While Kepler was able to discover *what* was happening, Newton discovered that gravitational force was the cause.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-25",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Derivation of Kepler’s Third Law for Circular Orbits",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-26",
+      "type": "paragraph",
+      "content": {
+        "text": "We shall derive Kepler’s third law, starting with Newton’s laws of motion and his universal law of gravitation. The point is to demonstrate that the force of gravity is the cause for Kepler’s laws (although we will only derive the third one).",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-27",
+      "type": "paragraph",
+      "content": {
+        "text": "Let us consider a circular orbit of a small mass $m$ around a large mass $M$ , satisfying the two conditions stated at the beginning of this section. Gravity supplies the centripetal force to mass $m$ . Starting with Newton’s second law applied to circular motion,",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-28",
+      "type": "paragraph",
+      "content": {
+        "text": "The net external force on mass $m$ is gravity, and so we substitute the force of gravity for ${F}_{net}$ :",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-29",
+      "type": "paragraph",
+      "content": {
+        "text": "The mass $m$ cancels, yielding",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-30",
+      "type": "paragraph",
+      "content": {
+        "text": "The fact that $m$ cancels out is another aspect of the oft-noted fact that at a given location all masses fall with the same acceleration. Here we see that at a given orbital radius $r$ , all masses orbit at the same speed. (This was implied by the result of the preceding worked example.) Now, to get at Kepler’s third law, we must get the period $T$ into the equation. By definition, period $T$ is the time for one complete orbit. Now the average speed $v$ is the circumference divided by the period—that is,",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-31",
+      "type": "paragraph",
+      "content": {
+        "text": "Substituting this into the previous equation gives",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-32",
+      "type": "paragraph",
+      "content": {
+        "text": "Solving for ${T}^{2}$ yields",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-33",
+      "type": "paragraph",
+      "content": {
+        "text": "Using subscripts 1 and 2 to denote two different satellites, and taking the ratio of the last equation for satellite 1 to satellite 2 yields",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-34",
+      "type": "paragraph",
+      "content": {
+        "text": "This is Kepler’s third law. Note that Kepler’s third law is valid only for comparing satellites of the same parent body, because only then does the mass of the parent body $M$ cancel.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-35",
+      "type": "paragraph",
+      "content": {
+        "text": "Now consider what we get if we solve ${T}^{2}=\\frac{{4π}^{2}}{GM}{r}^{3}$ for the ratio ${r}^{3}/{T}^{2}$ . We obtain a relationship that can be used to determine the mass $M$ of a parent body from the orbits of its satellites:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-36",
+      "type": "paragraph",
+      "content": {
+        "text": "If $r$ and $T$ are known for a satellite, then the mass $M$ of the parent can be calculated. This principle has been used extensively to find the masses of heavenly bodies that have satellites. Furthermore, the ratio ${r}^{3}/{T}^{2}$ should be a constant for all satellites of the same parent body (because ${r}^{3}/{T}^{2}=GM/{4π}^{2}$ ). (See ).",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-37",
+      "type": "paragraph",
+      "content": {
+        "text": "It is clear from that the ratio of ${r}^{3}/{T}^{2}$ is constant, at least to the third digit, for all listed satellites of the Sun, and for those of Jupiter. Small variations in that ratio have two causes—uncertainties in the $r$ and $T$ data, and perturbations of the orbits due to other bodies. Interestingly, those perturbations can be—and have been—used to predict the location of new planets and moons. This is another verification of Newton’s universal law of gravitation.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-38",
+      "type": "paragraph",
+      "content": {
+        "text": "Newton’s universal law of gravitation is modified by Einstein’s general theory of relativity, as we shall see in Particle Physics . Newton’s gravity is not seriously in error—it was and still is an extremely good approximation for most situations. Einstein’s modification is most noticeable in extremely large gravitational fields, such as near black holes. However, general relativity also explains such phenomena as small but long-known deviations of the orbit of the planet Mercury from classical predictions.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-39",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "The Case for Simplicity",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-40",
+      "type": "paragraph",
+      "content": {
+        "text": "The development of the universal law of gravitation by Newton played a pivotal role in the history of ideas. While it is beyond the scope of this text to cover that history in any detail, we note some important points. The definition of planet set in 2006 by the International Astronomical Union (IAU) states that in the solar system, a planet is a celestial body that:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-41",
+      "type": "paragraph",
+      "content": {
+        "text": "A non-satellite body fulfilling only the first two of the above criteria is classified as “dwarf planet.”",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-42",
+      "type": "paragraph",
+      "content": {
+        "text": "In 2006, Pluto was demoted to a ‘dwarf planet’ after scientists revised their definition of what constitutes a “true” planet.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "tbl-43",
+      "type": "table",
+      "title": {
+        "text": "Table",
+        "inline": []
+      },
+      "rows": [
+        [
+          "Parent",
+          "Satellite",
+          "Average orbital radius *r* (km)",
+          "Period **T(y)**",
+          "*r* 3 / *T* 2 (km 3 / y 2 )"
+        ],
+        [
+          "Earth",
+          "Moon",
+          "$3.84×{10}^{5}$",
+          "0.07481",
+          "$1.01×{10}^{19}$"
+        ],
+        [
+          "Sun",
+          "Mercury",
+          "$5.79×{10}^{7}$",
+          "0.2409",
+          "$3.34×{10}^{24}$"
+        ],
+        [
+          "",
+          "Venus",
+          "$1.082×{10}^{8}$",
+          "0.6150",
+          "$3.35×{10}^{24}$"
+        ],
+        [
+          "Earth",
+          "$1.496×{10}^{8}$",
+          "1.000",
+          "$3.35×{10}^{24}$"
+        ],
+        [
+          "Mars",
+          "$2.279×{10}^{8}$",
+          "1.881",
+          "$3.35×{10}^{24}$"
+        ],
+        [
+          "Jupiter",
+          "$7.783×{10}^{8}$",
+          "11.86",
+          "$3.35×{10}^{24}$"
+        ],
+        [
+          "Saturn",
+          "$1.427×{10}^{9}$",
+          "29.46",
+          "$3.35×{10}^{24}$"
+        ],
+        [
+          "Neptune",
+          "$4.497×{10}^{9}$",
+          "164.8",
+          "$3.35×{10}^{24}$"
+        ],
+        [
+          "Pluto",
+          "$5.90×{10}^{9}$",
+          "248.3",
+          "$3.33×{10}^{24}$"
+        ],
+        [
+          "Jupiter",
+          "Io",
+          "$4.22×{10}^{5}$",
+          "0.00485 (1.77 d)",
+          "$3.19×{10}^{21}$"
+        ],
+        [
+          "",
+          "Europa",
+          "$6.71×{10}^{5}$",
+          "0.00972 (3.55 d)",
+          "$3.20×{10}^{21}$"
+        ],
+        [
+          "Ganymede",
+          "$1.07×{10}^{6}$",
+          "0.0196 (7.16 d)",
+          "$3.19×{10}^{21}$"
+        ],
+        [
+          "Callisto",
+          "$1.88×{10}^{6}$",
+          "0.0457 (16.19 d)",
+          "$3.20×{10}^{21}$"
+        ]
+      ],
+      "alt": "Table with 14 rows",
+      "level": "core"
+    },
+    {
+      "id": "p-44",
+      "type": "paragraph",
+      "content": {
+        "text": "The universal law of gravitation is a good example of a physical principle that is very broadly applicable. That single equation for the gravitational force describes all situations in which gravity acts. It gives a cause for a vast number of effects, such as the orbits of the planets and moons in the solar system. It epitomizes the underlying unity and simplicity of physics.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-45",
+      "type": "paragraph",
+      "content": {
+        "text": "Before the discoveries of Kepler, Copernicus, Galileo, Newton, and others, the solar system was thought to revolve around Earth as shown in (a). This is called the Ptolemaic view, for the Greek philosopher who lived in the second century AD. This model is characterized by a list of facts for the motions of planets with no cause and effect explanation. There tended to be a different rule for each heavenly body and a general lack of simplicity.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-46",
+      "type": "paragraph",
+      "content": {
+        "text": "(b) represents the modern or Copernican model. In this model, a small set of rules and a single underlying force explain not only all motions in the solar system, but all other situations involving gravity. The breadth and simplicity of the laws of physics are compelling. As our knowledge of nature has grown, the basic simplicity of its laws has become ever more evident.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-47",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) The Ptolemaic model of the universe has Earth at the center with the Moon, the planets, the Sun, and the stars revolving about it in complex superpositions of circular paths. This geocentric model, which can be made progressively more accurate by adding more circles, is purely descriptive, containing no hints as to what are the causes of these motions. (b) The Copernican model has the Sun at the center of the solar system. It is fully explained by a small number of laws of physics, including Newton’s universal law of gravitation.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-3",
+      "type": "figure",
+      "asset_url": "images/phy_m42144_Figure_07_06_03a.jpg",
+      "caption": {
+        "text": "(a) The Ptolemaic model of the universe has Earth at the center with the Moon, the planets, the Sun, and the stars revolving about it in complex superpositions of circular paths. This geocentric model, which can be made progressively more accurate by adding more circles, is purely descriptive, containing no hints as to what are the causes of these motions. (b) The Copernican model has the Sun at the center of the solar system. It is fully explained by a small number of laws of physics, including Newton’s universal law of gravitation.",
+        "inline": []
+      },
+      "alt": "In figure a the paths of the different planets are shown in the forms of dotted concentric circles with the Earth at the center with its Moon. The Sun is also shown revolving around the Earth. Each planet is labeled with its name. On the planets Mercury, Venus, Mars, Jupiter and Saturn green colored epicycles are shown. In the figure b Copernican view of planet is shown. The Sun is shown at the center of the solar system. The planets are shown moving around the Sun.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "sec-49",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Section Summary",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-50",
+      "type": "paragraph",
+      "content": {
+        "text": "The orbit of each planet about the Sun is an ellipse with the Sun at one focus.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-51",
+      "type": "paragraph",
+      "content": {
+        "text": "Each planet moves so that an imaginary line drawn from the Sun to the planet sweeps out equal areas in equal times.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-52",
+      "type": "paragraph",
+      "content": {
+        "text": "The ratio of the squares of the periods of any two planets about the Sun is equal to the ratio of the cubes of their average distances from the Sun:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-53",
+      "type": "paragraph",
+      "content": {
+        "text": "where $T$ is the period (time for one orbit) and $r$ is the average radius of the orbit.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-54",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Conceptual Questions",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-55",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "In what frame(s) of reference are Kepler’s laws valid? Are Kepler’s laws purely descriptive, or do they contain causal information?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-56",
+      "type": "paragraph",
+      "content": {
+        "text": "In what frame(s) of reference are Kepler’s laws valid? Are Kepler’s laws purely descriptive, or do they contain causal information?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-57",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Problem Exercises",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-58",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A geosynchronous Earth satellite is one that has an orbital period of precisely 1 day. Such orbits are useful for communication and weather observation because the satellite remains above the same point on Earth (provided it orbits in the equatorial plane in the same direction as Earth’s rotation). Calculate the radius of such an orbit based on the data for the moon in .",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-59",
+      "type": "paragraph",
+      "content": {
+        "text": "A geosynchronous Earth satellite is one that has an orbital period of precisely 1 day. Such orbits are useful for communication and weather observation because the satellite remains above the same point on Earth (provided it orbits in the equatorial plane in the same direction as Earth’s rotation). Calculate the radius of such an orbit based on the data for the moon in .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-60",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Calculate the mass of the Sun based on data for Earth’s orbit and compare the value obtained with the Sun’s actual mass.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$1.98×{10}^{30}kg$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-61",
+      "type": "paragraph",
+      "content": {
+        "text": "Calculate the mass of the Sun based on data for Earth’s orbit and compare the value obtained with the Sun’s actual mass.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-62",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Find the mass of Jupiter based on data for the orbit of one of its moons, and compare your result with its actual mass.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-63",
+      "type": "paragraph",
+      "content": {
+        "text": "Find the mass of Jupiter based on data for the orbit of one of its moons, and compare your result with its actual mass.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-64",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Find the ratio of the mass of Jupiter to that of Earth based on data in .",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$\\frac{{M}_{J}}{{M}_{E}}=316$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-65",
+      "type": "paragraph",
+      "content": {
+        "text": "Find the ratio of the mass of Jupiter to that of Earth based on data in .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-66",
+      "type": "paragraph",
+      "content": {
+        "text": "$\\frac{{M}_{J}}{{M}_{E}}=316$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-67",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Astronomical observations of our Milky Way galaxy indicate that it has a mass of about $8.0×{10}^{11}$ solar masses. A star orbiting on the galaxy’s periphery is about $6.0×{10}^{4}$ light years from its center. (a) What should the orbital period of that star be? (b) If its period is $6.0×{10}^{7}$ years instead, what is the mass of the galaxy? Such calculations are used to imply the existence of “dark matter” in the universe and have indicated, for example, the existence of very massive black holes at the centers of some galaxies.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-68",
+      "type": "paragraph",
+      "content": {
+        "text": "Astronomical observations of our Milky Way galaxy indicate that it has a mass of about $8.0×{10}^{11}$ solar masses. A star orbiting on the galaxy’s periphery is about $6.0×{10}^{4}$ light years from its center. (a) What should the orbital period of that star be? (b) If its period is $6.0×{10}^{7}$ years instead, what is the mass of the galaxy? Such calculations are used to imply the existence of “dark matter” in the universe and have indicated, for example, the existence of very massive black holes at the centers of some galaxies.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-69",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Integrated Concepts Space debris left from old satellites and their launchers is becoming a hazard to other satellites. (a) Calculate the speed of a satellite in an orbit 900 km above Earth’s surface. (b) Suppose a loose rivet is in an orbit of the same radius that intersects the satellite’s orbit at an angle of $90º$ relative to Earth. What is the velocity of the rivet relative to the satellite just before striking it? (c) Given the rivet is 3.00 mm in size, how long will its collision with the satellite last, approximating acceleration as constant and the rivet comes to a stop? (d) If its mass is 0.500 g, what is the average force it exerts on the satellite? (e) How much energy in joules is generated by the collision? (The satellite’s velocity does not change appreciably, because its mass is much greater than the rivet’s.)",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "a) $7910m/s$ b) $1.12×{10}^{4}m/s$ c) $5.36×{10}^{-7}s$ d) $1.04478×{10}^{7}N$ e) $3.14×{10}^{4}J$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-70",
+      "type": "paragraph",
+      "content": {
+        "text": "Space debris left from old satellites and their launchers is becoming a hazard to other satellites. (a) Calculate the speed of a satellite in an orbit 900 km above Earth’s surface. (b) Suppose a loose rivet is in an orbit of the same radius that intersects the satellite’s orbit at an angle of $90º$ relative to Earth. What is the velocity of the rivet relative to the satellite just before striking it? (c) Given the rivet is 3.00 mm in size, how long will its collision with the satellite last, approximating acceleration as constant and the rivet comes to a stop? (d) If its mass is 0.500 g, what is the average force it exerts on the satellite? (e) How much energy in joules is generated by the collision? (The satellite’s velocity does not change appreciably, because its mass is much greater than the rivet’s.)",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-71",
+      "type": "paragraph",
+      "content": {
+        "text": "b) $1.12×{10}^{4}m/s$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-72",
+      "type": "paragraph",
+      "content": {
+        "text": "c) $5.36×{10}^{-7}s$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-73",
+      "type": "paragraph",
+      "content": {
+        "text": "d) $1.04478×{10}^{7}N$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-74",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Unreasonable Results (a) Based on Kepler’s laws and information on the orbital characteristics of the Moon, calculate the orbital radius for an Earth satellite having a period of 1.00 h. (b) What is unreasonable about this result? (c) What is unreasonable or inconsistent about the premise of a 1.00 h orbit?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "a) $5.08×{10}^{3}km$ b) This radius is unreasonable because it is less than the radius of earth. c) The premise of a one-hour orbit is inconsistent with the known radius of the earth.",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-75",
+      "type": "paragraph",
+      "content": {
+        "text": "Unreasonable Results",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-76",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) Based on Kepler’s laws and information on the orbital characteristics of the Moon, calculate the orbital radius for an Earth satellite having a period of 1.00 h. (b) What is unreasonable about this result? (c) What is unreasonable or inconsistent about the premise of a 1.00 h orbit?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-77",
+      "type": "paragraph",
+      "content": {
+        "text": "a) $5.08×{10}^{3}km$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-78",
+      "type": "paragraph",
+      "content": {
+        "text": "b) This radius is unreasonable because it is less than the radius of earth.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-79",
+      "type": "paragraph",
+      "content": {
+        "text": "c) The premise of a one-hour orbit is inconsistent with the known radius of the earth.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-80",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Construct Your Own Problem On February 14, 2000, the NEAR spacecraft was successfully inserted into orbit around Eros, becoming the first artificial satellite of an asteroid. Construct a problem in which you determine the orbital speed for a satellite near Eros. You will need to find the mass of the asteroid and consider such things as a safe distance for the orbit. Although Eros is not spherical, calculate the acceleration due to gravity on its surface at a point an average distance from its center of mass. Your instructor may also wish to have you calculate the escape velocity from this point on Eros.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-81",
+      "type": "paragraph",
+      "content": {
+        "text": "Construct Your Own Problem",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-82",
+      "type": "paragraph",
+      "content": {
+        "text": "On February 14, 2000, the NEAR spacecraft was successfully inserted into orbit around Eros, becoming the first artificial satellite of an asteroid. Construct a problem in which you determine the orbital speed for a satellite near Eros. You will need to find the mass of the asteroid and consider such things as a safe distance for the orbit. Although Eros is not spherical, calculate the acceleration due to gravity on its surface at a point an average distance from its center of mass. Your instructor may also wish to have you calculate the escape velocity from this point on Eros.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-83",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Critical Thinking A car travels around a loop with negligible friction at a constant speed and never loses contact with the loop. The top of the loop is labeled A and the bottom of the loop is labeled B. (a) At what point would the normal force be greatest? Briefly explain your reasoning. (b) Based on experimental data, an equation that fits the data is suggested for the normal force, *FN* , which may not be correct: ${F}_{N}=K{r}^{1/2}$ , where *K* is a constant with appropriate units and *r* is the radius of the loop. Is this equation consistent with your answer from part a? Explain why or why not. Does this equation make sense? Explain why or why not. (c) Now the car travels around loops of various radii and the speed at which the car barely makes it around the loop is measured. Graph that speed vs. the radius of the loop.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a) The normal force is greatest at point B. At point A, the normal force and the weight are the net force; at point B, only the normal force points in the same direction as the net force. (b) i. This is not consistent because a larger radius should decease the net force and tension, not increase it. ii. This does not make sense because ${F}_{c}=m{v}^{2}/r$ . (c)",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-84",
+      "type": "paragraph",
+      "content": {
+        "text": "Critical Thinking A car travels around a loop with negligible friction at a constant speed and never loses contact with the loop. The top of the loop is labeled A and the bottom of the loop is labeled B. (a) At what point would the normal force be greatest? Briefly explain your reasoning. (b) Based on experimental data, an equation that fits the data is suggested for the normal force, *FN* , which may not be correct: ${F}_{N}=K{r}^{1/2}$ , where *K* is a constant with appropriate units and *r* is the radius of the loop. Is this equation consistent with your answer from part a? Explain why or why not. Does this equation make sense? Explain why or why not. (c) Now the car travels around loops of various radii and the speed at which the car barely makes it around the loop is measured. Graph that speed vs. the radius of the loop.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-85",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) The normal force is greatest at point B. At point A, the normal force and the weight are the net force; at point B, only the normal force points in the same direction as the net force.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-86",
+      "type": "paragraph",
+      "content": {
+        "text": "(b) i. This is not consistent because a larger radius should decease the net force and tension, not increase it. ii. This does not make sense because ${F}_{c}=m{v}^{2}/r$ .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-4",
+      "type": "figure",
+      "asset_url": "images/phy_m42144_OSX_CP2e_Figure_06_06Sol_CTQ01c.jpg",
+      "caption": {
+        "text": "The figure is a plot of v as a function of r. The function starts at the origin and increases monotonically, with decreasing slope.",
+        "inline": []
+      },
+      "alt": "The figure is a plot of v as a function of r. The function starts at the origin and increases monotonically, with decreasing slope.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    }
+  ],
+  "solutions": {
+    "osbooks-college-physics-bundle:m42144:exr-60": [
+      [
+        {
+          "kind": "math",
+          "text": "1.98×{10}^{30}kg"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42144:exr-64": [
+      [
+        {
+          "kind": "math",
+          "text": "\\frac{{M}_{J}}{{M}_{E}}=316"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42144:exr-69": [
+      [
+        {
+          "kind": "text",
+          "text": "a)"
+        },
+        {
+          "kind": "math",
+          "text": "7910m/s"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "b)"
+        },
+        {
+          "kind": "math",
+          "text": "1.12×{10}^{4}m/s"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "c)"
+        },
+        {
+          "kind": "math",
+          "text": "5.36×{10}^{-7}s"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "d)"
+        },
+        {
+          "kind": "math",
+          "text": "1.04478×{10}^{7}N"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "e)"
+        },
+        {
+          "kind": "math",
+          "text": "3.14×{10}^{4}J"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42144:exr-74": [
+      [
+        {
+          "kind": "text",
+          "text": "a)"
+        },
+        {
+          "kind": "math",
+          "text": "5.08×{10}^{3}km"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "b) This radius is unreasonable because it is less than the radius of earth."
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "c) The premise of a one-hour orbit is inconsistent with the known radius of the earth."
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42144:exr-83": [
+      [
+        {
+          "kind": "text",
+          "text": "(a) The normal force is greatest at point B. At point A, the normal force and the weight are the net force; at point B, only the normal force points in the same direction as the net force."
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(b) i. This is not consistent because a larger radius should decease the net force and tension, not increase it. ii. This does not make sense because"
+        },
+        {
+          "kind": "math",
+          "text": "{F}_{c}=m{v}^{2}/r."
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(c)"
+        }
+      ]
+    ]
+  }
+}

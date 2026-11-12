@@ -105,9 +105,12 @@ pub async fn get_chapter(
     Path(chapter_id): Path<String>,
 ) -> Result<Json<crate::core::models::Chapter>, AppError> {
     auth.require(SCOPE_READ_CATALOG)?;
-    let Some(chapter) = store::chapters::get_chapter(&s, &chapter_id).await? else {
+    let Some(mut chapter) = store::chapters::get_chapter(&s, &chapter_id).await? else {
         return Err(AppError::NotFound);
     };
+    for section in &mut chapter.sections {
+        core::catalog::resolve_teaching_text(&mut section.teaching_text, s.media_base_url.as_ref());
+    }
     Ok(Json(chapter))
 }
 

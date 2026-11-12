@@ -1,0 +1,1366 @@
+{
+  "module": "m42341",
+  "source_attribution": {
+    "publisher": "OpenStax",
+    "book": "osbooks-college-physics-bundle",
+    "section": "m42341",
+    "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42341/index.cnxml",
+    "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)",
+    "locator": "CNXML module index.cnxml (typed elements, solutions present)"
+  },
+  "blocks": [
+    {
+      "id": "sec-0",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Learning Objectives",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-1",
+      "type": "paragraph",
+      "content": {
+        "text": "By the end of this section, you will be able to:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-2",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Electric Current",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-3",
+      "type": "paragraph",
+      "content": {
+        "text": "Electric current is defined to be the rate at which charge flows. A large current, such as that used to start a truck engine, moves a large amount of charge in a small time, whereas a small current, such as that used to operate a hand-held calculator, moves a small amount of charge over a long period of time. In equation form, electric current $I$ is defined to be",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-4",
+      "type": "paragraph",
+      "content": {
+        "text": "where $ΔQ$ is the amount of charge passing through a given area in time $Δt$ . (As in previous chapters, initial time is often taken to be zero, in which case $Δt=t$ .) (See .) The SI unit for current is the ampere (A), named for the French physicist André-Marie Ampère (1775–1836). Since $I=ΔQ/Δt$ , we see that an ampere is one coulomb per second:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-5",
+      "type": "paragraph",
+      "content": {
+        "text": "Not only are fuses and circuit breakers rated in amperes (or amps), so are many electrical appliances.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-1",
+      "type": "figure",
+      "asset_url": "images/phy_m42341_Figure_21_01_01a.jpg",
+      "caption": {
+        "text": "The rate of flow of charge is current. An ampere is the flow of one coulomb through an area in one second.",
+        "inline": []
+      },
+      "alt": "Charges are shown as small spheres moving through a section of a conducting wire. The direction of movement of charge is indicated by arrows along the length of the conductor toward the right. The cross-sectional area of the wire is labeled as A. The current is equal to the flow of charge.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "ex-7",
+      "type": "example",
+      "kind": "worked",
+      "title": {
+        "text": "Calculating Currents: Current in a Truck Battery and a Handheld Calculator",
+        "inline": []
+      },
+      "problem": {
+        "text": "",
+        "inline": []
+      },
+      "answer": null,
+      "level": "core"
+    },
+    {
+      "id": "p-8",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) What is the current involved when a truck battery sets in motion 720 C of charge in 4.00 s while starting an engine? (b) How long does it take 1.00 C of charge to flow through a handheld calculator if a 0.300-mA current is flowing?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-9",
+      "type": "paragraph",
+      "content": {
+        "text": "We can use the definition of current in the equation $I=ΔQ/Δt$ to find the current in part (a), since charge and time are given. In part (b), we rearrange the definition of current and use the given values of charge and current to find the time required.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-10",
+      "type": "paragraph",
+      "content": {
+        "text": "Entering the given values for charge and time into the definition of current gives",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-11",
+      "type": "paragraph",
+      "content": {
+        "text": "This large value for current illustrates the fact that a large charge is moved in a small amount of time. The currents in these “starter motors” are fairly large because large frictional forces need to be overcome when setting something in motion.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-12",
+      "type": "paragraph",
+      "content": {
+        "text": "Solving the relationship $I=ΔQ/Δt$ for time $Δt$ , and entering the known values for charge and current gives",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-13",
+      "type": "paragraph",
+      "content": {
+        "text": "This time is slightly less than an hour. The small current used by the hand-held calculator takes a much longer time to move a smaller charge than the large current of the truck starter. So why can we operate our calculators only seconds after turning them on? It’s because calculators require very little energy. Such small current and energy demands allow handheld calculators to operate from solar cells or to get many hours of use out of small batteries. Remember, calculators do not have moving parts in the same way that a truck engine has with cylinders and pistons, so the technology requires smaller currents.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-14",
+      "type": "paragraph",
+      "content": {
+        "text": "shows a simple circuit and the standard schematic representation of a battery, conducting path, and load (a resistor). Schematics are very useful in visualizing the main features of a circuit. A single schematic can represent a wide variety of situations. The schematic in (b), for example, can represent anything from a truck battery connected to a headlight lighting the street in front of the truck to a small battery connected to a penlight lighting a keyhole in a door. Such schematics are useful because the analysis is the same for a wide variety of situations. We need to understand a few schematics to apply the concepts and analysis to many more situations.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-2",
+      "type": "figure",
+      "asset_url": "images/phy_m42341_Figure_21_01_02a.jpg",
+      "caption": {
+        "text": "(a) A simple electric circuit. A closed path for current to flow through is supplied by conducting wires connecting a load to the terminals of a battery. (b) In this schematic, the battery is represented by the two parallel red lines, conducting wires are shown as straight lines, and the zigzag represents the load. The schematic represents a wide variety of similar circuits.",
+        "inline": []
+      },
+      "alt": "Part a shows a bulb glowing when its terminals are connected to a battery through a wire. The voltage of the battery is labeled as V. The current through the bulb is represented as I, and the current direction is shown using arrows emerging from the positive terminal of the battery, passing through the bulb, and entering the negative terminal of the battery. Part b shows an electric circuit diagram with a resistance connected across the terminals of a battery of voltage V. The current is shown using arrows as emerging from the positive terminal of the battery, passing through the resistance, and entering the negative terminal of the battery.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-16",
+      "type": "paragraph",
+      "content": {
+        "text": "Note that the direction of current flow in is from positive to negative. *The direction of conventional current is the direction that positive charge would flow* . Depending on the situation, positive charges, negative charges, or both may move. In metal wires, for example, current is carried by electrons—that is, negative charges move. In ionic solutions, such as salt water, both positive and negative charges move. This is also true in nerve cells. A Van de Graaff generator used for nuclear research can produce a current of pure positive charges, such as protons. illustrates the movement of charged particles that compose a current. The fact that conventional current is taken to be in the direction that positive charge would flow can be traced back to American politician and scientist Benjamin Franklin in the 1700s. He named the type of charge associated with electrons negative, long before they were known to carry current in so many situations. Franklin, in fact, was totally unaware of the small-scale structure of electricity.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-17",
+      "type": "paragraph",
+      "content": {
+        "text": "It is important to realize that there is an electric field in conductors responsible for producing the current, as illustrated in . Unlike static electricity, where a conductor in equilibrium cannot have an electric field in it, conductors carrying a current have an electric field and are not in static equilibrium. An electric field is needed to supply energy to move the charges.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-18",
+      "type": "paragraph",
+      "content": {
+        "text": "Find a straw and little peas that can move freely in the straw. Place the straw flat on a table and fill the straw with peas. When you pop one pea in at one end, a different pea should pop out the other end. This demonstration is an analogy for an electric current. Identify what compares to the electrons and what compares to the supply of energy. What other analogies can you find for an electric current?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-19",
+      "type": "paragraph",
+      "content": {
+        "text": "Note that the flow of peas is based on the peas physically bumping into each other; electrons flow due to mutually repulsive electrostatic forces.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-3",
+      "type": "figure",
+      "asset_url": "images/phy_m42341_Figure_21_01_03a.jpg",
+      "caption": {
+        "text": "Current $I$ is the rate at which charge moves through an area $A$ , such as the cross-section of a wire. Conventional current is defined to move in the direction of the electric field. (a) Positive charges move in the direction of the electric field and the same direction as conventional current. (b) Negative charges move in the direction opposite to the electric field. Conventional current is in the direction opposite to the movement of negative charge. The flow of electrons is sometimes referred to as electronic flow.",
+        "inline": []
+      },
+      "alt": "In part a, positive charges move toward the right through a conducting wire. The direction of movement of charge is indicated by arrows along the length of the wire. The area of a cross section of the wire is labeled as A. The direction of the electric field E is toward the right, in the same direction as movement of positive charge. The current direction is also toward the right, shown by an arrow. In part b, negative charges move toward the left through a conducting wire. The direction of movement of charge is indicated by arrows along the length of the wire. The area of a cross section of the wire is labeled as A. The direction of the electric field E is toward the right, opposite the direction of movement of negative charge. The current direction is also toward the right, shown by an arrow.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "ex-21",
+      "type": "example",
+      "kind": "worked",
+      "title": {
+        "text": "Calculating the Number of Electrons that Move through a Calculator",
+        "inline": []
+      },
+      "problem": {
+        "text": "",
+        "inline": []
+      },
+      "answer": null,
+      "level": "core"
+    },
+    {
+      "id": "p-22",
+      "type": "paragraph",
+      "content": {
+        "text": "If the 0.300-mA current through the calculator mentioned in the example is carried by electrons, how many electrons per second pass through it?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-23",
+      "type": "paragraph",
+      "content": {
+        "text": "The current calculated in the previous example was defined for the flow of positive charge. For electrons, the magnitude is the same, but the sign is opposite, ${I}_{electrons}=-0.300×{10}^{−3}C/s$ .Since each electron $({e}^{-})$ has a charge of $–1.60×{10}^{-19}C$ , we can convert the current in coulombs per second to electrons per second.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-24",
+      "type": "paragraph",
+      "content": {
+        "text": "Starting with the definition of current, we have",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-25",
+      "type": "paragraph",
+      "content": {
+        "text": "We divide this by the charge per electron, so that",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-26",
+      "type": "paragraph",
+      "content": {
+        "text": "There are so many charged particles moving, even in small currents, that individual charges are not noticed, just as individual water molecules are not noticed in water flow. Even more amazing is that they do not always keep moving forward like soldiers in a parade. Rather they are like a crowd of people with movement in different directions but a general trend to move forward. There are lots of collisions with atoms in the metal wire and, of course, with other electrons.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-27",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Drift Velocity",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-28",
+      "type": "paragraph",
+      "content": {
+        "text": "Electrical signals are known to move very rapidly. Telephone conversations carried by currents in wires cover large distances without noticeable delays. Lights come on as soon as a switch is flicked. Most electrical signals carried by currents travel at speeds on the order of ${10}^{8}m/s$ , a significant fraction of the speed of light. Interestingly, the individual charges that make up the current move *much* more slowly on average, typically drifting at speeds on the order of ${10}^{-4}m/s$ . How do we reconcile these two speeds, and what does it tell us about standard conductors?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-29",
+      "type": "paragraph",
+      "content": {
+        "text": "The high speed of electrical signals results from the fact that the force between charges acts rapidly at a distance. Thus, when a free charge is forced into a wire, as in , the incoming charge pushes other charges ahead of it, which in turn push on charges farther down the line. The density of charge in a system cannot easily be increased, and so the signal is passed on rapidly. The resulting electrical shock wave moves through the system at nearly the speed of light. To be precise, this rapidly moving signal or shock wave is a rapidly propagating change in electric field.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-4",
+      "type": "figure",
+      "asset_url": "images/phy_m42341_Figure_21_01_04a.jpg",
+      "caption": {
+        "text": "When charged particles are forced into this volume of a conductor, an equal number are quickly forced to leave. The repulsion between like charges makes it difficult to increase the number of charges in a volume. Thus, as one charge enters, another leaves almost immediately, carrying the signal rapidly forward.",
+        "inline": []
+      },
+      "alt": "Negatively charged electrons move through a conducting wire. Two electrons are shown entering the wire from one end, and two electrons are shown leaving the wire at the other end. The direction of movement of charge is indicated by arrows along the length of the wire toward the right. Some electrons are shown inside the wire.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-31",
+      "type": "paragraph",
+      "content": {
+        "text": "Good conductors have large numbers of free charges in them. In metals, the free charges are free electrons. shows how free electrons move through an ordinary conductor. The distance that an individual electron can move between collisions with atoms or other electrons is quite small. The electron paths thus appear nearly random, like the motion of atoms in a gas. But there is an electric field in the conductor that causes the electrons to drift in the direction shown (opposite to the field, since they are negative). The drift velocity ${v}_{d}$ is the average velocity of the free charges. Drift velocity is quite small, since there are so many free charges. If we have an estimate of the density of free electrons in a conductor, we can calculate the drift velocity for a given current. The larger the density, the lower the velocity required for a given current.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-5",
+      "type": "figure",
+      "asset_url": "images/phy_m42341_Figure_21_01_05a.jpg",
+      "caption": {
+        "text": "Free electrons moving in a conductor make many collisions with other electrons and atoms. The path of one electron is shown. The average velocity of the free charges is called the drift velocity, ${v}_{d}$ , and it is in the direction opposite to the electric field for electrons. The collisions normally transfer energy to the conductor, requiring a constant supply of energy to maintain a steady current.",
+        "inline": []
+      },
+      "alt": "The diagram shows a section of a conducting wire. A free electron is shown in the wire, and the path of the electron is shown as zigzag arrows along the length of the wire. The path is shown beginning at one end of the wire and ending at the other end. The drift velocity, v sub d, is indicated by an arrow toward the right, opposite the direction of the electric field E and the current I.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-33",
+      "type": "paragraph",
+      "content": {
+        "text": "Good electrical conductors are often good heat conductors, too. This is because large numbers of free electrons can carry electrical current and can transport thermal energy.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-34",
+      "type": "paragraph",
+      "content": {
+        "text": "The free-electron collisions transfer energy to the atoms of the conductor. The electric field does work in moving the electrons through a distance, but that work does not increase the kinetic energy (nor speed, therefore) of the electrons. The work is transferred to the conductor’s atoms, possibly increasing temperature. Thus a continuous power input is required to keep a current flowing. An exception, of course, is found in superconductors, for reasons we shall explore in a later chapter. Superconductors can have a steady current without a continual supply of energy—a great energy savings. In contrast, the supply of energy can be useful, such as in a lightbulb filament. The supply of energy is necessary to increase the temperature of the tungsten filament, so that the filament glows.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-35",
+      "type": "paragraph",
+      "content": {
+        "text": "Find a lightbulb with a filament. Look carefully at the filament and describe its structure. To what points is the filament connected?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-36",
+      "type": "paragraph",
+      "content": {
+        "text": "We can obtain an expression for the relationship between current and drift velocity by considering the number of free charges in a segment of wire, as illustrated in . *The number of free charges per unit volume* is given the symbol $n$ and depends on the material. The shaded segment has a volume $Ax$ , so that the number of free charges in it is $nAx$ . The charge $ΔQ$ in this segment is thus $qnAx$ , where $q$ is the amount of charge on each carrier. (Recall that for electrons, $q$ is $-1.60×{10}^{-19}C$ .) Current is charge moved per unit time; thus, if all the original charges move out of this segment in time $Δt$ , the current is",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-37",
+      "type": "paragraph",
+      "content": {
+        "text": "Note that $x/Δt$ is the magnitude of the drift velocity, ${v}_{d}$ , since the charges move an average distance $x$ in a time $Δt$ . Rearranging terms gives",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-38",
+      "type": "paragraph",
+      "content": {
+        "text": "where $I$ is the current through a wire of cross-sectional area $A$ made of a material with a free charge density $n$ . The carriers of the current each have charge $q$ and move with a drift velocity of magnitude ${v}_{d}$ .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-6",
+      "type": "figure",
+      "asset_url": "images/phy_m42341_Figure_21_01_06a.jpg",
+      "caption": {
+        "text": "All the charges in the shaded volume of this wire move out in a time $t$ , having a drift velocity of magnitude ${v}_{d}=x/t$ . See text for further discussion.",
+        "inline": []
+      },
+      "alt": "Charges are shown moving through a section of a conducting wire. The charges have a drift velocity v sub d along the length of the wire, shown by an arrow pointing to the right. The volume of a segment of the wire is equal to A times x, where x equals the product of the drift velocity, v sub d, and time t. A cross section of the wire is marked as A, and the length of the section is x.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-40",
+      "type": "paragraph",
+      "content": {
+        "text": "Note that simple drift velocity is not the entire story. The speed of an electron is much greater than its drift velocity. In addition, not all of the electrons in a conductor can move freely, and those that do might move somewhat faster or slower than the drift velocity. So what do we mean by free electrons? Atoms in a metallic conductor are packed in the form of a lattice structure. Some electrons are far enough away from the atomic nuclei that they do not experience the attraction of the nuclei as much as the inner electrons do. These are the free electrons. They are not bound to a single atom but can instead move freely among the atoms in a “sea” of electrons. These free electrons respond by accelerating when an electric field is applied. Of course as they move they collide with the atoms in the lattice and other electrons, generating thermal energy, and the conductor gets warmer. In an insulator, the organization of the atoms and the structure do not allow for such free electrons.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "ex-41",
+      "type": "example",
+      "kind": "worked",
+      "title": {
+        "text": "Calculating Drift Velocity in a Common Wire",
+        "inline": []
+      },
+      "problem": {
+        "text": "",
+        "inline": []
+      },
+      "answer": null,
+      "level": "core"
+    },
+    {
+      "id": "p-42",
+      "type": "paragraph",
+      "content": {
+        "text": "Calculate the drift velocity of electrons in a 12-gauge copper wire (which has a diameter of 2.053 mm) carrying a 20.0-A current, given that there is one free electron per copper atom. (Household wiring often contains 12-gauge copper wire, and the maximum current allowed in such wire is usually 20 A.) The density of copper is $8.80×{10}^{3}{kg/m}^{3}$ .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-43",
+      "type": "paragraph",
+      "content": {
+        "text": "We can calculate the drift velocity using the equation $I={nqAv}_{d}$ . The current $I=20.0 A$ is given, and $q=-1.60×{10}^{-19}C$ is the charge of an electron. We can calculate the area of a cross-section of the wire using the formula $A=π{r}^{2},$ where $r$ is one-half the given diameter, 2.053 mm. We are given the density of copper, $8.80×{10}^{3}{kg/m}^{3},$ and the periodic table shows that the atomic mass of copper is 63.54 g/mol. We can use these two quantities along with Avogadro’s number, $6.02×{10}^{23}atoms/mol,$ to determine $n,$ the number of free electrons per cubic meter.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-44",
+      "type": "paragraph",
+      "content": {
+        "text": "First, calculate the density of free electrons in copper. There is one free electron per copper atom. Therefore, is the same as the number of copper atoms per ${m}^{3}$ . We can now find $n$ as follows:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-45",
+      "type": "paragraph",
+      "content": {
+        "text": "The cross-sectional area of the wire is",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-46",
+      "type": "paragraph",
+      "content": {
+        "text": "Rearranging $I=nqA{v}_{d}$ to isolate drift velocity gives",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-47",
+      "type": "paragraph",
+      "content": {
+        "text": "The minus sign indicates that the negative charges are moving in the direction opposite to conventional current. The small value for drift velocity (on the order of ${10}^{-4}m/s$ ) confirms that the signal moves on the order of ${10}^{12}$ times faster (about ${10}^{8}m/s$ ) than the charges that carry it.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-48",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Test Prep for AP Courses",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-49",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Which of the following can be explained on the basis of conservation of charge in a closed circuit consisting of a battery, resistor, and metal wires? The number of electrons leaving the battery will be equal to the number of electrons entering the battery.; The number of electrons leaving the battery will be less than the number of electrons entering the battery.; The number of protons leaving the battery will be equal to the number of protons entering the battery.; The number of protons leaving the battery will be less than the number of protons entering the battery.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a)",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-50",
+      "type": "paragraph",
+      "content": {
+        "text": "Which of the following can be explained on the basis of conservation of charge in a closed circuit consisting of a battery, resistor, and metal wires?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-51",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "When a battery is connected to a bulb, there is 2.5 A of current in the circuit. What amount of charge will flow though the circuit in a time of 0.5 s? 0.5 C; 1 C; 1.25 C; 1.5 C",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-52",
+      "type": "paragraph",
+      "content": {
+        "text": "When a battery is connected to a bulb, there is 2.5 A of current in the circuit. What amount of charge will flow though the circuit in a time of 0.5 s?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-53",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "If 0.625 × 10 20 electrons flow through a circuit each second, what is the current in the circuit?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "10 A",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-54",
+      "type": "paragraph",
+      "content": {
+        "text": "If 0.625 × 10 20 electrons flow through a circuit each second, what is the current in the circuit?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-55",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Two students calculate the charge flowing through a circuit. The first student concludes that 300 C of charge flows in 1 minute. The second student concludes that 3.125 × 10 19 electrons flow per second. If the current measured in the circuit is 5 A, which of the two students (if any) have performed the calculations correctly?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-56",
+      "type": "paragraph",
+      "content": {
+        "text": "Two students calculate the charge flowing through a circuit. The first student concludes that 300 C of charge flows in 1 minute. The second student concludes that 3.125 × 10 19 electrons flow per second. If the current measured in the circuit is 5 A, which of the two students (if any) have performed the calculations correctly?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-57",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Section Summary",
+        "inline": []
+      }
+    },
+    {
+      "id": "sec-58",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Conceptual Questions",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-59",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Can a wire carry a current and still be neutral—that is, have a total charge of zero? Explain.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-60",
+      "type": "paragraph",
+      "content": {
+        "text": "Can a wire carry a current and still be neutral—that is, have a total charge of zero? Explain.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-61",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Car batteries are rated in ampere-hours ( $A\\cdot h$ ). To what physical quantity do ampere-hours correspond (voltage, charge, . . .), and what relationship do ampere-hours have to energy content?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-62",
+      "type": "paragraph",
+      "content": {
+        "text": "Car batteries are rated in ampere-hours ( $A\\cdot h$ ). To what physical quantity do ampere-hours correspond (voltage, charge, . . .), and what relationship do ampere-hours have to energy content?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-63",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "If two different wires having identical cross-sectional areas carry the same current, will the drift velocity be higher or lower in the better conductor? Explain in terms of the equation ${v}_{d}=\\frac{I}{nqA}$ , by considering how the density of charge carriers $n$ relates to whether or not a material is a good conductor.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-64",
+      "type": "paragraph",
+      "content": {
+        "text": "If two different wires having identical cross-sectional areas carry the same current, will the drift velocity be higher or lower in the better conductor? Explain in terms of the equation ${v}_{d}=\\frac{I}{nqA}$ , by considering how the density of charge carriers $n$ relates to whether or not a material is a good conductor.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-65",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Why are two conducting paths from a voltage source to an electrical device needed to operate the device?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-66",
+      "type": "paragraph",
+      "content": {
+        "text": "Why are two conducting paths from a voltage source to an electrical device needed to operate the device?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-67",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "In cars, one battery terminal is connected to the metal body. How does this allow a single wire to supply current to electrical devices rather than two wires?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-68",
+      "type": "paragraph",
+      "content": {
+        "text": "In cars, one battery terminal is connected to the metal body. How does this allow a single wire to supply current to electrical devices rather than two wires?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-69",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Why isn’t a bird sitting on a high-voltage power line electrocuted? Contrast this with the situation in which a large bird hits two wires simultaneously with its wings.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-70",
+      "type": "paragraph",
+      "content": {
+        "text": "Why isn’t a bird sitting on a high-voltage power line electrocuted? Contrast this with the situation in which a large bird hits two wires simultaneously with its wings.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-71",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Problems & Exercises",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-72",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "What is the current in milliamperes produced by the solar cells of a pocket calculator through which 4.00 C of charge passes in 4.00 h?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "0.278 mA",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-73",
+      "type": "paragraph",
+      "content": {
+        "text": "What is the current in milliamperes produced by the solar cells of a pocket calculator through which 4.00 C of charge passes in 4.00 h?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-74",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A total of 600 C of charge passes through a flashlight in 0.500 h. What is the average current?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-75",
+      "type": "paragraph",
+      "content": {
+        "text": "A total of 600 C of charge passes through a flashlight in 0.500 h. What is the average current?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-76",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "What is the current when a typical static charge of $0.250μC$ moves from your finger to a metal doorknob in $1.00μs$ ?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "0.250 A",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-77",
+      "type": "paragraph",
+      "content": {
+        "text": "What is the current when a typical static charge of $0.250μC$ moves from your finger to a metal doorknob in $1.00μs$ ?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-78",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Find the current when 2.00 nC jumps between your comb and hair over a $0.500 -μs$ time interval.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-79",
+      "type": "paragraph",
+      "content": {
+        "text": "Find the current when 2.00 nC jumps between your comb and hair over a $0.500 -μs$ time interval.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-80",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A large lightning bolt had a 20,000-A current and moved 30.0 C of charge. What was its duration?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "1.50ms",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-81",
+      "type": "paragraph",
+      "content": {
+        "text": "A large lightning bolt had a 20,000-A current and moved 30.0 C of charge. What was its duration?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-82",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "The 200-A current through a spark plug moves 0.300 mC of charge. How long does the spark last?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-83",
+      "type": "paragraph",
+      "content": {
+        "text": "The 200-A current through a spark plug moves 0.300 mC of charge. How long does the spark last?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-84",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "(a) A defibrillator sends a 6.00-A current through the chest of a patient by applying a 10,000-V potential as in the figure below. What is the resistance of the path? (b) The defibrillator paddles make contact with the patient through a conducting gel that greatly reduces the path resistance. Discuss the difficulties that would ensue if a larger voltage were used to produce the same current through the patient, but with the path having perhaps 50 times the resistance. (Hint: The current must be about the same, so a higher voltage would imply greater power. Use this equation for power: $P={I}^{2}R$ .) The capacitor in a defibrillation unit drives a current through the heart of a patient.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a) $1.67kΩ$ (b) If a 50 times larger resistance existed, keeping the current about the same, the power would be increased by a factor of about 50 (based on the equation $P={I}^{2}R$ ), causing much more energy to be transferred to the skin, which could cause serious burns. The gel used reduces the resistance, and therefore reduces the power transferred to the skin.",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-85",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) A defibrillator sends a 6.00-A current through the chest of a patient by applying a 10,000-V potential as in the figure below. What is the resistance of the path? (b) The defibrillator paddles make contact with the patient through a conducting gel that greatly reduces the path resistance. Discuss the difficulties that would ensue if a larger voltage were used to produce the same current through the patient, but with the path having perhaps 50 times the resistance. (Hint: The current must be about the same, so a higher voltage would imply greater power. Use this equation for power: $P={I}^{2}R$ .)",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-7",
+      "type": "figure",
+      "asset_url": "images/phy_m42341_Figure_21_01_07a.jpg",
+      "caption": {
+        "text": "The capacitor in a defibrillation unit drives a current through the heart of a patient.",
+        "inline": []
+      },
+      "alt": "Figure represents a defibrillation unit used on a patient. The circuit is also represented. It shows a capacitor driving a current through the chest of a patient. The opposite plates of the capacitor are marked as positive Q and negative Q. The direction of current in the connecting wires from the capacitor to the defibrillation unit is shown in a clockwise direction with an arrow on the wire, and the direction of electrons is shown opposite to this direction with an arrow.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-87",
+      "type": "paragraph",
+      "content": {
+        "text": "(b) If a 50 times larger resistance existed, keeping the current about the same, the power would be increased by a factor of about 50 (based on the equation $P={I}^{2}R$ ), causing much more energy to be transferred to the skin, which could cause serious burns. The gel used reduces the resistance, and therefore reduces the power transferred to the skin.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-88",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "During open-heart surgery, a defibrillator can be used to bring a patient out of cardiac arrest. The resistance of the path is $500 Ω$ and a 10.0-mA current is needed. What voltage should be applied?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-89",
+      "type": "paragraph",
+      "content": {
+        "text": "During open-heart surgery, a defibrillator can be used to bring a patient out of cardiac arrest. The resistance of the path is $500 Ω$ and a 10.0-mA current is needed. What voltage should be applied?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-90",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "(a) A defibrillator passes 12.0 A of current through the torso of a person for 0.0100 s. How much charge moves? (b) How many electrons pass through the wires connected to the patient? (See figure two problems earlier.)",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a) 0.120 C (b) $7.50×{10}^{17}electrons$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-91",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) A defibrillator passes 12.0 A of current through the torso of a person for 0.0100 s. How much charge moves? (b) How many electrons pass through the wires connected to the patient? (See figure two problems earlier.)",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-92",
+      "type": "paragraph",
+      "content": {
+        "text": "(b) $7.50×{10}^{17}electrons$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-93",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A clock battery wears out after moving 10,000 C of charge through the clock at a rate of 0.500 mA. (a) How long did the clock run? (b) How many electrons per second flowed?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-94",
+      "type": "paragraph",
+      "content": {
+        "text": "A clock battery wears out after moving 10,000 C of charge through the clock at a rate of 0.500 mA. (a) How long did the clock run? (b) How many electrons per second flowed?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-95",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "The batteries of a submerged non-nuclear submarine supply 1000 A at full speed ahead. How long does it take to move Avogadro’s number ( $6.02×{10}^{23}$ ) of electrons at this rate?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "96.3 s",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-96",
+      "type": "paragraph",
+      "content": {
+        "text": "The batteries of a submerged non-nuclear submarine supply 1000 A at full speed ahead. How long does it take to move Avogadro’s number ( $6.02×{10}^{23}$ ) of electrons at this rate?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-97",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Electron guns are used in X-ray tubes. The electrons are accelerated through a relatively large voltage and directed onto a metal target, producing X-rays. (a) How many electrons per second strike the target if the current is 0.500 mA? (b) What charge strikes the target in 0.750 s?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-98",
+      "type": "paragraph",
+      "content": {
+        "text": "Electron guns are used in X-ray tubes. The electrons are accelerated through a relatively large voltage and directed onto a metal target, producing X-rays. (a) How many electrons per second strike the target if the current is 0.500 mA? (b) What charge strikes the target in 0.750 s?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-99",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A large cyclotron directs a beam of ${He}^{++}$ nuclei onto a target with a beam current of 0.250 mA. (a) How many ${He}^{++}$ nuclei per second is this? (b) How long does it take for 1.00 C to strike the target? (c) How long before 1.00 mol of ${He}^{++}$ nuclei strike the target?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a) ${7.81 × 10}^{14}{He}^{++}nuclei/s$ (b) ${4.00 × 10}^{3}s$ (c) ${7.71 × 10}^{8}s$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-100",
+      "type": "paragraph",
+      "content": {
+        "text": "A large cyclotron directs a beam of ${He}^{++}$ nuclei onto a target with a beam current of 0.250 mA. (a) How many ${He}^{++}$ nuclei per second is this? (b) How long does it take for 1.00 C to strike the target? (c) How long before 1.00 mol of ${He}^{++}$ nuclei strike the target?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-101",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) ${7.81 × 10}^{14}{He}^{++}nuclei/s$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-102",
+      "type": "paragraph",
+      "content": {
+        "text": "(b) ${4.00 × 10}^{3}s$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-103",
+      "type": "paragraph",
+      "content": {
+        "text": "(c) ${7.71 × 10}^{8}s$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-104",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Repeat the above example on , but for a wire made of silver and given there is one free electron per silver atom.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-105",
+      "type": "paragraph",
+      "content": {
+        "text": "Repeat the above example on , but for a wire made of silver and given there is one free electron per silver atom.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-106",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Using the results of the above example on , find the drift velocity in a copper wire of twice the diameter and carrying 20.0 A.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$-1.13×{10}^{-4}m/s$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-107",
+      "type": "paragraph",
+      "content": {
+        "text": "Using the results of the above example on , find the drift velocity in a copper wire of twice the diameter and carrying 20.0 A.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-108",
+      "type": "paragraph",
+      "content": {
+        "text": "$-1.13×{10}^{-4}m/s$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-109",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A 14-gauge copper wire has a diameter of 1.628 mm. What magnitude current flows when the drift velocity is 1.00 mm/s? (See above example on for useful information.)",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-110",
+      "type": "paragraph",
+      "content": {
+        "text": "A 14-gauge copper wire has a diameter of 1.628 mm. What magnitude current flows when the drift velocity is 1.00 mm/s? (See above example on for useful information.)",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-111",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "SPEAR, a storage ring about 72.0 m in diameter at the Stanford Linear Accelerator (closed in 2009), has a 20.0-A circulating beam of electrons that are moving at nearly the speed of light. (See .) How many electrons are in the beam? Electrons circulating in the storage ring called SPEAR constitute a 20.0-A current. Because they travel close to the speed of light, each electron completes many orbits in each second.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$9.42×{10}^{13}electrons$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-112",
+      "type": "paragraph",
+      "content": {
+        "text": "SPEAR, a storage ring about 72.0 m in diameter at the Stanford Linear Accelerator (closed in 2009), has a 20.0-A circulating beam of electrons that are moving at nearly the speed of light. (See .) How many electrons are in the beam?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-8",
+      "type": "figure",
+      "asset_url": "images/phy_m42341_Figure_21_01_08a-2cfa.jpg",
+      "caption": {
+        "text": "Electrons circulating in the storage ring called SPEAR constitute a 20.0-A current. Because they travel close to the speed of light, each electron completes many orbits in each second.",
+        "inline": []
+      },
+      "alt": "The circuit shows a doughnut shaped storage ring called SPEAR. The cross sections of ring are marked as A and are represented as dotted circular sections. The diameter of storage ring as measured between diametrically opposite cross sections on both ends is seventy two meters. The current in the ring is given as twenty amps. The direction of current I is shown opposite to the direction of movement of electrons e using arrows.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-114",
+      "type": "paragraph",
+      "content": {
+        "text": "$9.42×{10}^{13}electrons$",
+        "inline": []
+      },
+      "level": "core"
+    }
+  ],
+  "solutions": {
+    "osbooks-college-physics-bundle:m42341:exr-49": [
+      [
+        {
+          "kind": "text",
+          "text": "(a)"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42341:exr-53": [
+      [
+        {
+          "kind": "text",
+          "text": "10 A"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42341:exr-72": [
+      [
+        {
+          "kind": "text",
+          "text": "0.278 mA"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42341:exr-76": [
+      [
+        {
+          "kind": "text",
+          "text": "0.250 A"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42341:exr-80": [
+      [
+        {
+          "kind": "text",
+          "text": "1.50ms"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42341:exr-84": [
+      [
+        {
+          "kind": "text",
+          "text": "(a)"
+        },
+        {
+          "kind": "math",
+          "text": "1.67kΩ"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(b) If a 50 times larger resistance existed, keeping the current about the same, the power would be increased by a factor of about 50 (based on the equation"
+        },
+        {
+          "kind": "math",
+          "text": "P={I}^{2}R"
+        },
+        {
+          "kind": "text",
+          "text": "), causing much more energy to be transferred to the skin, which could cause serious burns. The gel used reduces the resistance, and therefore reduces the power transferred to the skin."
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42341:exr-90": [
+      [
+        {
+          "kind": "text",
+          "text": "(a) 0.120 C"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(b)"
+        },
+        {
+          "kind": "math",
+          "text": "7.50×{10}^{17}"
+        },
+        {
+          "kind": "text",
+          "text": "electrons"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42341:exr-95": [
+      [
+        {
+          "kind": "text",
+          "text": "96.3 s"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42341:exr-99": [
+      [
+        {
+          "kind": "text",
+          "text": "(a)"
+        },
+        {
+          "kind": "math",
+          "text": "{7.81 × 10}^{14}{He}^{++}"
+        },
+        {
+          "kind": "text",
+          "text": "nuclei/s"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(b)"
+        },
+        {
+          "kind": "math",
+          "text": "{4.00 × 10}^{3}s"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(c)"
+        },
+        {
+          "kind": "math",
+          "text": "{7.71 × 10}^{8}s"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42341:exr-106": [
+      [
+        {
+          "kind": "math",
+          "text": "-1.13×{10}^{-4}m/s"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42341:exr-111": [
+      [
+        {
+          "kind": "math",
+          "text": "9.42×{10}^{13}"
+        },
+        {
+          "kind": "text",
+          "text": "electrons"
+        }
+      ]
+    ]
+  }
+}

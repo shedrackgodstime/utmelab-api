@@ -1,0 +1,848 @@
+{
+  "module": "m42414",
+  "source_attribution": {
+    "publisher": "OpenStax",
+    "book": "osbooks-college-physics-bundle",
+    "section": "m42414",
+    "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42414/index.cnxml",
+    "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)",
+    "locator": "CNXML module index.cnxml (typed elements, solutions present)"
+  },
+  "blocks": [
+    {
+      "id": "sec-0",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Learning Objectives",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-1",
+      "type": "paragraph",
+      "content": {
+        "text": "By the end of this section, you will be able to:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-2",
+      "type": "paragraph",
+      "content": {
+        "text": "Transformers do what their name implies—they transform voltages from one value to another (The term voltage is used rather than emf, because transformers have internal resistance). For example, many cell phones, laptops, video games, and power tools and small appliances have a transformer built into their plug-in unit (like that in ) that changes 120 V or 240 V AC into whatever voltage the device uses. Transformers are also used at several points in the power distribution systems, such as illustrated in . Power is sent long distances at high voltages, because less current is required for a given amount of power, and this means less line loss, as was discussed previously. But high voltages pose greater hazards, so that transformers are employed to produce lower voltage at the user’s location.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-1",
+      "type": "figure",
+      "asset_url": "images/phy_m42414_Figure_24_07_01.jpg",
+      "caption": {
+        "text": "Plug-in transformers are used in low voltage applications such as lighting and for using US products (where the outlet voltage is 120 V) in Europe (where the voltage is 230 V) and vice versa. Transformers are also essential components in consumer electronic devices. (credit: Tamar More)",
+        "inline": []
+      },
+      "alt": "A photo graph of two plug in transformers operated on voltages other than common one hundred twenty volt AC.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "fig-2",
+      "type": "figure",
+      "asset_url": "images/phy_m42414_Figure_24_07_02.jpg",
+      "caption": {
+        "text": "Transformers change voltages at several points in a power distribution system. Electric power is usually generated at greater than 10 kV, and transmitted long distances at voltages over 200 kV—sometimes as great as 700 kV—to limit energy losses. Local power distribution to neighborhoods or industries goes through a substation and is sent short distances at voltages ranging from 5 to 13 kV. This is reduced to 120, 240, or 480 V for safety at the individual user site.",
+        "inline": []
+      },
+      "alt": "The figure shows a transmission power system. It shows the various stages in a power transmission system from the power plant to the house hold with the help of images. The first image is of a power plant. The voltage generated is at twelve volts. This voltage is shown to pass on to a step up transformer through cables. From the step up transformer the current passes through a high voltage transmission line at four hundred kilo volt. The high voltage transmission line is shown passing on three towers. The current is then passed to a step down transformer substation. The current is step down to twelve volts. This is now passed through power transmission lines on poles. This current reaches a step down transformer which is fixed on a pole. Here the voltage is further stepped down to two hundred forty volts. Current is then supplied to an individual household at two hundred forty volts.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-5",
+      "type": "paragraph",
+      "content": {
+        "text": "The type of transformer considered in this text—see —is based on Faraday’s law of induction and is very similar in construction to the apparatus Faraday used to demonstrate magnetic fields could cause currents. The two coils are called the *primary* and *secondary coils* . In normal use, the input voltage is placed on the primary, and the secondary produces the transformed output voltage. Not only does the iron core trap the magnetic field created by the primary coil, its magnetization increases the field strength. Since the input voltage is AC, a time-varying magnetic flux is sent to the secondary, inducing its AC output voltage.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-3",
+      "type": "figure",
+      "asset_url": "images/phy_m42414_Figure_24_07_03.jpg",
+      "caption": {
+        "text": "A typical construction of a simple transformer has two coils wound on a ferromagnetic core that is laminated to minimize eddy currents. The magnetic field created by the primary is mostly confined to and increased by the core, which transmits it to the secondary coil. Any change in current in the primary induces a current in the secondary.",
+        "inline": []
+      },
+      "alt": "The figure shows a simple transformer with two coils wound on either sides of a laminated ferromagnetic core. The set of coil on left side of the core is marked as the primary and there number is given as N p. The voltage across the primary is given by V p. The set of coil on right side of the core is marked as the secondary and there number is represented as N s. The voltage across the secondary is given by V s. A symbol of the transformer is also shown below the diagram. It consists of two inductor coils separated by two equal parallel lines representing the core.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-7",
+      "type": "paragraph",
+      "content": {
+        "text": "For the simple transformer shown in , the output voltage ${V}_{s}$ depends almost entirely on the input voltage ${V}_{p}$ and the ratio of the number of loops in the primary and secondary coils. Faraday’s law of induction for the secondary coil gives its induced output voltage ${V}_{s}$ to be",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-8",
+      "type": "paragraph",
+      "content": {
+        "text": "where ${N}_{s}$ is the number of loops in the secondary coil and $ΔΦ$ / $Δt$ is the rate of change of magnetic flux. Note that the output voltage equals the induced emf ( ${V}_{s}={emf}_{s}$ ), provided coil resistance is small (a reasonable assumption for transformers). The cross-sectional area of the coils is the same on either side, as is the magnetic field strength, and so $ΔΦ/Δt$ is the same on either side. The input primary voltage ${V}_{p}$ is also related to changing flux by",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-9",
+      "type": "paragraph",
+      "content": {
+        "text": "The reason for this is a little more subtle. Lenz’s law tells us that the primary coil opposes the change in flux caused by the input voltage ${V}_{p}$ , hence the minus sign (This is an example of *self-inductance* , a topic to be explored in some detail in later sections). Assuming negligible coil resistance, Kirchhoff’s loop rule tells us that the induced emf exactly equals the input voltage. Taking the ratio of these last two equations yields a useful relationship:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-10",
+      "type": "paragraph",
+      "content": {
+        "text": "This is known as the transformer equation , and it simply states that the ratio of the secondary to primary voltages in a transformer equals the ratio of the number of loops in their coils.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-11",
+      "type": "paragraph",
+      "content": {
+        "text": "The output voltage of a transformer can be less than, greater than, or equal to the input voltage, depending on the ratio of the number of loops in their coils. Some transformers even provide a variable output by allowing connection to be made at different points on the secondary coil. A step-up transformer is one that increases voltage, whereas a step-down transformer decreases voltage. Assuming, as we have, that resistance is negligible, the electrical power output of a transformer equals its input. This is nearly true in practice—transformer efficiency often exceeds 99%. Equating the power input and output,",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-12",
+      "type": "paragraph",
+      "content": {
+        "text": "Rearranging terms gives",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-13",
+      "type": "paragraph",
+      "content": {
+        "text": "Combining this with $\\frac{{V}_{s}}{{V}_{p}}=\\frac{{N}_{s}}{{N}_{p}}$ , we find that",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-14",
+      "type": "paragraph",
+      "content": {
+        "text": "is the relationship between the output and input currents of a transformer. So if voltage increases, current decreases. Conversely, if voltage decreases, current increases.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "ex-15",
+      "type": "example",
+      "kind": "worked",
+      "title": {
+        "text": "Calculating Characteristics of a Step-Up Transformer",
+        "inline": []
+      },
+      "problem": {
+        "text": "",
+        "inline": []
+      },
+      "answer": null,
+      "level": "core"
+    },
+    {
+      "id": "p-16",
+      "type": "paragraph",
+      "content": {
+        "text": "A portable x-ray unit has a step-up transformer, the 120 V input of which is transformed to the 100 kV output needed by the x-ray tube. The primary has 50 loops and draws a current of 10.00 A when in use. (a) What is the number of loops in the secondary? (b) Find the current output of the secondary.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-17",
+      "type": "paragraph",
+      "content": {
+        "text": "Strategy and Solution for (a)",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-18",
+      "type": "paragraph",
+      "content": {
+        "text": "We solve $\\frac{{V}_{s}}{{V}_{p}}=\\frac{{N}_{s}}{{N}_{p}}$ for ${N}_{s}$ , the number of loops in the secondary, and enter the known values. This gives",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-19",
+      "type": "paragraph",
+      "content": {
+        "text": "A large number of loops in the secondary (compared with the primary) is required to produce such a large voltage. This would be true for neon sign transformers and those supplying high voltage inside TVs and CRTs.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-20",
+      "type": "paragraph",
+      "content": {
+        "text": "Strategy and Solution for (b)",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-21",
+      "type": "paragraph",
+      "content": {
+        "text": "We can similarly find the output current of the secondary by solving $\\frac{{I}_{s}}{{I}_{p}}=\\frac{{N}_{p}}{{N}_{s}}$ for ${I}_{s}$ and entering known values. This gives",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-22",
+      "type": "paragraph",
+      "content": {
+        "text": "As expected, the current output is significantly less than the input. In certain spectacular demonstrations, very large voltages are used to produce long arcs, but they are relatively safe because the transformer output does not supply a large current. Note that the power input here is ${P}_{p}={I}_{p}{V}_{p}=(10.00A)(120V)=1.20kW$ . This equals the power output ${P}_{p}={I}_{s}{V}_{s}=(12.0mA)(100kV)=1.20kW$ , as we assumed in the derivation of the equations used.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-23",
+      "type": "paragraph",
+      "content": {
+        "text": "The fact that transformers are based on Faraday’s law of induction makes it clear why we cannot use transformers to change DC voltages. If there is no change in primary voltage, there is no voltage induced in the secondary. One possibility is to connect DC to the primary coil through a switch. As the switch is opened and closed, the secondary produces a voltage like that in . This is not really a practical alternative, and AC is in common use wherever it is necessary to increase or decrease voltages.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-4",
+      "type": "figure",
+      "asset_url": "images/phy_m42414_Figure_24_07_04.jpg",
+      "caption": {
+        "text": "Transformers do not work for pure DC voltage input, but if it is switched on and off as on the top graph, the output will look something like that on the bottom graph. This is not the sinusoidal AC most AC appliances need.",
+        "inline": []
+      },
+      "alt": "The first part of the figure shows a graph of DC voltage input. The graph shows a variation of voltage V p along the Y axis and time t along the X axis. The wave is a pulsed wave nearly square in nature with the vibrations only in positive half cycle. The negative half cycles are not present in the wave. The second part of the figure shows a spike wave graph. The graph shows a variation of voltage V s along the Y axis and time t along the X axis. The wave has both positive and negative half cycles shown as sharp spikes of uniform amplitude.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "ex-25",
+      "type": "example",
+      "kind": "worked",
+      "title": {
+        "text": "Calculating Characteristics of a Step-Down Transformer",
+        "inline": []
+      },
+      "problem": {
+        "text": "",
+        "inline": []
+      },
+      "answer": null,
+      "level": "core"
+    },
+    {
+      "id": "p-26",
+      "type": "paragraph",
+      "content": {
+        "text": "A battery charger meant for a series connection of ten nickel-cadmium batteries (total emf of 12.5 V DC) needs to have a 15.0 V output to charge the batteries. It uses a step-down transformer with a 200-loop primary and a 120 V input. (a) How many loops should there be in the secondary coil? (b) If the charging current is 16.0 A, what is the input current?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-27",
+      "type": "paragraph",
+      "content": {
+        "text": "Strategy and Solution for (a)",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-28",
+      "type": "paragraph",
+      "content": {
+        "text": "You would expect the secondary to have a small number of loops. Solving $\\frac{{V}_{s}}{{V}_{p}}=\\frac{{N}_{s}}{{N}_{p}}$ for ${N}_{s}$ and entering known values gives",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-29",
+      "type": "paragraph",
+      "content": {
+        "text": "Strategy and Solution for (b)",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-30",
+      "type": "paragraph",
+      "content": {
+        "text": "The current input can be obtained by solving $\\frac{{I}_{s}}{{I}_{p}}=\\frac{{N}_{p}}{{N}_{s}}$ for ${I}_{p}$ and entering known values. This gives",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-31",
+      "type": "paragraph",
+      "content": {
+        "text": "The number of loops in the secondary is small, as expected for a step-down transformer. We also see that a small input current produces a larger output current in a step-down transformer. When transformers are used to operate large magnets, they sometimes have a small number of very heavy loops in the secondary. This allows the secondary to have low internal resistance and produce large currents. Note again that this solution is based on the assumption of 100% efficiency—or power out equals power in ( ${P}_{p}={P}_{s}$ )—reasonable for good transformers. In this case the primary and secondary power is 240 W. (Verify this for yourself as a consistency check.) Note that the Ni-Cd batteries need to be charged from a DC power source (as would a 12 V battery). So the AC output of the secondary coil needs to be converted into DC. This is done using something called a rectifier, which uses devices called diodes that allow only a one-way flow of current.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-32",
+      "type": "paragraph",
+      "content": {
+        "text": "Transformers have many applications in electrical safety systems, which are discussed in Electrical Safety: Systems and Devices .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-33",
+      "type": "paragraph",
+      "content": {
+        "text": "Generate electricity with a bar magnet! Discover the physics behind the phenomena by exploring magnets and how you can use them to make a bulb light.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-34",
+      "type": "paragraph",
+      "content": {
+        "text": "Click to view content .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-35",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Test Prep for AP Courses",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-36",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Which of the following statements is true for a step-down transformer? Select *two* answers. Primary voltage is higher than secondary voltage.; Primary voltage is lower than secondary voltage.; Primary current is higher than secondary current.; Primary current is lower than secondary current.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a), (d)",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-37",
+      "type": "paragraph",
+      "content": {
+        "text": "Which of the following statements is true for a step-down transformer? Select *two* answers.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-38",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "An ideal step-up transformer with turn ratio 1:30 is supplied with an input power of 120 W. If the output voltage is 210 V, calculate the output power and input current.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-39",
+      "type": "paragraph",
+      "content": {
+        "text": "An ideal step-up transformer with turn ratio 1:30 is supplied with an input power of 120 W. If the output voltage is 210 V, calculate the output power and input current.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-40",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Section Summary",
+        "inline": []
+      }
+    },
+    {
+      "id": "sec-41",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Conceptual Questions",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-42",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Explain what causes physical vibrations in transformers at twice the frequency of the AC power involved.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-43",
+      "type": "paragraph",
+      "content": {
+        "text": "Explain what causes physical vibrations in transformers at twice the frequency of the AC power involved.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-44",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Problems & Exercises",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-45",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A plug-in transformer, like that in , supplies 9.00 V to a video game system. (a) How many turns are in its secondary coil, if its input voltage is 120 V and the primary coil has 400 turns? (b) What is its input current when its output is 1.30 A?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a) 30.0 (b) $9.75×{10}^{-2}A$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-46",
+      "type": "paragraph",
+      "content": {
+        "text": "A plug-in transformer, like that in , supplies 9.00 V to a video game system. (a) How many turns are in its secondary coil, if its input voltage is 120 V and the primary coil has 400 turns? (b) What is its input current when its output is 1.30 A?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-47",
+      "type": "paragraph",
+      "content": {
+        "text": "(b) $9.75×{10}^{-2}A$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-48",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "An American traveler in New Zealand carries a transformer to convert New Zealand’s standard 240 V to 120 V so that she can use some small appliances on her trip. (a) What is the ratio of turns in the primary and secondary coils of her transformer? (b) What is the ratio of input to output current? (c) How could a New Zealander traveling in the United States use this same transformer to power her 240 V appliances from 120 V?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-49",
+      "type": "paragraph",
+      "content": {
+        "text": "An American traveler in New Zealand carries a transformer to convert New Zealand’s standard 240 V to 120 V so that she can use some small appliances on her trip. (a) What is the ratio of turns in the primary and secondary coils of her transformer? (b) What is the ratio of input to output current? (c) How could a New Zealander traveling in the United States use this same transformer to power her 240 V appliances from 120 V?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-50",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A cassette recorder uses a plug-in transformer to convert 120 V to 12.0 V, with a maximum current output of 200 mA. (a) What is the current input? (b) What is the power input? (c) Is this amount of power reasonable for a small appliance?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a) 20.0 mA (b) 2.40 W (c) Yes, this amount of power is quite reasonable for a small appliance.",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-51",
+      "type": "paragraph",
+      "content": {
+        "text": "A cassette recorder uses a plug-in transformer to convert 120 V to 12.0 V, with a maximum current output of 200 mA. (a) What is the current input? (b) What is the power input? (c) Is this amount of power reasonable for a small appliance?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-52",
+      "type": "paragraph",
+      "content": {
+        "text": "(c) Yes, this amount of power is quite reasonable for a small appliance.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-53",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "(a) What is the voltage output of a transformer used for rechargeable flashlight batteries, if its primary has 500 turns, its secondary 4 turns, and the input voltage is 120 V? (b) What input current is required to produce a 4.00 A output? (c) What is the power input?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-54",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) What is the voltage output of a transformer used for rechargeable flashlight batteries, if its primary has 500 turns, its secondary 4 turns, and the input voltage is 120 V? (b) What input current is required to produce a 4.00 A output? (c) What is the power input?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-55",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "(a) The plug-in transformer for a laptop computer puts out 7.50 V and can supply a maximum current of 2.00 A. What is the maximum input current if the input voltage is 240 V? Assume 100% efficiency. (b) If the actual efficiency is less than 100%, would the input current need to be greater or smaller? Explain.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a) 0.063 A (b) Greater input current needed.",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-56",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) The plug-in transformer for a laptop computer puts out 7.50 V and can supply a maximum current of 2.00 A. What is the maximum input current if the input voltage is 240 V? Assume 100% efficiency. (b) If the actual efficiency is less than 100%, would the input current need to be greater or smaller? Explain.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-57",
+      "type": "paragraph",
+      "content": {
+        "text": "(b) Greater input current needed.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-58",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A multipurpose transformer has a secondary coil with several points at which a voltage can be extracted, giving outputs of 5.60, 12.0, and 480 V. (a) The input voltage is 240 V to a primary coil of 280 turns. What are the numbers of turns in the parts of the secondary used to produce the output voltages? (b) If the maximum input current is 5.00 A, what are the maximum output currents (each used alone)?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-59",
+      "type": "paragraph",
+      "content": {
+        "text": "A multipurpose transformer has a secondary coil with several points at which a voltage can be extracted, giving outputs of 5.60, 12.0, and 480 V. (a) The input voltage is 240 V to a primary coil of 280 turns. What are the numbers of turns in the parts of the secondary used to produce the output voltages? (b) If the maximum input current is 5.00 A, what are the maximum output currents (each used alone)?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-60",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A large power plant generates electricity at 12.0 kV. Its old transformer once converted the voltage to 335 kV. The secondary of this transformer is being replaced so that its output can be 750 kV for more efficient cross-country transmission on upgraded transmission lines. (a) What is the ratio of turns in the new secondary compared with the old secondary? (b) What is the ratio of new current output to old output (at 335 kV) for the same power? (c) If the upgraded transmission lines have the same resistance, what is the ratio of new line power loss to old?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a) 2.2 (b) 0.45 (c) 0.20, or 20.0%",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-61",
+      "type": "paragraph",
+      "content": {
+        "text": "A large power plant generates electricity at 12.0 kV. Its old transformer once converted the voltage to 335 kV. The secondary of this transformer is being replaced so that its output can be 750 kV for more efficient cross-country transmission on upgraded transmission lines. (a) What is the ratio of turns in the new secondary compared with the old secondary? (b) What is the ratio of new current output to old output (at 335 kV) for the same power? (c) If the upgraded transmission lines have the same resistance, what is the ratio of new line power loss to old?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-62",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "If the power output in the previous problem is 1000 MW and line resistance is $2.00 Ω$ , what were the old and new line losses?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-63",
+      "type": "paragraph",
+      "content": {
+        "text": "If the power output in the previous problem is 1000 MW and line resistance is $2.00 Ω$ , what were the old and new line losses?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-64",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Unreasonable Results The 335 kV AC electricity from a power transmission line is fed into the primary coil of a transformer. The ratio of the number of turns in the secondary to the number in the primary is ${N}_{s}/{N}_{p}=1000$ . (a) What voltage is induced in the secondary? (b) What is unreasonable about this result? (c) Which assumption or premise is responsible?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a) 335 MV (b) way too high, well beyond the breakdown voltage of air over reasonable distances (c) input voltage is too high",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-65",
+      "type": "paragraph",
+      "content": {
+        "text": "Unreasonable Results",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-66",
+      "type": "paragraph",
+      "content": {
+        "text": "The 335 kV AC electricity from a power transmission line is fed into the primary coil of a transformer. The ratio of the number of turns in the secondary to the number in the primary is ${N}_{s}/{N}_{p}=1000$ . (a) What voltage is induced in the secondary? (b) What is unreasonable about this result? (c) Which assumption or premise is responsible?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-67",
+      "type": "paragraph",
+      "content": {
+        "text": "(b) way too high, well beyond the breakdown voltage of air over reasonable distances",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-68",
+      "type": "paragraph",
+      "content": {
+        "text": "(c) input voltage is too high",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-69",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Construct Your Own Problem Consider a double transformer to be used to create very large voltages. The device consists of two stages. The first is a transformer that produces a much larger output voltage than its input. The output of the first transformer is used as input to a second transformer that further increases the voltage. Construct a problem in which you calculate the output voltage of the final stage based on the input voltage of the first stage and the number of turns or loops in both parts of both transformers (four coils in all). Also calculate the maximum output current of the final stage based on the input current. Discuss the possibility of power losses in the devices and the effect on the output current and power.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-70",
+      "type": "paragraph",
+      "content": {
+        "text": "Construct Your Own Problem",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-71",
+      "type": "paragraph",
+      "content": {
+        "text": "Consider a double transformer to be used to create very large voltages. The device consists of two stages. The first is a transformer that produces a much larger output voltage than its input. The output of the first transformer is used as input to a second transformer that further increases the voltage. Construct a problem in which you calculate the output voltage of the final stage based on the input voltage of the first stage and the number of turns or loops in both parts of both transformers (four coils in all). Also calculate the maximum output current of the final stage based on the input current. Discuss the possibility of power losses in the devices and the effect on the output current and power.",
+        "inline": []
+      },
+      "level": "core"
+    }
+  ],
+  "solutions": {
+    "osbooks-college-physics-bundle:m42414:exr-36": [
+      [
+        {
+          "kind": "text",
+          "text": "(a), (d)"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42414:exr-45": [
+      [
+        {
+          "kind": "text",
+          "text": "(a) 30.0"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(b)"
+        },
+        {
+          "kind": "math",
+          "text": "9.75×{10}^{-2}A"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42414:exr-50": [
+      [
+        {
+          "kind": "text",
+          "text": "(a) 20.0 mA"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(b) 2.40 W"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(c) Yes, this amount of power is quite reasonable for a small appliance."
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42414:exr-55": [
+      [
+        {
+          "kind": "text",
+          "text": "(a) 0.063 A"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(b) Greater input current needed."
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42414:exr-60": [
+      [
+        {
+          "kind": "text",
+          "text": "(a) 2.2"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(b) 0.45"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(c) 0.20, or 20.0%"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42414:exr-64": [
+      [
+        {
+          "kind": "text",
+          "text": "(a) 335 MV"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(b) way too high, well beyond the breakdown voltage of air over reasonable distances"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(c) input voltage is too high"
+        }
+      ]
+    ]
+  }
+}

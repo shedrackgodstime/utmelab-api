@@ -1,0 +1,861 @@
+{
+  "module": "m42162",
+  "source_attribution": {
+    "publisher": "OpenStax",
+    "book": "osbooks-college-physics-bundle",
+    "section": "m42162",
+    "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42162/index.cnxml",
+    "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)",
+    "locator": "CNXML module index.cnxml (typed elements, solutions present)"
+  },
+  "blocks": [
+    {
+      "id": "sec-0",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Learning Objectives",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-1",
+      "type": "paragraph",
+      "content": {
+        "text": "By the end of this section, you will be able to:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-2",
+      "type": "paragraph",
+      "content": {
+        "text": "Momentum is an important quantity because it is conserved. Yet it was not conserved in the examples in Impulse and Linear Momentum and Force , where large changes in momentum were produced by forces acting on the system of interest. Under what circumstances is momentum conserved?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-3",
+      "type": "paragraph",
+      "content": {
+        "text": "The answer to this question entails considering a sufficiently large system. It is always possible to find a larger system in which total momentum is constant, even if momentum changes for components of the system. If a football player runs into the goalpost in the end zone, there will be a force on him that causes him to bounce backward. The backward momentum felt by an object or person exerting force on another object is often called a recoil. However, the Earth also recoils—conserving momentum—because of the force applied to it through the goalpost. Because Earth is many orders of magnitude more massive than the player, its recoil is immeasurably small and can be neglected in any practical sense, but it is real nevertheless.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-4",
+      "type": "paragraph",
+      "content": {
+        "text": "Consider what happens if the masses of two colliding objects are more similar than the masses of a football player and Earth—for example, one car bumping into another, as shown in . Both cars are coasting in the same direction when the lead car (labeled ${m}_{2})$ is bumped by the trailing car (labeled ${m}_{1}).$ The only unbalanced force on each car is the force of the collision. (Assume that the effects due to friction are negligible.) Car 1 slows down as a result of the collision, losing some momentum, while car 2 speeds up and gains some momentum. We shall now show that the total momentum of the two-car system remains constant.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-1",
+      "type": "figure",
+      "asset_url": "images/phy_m42162_Figure_09_03_01a.jpg",
+      "caption": {
+        "text": "A car of mass ${m}_{1}$ moving with a velocity of ${v}_{1}$ bumps into another car of mass ${m}_{2}$ and velocity ${v}_{2}$ that it is following. As a result, the first car slows down to a velocity of ${v′}_{1}$ and the second speeds up to a velocity of ${v′}_{2}$ . The momentum of each car is changed, but the total momentum ${p}_{tot}$ of the two cars is the same before and after the collision (if you assume friction is negligible).",
+        "inline": []
+      },
+      "alt": "A brown car with velocity V 1 and mass m 1 moves toward the right behind a tan car of velocity V 2 and mass m 2. The system of interest has a total momentum equal to the sum of individual momentums p 1 and p 2. The net force between them is zero before they collide with one another. The brown car after colliding with the tan car has velocity V 1prime and momentum p 1 prime and the light brown car moves with velocity V 2 prime and momentum p 2 prime. Both move in the same direction as before collision. This system of interest has a total momentum equal to the sum p 1 prime and p 2 prime.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-6",
+      "type": "paragraph",
+      "content": {
+        "text": "Using the definition of impulse, the change in momentum of car 1 is given by",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-7",
+      "type": "paragraph",
+      "content": {
+        "text": "where ${F}_{1}$ is the force on car 1 due to car 2, and $Δt$ is the time the force acts (the duration of the collision). Intuitively, it seems obvious that the collision time is the same for both cars, but it is only true for objects traveling at ordinary speeds. This assumption must be modified for objects travelling near the speed of light, without affecting the result that momentum is conserved.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-8",
+      "type": "paragraph",
+      "content": {
+        "text": "Similarly, the change in momentum of car 2 is",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-9",
+      "type": "paragraph",
+      "content": {
+        "text": "where ${F}_{2}$ is the force on car 2 due to car 1, and we assume the duration of the collision $Δt$ is the same for both cars. We know from Newton’s third law that ${F}_{2}=-{F}_{1}$ , and so",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-10",
+      "type": "paragraph",
+      "content": {
+        "text": "Thus, the changes in momentum are equal and opposite, and",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-11",
+      "type": "paragraph",
+      "content": {
+        "text": "Because the changes in momentum add to zero, the total momentum of the two-car system is constant. That is,",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-12",
+      "type": "paragraph",
+      "content": {
+        "text": "where ${p′}_{1}$ and ${p′}_{2}$ are the momenta of cars 1 and 2 after the collision. (We often use primes to denote the final state.)",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-13",
+      "type": "paragraph",
+      "content": {
+        "text": "This result—that momentum is conserved—has validity far beyond the preceding one-dimensional case. It can be similarly shown that total momentum is conserved for any isolated system, with any number of objects in it. In equation form, the conservation of momentum principle for an isolated system is written",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-14",
+      "type": "paragraph",
+      "content": {
+        "text": "where ${p}_{tot}$ is the total momentum (the sum of the momenta of the individual objects in the system) and ${p′}_{tot}$ is the total momentum some time later. (Recall in Uniform Circular Motion and Gravitation you learned that the center of mass of a system of objects is the effective average location of the mass of the system. The total momentum can be shown to be the momentum of the center of mass of the system.) An isolated system is defined to be one for which the net external force is zero $({F}_{net}=0).$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-15",
+      "type": "paragraph",
+      "content": {
+        "text": "An isolated system is defined to be one for which the net external force is zero $({F}_{net}=0).$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-16",
+      "type": "paragraph",
+      "content": {
+        "text": "Perhaps an easier way to see that momentum is conserved for an isolated system is to consider Newton’s second law in terms of momentum, ${F}_{net}=\\frac{{Δp}_{tot}}{Δt}$ . For an isolated system, $({F}_{net}=0)$ ; thus, $Δ{p}_{tot}=0$ , and ${p}_{tot}$ is constant.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-17",
+      "type": "paragraph",
+      "content": {
+        "text": "We have noted that the three length dimensions in nature— *$x$* , *$y$* , and *$z$* —are independent, and it is interesting to note that momentum can be conserved in different ways along each dimension. For example, during projectile motion and where air resistance is negligible, momentum is conserved in the horizontal direction because horizontal forces are zero and momentum is unchanged. But along the vertical direction, the net vertical force is not zero and the momentum of the projectile is not conserved. (See .) However, if the momentum of the projectile-Earth system is considered in the vertical direction, we find that the total momentum is conserved.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-2",
+      "type": "figure",
+      "asset_url": "images/phy_m42162_Figure_09_03_02a.jpg",
+      "caption": {
+        "text": "The horizontal component of a projectile’s momentum is conserved if air resistance is negligible, even in this case where a space probe separates. The forces causing the separation are internal to the system, so that the net external horizontal force ${F}_{x-net}$ is still zero. The vertical component of the momentum is not conserved, because the net vertical force ${F}_{y-net}$ is not zero. In the vertical direction, the space probe-Earth system needs to be considered and we find that the total momentum is conserved. The center of mass of the space probe takes the same path it would if the separation did not occur.",
+        "inline": []
+      },
+      "alt": "A space probe is projected upward. It takes a parabolic path. No horizontal net force acts on. The horizontal component of momentum remains conserved. The vertical net force is not zero and the vertical component of momentum is not a constant. When the space probe separates, the horizontal net force remains zero as the force causing separation is internal to the system. The vertical net force is not zero and the vertical component of momentum is also not a constant after separation. The centre of mass however continues in the same parabolic path.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-19",
+      "type": "paragraph",
+      "content": {
+        "text": "The conservation of momentum principle can be applied to systems as different as a comet striking Earth and a gas containing huge numbers of atoms and molecules. Conservation of momentum is violated only when the net external force is not zero. But another larger system can always be considered in which momentum is conserved by simply including the source of the external force. For example, in the collision of two cars considered above, the two-car system conserves momentum while each one-car system does not.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-20",
+      "type": "paragraph",
+      "content": {
+        "text": "Hold a tennis ball side by side and in contact with a basketball. Drop the balls together. (Be careful!) What happens? Explain your observations. Now hold the tennis ball above and in contact with the basketball. What happened? Explain your observations. What do you think will happen if the basketball ball is held above and in contact with the tennis ball?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-21",
+      "type": "paragraph",
+      "content": {
+        "text": "Tie two tennis balls together with a string about a foot long. Hold one ball and let the other hang down and throw it in a ballistic trajectory. Explain your observations. Now mark the center of the string with bright ink or attach a brightly colored sticker to it and throw again. What happened? Explain your observations.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-22",
+      "type": "paragraph",
+      "content": {
+        "text": "Some aquatic animals such as jellyfish move around based on the principles of conservation of momentum. A jellyfish fills its umbrella section with water and then pushes the water out resulting in motion in the opposite direction to that of the jet of water. Squids propel themselves in a similar manner but, in contrast with jellyfish, are able to control the direction in which they move by aiming their nozzle forward or backward. Typical squids can move at speeds of 8 to 12 km/h.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-23",
+      "type": "paragraph",
+      "content": {
+        "text": "The ballistocardiograph (BCG) was a diagnostic tool used in the second half of the 20th century to study the strength of the heart. About once a second, your heart beats, forcing blood into the aorta. A force in the opposite direction is exerted on the rest of your body (recall Newton’s third law). A ballistocardiograph is a device that can measure this reaction force. This measurement is done by using a sensor (resting on the person) or by using a moving table suspended from the ceiling. This technique can gather information on the strength of the heart beat and the volume of blood passing from the heart. However, the electrocardiogram (ECG or EKG) and the echocardiogram (cardiac ECHO or ECHO; a technique that uses ultrasound to see an image of the heart) are more widely used in the practice of cardiology.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-24",
+      "type": "paragraph",
+      "content": {
+        "text": "Conservation of momentum is quite useful in describing collisions. Momentum is crucial to our understanding of atomic and subatomic particles because much of what we know about these particles comes from collision experiments.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-25",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Subatomic Collisions and Momentum",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-26",
+      "type": "paragraph",
+      "content": {
+        "text": "The conservation of momentum principle not only applies to the macroscopic objects, it is also essential to our explorations of atomic and subatomic particles. Giant machines hurl subatomic particles at one another, and researchers evaluate the results by assuming conservation of momentum (among other things).",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-27",
+      "type": "paragraph",
+      "content": {
+        "text": "On the small scale, we find that particles and their properties are invisible to the naked eye but can be measured with our instruments, and models of these subatomic particles can be constructed to describe the results. Momentum is found to be a property of all subatomic particles including massless particles such as photons that compose light. Momentum being a property of particles hints that momentum may have an identity beyond the description of an object’s mass multiplied by the object’s velocity. Indeed, momentum relates to wave properties and plays a fundamental role in what measurements are taken and how we take these measurements. Furthermore, we find that the conservation of momentum principle is valid when considering systems of particles. We use this principle to analyze the masses and other properties of previously undetected particles, such as the nucleus of an atom and the existence of quarks that make up particles of nuclei. below illustrates how a particle scattering backward from another implies that its target is massive and dense. Experiments seeking evidence that quarks make up protons (one type of particle that makes up nuclei) scattered high-energy electrons off of protons (nuclei of hydrogen atoms). Electrons occasionally scattered straight backward in a manner that implied a very small and very dense particle makes up the proton—this observation is considered nearly direct evidence of quarks. The analysis was based partly on the same conservation of momentum principle that works so well on the large scale.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-3",
+      "type": "figure",
+      "asset_url": "images/phy_m42162_Figure_09_03_04a.jpg",
+      "caption": {
+        "text": "A subatomic particle scatters straight backward from a target particle. In experiments seeking evidence for quarks, electrons were observed to occasionally scatter straight backward from a proton.",
+        "inline": []
+      },
+      "alt": "An electron strikes on a macroscopic target and recoils back. A closer look shows the electron to scatter backward after interacting with the proton.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "sec-29",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Test Prep for AP Courses",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-30",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Which of the following is an example of an open system? Two air cars colliding on a track elastically.; Two air cars colliding on a track and sticking together.; A bullet being fired into a hanging wooden block and becoming embedded in the block, with the system then acting as a ballistic pendulum.; A bullet being fired into a hillside and becoming buried in the earth.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(d)",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-31",
+      "type": "paragraph",
+      "content": {
+        "text": "Which of the following is an example of an open system?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-32",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A 40-kg girl runs across a mat with a speed of 5.0 m/s and jumps onto a 120-kg hanging platform initially at rest, causing the girl and platform to swing back and forth like a pendulum together after her jump. What is the combined velocity of the girl and platform after the jump? What is the combined momentum of the girl and platform both before and after the collision? A 50-kg boy runs across a mat with a speed of 6.0 m/s and collides with a soft barrier on the wall, rebounding off the wall and falling to the ground. The boy is at rest after the collision. What is the momentum of the boy before and after the collision? Is momentum conserved in this collision? Explain. Which of these is an example of an open system and which is an example of a closed system? Explain your answer.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-33",
+      "type": "paragraph",
+      "content": {
+        "text": "A 40-kg girl runs across a mat with a speed of 5.0 m/s and jumps onto a 120-kg hanging platform initially at rest, causing the girl and platform to swing back and forth like a pendulum together after her jump. What is the combined velocity of the girl and platform after the jump? What is the combined momentum of the girl and platform both before and after the collision?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-34",
+      "type": "paragraph",
+      "content": {
+        "text": "A 50-kg boy runs across a mat with a speed of 6.0 m/s and collides with a soft barrier on the wall, rebounding off the wall and falling to the ground. The boy is at rest after the collision. What is the momentum of the boy before and after the collision? Is momentum conserved in this collision? Explain. Which of these is an example of an open system and which is an example of a closed system? Explain your answer.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-35",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A student sets up an experiment to measure the momentum of a system of two air cars, A and B, of equal mass, moving on a linear, frictionless track. Before the collision, car A has a certain speed, and car B is at rest. Which of the following will be true about the total momentum of the two cars? It will be greater before the collision.; It will be equal before and after the collision.; It will be greater after the collision.; The answer depends on whether the collision is elastic or inelastic.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(b)",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-36",
+      "type": "paragraph",
+      "content": {
+        "text": "A student sets up an experiment to measure the momentum of a system of two air cars, A and B, of equal mass, moving on a linear, frictionless track. Before the collision, car A has a certain speed, and car B is at rest. Which of the following will be true about the total momentum of the two cars?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-37",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A group of students has two carts, *A* and *B* , with wheels that turn with negligible friction. The carts can travel along a straight horizontal track. Cart *A* has known mass *mA* . The students are asked to use a one-dimensional collision between the carts to determine the mass of cart *B* . Before the collision, cart *A* travels to the right and cart *B* is initially at rest. After the collision, the carts stick together. Describe an experimental procedure to determine the velocities of the carts before and after a collision, including all the additional equipment you would need. You may include a labeled diagram of your setup to help in your description. Indicate what measurements you would take and how you would take them. Include enough detail so that another student could carry out your procedure.; There will be sources of error in the measurements taken in the experiment, both before and after the collision. For your experimental procedure, will the uncertainty in the calculated value of the mass of cart *B* be affected more by the error in the measurements taken before the collision or by those taken after the collision, or will it be equally affected by both sets of measurements? Justify your answer. A group of students took measurements for one collision. A graph of the students data is shown below. The image shows a graph with position in meters on the vertical axis and time in seconds on the horizontal axis. Given *m A* = 0.50 kg, use the graph to calculate the mass of cart *B* . Explicitly indicate the principles used in your calculations.; The students are now asked to Consider the kinetic energy changes in an inelastic collision, specifically whether the initial values of one of the physical quantities affect the fraction of mechanical energy dissipated in the collision. How could you modify the experiment to investigate this question? Be sure to explicitly describe the calculations you would make, specifying all equations you would use (but do not actually do any algebra or arithmetic).",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-38",
+      "type": "paragraph",
+      "content": {
+        "text": "A group of students has two carts, *A* and *B* , with wheels that turn with negligible friction. The carts can travel along a straight horizontal track. Cart *A* has known mass *mA* . The students are asked to use a one-dimensional collision between the carts to determine the mass of cart *B* . Before the collision, cart *A* travels to the right and cart *B* is initially at rest. After the collision, the carts stick together.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-39",
+      "type": "paragraph",
+      "content": {
+        "text": "A group of students took measurements for one collision. A graph of the students data is shown below.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-4",
+      "type": "figure",
+      "asset_url": "images/phy_m42162_Figure_08_M3_Graph.jpg",
+      "caption": {
+        "text": "The image shows a graph with position in meters on the vertical axis and time in seconds on the horizontal axis.",
+        "inline": []
+      },
+      "alt": "The vertical axis runs from 0 to 2.5, with every 0.5 marked. The horizontal axis runs from 0 to 2.0, with every 0.2 marked. A legend shows that data points for Cart A will be shown with large gray dots, and data points for Cart B will be shown with small black dots. At time 0, there is a large dot at 0 meters and a small dot at 1.5 meters. At time 0.2 there is a large dot at 0.35 meters and a small dot at 1.5 meters. At 0.4 seconds, there is a large dot at 0.6 meters and a small dot at 1.5 meters. At 0.6 meters, there is a large dot at 1.0 meters and a small dot at 1.5 meters. At 0.8 seconds, there is a large dot at 1.2 meters and a small dot at 1.5 meters. At 1.0 seconds, there is a large dot at 1.5 meters and a small dot at 1.5 meters. At 1.2 seconds, there is a large dot at 1.7 meters and a small dot at 1.7 meters. At 1.4 seconds, there is a large dot at 1.75 meters and a small dot at 1.75 meters. At 1.6 seconds, there is a large dot at 1.95 meters and a small dot at 1.95 meters. At 1.8 seconds, there is a large dot at 2.0 meters and a small dot at 2.0 meters. At 2.0 seconds, there is a large dot at 2.1 meters and a small dot at 2.1 meters.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "exr-41",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Cart A is moving with an initial velocity + *v* (in the positive direction) toward cart B, initially at rest. Both carts have equal mass and are on a frictionless surface. Which of the following statements correctly characterizes the velocity of the center of mass of the system before and after the collision? $\\frac{+v}{2}$ before, $\\frac{-v}{2}$ after; $\\frac{+v}{2}$ before, 0 after; $\\frac{+v}{2}$ before, $\\frac{+v}{2}$ after; 0 before, 0 after",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(c)",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-42",
+      "type": "paragraph",
+      "content": {
+        "text": "Cart A is moving with an initial velocity + *v* (in the positive direction) toward cart B, initially at rest. Both carts have equal mass and are on a frictionless surface. Which of the following statements correctly characterizes the velocity of the center of mass of the system before and after the collision?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-43",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Cart A is moving with a velocity of +10 m/s toward cart B, which is moving with a velocity of +4 m/s. Both carts have equal mass and are moving on a frictionless surface. The two carts have an inelastic collision and stick together after the collision. Calculate the velocity of the center of mass of the system before and after the collision. If there were friction present in this problem, how would this external force affect the center-of-mass velocity both before and after the collision?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-44",
+      "type": "paragraph",
+      "content": {
+        "text": "Cart A is moving with a velocity of +10 m/s toward cart B, which is moving with a velocity of +4 m/s. Both carts have equal mass and are moving on a frictionless surface. The two carts have an inelastic collision and stick together after the collision. Calculate the velocity of the center of mass of the system before and after the collision. If there were friction present in this problem, how would this external force affect the center-of-mass velocity both before and after the collision?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-45",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Section Summary",
+        "inline": []
+      }
+    },
+    {
+      "id": "sec-46",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Conceptual Questions",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-47",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Professional Application If you dive into water, you reach greater depths than if you do a belly flop. Explain this difference in depth using the concept of conservation of energy. Explain this difference in depth using what you have learned in this chapter.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-48",
+      "type": "paragraph",
+      "content": {
+        "text": "Professional Application",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-49",
+      "type": "paragraph",
+      "content": {
+        "text": "If you dive into water, you reach greater depths than if you do a belly flop. Explain this difference in depth using the concept of conservation of energy. Explain this difference in depth using what you have learned in this chapter.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-50",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Under what circumstances is momentum conserved?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-51",
+      "type": "paragraph",
+      "content": {
+        "text": "Under what circumstances is momentum conserved?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-52",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Can momentum be conserved for a system if there are external forces acting on the system? If so, under what conditions? If not, why not?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-53",
+      "type": "paragraph",
+      "content": {
+        "text": "Can momentum be conserved for a system if there are external forces acting on the system? If so, under what conditions? If not, why not?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-54",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Momentum for a system can be conserved in one direction while not being conserved in another. What is the angle between the directions? Give an example.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-55",
+      "type": "paragraph",
+      "content": {
+        "text": "Momentum for a system can be conserved in one direction while not being conserved in another. What is the angle between the directions? Give an example.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-56",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Professional Application Explain in terms of momentum and Newton’s laws how a car’s air resistance is due in part to the fact that it pushes air in its direction of motion.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-57",
+      "type": "paragraph",
+      "content": {
+        "text": "Professional Application",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-58",
+      "type": "paragraph",
+      "content": {
+        "text": "Explain in terms of momentum and Newton’s laws how a car’s air resistance is due in part to the fact that it pushes air in its direction of motion.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-59",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Can objects in a system have momentum while the momentum of the system is zero? Explain your answer.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-60",
+      "type": "paragraph",
+      "content": {
+        "text": "Can objects in a system have momentum while the momentum of the system is zero? Explain your answer.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-61",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Must the total energy of a system be conserved whenever its momentum is conserved? Explain why or why not.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-62",
+      "type": "paragraph",
+      "content": {
+        "text": "Must the total energy of a system be conserved whenever its momentum is conserved? Explain why or why not.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-63",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Problems & Exercises",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-64",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Professional Application Train cars are coupled together by being bumped into one another. Suppose two loaded train cars are moving toward one another, the first having a mass of 150,000 kg and a velocity of 0.300 m/s, and the second having a mass of 110,000 kg and a velocity of $-0.120 m/s$ . (The minus indicates direction of motion.) What is their final velocity?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "0.122 m/s",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-65",
+      "type": "paragraph",
+      "content": {
+        "text": "Professional Application",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-66",
+      "type": "paragraph",
+      "content": {
+        "text": "Train cars are coupled together by being bumped into one another. Suppose two loaded train cars are moving toward one another, the first having a mass of 150,000 kg and a velocity of 0.300 m/s, and the second having a mass of 110,000 kg and a velocity of $-0.120 m/s$ . (The minus indicates direction of motion.) What is their final velocity?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-67",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Suppose a clay model of a koala bear has a mass of 0.200 kg and slides on ice at a speed of 0.750 m/s. It runs into another clay model, which is initially motionless and has a mass of 0.350 kg. Both being soft clay, they naturally stick together. What is their final velocity?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-68",
+      "type": "paragraph",
+      "content": {
+        "text": "Suppose a clay model of a koala bear has a mass of 0.200 kg and slides on ice at a speed of 0.750 m/s. It runs into another clay model, which is initially motionless and has a mass of 0.350 kg. Both being soft clay, they naturally stick together. What is their final velocity?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-69",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Professional Application Consider the following question: *A car moving at 10 m/s crashes into a tree and stops in 0.26 s. Calculate the force the seatbelt exerts on a passenger in the car to bring him to a halt. The mass of the passenger is 70 kg.* Would the answer to this question be different if the car with the 70-kg passenger had collided with a car that has a mass equal to and is traveling in the opposite direction and at the same speed? Explain your answer.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "In a collision with an identical car, momentum is conserved. Afterwards ${v}_{f}=0$ for both cars. The change in momentum will be the same as in the crash with the tree. However, the force on the body is not determined since the time is not known. A padded stop will reduce injurious force on body.",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-70",
+      "type": "paragraph",
+      "content": {
+        "text": "Professional Application",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-71",
+      "type": "paragraph",
+      "content": {
+        "text": "Consider the following question: *A car moving at 10 m/s crashes into a tree and stops in 0.26 s. Calculate the force the seatbelt exerts on a passenger in the car to bring him to a halt. The mass of the passenger is 70 kg.* Would the answer to this question be different if the car with the 70-kg passenger had collided with a car that has a mass equal to and is traveling in the opposite direction and at the same speed? Explain your answer.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-72",
+      "type": "paragraph",
+      "content": {
+        "text": "In a collision with an identical car, momentum is conserved. Afterwards ${v}_{f}=0$ for both cars. The change in momentum will be the same as in the crash with the tree. However, the force on the body is not determined since the time is not known. A padded stop will reduce injurious force on body.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-73",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "What is the velocity of a 900-kg car initially moving at 30.0 m/s, just after it hits a 150-kg deer initially running at 12.0 m/s in the same direction? Assume the deer remains on the car.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-74",
+      "type": "paragraph",
+      "content": {
+        "text": "What is the velocity of a 900-kg car initially moving at 30.0 m/s, just after it hits a 150-kg deer initially running at 12.0 m/s in the same direction? Assume the deer remains on the car.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-75",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A 1.80-kg falcon catches a 0.650-kg dove from behind in midair. What is their velocity after impact if the falcon’s velocity is initially 28.0 m/s and the dove’s velocity is 7.00 m/s in the same direction?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "22.4 m/s in the same direction as the original motion",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-76",
+      "type": "paragraph",
+      "content": {
+        "text": "A 1.80-kg falcon catches a 0.650-kg dove from behind in midair. What is their velocity after impact if the falcon’s velocity is initially 28.0 m/s and the dove’s velocity is 7.00 m/s in the same direction?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-77",
+      "type": "paragraph",
+      "content": {
+        "text": "22.4 m/s in the same direction as the original motion",
+        "inline": []
+      },
+      "level": "core"
+    }
+  ],
+  "solutions": {
+    "osbooks-college-physics-bundle:m42162:exr-30": [
+      [
+        {
+          "kind": "text",
+          "text": "(d)"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42162:exr-35": [
+      [
+        {
+          "kind": "text",
+          "text": "(b)"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42162:exr-41": [
+      [
+        {
+          "kind": "text",
+          "text": "(c)"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42162:exr-64": [
+      [
+        {
+          "kind": "text",
+          "text": "0.122 m/s"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42162:exr-69": [
+      [
+        {
+          "kind": "text",
+          "text": "In\na\ncollision\nwith\nan\nidentical\ncar,\nmomentum\nis\nconserved.\nAfterwards"
+        },
+        {
+          "kind": "math",
+          "text": "{v}_{f}=0"
+        },
+        {
+          "kind": "text",
+          "text": "for\nboth\ncars.\nThe\nchange\nin\nmomentum\nwill\nbe\nthe\nsame\nas\nin\nthe\ncrash\nwith\nthe\ntree.\nHowever,\nthe\nforce\non\nthe\nbody\nis\nnot\ndetermined\nsince\nthe\ntime\nis\nnot\nknown.\nA\npadded\nstop\nwill\nreduce\ninjurious\nforce\non\nbody."
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42162:exr-75": [
+      [
+        {
+          "kind": "text",
+          "text": "22.4 m/s in the same direction as the original motion"
+        }
+      ]
+    ]
+  }
+}

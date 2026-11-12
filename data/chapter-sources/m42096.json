@@ -1,0 +1,995 @@
+{
+  "module": "m42096",
+  "source_attribution": {
+    "publisher": "OpenStax",
+    "book": "osbooks-college-physics-bundle",
+    "section": "m42096",
+    "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42096/index.cnxml",
+    "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)",
+    "locator": "CNXML module index.cnxml (typed elements, solutions present)"
+  },
+  "blocks": [
+    {
+      "id": "sec-0",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Learning Objectives",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-1",
+      "type": "paragraph",
+      "content": {
+        "text": "By the end of this section, you will be able to:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-1",
+      "type": "figure",
+      "asset_url": "images/phy_m42096_Picture_6.png",
+      "caption": {
+        "text": "The motion of these racing snails can be described by their speeds and their velocities. (credit: tobitasflickr, Flickr)",
+        "inline": []
+      },
+      "alt": "Snails leaving slime trails as they race each other along a flat surface.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-3",
+      "type": "paragraph",
+      "content": {
+        "text": "There is more to motion than distance and displacement. Questions such as, “How long does a foot race take?” and “What was the runner’s speed?” cannot be answered without an understanding of other concepts. In this section we add definitions of time, velocity, and speed to expand our description of motion.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-4",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Time",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-5",
+      "type": "paragraph",
+      "content": {
+        "text": "As discussed in Physical Quantities and Units , the most fundamental physical quantities are defined by how they are measured. This is the case with time. Every measurement of time involves measuring a change in some physical quantity. It may be a number on a digital clock, a heartbeat, or the position of the Sun in the sky. In physics, the definition of time is simple— time is *change* , or the interval over which change occurs. It is impossible to know that time has passed unless something changes.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-6",
+      "type": "paragraph",
+      "content": {
+        "text": "The amount of time or change is calibrated by comparison with a standard. The SI unit for time is the second, abbreviated s. We might, for example, observe that a certain pendulum makes one full swing every 0.75 s. We could then use the pendulum to measure time by counting its swings or, of course, by connecting the pendulum to a clock mechanism that registers time on a dial. This allows us to not only measure the amount of time, but also to determine a sequence of events.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-7",
+      "type": "paragraph",
+      "content": {
+        "text": "How does time relate to motion? We are usually interested in elapsed time for a particular motion, such as how long it takes an airplane passenger to get from his seat to the back of the plane. To find elapsed time, we note the time at the beginning and end of the motion and subtract the two. For example, a lecture may start at 11:00 *A.M.* and end at 11:50 *A.M.* , so that the elapsed time would be 50 min. Elapsed time *$Δt$* is the difference between the ending time and beginning time,",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-8",
+      "type": "paragraph",
+      "content": {
+        "text": "where $Δt$ is the change in time or elapsed time, ${t}_{f}$ is the time at the end of the motion, and ${t}_{0}$ is the time at the beginning of the motion. (As usual, the delta symbol, $Δ$ , means the change in the quantity that follows it.)",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-9",
+      "type": "paragraph",
+      "content": {
+        "text": "Life is simpler if the beginning time ${t}_{0}$ is taken to be zero, as when we use a stopwatch. If we were using a stopwatch, it would simply read zero at the start of the lecture and 50 min at the end. If ${t}_{0}=0$ , then $Δt={t}_{f}≡t$ .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-10",
+      "type": "paragraph",
+      "content": {
+        "text": "In this text, for simplicity’s sake,",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-11",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Velocity",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-12",
+      "type": "paragraph",
+      "content": {
+        "text": "Your notion of velocity is probably the same as its scientific definition. You know that if you have a large displacement in a small amount of time you have a large velocity, and that velocity has units of distance divided by time, such as miles per hour or kilometers per hour.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-13",
+      "type": "paragraph",
+      "content": {
+        "text": "Average velocity is *displacement (change in position) divided by the time of travel* ,",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-14",
+      "type": "paragraph",
+      "content": {
+        "text": "where $v-$ is the *average* (indicated by the bar over the $v$ ) velocity, $Δx$ is the change in position (or displacement), and ${x}_{f}$ and ${x}_{0}$ are the final and beginning positions at times ${t}_{f}$ and ${t}_{0}$ , respectively. If the starting time ${t}_{0}$ is taken to be zero, then the average velocity is simply",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-15",
+      "type": "paragraph",
+      "content": {
+        "text": "Notice that this definition indicates that *velocity is a vector because displacement is a vector* . It has both magnitude and direction. The SI unit for velocity is meters per second or m/s, but many other units, such as km/h, mi/h (also written as mph), and cm/s, are in common use. Suppose, for example, an airplane passenger took 5 seconds to move −4 m (the negative sign indicates that displacement is toward the back of the plane). His average velocity would be",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-16",
+      "type": "paragraph",
+      "content": {
+        "text": "The minus sign indicates the average velocity is also toward the rear of the plane.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-17",
+      "type": "paragraph",
+      "content": {
+        "text": "The average velocity of an object does not tell us anything about what happens to it between the starting point and ending point, however. For example, we cannot tell from average velocity whether the airplane passenger stops momentarily or backs up before he goes to the back of the plane. To get more details, we must consider smaller segments of the trip over smaller time intervals.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-2",
+      "type": "figure",
+      "asset_url": "images/phy_m42096_Figure_02_02_01.jpg",
+      "caption": {
+        "text": "A more detailed record of an airplane passenger heading toward the back of the plane, showing smaller segments of his trip.",
+        "inline": []
+      },
+      "alt": "Airplane shown from the outside. Vector arrows show paths of each individual segment of the passenger’s trip to the back of the plane.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-19",
+      "type": "paragraph",
+      "content": {
+        "text": "The smaller the time intervals considered in a motion, the more detailed the information. When we carry this process to its logical conclusion, we are left with an infinitesimally small interval. Over such an interval, the average velocity becomes the *instantaneous velocity* or the *velocity at a specific instant* . A car’s speedometer, for example, shows the magnitude (but not the direction) of the instantaneous velocity of the car. (Police give tickets based on instantaneous velocity, but when calculating how long it will take to get from one place to another on a road trip, you need to use average velocity.) Instantaneous velocity $v$ is the average velocity at a specific instant in time (or over an infinitesimally small time interval).",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-20",
+      "type": "paragraph",
+      "content": {
+        "text": "Mathematically, finding instantaneous velocity, $v$ , at a precise instant $t$ can involve taking a limit, a calculus operation beyond the scope of this text. However, under many circumstances, we can find precise values for instantaneous velocity without calculus.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-21",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Speed",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-22",
+      "type": "paragraph",
+      "content": {
+        "text": "In everyday language, most people use the terms “speed” and “velocity” interchangeably. In physics, however, they do not have the same meaning and they are distinct concepts. One major difference is that speed has no direction. Thus *speed is a scalar* . Just as we need to distinguish between instantaneous velocity and average velocity, we also need to distinguish between instantaneous speed and average speed.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-23",
+      "type": "paragraph",
+      "content": {
+        "text": "Instantaneous speed is the magnitude of instantaneous velocity. For example, suppose the airplane passenger at one instant had an instantaneous velocity of −3.0 m/s (the minus meaning toward the rear of the plane). At that same time his instantaneous speed was 3.0 m/s. Or suppose that at one time during a shopping trip your instantaneous velocity is 40 km/h due north. Your instantaneous speed at that instant would be 40 km/h—the same magnitude but without a direction. Average speed, however, is very different from average velocity. Average speed is the distance traveled divided by elapsed time.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-24",
+      "type": "paragraph",
+      "content": {
+        "text": "We have noted that distance traveled can be greater than the magnitude of displacement. So average speed can be greater than average velocity, which is displacement divided by time. For example, if you drive to a store and return home in half an hour, and your car’s odometer shows the total distance traveled was 6 km, then your average speed was 12 km/h. Your average velocity, however, was zero, because your displacement for the round trip is zero. (Displacement is change in position and, thus, is zero for a round trip.) Thus average speed is *not* simply the magnitude of average velocity.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-3",
+      "type": "figure",
+      "asset_url": "images/phy_m42096_Figure_02_02_02.jpg",
+      "caption": {
+        "text": "During a 30-minute round trip to the store, the total distance traveled is 6 km. The average speed is 12 km/h. The displacement for the round trip is zero, since there was no net change in position. Thus the average velocity is zero.",
+        "inline": []
+      },
+      "alt": "A house and a store, with a set of arrows in between showing that the distance between them is 3 point 0 kilometers and the total distance traveled, delta x total, equals 0 kilometers.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-26",
+      "type": "paragraph",
+      "content": {
+        "text": "Another way of visualizing the motion of an object is to use a graph. A plot of position or of velocity as a function of time can be very useful. For example, for this trip to the store, the position, velocity, and speed-vs.-time graphs are displayed in . (Note that these graphs depict a very simplified model of the trip. We are assuming that speed is constant during the trip, which is unrealistic given that we’ll probably stop at the store. But for simplicity’s sake, we will model it with no stops or changes in speed. We are also assuming that the route between the store and the house is a perfectly straight line.)",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-4",
+      "type": "figure",
+      "asset_url": "images/phy_m42096_Figure_02_02_03.jpg",
+      "caption": {
+        "text": "Position vs. time, velocity vs. time, and speed vs. time on a trip. Note that the velocity for the return trip is negative.",
+        "inline": []
+      },
+      "alt": "Three line graphs. First line graph is of position in kilometers versus time in hours. The line increases linearly from 0 kilometers to 3 kilometers in the first 0 point 25 hours. It then decreases linearly from 3 kilometers to 0 kilometers between 0 point 25 and 0 point 5 hours. Second line graph shows velocity in kilometers per hour versus time in hours. The line is flat at 12 kilometers per hour from time 0 to time 0 point 25. It is vertical at time 0 point 25, dropping from 12 kilometers per hour to negative 12 kilometers per hour. It is flat again at negative 12 kilometers per hour from 0 point 25 hours to 0 point 5 hours. Third line graph shows speed in kilometers per hour versus time in hours. The line is flat at 12 kilometers per hour from time equals 0 to time equals 0 point 5 hours.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-28",
+      "type": "paragraph",
+      "content": {
+        "text": "If you have spent much time driving, you probably have a good sense of speeds between about 10 and 70 miles per hour. But what are these in meters per second? What do we mean when we say that something is moving at 10 m/s? To get a better sense of what these values really mean, do some observations and calculations on your own:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-29",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A commuter train travels from Baltimore to Washington, DC, and back in 1 hour and 45 minutes. The distance between the two stations is approximately 40 miles. What is (a) the average velocity of the train, and (b) the average speed of the train in m/s?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a) The average velocity of the train is zero because ${x}_{f}={x}_{0}$ ; the train ends up at the same place it starts. (b) The average speed of the train is calculated below. Note that the train travels 40 miles one way and 40 miles back, for a total distance of 80 miles. \\[$\\frac{distance}{time}=\\frac{80 miles}{105 minutes}$\\] \\[$\\frac{80 miles}{105 minutes}×\\frac{5280 feet}{1 mile}×\\frac{1 meter}{3.28 feet}×\\frac{1 minute}{60 seconds}=20 m/s$\\]",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-30",
+      "type": "paragraph",
+      "content": {
+        "text": "A commuter train travels from Baltimore to Washington, DC, and back in 1 hour and 45 minutes. The distance between the two stations is approximately 40 miles. What is (a) the average velocity of the train, and (b) the average speed of the train in m/s?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-31",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) The average velocity of the train is zero because ${x}_{f}={x}_{0}$ ; the train ends up at the same place it starts.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-32",
+      "type": "paragraph",
+      "content": {
+        "text": "(b) The average speed of the train is calculated below. Note that the train travels 40 miles one way and 40 miles back, for a total distance of 80 miles.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-33",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Test Prep for AP Courses",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-34",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A group of students has two carts, *A* and *B* , with wheels that turn with negligible friction. The two carts travel along a straight horizontal track and eventually collide. Before the collision, cart *A* travels to the right and cart *B* is initially at rest. After the collision, the carts stick together. Describe an experimental procedure to determine the velocities of the carts before and after the collision, including all the additional equipment you would need. You may include a labeled diagram of your setup to help in your description. Indicate what measurements you would take and how you would take them. Include enough detail so that another student could carry out your procedure.; There will be sources of error in the measurements taken in the experiment both before and after the collision. Which velocity will be more greatly affected by this error: the velocity prior to the collision or the velocity after the collision? Or will both sets of data be affected equally? Justify your answer.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a) Use tape to mark off two distances on the track — one for cart *A* before the collision and one for the combined carts after the collision. Push cart *A* to give it an initial speed. Use a stopwatch to measure the time it takes for the cart(s) to cross the marked distances. The speeds are the distances divided by the times. (b) If the measurement errors are of the same magnitude, they will have a greater effect after the collision. The speed of the combined carts will be less than the initial speed of cart *A* . As a result, these errors will be a greater percentage of the actual velocity value after the collision occurs. (Note: Other arguments could properly be made for ‘more error before the collision' and error that ‘equally affects both sets of measurement.')",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-35",
+      "type": "paragraph",
+      "content": {
+        "text": "A group of students has two carts, *A* and *B* , with wheels that turn with negligible friction. The two carts travel along a straight horizontal track and eventually collide. Before the collision, cart *A* travels to the right and cart *B* is initially at rest. After the collision, the carts stick together.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-36",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) Use tape to mark off two distances on the track — one for cart *A* before the collision and one for the combined carts after the collision. Push cart *A* to give it an initial speed. Use a stopwatch to measure the time it takes for the cart(s) to cross the marked distances. The speeds are the distances divided by the times.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-37",
+      "type": "paragraph",
+      "content": {
+        "text": "(b) If the measurement errors are of the same magnitude, they will have a greater effect after the collision. The speed of the combined carts will be less than the initial speed of cart *A* . As a result, these errors will be a greater percentage of the actual velocity value after the collision occurs. (Note: Other arguments could properly be made for ‘more error before the collision' and error that ‘equally affects both sets of measurement.')",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-38",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Section Summary",
+        "inline": []
+      }
+    },
+    {
+      "id": "sec-39",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Conceptual Questions",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-40",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Give an example (but not one from the text) of a device used to measure time and identify what change in that device indicates a change in time.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-41",
+      "type": "paragraph",
+      "content": {
+        "text": "Give an example (but not one from the text) of a device used to measure time and identify what change in that device indicates a change in time.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-42",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "There is a distinction between average speed and the magnitude of average velocity. Give an example that illustrates the difference between these two quantities.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-43",
+      "type": "paragraph",
+      "content": {
+        "text": "There is a distinction between average speed and the magnitude of average velocity. Give an example that illustrates the difference between these two quantities.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-44",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Does a car’s odometer measure distance traveled or displacement? Does its speedometer measure speed or velocity?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-45",
+      "type": "paragraph",
+      "content": {
+        "text": "Does a car’s odometer measure distance traveled or displacement? Does its speedometer measure speed or velocity?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-46",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "If you divide the total distance traveled on a car trip (as determined by the odometer) by the time for the trip, are you calculating the average speed or the magnitude of the average velocity? Under what circumstances are these two quantities the same?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-47",
+      "type": "paragraph",
+      "content": {
+        "text": "If you divide the total distance traveled on a car trip (as determined by the odometer) by the time for the trip, are you calculating the average speed or the magnitude of the average velocity? Under what circumstances are these two quantities the same?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-48",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "How are instantaneous velocity and instantaneous speed related to one another? How do they differ?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-49",
+      "type": "paragraph",
+      "content": {
+        "text": "How are instantaneous velocity and instantaneous speed related to one another? How do they differ?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-50",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Problems & Exercises",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-51",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "(a) Calculate Earth’s average speed relative to the Sun. (b) What is its average velocity over a period of one year?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a) $3.0×{10}^{4}m/s$ (b) 0 m/s",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-52",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) Calculate Earth’s average speed relative to the Sun. (b) What is its average velocity over a period of one year?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-53",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) $3.0×{10}^{4}m/s$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-54",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A helicopter blade spins at exactly 100 revolutions per minute. Its tip is 5.00 m from the center of rotation. (a) Calculate the average speed of the blade tip in the helicopter’s frame of reference. (b) What is its average velocity over one revolution?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-55",
+      "type": "paragraph",
+      "content": {
+        "text": "A helicopter blade spins at exactly 100 revolutions per minute. Its tip is 5.00 m from the center of rotation. (a) Calculate the average speed of the blade tip in the helicopter’s frame of reference. (b) What is its average velocity over one revolution?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-56",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "The North American and European continents are moving apart at a rate of about 3 cm/y. At this rate how long will it take them to drift 500 km farther apart than they are at present?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$2×{10}^{7}years$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-57",
+      "type": "paragraph",
+      "content": {
+        "text": "The North American and European continents are moving apart at a rate of about 3 cm/y. At this rate how long will it take them to drift 500 km farther apart than they are at present?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-58",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Land west of the San Andreas fault in southern California is moving at an average velocity of about 6 cm/y northwest relative to land east of the fault. Los Angeles is west of the fault and may thus someday be at the same latitude as San Francisco, which is east of the fault. How far in the future will this occur if the displacement to be made is 590 km northwest, assuming the motion remains constant?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-59",
+      "type": "paragraph",
+      "content": {
+        "text": "Land west of the San Andreas fault in southern California is moving at an average velocity of about 6 cm/y northwest relative to land east of the fault. Los Angeles is west of the fault and may thus someday be at the same latitude as San Francisco, which is east of the fault. How far in the future will this occur if the displacement to be made is 590 km northwest, assuming the motion remains constant?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-60",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "On May 26, 1934, a streamlined, stainless steel diesel train called the Zephyr set the world’s nonstop long-distance speed record for trains. Its run from Denver to Chicago took 13 hours, 4 minutes, 58 seconds, and was witnessed by more than a million people along the route. The total distance traveled was 1633.8 km. What was its average speed in km/h and m/s?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$34.689 m/s=124.88 km/h$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-61",
+      "type": "paragraph",
+      "content": {
+        "text": "On May 26, 1934, a streamlined, stainless steel diesel train called the Zephyr set the world’s nonstop long-distance speed record for trains. Its run from Denver to Chicago took 13 hours, 4 minutes, 58 seconds, and was witnessed by more than a million people along the route. The total distance traveled was 1633.8 km. What was its average speed in km/h and m/s?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-62",
+      "type": "paragraph",
+      "content": {
+        "text": "$34.689 m/s=124.88 km/h$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-63",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Tidal friction is slowing the rotation of the Earth. As a result, the orbit of the Moon is increasing in radius at a rate of approximately 4 cm/year. Assuming this to be a constant rate, how many years will pass before the radius of the Moon’s orbit increases by $3.84×{10}^{6}m$ (1%)?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-64",
+      "type": "paragraph",
+      "content": {
+        "text": "Tidal friction is slowing the rotation of the Earth. As a result, the orbit of the Moon is increasing in radius at a rate of approximately 4 cm/year. Assuming this to be a constant rate, how many years will pass before the radius of the Moon’s orbit increases by $3.84×{10}^{6}m$ (1%)?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-65",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A student drove to the university from their home and noted that the odometer reading of their car increased by 12.0 km. The trip took 18.0 min. (a) What was their average speed? (b) If the straight-line distance from their home to the university is 10.3 km in a direction $25.0º$ south of east, what was their average velocity? (c) If they returned home by the same path 7 h 30 min after they left, what were their average speed and velocity for the entire trip?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a) $40.0 km/h$ (b) 34.3 km/h, $25ºS of E.$ (c) $average speed=3.20 km/h,v-=0.$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-66",
+      "type": "paragraph",
+      "content": {
+        "text": "A student drove to the university from their home and noted that the odometer reading of their car increased by 12.0 km. The trip took 18.0 min. (a) What was their average speed? (b) If the straight-line distance from their home to the university is 10.3 km in a direction $25.0º$ south of east, what was their average velocity? (c) If they returned home by the same path 7 h 30 min after they left, what were their average speed and velocity for the entire trip?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-67",
+      "type": "paragraph",
+      "content": {
+        "text": "(b) 34.3 km/h, $25ºS of E.$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-68",
+      "type": "paragraph",
+      "content": {
+        "text": "(c) $average speed=3.20 km/h,v-=0.$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-69",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "The speed of propagation of the action potential (an electrical signal) in a nerve cell depends (inversely) on the diameter of the axon (nerve fiber). If the nerve cell connecting the spinal cord to your feet is 1.1 m long, and the nerve impulse speed is 18 m/s, how long does it take for the nerve signal to travel this distance?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-70",
+      "type": "paragraph",
+      "content": {
+        "text": "The speed of propagation of the action potential (an electrical signal) in a nerve cell depends (inversely) on the diameter of the axon (nerve fiber). If the nerve cell connecting the spinal cord to your feet is 1.1 m long, and the nerve impulse speed is 18 m/s, how long does it take for the nerve signal to travel this distance?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-71",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Conversations with astronauts on the lunar surface were characterized by a kind of echo in which the earthbound person’s voice was so loud in the astronaut’s space helmet that it was picked up by the astronaut’s microphone and transmitted back to Earth. It is reasonable to assume that the echo time equals the time necessary for the radio wave to travel from the Earth to the Moon and back (that is, neglecting any time delays in the electronic equipment). Calculate the distance from Earth to the Moon given that the echo time was 2.56 s and that radio waves travel at the speed of light $(3.00×{10}^{8}m/s)$ .",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "384,000 km",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-72",
+      "type": "paragraph",
+      "content": {
+        "text": "Conversations with astronauts on the lunar surface were characterized by a kind of echo in which the earthbound person’s voice was so loud in the astronaut’s space helmet that it was picked up by the astronaut’s microphone and transmitted back to Earth. It is reasonable to assume that the echo time equals the time necessary for the radio wave to travel from the Earth to the Moon and back (that is, neglecting any time delays in the electronic equipment). Calculate the distance from Earth to the Moon given that the echo time was 2.56 s and that radio waves travel at the speed of light $(3.00×{10}^{8}m/s)$ .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-73",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A football quarterback runs 15.0 m straight down the playing field in 2.50 s. He is then hit and pushed 3.00 m straight backward in 1.75 s. He breaks the tackle and runs straight forward another 21.0 m in 5.20 s. Calculate his average velocity (a) for each of the three intervals and (b) for the entire motion.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-74",
+      "type": "paragraph",
+      "content": {
+        "text": "A football quarterback runs 15.0 m straight down the playing field in 2.50 s. He is then hit and pushed 3.00 m straight backward in 1.75 s. He breaks the tackle and runs straight forward another 21.0 m in 5.20 s. Calculate his average velocity (a) for each of the three intervals and (b) for the entire motion.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-75",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "The planetary model of the atom pictures electrons orbiting the atomic nucleus much as planets orbit the Sun. In this model you can view hydrogen, the simplest atom, as having a single electron in a circular orbit $1.06×{10}^{-10}m$ in diameter. (a) If the average speed of the electron in this orbit is known to be $2.20×{10}^{6}m/s$ , calculate the number of revolutions per second it makes about the nucleus. (b) What is the electron’s average velocity per revolution?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a) $6.61×{10}^{15}rev/s$ (b) 0 m/s",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-76",
+      "type": "paragraph",
+      "content": {
+        "text": "The planetary model of the atom pictures electrons orbiting the atomic nucleus much as planets orbit the Sun. In this model you can view hydrogen, the simplest atom, as having a single electron in a circular orbit $1.06×{10}^{-10}m$ in diameter. (a) If the average speed of the electron in this orbit is known to be $2.20×{10}^{6}m/s$ , calculate the number of revolutions per second it makes about the nucleus. (b) What is the electron’s average velocity per revolution?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-77",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) $6.61×{10}^{15}rev/s$",
+        "inline": []
+      },
+      "level": "core"
+    }
+  ],
+  "solutions": {
+    "osbooks-college-physics-bundle:m42096:exr-29": [
+      [
+        {
+          "kind": "text",
+          "text": "(a) The average velocity of the train is zero because"
+        },
+        {
+          "kind": "math",
+          "text": "{x}_{f}={x}_{0}"
+        },
+        {
+          "kind": "text",
+          "text": "; the train ends up at the same place it starts."
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(b) The average speed of the train is calculated below. Note that the train travels 40 miles one way and 40 miles back, for a total distance of 80 miles."
+        }
+      ],
+      [
+        {
+          "kind": "math",
+          "text": "\\frac{"
+        },
+        {
+          "kind": "text",
+          "text": "distance"
+        },
+        {
+          "kind": "math",
+          "text": "}{time}=\\frac{80 miles}{105 minutes}"
+        }
+      ],
+      [
+        {
+          "kind": "math",
+          "text": "\\frac{80 miles}{105 minutes}×\\frac{5280 feet}{1 mile}×\\frac{1 meter}{3.28 feet}×\\frac{1 minute}{60 seconds}=20 m/s"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42096:exr-34": [
+      [
+        {
+          "kind": "text",
+          "text": "(a) Use tape to mark off two distances on the track — one for cart"
+        },
+        {
+          "kind": "text",
+          "text": "*A*"
+        },
+        {
+          "kind": "text",
+          "text": "before the collision and one for the combined carts after the collision. Push cart"
+        },
+        {
+          "kind": "text",
+          "text": "*A*"
+        },
+        {
+          "kind": "text",
+          "text": "to give it an initial speed. Use a stopwatch to measure the time it takes for the cart(s) to cross the marked distances. The speeds are the distances divided by the times."
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(b) If the measurement errors are of the same magnitude, they will have a greater effect after the collision. The speed of the combined carts will be less than the initial speed of cart"
+        },
+        {
+          "kind": "text",
+          "text": "*A*"
+        },
+        {
+          "kind": "text",
+          "text": ". As a result, these errors will be a greater percentage of the actual velocity value after the collision occurs. (Note: Other arguments could properly be made for ‘more error before the collision' and error that ‘equally affects both sets of measurement.')"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42096:exr-51": [
+      [
+        {
+          "kind": "text",
+          "text": "(a)"
+        },
+        {
+          "kind": "math",
+          "text": "3.0×{10}^{4}m/s"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(b) 0 m/s"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42096:exr-56": [
+      [
+        {
+          "kind": "math",
+          "text": "2×{10}^{7}years"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42096:exr-60": [
+      [
+        {
+          "kind": "math",
+          "text": "34.689 m/s=124.88 km/h"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42096:exr-65": [
+      [
+        {
+          "kind": "text",
+          "text": "(a)"
+        },
+        {
+          "kind": "math",
+          "text": "40.0 km/h"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(b) 34.3 km/h,"
+        },
+        {
+          "kind": "math",
+          "text": "25º"
+        },
+        {
+          "kind": "text",
+          "text": "S of E"
+        },
+        {
+          "kind": "math",
+          "text": "."
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(c)"
+        },
+        {
+          "kind": "text",
+          "text": "average speed"
+        },
+        {
+          "kind": "math",
+          "text": "=3.20 km/h,v-=0."
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42096:exr-71": [
+      [
+        {
+          "kind": "text",
+          "text": "384,000 km"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42096:exr-75": [
+      [
+        {
+          "kind": "text",
+          "text": "(a)"
+        },
+        {
+          "kind": "math",
+          "text": "6.61×{10}^{15}rev/s"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(b) 0 m/s"
+        }
+      ]
+    ]
+  }
+}

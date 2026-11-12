@@ -5,6 +5,7 @@
   "title": "Friction, Drag and Elasticity",
   "book_id": "secondary_physics",
   "part_id": "part-1",
+  "facts_inherited": false,
   "learning_objectives": [
     {
       "id": "lo-1",
@@ -218,6 +219,7 @@
       "slug": "introduction-further-applications-of-newton-s-laws",
       "title": "Introduction: Further Applications of Newton's Laws",
       "est_minutes": 8,
+      "facts_inherited": false,
       "learning_objectives": [
         {
           "id": "lo-1",
@@ -230,7 +232,7 @@
           {
             "id": "b-1",
             "type": "figure",
-            "asset_url": "images/phy_m42138_Figure_06_00_01.jpg",
+            "asset_url": "books/secondary_physics/398c2e0d423d44b7792e5da44052652e0586555f0032f79330913007b277d8f9.jpg",
             "caption": {
               "text": "Total hip replacement surgery has become a common procedure. The head (or ball) of the patient’s femur fits into a cup that has a hard plastic-like inner lining. (credit: National Institutes of Health, via Wikimedia Commons)",
               "inline": []
@@ -316,6 +318,7 @@
       "slug": "friction",
       "title": "Friction",
       "est_minutes": 24,
+      "facts_inherited": false,
       "learning_objectives": [
         {
           "id": "lo-1",
@@ -381,7 +384,7 @@
           {
             "id": "b-7",
             "type": "figure",
-            "asset_url": "images/phy_m42139_Figure_06_01_01a.jpg",
+            "asset_url": "books/secondary_physics/b612efd9ba7191c54f60ce7b9333a25eb8e6ae01b581c56eb96ffa0a84698531.jpg",
             "caption": {
               "text": "Frictional forces, such as $f$ , always oppose motion or attempted motion between surfaces in contact. Friction arises in part because of the roughness of the surfaces in contact, as seen in the expanded view. In order for the object to move, it must rise to where the peaks can skip along the bottom surface. Thus a force is required just to set the object in motion. Some of the peaks will be broken off, also requiring a force to maintain motion. Much of the friction is actually due to attractive forces between molecules making up the two objects, so that even perfectly smooth surfaces are not friction-free. Such adhesive forces also depend on the substances the surfaces are made of, explaining, for example, why rubber-soled shoes slip less than those with leather soles.",
               "inline": []
@@ -504,7 +507,7 @@
           {
             "id": "b-22",
             "type": "figure",
-            "asset_url": "images/phy_m42139_Figure_06_01_02a.jpg",
+            "asset_url": "books/secondary_physics/0fe2548fc350e08459f52ced46062f900c05332d50f8514bae4cb3d348f53e41.jpg",
             "caption": {
               "text": "Artificial knee replacement is a procedure that has been performed for more than 20 years. In this figure, we see the post-op X-rays of the right knee joint replacement. (credit: Mike Baird, Flickr)",
               "inline": []
@@ -523,7 +526,7 @@
           {
             "id": "b-24",
             "type": "figure",
-            "asset_url": "images/phy_m42139_Figure_06_01_03a.jpg",
+            "asset_url": "books/secondary_physics/29a3c9f98c9a4ff1c0f16ebfce4318411e276e661212570f616db3cb9528aa02.jpg",
             "caption": {
               "text": "The motion of the skier and friction are parallel to the slope and so it is most convenient to project all forces onto a coordinate system where one axis is parallel to the slope and the other is perpendicular (axes shown to left of skier). $N$ (the normal force) is perpendicular to the slope, and $f$ (the friction) is parallel to the slope, but $w$ (the skier’s weight) has components along both axes, namely ${w}_{⊥}$ and ${W}_{//}$ . $N$ is equal in magnitude to ${w}_{⊥}$ , so there is no motion perpendicular to the slope. However, $f$ is less than ${W}_{//}$ in magnitude, so there is acceleration down the slope (along the *x* -axis).",
               "inline": []
@@ -622,7 +625,7 @@
           {
             "id": "b-36",
             "type": "figure",
-            "asset_url": "images/phy_m42139_Figure_06_01_04a.jpg",
+            "asset_url": "books/secondary_physics/638449751cf11ed25cd9c0c0e8be9131f53ad64d9a77f117258b32fbf1f70223.jpg",
             "caption": {
               "text": "Two rough surfaces in contact have a much smaller area of actual contact than their total area. When there is a greater normal force as a result of a greater applied force, the area of actual contact increases as does friction.",
               "inline": []
@@ -641,7 +644,7 @@
           {
             "id": "b-38",
             "type": "figure",
-            "asset_url": "images/phy_m42139_Figure_06_01_05a.jpg",
+            "asset_url": "books/secondary_physics/4895265c3d2e7f4537e6db255a9663e5f67b2285584141f0fcd15b8e40d2946f.jpg",
             "caption": {
               "text": "The tip of a probe is deformed sideways by frictional force as the probe is dragged across a surface. Measurements of how the force varies for different materials are yielding fundamental insights into the atomic nature of friction.",
               "inline": []
@@ -796,7 +799,7 @@
           {
             "id": "b-57",
             "type": "figure",
-            "asset_url": "images/phy_m42139_Figure_04_01_01a-e066.jpg",
+            "asset_url": "books/secondary_physics/a81038288f7a1aeb1c14747de372fc6157257b2cf0bc9a73913a2eddfea5a67f.jpg",
             "caption": {
               "text": "(a) Overhead view of two ice skaters pushing on a third. One skater pushes with a force F two, represented by an arrow pointing up, and a second skater pushes with a force F one, represented by an arrow pointing from left to right. Vector F one and vector F two are along the arms of the two skaters acting on the third skater. A vector diagram is shown in the form of a right triangle in which the base is vector F one pointing east, and perpendicular to F one is vector F two pointing north. The resultant vector is shown by the hypotenuse pointing northeast. (b) Free-body diagram showing only the forces acting on the skater.",
               "inline": []
@@ -927,7 +930,7 @@
           {
             "id": "b-73",
             "type": "figure",
-            "asset_url": "images/phy_m42139_Figure_06_01_06.jpg",
+            "asset_url": "books/secondary_physics/6b733e7c4f59e9ebdb4fead2f2e4ba823b1e5b40baec7f9b7230ade826640d93.jpg",
             "caption": {
               "text": "Part of the climber’s weight is supported by her rope and part by friction between her feet and the rock face.",
               "inline": []
@@ -962,7 +965,7 @@
           {
             "id": "b-77",
             "type": "figure",
-            "asset_url": "images/phy_m42139_Figure_06_01_07a.jpg",
+            "asset_url": "books/secondary_physics/1290e0bcf87d5a3bfb1ea95aa8c644ba1d58e511cf77c31f537656e03ac4ca41.jpg",
             "caption": {
               "text": "Which method of sliding a block of ice requires less force—(a) pushing or (b) pulling at the same angle above the horizontal?",
               "inline": []
@@ -1129,6 +1132,7 @@
       "slug": "drag-forces",
       "title": "Drag Forces",
       "est_minutes": 18,
+      "facts_inherited": false,
       "learning_objectives": [
         {
           "id": "lo-1",
@@ -1186,7 +1190,7 @@
           {
             "id": "b-6",
             "type": "figure",
-            "asset_url": "images/phy_m42080_Figure_06_02_02a.jpg",
+            "asset_url": "books/secondary_physics/944dc4daf78d9e6b330a4cf542a3a6833fafb541a8702d8e614d58415e28a95b.jpg",
             "caption": {
               "text": "From racing cars to bobsled racers, aerodynamic shaping is crucial to achieving top speeds. Bobsleds are designed for speed. They are shaped like a bullet with tapered fins. (credit: U.S. Army, via Wikimedia Commons)",
               "inline": []
@@ -1205,7 +1209,7 @@
           {
             "id": "b-8",
             "type": "figure",
-            "asset_url": "images/phy_m42080_Figure_06_02_03a.jpg",
+            "asset_url": "books/secondary_physics/abba29ce1089ca91c5ea5c2a00e451a95061c091a88964df3ec62d261c8d8004.jpg",
             "caption": {
               "text": "NASA researchers test a model plane in a wind tunnel. (credit: NASA/Ames)",
               "inline": []
@@ -1232,7 +1236,7 @@
           {
             "id": "b-11",
             "type": "figure",
-            "asset_url": "images/phy_m42080_Figure_06_02_05a.jpg",
+            "asset_url": "books/secondary_physics/ab377462989be9f28368ab9969bcb19456edb76a19e6fbac49e753532e549ff3.jpg",
             "caption": {
               "text": "Body suits, such as this LZR Racer Suit, have been credited with many world records after their release in 2008. Smoother “skin” and more compression forces on a swimmer’s body provide at least 10% less drag. (credit: NASA/Kathy Barnstorff)",
               "inline": []
@@ -1299,7 +1303,7 @@
           {
             "id": "b-19",
             "type": "figure",
-            "asset_url": "images/phy_m42080_Figure_06_02_06a.jpg",
+            "asset_url": "books/secondary_physics/edb714c684dc68c6528d8a35e9f6ac643e842647817110a5020c52059f90edd2.jpg",
             "caption": {
               "text": "Geese fly in a V formation during their long migratory travels. This shape reduces drag and energy consumption for individual birds, and also allows them a better way to communicate. (credit: Julo, Wikimedia Commons)",
               "inline": []
@@ -1662,6 +1666,7 @@
       "slug": "elasticity-stress-and-strain",
       "title": "Elasticity: Stress and Strain",
       "est_minutes": 24,
+      "facts_inherited": false,
       "learning_objectives": [
         {
           "id": "lo-1",
@@ -1711,7 +1716,7 @@
           {
             "id": "b-5",
             "type": "figure",
-            "asset_url": "images/phy_m42081_Figure_06_03_01a.jpg",
+            "asset_url": "books/secondary_physics/814c562ba44727e3817b95c165accff5e5f46149056b87f3b59823c643b3a6d1.jpg",
             "caption": {
               "text": "A graph of deformation $ΔL$ versus applied force $F$ . The straight segment is the linear region where Hooke’s law is obeyed. The slope of the straight region is $\\frac{1}{k}$ . For larger forces, the graph is curved but the deformation is still elastic— $ΔL$ will return to zero if the force is removed. Still greater forces permanently deform the object until it finally fractures. The shape of the curve near fracture depends on several factors, including how the force $F$ is applied. Note that in this graph the slope increases just before fracture, indicating that a small increase in $F$ is producing a large increase in $L$ near the fracture.",
               "inline": []
@@ -1730,7 +1735,7 @@
           {
             "id": "b-7",
             "type": "figure",
-            "asset_url": "images/phy_m42081_Figure_06_03_02a.jpg",
+            "asset_url": "books/secondary_physics/7a835c3ad36ebe0e88236fdd4569432aea2bdb0a94a96a139412c490a377fbeb.jpg",
             "caption": {
               "text": "The same force, in this case a weight ( $w$ ), applied to three different guitar strings of identical length produces the three different deformations shown as shaded segments. The string on the left is thin nylon, the one in the middle is thicker nylon, and the one on the right is steel.",
               "inline": []
@@ -1773,7 +1778,7 @@
           {
             "id": "b-12",
             "type": "figure",
-            "asset_url": "images/phy_m42081_Figure_06_03_03a-d0a3.jpg",
+            "asset_url": "books/secondary_physics/c9deb4da718e4abb91887e36f4c470c6933fa7e020327f4d24bef96123336a92.jpg",
             "caption": {
               "text": "(a) Tension. The rod is stretched a length $ΔL$ when a force is applied parallel to its length. (b) Compression. The same rod is compressed by forces with the same magnitude in the opposite direction. For very small deformations and uniform materials, $ΔL$ is approximately the same for the same magnitude of tension or compression. For larger deformations, the cross-sectional area changes as the rod is compressed or stretched.",
               "inline": []
@@ -1816,7 +1821,7 @@
           {
             "id": "b-17",
             "type": "figure",
-            "asset_url": "images/phy_m42081_Figure_06_03_04a.jpg",
+            "asset_url": "books/secondary_physics/4ebdba2f9066c7772f86777dae88350567c449b789bf1b444af000af76cbdeb0.jpg",
             "caption": {
               "text": "Gondolas travel along suspension cables at the Gala Yuzawa ski resort in Japan. (credit: Rudy Herman, Flickr)",
               "inline": []
@@ -1867,7 +1872,7 @@
           {
             "id": "b-23",
             "type": "figure",
-            "asset_url": "images/phy_m42081_Figure_06_03_05_xa.jpg",
+            "asset_url": "books/secondary_physics/4c89190cfba02b9eb294e51f5b4757da4686a8cbc43ef0ed810739bac6afa3c7.jpg",
             "caption": {
               "text": "Typical stress-strain curve for mammalian tendon. Three regions are shown: (1) toe region (2) linear region, and (3) failure region.",
               "inline": []
@@ -1918,7 +1923,7 @@
           {
             "id": "b-29",
             "type": "figure",
-            "asset_url": "images/phy_m42081_Figure_06_03_06a.jpg",
+            "asset_url": "books/secondary_physics/fb581e1dff2a5efd3ddf88da302a84cf95dd67efa2777d38866223a346f216fa.jpg",
             "caption": {
               "text": "Shearing forces are applied perpendicular to the length ${L}_{0}$ and parallel to the area $A$ , producing a deformation $Δx$ . Vertical forces are not shown, but it should be kept in mind that in addition to the two shearing forces, $F$ , there must be supporting forces to keep the object from rotating. The distorting effects of these supporting forces are ignored in this treatment. The weight of the object also is not shown, since it is usually negligible compared with forces large enough to cause significant deformations.",
               "inline": []
@@ -1953,7 +1958,7 @@
           {
             "id": "b-33",
             "type": "figure",
-            "asset_url": "images/phy_m42081_Figure_06_03_08a.jpg",
+            "asset_url": "books/secondary_physics/e48025affad0dbcdbb43b65c10d8c60e7c4ca6890d16a84e9da2267a7b1cd6e5.jpg",
             "caption": {
               "text": "Side view of a nail with a picture hung from it. The nail flexes very slightly (shown much larger than actual) because of the shearing effect of the supported weight. Also shown is the upward force of the wall on the nail, illustrating that there are equal and opposite forces applied across opposite cross sections of the nail. See for a calculation of the mass of the picture.",
               "inline": []
@@ -2028,7 +2033,7 @@
           {
             "id": "b-42",
             "type": "figure",
-            "asset_url": "images/phy_m42081_Figure_06_03_09a.jpg",
+            "asset_url": "books/secondary_physics/fd095be0bdb1711282309938a15bd166aec18320bdb101f0bcadd820eb0b644e.jpg",
             "caption": {
               "text": "An inward force on all surfaces compresses this cube. Its change in volume is proportional to the force per unit area and its original volume, and is related to the compressibility of the substance.",
               "inline": []
@@ -2335,7 +2340,7 @@
           {
             "id": "b-80",
             "type": "figure",
-            "asset_url": "images/phy_m42081_Figure_06_03_10a.jpg",
+            "asset_url": "books/secondary_physics/ba29a53c817a80dca8b1394f2c1da5a95c4065f58e116dbfc8ab554dd5db6437.jpg",
             "caption": {
               "text": "This telephone pole is at a $90º$ bend in a power line. A guy wire is attached to the top of the pole at an angle of $30º$ with the vertical.",
               "inline": []
@@ -2370,7 +2375,7 @@
           {
             "id": "b-84",
             "type": "figure",
-            "asset_url": "images/phy_m42081_OSX_CP2e_Figure_05_03Sol_CTQ01c.jpg",
+            "asset_url": "books/secondary_physics/0f46f34f89c8bfaad9562559c877aa5e5da12eab2d116ff901538d475894d2a4.jpg",
             "caption": {
               "text": "The figure is a plot of r as a function of t. The plot is a straight line through the origin with a positive slope.",
               "inline": []

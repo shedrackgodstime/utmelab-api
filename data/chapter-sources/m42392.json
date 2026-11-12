@@ -1,0 +1,773 @@
+{
+  "module": "m42392",
+  "source_attribution": {
+    "publisher": "OpenStax",
+    "book": "osbooks-college-physics-bundle",
+    "section": "m42392",
+    "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42392/index.cnxml",
+    "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)",
+    "locator": "CNXML module index.cnxml (typed elements, solutions present)"
+  },
+  "blocks": [
+    {
+      "id": "sec-0",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Learning Objectives",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-1",
+      "type": "paragraph",
+      "content": {
+        "text": "By the end of this section, you will be able to:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-2",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Faraday’s and Lenz’s Law",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-3",
+      "type": "paragraph",
+      "content": {
+        "text": "Faraday’s experiments showed that the emf induced by a change in magnetic flux depends on only a few factors. First, emf is directly proportional to the change in flux $ΔΦ$ . Second, emf is greatest when the change in time $Δt$ is smallest—that is, emf is inversely proportional to $Δt$ . Finally, if a coil has $N$ turns, an emf will be produced that is $N$ times greater than for a single coil, so that emf is directly proportional to $N$ . The equation for the emf induced by a change in magnetic flux is",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-4",
+      "type": "paragraph",
+      "content": {
+        "text": "This relationship is known as Faraday’s law of induction . The units for emf are volts, as is usual.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-5",
+      "type": "paragraph",
+      "content": {
+        "text": "The minus sign in Faraday’s law of induction is very important. The minus means that *the emf creates a current I and magnetic field B that oppose the change in flux $ΔΦ$ —this is known as Lenz’s law* . The direction (given by the minus sign) of the emf is so important that it is called Lenz’s law after the Russian Heinrich Lenz (1804–1865), who, like Faraday and Henry, independently investigated aspects of induction. Faraday was aware of the direction, but Lenz stated it so clearly that he is credited for its discovery. (See .)",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-1",
+      "type": "figure",
+      "asset_url": "images/phy_m42392_Figure_24_02_01_new.jpg",
+      "caption": {
+        "text": "(a) When this bar magnet is thrust into the coil, the strength of the magnetic field increases in the coil. The current induced in the coil creates another field, in the opposite direction of the bar magnet’s to oppose the increase. This is one aspect of *Lenz’s law—induction opposes any change in flux* . (b) and (c) are two other situations. Verify for yourself that the direction of the induced ${B}_{coil}$ shown indeed opposes the change in flux and that the current direction shown is consistent with RHR-2.",
+        "inline": []
+      },
+      "alt": "Part a of the figure shows a bar magnet held horizontal and moved into a coil held in the same plane. The magnet is moved in such a way that the north pole of the magnet is shown to face the coil. The magnetic lines of force are shown to emerge out from the North Pole. The magnetic field associated with the bar magnet is given as B mag. The strength of the magnetic field increases in the coil. The current induced in the coil I creates another field B coil, in the opposite direction of the bar magnet to oppose the increase. So B mag and B coil are in opposite directions. In part b of the diagram, the magnet is moved away from the coil. The magnet is moved in such a way that the north pole of the magnet is shown to face the coil. The magnetic lines of force are shown to emerge out from the North Pole. The magnetic field associated with the bar magnet is given as B mag. The current induced in the coil I creates another field B coil, in the same direction as the field of the bar magnet. So B mag and B coil are in same directions. Part c of the figure shows a bar magnet held horizontal and moved into a coil held in the same plane. The magnet is moved in such a way that the south pole of the magnet is shown to face the coil. The magnetic lines of force are shown to merge into the South Pole. The magnetic field associated with the bar magnet is given as B mag. The current induced in the coil I, creates another field B coil, in the opposite direction of field of the bar magnet. So B mag and B coil are in opposite directions.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-7",
+      "type": "paragraph",
+      "content": {
+        "text": "To use Lenz’s law to determine the directions of the induced magnetic fields, currents, and emfs:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-8",
+      "type": "paragraph",
+      "content": {
+        "text": "For practice, apply these steps to the situations shown in and to others that are part of the following text material.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-9",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Applications of Electromagnetic Induction",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-10",
+      "type": "paragraph",
+      "content": {
+        "text": "There are many applications of Faraday’s Law of induction, as we will explore in this chapter and others. At this juncture, let us mention several that have to do with data storage and magnetic fields. A very important application has to do with audio and video *recording tapes* . A plastic tape, coated with iron oxide, moves past a recording head. This recording head is basically a round iron ring about which is wrapped a coil of wire—an electromagnet ( ). A signal in the form of a varying input current from a microphone or camera goes to the recording head. These signals (which are a function of the signal amplitude and frequency) produce varying magnetic fields at the recording head. As the tape moves past the recording head, the magnetic field orientations of the iron oxide molecules on the tape are changed thus recording the signal. In the playback mode, the magnetized tape is run past another head, similar in structure to the recording head. The different magnetic field orientations of the iron oxide molecules on the tape induces an emf in the coil of wire in the playback head. This signal then is sent to a loudspeaker or video player.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-2",
+      "type": "figure",
+      "asset_url": "images/phy_m42392_Figure_24_02_02.jpg",
+      "caption": {
+        "text": "Recording and playback heads used with audio and video magnetic tapes. (credit: Steve Jurvetson)",
+        "inline": []
+      },
+      "alt": "Photograph of the electronic components of playback heads used with audio and video magnetic tapes.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-12",
+      "type": "paragraph",
+      "content": {
+        "text": "Similar principles apply to computer hard drives, except at a much faster rate. Here recordings are on a coated, spinning disk. Read heads historically were made to work on the principle of induction. However, the input information is carried in digital rather than analog form – a series of 0’s or 1’s are written upon the spinning hard drive. Today, most hard drive readout devices do not work on the principle of induction, but use a technique known as *giant magnetoresistance* . (The discovery that weak changes in a magnetic field in a thin film of iron and chromium could bring about much larger changes in electrical resistance was one of the first large successes of nanotechnology.) Another application of induction is found on the magnetic stripe on the back of your personal credit card as used at the grocery store or the ATM machine. This works on the same principle as the audio or video tape mentioned in the last paragraph in which a head reads personal information from your card.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-13",
+      "type": "paragraph",
+      "content": {
+        "text": "Another application of electromagnetic induction is when electrical signals need to be transmitted across a barrier. Consider the *cochlear implant* shown below. Sound is picked up by a microphone on the outside of the skull and is used to set up a varying magnetic field. A current is induced in a receiver secured in the bone beneath the skin and transmitted to electrodes in the inner ear. Electromagnetic induction can be used in other instances where electric signals need to be conveyed across various media.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-3",
+      "type": "figure",
+      "asset_url": "images/phy_m42392_Figure_24_02_03.jpg",
+      "caption": {
+        "text": "Electromagnetic induction used in transmitting electric currents across mediums. The device on the baby’s head induces an electrical current in a receiver secured in the bone beneath the skin. (credit: Bjorn Knetsch)",
+        "inline": []
+      },
+      "alt": "Photograph of a baby with a device attached on its lower part of the head, just above the right ear.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-15",
+      "type": "paragraph",
+      "content": {
+        "text": "Another contemporary area of research in which electromagnetic induction is being successfully implemented (and with substantial potential) is transcranial magnetic simulation. A host of disorders, including depression and hallucinations can be traced to irregular localized electrical activity in the brain. In *transcranial magnetic stimulation* , a rapidly varying and very localized magnetic field is placed close to certain sites identified in the brain. Weak electric currents are induced in the identified sites and can result in recovery of electrical functioning in the brain tissue.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-16",
+      "type": "paragraph",
+      "content": {
+        "text": "*Sleep apnea* (“the cessation of breath”) affects both adults and infants (especially premature babies and it may be a cause of sudden infant deaths [SID]). In such individuals, breath can stop repeatedly during their sleep. A cessation of more than 20 seconds can be very dangerous. Stroke, heart failure, and tiredness are just some of the possible consequences for a person having sleep apnea. The concern in infants is the stopping of breath for these longer times. One type of monitor to alert parents when a child is not breathing uses electromagnetic induction. A wire wrapped around the infant’s chest has an alternating current running through it. The expansion and contraction of the infant’s chest as the infant breathes changes the area through the coil. A pickup coil located nearby has an alternating current induced in it due to the changing magnetic field of the initial wire. If the child stops breathing, there will be a change in the induced current, and so a parent can be alerted.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-17",
+      "type": "paragraph",
+      "content": {
+        "text": "Lenz’s law is a manifestation of the conservation of energy. The induced emf produces a current that opposes the change in flux, because a change in flux means a change in energy. Energy can enter or leave, but not instantaneously. Lenz’s law is a consequence. As the change begins, the law says induction opposes and, thus, slows the change. In fact, if the induced emf were in the same direction as the change in flux, there would be a positive feedback that would give us free energy from no apparent source—conservation of energy would be violated.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "ex-18",
+      "type": "example",
+      "kind": "worked",
+      "title": {
+        "text": "Calculating Emf: How Great Is the Induced Emf?",
+        "inline": []
+      },
+      "problem": {
+        "text": "",
+        "inline": []
+      },
+      "answer": null,
+      "level": "core"
+    },
+    {
+      "id": "p-19",
+      "type": "paragraph",
+      "content": {
+        "text": "Calculate the magnitude of the induced emf when the magnet in (a) is thrust into the coil, given the following information: the single loop coil has a radius of 6.00 cm and the average value of $Bcosθ$ (this is given, since the bar magnet’s field is complex) increases from 0.0500 T to 0.250 T in 0.100 s.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-20",
+      "type": "paragraph",
+      "content": {
+        "text": "To find the *magnitude* of emf, we use Faraday’s law of induction as stated by $emf=-N\\frac{ΔΦ}{Δt}$ , but without the minus sign that indicates direction:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-21",
+      "type": "paragraph",
+      "content": {
+        "text": "We are given that $N=1$ and $Δt=0.100s$ , but we must determine the change in flux $ΔΦ$ before we can find emf. Since the area of the loop is fixed, we see that",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-22",
+      "type": "paragraph",
+      "content": {
+        "text": "Now $Δ(Bcosθ)=0.200 T$ , since it was given that $Bcosθ$ changes from 0.0500 to 0.250 T. The area of the loop is $A={πr}^{2}=(3.14...)(0.060 m{)}^{2}=1.13×{10}^{-2}{m}^{2}$ . Thus,",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-23",
+      "type": "paragraph",
+      "content": {
+        "text": "Entering the determined values into the expression for emf gives",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-24",
+      "type": "paragraph",
+      "content": {
+        "text": "While this is an easily measured voltage, it is certainly not large enough for most practical applications. More loops in the coil, a stronger magnet, and faster movement make induction the practical source of voltages that it is.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-25",
+      "type": "paragraph",
+      "content": {
+        "text": "Play with a bar magnet and coils to learn about Faraday's law. Move a bar magnet near one or two coils to make a light bulb glow. View the magnetic field lines. A meter shows the direction and magnitude of the current. View the magnetic field lines or use a meter to show the direction and magnitude of the current. You can also play with electromagnets, generators and transformers!",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-26",
+      "type": "paragraph",
+      "content": {
+        "text": "Click to view content .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-27",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Section Summary",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-28",
+      "type": "paragraph",
+      "content": {
+        "text": "when flux changes by $ΔΦ$ in a time $Δt$ .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-29",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Conceptual Questions",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-30",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A person who works with large magnets sometimes places her head inside a strong field. She reports feeling dizzy as she quickly turns her head. How might this be associated with induction?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-31",
+      "type": "paragraph",
+      "content": {
+        "text": "A person who works with large magnets sometimes places her head inside a strong field. She reports feeling dizzy as she quickly turns her head. How might this be associated with induction?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-32",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A particle accelerator sends high-velocity charged particles down an evacuated pipe. Could a coil of wire wrapped around the pipe detect the passage of individual particles via an induced emf? If so, sketch a graph of the voltage output of the coil as a single particle passes through it. If not, determine what orientation of the coil would allow detection of the particle and explain why this orientation is needed.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-33",
+      "type": "paragraph",
+      "content": {
+        "text": "A particle accelerator sends high-velocity charged particles down an evacuated pipe. Could a coil of wire wrapped around the pipe detect the passage of individual particles via an induced emf? If so, sketch a graph of the voltage output of the coil as a single particle passes through it. If not, determine what orientation of the coil would allow detection of the particle and explain why this orientation is needed.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-34",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Problems & Exercises",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-35",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Referring to (a), what is the direction of the current induced in coil 2: (a) If the current in coil 1 increases? (b) If the current in coil 1 decreases? (c) If the current in coil 1 is constant? Explicitly show how you follow the steps in the Problem-Solving Strategy for Lenz's Law . (a) The coils lie in the same plane. (b) The wire is in the plane of the coil",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a) CCW (b) CW (c) No current induced",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-36",
+      "type": "paragraph",
+      "content": {
+        "text": "Referring to (a), what is the direction of the current induced in coil 2: (a) If the current in coil 1 increases? (b) If the current in coil 1 decreases? (c) If the current in coil 1 is constant? Explicitly show how you follow the steps in the Problem-Solving Strategy for Lenz's Law .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-4",
+      "type": "figure",
+      "asset_url": "images/phy_m42392_Figure_24_02_04-3a94.jpg",
+      "caption": {
+        "text": "(a) The coils lie in the same plane. (b) The wire is in the plane of the coil",
+        "inline": []
+      },
+      "alt": "Part a of the diagram shows two single loop coils. Coil one and coil two are held vertically. Coil one has a current I in anti clockwise direction. Part b of the diagram shows a wire held vertical with a current flowing in upward direction. There is a single loop coil next to it held vertically.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-38",
+      "type": "paragraph",
+      "content": {
+        "text": "(c) No current induced",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-39",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Referring to (b), what is the direction of the current induced in the coil: (a) If the current in the wire increases? (b) If the current in the wire decreases? (c) If the current in the wire suddenly changes direction? Explicitly show how you follow the steps in the Problem-Solving Strategy for Lenz’s Law .",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-40",
+      "type": "paragraph",
+      "content": {
+        "text": "Referring to (b), what is the direction of the current induced in the coil: (a) If the current in the wire increases? (b) If the current in the wire decreases? (c) If the current in the wire suddenly changes direction? Explicitly show how you follow the steps in the Problem-Solving Strategy for Lenz’s Law .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-41",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Referring to , what are the directions of the currents in coils 1, 2, and 3 (assume that the coils are lying in the plane of the circuit): (a) When the switch is first closed? (b) When the switch has been closed for a long time? (c) Just after the switch is opened?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a) 1 CCW, 2 CCW, 3 CW (b) 1, 2, and 3 no current induced (c) 1 CW, 2 CW, 3 CCW",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-42",
+      "type": "paragraph",
+      "content": {
+        "text": "Referring to , what are the directions of the currents in coils 1, 2, and 3 (assume that the coils are lying in the plane of the circuit): (a) When the switch is first closed? (b) When the switch has been closed for a long time? (c) Just after the switch is opened?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-5",
+      "type": "figure",
+      "asset_url": "images/phy_m42392_Figure_24_02_05.jpg",
+      "caption": {
+        "text": "The figure shows a closed circuit consisting of a main coil with many loops connected to a cell through a switch. Three single loop coils named one, two and three are also shown. Coil one is on left of the main coil, coil two on the right and coil three on top of the main coil.",
+        "inline": []
+      },
+      "alt": "The figure shows a closed circuit consisting of a main coil with many loops connected to a cell through a switch. Three single loop coils named one, two and three are also shown. Coil one is on left of the main coil, coil two on the right and coil three on top of the main coil.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-44",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) 1 CCW, 2 CCW, 3 CW",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-45",
+      "type": "paragraph",
+      "content": {
+        "text": "(b) 1, 2, and 3 no current induced",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-46",
+      "type": "paragraph",
+      "content": {
+        "text": "(c) 1 CW, 2 CW, 3 CCW",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-47",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Repeat the previous problem with the battery reversed.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-48",
+      "type": "paragraph",
+      "content": {
+        "text": "Repeat the previous problem with the battery reversed.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-49",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Verify that the units of $ΔΦ$ / $Δt$ are volts. That is, show that $1T\\cdot {m}^{2}/s=1 V$ .",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-50",
+      "type": "paragraph",
+      "content": {
+        "text": "Verify that the units of $ΔΦ$ / $Δt$ are volts. That is, show that $1T\\cdot {m}^{2}/s=1 V$ .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-51",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Suppose a 50-turn coil lies in the plane of the page in a uniform magnetic field that is directed into the page. The coil originally has an area of $0.250{m}^{2}$ . It is stretched to have no area in 0.100 s. What is the direction and magnitude of the induced emf if the uniform magnetic field has a strength of 1.50 T?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-52",
+      "type": "paragraph",
+      "content": {
+        "text": "Suppose a 50-turn coil lies in the plane of the page in a uniform magnetic field that is directed into the page. The coil originally has an area of $0.250{m}^{2}$ . It is stretched to have no area in 0.100 s. What is the direction and magnitude of the induced emf if the uniform magnetic field has a strength of 1.50 T?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-53",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "(a) An MRI technician moves his hand from a region of very low magnetic field strength into an MRI scanner’s 2.00 T field with his fingers pointing in the direction of the field. Find the average emf induced in his wedding ring, given its diameter is 2.20 cm and assuming it takes 0.250 s to move it into the field. (b) Discuss whether this current would significantly change the temperature of the ring.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a) 3.04 mV (b) As a lower limit on the ring, estimate R = 1.00 mΩ. The heat transferred will be 2.31 mJ. This is not a significant amount of heat.",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-54",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) An MRI technician moves his hand from a region of very low magnetic field strength into an MRI scanner’s 2.00 T field with his fingers pointing in the direction of the field. Find the average emf induced in his wedding ring, given its diameter is 2.20 cm and assuming it takes 0.250 s to move it into the field. (b) Discuss whether this current would significantly change the temperature of the ring.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-55",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) 3.04 mV (b) As a lower limit on the ring, estimate R = 1.00 mΩ. The heat transferred will be 2.31 mJ. This is not a significant amount of heat.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-56",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Integrated Concepts Referring to the situation in the previous problem: (a) What current is induced in the ring if its resistance is 0.0100 $Ω$ ? (b) What average power is dissipated? (c) What magnetic field is induced at the center of the ring? (d) What is the direction of the induced magnetic field relative to the MRI’s field?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-57",
+      "type": "paragraph",
+      "content": {
+        "text": "Referring to the situation in the previous problem: (a) What current is induced in the ring if its resistance is 0.0100 $Ω$ ? (b) What average power is dissipated? (c) What magnetic field is induced at the center of the ring? (d) What is the direction of the induced magnetic field relative to the MRI’s field?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-58",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "An emf is induced by rotating a 1000-turn, 20.0 cm diameter coil in the Earth’s $5.00×{10}^{-5}T$ magnetic field. What average emf is induced, given the plane of the coil is originally perpendicular to the Earth’s field and is rotated to be parallel to the field in 10.0 ms?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "0.157 V",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-59",
+      "type": "paragraph",
+      "content": {
+        "text": "An emf is induced by rotating a 1000-turn, 20.0 cm diameter coil in the Earth’s $5.00×{10}^{-5}T$ magnetic field. What average emf is induced, given the plane of the coil is originally perpendicular to the Earth’s field and is rotated to be parallel to the field in 10.0 ms?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-60",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A 0.250 m radius, 500-turn coil is rotated one-fourth of a revolution in 4.17 ms, originally having its plane perpendicular to a uniform magnetic field. (This is 60 rev/s.) Find the magnetic field strength needed to induce an average emf of 10,000 V.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-61",
+      "type": "paragraph",
+      "content": {
+        "text": "A 0.250 m radius, 500-turn coil is rotated one-fourth of a revolution in 4.17 ms, originally having its plane perpendicular to a uniform magnetic field. (This is 60 rev/s.) Find the magnetic field strength needed to induce an average emf of 10,000 V.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-62",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Integrated Concepts Approximately how does the emf induced in the loop in (b) depend on the distance of the center of the loop from the wire?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "proportional to $\\frac{1}{r}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-63",
+      "type": "paragraph",
+      "content": {
+        "text": "Approximately how does the emf induced in the loop in (b) depend on the distance of the center of the loop from the wire?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-64",
+      "type": "paragraph",
+      "content": {
+        "text": "proportional to $\\frac{1}{r}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-65",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Integrated Concepts (a) A lightning bolt produces a rapidly varying magnetic field. If the bolt strikes the earth vertically and acts like a current in a long straight wire, it will induce a voltage in a loop aligned like that in (b). What voltage is induced in a 1.00 m diameter loop 50.0 m from a $2.00×{10}^{6}A$ lightning strike, if the current falls to zero in $25.0 μs$ ? (b) Discuss circumstances under which such a voltage would produce noticeable consequences.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-66",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) A lightning bolt produces a rapidly varying magnetic field. If the bolt strikes the earth vertically and acts like a current in a long straight wire, it will induce a voltage in a loop aligned like that in (b). What voltage is induced in a 1.00 m diameter loop 50.0 m from a $2.00×{10}^{6}A$ lightning strike, if the current falls to zero in $25.0 μs$ ? (b) Discuss circumstances under which such a voltage would produce noticeable consequences.",
+        "inline": []
+      },
+      "level": "core"
+    }
+  ],
+  "solutions": {
+    "osbooks-college-physics-bundle:m42392:exr-35": [
+      [
+        {
+          "kind": "text",
+          "text": "(a) CCW"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(b) CW"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(c) No current induced"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42392:exr-41": [
+      [
+        {
+          "kind": "text",
+          "text": "(a) 1 CCW, 2 CCW, 3 CW"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(b) 1, 2, and 3 no current induced"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(c) 1 CW, 2 CW, 3 CCW"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42392:exr-53": [
+      [
+        {
+          "kind": "text",
+          "text": "(a) 3.04 mV"
+        },
+        {
+          "kind": "text",
+          "text": "(b) As a lower limit on the ring, estimate R = 1.00 mΩ. The heat transferred will be 2.31 mJ. This is not a significant amount of heat."
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42392:exr-58": [
+      [
+        {
+          "kind": "text",
+          "text": "0.157 V"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42392:exr-62": [
+      [
+        {
+          "kind": "text",
+          "text": "proportional to"
+        },
+        {
+          "kind": "math",
+          "text": "\\frac{1}{r}"
+        }
+      ]
+    ]
+  }
+}

@@ -1,0 +1,1396 @@
+{
+  "module": "m42474",
+  "source_attribution": {
+    "publisher": "OpenStax",
+    "book": "osbooks-college-physics-bundle",
+    "section": "m42474",
+    "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42474/index.cnxml",
+    "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)",
+    "locator": "CNXML module index.cnxml (typed elements, solutions present)"
+  },
+  "blocks": [
+    {
+      "id": "sec-0",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Learning Objectives",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-1",
+      "type": "paragraph",
+      "content": {
+        "text": "By the end of this section, you will be able to:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-2",
+      "type": "paragraph",
+      "content": {
+        "text": "We only have to look as far as the nearest bathroom to find an example of an image formed by a mirror. Images in flat mirrors are the same size as the object and are located behind the mirror. Like lenses, mirrors can form a variety of images. For example, dental mirrors may produce a magnified image, just as makeup mirrors do. Security mirrors in shops, on the other hand, form images that are smaller than the object. We will use the law of reflection to understand how mirrors form images, and we will find that mirror images are analogous to those formed by lenses.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-3",
+      "type": "paragraph",
+      "content": {
+        "text": "helps illustrate how a flat mirror forms an image. Two rays are shown emerging from the same point, striking the mirror, and being reflected into the observer’s eye. The rays can diverge slightly, and both still get into the eye. If the rays are extrapolated backward, they seem to originate from a common point behind the mirror, locating the image. (The paths of the reflected rays into the eye are the same as if they had come directly from that point behind the mirror.) Using the law of reflection—the angle of reflection equals the angle of incidence—we can see that the image and object are the same distance from the mirror. This is a virtual image, since it cannot be projected—the rays only appear to originate from a common point behind the mirror. Obviously, if you walk behind the mirror, you cannot see the image, since the rays do not go there. But in front of the mirror, the rays behave exactly as if they had come from behind the mirror, so that is where the image is situated.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-1",
+      "type": "figure",
+      "asset_url": "images/phy_m42474_Figure_26_07_01.jpg",
+      "caption": {
+        "text": "Two sets of rays from common points on an object are reflected by a flat mirror into the eye of an observer. The reflected rays seem to originate from behind the mirror, locating the virtual image.",
+        "inline": []
+      },
+      "alt": "A bottle at a distance d sub o from a flat mirror. An observer’s eye looks into the mirror and finds the image at d sub I behind the mirror. The incident rays fall onto the mirror and get reflected to the eye. The dotted lines represent reflected rays extrapolated backward and produce an image of the same size.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-5",
+      "type": "paragraph",
+      "content": {
+        "text": "Now let us consider the focal length of a mirror—for example, the concave spherical mirrors in . Rays of light that strike the surface follow the law of reflection. For a mirror that is large compared with its radius of curvature, as in (a), we see that the reflected rays do not cross at the same point, and the mirror does not have a well-defined focal point. If the mirror had the shape of a parabola, the rays would all cross at a single point, and the mirror would have a well-defined focal point. But parabolic mirrors are much more expensive to make than spherical mirrors. The solution is to use a mirror that is small compared with its radius of curvature, as shown in (b). (This is the mirror equivalent of the thin lens approximation.) To a very good approximation, this mirror has a well-defined focal point at F that is the focal distance $f$ from the center of the mirror. The focal length $f$ of a concave mirror is positive, since it is a converging mirror.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-2",
+      "type": "figure",
+      "asset_url": "images/phy_m42474_Figure_26_07_02.jpg",
+      "caption": {
+        "text": "(a) Parallel rays reflected from a large spherical mirror do not all cross at a common point. (b) If a spherical mirror is small compared with its radius of curvature, parallel rays are focused to a common point. The distance of the focal point from the center of the mirror is its focal length $f$ . Since this mirror is converging, it has a positive focal length.",
+        "inline": []
+      },
+      "alt": "Figure (a) shows a large concave spherical mirror. A beam of parallel rays is incident on the mirror; after reflection it converges at F. Figure (b) shows a concave mirror that is small when compared to its radius of curvature. A beam of parallel rays is incident on the mirror; after reflection it converges at F on the same side. The middle rays of the parallel beam are 1,2, and 3. The distance of F on ray 2 from the center of the mirror is its focal length small f.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-7",
+      "type": "paragraph",
+      "content": {
+        "text": "Just as for lenses, the shorter the focal length, the more powerful the mirror; thus, $P=1/f$ for a mirror, too. A more strongly curved mirror has a shorter focal length and a greater power. Using the law of reflection and some simple trigonometry, it can be shown that the focal length is half the radius of curvature, or",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-8",
+      "type": "paragraph",
+      "content": {
+        "text": "where $R$ is the radius of curvature of a spherical mirror. The smaller the radius of curvature, the smaller the focal length and, thus, the more powerful the mirror.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-9",
+      "type": "paragraph",
+      "content": {
+        "text": "The convex mirror shown in also has a focal point. Parallel rays of light reflected from the mirror seem to originate from the point F at the focal distance $f$ behind the mirror. The focal length and power of a convex mirror are negative, since it is a diverging mirror.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-3",
+      "type": "figure",
+      "asset_url": "images/phy_m42474_Figure_26_07_03.jpg",
+      "caption": {
+        "text": "Parallel rays of light reflected from a convex spherical mirror (small in size compared with its radius of curvature) seem to originate from a well-defined focal point at the focal distance $f$ behind the mirror. Convex mirrors diverge light rays and, thus, have a negative focal length.",
+        "inline": []
+      },
+      "alt": "A convex spherical mirror. A beam of parallel rays incident on the mirror, after reflection, appear to come from F on ray 2 behind the mirror. Here the distance of",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-11",
+      "type": "paragraph",
+      "content": {
+        "text": "Ray tracing is as useful for mirrors as for lenses. The rules for ray tracing for mirrors are based on the illustrations just discussed:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-12",
+      "type": "paragraph",
+      "content": {
+        "text": "We will use ray tracing to illustrate how images are formed by mirrors, and we can use ray tracing quantitatively to obtain numerical information. But since we assume each mirror is small compared with its radius of curvature, we can use the thin lens equations for mirrors just as we did for lenses.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-13",
+      "type": "paragraph",
+      "content": {
+        "text": "Consider the situation shown in , concave spherical mirror reflection, in which an object is placed farther from a concave (converging) mirror than its focal length. That is, $f$ is positive and ${d}_{o}$ > $f$ , so that we may expect an image similar to the case 1 real image formed by a converging lens. Ray tracing in shows that the rays from a common point on the object all cross at a point on the same side of the mirror as the object. Thus a real image can be projected onto a screen placed at this location. The image distance is positive, and the image is inverted, so its magnification is negative. This is a *case 1 image for mirrors* . It differs from the case 1 image for lenses only in that the image is on the same side of the mirror as the object. It is otherwise identical.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-4",
+      "type": "figure",
+      "asset_url": "images/phy_m42474_Figure_26_07_04.jpg",
+      "caption": {
+        "text": "A case 1 image for a mirror. An object is farther from the converging mirror than its focal length. Rays from a common point on the object are traced using the rules in the text. Ray 1 approaches parallel to the axis, ray 2 strikes the center of the mirror, and ray 3 goes through the focal point on the way toward the mirror. All three rays cross at the same point after being reflected, locating the inverted real image. Although three rays are shown, only two of the three are needed to locate the image and determine its height.",
+        "inline": []
+      },
+      "alt": "Three incident rays, 1, 2, and 3, falling on a concave mirror. Ray 1 falls parallel, ray 2 falls making an angle with the axis and ray 3 passes through focal point F. These rays after reflection converge at a point below the axis. The image is inverted and enlarged and falls below the axis on the same side as the object. Here, the distance from the center of the mirror to F is the focal distance small f, distances of the object and the image from the mirror are d sub o and d sub I, respectively. The heights of the object and the image are h sub o and h sub I, respectively.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "ex-15",
+      "type": "example",
+      "kind": "worked",
+      "title": {
+        "text": "A Concave Reflector",
+        "inline": []
+      },
+      "problem": {
+        "text": "",
+        "inline": []
+      },
+      "answer": null,
+      "level": "core"
+    },
+    {
+      "id": "p-16",
+      "type": "paragraph",
+      "content": {
+        "text": "Electric room heaters use a concave mirror to reflect infrared (IR) radiation from hot coils. Note that IR follows the same law of reflection as visible light. Given that the mirror has a radius of curvature of 50.0 cm and produces an image of the coils 3.00 m away from the mirror, where are the coils?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-17",
+      "type": "paragraph",
+      "content": {
+        "text": "Strategy and Concept",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-18",
+      "type": "paragraph",
+      "content": {
+        "text": "We are given that the concave mirror projects a real image of the coils at an image distance ${d}_{i}=3.00 m$ . The coils are the object, and we are asked to find their location—that is, to find the object distance ${d}_{o}$ . We are also given the radius of curvature of the mirror, so that its focal length is $f=R/2=25.0 cm$ (positive since the mirror is concave or converging). Assuming the mirror is small compared with its radius of curvature, we can use the thin lens equations, to solve this problem.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-19",
+      "type": "paragraph",
+      "content": {
+        "text": "Since ${d}_{i}$ and $f$ are known, thin lens equation can be used to find ${d}_{o}$ :",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-20",
+      "type": "paragraph",
+      "content": {
+        "text": "Rearranging to isolate ${d}_{o}$ gives",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-21",
+      "type": "paragraph",
+      "content": {
+        "text": "Entering known quantities gives a value for $1/{d}_{o}$ :",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-22",
+      "type": "paragraph",
+      "content": {
+        "text": "This must be inverted to find ${d}_{o}$ :",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-23",
+      "type": "paragraph",
+      "content": {
+        "text": "Note that the object (the filament) is farther from the mirror than the mirror’s focal length. This is a case 1 image ( ${d}_{o}>f$ and $f$ positive), consistent with the fact that a real image is formed. You will get the most concentrated thermal energy directly in front of the mirror and 3.00 m away from it. Generally, this is not desirable, since it could cause burns. Usually, you want the rays to emerge parallel, and this is accomplished by having the filament at the focal point of the mirror.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-24",
+      "type": "paragraph",
+      "content": {
+        "text": "Note that the filament here is not much farther from the mirror than its focal length and that the image produced is considerably farther away. This is exactly analogous to a slide projector. Placing a slide only slightly farther away from the projector lens than its focal length produces an image significantly farther away. As the object gets closer to the focal distance, the image gets farther away. In fact, as the object distance approaches the focal length, the image distance approaches infinity and the rays are sent out parallel to one another.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "ex-25",
+      "type": "example",
+      "kind": "worked",
+      "title": {
+        "text": "Solar Electric Generating System",
+        "inline": []
+      },
+      "problem": {
+        "text": "",
+        "inline": []
+      },
+      "answer": null,
+      "level": "core"
+    },
+    {
+      "id": "p-26",
+      "type": "paragraph",
+      "content": {
+        "text": "One of the solar technologies used today for generating electricity is a device (called a parabolic trough or concentrating collector) that concentrates the sunlight onto a blackened pipe that contains a fluid. This heated fluid is pumped to a heat exchanger, where its heat energy is transferred to another system that is used to generate steam—and so generate electricity through a conventional steam cycle. shows such a working system in southern California. Concave mirrors are used to concentrate the sunlight onto the pipe. The mirror has the approximate shape of a section of a cylinder. For the problem, assume that the mirror is exactly one-quarter of a full cylinder.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-27",
+      "type": "paragraph",
+      "content": {
+        "text": "To solve an *Integrated Concept Problem* we must first identify the physical principles involved. Part (a) is related to the current topic. Part (b) involves a little math, primarily geometry. Part (c) requires an understanding of heat and density.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-28",
+      "type": "paragraph",
+      "content": {
+        "text": "To a good approximation for a concave or semi-spherical surface, the point where the parallel rays from the sun converge will be at the focal point, so $R=2f=80.0 cm$ .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-29",
+      "type": "paragraph",
+      "content": {
+        "text": "The insolation is $900 W{/m}^{2}$ . We must find the cross-sectional area $A$ of the concave mirror, since the power delivered is $900 W{/m}^{2}×A$ . The mirror in this case is a quarter-section of a cylinder, so the area for a length $L$ of the mirror is $A=\\frac{1}{4}(2πR)L$ . The area for a length of 1.00 m is then",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-30",
+      "type": "paragraph",
+      "content": {
+        "text": "The insolation on the 1.00-m length of pipe is then",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-31",
+      "type": "paragraph",
+      "content": {
+        "text": "The increase in temperature is given by $Q=mcΔT$ . The mass $m$ of the mineral oil in the one-meter section of pipe is",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-32",
+      "type": "paragraph",
+      "content": {
+        "text": "Therefore, the increase in temperature in one minute is",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-33",
+      "type": "paragraph",
+      "content": {
+        "text": "An array of such pipes in the California desert can provide a thermal output of 250 MW on a sunny day, with fluids reaching temperatures as high as $400ºC$ . We are considering only one meter of pipe here, and ignoring heat losses along the pipe.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-5",
+      "type": "figure",
+      "asset_url": "images/phy_m42474_Figure_26_07_05.jpg",
+      "caption": {
+        "text": "Parabolic trough collectors are used to generate electricity in southern California. (credit: kjkolb, Wikimedia Commons)",
+        "inline": []
+      },
+      "alt": "A parabolic trough solar thermal electric power plant located at Kramer Junction, California",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-35",
+      "type": "paragraph",
+      "content": {
+        "text": "What happens if an object is closer to a concave mirror than its focal length? This is analogous to a case 2 image for lenses ( ${d}_{o}<f$ and $f$ positive), which is a magnifier. In fact, this is how makeup mirrors act as magnifiers. (a) uses ray tracing to locate the image of an object placed close to a concave mirror. Rays from a common point on the object are reflected in such a manner that they appear to be coming from behind the mirror, meaning that the image is virtual and cannot be projected. As with a magnifying glass, the image is upright and larger than the object. This is a *case 2 image for mirrors* and is exactly analogous to that for lenses.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-6",
+      "type": "figure",
+      "asset_url": "images/phy_m42474_Figure_26_07_06.jpg",
+      "caption": {
+        "text": "(a) Case 2 images for mirrors are formed when a converging mirror has an object closer to it than its focal length. Ray 1 approaches parallel to the axis, ray 2 strikes the center of the mirror, and ray 3 approaches the mirror as if it came from the focal point. (b) A magnifying mirror showing the reflection. (credit: Mike Melrose, Flickr)",
+        "inline": []
+      },
+      "alt": "Figure (a) shows three incident rays, 1, 2, and 3, falling on a concave mirror. Ray 1 falls parallel, ray 2 falls making an angle with the axis, and ray 3 is from focal point F. These rays after reflection appear to come from a point above the axis. The image is erect and enlarged, and falls above the axis behind the mirror. Here, the distance from the center of the mirror to F is focal length small f, distances of the object and the image from the mirror are d sub o  and d sub I, respectively. The heights of the object and the image are h sub o and h sub i, respectively. Figure (b) shows a woman applying makeup looking into her magnified reflection in the concave mirror.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-37",
+      "type": "paragraph",
+      "content": {
+        "text": "All three rays appear to originate from the same point after being reflected, locating the upright virtual image behind the mirror and showing it to be larger than the object. (b) Makeup mirrors are perhaps the most common use of a concave mirror to produce a larger, upright image.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-38",
+      "type": "paragraph",
+      "content": {
+        "text": "A convex mirror is a diverging mirror ( $f$ is negative) and forms only one type of image. It is a *case 3* image—one that is upright and smaller than the object, just as for diverging lenses. (a) uses ray tracing to illustrate the location and size of the case 3 image for mirrors. Since the image is behind the mirror, it cannot be projected and is thus a virtual image. It is also seen to be smaller than the object.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-7",
+      "type": "figure",
+      "asset_url": "images/phy_m42474_Figure_26_07_07.jpg",
+      "caption": {
+        "text": "Case 3 images for mirrors are formed by any convex mirror. Ray 1 approaches parallel to the axis, ray 2 strikes the center of the mirror, and ray 3 approaches toward the focal point. All three rays appear to originate from the same point after being reflected, locating the upright virtual image behind the mirror and showing it to be smaller than the object. (b) Security mirrors are convex, producing a smaller, upright image. Because the image is smaller, a larger area is imaged compared to what would be observed for a flat mirror (and hence security is improved). (credit: Laura D’Alessandro, Flickr)",
+        "inline": []
+      },
+      "alt": "Figure (a) shows three incident rays, 1, 2, and 3, falling on a convex mirror. Ray 1 falls parallel, ray 2 falls making an angle with the axis, and ray 3 falls obliquely. These rays after reflection appear to come from a point above the axis. The image is erect and diminished and falls above the axis behind the mirror. Here, the distance from the center of the mirror to focal point F is the focal length small f behind the mirror; the distances of the object and the image from the mirror are d sub o and d sub I, respectively. The heights of the object and the image are h sub o and h sub I, respectively. Figure (b) shows an image of a apparel and clothing show room as viewed in a convex mirror; the image appears to be small in size.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "ex-40",
+      "type": "example",
+      "kind": "worked",
+      "title": {
+        "text": "Image in a Convex Mirror",
+        "inline": []
+      },
+      "problem": {
+        "text": "",
+        "inline": []
+      },
+      "answer": null,
+      "level": "core"
+    },
+    {
+      "id": "p-41",
+      "type": "paragraph",
+      "content": {
+        "text": "A keratometer is a device used to measure the curvature of the cornea, particularly for fitting contact lenses. Light is reflected from the cornea, which acts like a convex mirror, and the keratometer measures the magnification of the image. The smaller the magnification, the smaller the radius of curvature of the cornea. If the light source is 12.0 cm from the cornea and the image’s magnification is 0.0320, what is the cornea’s radius of curvature?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-42",
+      "type": "paragraph",
+      "content": {
+        "text": "If we can find the focal length of the convex mirror formed by the cornea, we can find its radius of curvature (the radius of curvature is twice the focal length of a spherical mirror). We are given that the object distance is ${d}_{o}=12.0 cm$ and that $m=0.0320$ . We first solve for the image distance ${d}_{i}$ , and then for $f$ .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-43",
+      "type": "paragraph",
+      "content": {
+        "text": "$m={–d}_{i}/{d}_{o}$ . Solving this expression for ${d}_{i}$ gives",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-44",
+      "type": "paragraph",
+      "content": {
+        "text": "Entering known values yields",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-45",
+      "type": "paragraph",
+      "content": {
+        "text": "Substituting known values,",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-46",
+      "type": "paragraph",
+      "content": {
+        "text": "This must be inverted to find $f$ :",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-47",
+      "type": "paragraph",
+      "content": {
+        "text": "The radius of curvature is twice the focal length, so that",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-48",
+      "type": "paragraph",
+      "content": {
+        "text": "The radius of curvature found here is reasonable for a cornea. The distance from cornea to retina in an adult eye is about 2.0 cm. In practice, many corneas are not spherical, complicating the job of fitting contact lenses. Note that the image distance here is negative, consistent with the fact that the image is behind the mirror, where it cannot be projected. In this section’s Problems and Exercises, you will show that for a fixed object distance, the smaller the radius of curvature, the smaller the magnification.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-49",
+      "type": "paragraph",
+      "content": {
+        "text": "The three types of images formed by mirrors (cases 1, 2, and 3) are exactly analogous to those formed by lenses, as summarized in the table at the end of Image Formation by Lenses . It is easiest to concentrate on only three types of images—then remember that concave mirrors act like convex lenses, whereas convex mirrors act like concave lenses.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-50",
+      "type": "paragraph",
+      "content": {
+        "text": "Find a flashlight and identify the curved mirror used in it. Find another flashlight and shine the first flashlight onto the second one, which is turned off. Estimate the focal length of the mirror. You might try shining a flashlight on the curved mirror behind the headlight of a car, keeping the headlight switched off, and determine its focal length.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-51",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Problem-Solving Strategy for Mirrors",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-52",
+      "type": "paragraph",
+      "content": {
+        "text": "Step 1. Examine the situation to determine that image formation by a mirror is involved.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-53",
+      "type": "paragraph",
+      "content": {
+        "text": "Step 2. Refer to the Problem-Solving Strategies for Lenses . The same strategies are valid for mirrors as for lenses with one qualification—use the ray tracing rules for mirrors listed earlier in this section.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-54",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Test Prep for AP Courses",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-55",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A student is testing the properties of a mirror with an unknown radius of curvature. The student notices that no matter how far an object is placed from the mirror, the image seen in the mirror is always upright and smaller than the object. What can the student deduce about this mirror? The mirror is convex.; The mirror is flat.; The mirror is concave.; More information is required to deduce the shape of the mirror.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a)",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-56",
+      "type": "paragraph",
+      "content": {
+        "text": "A student is testing the properties of a mirror with an unknown radius of curvature. The student notices that no matter how far an object is placed from the mirror, the image seen in the mirror is always upright and smaller than the object. What can the student deduce about this mirror?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-57",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A student notices a small printed sentence at the bottom of the driver’s side mirror on her car. It reads, “Objects in the mirror are closer than they appear.” Which type of mirror is this (convex, concave, or flat)? How could you confirm the shape of the mirror experimentally?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-58",
+      "type": "paragraph",
+      "content": {
+        "text": "A student notices a small printed sentence at the bottom of the driver’s side mirror on her car. It reads, “Objects in the mirror are closer than they appear.” Which type of mirror is this (convex, concave, or flat)? How could you confirm the shape of the mirror experimentally?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-59",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A mirror shows an upright image twice as large as the object when the object is 10 cm away from the mirror. What is the focal length of the mirror? -10 cm; 10 cm; 20 cm; 40 cm",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(b)",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-60",
+      "type": "paragraph",
+      "content": {
+        "text": "A mirror shows an upright image twice as large as the object when the object is 10 cm away from the mirror. What is the focal length of the mirror?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-61",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A mirror shows an inverted image that is equal in size to the object when the object is 20 cm away from the mirror. Describe the image that will be formed if this object is moved to a distance of 5 cm away from the mirror.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-62",
+      "type": "paragraph",
+      "content": {
+        "text": "A mirror shows an inverted image that is equal in size to the object when the object is 20 cm away from the mirror. Describe the image that will be formed if this object is moved to a distance of 5 cm away from the mirror.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-63",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Section Summary",
+        "inline": []
+      }
+    },
+    {
+      "id": "sec-64",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Conceptual Questions",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-65",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "What are the differences between real and virtual images? How can you tell (by looking) whether an image formed by a single lens or mirror is real or virtual?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-66",
+      "type": "paragraph",
+      "content": {
+        "text": "What are the differences between real and virtual images? How can you tell (by looking) whether an image formed by a single lens or mirror is real or virtual?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-67",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Can you see a virtual image? Can you photograph one? Can one be projected onto a screen with additional lenses or mirrors? Explain your responses.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-68",
+      "type": "paragraph",
+      "content": {
+        "text": "Can you see a virtual image? Can you photograph one? Can one be projected onto a screen with additional lenses or mirrors? Explain your responses.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-69",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Is it necessary to project a real image onto a screen for it to exist?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-70",
+      "type": "paragraph",
+      "content": {
+        "text": "Is it necessary to project a real image onto a screen for it to exist?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-71",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "At what distance is an image *always* located—at ${d}_{o}$ , ${d}_{i}$ , or $f$ ?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-72",
+      "type": "paragraph",
+      "content": {
+        "text": "At what distance is an image *always* located—at ${d}_{o}$ , ${d}_{i}$ , or $f$ ?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-73",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Under what circumstances will an image be located at the focal point of a lens or mirror?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-74",
+      "type": "paragraph",
+      "content": {
+        "text": "Under what circumstances will an image be located at the focal point of a lens or mirror?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-75",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "What is meant by a negative magnification? What is meant by a magnification that is less than 1 in magnitude?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-76",
+      "type": "paragraph",
+      "content": {
+        "text": "What is meant by a negative magnification? What is meant by a magnification that is less than 1 in magnitude?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-77",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Can a case 1 image be larger than the object even though its magnification is always negative? Explain.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-78",
+      "type": "paragraph",
+      "content": {
+        "text": "Can a case 1 image be larger than the object even though its magnification is always negative? Explain.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-79",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "shows a light bulb between two mirrors. One mirror produces a beam of light with parallel rays; the other keeps light from escaping without being put into the beam. Where is the filament of the light in relation to the focal point or radius of curvature of each mirror? The two mirrors trap most of the bulb’s light and form a directional beam as in a headlight.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-80",
+      "type": "paragraph",
+      "content": {
+        "text": "shows a light bulb between two mirrors. One mirror produces a beam of light with parallel rays; the other keeps light from escaping without being put into the beam. Where is the filament of the light in relation to the focal point or radius of curvature of each mirror?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-81",
+      "type": "paragraph",
+      "content": {
+        "text": "The two mirrors trap most of the bulb’s light and form a directional beam as in a headlight.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-8",
+      "type": "figure",
+      "asset_url": "images/phy_m42474_Figure_26_07_08.jpg",
+      "caption": {
+        "text": "The two mirrors trap most of the bulb’s light and form a directional beam as in a headlight.",
+        "inline": []
+      },
+      "alt": "Two concave mirrors of different sizes are placed facing one another. A filament bulb is placed at the focus of the larger mirror. The rays after reflection from the larger mirror travel parallel to one another. The rays falling on the smaller mirror retrace their paths.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "exr-83",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Devise an arrangement of mirrors allowing you to see the back of your head. What is the minimum number of mirrors needed for this task?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-84",
+      "type": "paragraph",
+      "content": {
+        "text": "Devise an arrangement of mirrors allowing you to see the back of your head. What is the minimum number of mirrors needed for this task?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-85",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "If you wish to see your entire body in a flat mirror (from head to toe), how tall should the mirror be? Does its size depend upon your distance away from the mirror? Provide a sketch.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-86",
+      "type": "paragraph",
+      "content": {
+        "text": "If you wish to see your entire body in a flat mirror (from head to toe), how tall should the mirror be? Does its size depend upon your distance away from the mirror? Provide a sketch.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-87",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "It can be argued that a flat mirror has an infinite focal length. If so, where does it form an image? That is, how are ${d}_{i}$ and ${d}_{o}$ related?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-88",
+      "type": "paragraph",
+      "content": {
+        "text": "It can be argued that a flat mirror has an infinite focal length. If so, where does it form an image? That is, how are ${d}_{i}$ and ${d}_{o}$ related?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-89",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Why are diverging mirrors often used for rear-view mirrors in vehicles? What is the main disadvantage of using such a mirror compared with a flat one?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-90",
+      "type": "paragraph",
+      "content": {
+        "text": "Why are diverging mirrors often used for rear-view mirrors in vehicles? What is the main disadvantage of using such a mirror compared with a flat one?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-91",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Problems & Exercises",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-92",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "What is the focal length of a makeup mirror that has a power of 1.50 D?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "+0.667 m",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-93",
+      "type": "paragraph",
+      "content": {
+        "text": "What is the focal length of a makeup mirror that has a power of 1.50 D?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-94",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Some telephoto cameras use a mirror rather than a lens. What radius of curvature mirror is needed to replace a 800 mm focal length telephoto lens?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-95",
+      "type": "paragraph",
+      "content": {
+        "text": "Some telephoto cameras use a mirror rather than a lens. What radius of curvature mirror is needed to replace a 800 mm focal length telephoto lens?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-96",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "(a) Calculate the focal length of the mirror formed by the shiny back of a spoon that has a 3.00 cm radius of curvature. (b) What is its power in diopters?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a) $–1.5×{10}^{–2}m$ (b) $–66.7 D$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-97",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) Calculate the focal length of the mirror formed by the shiny back of a spoon that has a 3.00 cm radius of curvature. (b) What is its power in diopters?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-98",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) $–1.5×{10}^{–2}m$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-99",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Find the magnification of the heater element in . Note that its large magnitude helps spread out the reflected energy.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-100",
+      "type": "paragraph",
+      "content": {
+        "text": "Find the magnification of the heater element in . Note that its large magnitude helps spread out the reflected energy.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-101",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "What is the focal length of a makeup mirror that produces a magnification of 1.50 when a person’s face is 12.0 cm away? Explicitly show how you follow the steps in the Problem-Solving Strategy for Mirrors .",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "+0.360 m (concave)",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-102",
+      "type": "paragraph",
+      "content": {
+        "text": "What is the focal length of a makeup mirror that produces a magnification of 1.50 when a person’s face is 12.0 cm away? Explicitly show how you follow the steps in the Problem-Solving Strategy for Mirrors .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-103",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A shopper standing 3.00 m from a convex security mirror sees his image with a magnification of 0.250. (a) Where is his image? (b) What is the focal length of the mirror? (c) What is its radius of curvature? Explicitly show how you follow the steps in the Problem-Solving Strategy for Mirrors .",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-104",
+      "type": "paragraph",
+      "content": {
+        "text": "A shopper standing 3.00 m from a convex security mirror sees his image with a magnification of 0.250. (a) Where is his image? (b) What is the focal length of the mirror? (c) What is its radius of curvature? Explicitly show how you follow the steps in the Problem-Solving Strategy for Mirrors .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-105",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "An object 1.50 cm high is held 3.00 cm from a person’s cornea, and its reflected image is measured to be 0.167 cm high. (a) What is the magnification? (b) Where is the image? (c) Find the radius of curvature of the convex mirror formed by the cornea. (Note that this technique is used by optometrists to measure the curvature of the cornea for contact lens fitting. The instrument used is called a keratometer, or curve measurer.)",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a) +0.111 (b) -0.334 cm (behind “mirror”) (c) 0.752cm",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-106",
+      "type": "paragraph",
+      "content": {
+        "text": "An object 1.50 cm high is held 3.00 cm from a person’s cornea, and its reflected image is measured to be 0.167 cm high. (a) What is the magnification? (b) Where is the image? (c) Find the radius of curvature of the convex mirror formed by the cornea. (Note that this technique is used by optometrists to measure the curvature of the cornea for contact lens fitting. The instrument used is called a keratometer, or curve measurer.)",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-107",
+      "type": "paragraph",
+      "content": {
+        "text": "(b) -0.334 cm (behind “mirror”)",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-108",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Ray tracing for a flat mirror shows that the image is located a distance behind the mirror equal to the distance of the object from the mirror. This is stated ${d}_{i}={–d}_{o}$ , since this is a negative image distance (it is a virtual image). (a) What is the focal length of a flat mirror? (b) What is its power?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-109",
+      "type": "paragraph",
+      "content": {
+        "text": "Ray tracing for a flat mirror shows that the image is located a distance behind the mirror equal to the distance of the object from the mirror. This is stated ${d}_{i}={–d}_{o}$ , since this is a negative image distance (it is a virtual image). (a) What is the focal length of a flat mirror? (b) What is its power?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-110",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Show that for a flat mirror ${h}_{i}={h}_{o}$ , knowing that the image is a distance behind the mirror equal in magnitude to the distance of the object from the mirror.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "\\[$m=\\frac{{h}_{i}}{{h}_{o}}=-\\frac{{d}_{i}}{{d}_{o}}=-\\frac{-{d}_{o}}{{d}_{o}}=\\frac{{d}_{o}}{{d}_{o}}=1⇒{h}_{i}={h}_{o}$\\]",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-111",
+      "type": "paragraph",
+      "content": {
+        "text": "Show that for a flat mirror ${h}_{i}={h}_{o}$ , knowing that the image is a distance behind the mirror equal in magnitude to the distance of the object from the mirror.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-112",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Use the law of reflection to prove that the focal length of a mirror is half its radius of curvature. That is, prove that $f=R/2$ . Note this is true for a spherical mirror only if its diameter is small compared with its radius of curvature.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-113",
+      "type": "paragraph",
+      "content": {
+        "text": "Use the law of reflection to prove that the focal length of a mirror is half its radius of curvature. That is, prove that $f=R/2$ . Note this is true for a spherical mirror only if its diameter is small compared with its radius of curvature.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-114",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Referring to the electric room heater considered in the first example in this section, calculate the intensity of IR radiation in ${W/m}^{2}$ projected by the concave mirror on a person 3.00 m away. Assume that the heating element radiates 1500 W and has an area of $100{cm}^{2}$ , and that half of the radiated power is reflected and focused by the mirror.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$6.82 k{W/m}^{2}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-115",
+      "type": "paragraph",
+      "content": {
+        "text": "Referring to the electric room heater considered in the first example in this section, calculate the intensity of IR radiation in ${W/m}^{2}$ projected by the concave mirror on a person 3.00 m away. Assume that the heating element radiates 1500 W and has an area of $100{cm}^{2}$ , and that half of the radiated power is reflected and focused by the mirror.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-116",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Consider a 250-W heat lamp fixed to the ceiling in a bathroom. If the filament in one light burns out then the remaining three still work. Construct a problem in which you determine the resistance of each filament in order to obtain a certain intensity projected on the bathroom floor. The ceiling is 3.0 m high. The problem will need to involve concave mirrors behind the filaments. Your instructor may wish to guide you on the level of complexity to consider in the electrical components.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-117",
+      "type": "paragraph",
+      "content": {
+        "text": "Consider a 250-W heat lamp fixed to the ceiling in a bathroom. If the filament in one light burns out then the remaining three still work. Construct a problem in which you determine the resistance of each filament in order to obtain a certain intensity projected on the bathroom floor. The ceiling is 3.0 m high. The problem will need to involve concave mirrors behind the filaments. Your instructor may wish to guide you on the level of complexity to consider in the electrical components.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-118",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Critical Thinking Light composed of multiple frequencies passes through crown glass. (a) How much faster does the violet component of the light with a wavelength of 410 nm travel in the crown glass than the component of orange light with a wavelength of 610 nm? (b) In a mechanical situation with friction, the longer one surface moves relative to the other, the more the friction acts, slowing the relative motion during the process. Is this the same for light in a medium? (c) In a mechanical situation, it is possible for friction to stop the motion if it occurs over a long enough path. Is this the same for light in a medium? (d) In a mechanical friction situation, once the object slows it will not increase in speed once the friction no longer acts unless another force is present. If a light ray exits a medium into a vacuum, will it go back to a speed of *c* even though that would be an increase in speed not caused by an additional force?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a) ${v}_{610}=\\frac{3.00×{10}^{8}}{1.530}m/s,{v}_{410}=\\frac{3.00×{10}^{8}}{1.514}m/s3.00×{10}^{8}(\\frac{1}{1.514}-\\frac{1}{1.530})m/s=2.07×{10}^{6}m/s$ (b) No. (c) No. (d) Yes.",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-119",
+      "type": "paragraph",
+      "content": {
+        "text": "Critical Thinking Light composed of multiple frequencies passes through crown glass. (a) How much faster does the violet component of the light with a wavelength of 410 nm travel in the crown glass than the component of orange light with a wavelength of 610 nm? (b) In a mechanical situation with friction, the longer one surface moves relative to the other, the more the friction acts, slowing the relative motion during the process. Is this the same for light in a medium? (c) In a mechanical situation, it is possible for friction to stop the motion if it occurs over a long enough path. Is this the same for light in a medium? (d) In a mechanical friction situation, once the object slows it will not increase in speed once the friction no longer acts unless another force is present. If a light ray exits a medium into a vacuum, will it go back to a speed of *c* even though that would be an increase in speed not caused by an additional force?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-120",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) ${v}_{610}=\\frac{3.00×{10}^{8}}{1.530}m/s,{v}_{410}=\\frac{3.00×{10}^{8}}{1.514}m/s3.00×{10}^{8}(\\frac{1}{1.514}-\\frac{1}{1.530})m/s=2.07×{10}^{6}m/s$",
+        "inline": []
+      },
+      "level": "core"
+    }
+  ],
+  "solutions": {
+    "osbooks-college-physics-bundle:m42474:exr-55": [
+      [
+        {
+          "kind": "text",
+          "text": "(a)"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42474:exr-59": [
+      [
+        {
+          "kind": "text",
+          "text": "(b)"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42474:exr-92": [
+      [
+        {
+          "kind": "text",
+          "text": "+0.667 m"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42474:exr-96": [
+      [
+        {
+          "kind": "text",
+          "text": "(a)"
+        },
+        {
+          "kind": "math",
+          "text": "–1.5×{10}^{–2}m"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(b)"
+        },
+        {
+          "kind": "math",
+          "text": "–66.7 D"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42474:exr-101": [
+      [
+        {
+          "kind": "text",
+          "text": "+0.360 m (concave)"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42474:exr-105": [
+      [
+        {
+          "kind": "text",
+          "text": "(a) +0.111"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(b) -0.334 cm (behind “mirror”)"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(c) 0.752cm"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42474:exr-110": [
+      [
+        {
+          "kind": "math",
+          "text": "m=\\frac{{h}_{i}}{{h}_{o}}=-\\frac{{d}_{i}}{{d}_{o}}=-\\frac{-{d}_{o}}{{d}_{o}}=\\frac{{d}_{o}}{{d}_{o}}=1⇒{h}_{i}={h}_{o}"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42474:exr-114": [
+      [
+        {
+          "kind": "math",
+          "text": "6.82 k{W/m}^{2}"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42474:exr-118": [
+      [
+        {
+          "kind": "text",
+          "text": "(a)"
+        },
+        {
+          "kind": "math",
+          "text": "{v}_{610}=\\frac{3.00×{10}^{8}}{1.530}"
+        },
+        {
+          "kind": "text",
+          "text": "m/s,"
+        },
+        {
+          "kind": "math",
+          "text": "{v}_{410}=\\frac{3.00×{10}^{8}}{1.514}m/s3.00×{10}^{8}(\\frac{1}{1.514}-\\frac{1}{1.530})m/s=2.07×{10}^{6}m/s"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(b) No."
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(c) No."
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(d) Yes."
+        }
+      ]
+    ]
+  }
+}

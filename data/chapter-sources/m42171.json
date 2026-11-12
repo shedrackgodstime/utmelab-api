@@ -1,0 +1,812 @@
+{
+  "module": "m42171",
+  "source_attribution": {
+    "publisher": "OpenStax",
+    "book": "osbooks-college-physics-bundle",
+    "section": "m42171",
+    "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42171/index.cnxml",
+    "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)",
+    "locator": "CNXML module index.cnxml (typed elements, solutions present)"
+  },
+  "blocks": [
+    {
+      "id": "sec-0",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Learning Objectives",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-1",
+      "type": "paragraph",
+      "content": {
+        "text": "By the end of this section, you will be able to:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-2",
+      "type": "paragraph",
+      "content": {
+        "text": "The second condition necessary to achieve equilibrium involves avoiding accelerated rotation (maintaining a constant angular velocity). A rotating body or system can be in equilibrium if its rate of rotation is constant and remains unchanged by the forces acting on it. To understand what factors affect rotation, let us think about what happens when you open an ordinary door by rotating it on its hinges.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-3",
+      "type": "paragraph",
+      "content": {
+        "text": "Several familiar factors determine how effective you are in opening the door. See . First of all, the larger the force, the more effective it is in opening the door—obviously, the harder you push, the more rapidly the door opens. Also, the point at which you push is crucial. If you apply your force too close to the hinges, the door will open slowly, if at all. Most people have been embarrassed by making this mistake and bumping up against a door when it did not open as quickly as expected. Finally, the direction in which you push is also important. The most effective direction is perpendicular to the door—we push in this direction almost instinctively.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-1",
+      "type": "figure",
+      "asset_url": "images/phy_m42171_Figure_10_02_01a.jpg",
+      "caption": {
+        "text": "Torque is the turning or twisting effectiveness of a force, illustrated here for door rotation on its hinges (as viewed from overhead). Torque has both magnitude and direction. (a) Counterclockwise torque is produced by this force, which means that the door will rotate in a counterclockwise due to $F$ . Note that ${r}_{⊥}$ is the perpendicular distance of the pivot from the line of action of the force. (b) A smaller counterclockwise torque is produced by a smaller force $F′$ acting at the same distance from the hinges (the pivot point). (c) The same force as in (a) produces a smaller counterclockwise torque when applied at a smaller distance from the hinges. (d) The same force as in (a), but acting in the opposite direction, produces a clockwise torque. (e) A smaller counterclockwise torque is produced by the same magnitude force acting at the same point but in a different direction. Here, $θ$ is less than $90º$ . (f) Torque is zero here since the force just pulls on the hinges, producing no rotation. In this case, $θ=0º$ .",
+        "inline": []
+      },
+      "alt": "In the figure, six top views of a door are shown. In the first figure, a force vector is shown in the North West direction. The perpendicular distance of the force from the point of rotation is r. In the second figure, a force is applied in the opposite direction at the same distance from the hinges. In the third figure, a smaller force in applied at the same point. In the next figure, a horizontal force is applied at the same point. In this case, the perpendicular distance from the hinges is shown as r sin theta. In the next figure, force is applied at a distance near the hinges. In the final figure, the force is shown along the direction of hinges toward the handle of the door.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-5",
+      "type": "paragraph",
+      "content": {
+        "text": "The magnitude, direction, and point of application of the force are incorporated into the definition of the physical quantity called torque. Torque is the rotational equivalent of a force. It is a measure of the effectiveness of a force in changing or accelerating a rotation (changing the angular velocity over a period of time). In equation form, the magnitude of torque is defined to be",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-6",
+      "type": "paragraph",
+      "content": {
+        "text": "where $τ$ (the Greek letter tau) is the symbol for torque, $r$ is the distance from the pivot point to the point where the force is applied, $F$ is the magnitude of the force, and $θ$ is the angle between the force and the vector directed from the point of application to the pivot point, as seen in and . An alternative expression for torque is given in terms of the perpendicular lever arm ${r}_{⊥}$ as shown in and , which is defined as",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-2",
+      "type": "figure",
+      "asset_url": "images/phy_m42171_Figure_10_02_02abc.jpg",
+      "caption": {
+        "text": "A force applied to an object can produce a torque, which depends on the location of the pivot point. (a) The three factors $r$ , $F$ , and $θ$ for pivot point A on a body are shown here— $r$ is the distance from the chosen pivot point to the point where the force $F$ is applied, and $θ$ is the angle between $F$ and the vector directed from the point of application to the pivot point. If the object can rotate around point A, it will rotate counterclockwise. This means that torque is counterclockwise relative to pivot A. (b) In this case, point B is the pivot point. The torque from the applied force will cause a clockwise rotation around point B, and so it is a clockwise torque relative to B.",
+        "inline": []
+      },
+      "alt": "In the first part of the figure, a hockey stick is shown. At a point A near the bottom, a nail is fixed. A force is applied at a point near the holding grip of the hockey stick. A quarter circular arrow shows that the stick rotates in the counterclockwise direction. The perpendicular distance between the pivot point and the force vector direction is labeled as r-perpendicular, and the angle between the direction of force and the line joining the pivot A to the point of application of force is given as theta. In the second part of the figure, the pivot point is near the top of the stick and the point of application of the force is about the same as that in the first part of the figure. An upward quarter circle arrow shows that the stick rotates in the clockwise direction.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-8",
+      "type": "paragraph",
+      "content": {
+        "text": "The perpendicular lever arm ${r}_{⊥}$ is the shortest distance from the pivot point to the line along which $F$ acts; it is shown as a dashed line in and . Note that the line segment that defines the distance ${r}_{⊥}$ is perpendicular to $F$ , as its name implies. It is sometimes easier to find or visualize ${r}_{⊥}$ than to find both $r$ and $θ$ . In such cases, it may be more convenient to use $τ={r}_{⊥}F$ rather than $τ=rFsinθ$ for torque, but both are equally valid.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-9",
+      "type": "paragraph",
+      "content": {
+        "text": "The SI unit of torque is newtons times meters, usually written as $N\\cdot m$ . For example, if you push perpendicular to the door with a force of 40 N at a distance of 0.800 m from the hinges, you exert a torque of 32 N·m(0.800 m × 40 N × sin 90º) relative to the hinges. If you reduce the force to 20 N, the torque is reduced to $16 N·m$ , and so on.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-10",
+      "type": "paragraph",
+      "content": {
+        "text": "The torque is always calculated with reference to some chosen pivot point. For the same applied force, a different choice for the location of the pivot will give you a different value for the torque, since both $r$ and $θ$ depend on the location of the pivot. Any point in any object can be chosen to calculate the torque about that point. The object may not actually pivot about the chosen “pivot point.”",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-11",
+      "type": "paragraph",
+      "content": {
+        "text": "Note that for rotation in a plane, torque has two possible directions. Torque is either clockwise or counterclockwise relative to the chosen pivot point, as illustrated for points B and A, respectively, in . If the object can rotate about point A, it will rotate counterclockwise, which means that the torque for the force is shown as counterclockwise relative to A. But if the object can rotate about point B, it will rotate clockwise, which means the torque for the force shown is clockwise relative to B. Also, the magnitude of the torque is greater when the lever arm is longer.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-12",
+      "type": "paragraph",
+      "content": {
+        "text": "Now, *the second condition necessary to achieve equilibrium* is that *the net external torque on a system must be zero* . An external torque is one that is created by an external force. You can choose the point around which the torque is calculated. The point can be the physical pivot point of a system or any other point in space—but it must be the same point for all torques. If the second condition (net external torque on a system is zero) is satisfied for one choice of pivot point, it will also hold true for any other choice of pivot point in or out of the system of interest. (This is true only in an inertial frame of reference.) The second condition necessary to achieve equilibrium is stated in equation form as",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-13",
+      "type": "paragraph",
+      "content": {
+        "text": "where net means total. Torques, which are in opposite directions are assigned opposite signs. A common convention is to call counterclockwise (ccw) torques positive and clockwise (cw) torques negative.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-14",
+      "type": "paragraph",
+      "content": {
+        "text": "When two children balance a seesaw as shown in , they satisfy the two conditions for equilibrium. Most people have perfect intuition about seesaws, knowing that the lighter child must sit farther from the pivot and that a heavier child can keep a lighter one off the ground indefinitely.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-3",
+      "type": "figure",
+      "asset_url": "images/phy_m42171_Figure_10_02_03.jpg",
+      "caption": {
+        "text": "Two children balancing a seesaw satisfy both conditions for equilibrium. The lighter child sits farther from the pivot to create a torque equal in magnitude to that of the heavier child.",
+        "inline": []
+      },
+      "alt": "Two children are sitting on a seesaw. On the left side, a lighter child is sitting and on the right, a heavier one. The distance of the lighter child from the fulcrum is more than that of heavier child. At the fulcrum, an upward force vector labeled as F-p is shown. The weights of the two children, w-one and w-two, are shown as vectors in the downward direction, and the force at the fulcrum, F-p, is shown as a vector in the upward direction.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "ex-16",
+      "type": "example",
+      "kind": "worked",
+      "title": {
+        "text": "She Saw Torques On A Seesaw",
+        "inline": []
+      },
+      "problem": {
+        "text": "",
+        "inline": []
+      },
+      "answer": null,
+      "level": "core"
+    },
+    {
+      "id": "p-17",
+      "type": "paragraph",
+      "content": {
+        "text": "The two children shown in are balanced on a seesaw of negligible mass. (This assumption is made to keep the example simple—more involved examples will follow.) The first child has a mass of 26.0 kg and sits 1.60 m from the pivot.(a) If the second child has a mass of 32.0 kg, how far is she from the pivot? (b) What is ${F}_{p}$ , the supporting force exerted by the pivot?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-18",
+      "type": "paragraph",
+      "content": {
+        "text": "Both conditions for equilibrium must be satisfied. In part (a), we are asked for a distance; thus, the second condition (regarding torques) must be used, since the first (regarding only forces) has no distances in it. To apply the second condition for equilibrium, we first identify the system of interest to be the seesaw plus the two children. We take the supporting pivot to be the point about which the torques are calculated. We then identify all external forces acting on the system.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-19",
+      "type": "paragraph",
+      "content": {
+        "text": "The three external forces acting on the system are the weights of the two children and the supporting force of the pivot. Let us examine the torque produced by each. Torque is defined to be",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-20",
+      "type": "paragraph",
+      "content": {
+        "text": "Here $θ=90º$ , so that $sinθ=1$ for all three forces. That means ${r}_{⊥}=r$ for all three. The torques exerted by the three forces are first,",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-21",
+      "type": "paragraph",
+      "content": {
+        "text": "Note that a minus sign has been inserted into the second equation because this torque is clockwise and is therefore negative by convention. Since ${F}_{p}$ acts directly on the pivot point, the distance ${r}_{p}$ is zero. A force acting on the pivot cannot cause a rotation, just as pushing directly on the hinges of a door will not cause it to rotate. Now, the second condition for equilibrium is that the sum of the torques on both children is zero. Therefore",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-22",
+      "type": "paragraph",
+      "content": {
+        "text": "Weight is mass times the acceleration due to gravity. Entering $mg$ for $w$ , we get",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-23",
+      "type": "paragraph",
+      "content": {
+        "text": "Solve this for the unknown ${r}_{2}$ *:*",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-24",
+      "type": "paragraph",
+      "content": {
+        "text": "The quantities on the right side of the equation are known; thus, ${r}_{2}$ is",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-25",
+      "type": "paragraph",
+      "content": {
+        "text": "As expected, the heavier child must sit closer to the pivot (1.30 m versus 1.60 m) to balance the seesaw.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-26",
+      "type": "paragraph",
+      "content": {
+        "text": "This part asks for a force ${F}_{p}$ . The easiest way to find it is to use the first condition for equilibrium, which is",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-27",
+      "type": "paragraph",
+      "content": {
+        "text": "The forces are all vertical, so that we are dealing with a one-dimensional problem along the vertical axis; hence, the condition can be written as",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-28",
+      "type": "paragraph",
+      "content": {
+        "text": "where we again call the vertical axis the *y* -axis. Choosing upward to be the positive direction, and using plus and minus signs to indicate the directions of the forces, we see that",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-29",
+      "type": "paragraph",
+      "content": {
+        "text": "This equation yields what might have been guessed at the beginning:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-30",
+      "type": "paragraph",
+      "content": {
+        "text": "So, the pivot supplies a supporting force equal to the total weight of the system:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-31",
+      "type": "paragraph",
+      "content": {
+        "text": "Entering known values gives",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-32",
+      "type": "paragraph",
+      "content": {
+        "text": "The two results make intuitive sense. The heavier child sits closer to the pivot. The pivot supports the weight of the two children. Part (b) can also be solved using the second condition for equilibrium, since both distances are known, but only if the pivot point is chosen to be somewhere other than the location of the seesaw’s actual pivot!",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-33",
+      "type": "paragraph",
+      "content": {
+        "text": "Several aspects of the preceding example have broad implications. First, the choice of the pivot as the point around which torques are calculated simplified the problem. Since ${F}_{p}$ is exerted on the pivot point, its lever arm is zero. Hence, the torque exerted by the supporting force ${F}_{p}$ is zero relative to that pivot point. The second condition for equilibrium holds for any choice of pivot point, and so we choose the pivot point to simplify the solution of the problem.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-34",
+      "type": "paragraph",
+      "content": {
+        "text": "Second, the acceleration due to gravity canceled in this problem, and we were left with a ratio of masses. *This will not always be the case* . Always enter the correct forces—do not jump ahead to enter some ratio of masses.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-35",
+      "type": "paragraph",
+      "content": {
+        "text": "Third, the weight of each child is distributed over an area of the seesaw, yet we treated the weights as if each force were exerted at a single point. This is not an approximation—the distances ${r}_{1}$ and ${r}_{2}$ are the distances to points directly below the center of gravity of each child. As we shall see in the next section, the mass and weight of a system can act as if they are located at a single point.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-36",
+      "type": "paragraph",
+      "content": {
+        "text": "Finally, note that the concept of torque has an importance beyond static equilibrium. *Torque plays the same role in rotational motion that force plays in linear motion.* We will examine this in the next chapter.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-37",
+      "type": "paragraph",
+      "content": {
+        "text": "Take a piece of modeling clay and put it on a table, then mash a cylinder down into it so that a ruler can balance on the round side of the cylinder while everything remains still. Put a penny 8 cm away from the pivot. Where would you need to put two pennies to balance? Three pennies?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-38",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Test Prep for AP Courses",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-39",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Which of the following is not an example of an object undergoing a torque? A car is rounding a bend at a constant speed.; A merry-go-round increases from rest to a constant rotational speed.; A pendulum swings back and forth.; A bowling ball rolls down a bowling alley.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a)",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-40",
+      "type": "paragraph",
+      "content": {
+        "text": "Which of the following is not an example of an object undergoing a torque?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-41",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Five forces of equal magnitude, labeled **A** – **E** , are applied to the object shown below. If the object is anchored at point **P** , which force will provide the greatest torque? Five forces acting on an object. Force **A**; Force **B**; Force **C**; Force **D**; Force **E**",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-42",
+      "type": "paragraph",
+      "content": {
+        "text": "Five forces of equal magnitude, labeled **A** – **E** , are applied to the object shown below. If the object is anchored at point **P** , which force will provide the greatest torque?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-4",
+      "type": "figure",
+      "asset_url": "images/phy_m42171_Figure_09_S2_02.jpg",
+      "caption": {
+        "text": "Five forces acting on an object.",
+        "inline": []
+      },
+      "alt": "The diagram shows a gray that is a rounded shape of a shoe. Slightly to the right of center is a black dot labeled P. There are 5 red arrows nearly perpendicular to the curved line representing the edge of the object. Arrow A is pointing straight down toward where the line curves around the top. Arrow B is a horizontal line pointing away from the object as the edge curves slightly in an almost vertical line. Arrow C is pointing directly below the P from the edge down. At this point the object begins to curve up from the horizontal. Arrow D is pointing toward straight up toward the object's edge where the object is curving upward more than point C. Arrow E is pointing toward the left edge at around a 45 degree angle toward the object and is approximately perpendicular to the object again.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "sec-44",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Section Summary",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-45",
+      "type": "paragraph",
+      "content": {
+        "text": "where $τ$ is torque, $r$ is the distance from the pivot point to the point where the force is applied, $F$ is the magnitude of the force, and $θ$ is the angle between $F$ and the vector directed from the point where the force acts to the pivot point. The perpendicular lever arm ${r}_{⊥}$ is defined to be",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-46",
+      "type": "paragraph",
+      "content": {
+        "text": "By convention, counterclockwise torques are positive, and clockwise torques are negative.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-47",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Conceptual Questions",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-48",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "What three factors affect the torque created by a force relative to a specific pivot point?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-49",
+      "type": "paragraph",
+      "content": {
+        "text": "What three factors affect the torque created by a force relative to a specific pivot point?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-50",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A wrecking ball is being used to knock down a building. One tall unsupported concrete wall remains standing. If the wrecking ball hits the wall near the top, is the wall more likely to fall over by rotating at its base or by falling straight down? Explain your answer. How is it most likely to fall if it is struck with the same force at its base? Note that this depends on how firmly the wall is attached at its base.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-51",
+      "type": "paragraph",
+      "content": {
+        "text": "A wrecking ball is being used to knock down a building. One tall unsupported concrete wall remains standing. If the wrecking ball hits the wall near the top, is the wall more likely to fall over by rotating at its base or by falling straight down? Explain your answer. How is it most likely to fall if it is struck with the same force at its base? Note that this depends on how firmly the wall is attached at its base.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-52",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Mechanics sometimes put a length of pipe over the handle of a wrench when trying to remove a very tight bolt. How does this help? (It is also hazardous since it can break the bolt.)",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-53",
+      "type": "paragraph",
+      "content": {
+        "text": "Mechanics sometimes put a length of pipe over the handle of a wrench when trying to remove a very tight bolt. How does this help? (It is also hazardous since it can break the bolt.)",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-54",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Problems & Exercises",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-55",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "(a) When opening a door, you push on it perpendicularly with a force of 55.0 N at a distance of 0.850m from the hinges. What torque are you exerting relative to the hinges? (b) Does it matter if you push at the same height as the hinges?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "a) $46.8 N·m$ b) It does not matter at what height you push. The torque depends on only the magnitude of the force applied and the perpendicular distance of the force’s application from the hinges. (Children don’t have a tougher time opening a door because they push lower than adults, they have a tougher time because they don’t push far enough from the hinges.)",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-56",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) When opening a door, you push on it perpendicularly with a force of 55.0 N at a distance of 0.850m from the hinges. What torque are you exerting relative to the hinges? (b) Does it matter if you push at the same height as the hinges?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-57",
+      "type": "paragraph",
+      "content": {
+        "text": "b) It does not matter at what height you push. The torque depends on only the magnitude of the force applied and the perpendicular distance of the force’s application from the hinges. (Children don’t have a tougher time opening a door because they push lower than adults, they have a tougher time because they don’t push far enough from the hinges.)",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-58",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "When tightening a bolt, you push perpendicularly on a wrench with a force of 165 N at a distance of 0.140 m from the center of the bolt. (a) How much torque are you exerting in newton × meters (relative to the center of the bolt)? (b) Convert this torque to footpounds.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-59",
+      "type": "paragraph",
+      "content": {
+        "text": "When tightening a bolt, you push perpendicularly on a wrench with a force of 165 N at a distance of 0.140 m from the center of the bolt. (a) How much torque are you exerting in newton × meters (relative to the center of the bolt)? (b) Convert this torque to footpounds.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-60",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Two children push on opposite sides of a door during play. Both push horizontally and perpendicular to the door. One child pushes with a force of 17.5 N at a distance of 0.600 m from the hinges, and the second child pushes at a distance of 0.450 m. What force must the second child exert to keep the door from moving? Assume friction is negligible.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "23.3 N",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-61",
+      "type": "paragraph",
+      "content": {
+        "text": "Two children push on opposite sides of a door during play. Both push horizontally and perpendicular to the door. One child pushes with a force of 17.5 N at a distance of 0.600 m from the hinges, and the second child pushes at a distance of 0.450 m. What force must the second child exert to keep the door from moving? Assume friction is negligible.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-62",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Use the second condition for equilibrium $(net τ = 0)$ to calculate ${F}_{p}$ in , employing any data given or solved for in part (a) of the example.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-63",
+      "type": "paragraph",
+      "content": {
+        "text": "Use the second condition for equilibrium $(net τ = 0)$ to calculate ${F}_{p}$ in , employing any data given or solved for in part (a) of the example.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-64",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Repeat the seesaw problem in with the center of mass of the seesaw 0.160 m to the left of the pivot (on the side of the lighter child) and assuming a mass of 12.0 kg for the seesaw. The other data given in the example remain unchanged. Explicitly show how you follow the steps in the Problem-Solving Strategy for static equilibrium.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "Given: \\[${m}_{1}=26.0 kg,{m}_{2}=32.0 kg,{m}_{s}=12.0 kg,{r}_{1}=1.60 m,{r}_{s}=0.160 m,find (a){r}_{2,}(b){F}_{p}$\\] a) Since children are balancing: \\[$net{τ}_{cw}=-net{τ}_{ccw}⇒{w}_{1}{r}_{1}+{m}_{s}{gr}_{s}={w}_{2}{r}_{2}$\\] So, solving for ${r}_{2}$ gives: \\[${r}_{2}=\\frac{{w}_{1}{r}_{1}+{m}_{s}{gr}_{s}}{{w}_{2}}=\\frac{{m}_{1}{gr}_{1}+{m}_{s}{gr}_{s}}{{m}_{2}g}=\\frac{{m}_{1}{r}_{1}+{m}_{s}{r}_{s}}{{m}_{2}}=\\frac{(26.0 kg)(1.60 m)+(12.0 kg)(0.160 m)}{32.0 kg}=1.36 m$\\] b) Since the children are not moving: \\[$netF=0={F}_{p}-{w}_{1}-{w}_{2}-{w}_{s}⇒{F}_{p}={w}_{1}+{w}_{2}+{w}_{s}$\\] So that \\[${F}_{p}=(26.0 kg+32.0 kg+12.0 kg)(9.80m/{s}^{2})=686 N$\\]",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-65",
+      "type": "paragraph",
+      "content": {
+        "text": "Repeat the seesaw problem in with the center of mass of the seesaw 0.160 m to the left of the pivot (on the side of the lighter child) and assuming a mass of 12.0 kg for the seesaw. The other data given in the example remain unchanged. Explicitly show how you follow the steps in the Problem-Solving Strategy for static equilibrium.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-66",
+      "type": "paragraph",
+      "content": {
+        "text": "a) Since children are balancing:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-67",
+      "type": "paragraph",
+      "content": {
+        "text": "So, solving for ${r}_{2}$ gives:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-68",
+      "type": "paragraph",
+      "content": {
+        "text": "b) Since the children are not moving:",
+        "inline": []
+      },
+      "level": "core"
+    }
+  ],
+  "solutions": {
+    "osbooks-college-physics-bundle:m42171:exr-39": [
+      [
+        {
+          "kind": "text",
+          "text": "(a)"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42171:exr-55": [
+      [
+        {
+          "kind": "text",
+          "text": "a)"
+        },
+        {
+          "kind": "math",
+          "text": "46.8 N·m"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "b) It does not matter at what height you push. The torque depends on only the magnitude of the force applied and the perpendicular distance of the force’s application from the hinges. (Children don’t have a tougher time opening a door because they push lower than adults, they have a tougher time because they don’t push far enough from the hinges.)"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42171:exr-60": [
+      [
+        {
+          "kind": "text",
+          "text": "23.3 N"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42171:exr-64": [
+      [
+        {
+          "kind": "text",
+          "text": "Given:"
+        }
+      ],
+      [
+        {
+          "kind": "math",
+          "text": "{m}_{1}=26.0 kg,{m}_{2}=32.0 kg,{m}_{s}=12.0 kg,{r}_{1}=1.60 m,{r}_{s}=0.160 m,find (a){r}_{2,}"
+        },
+        {
+          "kind": "text",
+          "text": "(b)"
+        },
+        {
+          "kind": "math",
+          "text": "{F}_{p}"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "a) Since children are balancing:"
+        }
+      ],
+      [
+        {
+          "kind": "math",
+          "text": "net{τ}_{cw}=-net{τ}_{ccw}⇒{w}_{1}{r}_{1}+{m}_{s}{gr}_{s}={w}_{2}{r}_{2}"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "So, solving for"
+        },
+        {
+          "kind": "math",
+          "text": "{r}_{2}"
+        },
+        {
+          "kind": "text",
+          "text": "gives:"
+        }
+      ],
+      [
+        {
+          "kind": "math",
+          "text": "{r}_{2}=\\frac{{w}_{1}{r}_{1}+{m}_{s}{gr}_{s}}{{w}_{2}}=\\frac{{m}_{1}{gr}_{1}+{m}_{s}{gr}_{s}}{{m}_{2}g}=\\frac{{m}_{1}{r}_{1}+{m}_{s}{r}_{s}}{{m}_{2}}=\\frac{(26.0 kg)(1.60 m)+(12.0 kg)(0.160 m)}{32.0 kg}=1.36 m"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "b) Since the children are not moving:"
+        }
+      ],
+      [
+        {
+          "kind": "math",
+          "text": "netF=0={F}_{p}-{w}_{1}-{w}_{2}-{w}_{s}⇒{F}_{p}={w}_{1}+{w}_{2}+{w}_{s}"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "So that"
+        }
+      ],
+      [
+        {
+          "kind": "math",
+          "text": "{F}_{p}=(26.0 kg+32.0 kg+12.0 kg)(9.80m/{s}^{2})=686 N"
+        }
+      ]
+    ]
+  }
+}

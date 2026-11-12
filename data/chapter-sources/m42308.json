@@ -1,0 +1,1023 @@
+{
+  "module": "m42308",
+  "source_attribution": {
+    "publisher": "OpenStax",
+    "book": "osbooks-college-physics-bundle",
+    "section": "m42308",
+    "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42308/index.cnxml",
+    "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)",
+    "locator": "CNXML module index.cnxml (typed elements, solutions present)"
+  },
+  "blocks": [
+    {
+      "id": "sec-0",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Learning Objectives",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-1",
+      "type": "paragraph",
+      "content": {
+        "text": "By the end of this section, you will be able to:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-1",
+      "type": "figure",
+      "asset_url": "images/phy_m42308_Figure_19_03_01a.jpg",
+      "caption": {
+        "text": "This NASA image of Arp 87 shows the result of a strong gravitational attraction between two galaxies. In contrast, at the subatomic level, the electrostatic attraction between two objects, such as an electron and a proton, is far greater than their mutual attraction due to gravity. (credit: NASA/HST)",
+        "inline": []
+      },
+      "alt": "Two spiral galaxies show the strong gravitational attraction between them as their arms appear to reach out toward one another.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-3",
+      "type": "paragraph",
+      "content": {
+        "text": "Through the work of scientists in the late 18th century, the main features of the electrostatic force —the existence of two types of charge, the observation that like charges repel, unlike charges attract, and the decrease of force with distance—were eventually refined, and expressed as a mathematical formula. The mathematical formula for the electrostatic force is called Coulomb’s law after the French physicist Charles Coulomb (1736–1806), who performed experiments and first proposed a formula to calculate it.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-4",
+      "type": "paragraph",
+      "content": {
+        "text": "Coulomb’s law calculates the magnitude of the force $F$ between two point charges, ${q}_{1}$ and ${q}_{2}$ , separated by a distance $r$ . In SI units, the constant $k$ is equal to",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-5",
+      "type": "paragraph",
+      "content": {
+        "text": "The electrostatic force is a vector quantity and is expressed in units of newtons. The force is understood to be along the line joining the two charges. (See .)",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-6",
+      "type": "paragraph",
+      "content": {
+        "text": "Although the formula for Coulomb’s law is simple, it was no mean task to prove it. The experiments Coulomb did, with the primitive equipment then available, were difficult. Modern experiments have verified Coulomb’s law to great precision. For example, it has been shown that the force is inversely proportional to distance between two objects squared $(F∝1/{r}^{2})$ to an accuracy of 1 part in ${10}^{16}$ . No exceptions have ever been found, even at the small distances within the atom.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-7",
+      "type": "paragraph",
+      "content": {
+        "text": "The magnitude of the electrostatic force $F$ between point charges ${q}_{1}$ and ${q}_{2}$ separated by a distance $r$ is given by Coulomb’s law. Note that Newton’s third law (every force exerted creates an equal and opposite force) applies as usual—the force on ${q}_{1}$ is equal in magnitude and opposite in direction to the force it exerts on ${q}_{2}$ . (a) Like charges. (b) Unlike charges.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-2",
+      "type": "figure",
+      "asset_url": "images/phy_m42308_Figure_19_03_02a.jpg",
+      "caption": {
+        "text": "The magnitude of the electrostatic force $F$ between point charges ${q}_{1}$ and ${q}_{2}$ separated by a distance $r$ is given by Coulomb’s law. Note that Newton’s third law (every force exerted creates an equal and opposite force) applies as usual—the force on ${q}_{1}$ is equal in magnitude and opposite in direction to the force it exerts on ${q}_{2}$ . (a) Like charges. (b) Unlike charges.",
+        "inline": []
+      },
+      "alt": "In part a, two charges q one and q two are shown at a distance r. Force vector arrow F one two points toward left and acts on q one. Force vector arrow F two one points toward right and acts on q two. Both forces act in opposite directions and are represented by arrows of same length. In part b, two charges q one and q two are shown at a distance r. Force vector arrow F one two points toward right and acts on q one. Force vector arrow F two one points toward left and acts on q two. Both forces act toward each other and are represented by arrows of same length. ",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "ex-9",
+      "type": "example",
+      "kind": "worked",
+      "title": {
+        "text": "How Strong is the Coulomb Force Relative to the Gravitational Force?",
+        "inline": []
+      },
+      "problem": {
+        "text": "",
+        "inline": []
+      },
+      "answer": null,
+      "level": "core"
+    },
+    {
+      "id": "p-10",
+      "type": "paragraph",
+      "content": {
+        "text": "Compare the electrostatic force between an electron and proton separated by $0.530×{10}^{-10}m$ with the gravitational force between them. This distance is their average separation in a hydrogen atom.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-11",
+      "type": "paragraph",
+      "content": {
+        "text": "To compare the two forces, we first compute the electrostatic force using Coulomb’s law, $F=k\\frac{|{q}_{1}{q}_{2}|}{{r}^{2}}$ . We then calculate the gravitational force using Newton’s universal law of gravitation. Finally, we take a ratio to see how the forces compare in magnitude.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-12",
+      "type": "paragraph",
+      "content": {
+        "text": "Entering the given and known information about the charges and separation of the electron and proton into the expression of Coulomb’s law yields",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-13",
+      "type": "paragraph",
+      "content": {
+        "text": "Thus the Coulomb force is",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-14",
+      "type": "paragraph",
+      "content": {
+        "text": "The charges are opposite in sign, so this is an attractive force. This is a very large force for an electron—it would cause an acceleration of $8.99×{10}^{22}m/{s}^{2}$ (verification is left as an end-of-section problem).The gravitational force is given by Newton’s law of gravitation as:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-15",
+      "type": "paragraph",
+      "content": {
+        "text": "where $G=6.67×{10}^{-11}N\\cdot {m}^{2}/{kg}^{2}$ . Here $m$ and $M$ represent the electron and proton masses, which can be found in the appendices. Entering values for the knowns yields",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-16",
+      "type": "paragraph",
+      "content": {
+        "text": "This is also an attractive force, although it is traditionally shown as positive since gravitational force is always attractive. The ratio of the magnitude of the electrostatic force to gravitational force in this case is, thus,",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-17",
+      "type": "paragraph",
+      "content": {
+        "text": "This is a remarkably large ratio! Note that this will be the ratio of electrostatic force to gravitational force for an electron and a proton at any distance (taking the ratio before entering numerical values shows that the distance cancels). This ratio gives some indication of just how much larger the Coulomb force is than the gravitational force between two of the most common particles in nature.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-18",
+      "type": "paragraph",
+      "content": {
+        "text": "As the example implies, gravitational force is completely negligible on a small scale, where the interactions of individual charged particles are important. On a large scale, such as between the Earth and a person, the reverse is true. Most objects are nearly electrically neutral, and so attractive and repulsive Coulomb forces nearly cancel. Gravitational force on a large scale dominates interactions between large objects because it is always attractive, while Coulomb forces tend to cancel.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-19",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Test Prep for AP Courses",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-20",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "For questions 25–27, suppose that the electrostatics force between two charges is *F* . What will be the force if the distance between them is halved? 4 *F*; 2 *F*; *F* /4; *F* /2",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a)",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-21",
+      "type": "paragraph",
+      "content": {
+        "text": "For questions 25–27, suppose that the electrostatics force between two charges is *F* .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-22",
+      "type": "paragraph",
+      "content": {
+        "text": "What will be the force if the distance between them is halved?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-23",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Which of the following is false? If the charge of one of the particles is doubled and that of the second is unchanged, the force will become 2 *F* .; If the charge of one of the particles is doubled and that of the second is halved, the force will remain *F* .; If the charge of both the particles is doubled, the force will become 4 *F* .; None of the above.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-24",
+      "type": "paragraph",
+      "content": {
+        "text": "Which of the following is false?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-25",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Which of the following is true about the gravitational force between the particles? It will be 3.25×10 −38 *F* .; It will be 3.25×10 38 *F* .; It will be equal to *F* .; It is not possible to determine the gravitational force as the masses of the particles are not given.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(d)",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-26",
+      "type": "paragraph",
+      "content": {
+        "text": "Which of the following is true about the gravitational force between the particles?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-27",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Two massive, positively charged particles are initially held a fixed distance apart. When they are moved farther apart, the magnitude of their mutual gravitational force changes by a factor of *n* . Which of the following indicates the factor by which the magnitude of their mutual electrostatic force changes? 1/ *n* 2; 1/ *n*; *n*; *n* 2",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-28",
+      "type": "paragraph",
+      "content": {
+        "text": "Two massive, positively charged particles are initially held a fixed distance apart. When they are moved farther apart, the magnitude of their mutual gravitational force changes by a factor of *n* . Which of the following indicates the factor by which the magnitude of their mutual electrostatic force changes?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-29",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "What is the electrostatic force between two charges of 1 C each, separated by a distance of 0.5 m?; How will this force change if the distance is increased to 1 m?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a) 3.60×10 10 N, (b) It will become 1/4 of the original value; hence it will be equal to 8.99×10 9 N",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-30",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) 3.60×10 10 N, (b) It will become 1/4 of the original value; hence it will be equal to 8.99×10 9 N",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-31",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Find the ratio of the electrostatic force to the gravitational force between two electrons.; Will this ratio change if the two electrons are replaced by protons? If yes, find the new ratio.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "sec-32",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Section Summary",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-33",
+      "type": "paragraph",
+      "content": {
+        "text": "where ${q}_{1}$ and ${q}_{2}$ are two point charges separated by a distance $r$ , and $k≈8.99×{10}^{9}N\\cdot {m}^{2}/{C}^{2}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-34",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Conceptual Questions",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-35",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "shows the charge distribution in a water molecule, which is called a polar molecule because it has an inherent separation of charge. Given water’s polar character, explain what effect humidity has on removing excess charge from objects. Schematic representation of the outer electron cloud of a neutral water molecule. The electrons spend more time near the oxygen than the hydrogens, giving a permanent charge separation as shown. Water is thus a *polar molecule* . It is more easily affected by electrostatic forces than molecules with uniform charge distributions.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-36",
+      "type": "paragraph",
+      "content": {
+        "text": "shows the charge distribution in a water molecule, which is called a polar molecule because it has an inherent separation of charge. Given water’s polar character, explain what effect humidity has on removing excess charge from objects.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-37",
+      "type": "paragraph",
+      "content": {
+        "text": "Schematic representation of the outer electron cloud of a neutral water molecule. The electrons spend more time near the oxygen than the hydrogens, giving a permanent charge separation as shown. Water is thus a *polar molecule* . It is more easily affected by electrostatic forces than molecules with uniform charge distributions.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-3",
+      "type": "figure",
+      "asset_url": "images/phy_m42308_Figure_19_03_03a.jpg",
+      "caption": {
+        "text": "Schematic representation of the outer electron cloud of a neutral water molecule. The electrons spend more time near the oxygen than the hydrogens, giving a permanent charge separation as shown. Water is thus a *polar molecule* . It is more easily affected by electrostatic forces than molecules with uniform charge distributions.",
+        "inline": []
+      },
+      "alt": "A schematic representation of the outer electron cloud of a neutral water molecule is shown. Three atoms are placed on the vertices of a triangle. The hydrogen atom has positive q charge and the oxygen atom has minus two q charge, and the angle between the line joining each hydrogen atom with the oxygen atom is one hundred and four degrees. The cloud density is shown more at the oxygen atom.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "exr-39",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Using , explain, in terms of Coulomb’s law, why a polar molecule (such as in ) is attracted by both positive and negative charges.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-40",
+      "type": "paragraph",
+      "content": {
+        "text": "Using , explain, in terms of Coulomb’s law, why a polar molecule (such as in ) is attracted by both positive and negative charges.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-41",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Given the polar character of water molecules, explain how ions in the air form nucleation centers for rain droplets.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-42",
+      "type": "paragraph",
+      "content": {
+        "text": "Given the polar character of water molecules, explain how ions in the air form nucleation centers for rain droplets.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-43",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Problems & Exercises",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-44",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "What is the repulsive force between two pith balls that are 8.00 cm apart and have equal charges of – 30.0 nC?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-45",
+      "type": "paragraph",
+      "content": {
+        "text": "What is the repulsive force between two pith balls that are 8.00 cm apart and have equal charges of – 30.0 nC?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-46",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "(a) How strong is the attractive force between a glass rod with a $0.700μC$ charge and a silk cloth with a $–0.600μC$ charge, which are 12.0 cm apart, using the approximation that they act like point charges? (b) Discuss how the answer to this problem might be affected if the charges are distributed over some area and do not act like point charges.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a) 0.263 N (b) If the charges are distributed over some area, there will be a concentration of charge along the side closest to the oppositely charged object. This effect will increase the net force.",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-47",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) How strong is the attractive force between a glass rod with a $0.700μC$ charge and a silk cloth with a $–0.600μC$ charge, which are 12.0 cm apart, using the approximation that they act like point charges? (b) Discuss how the answer to this problem might be affected if the charges are distributed over some area and do not act like point charges.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-48",
+      "type": "paragraph",
+      "content": {
+        "text": "(b) If the charges are distributed over some area, there will be a concentration of charge along the side closest to the oppositely charged object. This effect will increase the net force.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-49",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Two point charges exert a 5.00 N force on each other. What will the force become if the distance between them is increased by a factor of three?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-50",
+      "type": "paragraph",
+      "content": {
+        "text": "Two point charges exert a 5.00 N force on each other. What will the force become if the distance between them is increased by a factor of three?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-51",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Two point charges are brought closer together, increasing the force between them by a factor of 25. By what factor was their separation decreased?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "The separation decreased by a factor of 5.",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-52",
+      "type": "paragraph",
+      "content": {
+        "text": "Two point charges are brought closer together, increasing the force between them by a factor of 25. By what factor was their separation decreased?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-53",
+      "type": "paragraph",
+      "content": {
+        "text": "The separation decreased by a factor of 5.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-54",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "How far apart must two point charges of 75.0 nC (typical of static electricity) be to have a force of 1.00 N between them?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-55",
+      "type": "paragraph",
+      "content": {
+        "text": "How far apart must two point charges of 75.0 nC (typical of static electricity) be to have a force of 1.00 N between them?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-56",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "If two equal charges each of 1 C each are separated in air by a distance of 1 km, what is the magnitude of the force acting between them? You will see that even at a distance as large as 1 km, the repulsive force is substantial because 1 C is a very significant amount of charge.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-57",
+      "type": "paragraph",
+      "content": {
+        "text": "If two equal charges each of 1 C each are separated in air by a distance of 1 km, what is the magnitude of the force acting between them? You will see that even at a distance as large as 1 km, the repulsive force is substantial because 1 C is a very significant amount of charge.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-58",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A test charge of $+2μC$ is placed halfway between a charge of $+6μC$ and another of $+4μC$ separated by 10 cm. (a) What is the magnitude of the force on the test charge? (b) What is the direction of this force (away from or toward the $+6μC$ charge)?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-59",
+      "type": "paragraph",
+      "content": {
+        "text": "A test charge of $+2μC$ is placed halfway between a charge of $+6μC$ and another of $+4μC$ separated by 10 cm. (a) What is the magnitude of the force on the test charge? (b) What is the direction of this force (away from or toward the $+6μC$ charge)?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-60",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Bare free charges do not remain stationary when close together. To illustrate this, calculate the acceleration of two isolated protons separated by 2.00 nm (a typical distance between gas atoms). Explicitly show how you follow the steps in the Problem-Solving Strategy for electrostatics.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$F=k\\frac{|{q}_{1}{q}_{2}|}{{r}^{2}}=ma⇒a=\\frac{k{q}^{2}}{m{r}^{2}}=\\frac{(9.00×{10}^{9}N\\cdot {m}^{2}/{C}^{2}){(1.60×{10}^{–19}m)}^{2}}{(1.67×{10}^{–27}kg){(2.00×{10}^{–9}m)}^{2}}=3.45×{10}^{16}m/{s}^{2}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-61",
+      "type": "paragraph",
+      "content": {
+        "text": "Bare free charges do not remain stationary when close together. To illustrate this, calculate the acceleration of two isolated protons separated by 2.00 nm (a typical distance between gas atoms). Explicitly show how you follow the steps in the Problem-Solving Strategy for electrostatics.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-62",
+      "type": "paragraph",
+      "content": {
+        "text": "$F=k\\frac{|{q}_{1}{q}_{2}|}{{r}^{2}}=ma⇒a=\\frac{k{q}^{2}}{m{r}^{2}}=\\frac{(9.00×{10}^{9}N\\cdot {m}^{2}/{C}^{2}){(1.60×{10}^{–19}m)}^{2}}{(1.67×{10}^{–27}kg){(2.00×{10}^{–9}m)}^{2}}=3.45×{10}^{16}m/{s}^{2}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-63",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "(a) By what factor must you change the distance between two point charges to change the force between them by a factor of 10? (b) Explain how the distance can either increase or decrease by this factor and still cause a factor of 10 change in the force.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a) 3.2 (b) If the distance increases by 3.2, then the force will decrease by a factor of 10 ; if the distance decreases by 3.2, then the force will increase by a factor of 10. Either way, the force changes by a factor of 10.",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-64",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) By what factor must you change the distance between two point charges to change the force between them by a factor of 10? (b) Explain how the distance can either increase or decrease by this factor and still cause a factor of 10 change in the force.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-65",
+      "type": "paragraph",
+      "content": {
+        "text": "(b) If the distance increases by 3.2, then the force will decrease by a factor of 10 ; if the distance decreases by 3.2, then the force will increase by a factor of 10. Either way, the force changes by a factor of 10.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-66",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Suppose you have a total charge ${q}_{tot}$ that you can split in any manner. Once split, the separation distance is fixed. How do you split the charge to achieve the greatest force?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-67",
+      "type": "paragraph",
+      "content": {
+        "text": "Suppose you have a total charge ${q}_{tot}$ that you can split in any manner. Once split, the separation distance is fixed. How do you split the charge to achieve the greatest force?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-68",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "(a) Common transparent tape becomes charged when pulled from a dispenser. If one piece is placed above another, the repulsive force can be great enough to support the top piece’s weight. Assuming equal point charges (only an approximation), calculate the magnitude of the charge if electrostatic force is great enough to support the weight of a 10.0 mg piece of tape held 1.00 cm above another. (b) Discuss whether the magnitude of this charge is consistent with what is typical of static electricity.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a) $1.04×{10}^{-9}$ C (b) This charge is approximately 1 nC, which is consistent with the magnitude of charge typical for static electricity",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-69",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) Common transparent tape becomes charged when pulled from a dispenser. If one piece is placed above another, the repulsive force can be great enough to support the top piece’s weight. Assuming equal point charges (only an approximation), calculate the magnitude of the charge if electrostatic force is great enough to support the weight of a 10.0 mg piece of tape held 1.00 cm above another. (b) Discuss whether the magnitude of this charge is consistent with what is typical of static electricity.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-70",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) $1.04×{10}^{-9}$ C",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-71",
+      "type": "paragraph",
+      "content": {
+        "text": "(b) This charge is approximately 1 nC, which is consistent with the magnitude of charge typical for static electricity",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-72",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "(a) Find the ratio of the electrostatic to gravitational force between two electrons. (b) What is this ratio for two protons? (c) Why is the ratio different for electrons and protons?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-73",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) Find the ratio of the electrostatic to gravitational force between two electrons. (b) What is this ratio for two protons? (c) Why is the ratio different for electrons and protons?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-74",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "At what distance is the electrostatic force between two protons equal to the weight of one proton?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-75",
+      "type": "paragraph",
+      "content": {
+        "text": "At what distance is the electrostatic force between two protons equal to the weight of one proton?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-76",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A certain five cent coin contains 5.00 g of nickel. What fraction of the nickel atoms’ electrons, removed and placed 1.00 m above it, would support the weight of this coin? The atomic mass of nickel is 58.7, and each nickel atom contains 28 electrons and 28 protons.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$1.02×{10}^{-11}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-77",
+      "type": "paragraph",
+      "content": {
+        "text": "A certain five cent coin contains 5.00 g of nickel. What fraction of the nickel atoms’ electrons, removed and placed 1.00 m above it, would support the weight of this coin? The atomic mass of nickel is 58.7, and each nickel atom contains 28 electrons and 28 protons.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-78",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "(a) Two point charges totaling $8.00µC$ exert a repulsive force of 0.150 N on one another when separated by 0.500 m. What is the charge on each? (b) What is the charge on each if the force is attractive?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-79",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) Two point charges totaling $8.00µC$ exert a repulsive force of 0.150 N on one another when separated by 0.500 m. What is the charge on each? (b) What is the charge on each if the force is attractive?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-80",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Point charges of $5.00µC$ and $–3.00µC$ are placed 0.250 m apart. (a) Where can a third charge be placed so that the net force on it is zero? (b) What if both charges are positive?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "0.859 m beyond negative charge on line connecting two charges; 0.109 m from lesser charge on line connecting two charges",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-81",
+      "type": "paragraph",
+      "content": {
+        "text": "Point charges of $5.00µC$ and $–3.00µC$ are placed 0.250 m apart. (a) Where can a third charge be placed so that the net force on it is zero? (b) What if both charges are positive?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-82",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Two point charges ${q}_{1}$ and ${q}_{2}$ are $3.00 m$ apart, and their total charge is $20µC$ . (a) If the force of repulsion between them is 0.075N, what are magnitudes of the two charges? (b) If one charge attracts the other with a force of 0.525N, what are the magnitudes of the two charges? Note that you may need to solve a quadratic equation to reach your answer.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-83",
+      "type": "paragraph",
+      "content": {
+        "text": "Two point charges ${q}_{1}$ and ${q}_{2}$ are $3.00 m$ apart, and their total charge is $20µC$ . (a) If the force of repulsion between them is 0.075N, what are magnitudes of the two charges? (b) If one charge attracts the other with a force of 0.525N, what are the magnitudes of the two charges? Note that you may need to solve a quadratic equation to reach your answer.",
+        "inline": []
+      },
+      "level": "core"
+    }
+  ],
+  "solutions": {
+    "osbooks-college-physics-bundle:m42308:exr-20": [
+      [
+        {
+          "kind": "text",
+          "text": "(a)"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42308:exr-25": [
+      [
+        {
+          "kind": "text",
+          "text": "(d)"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42308:exr-29": [
+      [
+        {
+          "kind": "text",
+          "text": "(a) 3.60×10"
+        },
+        {
+          "kind": "text",
+          "text": "10"
+        },
+        {
+          "kind": "text",
+          "text": "N, (b) It will become 1/4 of the original value; hence it will be equal to 8.99×10"
+        },
+        {
+          "kind": "text",
+          "text": "9"
+        },
+        {
+          "kind": "text",
+          "text": "N"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42308:exr-46": [
+      [
+        {
+          "kind": "text",
+          "text": "(a) 0.263 N"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(b) If the charges are distributed over some area, there will be a concentration of charge along the side closest to the oppositely charged object. This effect will increase the net force."
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42308:exr-51": [
+      [
+        {
+          "kind": "text",
+          "text": "The separation decreased by a factor of 5."
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42308:exr-60": [
+      [
+        {
+          "kind": "math",
+          "text": "F=k\\frac{|{q}_{1}{q}_{2}|}{{r}^{2}}=ma⇒a=\\frac{k{q}^{2}}{m{r}^{2}}=\\frac{(9.00×{10}^{9}N\\cdot {m}^{2}/{C}^{2}){(1.60×{10}^{–19}m)}^{2}}{(1.67×{10}^{–27}kg){(2.00×{10}^{–9}m)}^{2}}=3.45×{10}^{16}m/{s}^{2}"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42308:exr-63": [
+      [
+        {
+          "kind": "text",
+          "text": "(a) 3.2"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(b) If the distance increases by 3.2, then the force will decrease by a factor of 10 ; if the distance decreases by 3.2, then the force will increase by a factor of 10. Either way, the force changes by a factor of 10."
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42308:exr-68": [
+      [
+        {
+          "kind": "text",
+          "text": "(a)"
+        },
+        {
+          "kind": "math",
+          "text": "1.04×{10}^{-9}"
+        },
+        {
+          "kind": "text",
+          "text": "C"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(b) This charge is approximately 1 nC, which is consistent with the magnitude of charge typical for static electricity"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42308:exr-76": [
+      [
+        {
+          "kind": "math",
+          "text": "1.02×{10}^{-11}"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42308:exr-80": [
+      [
+        {
+          "kind": "text",
+          "text": "0.859 m beyond negative charge on line connecting two charges"
+        },
+        {
+          "kind": "text",
+          "text": "0.109 m from lesser charge on line connecting two charges"
+        }
+      ]
+    ]
+  }
+}

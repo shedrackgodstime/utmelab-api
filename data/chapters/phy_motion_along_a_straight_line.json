@@ -5,6 +5,7 @@
   "title": "Motion Along a Straight Line",
   "book_id": "secondary_physics",
   "part_id": "part-1",
+  "facts_inherited": false,
   "learning_objectives": [
     {
       "id": "lo-1",
@@ -261,6 +262,7 @@
       "slug": "introduction-to-one-dimensional-kinematics",
       "title": "Introduction to One-Dimensional Kinematics",
       "est_minutes": 8,
+      "facts_inherited": false,
       "learning_objectives": [
         {
           "id": "lo-1",
@@ -273,7 +275,7 @@
           {
             "id": "b-1",
             "type": "figure",
-            "asset_url": "images/phy_m42122_Figure_02_00_01_D.jpg",
+            "asset_url": "books/secondary_physics/b93ff6eb58aaf5fa3b511a6f2453eda0263ef831f61aa19fba3a32afa21ab3f7.jpg",
             "caption": {
               "text": "The motion of an American kestrel through the air can be described by the bird’s displacement, speed, velocity, and acceleration. When it flies in a straight line without any change in direction, its motion is said to be one dimensional. (credit: Vince Maidens, Wikimedia Commons)",
               "inline": []
@@ -359,6 +361,7 @@
       "slug": "displacement",
       "title": "Displacement",
       "est_minutes": 16,
+      "facts_inherited": false,
       "learning_objectives": [
         {
           "id": "lo-1",
@@ -371,7 +374,7 @@
           {
             "id": "b-1",
             "type": "figure",
-            "asset_url": "images/phy_m42033_Figure_02_01_00.jpg",
+            "asset_url": "books/secondary_physics/796e7f9f00b02c3aeea35b852194840a898b735b2f2dee7e78f688fc164964fc.jpg",
             "caption": {
               "text": "These cyclists in Vietnam can be described by their position relative to buildings and a canal. Their motion can be described by their change in position, or displacement, in the frame of reference. (credit: Suzan Black, Fotopedia)",
               "inline": []
@@ -454,7 +457,7 @@
           {
             "id": "b-11",
             "type": "figure",
-            "asset_url": "images/phy_m42033_Figure_02_01_01.jpg",
+            "asset_url": "books/secondary_physics/12557b20bf50467d9188229bb4232fba1f3456803882b36c1c477e0e5468f439.jpg",
             "caption": {
               "text": "A professor paces left and right while lecturing. Her position relative to Earth is given by $x$ . The $+2.0m$ displacement of the professor relative to Earth is represented by an arrow pointing to the right.",
               "inline": []
@@ -465,7 +468,7 @@
           {
             "id": "b-12",
             "type": "figure",
-            "asset_url": "images/phy_m42033_Figure_02_01_02.jpg",
+            "asset_url": "books/secondary_physics/04b9d454705a2284a7b3a939b9c2f7ea4aa74bfd52520c52fdad2d0962940421.jpg",
             "caption": {
               "text": "A passenger moves from his seat to the back of the plane. His location relative to the airplane is given by $x$ . The $-4.0-m$ displacement of the passenger relative to the plane is represented by an arrow toward the rear of the plane. Notice that the arrow representing his displacement is twice as long as the arrow representing the displacement of the professor (he moves twice as far) in .",
               "inline": []
@@ -532,7 +535,7 @@
           {
             "id": "b-20",
             "type": "figure",
-            "asset_url": "images/phy_m42033_Figure_02_01_03.jpg",
+            "asset_url": "books/secondary_physics/d1e63dde36444714505c29cc6ef09b48f9078a426c85e1832c0f8f97c66a7174.jpg",
             "caption": {
               "text": "Two diagrams side by side. To the left is a horizontal line, or x axis, with points for final position and initial position. Displacement 1, shown by an arrow pointing leftward, equals negative 3 kilometers. Displacement 2, shown by an arrow pointing rightward, equals 2 kilometers. To the right is a pair of x and y axes, showing that east is the positive x direction and west is the negative x direction.",
               "inline": []
@@ -607,7 +610,7 @@
           {
             "id": "b-29",
             "type": "figure",
-            "asset_url": "images/phy_m42033_Figure_02_01Sol_01.jpg",
+            "asset_url": "books/secondary_physics/e0f0902c2a5393b033d7c6d9bb0b0004ae93325a6928da06a287498b4588e7db.jpg",
             "caption": {
               "text": "An x axis starts at 0 meters and ends at 12 meters. There are four points on the graph with position paths. Path A starts at 0 and stops at 7. Path B starts at 12 and ends at 7. Path C starts at 2, goes to 10, turns around and goes back to 8, then turns around again and stops at 10. Path D starts at 9, goes to 3, then turns around and stops at 5.",
               "inline": []
@@ -754,6 +757,7 @@
       "slug": "vectors-scalars-and-coordinate-systems",
       "title": "Vectors, Scalars, and Coordinate Systems",
       "est_minutes": 14,
+      "facts_inherited": false,
       "learning_objectives": [
         {
           "id": "lo-1",
@@ -766,7 +770,7 @@
           {
             "id": "b-1",
             "type": "figure",
-            "asset_url": "images/phy_m42124_Figure_02_02_00.jpg",
+            "asset_url": "books/secondary_physics/976bf08a7b73c03b426da9000773efa2b339d4736f6ab939c4288de38ec8179c.jpg",
             "caption": {
               "text": "The motion of this Eclipse Concept jet can be described in terms of the distance it has traveled (a scalar quantity) or its displacement in a specific direction (a vector quantity). In order to specify the direction of motion, its displacement must be described based on a coordinate system. In this case, it may be convenient to choose motion toward the left as positive motion (it is the forward direction for the plane), although in many cases, the $x$ -coordinate runs from left to right, with motion to the right as positive and motion to the left as negative. (credit: Armchair Aviator, Flickr)",
               "inline": []
@@ -817,7 +821,7 @@
           {
             "id": "b-7",
             "type": "figure",
-            "asset_url": "images/phy_m42124_Figure_02_02_00b.jpg",
+            "asset_url": "books/secondary_physics/8b0415493cc82a607c3c4386f478326d5179fb6ea1a92af93f9032a6189db649.jpg",
             "caption": {
               "text": "It is usually convenient to consider motion upward or to the right as positive $(+)$ and motion downward or to the left as negative $(-)$ .",
               "inline": []
@@ -959,6 +963,7 @@
       "slug": "time-velocity-and-speed",
       "title": "Time, Velocity, and Speed",
       "est_minutes": 22,
+      "facts_inherited": false,
       "learning_objectives": [
         {
           "id": "lo-1",
@@ -971,7 +976,7 @@
           {
             "id": "b-1",
             "type": "figure",
-            "asset_url": "images/phy_m42096_Picture_6.png",
+            "asset_url": "books/secondary_physics/b6f39d5407124dc485a0d284ffd86a77b2b8cd6e31acb7e1084d48426979c4c1.png",
             "caption": {
               "text": "The motion of these racing snails can be described by their speeds and their velocities. (credit: tobitasflickr, Flickr)",
               "inline": []
@@ -1102,7 +1107,7 @@
           {
             "id": "b-17",
             "type": "figure",
-            "asset_url": "images/phy_m42096_Figure_02_02_01.jpg",
+            "asset_url": "books/secondary_physics/a69ecef7272c93fca67b92e4e57e7fb296b14e15efca752a653843b29c2e8537.jpg",
             "caption": {
               "text": "A more detailed record of an airplane passenger heading toward the back of the plane, showing smaller segments of his trip.",
               "inline": []
@@ -1161,7 +1166,7 @@
           {
             "id": "b-24",
             "type": "figure",
-            "asset_url": "images/phy_m42096_Figure_02_02_02.jpg",
+            "asset_url": "books/secondary_physics/3fa21b8cf09e29d1af9403faf7d826c2f26f3394c571d4570d3f96955a936e5b.jpg",
             "caption": {
               "text": "During a 30-minute round trip to the store, the total distance traveled is 6 km. The average speed is 12 km/h. The displacement for the round trip is zero, since there was no net change in position. Thus the average velocity is zero.",
               "inline": []
@@ -1180,7 +1185,7 @@
           {
             "id": "b-26",
             "type": "figure",
-            "asset_url": "images/phy_m42096_Figure_02_02_03.jpg",
+            "asset_url": "books/secondary_physics/3fad54c86b92feeced6a02aa2b2af85b8e5ea0aa9d9fec6044e0e70885d5eb66.jpg",
             "caption": {
               "text": "Position vs. time, velocity vs. time, and speed vs. time on a trip. Note that the velocity for the return trip is negative.",
               "inline": []
@@ -1541,6 +1546,7 @@
       "slug": "acceleration",
       "title": "Acceleration",
       "est_minutes": 24,
+      "facts_inherited": false,
       "learning_objectives": [
         {
           "id": "lo-1",
@@ -1553,7 +1559,7 @@
           {
             "id": "b-1",
             "type": "figure",
-            "asset_url": "images/phy_m42100_Figure_02_04_00.jpg",
+            "asset_url": "books/secondary_physics/ca5ad7c2b2037ade18809c37ac84d37895310926a213a72efc3c7282b3a49955.jpg",
             "caption": {
               "text": "A plane decelerates, or slows down, as it comes in for landing in St. Maarten. Its acceleration is opposite in direction to its velocity. (credit: Steve Conry, Flickr)",
               "inline": []
@@ -1620,7 +1626,7 @@
           {
             "id": "b-9",
             "type": "figure",
-            "asset_url": "images/phy_m42100_Figure_02_04_00a.jpg",
+            "asset_url": "books/secondary_physics/15821bb8edef236c271c2988b3297a47a5536ceccb108c408eed41482190e8f9.jpg",
             "caption": {
               "text": "A subway train in Sao Paulo, Brazil, decelerates as it comes into a station. It is accelerating in a direction opposite to its direction of motion. (credit: Yusuke Kawasaki, Flickr)",
               "inline": []
@@ -1639,7 +1645,7 @@
           {
             "id": "b-11",
             "type": "figure",
-            "asset_url": "images/phy_m42100_Figure_02_04_00b.jpg",
+            "asset_url": "books/secondary_physics/35ae785a12a14a66e3388e3563114bfe04bc4427fc75b945f5648d3f29f1fdb8.jpg",
             "caption": {
               "text": "(a) This car is speeding up as it moves toward the right. It therefore has positive acceleration in our coordinate system. (b) This car is slowing down as it moves toward the right. Therefore, it has negative acceleration in our coordinate system, because its acceleration is toward the left. The car is also decelerating: the direction of its acceleration is opposite to its direction of motion. (c) This car is moving toward the left, but slowing down over time. Therefore, its acceleration is positive in our coordinate system because it is toward the right. However, the car is decelerating because its acceleration is opposite to its motion. (d) This car is speeding up as it moves toward the left. It has negative acceleration because it is accelerating toward the left. However, because its acceleration is in the same direction as its motion, it is speeding up ( *not* decelerating).",
               "inline": []
@@ -1650,7 +1656,7 @@
           {
             "id": "b-12",
             "type": "figure",
-            "asset_url": "images/phy_m42100_graphics4-083a.jpg",
+            "asset_url": "books/secondary_physics/eeeab57e8682302a96c6edbc96f24d864b6fb88c5cefdfdd79d9c3a5dfc2911a.jpg",
             "caption": {
               "text": "(credit: Jon Sullivan, PD Photo.org)",
               "inline": []
@@ -1669,7 +1675,7 @@
           {
             "id": "b-14",
             "type": "figure",
-            "asset_url": "images/phy_m42100_Figure_02_03_01a.jpg",
+            "asset_url": "books/secondary_physics/5c1e1c3abc5fbb6708cf7d3c70786ad7b85d2be28fe478aca05f2e359e7ad228.jpg",
             "caption": {
               "text": "An acceleration vector arrow pointing west, in the negative x direction, labeled with a equals question mark. A velocity vector arrow also pointing toward the left, with initial velocity labeled as 0 and final velocity labeled as negative fifteen point 0 meters per second.",
               "inline": []
@@ -1736,7 +1742,7 @@
           {
             "id": "b-22",
             "type": "figure",
-            "asset_url": "images/phy_m42100_Figure_02_03_02.jpg",
+            "asset_url": "books/secondary_physics/ce95de3ba39c98440df6eff2dd3df7aa9a01f5518c333d1cb504baa6a2a4cb27.jpg",
             "caption": {
               "text": "Graphs of instantaneous acceleration versus time for two different one-dimensional motions. (a) Here acceleration varies only slightly and is always in the same direction, since it is positive. The average over the interval is nearly the same as the acceleration at any given time. (b) Here the acceleration varies greatly, perhaps representing a package on a post office conveyor belt that is accelerated forward and backward as it bumps along. It is necessary to consider small time intervals (such as from 0 to 1.0 s) with constant or nearly constant acceleration in such a situation.",
               "inline": []
@@ -1755,7 +1761,7 @@
           {
             "id": "b-24",
             "type": "figure",
-            "asset_url": "images/phy_m42100_Figure_02_03_03.jpg",
+            "asset_url": "books/secondary_physics/ad3b375cdde18bea14453c27a20e964eb857d341e1e61975bb9fe091fffa69ed.jpg",
             "caption": {
               "text": "One-dimensional motion of a subway train considered in , , , , , and . Here we have chosen the $x$ -axis so that + means to the right and $-$ means to the left for displacements, velocities, and accelerations. (a) The subway train moves to the right from ${x}_{0}$ to ${x}_{f}$ . Its displacement $Δx$ is +2.0 km. (b) The train moves to the left from ${x′}_{0}$ to ${x′}_{f}$ . Its displacement $Δx′$ is $-1.5 km$ . (Note that the prime symbol (′) is used simply to distinguish between displacement in the two different situations. The distances of travel and the size of the cars are on different scales to fit everything into the diagram.)",
               "inline": []
@@ -1766,7 +1772,7 @@
           {
             "id": "b-25",
             "type": "figure",
-            "asset_url": "images/phy_m42100_Figure_02_03_03c.jpg",
+            "asset_url": "books/secondary_physics/b06edf01bada254dcc182debbf0c2acc65b8724e913846a9e417e0d6fc5d71a4.jpg",
             "caption": {
               "text": "A point represents the initial velocity of 0 kilometers per second. Below the point is a velocity vector arrow pointing to the right, representing the final velocity of thirty point zero kilometers per hour. Below the velocity vector is an acceleration vector arrow labeled a equals question mark.",
               "inline": []
@@ -1825,7 +1831,7 @@
           {
             "id": "b-32",
             "type": "figure",
-            "asset_url": "images/phy_m42100_Figure_02_03_03d.jpg",
+            "asset_url": "books/secondary_physics/ebbd419baba0684e137aa8ba38dd32951f11cb1064951df98210dfc29b124a3f.jpg",
             "caption": {
               "text": "A velocity vector arrow pointing toward the right with initial velocity of thirty point zero kilometers per hour and final velocity of 0. An acceleration vector arrow pointing toward the left, labeled a equals question mark.",
               "inline": []
@@ -1892,7 +1898,7 @@
           {
             "id": "b-40",
             "type": "figure",
-            "asset_url": "images/phy_m42100_Figure_02_03_04.jpg",
+            "asset_url": "books/secondary_physics/911612f02d7b9fbec40afce36cb30ef905d20a4d1db02f3b538652101f39140d.jpg",
             "caption": {
               "text": "(a) Position of the train over time. Notice that the train’s position changes slowly at the beginning of the journey, then more and more quickly as it picks up speed. Its position then changes more slowly as it slows down at the end of the journey. In the middle of the journey, while the velocity remains constant, the position changes at a constant rate. (b) Velocity of the train over time. The train’s velocity increases as it accelerates at the beginning of the journey. It remains the same in the middle of the journey (where there is no acceleration). It decreases as the train decelerates at the end of the journey. (c) The acceleration of the train over time. The train has positive acceleration as it speeds up at the beginning of the journey. It has no acceleration as it travels at constant velocity in the middle of the journey. Its acceleration is negative as it slows down at the end of the journey.",
               "inline": []
@@ -1903,7 +1909,7 @@
           {
             "id": "b-41",
             "type": "figure",
-            "asset_url": "images/phy_m42100_Figure_02_03_04a.jpg",
+            "asset_url": "books/secondary_physics/dc3584a5d872962f66f78416910b5e4cf9edcdb3870b414b8cefa19afd280da2.jpg",
             "caption": {
               "text": "The train moves toward the left, from an initial position of 5 point 25 kilometers to a final position of 3 point 75 kilometers.",
               "inline": []
@@ -1954,7 +1960,7 @@
           {
             "id": "b-47",
             "type": "figure",
-            "asset_url": "images/phy_m42100_Figure_02_03_04b.jpg",
+            "asset_url": "books/secondary_physics/33182026c908a1da2483334c9fb4c230cd123173a53b9e39ce01a355b8ad8c01.jpg",
             "caption": {
               "text": "A velocity vector arrow pointing to the left with initial velocity of negative twenty point 0 kilometers per hour and a final velocity of 0. An acceleration vector arrow pointing toward the right, labeled a equals question mark.",
               "inline": []
@@ -2045,7 +2051,7 @@
           {
             "id": "b-58",
             "type": "figure",
-            "asset_url": "images/phy_m42100_Figure_Ch2_M4_14.jpg",
+            "asset_url": "books/secondary_physics/2f89237c2436be334c0944d92353eb75f64a1101c41e0b0f14f18a5f3ea4aa23.jpg",
             "caption": {
               "text": "Graph showing Velocity vs. Time of a cart.",
               "inline": []
@@ -2491,6 +2497,30 @@
             "text": "Finally, suppose the train in slows to a stop from a velocity of 20.0 km/h in 10.0 s. What is its average acceleration? Once again, let’s draw a sketch:",
             "inline": []
           }
+        },
+        {
+          "id": "we-exr-80",
+          "statement": {
+            "text": "An airplane lands on a runway traveling east. Describe its acceleration.",
+            "inline": []
+          },
+          "steps": [
+            {
+              "step_number": 1,
+              "expression": "If we take east to be positive, then the airplane has negative acceleration, as it is accelerating toward the west. It is also decelerating: its acceleration is opposite in direction to its velocity."
+            }
+          ],
+          "answer": {
+            "text": "If we take east to be positive, then the airplane has negative acceleration, as it is accelerating toward the west. It is also decelerating: its acceleration is opposite in direction to its velocity.",
+            "inline": []
+          },
+          "provenance": {
+            "publisher": "OpenStax",
+            "title": "osbooks-college-physics-bundle",
+            "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42100/index.cnxml",
+            "locator": "CNXML module m42100, exercise block exr-80",
+            "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
+          }
         }
       ],
       "misconceptions": [
@@ -2530,8 +2560,7 @@
       "exercise_ids": [
         "ex-sec-5-01",
         "ex-sec-5-02",
-        "ex-sec-5-03",
-        "ex-sec-5-04"
+        "ex-sec-5-03"
       ],
       "exam_links": [
         {
@@ -2549,8 +2578,7 @@
         "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/collections/college-physics-2e.collection.xml",
         "locator": "CNXML module m42100",
         "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
-      },
-      "no_worked_example_reason": "The source carries no worked example for this section, and it holds no solved exercise to promote, so the practice is left to the exercises themselves."
+      }
     },
     {
       "id": "sec-6",
@@ -2558,6 +2586,7 @@
       "slug": "motion-equations-for-constant-acceleration-in-one-dimension",
       "title": "Motion Equations for Constant Acceleration in One Dimension",
       "est_minutes": 26,
+      "facts_inherited": false,
       "learning_objectives": [
         {
           "id": "lo-1",
@@ -2570,7 +2599,7 @@
           {
             "id": "b-1",
             "type": "figure",
-            "asset_url": "images/phy_m42099_Figure_02_05_00.jpg",
+            "asset_url": "books/secondary_physics/97f3c3bf2af4901c97d7633286614f47f44a91a826dc5fc7b467c34c45d414a0.jpg",
             "caption": {
               "text": "Kinematic equations can help us describe and predict the motion of moving objects such as these kayaks racing in Newbury, England. (credit: Barry Skeates, Flickr)",
               "inline": []
@@ -2677,7 +2706,7 @@
           {
             "id": "b-14",
             "type": "figure",
-            "asset_url": "images/phy_m42099_Figure_02_05_00a.jpg",
+            "asset_url": "books/secondary_physics/fb4a35df9f2f42bcb0db54eb4ddc0fe992c66e27a9d34351a695a706185bfbad.jpg",
             "caption": {
               "text": "Velocity vector arrow labeled v equals 4 point zero zero meters per second over an x axis displaying initial and final positions. Final position is labeled x equals question mark.",
               "inline": []
@@ -2736,7 +2765,7 @@
           {
             "id": "b-21",
             "type": "figure",
-            "asset_url": "images/phy_m42099_Figure02_05_00b.jpg",
+            "asset_url": "books/secondary_physics/c5604d7574e0970240a77b490a475afb855dc5be2da35f2c894d38bd2f4f46df.jpg",
             "caption": {
               "text": "There is a linear relationship between displacement and average velocity. For a given time $t$ , an object moving twice as fast as another object will move twice as far as the other object.",
               "inline": []
@@ -2771,7 +2800,7 @@
           {
             "id": "b-25",
             "type": "figure",
-            "asset_url": "images/phy_m42099_Figure_02_05_00c.jpg",
+            "asset_url": "books/secondary_physics/1de26a82bc83303e6c982c57b52dc3a840e9dd77516c7954fdbee038f5d446e1.jpg",
             "caption": {
               "text": "Velocity vector arrow pointing toward the right in the positive x direction. Initial velocity equals seventy meters per second. Final velocity equals question mark. An acceleration vector arrow pointing toward the left labeled a equals negative 1 point 50 meters per second squared.",
               "inline": []
@@ -2822,7 +2851,7 @@
           {
             "id": "b-31",
             "type": "figure",
-            "asset_url": "images/phy_m42099_Figure_02_04_01.jpg",
+            "asset_url": "books/secondary_physics/add3dfc5723976b4114029d72b8a3ec6aeffbfaad2c99aa565e1f6d284b71f6c.jpg",
             "caption": {
               "text": "The airplane lands with an initial velocity of 70.0 m/s and slows to a final velocity of 10.0 m/s before heading for the terminal. Note that the acceleration is negative because its direction is opposite to its velocity, which is positive.",
               "inline": []
@@ -2849,7 +2878,7 @@
           {
             "id": "b-34",
             "type": "figure",
-            "asset_url": "images/phy_m42099_Figure_02_04_01a.jpg",
+            "asset_url": "books/secondary_physics/c4a9c7a6f7d802be208c09971ca3cb19131274a0862e84cd20fcc2a1644a0429.jpg",
             "caption": {
               "text": "The Space Shuttle *Endeavor* blasts off from the Kennedy Space Center in February 2010. (credit: Matthew Simantov, Flickr)",
               "inline": []
@@ -2900,7 +2929,7 @@
           {
             "id": "b-40",
             "type": "figure",
-            "asset_url": "images/phy_m42099_Figure_02_04_02.jpg",
+            "asset_url": "books/secondary_physics/13057f33a38514877ef94aec8dea5045ab76bff0c5321718ee59139682497411.jpg",
             "caption": {
               "text": "U.S. Army Top Fuel pilot Tony “The Sarge” Schumacher begins a race with a controlled burnout. (credit: Lt. Col. William Thurmond. Photo Courtesy of U.S. Army.)",
               "inline": []
@@ -2911,7 +2940,7 @@
           {
             "id": "b-41",
             "type": "figure",
-            "asset_url": "images/phy_m42099_Figure_02_04_02a.jpg",
+            "asset_url": "books/secondary_physics/dda9760266e3cb86cdbd703310b936b53d226250e9b634c59ddc70c9b66028e5.jpg",
             "caption": {
               "text": "Acceleration vector arrow pointing toward the right in the positive x direction, labeled a equals twenty-six point 0 meters per second squared. x position graph with initial position at the left end of the graph. The right end of the graph is labeled x equals question mark.",
               "inline": []
@@ -3002,7 +3031,7 @@
           {
             "id": "b-52",
             "type": "figure",
-            "asset_url": "images/phy_m42099_Figure_02_04_02b.jpg",
+            "asset_url": "books/secondary_physics/1a43bc85dd7e28bb71dadb498d83982cdf2aabdc7c94137c47c0561894504b40.jpg",
             "caption": {
               "text": "Acceleration vector arrow pointing toward the right, labeled twenty-six point zero meters per second squared. Initial velocity equals 0. Final velocity equals question mark.",
               "inline": []
@@ -3077,7 +3106,7 @@
           {
             "id": "b-61",
             "type": "figure",
-            "asset_url": "images/phy_m42099_Figure_02_04_02c.jpg",
+            "asset_url": "books/secondary_physics/31003b1767795f5f63c749000d3f2f02188cb39af7269bd02718dc0cec97c74e.jpg",
             "caption": {
               "text": "Initial velocity equals thirty meters per second. Final velocity equals 0. Acceleration dry equals negative 7 point zero zero meters per second squared. Acceleration wet equals negative 5 point zero zero meters per second squared.",
               "inline": []
@@ -3200,7 +3229,7 @@
           {
             "id": "b-76",
             "type": "figure",
-            "asset_url": "images/phy_m42099_Figure_02_04_03.jpg",
+            "asset_url": "books/secondary_physics/f786e02039c035cd2b9f284b5c4efb7d77325c61b346ba124b6c57d23264ae64.jpg",
             "caption": {
               "text": "The distance necessary to stop a car varies greatly, depending on road conditions and driver reaction time. Shown here are the braking distances for dry and wet pavement, as calculated in this example, for a car initially traveling at 30.0 m/s. Also shown are the total distances traveled from the point where the driver first sees a light turn red, assuming a 0.500 s reaction time.",
               "inline": []
@@ -3219,7 +3248,7 @@
           {
             "id": "b-78",
             "type": "figure",
-            "asset_url": "images/phy_m42099_Figure_02_04_03a.jpg",
+            "asset_url": "books/secondary_physics/d671baf42c8ea9c44345a846a5cc0f5d9ad47fcb5af6073ed26cc1553a642b63.jpg",
             "caption": {
               "text": "A line segment with ends labeled x subs zero equals zero and x = two hundred. Above the line segment, the equation t equals question mark indicates that time is unknown. Three vectors, all pointing in the direction of x equals 200, represent the other knowns and unknowns. They are labeled v sub zero equals ten point zero meters per second, v equals question mark, and a equals two point zero zero meters per second squared.",
               "inline": []
@@ -3861,6 +3890,42 @@
             "text": "Suppose a car merges into freeway traffic on a 200-m-long ramp. If its initial velocity is 10.0 m/s and it accelerates at $2.{00 m/s}^{2}$ , how long does it take to travel the 200 m up the ramp? (Such information might be useful to a traffic engineer.)",
             "inline": []
           }
+        },
+        {
+          "id": "we-exr-109",
+          "statement": {
+            "text": "A rocket accelerates at a rate of ${20 m/s}^{2}$ during launch. How long does it take the rocket to reach a velocity of 400 m/s?",
+            "inline": []
+          },
+          "steps": [
+            {
+              "step_number": 1,
+              "expression": "To answer this, choose an equation that allows you to solve for time *t* , given only $a,{v}_{0}$ , and $v.$"
+            },
+            {
+              "step_number": 2,
+              "expression": "$v={v}_{0}+at$"
+            },
+            {
+              "step_number": 3,
+              "expression": "Rearrange to solve for $t*.*$"
+            },
+            {
+              "step_number": 4,
+              "expression": "$t=\\frac{v-v0}{a}=\\frac{400 m/s-0 m/s}{{20 m/s}^{2}}=20 s$"
+            }
+          ],
+          "answer": {
+            "text": "To answer this, choose an equation that allows you to solve for time *t* , given only $a,{v}_{0}$ , and $v.$ $v={v}_{0}+at$ Rearrange to solve for $t*.*$ $t=\\frac{v-v0}{a}=\\frac{400 m/s-0 m/s}{{20 m/s}^{2}}=20 s$",
+            "inline": []
+          },
+          "provenance": {
+            "publisher": "OpenStax",
+            "title": "osbooks-college-physics-bundle",
+            "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42099/index.cnxml",
+            "locator": "CNXML module m42099, exercise block exr-109",
+            "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
+          }
         }
       ],
       "misconceptions": [
@@ -3909,8 +3974,7 @@
         "ex-sec-6-09",
         "ex-sec-6-10",
         "ex-sec-6-11",
-        "ex-sec-6-12",
-        "ex-sec-6-13"
+        "ex-sec-6-12"
       ],
       "exam_links": [
         {
@@ -3942,8 +4006,7 @@
         "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/collections/college-physics-2e.collection.xml",
         "locator": "CNXML module m42099",
         "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
-      },
-      "no_worked_example_reason": "The source carries no worked example for this section, and it holds no solved exercise to promote, so the practice is left to the exercises themselves."
+      }
     },
     {
       "id": "sec-7",
@@ -3951,6 +4014,7 @@
       "slug": "problem-solving-basics-for-one-dimensional-kinematics",
       "title": "Problem-Solving Basics for One-Dimensional Kinematics",
       "est_minutes": 10,
+      "facts_inherited": false,
       "learning_objectives": [
         {
           "id": "lo-1",
@@ -3963,7 +4027,7 @@
           {
             "id": "b-1",
             "type": "figure",
-            "asset_url": "images/phy_m42125_Figure_02_06_00.jpg",
+            "asset_url": "books/secondary_physics/bf3cf6a032e1d3662c2c337589e1c5bd998d45a2f86ea5deeddbcb289597d50b.jpg",
             "caption": {
               "text": "Problem-solving skills are essential to your success in Physics. (credit: scui3asteveo, Flickr)",
               "inline": []
@@ -4297,6 +4361,7 @@
       "slug": "falling-objects",
       "title": "Falling Objects",
       "est_minutes": 22,
+      "facts_inherited": false,
       "learning_objectives": [
         {
           "id": "lo-1",
@@ -4333,7 +4398,7 @@
           {
             "id": "b-4",
             "type": "figure",
-            "asset_url": "images/phy_m42102_Figure_02_07_00a.jpg",
+            "asset_url": "books/secondary_physics/3076d1d33db62552b2c900b92e8bdf8f80fc572f1e07b517d1113c2d76cdcea2.jpg",
             "caption": {
               "text": "A hammer and a feather will fall with the same constant acceleration if air resistance is considered negligible. This is a general characteristic of gravity not unique to Earth, as astronaut David R. Scott demonstrated on the Moon in 1971, where the acceleration due to gravity is only $1.{67 m/s}^{2}$ .",
               "inline": []
@@ -4384,7 +4449,7 @@
           {
             "id": "b-10",
             "type": "figure",
-            "asset_url": "images/phy_m42102_Figure_02_07_00b.jpg",
+            "asset_url": "books/secondary_physics/11cf0ab1e114a9e67f40ecd687f96b561002b28780f4b7054ab1c8f29c0b7fa1.jpg",
             "caption": {
               "text": "Velocity vector arrow pointing up in the positive y direction, labeled v sub 0 equals thirteen point 0 meters per second. Acceleration vector arrow pointing down in the negative y direction, labeled a equals negative 9 point 8 meters per second squared.",
               "inline": []
@@ -4515,7 +4580,7 @@
           {
             "id": "b-26",
             "type": "figure",
-            "asset_url": "images/phy_m42102_Figure_02_06_01.jpg",
+            "asset_url": "books/secondary_physics/fd6aa091bdfacbc0a1fbed1e47c36737faa91511857eb8cd5b111605ef22a479.jpg",
             "caption": {
               "text": "Vertical position, vertical velocity, and vertical acceleration vs. time for a rock thrown vertically up at the edge of a cliff. Notice that velocity changes linearly with time and that acceleration is constant. *Misconception Alert!* Notice that the position vs. time graph shows vertical position only. It is easy to get the impression that the graph shows some horizontal motion—the shape of the graph looks like the path of a projectile. But this is not the case; the horizontal axis is *time* , not space. The actual path of the rock in space is straight up, and straight down.",
               "inline": []
@@ -4542,7 +4607,7 @@
           {
             "id": "b-29",
             "type": "figure",
-            "asset_url": "images/phy_m42102_Figure_02_06_01a.jpg",
+            "asset_url": "books/secondary_physics/399b35c8b25e90c77e6d87f86bc0d9a8eda0ade566c0c813be27128a419e447b.jpg",
             "caption": {
               "text": "Velocity vector arrow pointing down in the negative y direction and labeled v sub zero equals negative thirteen point 0 meters per second. Acceleration vector arrow also pointing down in the negative y direction, labeled a equals negative 9 point 80 meters per second squared.",
               "inline": []
@@ -4617,7 +4682,7 @@
           {
             "id": "b-38",
             "type": "figure",
-            "asset_url": "images/phy_m42102_Figure_02_06_00b.jpg",
+            "asset_url": "books/secondary_physics/7329bc21154065391f05730db2ca24368d9e2f1f9da2086ea17fdb613b9c5e0b.jpg",
             "caption": {
               "text": "(a) A person throws a rock straight up, as explored in . The arrows are velocity vectors at 0, 1.00, 2.00, and 3.00 s. (b) A person throws a rock straight down from a cliff with the same initial speed as before, as in . Note that at the same distance below the point of release, the rock has the same velocity in both cases.",
               "inline": []
@@ -4636,7 +4701,7 @@
           {
             "id": "b-40",
             "type": "figure",
-            "asset_url": "images/phy_m42102_Figure_02_06_02.jpg",
+            "asset_url": "books/secondary_physics/8a0d562e7409fc66b445496e983fb1e1168825d37996fc34f414cf0302596a7a.jpg",
             "caption": {
               "text": "Positions and velocities of a metal ball released from rest when air resistance is negligible. Velocity is seen to increase linearly with time while displacement increases with time squared. Acceleration is a constant and is equal to gravitational acceleration.",
               "inline": []
@@ -4655,7 +4720,7 @@
           {
             "id": "b-42",
             "type": "figure",
-            "asset_url": "images/phy_m42102_Figure_02_06_02b.jpg",
+            "asset_url": "books/secondary_physics/6b584439e70254c41105bec51ac0aa513792f296b8ef5081acd967b20fb77576.jpg",
             "caption": {
               "text": "The figure shows a green dot labeled v sub zero equals zero meters per second, a purple downward pointing arrow labeled a equals question mark, and an x y coordinate system with the y axis pointing vertically up and the x axis pointing horizontally to the right.",
               "inline": []
@@ -5141,6 +5206,38 @@
             "text": "The acceleration due to gravity on Earth differs slightly from place to place, depending on topography (e.g., whether you are on a hill or in a valley) and subsurface geology (whether there is dense rock like iron ore as opposed to light rock like salt beneath you.) The precise acceleration due to gravity can be calculated from data taken in an introductory physics laboratory course. An object, usually a metal ball for which air resistance is negligible, is dropped and the time it takes to fall a known distance is measured. See, for example, . Very precise results can be produced with this method if sufficient care is taken in measuring the distance fallen and the elapsed time.",
             "inline": []
           }
+        },
+        {
+          "id": "we-exr-59",
+          "statement": {
+            "text": "A chunk of ice breaks off a glacier and falls 30.0 meters before it hits the water. Assuming it falls freely (there is no air resistance), how long does it take to hit the water?",
+            "inline": []
+          },
+          "steps": [
+            {
+              "step_number": 1,
+              "expression": "We know that initial position ${y}_{0}=0$ , final position $y=−30.0 m$ , and $a=-g=-9.{80 m/s}^{2}$ . We can then use the equation $y={y}_{0}+{v}_{0}t+\\frac{1}{2}{at}^{2}$ to solve for $t$ . Inserting $a=-g$ , we obtain"
+            },
+            {
+              "step_number": 2,
+              "expression": "$y=0+0-\\frac{1}{2}{gt}^{2}{t}^{2}=\\frac{2y}{-g}t=±\\sqrt{\\frac{2y}{-g}}=±\\sqrt{\\frac{2(-30.0 m)}{-9.80 m{/s}^{2}}}=±\\sqrt{6.12{s}^{2}}=2.47 s≈2.5 s$"
+            },
+            {
+              "step_number": 3,
+              "expression": "where we take the positive value as the physically relevant answer. Thus, it takes about 2.5 seconds for the piece of ice to hit the water."
+            }
+          ],
+          "answer": {
+            "text": "We know that initial position ${y}_{0}=0$ , final position $y=−30.0 m$ , and $a=-g=-9.{80 m/s}^{2}$ . We can then use the equation $y={y}_{0}+{v}_{0}t+\\frac{1}{2}{at}^{2}$ to solve for $t$ . Inserting $a=-g$ , we obtain $y=0+0-\\frac{1}{2}{gt}^{2}{t}^{2}=\\frac{2y}{-g}t=±\\sqrt{\\frac{2y}{-g}}=±\\sqrt{\\frac{2(-30.0 m)}{-9.80 m{/s}^{2}}}=±\\sqrt{6.12{s}^{2}}=2.47 s≈2.5 s$ where we take the positive value as the physically relevant answer. Thus, it takes about 2.5 seconds for the piece of ice to hit the water.",
+            "inline": []
+          },
+          "provenance": {
+            "publisher": "OpenStax",
+            "title": "osbooks-college-physics-bundle",
+            "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42102/index.cnxml",
+            "locator": "CNXML module m42102, exercise block exr-59",
+            "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
+          }
         }
       ],
       "misconceptions": [
@@ -5187,8 +5284,7 @@
         "ex-sec-8-07",
         "ex-sec-8-08",
         "ex-sec-8-09",
-        "ex-sec-8-10",
-        "ex-sec-8-11"
+        "ex-sec-8-10"
       ],
       "exam_links": [
         {
@@ -5206,8 +5302,7 @@
         "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/collections/college-physics-2e.collection.xml",
         "locator": "CNXML module m42102",
         "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
-      },
-      "no_worked_example_reason": "The source carries no worked example for this section, and it holds no solved exercise to promote, so the practice is left to the exercises themselves."
+      }
     },
     {
       "id": "sec-9",
@@ -5215,6 +5310,7 @@
       "slug": "graphical-analysis-of-one-dimensional-motion",
       "title": "Graphical Analysis of One-Dimensional Motion",
       "est_minutes": 26,
+      "facts_inherited": false,
       "learning_objectives": [
         {
           "id": "lo-1",
@@ -5259,7 +5355,7 @@
           {
             "id": "b-5",
             "type": "figure",
-            "asset_url": "images/phy_m42103_Figure_02_07_01.jpg",
+            "asset_url": "books/secondary_physics/147547973370bfce476a680690363a487a9ba1e5f0aace4de48485b72e33fd54.jpg",
             "caption": {
               "text": "A straight-line graph. The equation for a straight line is $y=mx+b$ .",
               "inline": []
@@ -5286,7 +5382,7 @@
           {
             "id": "b-8",
             "type": "figure",
-            "asset_url": "images/phy_m42103_Figure02_07_02.jpg",
+            "asset_url": "books/secondary_physics/19eabb439f7edcc91b787367f24a045f21fe0a359b8d346cd1afcf05a758d65c.jpg",
             "caption": {
               "text": "Graph of position versus time for a jet-powered car on the Bonneville Salt Flats.",
               "inline": []
@@ -5353,7 +5449,7 @@
           {
             "id": "b-16",
             "type": "figure",
-            "asset_url": "images/phy_m42103_Figure02_07_03.jpg",
+            "asset_url": "books/secondary_physics/1f6a69a3f77e9b6ab476c5f72a6ba9152fbdc08a2ef587772702c335dcde3d8e.jpg",
             "caption": {
               "text": "Graphs of motion of a jet-powered car during the time span when its acceleration is constant. (a) The slope of an $x$ vs. $t$ graph is velocity. This is shown at two points, and the instantaneous velocities obtained are plotted in the next graph. Instantaneous velocity at any point is the slope of the tangent at that point. (b) The slope of the $v$ vs. $t$ graph is constant for this part of the motion, indicating constant acceleration. (c) Acceleration has the constant value of $5.{0 m/s}^{2}$ over the time interval plotted.",
               "inline": []
@@ -5364,7 +5460,7 @@
           {
             "id": "b-17",
             "type": "figure",
-            "asset_url": "images/phy_m42103_Figure_02_07_03a.jpg",
+            "asset_url": "books/secondary_physics/1bcbfae6160775648ad7f7eff1ee33a648836000f7c2b2ea6d6f01c34523df9a.jpg",
             "caption": {
               "text": "A U.S. Air Force jet car speeds down a track. (credit: Matt Trostle, Flickr)",
               "inline": []
@@ -5383,7 +5479,7 @@
           {
             "id": "b-19",
             "type": "figure",
-            "asset_url": "images/phy_m42103_Figure02_07_03b.jpg",
+            "asset_url": "books/secondary_physics/9a15a675fc1b5159cea719bfe930580fd2f6f5abe6960a293aede6ba1604c79b.jpg",
             "caption": {
               "text": "The slope of an $x$ vs. $t$ graph is velocity. This is shown at two points. Instantaneous velocity at any point is the slope of the tangent at that point.",
               "inline": []
@@ -5506,7 +5602,7 @@
           {
             "id": "b-34",
             "type": "figure",
-            "asset_url": "images/phy_m42103_Figure_02_07_04-4acf.jpg",
+            "asset_url": "books/secondary_physics/48ac6eee2fb41f98a87afbc54cbc0ce8d6b40feca1190edd7b9ddfd80c813a7b.jpg",
             "caption": {
               "text": "Graphs of motion of a jet-powered car as it reaches its top velocity. This motion begins where the motion in ends. (a) The velocity gradually approaches its top value. The slope of this graph is acceleration. It is plotted in the final graph. (b) Acceleration gradually declines to zero when velocity becomes constant. Notice in each of the three graphs that the acceleration drops down to zero and the velocity levels out. This results in a position-time graph that is almost linear. A close-up of the position time graph would show a slight curvature, as indicated in the velocity graph.",
               "inline": []
@@ -5517,7 +5613,7 @@
           {
             "id": "b-35",
             "type": "figure",
-            "asset_url": "images/phy_m42103_Figure_02_07_04a-5e2c.jpg",
+            "asset_url": "books/secondary_physics/ace620e2fe83630fecd6d0844045c1c9ba6e03ec34211a8ec09254767f9e91ff.jpg",
             "caption": {
               "text": "Line graph of velocity versus time. The line has three legs. The first leg is flat. The second leg has a negative slope. The third leg also has a negative slope, but the slope is not as negative as the second leg.",
               "inline": []
@@ -5544,7 +5640,7 @@
           {
             "id": "b-38",
             "type": "figure",
-            "asset_url": "images/phy_m42103_Figure_02_07_04b.jpg",
+            "asset_url": "books/secondary_physics/0c0c89524f97820ad307499b494937e7d58c043dc674921071df4f7d26bd586d.jpg",
             "caption": {
               "text": "A line graph of acceleration versus time. There are three legs of the graph. All three legs are flat and straight. The first leg shows constant acceleration of 0. The second leg shows a constant negative acceleration. The third leg shows a constant negative acceleration that is not as negative as the second leg.",
               "inline": []
@@ -5563,7 +5659,7 @@
           {
             "id": "b-40",
             "type": "figure",
-            "asset_url": "images/phy_m42103_Figure_03_08Sol_01.jpg",
+            "asset_url": "books/secondary_physics/dcda61f6d96dd090fa8e4b3e0deb95430e4c8bdc32dacebdd258c704f0dbc2f6.jpg",
             "caption": {
               "text": "Line graph of position versus time with 5 points labeled: a, b, c, d, and e. The slope of the line changes. It begins with a positive slope that decreases over time until around point d, where it is flat. It then has a slightly negative slope.",
               "inline": []
@@ -5582,7 +5678,7 @@
           {
             "id": "b-42",
             "type": "figure",
-            "asset_url": "images/phy_m42103_Figure_03_08Sol_02.jpg",
+            "asset_url": "books/secondary_physics/267dde8e156d216c30494449a6fea14208b6c8ab32b606a1d737b25fd9077766.jpg",
             "caption": {
               "text": "Line graph of position over time with 12 points labeled a through l. Line has a negative slope from a to c, where it turns and has a positive slope till point e. It turns again and has a negative slope till point g. The slope then increases again till l, where it flattens out.",
               "inline": []
@@ -5601,7 +5697,7 @@
           {
             "id": "b-44",
             "type": "figure",
-            "asset_url": "images/phy_m42103_Figure_03_08Sol_04.jpg",
+            "asset_url": "books/secondary_physics/49215171a2306ff03e300ecd8b040f3020eb737d57dd1a24df243f6193a49f02.jpg",
             "caption": {
               "text": "Line graph of velocity over time with two points labeled. Point P is at v 1 t 1. Point Q is at v 2 t 2. The line has a positive slope that increases over time.",
               "inline": []
@@ -5620,7 +5716,7 @@
           {
             "id": "b-46",
             "type": "figure",
-            "asset_url": "images/phy_m42103_Figure_03_08Sol_05.jpg",
+            "asset_url": "books/secondary_physics/029314e08b63a9bfbcb69105c157be5dd49b1cfc63005322010bfffb79ba9752.jpg",
             "caption": {
               "text": "Line graph of velocity over time with 12 points labeled a through l. The line has a positive slope from a at the origin to d where it slopes downward to e, and then back upward to h. It then slopes back down to point l at v equals 0.",
               "inline": []
@@ -5639,7 +5735,7 @@
           {
             "id": "b-48",
             "type": "figure",
-            "asset_url": "images/phy_m42103_Figure_03_08Sol_07.jpg",
+            "asset_url": "books/secondary_physics/7a0dd4ed274d7aadf8afd01aba498aed754b8f5b6cbcfe705b50509c7b4e9beb.jpg",
             "caption": {
               "text": "Line graph of velocity versus time. Line begins at the origin and has a positive slope until it reaches 3 meters per second at 3 seconds. The slope is then zero until 18 seconds, where it becomes negative until the line reaches a velocity of 0 at 23 seconds.",
               "inline": []
@@ -5682,7 +5778,7 @@
           {
             "id": "b-53",
             "type": "figure",
-            "asset_url": "images/phy_m42103_Figure_02_08Sol_11-2370.jpg",
+            "asset_url": "books/secondary_physics/315db26ddaed1c0d676af56e632b94e31bc7b262ccf1ede8f54d848b7d75b97e.jpg",
             "caption": {
               "text": "Line graph of position over time. Line has positive slope that increases over time.",
               "inline": []
@@ -5693,7 +5789,7 @@
           {
             "id": "b-54",
             "type": "figure",
-            "asset_url": "images/phy_m42103_Figure_02_08Sol_12-313d.jpg",
+            "asset_url": "books/secondary_physics/a21778151ea60faab1888f226a18d29339484e3d7465522815ad6e1066abff15.jpg",
             "caption": {
               "text": "Line graph of velocity versus time. Line is straight with a positive slope.",
               "inline": []
@@ -5720,7 +5816,7 @@
           {
             "id": "b-57",
             "type": "figure",
-            "asset_url": "images/phy_m42103_Figure_02_08Sol_13-ecd0.jpg",
+            "asset_url": "books/secondary_physics/db3551897bd8a47c0c92969904309d3830bc9fe1fe18fa6fdf4a1ef7294f6d50.jpg",
             "caption": {
               "text": "Line graph of position versus time. Line is straight with a positive slope.",
               "inline": []
@@ -5739,7 +5835,7 @@
           {
             "id": "b-59",
             "type": "figure",
-            "asset_url": "images/phy_m42103_Figure_02_08Sol_14-c77c.jpg",
+            "asset_url": "books/secondary_physics/f0432bdbfd5292b7181988ac46039ddc79cb25b0302affc0dd7f646271c0f9be.jpg",
             "caption": {
               "text": "Line graph of velocity versus time. Line has a positive slope that decreases over time until the line flattens out.",
               "inline": []
@@ -5766,7 +5862,7 @@
           {
             "id": "b-62",
             "type": "figure",
-            "asset_url": "images/phy_m42103_Figure_02_08Sol_16-fb3d.jpg",
+            "asset_url": "books/secondary_physics/02d01de465faeee16377f872023ce566cf1a2aee91906ff2fd9544b69647c365.jpg",
             "caption": {
               "text": "Line graph of position over time. Line begins sloping upward, then kinks back down, then kinks back upward again.",
               "inline": []
@@ -5777,7 +5873,7 @@
           {
             "id": "b-63",
             "type": "figure",
-            "asset_url": "images/phy_m42103_Figure02_08Sol_17.jpg",
+            "asset_url": "books/secondary_physics/73833e5287c346f82d80d3fcc68dad859fbe75facf76ad1516f2c1d4c980e81b.jpg",
             "caption": {
               "text": "Line graph of velocity over time. Line begins with a positive slope, then kinks downward with a negative slope, then kinks back upward again. It kinks back down again slightly, then back up again, and ends with a slightly less positive slope.",
               "inline": []
@@ -5788,7 +5884,7 @@
           {
             "id": "b-64",
             "type": "figure",
-            "asset_url": "images/phy_m42103_Figure_02_08Sol_18-dc84.jpg",
+            "asset_url": "books/secondary_physics/d674e338f60b325c916b544e0633e1a9ec8162173c525a89bea3af2a26ee3cb5.jpg",
             "caption": {
               "text": "Line graph of acceleration over time. Line begins with a negative slope, then curves upward with a positive slope, then kinks back upward again. It kinks back down again, then more gradually back up again, then curves back down again, and ends with a slightly negative slope.",
               "inline": []
@@ -5807,7 +5903,7 @@
           {
             "id": "b-66",
             "type": "figure",
-            "asset_url": "images/phy_m42103_Figure_02_08Sol_20-6a4a.jpg",
+            "asset_url": "books/secondary_physics/a07699550c2156abd10fe589ba2f2b7dc39c6661b8c4cb44e00588dfaebbf9b0.jpg",
             "caption": {
               "text": "Line graph of velocity versus time. The line has two legs. The first has a constant positive slope. The second is flat, with a slope of 0.",
               "inline": []
@@ -5826,7 +5922,7 @@
           {
             "id": "b-68",
             "type": "figure",
-            "asset_url": "images/phy_m42103_Figure_02_08Sol_21-7832.jpg",
+            "asset_url": "books/secondary_physics/c7410fc2e4874a7f0c4020498cd9a27c9cc7998dedfbf32e0a7cf6f2f8e5e073.jpg",
             "caption": {
               "text": "Line graph of position versus time. The line has 4 legs. The first leg has a positive slope. The second leg has a negative slope. The third has a slope of 0. The fourth has a positive slope.",
               "inline": []
@@ -5861,7 +5957,7 @@
           {
             "id": "b-72",
             "type": "figure",
-            "asset_url": "images/phy_m42103_OSX_CP2e_Figure_02_08Sol_CTQ01c.jpg",
+            "asset_url": "books/secondary_physics/d3e75f99e8064abcc26df6e7d1f6e701e4cd08704c77571e4a3beef95d6d107c.jpg",
             "caption": {
               "text": "The figure shows velocity v graphed as a function of position x. The plot of V sub A is linear, with a positive slope, starting at the origin and ending at a maximum velocity of 2 times v sub 0 at velocity v sub zero. The plot of V sub B is a constant at velocity v sub zero.",
               "inline": []
@@ -6047,6 +6143,34 @@
             "text": "Calculate the acceleration of the jet car at a time of 25 s by finding the slope of the $v$ vs. $t$ graph in (a). The slope of the curve at $t=25 s$ is equal to the slope of the line tangent at that point, as illustrated in (a). Determine endpoints of the tangent line from the figure, and then plug them into the equation to solve for slope, $a$ . Note that this value for $a$ is consistent with the value plotted in (b) at $t=25 s$ . A graph of position versus time can be used to generate a graph of velocity versus time, and a graph of velocity versus time can be used to generate a graph of acceleration versus time. We do this by finding the slope of the graphs at every point. If the graph is linear (i.e., a line with a constant slope), it is easy to find the slope at any point and you have the slope for every point. Graphical analysis of motion can be used to describe both specific and general characteristics of kinematics. Graphs can also be used for other topics in physics. An important aspect of exploring physical relationships is to graph them and look for underlying relationships. A graph of velocity vs. time of a ship coming into a harbor is shown below. (a) Describe the motion of the ship based on the graph. (b)What would a graph of the ship’s acceleration look like?",
             "inline": []
           }
+        },
+        {
+          "id": "we-exr-51",
+          "statement": {
+            "text": "A graph of velocity vs. time of a ship coming into a harbor is shown below. (a) Describe the motion of the ship based on the graph. (b)What would a graph of the ship’s acceleration look like?",
+            "inline": []
+          },
+          "steps": [
+            {
+              "step_number": 1,
+              "expression": "(a) The ship moves at constant velocity and then begins to decelerate at a constant rate. At some point, its deceleration rate decreases. It maintains this lower deceleration rate until it stops moving."
+            },
+            {
+              "step_number": 2,
+              "expression": "(b) A graph of acceleration vs. time would show zero acceleration in the first leg, large and constant negative acceleration in the second leg, and constant negative acceleration."
+            }
+          ],
+          "answer": {
+            "text": "(a) The ship moves at constant velocity and then begins to decelerate at a constant rate. At some point, its deceleration rate decreases. It maintains this lower deceleration rate until it stops moving. (b) A graph of acceleration vs. time would show zero acceleration in the first leg, large and constant negative acceleration in the second leg, and constant negative acceleration.",
+            "inline": []
+          },
+          "provenance": {
+            "publisher": "OpenStax",
+            "title": "osbooks-college-physics-bundle",
+            "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42103/index.cnxml",
+            "locator": "CNXML module m42103, exercise block exr-51",
+            "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
+          }
         }
       ],
       "misconceptions": [
@@ -6087,8 +6211,7 @@
         "ex-sec-9-01",
         "ex-sec-9-02",
         "ex-sec-9-03",
-        "ex-sec-9-04",
-        "ex-sec-9-05"
+        "ex-sec-9-04"
       ],
       "exam_links": [
         {
@@ -6117,8 +6240,7 @@
         "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/collections/college-physics-2e.collection.xml",
         "locator": "CNXML module m42103",
         "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
-      },
-      "no_worked_example_reason": "The source carries no worked example for this section, and it holds no solved exercise to promote, so the practice is left to the exercises themselves."
+      }
     }
   ],
   "exercises": [
@@ -6531,42 +6653,6 @@
     {
       "id": "ex-sec-5-01",
       "section_id": "sec-5",
-      "tier": "core",
-      "kind": "algebraic",
-      "difficulty": 3,
-      "marks": 3,
-      "stem": {
-        "text": "An airplane lands on a runway traveling east. Describe its acceleration.",
-        "inline": []
-      },
-      "options": [],
-      "answer": {
-        "text": "If we take east to be positive, then the airplane has negative acceleration, as it is accelerating toward the west. It is also decelerating: its acceleration is opposite in direction to its velocity.",
-        "inline": []
-      },
-      "answer_kind": "explanation",
-      "solution": [
-        {
-          "step_number": 1,
-          "expression": "If we take east to be positive, then the airplane has negative acceleration, as it is accelerating toward the west. It is also decelerating: its acceleration is opposite in direction to its velocity."
-        }
-      ],
-      "tags": [
-        "acceleration",
-        "motion-diagrams"
-      ],
-      "provenance": {
-        "publisher": "OpenStax",
-        "title": "osbooks-college-physics-bundle",
-        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42100/index.cnxml",
-        "locator": "CNXML module m42100, exercise block exr-80",
-        "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
-      },
-      "solution_provenance": "OpenStax CNXML solution element (in file)"
-    },
-    {
-      "id": "ex-sec-5-02",
-      "section_id": "sec-5",
       "tier": "stretch",
       "kind": "algebraic",
       "difficulty": 4,
@@ -6605,7 +6691,7 @@
       "solution_provenance": "OpenStax CNXML solution element (in file)"
     },
     {
-      "id": "ex-sec-5-03",
+      "id": "ex-sec-5-02",
       "section_id": "sec-5",
       "tier": "core",
       "kind": "numeric",
@@ -6641,7 +6727,7 @@
       "solution_provenance": "OpenStax CNXML solution element (in file)"
     },
     {
-      "id": "ex-sec-5-04",
+      "id": "ex-sec-5-03",
       "section_id": "sec-5",
       "tier": "stretch",
       "kind": "application",
@@ -6683,54 +6769,6 @@
     {
       "id": "ex-sec-6-01",
       "section_id": "sec-6",
-      "tier": "core",
-      "kind": "numeric",
-      "difficulty": 3,
-      "marks": 3,
-      "stem": {
-        "text": "A rocket accelerates at a rate of ${20 m/s}^{2}$ during launch. How long does it take the rocket to reach a velocity of 400 m/s?",
-        "inline": []
-      },
-      "options": [],
-      "answer": {
-        "text": "To answer this, choose an equation that allows you to solve for time *t* , given only $a,{v}_{0}$ , and $v.$ $v={v}_{0}+at$ Rearrange to solve for $t*.*$ $t=\\frac{v-v0}{a}=\\frac{400 m/s-0 m/s}{{20 m/s}^{2}}=20 s$",
-        "inline": []
-      },
-      "answer_kind": "explanation",
-      "solution": [
-        {
-          "step_number": 1,
-          "expression": "To answer this, choose an equation that allows you to solve for time *t* , given only $a,{v}_{0}$ , and $v.$"
-        },
-        {
-          "step_number": 2,
-          "expression": "$v={v}_{0}+at$"
-        },
-        {
-          "step_number": 3,
-          "expression": "Rearrange to solve for $t*.*$"
-        },
-        {
-          "step_number": 4,
-          "expression": "$t=\\frac{v-v0}{a}=\\frac{400 m/s-0 m/s}{{20 m/s}^{2}}=20 s$"
-        }
-      ],
-      "tags": [
-        "equations-of-motion",
-        "constant-acceleration"
-      ],
-      "provenance": {
-        "publisher": "OpenStax",
-        "title": "osbooks-college-physics-bundle",
-        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42099/index.cnxml",
-        "locator": "CNXML module m42099, exercise block exr-109",
-        "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
-      },
-      "solution_provenance": "OpenStax CNXML solution element (in file)"
-    },
-    {
-      "id": "ex-sec-6-02",
-      "section_id": "sec-6",
       "tier": "stretch",
       "kind": "application",
       "difficulty": 4,
@@ -6769,7 +6807,7 @@
       "solution_provenance": "OpenStax CNXML solution element (in file)"
     },
     {
-      "id": "ex-sec-6-03",
+      "id": "ex-sec-6-02",
       "section_id": "sec-6",
       "tier": "core",
       "kind": "numeric",
@@ -6805,7 +6843,7 @@
       "solution_provenance": "OpenStax CNXML solution element (in file)"
     },
     {
-      "id": "ex-sec-6-04",
+      "id": "ex-sec-6-03",
       "section_id": "sec-6",
       "tier": "stretch",
       "kind": "application",
@@ -6849,7 +6887,7 @@
       "solution_provenance": "OpenStax CNXML solution element (in file)"
     },
     {
-      "id": "ex-sec-6-05",
+      "id": "ex-sec-6-04",
       "section_id": "sec-6",
       "tier": "stretch",
       "kind": "application",
@@ -6893,7 +6931,7 @@
       "solution_provenance": "OpenStax CNXML solution element (in file)"
     },
     {
-      "id": "ex-sec-6-06",
+      "id": "ex-sec-6-05",
       "section_id": "sec-6",
       "tier": "core",
       "kind": "numeric",
@@ -6929,7 +6967,7 @@
       "solution_provenance": "OpenStax CNXML solution element (in file)"
     },
     {
-      "id": "ex-sec-6-07",
+      "id": "ex-sec-6-06",
       "section_id": "sec-6",
       "tier": "stretch",
       "kind": "application",
@@ -6973,7 +7011,7 @@
       "solution_provenance": "OpenStax CNXML solution element (in file)"
     },
     {
-      "id": "ex-sec-6-08",
+      "id": "ex-sec-6-07",
       "section_id": "sec-6",
       "tier": "stretch",
       "kind": "application",
@@ -7013,7 +7051,7 @@
       "solution_provenance": "OpenStax CNXML solution element (in file)"
     },
     {
-      "id": "ex-sec-6-09",
+      "id": "ex-sec-6-08",
       "section_id": "sec-6",
       "tier": "stretch",
       "kind": "application",
@@ -7053,7 +7091,7 @@
       "solution_provenance": "OpenStax CNXML solution element (in file)"
     },
     {
-      "id": "ex-sec-6-10",
+      "id": "ex-sec-6-09",
       "section_id": "sec-6",
       "tier": "stretch",
       "kind": "application",
@@ -7093,7 +7131,7 @@
       "solution_provenance": "OpenStax CNXML solution element (in file)"
     },
     {
-      "id": "ex-sec-6-11",
+      "id": "ex-sec-6-10",
       "section_id": "sec-6",
       "tier": "core",
       "kind": "verbal",
@@ -7137,7 +7175,7 @@
       "solution_provenance": "OpenStax CNXML solution element (in file)"
     },
     {
-      "id": "ex-sec-6-12",
+      "id": "ex-sec-6-11",
       "section_id": "sec-6",
       "tier": "core",
       "kind": "numeric",
@@ -7173,7 +7211,7 @@
       "solution_provenance": "OpenStax CNXML solution element (in file)"
     },
     {
-      "id": "ex-sec-6-13",
+      "id": "ex-sec-6-12",
       "section_id": "sec-6",
       "tier": "stretch",
       "kind": "application",
@@ -7215,51 +7253,6 @@
     {
       "id": "ex-sec-8-01",
       "section_id": "sec-8",
-      "tier": "core",
-      "kind": "numeric",
-      "difficulty": 3,
-      "marks": 3,
-      "stem": {
-        "text": "A chunk of ice breaks off a glacier and falls 30.0 meters before it hits the water. Assuming it falls freely (there is no air resistance), how long does it take to hit the water?",
-        "inline": []
-      },
-      "options": [],
-      "answer": {
-        "text": "We know that initial position ${y}_{0}=0$ , final position $y=−30.0 m$ , and $a=-g=-9.{80 m/s}^{2}$ . We can then use the equation $y={y}_{0}+{v}_{0}t+\\frac{1}{2}{at}^{2}$ to solve for $t$ . Inserting $a=-g$ , we obtain $y=0+0-\\frac{1}{2}{gt}^{2}{t}^{2}=\\frac{2y}{-g}t=±\\sqrt{\\frac{2y}{-g}}=±\\sqrt{\\frac{2(-30.0 m)}{-9.80 m{/s}^{2}}}=±\\sqrt{6.12{s}^{2}}=2.47 s≈2.5 s$ where we take the positive value as the physically relevant answer. Thus, it takes about 2.5 seconds for the piece of ice to hit the water.",
-        "inline": []
-      },
-      "answer_kind": "explanation",
-      "solution": [
-        {
-          "step_number": 1,
-          "expression": "We know that initial position ${y}_{0}=0$ , final position $y=−30.0 m$ , and $a=-g=-9.{80 m/s}^{2}$ . We can then use the equation $y={y}_{0}+{v}_{0}t+\\frac{1}{2}{at}^{2}$ to solve for $t$ . Inserting $a=-g$ , we obtain"
-        },
-        {
-          "step_number": 2,
-          "expression": "$y=0+0-\\frac{1}{2}{gt}^{2}{t}^{2}=\\frac{2y}{-g}t=±\\sqrt{\\frac{2y}{-g}}=±\\sqrt{\\frac{2(-30.0 m)}{-9.80 m{/s}^{2}}}=±\\sqrt{6.12{s}^{2}}=2.47 s≈2.5 s$"
-        },
-        {
-          "step_number": 3,
-          "expression": "where we take the positive value as the physically relevant answer. Thus, it takes about 2.5 seconds for the piece of ice to hit the water."
-        }
-      ],
-      "tags": [
-        "free-fall",
-        "gravity",
-        "projectile"
-      ],
-      "provenance": {
-        "publisher": "OpenStax",
-        "title": "osbooks-college-physics-bundle",
-        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42102/index.cnxml",
-        "locator": "CNXML module m42102, exercise block exr-59",
-        "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
-      },
-      "solution_provenance": "OpenStax CNXML solution element (in file)"
-    },
-    {
-      "id": "ex-sec-8-02",
-      "section_id": "sec-8",
       "tier": "stretch",
       "kind": "numeric",
       "difficulty": 4,
@@ -7295,7 +7288,7 @@
       "solution_provenance": "OpenStax CNXML solution element (in file)"
     },
     {
-      "id": "ex-sec-8-03",
+      "id": "ex-sec-8-02",
       "section_id": "sec-8",
       "tier": "stretch",
       "kind": "application",
@@ -7344,7 +7337,7 @@
       "solution_provenance": "OpenStax CNXML solution element (in file)"
     },
     {
-      "id": "ex-sec-8-04",
+      "id": "ex-sec-8-03",
       "section_id": "sec-8",
       "tier": "core",
       "kind": "numeric",
@@ -7381,7 +7374,7 @@
       "solution_provenance": "OpenStax CNXML solution element (in file)"
     },
     {
-      "id": "ex-sec-8-05",
+      "id": "ex-sec-8-04",
       "section_id": "sec-8",
       "tier": "core",
       "kind": "verbal",
@@ -7434,7 +7427,7 @@
       "solution_provenance": "OpenStax CNXML solution element (in file)"
     },
     {
-      "id": "ex-sec-8-06",
+      "id": "ex-sec-8-05",
       "section_id": "sec-8",
       "tier": "stretch",
       "kind": "application",
@@ -7475,7 +7468,7 @@
       "solution_provenance": "OpenStax CNXML solution element (in file)"
     },
     {
-      "id": "ex-sec-8-07",
+      "id": "ex-sec-8-06",
       "section_id": "sec-8",
       "tier": "core",
       "kind": "numeric",
@@ -7512,7 +7505,7 @@
       "solution_provenance": "OpenStax CNXML solution element (in file)"
     },
     {
-      "id": "ex-sec-8-08",
+      "id": "ex-sec-8-07",
       "section_id": "sec-8",
       "tier": "stretch",
       "kind": "application",
@@ -7553,7 +7546,7 @@
       "solution_provenance": "OpenStax CNXML solution element (in file)"
     },
     {
-      "id": "ex-sec-8-09",
+      "id": "ex-sec-8-08",
       "section_id": "sec-8",
       "tier": "stretch",
       "kind": "application",
@@ -7594,7 +7587,7 @@
       "solution_provenance": "OpenStax CNXML solution element (in file)"
     },
     {
-      "id": "ex-sec-8-10",
+      "id": "ex-sec-8-09",
       "section_id": "sec-8",
       "tier": "stretch",
       "kind": "application",
@@ -7635,7 +7628,7 @@
       "solution_provenance": "OpenStax CNXML solution element (in file)"
     },
     {
-      "id": "ex-sec-8-11",
+      "id": "ex-sec-8-10",
       "section_id": "sec-8",
       "tier": "stretch",
       "kind": "application",
@@ -7682,47 +7675,6 @@
     {
       "id": "ex-sec-9-01",
       "section_id": "sec-9",
-      "tier": "core",
-      "kind": "application",
-      "difficulty": 3,
-      "marks": 3,
-      "stem": {
-        "text": "A graph of velocity vs. time of a ship coming into a harbor is shown below. (a) Describe the motion of the ship based on the graph. (b)What would a graph of the ship’s acceleration look like?",
-        "inline": []
-      },
-      "options": [],
-      "answer": {
-        "text": "(a) The ship moves at constant velocity and then begins to decelerate at a constant rate. At some point, its deceleration rate decreases. It maintains this lower deceleration rate until it stops moving. (b) A graph of acceleration vs. time would show zero acceleration in the first leg, large and constant negative acceleration in the second leg, and constant negative acceleration.",
-        "inline": []
-      },
-      "answer_kind": "explanation",
-      "solution": [
-        {
-          "step_number": 1,
-          "expression": "(a) The ship moves at constant velocity and then begins to decelerate at a constant rate. At some point, its deceleration rate decreases. It maintains this lower deceleration rate until it stops moving."
-        },
-        {
-          "step_number": 2,
-          "expression": "(b) A graph of acceleration vs. time would show zero acceleration in the first leg, large and constant negative acceleration in the second leg, and constant negative acceleration."
-        }
-      ],
-      "tags": [
-        "graphs",
-        "position-time-graph",
-        "velocity-time-graph"
-      ],
-      "provenance": {
-        "publisher": "OpenStax",
-        "title": "osbooks-college-physics-bundle",
-        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42103/index.cnxml",
-        "locator": "CNXML module m42103, exercise block exr-51",
-        "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
-      },
-      "solution_provenance": "OpenStax CNXML solution element (in file)"
-    },
-    {
-      "id": "ex-sec-9-02",
-      "section_id": "sec-9",
       "tier": "stretch",
       "kind": "application",
       "difficulty": 4,
@@ -7762,7 +7714,7 @@
       "solution_provenance": "OpenStax CNXML solution element (in file)"
     },
     {
-      "id": "ex-sec-9-03",
+      "id": "ex-sec-9-02",
       "section_id": "sec-9",
       "tier": "core",
       "kind": "numeric",
@@ -7799,7 +7751,7 @@
       "solution_provenance": "OpenStax CNXML solution element (in file)"
     },
     {
-      "id": "ex-sec-9-04",
+      "id": "ex-sec-9-03",
       "section_id": "sec-9",
       "tier": "stretch",
       "kind": "application",
@@ -7848,7 +7800,7 @@
       "solution_provenance": "OpenStax CNXML solution element (in file)"
     },
     {
-      "id": "ex-sec-9-05",
+      "id": "ex-sec-9-04",
       "section_id": "sec-9",
       "tier": "core",
       "kind": "verbal",

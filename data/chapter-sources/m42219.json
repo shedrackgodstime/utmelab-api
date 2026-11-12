@@ -1,0 +1,1421 @@
+{
+  "module": "m42219",
+  "source_attribution": {
+    "publisher": "OpenStax",
+    "book": "osbooks-college-physics-bundle",
+    "section": "m42219",
+    "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42219/index.cnxml",
+    "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)",
+    "locator": "CNXML module index.cnxml (typed elements, solutions present)"
+  },
+  "blocks": [
+    {
+      "id": "sec-0",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Learning Objectives",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-1",
+      "type": "paragraph",
+      "content": {
+        "text": "By the end of this section, you will be able to:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-1",
+      "type": "figure",
+      "asset_url": "images/phy_m42219_Figure_14_06_00.jpg",
+      "caption": {
+        "text": "Dew drops like these, on a banana leaf photographed just after sunrise, form when the air temperature drops to or below the dew point. At the dew point, the rate at which water molecules join together is greater than the rate at which they separate, and some of the water condenses to form droplets. (credit: Aaron Escobar, Flickr)",
+        "inline": []
+      },
+      "alt": "Close-up of a vibrant green leaf adorned with sparkling water droplets after a refreshing rain shower, highlighting its natural textures and patterns.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-3",
+      "type": "paragraph",
+      "content": {
+        "text": "The expression “it’s not the heat, it’s the humidity” makes a valid point. We keep cool in hot weather by evaporating sweat from our skin and water from our breathing passages. Because evaporation is inhibited by high humidity, we feel hotter at a given temperature when the humidity is high. Low humidity, on the other hand, can cause discomfort from excessive drying of mucous membranes and can lead to an increased risk of respiratory infections.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-4",
+      "type": "paragraph",
+      "content": {
+        "text": "When we say humidity, we really mean relative humidity . Relative humidity tells us how much water vapor is in the air compared with the maximum possible. At its maximum, denoted as saturation , the relative humidity is 100%, and evaporation is inhibited. The amount of water vapor in the air depends on temperature. For example, relative humidity rises in the evening, as air temperature declines, sometimes reaching the dew point . At the dew point temperature, relative humidity is 100%, and fog may result from the condensation of water droplets if they are small enough to stay in suspension. Conversely, if you wish to dry something (perhaps your hair), it is more effective to blow hot air over it rather than cold air, because, among other things, the increase in temperature increases the energy of the molecules, so the rate of evaporation increases.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-5",
+      "type": "paragraph",
+      "content": {
+        "text": "The amount of water vapor in the air depends on the vapor pressure of water. The liquid and solid phases are continuously giving off vapor because some of the molecules have high enough speeds to enter the gas phase; see (a). If a lid is placed over the container, as in (b), evaporation continues, increasing the pressure, until sufficient vapor has built up for condensation to balance evaporation. Then equilibrium has been achieved, and the vapor pressure is equal to the partial pressure of water in the container. Vapor pressure increases with temperature because molecular speeds are higher as temperature increases. gives representative values of water vapor pressure over a range of temperatures.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-2",
+      "type": "figure",
+      "asset_url": "images/phy_m42219_Figure_14_06_01.jpg",
+      "caption": {
+        "text": "(a) Because of the distribution of speeds and kinetic energies, some water molecules can break away to the vapor phase even at temperatures below the ordinary boiling point. (b) If the container is sealed, evaporation will continue until there is enough vapor density for the condensation rate to equal the evaporation rate. This vapor density and the partial pressure it creates are the saturation values. They increase with temperature and are independent of the presence of other gases, such as air. They depend only on the vapor pressure of water.",
+        "inline": []
+      },
+      "alt": "Two containers, each filled two-thirds with water. One is open to the atmosphere and the other is sealed at the top. The water molecules are depicted as circles with vector arrows of different lengths and directions to indicate velocity. In the sealed container the density of molecules in the air above the water is greater than in the unsealed container. In the sealed container, water is condensing along the walls and top of the upper part of the container.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-7",
+      "type": "paragraph",
+      "content": {
+        "text": "Relative humidity is related to the partial pressure of water vapor in the air. At 100% humidity, the partial pressure is equal to the vapor pressure, and no more water can enter the vapor phase. If the partial pressure is less than the vapor pressure, then evaporation will take place, as humidity is less than 100%. If the partial pressure is greater than the vapor pressure, condensation takes place. In everyday language, people sometimes refer to the capacity of air to “hold” water vapor, but this is not actually what happens. The water vapor is not held by the air. The amount of water in air is determined by the vapor pressure of water and has nothing to do with the properties of air.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "tbl-8",
+      "type": "table",
+      "title": {
+        "text": "Table",
+        "inline": []
+      },
+      "rows": [
+        [
+          "Temperature $(ºC)$",
+          "Vapor pressure (Pa)",
+          "Saturation vapor density (g/m 3 )"
+        ],
+        [
+          "−50",
+          "4.0",
+          "0.039"
+        ],
+        [
+          "−20",
+          "$1.04×{10}^{2}$",
+          "0.89"
+        ],
+        [
+          "−10",
+          "$2.60×{10}^{2}$",
+          "2.36"
+        ],
+        [
+          "0",
+          "$6.10×{10}^{2}$",
+          "4.84"
+        ],
+        [
+          "5",
+          "$8.68×{10}^{2}$",
+          "6.80"
+        ],
+        [
+          "10",
+          "$1.19×{10}^{3}$",
+          "9.40"
+        ],
+        [
+          "15",
+          "$1.69×{10}^{3}$",
+          "12.8"
+        ],
+        [
+          "20",
+          "$2.33×{10}^{3}$",
+          "17.2"
+        ],
+        [
+          "25",
+          "$3.17×{10}^{3}$",
+          "23.0"
+        ],
+        [
+          "30",
+          "$4.24×{10}^{3}$",
+          "30.4"
+        ],
+        [
+          "37",
+          "$6.31×{10}^{3}$",
+          "44.0"
+        ],
+        [
+          "40",
+          "$7.34×{10}^{3}$",
+          "51.1"
+        ],
+        [
+          "50",
+          "$1.23×{10}^{4}$",
+          "82.4"
+        ],
+        [
+          "60",
+          "$1.99×{10}^{4}$",
+          "130"
+        ],
+        [
+          "70",
+          "$3.12×{10}^{4}$",
+          "197"
+        ],
+        [
+          "80",
+          "$4.73×{10}^{4}$",
+          "294"
+        ],
+        [
+          "90",
+          "$7.01×{10}^{4}$",
+          "418"
+        ],
+        [
+          "95",
+          "$8.59×{10}^{4}$",
+          "505"
+        ],
+        [
+          "*100*",
+          "$1.01×{10}^{5}$",
+          "*598*"
+        ],
+        [
+          "120",
+          "$1.99×{10}^{5}$",
+          "1095"
+        ],
+        [
+          "150",
+          "$4.76×{10}^{5}$",
+          "2430"
+        ],
+        [
+          "200",
+          "$1.55×{10}^{6}$",
+          "7090"
+        ],
+        [
+          "220",
+          "$2.32×{10}^{6}$",
+          "10,200"
+        ]
+      ],
+      "alt": "Table with 24 rows",
+      "level": "core"
+    },
+    {
+      "id": "ex-9",
+      "type": "example",
+      "kind": "worked",
+      "title": {
+        "text": "Calculating Density Using Vapor Pressure",
+        "inline": []
+      },
+      "problem": {
+        "text": "",
+        "inline": []
+      },
+      "answer": null,
+      "level": "core"
+    },
+    {
+      "id": "p-10",
+      "type": "paragraph",
+      "content": {
+        "text": "gives the vapor pressure of water at $20.0ºC$ as $2.33×{10}^{3}Pa.$ Use the ideal gas law to calculate the density of water vapor in $g/{m}^{3}$ that would create a partial pressure equal to this vapor pressure. Compare the result with the saturation vapor density given in the table.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-11",
+      "type": "paragraph",
+      "content": {
+        "text": "To solve this problem, we need to break it down into a two steps. The partial pressure follows the ideal gas law,",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-12",
+      "type": "paragraph",
+      "content": {
+        "text": "where $n$ is the number of moles. If we solve this equation for $n/V$ to calculate the number of moles per cubic meter, we can then convert this quantity to grams per cubic meter as requested. To do this, we need to use the molecular mass of water, which is given in the periodic table.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-13",
+      "type": "paragraph",
+      "content": {
+        "text": "1. Identify the knowns and convert them to the proper units:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-14",
+      "type": "paragraph",
+      "content": {
+        "text": "2. Solve the ideal gas law for $n/V$ .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-15",
+      "type": "paragraph",
+      "content": {
+        "text": "3. Substitute known values into the equation and solve for $n/V$ .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-16",
+      "type": "paragraph",
+      "content": {
+        "text": "4. Convert the density in moles per cubic meter to grams per cubic meter.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-17",
+      "type": "paragraph",
+      "content": {
+        "text": "The density is obtained by assuming a pressure equal to the vapor pressure of water at $20.0ºC$ . The density found is identical to the value in , which means that a vapor density of $17.2{g/m}^{3}$ at $20.0ºC$ creates a partial pressure of $2.33×{10}^{3}Pa,$ equal to the vapor pressure of water at that temperature. If the partial pressure is equal to the vapor pressure, then the liquid and vapor phases are in equilibrium, and the relative humidity is 100%. Thus, there can be no more than 17.2 g of water vapor per ${m}^{3}$ at $20.0ºC$ , so that this value is the saturation vapor density at that temperature. This example illustrates how water vapor behaves like an ideal gas: the pressure and density are consistent with the ideal gas law (assuming the density in the table is correct). The saturation vapor densities listed in are the maximum amounts of water vapor that air can hold at various temperatures.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-18",
+      "type": "paragraph",
+      "content": {
+        "text": "We define percent relative humidity as the ratio of vapor density to saturation vapor density, or",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-19",
+      "type": "paragraph",
+      "content": {
+        "text": "We can use this and the data in to do a variety of interesting calculations, keeping in mind that relative humidity is based on the comparison of the partial pressure of water vapor in air and ice.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "ex-20",
+      "type": "example",
+      "kind": "worked",
+      "title": {
+        "text": "Calculating Humidity and Dew Point",
+        "inline": []
+      },
+      "problem": {
+        "text": "",
+        "inline": []
+      },
+      "answer": null,
+      "level": "core"
+    },
+    {
+      "id": "p-21",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) Calculate the percent relative humidity on a day when the temperature is $25.0ºC$ and the air contains 9.40 g of water vapor per ${m}^{3}$ . (b) At what temperature will this air reach 100% relative humidity (the saturation density)? This temperature is the dew point. (c) What is the humidity when the air temperature is $25.0ºC$ and the dew point is $-10.0ºC$ ?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-22",
+      "type": "paragraph",
+      "content": {
+        "text": "Strategy and Solution",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-23",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) Percent relative humidity is defined as the ratio of vapor density to saturation vapor density.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-24",
+      "type": "paragraph",
+      "content": {
+        "text": "The first is given to be $9.{40 g/m}^{3}$ , and the second is found in to be $23.{0 g/m}^{3}$ . Thus,",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-25",
+      "type": "paragraph",
+      "content": {
+        "text": "(b) The air contains $9.{40 g/m}^{3}$ of water vapor. The relative humidity will be 100% at a temperature where $9.{40 g/m}^{3}$ is the saturation density. Inspection of reveals this to be the case at $10.0ºC$ , where the relative humidity will be 100%. That temperature is called the dew point for air with this concentration of water vapor.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-26",
+      "type": "paragraph",
+      "content": {
+        "text": "(c) Here, the dew point temperature is given to be $-10.0ºC$ . Using , we see that the vapor density is $2.{36 g/m}^{3}$ , because this value is the saturation vapor density at $-10.0ºC$ . The saturation vapor density at $25.0ºC$ is seen to be $23.{0 g/m}^{3}$ . Thus, the relative humidity at $25.0ºC$ is",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-27",
+      "type": "paragraph",
+      "content": {
+        "text": "The importance of dew point is that air temperature cannot drop below $10.0ºC$ in part (b), or $-10.0ºC$ in part (c), without water vapor condensing out of the air. If condensation occurs, considerable transfer of heat occurs (discussed in Heat and Heat Transfer Methods ), which prevents the temperature from further dropping. When dew points are below $0ºC$ , freezing temperatures are a greater possibility, which explains why farmers keep track of the dew point. Low humidity in deserts means low dew-point temperatures. Thus condensation is unlikely. If the temperature drops, vapor does not condense in liquid drops. Because no heat is released into the air, the air temperature drops more rapidly compared to air with higher humidity. Likewise, at high temperatures, liquid droplets do not evaporate, so that no heat is removed from the gas to the liquid phase. This explains the large range of temperature in arid regions.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-28",
+      "type": "paragraph",
+      "content": {
+        "text": "Why does water boil at $100ºC$ ? You will note from that the vapor pressure of water at $100ºC$ is $1.01×{10}^{5}Pa$ , or 1.00 atm. Thus, it can evaporate without limit at this temperature and pressure. But why does it form bubbles when it boils? This is because water ordinarily contains significant amounts of dissolved air and other impurities, which are observed as small bubbles of air in a glass of water. If a bubble starts out at the bottom of the container at $20ºC$ , it contains water vapor (about 2.30%). The pressure inside the bubble is fixed at 1.00 atm (we ignore the slight pressure exerted by the water around it). As the temperature rises, the amount of air in the bubble stays the same, but the water vapor increases; the bubble expands to keep the pressure at 1.00 atm. At $100ºC$ , water vapor enters the bubble continuously since the partial pressure of water is equal to 1.00 atm in equilibrium. It cannot reach this pressure, however, since the bubble also contains air and total pressure is 1.00 atm. The bubble grows in size and thereby increases the buoyant force. The bubble breaks away and rises rapidly to the surface—we call this boiling! (See .)",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-3",
+      "type": "figure",
+      "asset_url": "images/phy_m42219_graphics4-cef9.jpg",
+      "caption": {
+        "text": "(a) An air bubble in water starts out saturated with water vapor at $20ºC$ . (b) As the temperature rises, water vapor enters the bubble because its vapor pressure increases. The bubble expands to keep its pressure at 1.00 atm. (c) At $100ºC$ , water vapor enters the bubble continuously because water’s vapor pressure exceeds its partial pressure in the bubble, which must be less than 1.00 atm. The bubble grows and rises to the surface.",
+        "inline": []
+      },
+      "alt": "A beaker of water being heated over a flame. The beaker is shown at three different times. In the first, at twenty degrees C, a small bubble sits on the bottom of the beaker. In the second step, the water temperature is fifty degrees C and the bubble is larger, though still sitting on the bottom of the beaker. In the third step, the water temperature is one hundred degrees C. The bubble is larger and is rising toward the surface.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "exr-30",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Freeze drying is a process in which substances, such as foods, are dried by placing them in a vacuum chamber and lowering the atmospheric pressure around them. How does the lowered atmospheric pressure speed the drying process, and why does it cause the temperature of the food to drop?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "Decreased the atmospheric pressure results in decreased partial pressure of water, hence a lower humidity. So evaporation of water from food, for example, will be enhanced. The molecules of water most likely to break away from the food will be those with the greatest velocities. Those remaining thus have a lower average velocity and a lower temperature. This can (and does) result in the freezing and drying of the food; hence the process is aptly named freeze drying.",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-31",
+      "type": "paragraph",
+      "content": {
+        "text": "Freeze drying is a process in which substances, such as foods, are dried by placing them in a vacuum chamber and lowering the atmospheric pressure around them. How does the lowered atmospheric pressure speed the drying process, and why does it cause the temperature of the food to drop?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-32",
+      "type": "paragraph",
+      "content": {
+        "text": "Decreased the atmospheric pressure results in decreased partial pressure of water, hence a lower humidity. So evaporation of water from food, for example, will be enhanced. The molecules of water most likely to break away from the food will be those with the greatest velocities. Those remaining thus have a lower average velocity and a lower temperature. This can (and does) result in the freezing and drying of the food; hence the process is aptly named freeze drying.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-33",
+      "type": "paragraph",
+      "content": {
+        "text": "Watch different types of molecules form a solid, liquid, or gas in this simulation . Add or remove heat and watch the phase change. Change the temperature or volume of a container and see a pressure-temperature diagram respond in real time. Relate the interaction potential to the forces between molecules.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-34",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Section Summary",
+        "inline": []
+      }
+    },
+    {
+      "id": "sec-35",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Conceptual Questions",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-36",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Because humidity depends only on water’s vapor pressure and temperature, are the saturation vapor densities listed in valid in an atmosphere of helium at a pressure of $1.01×{10}^{5}{N/m}^{2}$ , rather than air? Are those values affected by altitude on Earth?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-37",
+      "type": "paragraph",
+      "content": {
+        "text": "Because humidity depends only on water’s vapor pressure and temperature, are the saturation vapor densities listed in valid in an atmosphere of helium at a pressure of $1.01×{10}^{5}{N/m}^{2}$ , rather than air? Are those values affected by altitude on Earth?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-38",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Why does a beaker of $40.0ºC$ water placed in a vacuum chamber start to boil as the chamber is evacuated (air is pumped out of the chamber)? At what pressure does the boiling begin? Would food cook any faster in such a beaker?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-39",
+      "type": "paragraph",
+      "content": {
+        "text": "Why does a beaker of $40.0ºC$ water placed in a vacuum chamber start to boil as the chamber is evacuated (air is pumped out of the chamber)? At what pressure does the boiling begin? Would food cook any faster in such a beaker?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-40",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Why does rubbing alcohol evaporate much more rapidly than water at STP (standard temperature and pressure)?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-41",
+      "type": "paragraph",
+      "content": {
+        "text": "Why does rubbing alcohol evaporate much more rapidly than water at STP (standard temperature and pressure)?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-42",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Problems & Exercises",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-43",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Dry air is 78.1% nitrogen. What is the partial pressure of nitrogen when the atmospheric pressure is $1.01×{10}^{5}{N/m}^{2}$ ?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$7.89×{10}^{4}Pa$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-44",
+      "type": "paragraph",
+      "content": {
+        "text": "Dry air is 78.1% nitrogen. What is the partial pressure of nitrogen when the atmospheric pressure is $1.01×{10}^{5}{N/m}^{2}$ ?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-45",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "(a) What is the vapor pressure of water at $20.0ºC$ ? (b) What percentage of atmospheric pressure does this correspond to? (c) What percent of $20.0ºC$ air is water vapor if it has 100% relative humidity? (The density of dry air at $20.0ºC$ is $1.20{kg/m}^{3}$ .)",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-46",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) What is the vapor pressure of water at $20.0ºC$ ? (b) What percentage of atmospheric pressure does this correspond to? (c) What percent of $20.0ºC$ air is water vapor if it has 100% relative humidity? (The density of dry air at $20.0ºC$ is $1.20{kg/m}^{3}$ .)",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-47",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Pressure cookers increase cooking speed by raising the boiling temperature of water above its value at atmospheric pressure. (a) What pressure is necessary to raise the boiling point to $120.0ºC$ ? (b) What gauge pressure does this correspond to?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a) $1.99×{10}^{5}Pa$ (b) 0.97 atm",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-48",
+      "type": "paragraph",
+      "content": {
+        "text": "Pressure cookers increase cooking speed by raising the boiling temperature of water above its value at atmospheric pressure. (a) What pressure is necessary to raise the boiling point to $120.0ºC$ ? (b) What gauge pressure does this correspond to?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-49",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) $1.99×{10}^{5}Pa$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-50",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "(a) At what temperature does water boil at an altitude of 1500 m (about 5000 ft) on a day when atmospheric pressure is $8.59×{10}^{4}{N/m}^{2}?$ (b) What about at an altitude of 3000 m (about 10,000 ft) when atmospheric pressure is $7.00×{10}^{4}{N/m}^{2}?$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-51",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) At what temperature does water boil at an altitude of 1500 m (about 5000 ft) on a day when atmospheric pressure is $8.59×{10}^{4}{N/m}^{2}?$ (b) What about at an altitude of 3000 m (about 10,000 ft) when atmospheric pressure is $7.00×{10}^{4}{N/m}^{2}?$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-52",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "What is the atmospheric pressure on top of Mt. Everest on a day when water boils there at a temperature of $70.0ºC?$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$3.12×{10}^{4}Pa$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-53",
+      "type": "paragraph",
+      "content": {
+        "text": "What is the atmospheric pressure on top of Mt. Everest on a day when water boils there at a temperature of $70.0ºC?$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-54",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "At a spot in the high Andes, water boils at $80.0ºC$ , greatly reducing the cooking speed of potatoes, for example. What is atmospheric pressure at this location?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-55",
+      "type": "paragraph",
+      "content": {
+        "text": "At a spot in the high Andes, water boils at $80.0ºC$ , greatly reducing the cooking speed of potatoes, for example. What is atmospheric pressure at this location?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-56",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "What is the relative humidity on a $25.0ºC$ day when the air contains $18.0{g/m}^{3}$ of water vapor?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "78.3%",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-57",
+      "type": "paragraph",
+      "content": {
+        "text": "What is the relative humidity on a $25.0ºC$ day when the air contains $18.0{g/m}^{3}$ of water vapor?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-58",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "What is the density of water vapor in ${g/m}^{3}$ on a hot dry day in the desert when the temperature is $40.0ºC$ and the relative humidity is 6.00%?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-59",
+      "type": "paragraph",
+      "content": {
+        "text": "What is the density of water vapor in ${g/m}^{3}$ on a hot dry day in the desert when the temperature is $40.0ºC$ and the relative humidity is 6.00%?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-60",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A deep-sea diver should breathe a gas mixture that has the same oxygen partial pressure as at sea level, where dry air contains 20.9% oxygen and has a total pressure of $1.01×{10}^{5}{N/m}^{2}$ . (a) What is the partial pressure of oxygen at sea level? (b) If the diver breathes a gas mixture at a pressure of $2.00×{10}^{6}{N/m}^{2}$ , what percent oxygen should it be to have the same oxygen partial pressure as at sea level?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a) $2.12×{10}^{4}Pa$ (b) $1.06%$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-61",
+      "type": "paragraph",
+      "content": {
+        "text": "A deep-sea diver should breathe a gas mixture that has the same oxygen partial pressure as at sea level, where dry air contains 20.9% oxygen and has a total pressure of $1.01×{10}^{5}{N/m}^{2}$ . (a) What is the partial pressure of oxygen at sea level? (b) If the diver breathes a gas mixture at a pressure of $2.00×{10}^{6}{N/m}^{2}$ , what percent oxygen should it be to have the same oxygen partial pressure as at sea level?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-62",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) $2.12×{10}^{4}Pa$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-63",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "The vapor pressure of water at $40.0ºC$ is $7.34×{10}^{3}{N/m}^{2}$ . Using the ideal gas law, calculate the density of water vapor in ${g/m}^{3}$ that creates a partial pressure equal to this vapor pressure. The result should be the same as the saturation vapor density at that temperature $(51.{1 g/m}^{3}).$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-64",
+      "type": "paragraph",
+      "content": {
+        "text": "The vapor pressure of water at $40.0ºC$ is $7.34×{10}^{3}{N/m}^{2}$ . Using the ideal gas law, calculate the density of water vapor in ${g/m}^{3}$ that creates a partial pressure equal to this vapor pressure. The result should be the same as the saturation vapor density at that temperature $(51.{1 g/m}^{3}).$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-65",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Air in human lungs has a temperature of $37.0ºC$ and a saturation vapor density of $44.{0 g/m}^{3}$ . (a) If 2.00 L of air is exhaled and very dry air inhaled, what is the maximum loss of water vapor by the person? (b) Calculate the partial pressure of water vapor having this density, and compare it with the vapor pressure of $6.31×{10}^{3}{N/m}^{2}$ .",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a) $8.80×{10}^{-2}g$ (b) $6.30×{10}^{3}Pa$ ; the two values are nearly identical.",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-66",
+      "type": "paragraph",
+      "content": {
+        "text": "Air in human lungs has a temperature of $37.0ºC$ and a saturation vapor density of $44.{0 g/m}^{3}$ . (a) If 2.00 L of air is exhaled and very dry air inhaled, what is the maximum loss of water vapor by the person? (b) Calculate the partial pressure of water vapor having this density, and compare it with the vapor pressure of $6.31×{10}^{3}{N/m}^{2}$ .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-67",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) $8.80×{10}^{-2}g$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-68",
+      "type": "paragraph",
+      "content": {
+        "text": "(b) $6.30×{10}^{3}Pa$ ; the two values are nearly identical.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-69",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "If the relative humidity is 90.0% on a muggy summer morning when the temperature is $20.0ºC$ , what will it be later in the day when the temperature is $30.0ºC$ , assuming the water vapor density remains constant?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-70",
+      "type": "paragraph",
+      "content": {
+        "text": "If the relative humidity is 90.0% on a muggy summer morning when the temperature is $20.0ºC$ , what will it be later in the day when the temperature is $30.0ºC$ , assuming the water vapor density remains constant?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-71",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Late on an autumn day, the relative humidity is 45.0% and the temperature is $20.0ºC$ . What will the relative humidity be that evening when the temperature has dropped to $10.0ºC$ , assuming constant water vapor density?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "82.3%",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-72",
+      "type": "paragraph",
+      "content": {
+        "text": "Late on an autumn day, the relative humidity is 45.0% and the temperature is $20.0ºC$ . What will the relative humidity be that evening when the temperature has dropped to $10.0ºC$ , assuming constant water vapor density?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-73",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Atmospheric pressure atop Mt. Everest is $3.30×{10}^{4}{N/m}^{2}$ . (a) What is the partial pressure of oxygen there if it is 20.9% of the air? (b) What percent oxygen should a mountain climber breathe so that its partial pressure is the same as at sea level, where atmospheric pressure is $1.01×{10}^{5}{N/m}^{2}?$ (c) One of the most severe problems for those climbing very high mountains is the extreme drying of breathing passages. Why does this drying occur?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-74",
+      "type": "paragraph",
+      "content": {
+        "text": "Atmospheric pressure atop Mt. Everest is $3.30×{10}^{4}{N/m}^{2}$ . (a) What is the partial pressure of oxygen there if it is 20.9% of the air? (b) What percent oxygen should a mountain climber breathe so that its partial pressure is the same as at sea level, where atmospheric pressure is $1.01×{10}^{5}{N/m}^{2}?$ (c) One of the most severe problems for those climbing very high mountains is the extreme drying of breathing passages. Why does this drying occur?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-75",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "What is the dew point (the temperature at which 100% relative humidity would occur) on a day when relative humidity is 39.0% at a temperature of $20.0ºC$ ?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$4.77ºC$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-76",
+      "type": "paragraph",
+      "content": {
+        "text": "What is the dew point (the temperature at which 100% relative humidity would occur) on a day when relative humidity is 39.0% at a temperature of $20.0ºC$ ?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-77",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "On a certain day, the temperature is $25.0ºC$ and the relative humidity is 90.0%. How many grams of water must condense out of each cubic meter of air if the temperature falls to $15.0ºC$ ? Such a drop in temperature can, thus, produce heavy dew or fog.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-78",
+      "type": "paragraph",
+      "content": {
+        "text": "On a certain day, the temperature is $25.0ºC$ and the relative humidity is 90.0%. How many grams of water must condense out of each cubic meter of air if the temperature falls to $15.0ºC$ ? Such a drop in temperature can, thus, produce heavy dew or fog.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-79",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Integrated Concepts The boiling point of water increases with depth because pressure increases with depth. At what depth will fresh water have a boiling point of $150ºC$ , if the surface of the water is at sea level?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$38.3m$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-80",
+      "type": "paragraph",
+      "content": {
+        "text": "The boiling point of water increases with depth because pressure increases with depth. At what depth will fresh water have a boiling point of $150ºC$ , if the surface of the water is at sea level?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-81",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Integrated Concepts (a) At what depth in fresh water is the critical pressure of water reached, given that the surface is at sea level? (b) At what temperature will this water boil? (c) Is a significantly higher temperature needed to boil water at a greater depth?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-82",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) At what depth in fresh water is the critical pressure of water reached, given that the surface is at sea level? (b) At what temperature will this water boil? (c) Is a significantly higher temperature needed to boil water at a greater depth?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-83",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Integrated Concepts To get an idea of the small effect that temperature has on Archimedes’ principle, calculate the fraction of a copper block’s weight that is supported by the buoyant force in $0ºC$ water and compare this fraction with the fraction supported in $95.0ºC$ water.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$\\frac{({F}_{B}/{w}_{Cu})}{{({F}_{B}/{w}_{Cu})}^{′}}=1.02$ . The buoyant force supports nearly the exact same amount of force on the copper block in both circumstances.",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-84",
+      "type": "paragraph",
+      "content": {
+        "text": "To get an idea of the small effect that temperature has on Archimedes’ principle, calculate the fraction of a copper block’s weight that is supported by the buoyant force in $0ºC$ water and compare this fraction with the fraction supported in $95.0ºC$ water.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-85",
+      "type": "paragraph",
+      "content": {
+        "text": "$\\frac{({F}_{B}/{w}_{Cu})}{{({F}_{B}/{w}_{Cu})}^{′}}=1.02$ . The buoyant force supports nearly the exact same amount of force on the copper block in both circumstances.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-86",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Integrated Concepts If you want to cook in water at $150ºC$ , you need a pressure cooker that can withstand the necessary pressure. (a) What pressure is required for the boiling point of water to be this high? (b) If the lid of the pressure cooker is a disk 25.0 cm in diameter, what force must it be able to withstand at this pressure?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-87",
+      "type": "paragraph",
+      "content": {
+        "text": "If you want to cook in water at $150ºC$ , you need a pressure cooker that can withstand the necessary pressure. (a) What pressure is required for the boiling point of water to be this high? (b) If the lid of the pressure cooker is a disk 25.0 cm in diameter, what force must it be able to withstand at this pressure?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-88",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Unreasonable Results (a) How many moles per cubic meter of an ideal gas are there at a pressure of $1.00×{10}^{14}{N/m}^{2}$ and at $0ºC$ ? (b) What is unreasonable about this result? (c) Which premise or assumption is responsible?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a) $4.41×{10}^{10}{mol/m}^{3}$ (b) It’s unreasonably large. (c) At high pressures such as these, the ideal gas law can no longer be applied. As a result, unreasonable answers come up when it is used.",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-89",
+      "type": "paragraph",
+      "content": {
+        "text": "Unreasonable Results",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-90",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) How many moles per cubic meter of an ideal gas are there at a pressure of $1.00×{10}^{14}{N/m}^{2}$ and at $0ºC$ ? (b) What is unreasonable about this result? (c) Which premise or assumption is responsible?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-91",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) $4.41×{10}^{10}{mol/m}^{3}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-92",
+      "type": "paragraph",
+      "content": {
+        "text": "(b) It’s unreasonably large.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-93",
+      "type": "paragraph",
+      "content": {
+        "text": "(c) At high pressures such as these, the ideal gas law can no longer be applied. As a result, unreasonable answers come up when it is used.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-94",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Unreasonable Results (a) An automobile mechanic claims that an aluminum rod fits loosely into its hole on an aluminum engine block because the engine is hot and the rod is cold. If the hole is 10.0% bigger in diameter than the $22.0ºC$ rod, at what temperature will the rod be the same size as the hole? (b) What is unreasonable about this temperature? (c) Which premise is responsible?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-95",
+      "type": "paragraph",
+      "content": {
+        "text": "Unreasonable Results",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-96",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) An automobile mechanic claims that an aluminum rod fits loosely into its hole on an aluminum engine block because the engine is hot and the rod is cold. If the hole is 10.0% bigger in diameter than the $22.0ºC$ rod, at what temperature will the rod be the same size as the hole? (b) What is unreasonable about this temperature? (c) Which premise is responsible?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-97",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Unreasonable Results The temperature inside a supernova explosion is said to be $2.00×{10}^{13}K$ . (a) What would the average velocity ${v}_{rms}$ of hydrogen atoms be? (b) What is unreasonable about this velocity? (c) Which premise or assumption is responsible?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a) $7.03×{10}^{8}m/s$ (b) The velocity is too high—it’s greater than the speed of light. (c) The assumption that hydrogen inside a supernova behaves as an idea gas is responsible, because of the great temperature and density in the core of a star. Furthermore, when a velocity greater than the speed of light is obtained, classical physics must be replaced by relativity, a subject not yet covered.",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-98",
+      "type": "paragraph",
+      "content": {
+        "text": "Unreasonable Results",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-99",
+      "type": "paragraph",
+      "content": {
+        "text": "The temperature inside a supernova explosion is said to be $2.00×{10}^{13}K$ . (a) What would the average velocity ${v}_{rms}$ of hydrogen atoms be? (b) What is unreasonable about this velocity? (c) Which premise or assumption is responsible?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-100",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) $7.03×{10}^{8}m/s$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-101",
+      "type": "paragraph",
+      "content": {
+        "text": "(b) The velocity is too high—it’s greater than the speed of light.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-102",
+      "type": "paragraph",
+      "content": {
+        "text": "(c) The assumption that hydrogen inside a supernova behaves as an idea gas is responsible, because of the great temperature and density in the core of a star. Furthermore, when a velocity greater than the speed of light is obtained, classical physics must be replaced by relativity, a subject not yet covered.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-103",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Unreasonable Results Suppose the relative humidity is 80% on a day when the temperature is $30.0ºC$ . (a) What will the relative humidity be if the air cools to $25.0ºC$ and the vapor density remains constant? (b) What is unreasonable about this result? (c) Which premise is responsible?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-104",
+      "type": "paragraph",
+      "content": {
+        "text": "Unreasonable Results",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-105",
+      "type": "paragraph",
+      "content": {
+        "text": "Suppose the relative humidity is 80% on a day when the temperature is $30.0ºC$ . (a) What will the relative humidity be if the air cools to $25.0ºC$ and the vapor density remains constant? (b) What is unreasonable about this result? (c) Which premise is responsible?",
+        "inline": []
+      },
+      "level": "core"
+    }
+  ],
+  "solutions": {
+    "osbooks-college-physics-bundle:m42219:exr-30": [
+      [
+        {
+          "kind": "text",
+          "text": "Decreased the atmospheric pressure results in decreased partial pressure of water, hence a lower humidity. So evaporation of water from food, for example, will be enhanced. The molecules of water most likely to break away from the food will be those with the greatest velocities. Those remaining thus have a lower average velocity and a lower temperature. This can (and does) result in the freezing and drying of the food; hence the process is aptly named freeze drying."
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42219:exr-43": [
+      [
+        {
+          "kind": "math",
+          "text": "7.89×{10}^{4}Pa"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42219:exr-47": [
+      [
+        {
+          "kind": "text",
+          "text": "(a)"
+        },
+        {
+          "kind": "math",
+          "text": "1.99×{10}^{5}Pa"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(b) 0.97 atm"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42219:exr-52": [
+      [
+        {
+          "kind": "math",
+          "text": "3.12×{10}^{4}Pa"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42219:exr-56": [
+      [
+        {
+          "kind": "text",
+          "text": "78.3%"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42219:exr-60": [
+      [
+        {
+          "kind": "text",
+          "text": "(a)"
+        },
+        {
+          "kind": "math",
+          "text": "2.12×{10}^{4}Pa"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(b)"
+        },
+        {
+          "kind": "math",
+          "text": "1.06%"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42219:exr-65": [
+      [
+        {
+          "kind": "text",
+          "text": "(a)"
+        },
+        {
+          "kind": "math",
+          "text": "8.80×{10}^{-2}g"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(b)"
+        },
+        {
+          "kind": "math",
+          "text": "6.30×{10}^{3}Pa"
+        },
+        {
+          "kind": "text",
+          "text": "; the two values are nearly identical."
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42219:exr-71": [
+      [
+        {
+          "kind": "text",
+          "text": "82.3%"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42219:exr-75": [
+      [
+        {
+          "kind": "math",
+          "text": "4.77ºC"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42219:exr-79": [
+      [
+        {
+          "kind": "math",
+          "text": "38.3m"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42219:exr-83": [
+      [
+        {
+          "kind": "math",
+          "text": "\\frac{({F}_{B}/{w}_{Cu})}{{({F}_{B}/{w}_{Cu})}^{′}}=1.02"
+        },
+        {
+          "kind": "text",
+          "text": ". The buoyant force supports nearly the exact same amount of force on the copper block in both circumstances."
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42219:exr-88": [
+      [
+        {
+          "kind": "text",
+          "text": "(a)"
+        },
+        {
+          "kind": "math",
+          "text": "4.41×{10}^{10}{mol/m}^{3}"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(b) It’s unreasonably large."
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(c) At high pressures such as these, the ideal gas law can no longer be applied. As a result, unreasonable answers come up when it is used."
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42219:exr-97": [
+      [
+        {
+          "kind": "text",
+          "text": "(a)"
+        },
+        {
+          "kind": "math",
+          "text": "7.03×{10}^{8}m/s"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(b) The velocity is too high—it’s greater than the speed of light."
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(c) The assumption that hydrogen inside a supernova behaves as an idea gas is responsible, because of the great temperature and density in the core of a star. Furthermore, when a velocity greater than the speed of light is obtained, classical physics must be replaced by relativity, a subject not yet covered."
+        }
+      ]
+    ]
+  }
+}

@@ -1,0 +1,1083 @@
+{
+  "module": "m42151",
+  "source_attribution": {
+    "publisher": "OpenStax",
+    "book": "osbooks-college-physics-bundle",
+    "section": "m42151",
+    "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42151/index.cnxml",
+    "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)",
+    "locator": "CNXML module index.cnxml (typed elements, solutions present)"
+  },
+  "blocks": [
+    {
+      "id": "sec-0",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Learning Objectives",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-1",
+      "type": "paragraph",
+      "content": {
+        "text": "By the end of this section, you will be able to:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-2",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Law of Conservation of Energy",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-3",
+      "type": "paragraph",
+      "content": {
+        "text": "Energy, as we have noted, is conserved, making it one of the most important physical quantities in nature. The law of conservation of energy can be stated as follows:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-4",
+      "type": "paragraph",
+      "content": {
+        "text": "*Total energy is constant in any process. It may change in form or be transferred from one system to another, but the total remains the same.*",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-5",
+      "type": "paragraph",
+      "content": {
+        "text": "We have explored some forms of energy and some ways it can be transferred from one system to another. This exploration led to the definition of two major types of energy—mechanical energy $(KE+PE)$ and energy transferred via work done by nonconservative forces $({W}_{nc})$ . But energy takes *many* other forms, manifesting itself in *many* different ways, and we need to be able to deal with all of these before we can write an equation for the above general statement of the conservation of energy.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-6",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Other Forms of Energy than Mechanical Energy",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-7",
+      "type": "paragraph",
+      "content": {
+        "text": "At this point, we deal with all other forms of energy by lumping them into a single group called other energy ( $OE$ ). Then we can state the conservation of energy in equation form as",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-8",
+      "type": "paragraph",
+      "content": {
+        "text": "All types of energy and work can be included in this very general statement of conservation of energy. Kinetic energy is $KE$ , work done by a conservative force is represented by $PE$ , work done by nonconservative forces is ${W}_{nc}$ , and all other energies are included as $OE$ . This equation applies to all previous examples; in those situations $OE$ was constant, and so it subtracted out and was not directly considered.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-9",
+      "type": "paragraph",
+      "content": {
+        "text": "The fact that energy is conserved and has many forms makes it very important. You will find that energy is discussed in many contexts, because it is involved in all processes. It will also become apparent that many situations are best understood in terms of energy and that problems are often most easily conceptualized and solved by considering energy.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-10",
+      "type": "paragraph",
+      "content": {
+        "text": "When does $OE$ play a role? One example occurs when a person eats. Food is oxidized with the release of carbon dioxide, water, and energy. Some of this chemical energy is converted to kinetic energy when the person moves, to potential energy when the person changes altitude, and to thermal energy (another form of $OE$ ).",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-11",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Some of the Many Forms of Energy",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-12",
+      "type": "paragraph",
+      "content": {
+        "text": "What are some other forms of energy? You can probably name a number of forms of energy not yet discussed. Many of these will be covered in later chapters, but let us detail a few here. Electrical energy is a common form that is converted to many other forms and does work in a wide range of practical situations. Fuels, such as gasoline and food, carry chemical energy that can be transferred to a system through oxidation. Chemical fuel can also produce electrical energy, such as in batteries. Batteries can in turn produce light, which is a very pure form of energy. Most energy sources on Earth are in fact stored energy from the energy we receive from the Sun. We sometimes refer to this as radiant energy , or electromagnetic radiation, which includes visible light, infrared, and ultraviolet radiation. Nuclear energy comes from processes that convert measurable amounts of mass into energy. Nuclear energy is transformed into the energy of sunlight, into electrical energy in power plants, and into the energy of the heat transfer and blast in weapons. Atoms and molecules inside all objects are in random motion. This internal mechanical energy from the random motions is called thermal energy , because it is related to the temperature of the object. These and all other forms of energy can be converted into one another and can do work.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-13",
+      "type": "paragraph",
+      "content": {
+        "text": "gives the amount of energy stored, used, or released from various objects and in various phenomena. The range of energies and the variety of types and situations is impressive.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-14",
+      "type": "paragraph",
+      "content": {
+        "text": "You will find the following problem-solving strategies useful whenever you deal with energy. The strategies help in organizing and reinforcing energy concepts. In fact, they are used in the examples presented in this chapter. The familiar general problem-solving strategies presented earlier—involving identifying physical principles, knowns, and unknowns, checking units, and so on—continue to be relevant here.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-15",
+      "type": "paragraph",
+      "content": {
+        "text": "*Step 1.* Determine the system of interest and identify what information is given and what quantity is to be calculated. A sketch will help.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-16",
+      "type": "paragraph",
+      "content": {
+        "text": "*Step 2.* Examine all the forces involved and determine whether you know or are given the potential energy from the work done by the forces. Then use step 3 or step 4.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-17",
+      "type": "paragraph",
+      "content": {
+        "text": "*Step 3.* If you know the potential energies for the forces that enter into the problem, then forces are all conservative, and you can apply conservation of mechanical energy simply in terms of potential and kinetic energy. The equation expressing conservation of energy is",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-18",
+      "type": "paragraph",
+      "content": {
+        "text": "*Step 4.* If you know the potential energy for only some of the forces, possibly because some of them are nonconservative and do not have a potential energy, or if there are other energies that are not easily treated in terms of force and work, then the conservation of energy law in its most general form must be used.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-19",
+      "type": "paragraph",
+      "content": {
+        "text": "In most problems, one or more of the terms is zero, simplifying its solution. Do not calculate ${W}_{c}$ , the work done by conservative forces; it is already incorporated in the $PE$ terms.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-20",
+      "type": "paragraph",
+      "content": {
+        "text": "*Step 5.* You have already identified the types of work and energy involved (in step 2). Before solving for the unknown, *eliminate terms wherever possible* to simplify the algebra. For example, choose $h=0$ at either the initial or final point, so that ${PE}_{g}$ is zero there. Then solve for the unknown in the customary manner.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-21",
+      "type": "paragraph",
+      "content": {
+        "text": "*Step 6.* *Check the answer to see if it is reasonable* . Once you have solved a problem, reexamine the forms of work and energy to see if you have set up the conservation of energy equation correctly. For example, work done against friction should be negative, potential energy at the bottom of a hill should be less than that at the top, and so on. Also check to see that the numerical value obtained is reasonable. For example, the final speed of a skateboarder who coasts down a 3-m-high ramp could reasonably be 20 km/h, but *not* 80 km/h.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-22",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Transformation of Energy",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-23",
+      "type": "paragraph",
+      "content": {
+        "text": "The transformation of energy from one form into others is happening all the time. The chemical energy in food is converted into thermal energy through metabolism; light energy is converted into chemical energy through photosynthesis. In a larger example, the chemical energy contained in coal is converted into thermal energy as it burns to turn water into steam in a boiler. This thermal energy in the steam in turn is converted to mechanical energy as it spins a turbine, which is connected to a generator to produce electrical energy. (In all of these examples, not all of the initial energy is converted into the forms mentioned. This important point is discussed later in this section.)",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-24",
+      "type": "paragraph",
+      "content": {
+        "text": "Another example of energy conversion occurs in a solar cell. Sunlight impinging on a solar cell (see ) produces electricity, which in turn can be used to run an electric motor. Energy is converted from the primary source of solar energy into electrical energy and then into mechanical energy.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-1",
+      "type": "figure",
+      "asset_url": "images/phy_m42151_Figure_08_06_01a.jpg",
+      "caption": {
+        "text": "Solar energy is converted into electrical energy by solar cells, which is used to run a motor in this solar-power aircraft. (credit: NASA)",
+        "inline": []
+      },
+      "alt": "A solar-powered aircraft flying over the sea. Solar cells are on the upper surface of the wings, where they are exposed to sunlight.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "tbl-26",
+      "type": "table",
+      "title": {
+        "text": "Table",
+        "inline": []
+      },
+      "rows": [
+        [
+          "Object/phenomenon",
+          "Energy in joules"
+        ],
+        [
+          "Big Bang",
+          "${10}^{68}$"
+        ],
+        [
+          "Energy released in a supernova",
+          "${10}^{44}$"
+        ],
+        [
+          "Fusion of all the hydrogen in Earth’s oceans",
+          "${10}^{34}$"
+        ],
+        [
+          "Annual world energy use",
+          "$4×{10}^{20}$"
+        ],
+        [
+          "Large fusion bomb (9 megaton)",
+          "$3.8×{10}^{16}$"
+        ],
+        [
+          "1 kg hydrogen (fusion to helium)",
+          "$6.4×{10}^{14}$"
+        ],
+        [
+          "1 kg uranium (nuclear fission)",
+          "$8.0×{10}^{13}$"
+        ],
+        [
+          "Hiroshima-size fission bomb (10 kiloton)",
+          "$4.2×{10}^{13}$"
+        ],
+        [
+          "90,000-metric ton aircraft carrier at 30 knots",
+          "$1.1×{10}^{10}$"
+        ],
+        [
+          "1 barrel crude oil",
+          "$5.9×{10}^{9}$"
+        ],
+        [
+          "1 ton TNT",
+          "$4.2×{10}^{9}$"
+        ],
+        [
+          "1 gallon of gasoline",
+          "$1.2×{10}^{8}$"
+        ],
+        [
+          "Daily home electricity use (developed countries)",
+          "$7×{10}^{7}$"
+        ],
+        [
+          "Daily adult food intake (recommended)",
+          "$1.2×{10}^{7}$"
+        ],
+        [
+          "1000-kg car at 90 km/h",
+          "$3.1×{10}^{5}$"
+        ],
+        [
+          "1 g fat (9.3 kcal)",
+          "$3.9×{10}^{4}$"
+        ],
+        [
+          "ATP hydrolysis reaction",
+          "$3.2×{10}^{4}$"
+        ],
+        [
+          "1 g carbohydrate (4.1 kcal)",
+          "$1.7×{10}^{4}$"
+        ],
+        [
+          "1 g protein (4.1 kcal)",
+          "$1.7×{10}^{4}$"
+        ],
+        [
+          "Tennis ball at 100 km/h",
+          "$22$"
+        ],
+        [
+          "Mosquito $({10}^{–2}g at 0.5 m/s)$",
+          "$1.3×{10}^{-6}$"
+        ],
+        [
+          "Single electron in a TV tube beam",
+          "$4.0×{10}^{-15}$"
+        ],
+        [
+          "Energy to break one DNA strand",
+          "${10}^{-19}$"
+        ]
+      ],
+      "alt": "Table with 24 rows",
+      "level": "core"
+    },
+    {
+      "id": "sec-27",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Efficiency",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-28",
+      "type": "paragraph",
+      "content": {
+        "text": "Even though energy is conserved in an energy conversion process, the output of *useful energy* or work will be less than the energy input. The efficiency $Eff$ of an energy conversion process is defined as",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-29",
+      "type": "paragraph",
+      "content": {
+        "text": "lists some efficiencies of mechanical devices and human activities. In a coal-fired power plant, for example, about 40% of the chemical energy in the coal becomes useful electrical energy. The other 60% transforms into other (perhaps less useful) energy forms, such as thermal energy, which is then released to the environment through combustion gases and cooling towers.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "tbl-30",
+      "type": "table",
+      "title": {
+        "text": "Table",
+        "inline": []
+      },
+      "rows": [
+        [
+          "Activity/device",
+          "Efficiency (%) Representative values"
+        ],
+        [
+          "Cycling and climbing",
+          "20"
+        ],
+        [
+          "Swimming, surface",
+          "2"
+        ],
+        [
+          "Swimming, submerged",
+          "4"
+        ],
+        [
+          "Shoveling",
+          "3"
+        ],
+        [
+          "Weightlifting",
+          "9"
+        ],
+        [
+          "Steam engine",
+          "17"
+        ],
+        [
+          "Gasoline engine",
+          "30"
+        ],
+        [
+          "Diesel engine",
+          "35"
+        ],
+        [
+          "Nuclear power plant",
+          "35"
+        ],
+        [
+          "Coal power plant",
+          "42"
+        ],
+        [
+          "Electric motor",
+          "98"
+        ],
+        [
+          "Compact fluorescent light",
+          "20"
+        ],
+        [
+          "Gas heater (residential)",
+          "90"
+        ],
+        [
+          "Solar cell",
+          "10"
+        ]
+      ],
+      "alt": "Table with 15 rows",
+      "level": "core"
+    },
+    {
+      "id": "p-31",
+      "type": "paragraph",
+      "content": {
+        "text": "A realistic mass and spring laboratory . Hang masses from springs and adjust the spring stiffness and damping. You can even slow time. Transport the lab to different planets. A chart shows the kinetic, potential, and thermal energies for each spring.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-32",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Test Prep for AP Courses",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-33",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "You do 30 J of work to load a toy dart gun. However, the dart is 10 cm long and feels a frictional force of 10 N while going through the dart gun’s barrel. What is the kinetic energy of the fired dart? 30 J; 29 J; 28 J; 27 J",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(c)",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-34",
+      "type": "paragraph",
+      "content": {
+        "text": "You do 30 J of work to load a toy dart gun. However, the dart is 10 cm long and feels a frictional force of 10 N while going through the dart gun’s barrel. What is the kinetic energy of the fired dart?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-35",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "When an object is lifted by a crane, it begins and ends its motion at rest. The same is true of an object pushed across a rough surface. Explain why this happens. What are the differences between these systems?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-36",
+      "type": "paragraph",
+      "content": {
+        "text": "When an object is lifted by a crane, it begins and ends its motion at rest. The same is true of an object pushed across a rough surface. Explain why this happens. What are the differences between these systems?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-37",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A child has two red wagons, with the rear one tied to the front by a stretchy rope (a spring). If the child pulls on the front wagon, the ____ increases. kinetic energy of the wagons; potential energy stored in the spring; both A and B; not enough information",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(c)",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-38",
+      "type": "paragraph",
+      "content": {
+        "text": "A child has two red wagons, with the rear one tied to the front by a stretchy rope (a spring). If the child pulls on the front wagon, the ____ increases.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-39",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A child has two red wagons, with the rear one tied to the front by a stretchy rope (a spring). If the child pulls on the front wagon, the energy stored in the system increases. How do the relative amounts of potential and kinetic energy in this system change over time?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-40",
+      "type": "paragraph",
+      "content": {
+        "text": "A child has two red wagons, with the rear one tied to the front by a stretchy rope (a spring). If the child pulls on the front wagon, the energy stored in the system increases. How do the relative amounts of potential and kinetic energy in this system change over time?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-41",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Which of the following are closed systems? Earth; a car; a frictionless pendulum; a mass on a spring in a vacuum",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(c), (d)",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-42",
+      "type": "paragraph",
+      "content": {
+        "text": "Which of the following are closed systems?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-43",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Describe a real-world example of a closed system.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-44",
+      "type": "paragraph",
+      "content": {
+        "text": "Describe a real-world example of a closed system.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-45",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A 5.0-kg rock falls off of a 10 m cliff. If air resistance exerts an average force of 10 N, what is the kinetic energy when the rock hits the ground? 400 J; 12.6 m/s; 100 J; 500 J",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a)",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-46",
+      "type": "paragraph",
+      "content": {
+        "text": "A 5.0-kg rock falls off of a 10 m cliff. If air resistance exerts an average force of 10 N, what is the kinetic energy when the rock hits the ground?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-47",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Hydroelectricity is generated by storing water behind a dam, and then letting some of it run through generators in the dam to turn them. If the system is the water, what is the environment that is doing work on it? If a dam has water 100 m deep behind it, how much energy was generated if 10,000 kg of water exited the dam at 2.0 m/s?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-48",
+      "type": "paragraph",
+      "content": {
+        "text": "Hydroelectricity is generated by storing water behind a dam, and then letting some of it run through generators in the dam to turn them. If the system is the water, what is the environment that is doing work on it? If a dam has water 100 m deep behind it, how much energy was generated if 10,000 kg of water exited the dam at 2.0 m/s?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-49",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Before railroads were invented, goods often traveled along canals, with mules pulling barges from the bank. If a mule is exerting a 1200 N force for 10 km, and the rope connecting the mule to the barge is at a 20 degree angle from the direction of travel, how much work did the mule do on the barge? 12 MJ; 11 MJ; 4.1 MJ; 6 MJ",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(b)",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-50",
+      "type": "paragraph",
+      "content": {
+        "text": "Before railroads were invented, goods often traveled along canals, with mules pulling barges from the bank. If a mule is exerting a 1200 N force for 10 km, and the rope connecting the mule to the barge is at a 20 degree angle from the direction of travel, how much work did the mule do on the barge?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-51",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Describe an instance today in which you did work, by the scientific definition. Then calculate how much work you did in that instance, showing your work.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-52",
+      "type": "paragraph",
+      "content": {
+        "text": "Describe an instance today in which you did work, by the scientific definition. Then calculate how much work you did in that instance, showing your work.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-53",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Section Summary",
+        "inline": []
+      }
+    },
+    {
+      "id": "sec-54",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Conceptual Questions",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-55",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Consider the following scenario. A car for which friction is *not* negligible accelerates from rest down a hill, running out of gasoline after a short distance. The driver lets the car coast farther down the hill, then up and over a small crest. He then coasts down that hill into a gas station, where he brakes to a stop and fills the tank with gasoline. Identify the forms of energy the car has, and how they are changed and transferred in this series of events. (See .) A car experiencing non-negligible friction coasts down a hill, over a small crest, then downhill again, and comes to a stop at a gas station.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-56",
+      "type": "paragraph",
+      "content": {
+        "text": "Consider the following scenario. A car for which friction is *not* negligible accelerates from rest down a hill, running out of gasoline after a short distance. The driver lets the car coast farther down the hill, then up and over a small crest. He then coasts down that hill into a gas station, where he brakes to a stop and fills the tank with gasoline. Identify the forms of energy the car has, and how they are changed and transferred in this series of events. (See .)",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-2",
+      "type": "figure",
+      "asset_url": "images/phy_m42151_Figure_08_06_02a.jpg",
+      "caption": {
+        "text": "A car experiencing non-negligible friction coasts down a hill, over a small crest, then downhill again, and comes to a stop at a gas station.",
+        "inline": []
+      },
+      "alt": "A car coasting downhill, moving over a crest then again moving downhill and finally stopping at a gas station. Each of these positions is labeled with an arrow pointing downward.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "exr-58",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Describe the energy transfers and transformations for a javelin, starting from the point at which an athlete picks up the javelin and ending when the javelin is stuck into the ground after being thrown.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-59",
+      "type": "paragraph",
+      "content": {
+        "text": "Describe the energy transfers and transformations for a javelin, starting from the point at which an athlete picks up the javelin and ending when the javelin is stuck into the ground after being thrown.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-60",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Do devices with efficiencies of less than one violate the law of conservation of energy? Explain.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-61",
+      "type": "paragraph",
+      "content": {
+        "text": "Do devices with efficiencies of less than one violate the law of conservation of energy? Explain.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-62",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "List four different forms or types of energy. Give one example of a conversion from each of these forms to another form.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-63",
+      "type": "paragraph",
+      "content": {
+        "text": "List four different forms or types of energy. Give one example of a conversion from each of these forms to another form.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-64",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "List the energy conversions that occur when riding a bicycle.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-65",
+      "type": "paragraph",
+      "content": {
+        "text": "List the energy conversions that occur when riding a bicycle.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-66",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Problems & Exercises",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-67",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Using values from , how many DNA molecules could be broken by the energy carried by a single electron in the beam of an old-fashioned TV tube? (These electrons were not dangerous in themselves, but they did create dangerous x rays. Later model tube TVs had shielding that absorbed x rays before they escaped and exposed viewers.)",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$4×{10}^{4}molecules$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-68",
+      "type": "paragraph",
+      "content": {
+        "text": "Using values from , how many DNA molecules could be broken by the energy carried by a single electron in the beam of an old-fashioned TV tube? (These electrons were not dangerous in themselves, but they did create dangerous x rays. Later model tube TVs had shielding that absorbed x rays before they escaped and exposed viewers.)",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-69",
+      "type": "paragraph",
+      "content": {
+        "text": "$4×{10}^{4}molecules$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-70",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Using energy considerations and assuming negligible air resistance, show that a rock thrown from a bridge 20.0 m above water with an initial speed of 15.0 m/s strikes the water with a speed of 24.8 m/s independent of the direction thrown.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "Equating ${ΔPE}_{g}$ and $ΔKE$ , we obtain $v=\\sqrt{2gh+{{v}_{0}}^{2}}=\\sqrt{2(9.80 m{/s}^{2})(20.0 m)+(15.0 m/s{)}^{2}}=24.8 m/s$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-71",
+      "type": "paragraph",
+      "content": {
+        "text": "Using energy considerations and assuming negligible air resistance, show that a rock thrown from a bridge 20.0 m above water with an initial speed of 15.0 m/s strikes the water with a speed of 24.8 m/s independent of the direction thrown.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-72",
+      "type": "paragraph",
+      "content": {
+        "text": "Equating ${ΔPE}_{g}$ and $ΔKE$ , we obtain $v=\\sqrt{2gh+{{v}_{0}}^{2}}=\\sqrt{2(9.80 m{/s}^{2})(20.0 m)+(15.0 m/s{)}^{2}}=24.8 m/s$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-73",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "If the energy in fusion bombs were used to supply the energy needs of the world, how many of the 9-megaton variety would be needed for a year’s supply of energy (using data from )? This is not as far-fetched as it may sound—there are thousands of nuclear bombs, and their energy can be trapped in underground explosions and converted to electricity, as natural geothermal energy is.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-74",
+      "type": "paragraph",
+      "content": {
+        "text": "If the energy in fusion bombs were used to supply the energy needs of the world, how many of the 9-megaton variety would be needed for a year’s supply of energy (using data from )? This is not as far-fetched as it may sound—there are thousands of nuclear bombs, and their energy can be trapped in underground explosions and converted to electricity, as natural geothermal energy is.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-75",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "(a) Use of hydrogen fusion to supply energy is a dream that may be realized in the next century. Fusion would be a relatively clean and almost limitless supply of energy, as can be seen from . To illustrate this, calculate how many years the present energy needs of the world could be supplied by one millionth of the oceans’ hydrogen fusion energy. (b) How does this time compare with historically significant events, such as the duration of stable economic systems?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a) $25×{10}^{6}years$ (b) This is much, much longer than human time scales.",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-76",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) Use of hydrogen fusion to supply energy is a dream that may be realized in the next century. Fusion would be a relatively clean and almost limitless supply of energy, as can be seen from . To illustrate this, calculate how many years the present energy needs of the world could be supplied by one millionth of the oceans’ hydrogen fusion energy. (b) How does this time compare with historically significant events, such as the duration of stable economic systems?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-77",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) $25×{10}^{6}years$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-78",
+      "type": "paragraph",
+      "content": {
+        "text": "(b) This is much, much longer than human time scales.",
+        "inline": []
+      },
+      "level": "core"
+    }
+  ],
+  "solutions": {
+    "osbooks-college-physics-bundle:m42151:exr-33": [
+      [
+        {
+          "kind": "text",
+          "text": "(c)"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42151:exr-37": [
+      [
+        {
+          "kind": "text",
+          "text": "(c)"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42151:exr-41": [
+      [
+        {
+          "kind": "text",
+          "text": "(c), (d)"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42151:exr-45": [
+      [
+        {
+          "kind": "text",
+          "text": "(a)"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42151:exr-49": [
+      [
+        {
+          "kind": "text",
+          "text": "(b)"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42151:exr-67": [
+      [
+        {
+          "kind": "math",
+          "text": "4×{10}^{4}"
+        },
+        {
+          "kind": "text",
+          "text": "molecules"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42151:exr-70": [
+      [
+        {
+          "kind": "text",
+          "text": "Equating"
+        },
+        {
+          "kind": "math",
+          "text": "{"
+        },
+        {
+          "kind": "text",
+          "text": "ΔPE"
+        },
+        {
+          "kind": "math",
+          "text": "}_{g}"
+        },
+        {
+          "kind": "text",
+          "text": "and"
+        },
+        {
+          "kind": "text",
+          "text": "ΔKE"
+        },
+        {
+          "kind": "text",
+          "text": ", we obtain"
+        },
+        {
+          "kind": "math",
+          "text": "v=\\sqrt{2gh+{{v}_{0}}^{2}}=\\sqrt{2(9.80 m{/s}^{2})(20.0 m)+(15.0 m/s{)}^{2}}=24.8 m/s"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42151:exr-75": [
+      [
+        {
+          "kind": "text",
+          "text": "(a)"
+        },
+        {
+          "kind": "math",
+          "text": "25×{10}^{6}years"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(b) This is much, much longer than human time scales."
+        }
+      ]
+    ]
+  }
+}

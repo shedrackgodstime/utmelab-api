@@ -1,0 +1,949 @@
+{
+  "module": "m42576",
+  "source_attribution": {
+    "publisher": "OpenStax",
+    "book": "osbooks-college-physics-bundle",
+    "section": "m42576",
+    "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42576/index.cnxml",
+    "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)",
+    "locator": "CNXML module index.cnxml (typed elements, solutions present)"
+  },
+  "blocks": [
+    {
+      "id": "sec-0",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Learning Objectives",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-1",
+      "type": "paragraph",
+      "content": {
+        "text": "By the end of this section, you will be able to:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-2",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "De Broglie Wavelength",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-3",
+      "type": "paragraph",
+      "content": {
+        "text": "In 1923 a French physics graduate student named Prince Louis-Victor de Broglie (1892–1987) made a radical proposal based on the hope that nature is symmetric. If EM radiation has both particle and wave properties, then nature would be symmetric if matter also had both particle and wave properties. If what we once thought of as an unequivocal wave (EM radiation) is also a particle, then what we think of as an unequivocal particle (matter) may also be a wave. De Broglie’s suggestion, made as part of his doctoral thesis, was so radical that it was greeted with some skepticism. A copy of his thesis was sent to Einstein, who said it was not only probably correct, but that it might be of fundamental importance. With the support of Einstein and a few other prominent physicists, de Broglie was awarded his doctorate.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-4",
+      "type": "paragraph",
+      "content": {
+        "text": "De Broglie took both relativity and quantum mechanics into account to develop the proposal that *all particles have a wavelength* , given by",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-5",
+      "type": "paragraph",
+      "content": {
+        "text": "where $h$ is Planck’s constant and $p$ is momentum. This is defined to be the de Broglie wavelength . (Note that we already have this for photons, from the equation $p=h/λ$ .) The hallmark of a wave is interference. If matter is a wave, then it must exhibit constructive and destructive interference. Why isn’t this ordinarily observed? The answer is that in order to see significant interference effects, a wave must interact with an object about the same size as its wavelength. Since $h$ is very small, $λ$ is also small, especially for macroscopic objects. A 3-kg bowling ball moving at 10 m/s, for example, has \\[$λ=h/p=(6.63×{10}^{–34}J·s)/[(3 kg)(10 m/s)]=2×{10}^{–35}m.$\\] This means that to see its wave characteristics, the bowling ball would have to interact with something about ${10}^{–35}m$ in size—far smaller than anything known. When waves interact with objects much larger than their wavelength, they show negligible interference effects and move in straight lines (such as light rays in geometric optics). To get easily observed interference effects from particles of matter, the longest wavelength and hence smallest mass possible would be useful. Therefore, this effect was first observed with electrons.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-6",
+      "type": "paragraph",
+      "content": {
+        "text": "American physicists Clinton J. Davisson and Lester H. Germer in 1925 and, independently, British physicist G. P. Thomson (son of J. J. Thomson, discoverer of the electron) in 1926 scattered electrons from crystals and found diffraction patterns. These patterns are exactly consistent with interference of electrons having the de Broglie wavelength and are somewhat analogous to light interacting with a diffraction grating. (See .)",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-7",
+      "type": "paragraph",
+      "content": {
+        "text": "All microscopic particles, whether massless, like photons, or having mass, like electrons, have wave properties. The relationship between momentum and wavelength is fundamental for all particles.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-8",
+      "type": "paragraph",
+      "content": {
+        "text": "De Broglie’s proposal of a wave nature for all particles initiated a remarkably productive era in which the foundations for quantum mechanics were laid. In 1926, the Austrian physicist Erwin Schrödinger (1887–1961) published four papers in which the wave nature of particles was treated explicitly with wave equations. At the same time, many others began important work. Among them was German physicist Werner Heisenberg (1901–1976) who, among many other contributions to quantum mechanics, formulated a mathematical treatment of the wave nature of matter that used matrices rather than wave equations. We will deal with some specifics in later sections, but it is worth noting that de Broglie’s work was a watershed for the development of quantum mechanics. De Broglie was awarded the Nobel Prize in 1929 for his vision, as were Davisson and G. P. Thomson in 1937 for their experimental verification of de Broglie’s hypothesis.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-1",
+      "type": "figure",
+      "asset_url": "images/phy_m42576_Figure_30_06_01a.jpg",
+      "caption": {
+        "text": "This diffraction pattern was obtained for electrons diffracted by crystalline silicon. Bright regions are those of constructive interference, while dark regions are those of destructive interference. (credit: Ndthe, Wikimedia Commons)",
+        "inline": []
+      },
+      "alt": "Diffraction pattern obtained for electrons diffracted by crystalline silicon is shown. The diffraction pattern has a bright spot at the center of a circle with brighter and darker regions occurring in a symmetric manner.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "ex-10",
+      "type": "example",
+      "kind": "worked",
+      "title": {
+        "text": "Electron Wavelength versus Velocity and Energy",
+        "inline": []
+      },
+      "problem": {
+        "text": "",
+        "inline": []
+      },
+      "answer": null,
+      "level": "core"
+    },
+    {
+      "id": "p-11",
+      "type": "paragraph",
+      "content": {
+        "text": "For an electron having a de Broglie wavelength of 0.167 nm (appropriate for interacting with crystal lattice structures that are about this size): (a) Calculate the electron’s velocity, assuming it is nonrelativistic. (b) Calculate the electron’s kinetic energy in eV.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-12",
+      "type": "paragraph",
+      "content": {
+        "text": "For part (a), since the de Broglie wavelength is given, the electron’s velocity can be obtained from $λ=h/p$ by using the nonrelativistic formula for momentum, $p=mv.$ For part (b), once $v$ is obtained (and it has been verified that $v$ is nonrelativistic), the classical kinetic energy is simply $(1/2){mv}^{2}.$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-13",
+      "type": "paragraph",
+      "content": {
+        "text": "Substituting the nonrelativistic formula for momentum ( $p=mv$ ) into the de Broglie wavelength gives",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-14",
+      "type": "paragraph",
+      "content": {
+        "text": "Solving for $v$ gives",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-15",
+      "type": "paragraph",
+      "content": {
+        "text": "Substituting known values yields",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-16",
+      "type": "paragraph",
+      "content": {
+        "text": "While fast compared with a car, this electron’s speed is not highly relativistic, and so we can comfortably use the classical formula to find the electron’s kinetic energy and convert it to eV as requested.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-17",
+      "type": "paragraph",
+      "content": {
+        "text": "This low energy means that these 0.167-nm electrons could be obtained by accelerating them through a 54.0-V electrostatic potential, an easy task. The results also confirm the assumption that the electrons are nonrelativistic, since their velocity is just over 1% of the speed of light and the kinetic energy is about 0.01% of the rest energy of an electron (0.511 MeV). If the electrons had turned out to be relativistic, we would have had to use more involved calculations employing relativistic formulas.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-18",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Electron Microscopes",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-19",
+      "type": "paragraph",
+      "content": {
+        "text": "One consequence or use of the wave nature of matter is found in the electron microscope. As we have discussed, there is a limit to the detail observed with any probe having a wavelength. Resolution, or observable detail, is limited to about one wavelength. Since a potential of only 54 V can produce electrons with sub-nanometer wavelengths, it is easy to get electrons with much smaller wavelengths than those of visible light (hundreds of nanometers). Electron microscopes can, thus, be constructed to detect much smaller details than optical microscopes. (See .)",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-20",
+      "type": "paragraph",
+      "content": {
+        "text": "There are basically two types of electron microscopes. The transmission electron microscope (TEM) accelerates electrons that are emitted from a hot filament (the cathode). The beam is broadened and then passes through the sample. A magnetic lens focuses the beam image onto a fluorescent screen, a photographic plate, or (most probably) a CCD (light sensitive camera), from which it is transferred to a computer. The TEM is similar to the optical microscope, but it requires a thin sample examined in a vacuum. However it can resolve details as small as 0.1 nm ( ${10}^{-10}m$ ), providing magnifications of 100 million times the size of the original object. The TEM has allowed us to see individual atoms and structure of cell nuclei.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-21",
+      "type": "paragraph",
+      "content": {
+        "text": "The scanning electron microscope (SEM) provides images by using secondary electrons produced by the primary beam interacting with the surface of the sample (see ). The SEM also uses magnetic lenses to focus the beam onto the sample. However, it moves the beam around electrically to “scan” the sample in the *x* and *y* directions. A CCD detector is used to process the data for each electron position, producing images like the one at the beginning of this chapter. The SEM has the advantage of not requiring a thin sample and of providing a 3-D view. However, its resolution is about ten times less than a TEM.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-2",
+      "type": "figure",
+      "asset_url": "images/phy_m42576_Figure_30_06_02a.jpg",
+      "caption": {
+        "text": "Schematic of a scanning electron microscope (SEM) (a) used to observe small details, such as those seen in this image of a tooth of a *Himipristis* , a type of shark (b). (credit: Dallas Krentzel, Flickr)",
+        "inline": []
+      },
+      "alt": "Figure a shows a schematic of an electron microscope. Figure b shows an image of a shark tooth.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-23",
+      "type": "paragraph",
+      "content": {
+        "text": "Electrons were the first particles with mass to be directly confirmed to have the wavelength proposed by de Broglie. Subsequently, protons, helium nuclei, neutrons, and many others have been observed to exhibit interference when they interact with objects having sizes similar to their de Broglie wavelength. The de Broglie wavelength for massless particles was well established in the 1920s for photons, and it has since been observed that all massless particles have a de Broglie wavelength $λ=h/p.$ The wave nature of all particles is a universal characteristic of nature. We shall see in following sections that implications of the de Broglie wavelength include the quantization of energy in atoms and molecules, and an alteration of our basic view of nature on the microscopic scale. The next section, for example, shows that there are limits to the precision with which we may make predictions, regardless of how hard we try. There are even limits to the precision with which we may measure an object’s location or energy.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-24",
+      "type": "paragraph",
+      "content": {
+        "text": "The wave nature of matter allows it to exhibit all the characteristics of other, more familiar, waves. Diffraction gratings, for example, produce diffraction patterns for light that depend on grating spacing and the wavelength of the light. This effect, as with most wave phenomena, is most pronounced when the wave interacts with objects having a size similar to its wavelength. For gratings, this is the spacing between multiple slits.) When electrons interact with a system having a spacing similar to the electron wavelength, they show the same types of interference patterns as light does for diffraction gratings, as shown at top left in .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-25",
+      "type": "paragraph",
+      "content": {
+        "text": "Atoms are spaced at regular intervals in a crystal as parallel planes, as shown in the bottom part of . The spacings between these planes act like the openings in a diffraction grating. At certain incident angles, the paths of electrons scattering from successive planes differ by one wavelength and, thus, interfere constructively. At other angles, the path length differences are not an integral wavelength, and there is partial to total destructive interference. This type of scattering from a large crystal with well-defined lattice planes can produce dramatic interference patterns. It is called *Bragg reflection* , for the father-and-son team who first explored and analyzed it in some detail. The expanded view also shows the path-length differences and indicates how these depend on incident angle $θ$ in a manner similar to the diffraction patterns for x rays reflecting from a crystal.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-3",
+      "type": "figure",
+      "asset_url": "images/phy_m42576_Figure_30_06_03a.jpg",
+      "caption": {
+        "text": "The diffraction pattern at top left is produced by scattering electrons from a crystal and is graphed as a function of incident angle relative to the regular array of atoms in a crystal, as shown at bottom. Electrons scattering from the second layer of atoms travel farther than those scattered from the top layer. If the path length difference (PLD) is an integral wavelength, there is constructive interference.",
+        "inline": []
+      },
+      "alt": "An electron beam is striking at an angle theta on a crystal and the reflected rays are detected by a detector. A magnified view of the crystal is also shown with two rays of electrons striking the various layers of crystal at an angle theta and reflected back. A graph is shown of intensity variation versus theta. Intensity is along the y axis and theta is along the x axis.The shape of the curve is like a wave and each subsequent peak diminishes as we move out the x axis.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-27",
+      "type": "paragraph",
+      "content": {
+        "text": "Let us take the spacing between parallel planes of atoms in the crystal to be $d$ . As mentioned, if the path length difference (PLD) for the electrons is a whole number of wavelengths, there will be constructive interference—that is, $PLD=nλ(n=1,2,3,…)$ . Because $AB=BC=dsinθ,$ we have constructive interference when $nλ=2dsinθ.$ This relationship is called the *Bragg equation* and applies not only to electrons but also to x rays.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-28",
+      "type": "paragraph",
+      "content": {
+        "text": "The wavelength of matter is a submicroscopic characteristic that explains a macroscopic phenomenon such as Bragg reflection. Similarly, the wavelength of light is a submicroscopic characteristic that explains the macroscopic phenomenon of diffraction patterns.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-29",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Test Prep for AP Courses",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-30",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "The least massive particle known to exist is the electron neutrino. Though scientists once believed that it had no mass, like the photon, they have now determined that this particle has an extremely low mass, equivalent to a few electron volts. Assuming a mass of 2.2 eV/c 2 (or 3.9 × 10 –36 kg) and a speed of 4.4 × 10 6 m/s, which of the following values equals the neutrino’s de Broglie wavelength? 3.8 × 10 –5 m; 4.7 × 10 –7 m; 1.7 × 10 –10 m; 8.9 × 10 –14 m",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a)",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-31",
+      "type": "paragraph",
+      "content": {
+        "text": "The least massive particle known to exist is the electron neutrino. Though scientists once believed that it had no mass, like the photon, they have now determined that this particle has an extremely low mass, equivalent to a few electron volts. Assuming a mass of 2.2 eV/c 2 (or 3.9 × 10 –36 kg) and a speed of 4.4 × 10 6 m/s, which of the following values equals the neutrino’s de Broglie wavelength?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-32",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Using the definition of the de Broglie wavelength, explain how wavelike properties of matter increase with a decrease in mass or decrease in speed. Use as examples an electron (mass = 9.11 × 10 –31 kg) with a speed of 5.0 × 10 6 m/s and a proton (mass = 1.67 × 10 –27 kg) with a speed of 8.0 × 10 6 m/s.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-33",
+      "type": "paragraph",
+      "content": {
+        "text": "Using the definition of the de Broglie wavelength, explain how wavelike properties of matter increase with a decrease in mass or decrease in speed. Use as examples an electron (mass = 9.11 × 10 –31 kg) with a speed of 5.0 × 10 6 m/s and a proton (mass = 1.67 × 10 –27 kg) with a speed of 8.0 × 10 6 m/s.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-34",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "In a Davisson-Germer type of experiment, a crystal with a parallel-plane separation ( *d* ) of 9.1 × 10 –2 nm produces constructive interference with an electron beam at an angle of *θ* = 50°. Which of the following is the maximum de Broglie wavelength for these electrons? 0.07nm; 0.09 nm; 0.14 nm; 0.21 nm",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(c)",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-35",
+      "type": "paragraph",
+      "content": {
+        "text": "In a Davisson-Germer type of experiment, a crystal with a parallel-plane separation ( *d* ) of 9.1 × 10 –2 nm produces constructive interference with an electron beam at an angle of *θ* = 50°. Which of the following is the maximum de Broglie wavelength for these electrons?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-36",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "In a Davisson-Germer experiment, electrons with a speed of 6.5 × 10 6 m/s exhibit third-order ( *n* = 3) constructive interference for a crystal with unknown plane separation, *d* . Given an angle of incidence of *θ* = 45°, compute the value for *d* . Compare the de Broglie wavelength to electromagnetic radiation with the same wavelength. (Recall that the mass of the electron is 9.11 × 10 –31 kg.)",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-37",
+      "type": "paragraph",
+      "content": {
+        "text": "In a Davisson-Germer experiment, electrons with a speed of 6.5 × 10 6 m/s exhibit third-order ( *n* = 3) constructive interference for a crystal with unknown plane separation, *d* . Given an angle of incidence of *θ* = 45°, compute the value for *d* . Compare the de Broglie wavelength to electromagnetic radiation with the same wavelength. (Recall that the mass of the electron is 9.11 × 10 –31 kg.)",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-38",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Section Summary",
+        "inline": []
+      }
+    },
+    {
+      "id": "sec-39",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Conceptual Questions",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-40",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "How does the interference of water waves differ from the interference of electrons? How are they analogous?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-41",
+      "type": "paragraph",
+      "content": {
+        "text": "How does the interference of water waves differ from the interference of electrons? How are they analogous?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-42",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Describe one type of evidence for the wave nature of matter.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-43",
+      "type": "paragraph",
+      "content": {
+        "text": "Describe one type of evidence for the wave nature of matter.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-44",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Describe one type of evidence for the particle nature of EM radiation.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-45",
+      "type": "paragraph",
+      "content": {
+        "text": "Describe one type of evidence for the particle nature of EM radiation.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-46",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Problems & Exercises",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-47",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "At what velocity will an electron have a wavelength of 1.00 m?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$7.28×{10}^{–4}m$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-48",
+      "type": "paragraph",
+      "content": {
+        "text": "At what velocity will an electron have a wavelength of 1.00 m?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-49",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "What is the wavelength of an electron moving at 3.00% of the speed of light?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-50",
+      "type": "paragraph",
+      "content": {
+        "text": "What is the wavelength of an electron moving at 3.00% of the speed of light?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-51",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "At what velocity does a proton have a 6.00-fm wavelength (about the size of a nucleus)? Assume the proton is nonrelativistic. (1 femtometer = ${10}^{-15}m.$ )",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$6.62×{10}^{7}m/s$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-52",
+      "type": "paragraph",
+      "content": {
+        "text": "At what velocity does a proton have a 6.00-fm wavelength (about the size of a nucleus)? Assume the proton is nonrelativistic. (1 femtometer = ${10}^{-15}m.$ )",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-53",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "What is the velocity of a 0.400-kg billiard ball if its wavelength is 7.50 cm (large enough for it to interfere with other billiard balls)?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-54",
+      "type": "paragraph",
+      "content": {
+        "text": "What is the velocity of a 0.400-kg billiard ball if its wavelength is 7.50 cm (large enough for it to interfere with other billiard balls)?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-55",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Find the wavelength of a proton moving at 1.00% of the speed of light.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$1.32×{10}^{–13}m$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-56",
+      "type": "paragraph",
+      "content": {
+        "text": "Find the wavelength of a proton moving at 1.00% of the speed of light.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-57",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Experiments are performed with ultracold neutrons having velocities as small as 1.00 m/s. (a) What is the wavelength of such a neutron? (b) What is its kinetic energy in eV?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-58",
+      "type": "paragraph",
+      "content": {
+        "text": "Experiments are performed with ultracold neutrons having velocities as small as 1.00 m/s. (a) What is the wavelength of such a neutron? (b) What is its kinetic energy in eV?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-59",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "(a) Find the velocity of a neutron that has a 6.00-fm wavelength (about the size of a nucleus). Assume the neutron is nonrelativistic. (b) What is the neutron’s kinetic energy in MeV?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a) $6.62×{10}^{7}m/s$ (b) $22.9 MeV$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-60",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) Find the velocity of a neutron that has a 6.00-fm wavelength (about the size of a nucleus). Assume the neutron is nonrelativistic. (b) What is the neutron’s kinetic energy in MeV?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-61",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) $6.62×{10}^{7}m/s$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-62",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "What is the wavelength of an electron accelerated through a 30.0-kV potential, as in a TV tube?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-63",
+      "type": "paragraph",
+      "content": {
+        "text": "What is the wavelength of an electron accelerated through a 30.0-kV potential, as in a TV tube?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-64",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "What is the kinetic energy of an electron in a TEM having a 0.0100-nm wavelength?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "\\[15.1 keV\\]",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-65",
+      "type": "paragraph",
+      "content": {
+        "text": "What is the kinetic energy of an electron in a TEM having a 0.0100-nm wavelength?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-66",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "(a) Calculate the velocity of an electron that has a wavelength of $1.00 μm.$ (b) Through what voltage must the electron be accelerated to have this velocity?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-67",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) Calculate the velocity of an electron that has a wavelength of $1.00 μm.$ (b) Through what voltage must the electron be accelerated to have this velocity?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-68",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "The velocity of a proton emerging from a Van de Graaff accelerator is 25.0% of the speed of light. (a) What is the proton’s wavelength? (b) What is its kinetic energy, assuming it is nonrelativistic? (c) What was the equivalent voltage through which it was accelerated?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a) 5.29 fm (b) $4.70×{10}^{-12}J$ (c) 29.4 MV",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-69",
+      "type": "paragraph",
+      "content": {
+        "text": "The velocity of a proton emerging from a Van de Graaff accelerator is 25.0% of the speed of light. (a) What is the proton’s wavelength? (b) What is its kinetic energy, assuming it is nonrelativistic? (c) What was the equivalent voltage through which it was accelerated?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-70",
+      "type": "paragraph",
+      "content": {
+        "text": "(b) $4.70×{10}^{-12}J$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-71",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "The kinetic energy of an electron accelerated in an x-ray tube is 100 keV. Assuming it is nonrelativistic, what is its wavelength?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-72",
+      "type": "paragraph",
+      "content": {
+        "text": "The kinetic energy of an electron accelerated in an x-ray tube is 100 keV. Assuming it is nonrelativistic, what is its wavelength?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-73",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Unreasonable Results (a) Assuming it is nonrelativistic, calculate the velocity of an electron with a 0.100-fm wavelength (small enough to detect details of a nucleus). (b) What is unreasonable about this result? (c) Which assumptions are unreasonable or inconsistent?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a) $7.28×{10}^{12}m/s$ (b) This is thousands of times the speed of light (an impossibility). (c) The assumption that the electron is non-relativistic is unreasonable at this wavelength.",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-74",
+      "type": "paragraph",
+      "content": {
+        "text": "Unreasonable Results",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-75",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) Assuming it is nonrelativistic, calculate the velocity of an electron with a 0.100-fm wavelength (small enough to detect details of a nucleus). (b) What is unreasonable about this result? (c) Which assumptions are unreasonable or inconsistent?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-76",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) $7.28×{10}^{12}m/s$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-77",
+      "type": "paragraph",
+      "content": {
+        "text": "(b) This is thousands of times the speed of light (an impossibility).",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-78",
+      "type": "paragraph",
+      "content": {
+        "text": "(c) The assumption that the electron is non-relativistic is unreasonable at this wavelength.",
+        "inline": []
+      },
+      "level": "core"
+    }
+  ],
+  "solutions": {
+    "osbooks-college-physics-bundle:m42576:exr-30": [
+      [
+        {
+          "kind": "text",
+          "text": "(a)"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42576:exr-34": [
+      [
+        {
+          "kind": "text",
+          "text": "(c)"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42576:exr-47": [
+      [
+        {
+          "kind": "math",
+          "text": "7.28×{10}^{–4}m"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42576:exr-51": [
+      [
+        {
+          "kind": "math",
+          "text": "6.62×{10}^{7}m/s"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42576:exr-55": [
+      [
+        {
+          "kind": "math",
+          "text": "1.32×{10}^{–13}m"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42576:exr-59": [
+      [
+        {
+          "kind": "text",
+          "text": "(a)"
+        },
+        {
+          "kind": "math",
+          "text": "6.62×{10}^{7}m/s"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(b)"
+        },
+        {
+          "kind": "math",
+          "text": "22.9 MeV"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42576:exr-64": [
+      [
+        {
+          "kind": "text",
+          "text": "15.1 keV"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42576:exr-68": [
+      [
+        {
+          "kind": "text",
+          "text": "(a) 5.29 fm"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(b)"
+        },
+        {
+          "kind": "math",
+          "text": "4.70×{10}^{-12}J"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(c) 29.4 MV"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42576:exr-73": [
+      [
+        {
+          "kind": "text",
+          "text": "(a)"
+        },
+        {
+          "kind": "math",
+          "text": "7.28×{10}^{12}m/s"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(b) This is thousands of times the speed of light (an impossibility)."
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(c) The assumption that the electron is non-relativistic is unreasonable at this wavelength."
+        }
+      ]
+    ]
+  }
+}

@@ -1,0 +1,540 @@
+{
+  "module": "m42377",
+  "source_attribution": {
+    "publisher": "OpenStax",
+    "book": "osbooks-college-physics-bundle",
+    "section": "m42377",
+    "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42377/index.cnxml",
+    "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)",
+    "locator": "CNXML module index.cnxml (typed elements, solutions present)"
+  },
+  "blocks": [
+    {
+      "id": "sec-0",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Learning Objectives",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-1",
+      "type": "paragraph",
+      "content": {
+        "text": "By the end of this section, you will be able to:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-2",
+      "type": "paragraph",
+      "content": {
+        "text": "We have seen effects of a magnetic field on free-moving charges. The magnetic field also affects charges moving in a conductor. One result is the Hall effect, which has important implications and applications.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-3",
+      "type": "paragraph",
+      "content": {
+        "text": "shows what happens to charges moving through a conductor in a magnetic field. The field is perpendicular to the electron drift velocity and to the width of the conductor. Note that conventional current is to the right in both parts of the figure. In part (a), electrons carry the current and move to the left. In part (b), positive charges carry the current and move to the right. Moving electrons feel a magnetic force toward one side of the conductor, leaving a net positive charge on the other side. This separation of charge *creates a voltage $ε$* , known as the Hall emf , *across* the conductor. The creation of a voltage *across* a current-carrying conductor by a magnetic field is known as the Hall effect , after Edwin Hall, the American physicist who discovered it in 1879.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-1",
+      "type": "figure",
+      "asset_url": "images/phy_m42377_Figure_23_06_01a.jpg",
+      "caption": {
+        "text": "The Hall effect. (a) Electrons move to the left in this flat conductor (conventional current to the right). The magnetic field is directly out of the page, represented by circled dots; it exerts a force on the moving charges, causing a voltage $ε$ , the Hall emf, across the conductor. (b) Positive charges moving to the right (conventional current also to the right) are moved to the side, producing a Hall emf of the opposite sign, $–ε$ . Thus, if the direction of the field and current are known, the sign of the charge carriers can be determined from the Hall effect.",
+        "inline": []
+      },
+      "alt": "Figure a shows an electron with velocity v moving toward the left. The magnetic field B is oriented out of the page. The current I is running toward the right. The force vector on the electron points downward. An illustration of the right hand rule shows the right thumb pointing left with the v vector, the fingers pointing toward 7 o’clock with the B vector, the force vector on a positive charge pointing up and the force vector on a negative charge pointing down. Figure b shows a positive charge moving toward the right. The magnetic field lines are coming out of the page. The current I is running toward the right. The force on the positive charge is down. An illustration of the right hand rule shows the thumb pointing in the direction of the charge’s velocity, the fingers pointing in the direction of B, and F pointing down away from the palm.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-5",
+      "type": "paragraph",
+      "content": {
+        "text": "One very important use of the Hall effect is to determine whether positive or negative charges carries the current. Note that in (b), where positive charges carry the current, the Hall emf has the sign opposite to when negative charges carry the current. Historically, the Hall effect was used to show that electrons carry current in metals and it also shows that positive charges carry current in some semiconductors. The Hall effect is used today as a research tool to probe the movement of charges, their drift velocities and densities, and so on, in materials. In 1980, it was discovered that the Hall effect is quantized, an example of quantum behavior in a macroscopic object.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-6",
+      "type": "paragraph",
+      "content": {
+        "text": "The Hall effect has other uses that range from the determination of blood flow rate to precision measurement of magnetic field strength. To examine these quantitatively, we need an expression for the Hall emf, $ε$ , across a conductor. Consider the balance of forces on a moving charge in a situation where $B$ , $v$ , and $l$ are mutually perpendicular, such as shown in . Although the magnetic force moves negative charges to one side, they cannot build up without limit. The electric field caused by their separation opposes the magnetic force, $F=qvB$ , and the electric force, ${F}_{e}=qE$ , eventually grows to equal it. That is,",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-7",
+      "type": "paragraph",
+      "content": {
+        "text": "Note that the electric field $E$ is uniform across the conductor because the magnetic field $B$ is uniform, as is the conductor. For a uniform electric field, the relationship between electric field and voltage is $E=ε/l$ , where $l$ is the width of the conductor and $ε$ is the Hall emf. Entering this into the last expression gives",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-8",
+      "type": "paragraph",
+      "content": {
+        "text": "Solving this for the Hall emf yields",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-9",
+      "type": "paragraph",
+      "content": {
+        "text": "where $ε$ is the Hall effect voltage across a conductor of width $l$ through which charges move at a speed $v$ .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-2",
+      "type": "figure",
+      "asset_url": "images/phy_m42377_Figure_23_06_02a.jpg",
+      "caption": {
+        "text": "The Hall emf $ε$ produces an electric force that balances the magnetic force on the moving charges. The magnetic force produces charge separation, which builds up until it is balanced by the electric force, an equilibrium that is quickly reached.",
+        "inline": []
+      },
+      "alt": "Diagram showing an electron moving to the left in a three-dimensional rectangular space with velocity v. The magnetic field is oriented out of the page. The electric field is down. The electric force on the charge is up while the magnetic force on the charge is down. An illustration of the right hand rule shows the thumb pointing to the left with v, the fingers out of the page with B, and the force on a positive charge up and away from the palm.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-11",
+      "type": "paragraph",
+      "content": {
+        "text": "One of the most common uses of the Hall effect is in the measurement of magnetic field strength $B$ . Such devices, called *Hall probes* , can be made very small, allowing fine position mapping. Hall probes can also be made very accurate, usually accomplished by careful calibration. Another application of the Hall effect is to measure fluid flow in any fluid that has free charges (most do). (See .) A magnetic field applied perpendicular to the flow direction produces a Hall emf $ε$ as shown. Note that the sign of $ε$ depends not on the sign of the charges, but only on the directions of $B$ and $v$ . The magnitude of the Hall emf is $ε=Blv$ , where $l$ is the pipe diameter, so that the average velocity $v$ can be determined from $ε$ providing the other factors are known.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-3",
+      "type": "figure",
+      "asset_url": "images/phy_m42377_Figure_23_06_03a.jpg",
+      "caption": {
+        "text": "The Hall effect can be used to measure fluid flow in any fluid having free charges, such as blood. The Hall emf $ε$ is measured across the tube perpendicular to the applied magnetic field and is proportional to the average velocity $v$ .",
+        "inline": []
+      },
+      "alt": "Diagram showing a tube with diameter l with one end between the north and south poles of a magnet. The charges are moving with velocity v within the tube and out of the page. The magnetic field B is oriented across the tube, from the north to the south pole of the magnet. The force on the charges is up for positive charges and down for negative charges. e m f = B l v.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "ex-13",
+      "type": "example",
+      "kind": "worked",
+      "title": {
+        "text": "Calculating the Hall emf: Hall Effect for Blood Flow",
+        "inline": []
+      },
+      "problem": {
+        "text": "",
+        "inline": []
+      },
+      "answer": null,
+      "level": "core"
+    },
+    {
+      "id": "p-14",
+      "type": "paragraph",
+      "content": {
+        "text": "A Hall effect flow probe is placed on an artery, applying a 0.100-T magnetic field across it, in a setup similar to that in . What is the Hall emf, given the vessel’s inside diameter is 4.00 mm and the average blood velocity is 20.0 cm/s?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-15",
+      "type": "paragraph",
+      "content": {
+        "text": "Because $B$ , $v$ , and $l$ are mutually perpendicular, the equation $ε=Blv$ can be used to find $ε$ .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-16",
+      "type": "paragraph",
+      "content": {
+        "text": "Entering the given values for $B$ , $v$ , and *$l$* gives",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-17",
+      "type": "paragraph",
+      "content": {
+        "text": "This is the average voltage output. Instantaneous voltage varies with pulsating blood flow. The voltage is small in this type of measurement. $ε$ is particularly difficult to measure, because there are voltages associated with heart action (ECG voltages) that are on the order of millivolts. In practice, this difficulty is overcome by applying an AC magnetic field, so that the Hall emf is AC with the same frequency. An amplifier can be very selective in picking out only the appropriate frequency, eliminating signals and noise at other frequencies.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-18",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Test Prep for AP Courses",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-19",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "An airplane wingspan can be approximated as a conducting rod of length 35 m. As the airplane flies due north, it is flying at a rate of 82 m/s through the Earth’s magnetic field, which has a magnitude of 45 μT toward the north in a direction 57° below the horizontal plane. (a) Which end of the wingspan is positively charged, the east or west end? Explain. (b) What is the Hall emf along the wingspan?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-20",
+      "type": "paragraph",
+      "content": {
+        "text": "An airplane wingspan can be approximated as a conducting rod of length 35 m. As the airplane flies due north, it is flying at a rate of 82 m/s through the Earth’s magnetic field, which has a magnitude of 45 μT toward the north in a direction 57° below the horizontal plane. (a) Which end of the wingspan is positively charged, the east or west end? Explain. (b) What is the Hall emf along the wingspan?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-21",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Section Summary",
+        "inline": []
+      }
+    },
+    {
+      "id": "sec-22",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Conceptual Questions",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-23",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Discuss how the Hall effect could be used to obtain information on free charge density in a conductor. (Hint: Consider how drift velocity and current are related.)",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-24",
+      "type": "paragraph",
+      "content": {
+        "text": "Discuss how the Hall effect could be used to obtain information on free charge density in a conductor. (Hint: Consider how drift velocity and current are related.)",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-25",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Problems & Exercises",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-26",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A large water main is 2.50 m in diameter and the average water velocity is 6.00 m/s. Find the Hall voltage produced if the pipe runs perpendicular to the Earth’s $5.00×{10}^{-5}-T$ field.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$7.50×{10}^{-4}V$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-27",
+      "type": "paragraph",
+      "content": {
+        "text": "A large water main is 2.50 m in diameter and the average water velocity is 6.00 m/s. Find the Hall voltage produced if the pipe runs perpendicular to the Earth’s $5.00×{10}^{-5}-T$ field.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-28",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "What Hall voltage is produced by a 0.200-T field applied across a 2.60-cm-diameter aorta when blood velocity is 60.0 cm/s?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-29",
+      "type": "paragraph",
+      "content": {
+        "text": "What Hall voltage is produced by a 0.200-T field applied across a 2.60-cm-diameter aorta when blood velocity is 60.0 cm/s?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-30",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "(a) What is the speed of a supersonic aircraft with a 17.0-m wingspan, if it experiences a 1.60-V Hall voltage between its wing tips when in level flight over the north magnetic pole, where the Earth’s field strength is $8.00×{10}^{-5}T?$ (b) Explain why very little current flows as a result of this Hall voltage.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a) 1.18 × 10 3 m/s (b) Once established, the Hall emf pushes charges one direction and the magnetic force acts in the opposite direction resulting in no net force on the charges. Therefore, no current flows in the direction of the Hall emf. This is the same as in a current-carrying conductor—current does not flow in the direction of the Hall emf.",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-31",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) What is the speed of a supersonic aircraft with a 17.0-m wingspan, if it experiences a 1.60-V Hall voltage between its wing tips when in level flight over the north magnetic pole, where the Earth’s field strength is $8.00×{10}^{-5}T?$ (b) Explain why very little current flows as a result of this Hall voltage.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-32",
+      "type": "paragraph",
+      "content": {
+        "text": "(b) Once established, the Hall emf pushes charges one direction and the magnetic force acts in the opposite direction resulting in no net force on the charges. Therefore, no current flows in the direction of the Hall emf. This is the same as in a current-carrying conductor—current does not flow in the direction of the Hall emf.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-33",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A nonmechanical water meter could utilize the Hall effect by applying a magnetic field across a metal pipe and measuring the Hall voltage produced. What is the average fluid velocity in a 3.00-cm-diameter pipe, if a 0.500-T field across it creates a 60.0-mV Hall voltage?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-34",
+      "type": "paragraph",
+      "content": {
+        "text": "A nonmechanical water meter could utilize the Hall effect by applying a magnetic field across a metal pipe and measuring the Hall voltage produced. What is the average fluid velocity in a 3.00-cm-diameter pipe, if a 0.500-T field across it creates a 60.0-mV Hall voltage?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-35",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Calculate the Hall voltage induced on a patient’s heart while being scanned by an MRI unit. Approximate the conducting path on the heart wall by a wire 7.50 cm long that moves at 10.0 cm/s perpendicular to a 1.50-T magnetic field.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "11.3 mV",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-36",
+      "type": "paragraph",
+      "content": {
+        "text": "Calculate the Hall voltage induced on a patient’s heart while being scanned by an MRI unit. Approximate the conducting path on the heart wall by a wire 7.50 cm long that moves at 10.0 cm/s perpendicular to a 1.50-T magnetic field.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-37",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A Hall probe calibrated to read $1.00 μV$ when placed in a 2.00-T field is placed in a 0.150-T field. What is its output voltage?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-38",
+      "type": "paragraph",
+      "content": {
+        "text": "A Hall probe calibrated to read $1.00 μV$ when placed in a 2.00-T field is placed in a 0.150-T field. What is its output voltage?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-39",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Using information in , what would the Hall voltage be if a 2.00-T field is applied across a 10-gauge copper wire (2.588 mm in diameter) carrying a 20.0-A current?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$1.16 μV$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-40",
+      "type": "paragraph",
+      "content": {
+        "text": "Using information in , what would the Hall voltage be if a 2.00-T field is applied across a 10-gauge copper wire (2.588 mm in diameter) carrying a 20.0-A current?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-41",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Show that the Hall voltage across wires made of the same material, carrying identical currents, and subjected to the same magnetic field is inversely proportional to their diameters. (Hint: Consider how drift velocity depends on wire diameter.)",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-42",
+      "type": "paragraph",
+      "content": {
+        "text": "Show that the Hall voltage across wires made of the same material, carrying identical currents, and subjected to the same magnetic field is inversely proportional to their diameters. (Hint: Consider how drift velocity depends on wire diameter.)",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-43",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A patient with a pacemaker is mistakenly being scanned for an MRI image. A 10.0-cm-long section of pacemaker wire moves at a speed of 10.0 cm/s perpendicular to the MRI unit’s magnetic field and a 20.0-mV Hall voltage is induced. What is the magnetic field strength?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "2.00 T",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-44",
+      "type": "paragraph",
+      "content": {
+        "text": "A patient with a pacemaker is mistakenly being scanned for an MRI image. A 10.0-cm-long section of pacemaker wire moves at a speed of 10.0 cm/s perpendicular to the MRI unit’s magnetic field and a 20.0-mV Hall voltage is induced. What is the magnetic field strength?",
+        "inline": []
+      },
+      "level": "core"
+    }
+  ],
+  "solutions": {
+    "osbooks-college-physics-bundle:m42377:exr-26": [
+      [
+        {
+          "kind": "math",
+          "text": "7.50×{10}^{-4}V"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42377:exr-30": [
+      [
+        {
+          "kind": "text",
+          "text": "(a) 1.18 × 10"
+        },
+        {
+          "kind": "text",
+          "text": "3"
+        },
+        {
+          "kind": "text",
+          "text": "m/s"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(b) Once established, the Hall emf pushes charges one direction and the magnetic force acts in the opposite direction resulting in no net force on the charges. Therefore, no current flows in the direction of the Hall emf. This is the same as in a current-carrying conductor—current does not flow in the direction of the Hall emf."
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42377:exr-35": [
+      [
+        {
+          "kind": "text",
+          "text": "11.3 mV"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42377:exr-39": [
+      [
+        {
+          "kind": "math",
+          "text": "1.16 μV"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42377:exr-43": [
+      [
+        {
+          "kind": "text",
+          "text": "2.00 T"
+        }
+      ]
+    ]
+  }
+}

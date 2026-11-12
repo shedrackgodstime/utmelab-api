@@ -5,6 +5,7 @@
   "title": "Linear Momentum and Collisions",
   "book_id": "secondary_physics",
   "part_id": "part-2",
+  "facts_inherited": false,
   "learning_objectives": [
     {
       "id": "lo-1",
@@ -163,6 +164,7 @@
       "slug": "introduction-to-linear-momentum-and-collisions",
       "title": "Introduction to Linear Momentum and Collisions",
       "est_minutes": 8,
+      "facts_inherited": false,
       "learning_objectives": [
         {
           "id": "lo-1",
@@ -175,7 +177,7 @@
           {
             "id": "b-1",
             "type": "figure",
-            "asset_url": "images/phy_m42155_Figure_09_00_01.jpg",
+            "asset_url": "books/secondary_physics/2ffbffacc33e7d785e5ae7d12510536b55e03dbc395bc3654ceb0520fcb5ff94.jpg",
             "caption": {
               "text": "Each rugby player has great momentum, which will affect the outcome of their collisions with each other and the ground. (credit: ozzzie, Flickr)",
               "inline": []
@@ -261,6 +263,7 @@
       "slug": "linear-momentum-and-force",
       "title": "Linear Momentum and Force",
       "est_minutes": 14,
+      "facts_inherited": false,
       "learning_objectives": [
         {
           "id": "lo-1",
@@ -774,6 +777,7 @@
       "slug": "impulse",
       "title": "Impulse",
       "est_minutes": 12,
+      "facts_inherited": false,
       "learning_objectives": [
         {
           "id": "lo-1",
@@ -842,7 +846,7 @@
           {
             "id": "b-8",
             "type": "figure",
-            "asset_url": "images/phy_m42159_Figure_09_02_01a.jpg",
+            "asset_url": "books/secondary_physics/2214e0355736d60b28721618f20f34cc21e44d1933d8fc273d851807de5010d0.jpg",
             "caption": {
               "text": "A graph of force versus time with time along the $x$ -axis and force along the *$y$* -axis for an actual force and an equivalent effective force. The areas under the two curves are equal.",
               "inline": []
@@ -965,7 +969,7 @@
           {
             "id": "b-23",
             "type": "figure",
-            "asset_url": "images/phy_m42159_Figure_08_M2_Bounce.jpg",
+            "asset_url": "books/secondary_physics/675b36959df85a3b003437505ddb231503cfcee5a3ca4e1af5d00eb8cbcaaaa2.jpg",
             "caption": {
               "text": "This is a graph showing the force exerted by a rigid wall versus time.",
               "inline": []
@@ -984,7 +988,7 @@
           {
             "id": "b-25",
             "type": "figure",
-            "asset_url": "images/phy_m42159_Figure_08_M2_Collision.jpg",
+            "asset_url": "books/secondary_physics/c071ee6681586004a779d7df310c733947fea3ca7d83c19e638afbb8130a1eec.jpg",
             "caption": {
               "text": "This is a graph showing the force exerted by a rigid wall versus time.",
               "inline": []
@@ -1539,6 +1543,7 @@
       "slug": "conservation-of-momentum",
       "title": "Conservation of Momentum",
       "est_minutes": 16,
+      "facts_inherited": false,
       "learning_objectives": [
         {
           "id": "lo-1",
@@ -1575,7 +1580,7 @@
           {
             "id": "b-4",
             "type": "figure",
-            "asset_url": "images/phy_m42162_Figure_09_03_01a.jpg",
+            "asset_url": "books/secondary_physics/31a8f07e55dea5a3ffbc3fad60d0b457cfa3ee6a01f4215e20ad8276333c44ec.jpg",
             "caption": {
               "text": "A car of mass ${m}_{1}$ moving with a velocity of ${v}_{1}$ bumps into another car of mass ${m}_{2}$ and velocity ${v}_{2}$ that it is following. As a result, the first car slows down to a velocity of ${v′}_{1}$ and the second speeds up to a velocity of ${v′}_{2}$ . The momentum of each car is changed, but the total momentum ${p}_{tot}$ of the two cars is the same before and after the collision (if you assume friction is negligible).",
               "inline": []
@@ -1682,7 +1687,7 @@
           {
             "id": "b-17",
             "type": "figure",
-            "asset_url": "images/phy_m42162_Figure_09_03_02a.jpg",
+            "asset_url": "books/secondary_physics/718aa036b443fa44ac1b54faed666e4cd49c9566057112147946d72a969dbb78.jpg",
             "caption": {
               "text": "The horizontal component of a projectile’s momentum is conserved if air resistance is negligible, even in this case where a space probe separates. The forces causing the separation are internal to the system, so that the net external horizontal force ${F}_{x-net}$ is still zero. The vertical component of the momentum is not conserved, because the net vertical force ${F}_{y-net}$ is not zero. In the vertical direction, the space probe-Earth system needs to be considered and we find that the total momentum is conserved. The center of mass of the space probe takes the same path it would if the separation did not occur.",
               "inline": []
@@ -1765,7 +1770,7 @@
           {
             "id": "b-27",
             "type": "figure",
-            "asset_url": "images/phy_m42162_Figure_09_03_04a.jpg",
+            "asset_url": "books/secondary_physics/bb226ac2043e8bd6f1a146f48e6ece43645cbd63e01ae24db3072d5b5ec1c8e8.jpg",
             "caption": {
               "text": "A subatomic particle scatters straight backward from a target particle. In experiments seeking evidence for quarks, electrons were observed to occasionally scatter straight backward from a proton.",
               "inline": []
@@ -1824,7 +1829,7 @@
           {
             "id": "b-34",
             "type": "figure",
-            "asset_url": "images/phy_m42162_Figure_08_M3_Graph.jpg",
+            "asset_url": "books/secondary_physics/4fbb52d52a1656c52be335a136c7861cd99f5b8b6396c728bc52a56bcce74907.jpg",
             "caption": {
               "text": "The image shows a graph with position in meters on the vertical axis and time in seconds on the horizontal axis.",
               "inline": []
@@ -2099,6 +2104,7 @@
       "slug": "elastic-collisions-in-one-dimension",
       "title": "Elastic Collisions in One Dimension",
       "est_minutes": 16,
+      "facts_inherited": false,
       "learning_objectives": [
         {
           "id": "lo-1",
@@ -2151,7 +2157,7 @@
           {
             "id": "b-6",
             "type": "figure",
-            "asset_url": "images/phy_m42163_Figure_09_04_01a.jpg",
+            "asset_url": "books/secondary_physics/c8c249931264bf553c545a38d76719d0ea1b8505a1129ed40ee0dd4e5f2378f8.jpg",
             "caption": {
               "text": "An elastic one-dimensional two-object collision. Momentum and internal kinetic energy are conserved.",
               "inline": []
@@ -2645,6 +2651,7 @@
       "slug": "inelastic-collisions-in-one-dimension",
       "title": "Inelastic Collisions in One Dimension",
       "est_minutes": 14,
+      "facts_inherited": false,
       "learning_objectives": [
         {
           "id": "lo-1",
@@ -2689,7 +2696,7 @@
           {
             "id": "b-5",
             "type": "figure",
-            "asset_url": "images/phy_m42164_Figure_09_05_01a.jpg",
+            "asset_url": "books/secondary_physics/63a2e9b703e74a4dcd544022c700ea14c93424e4e32aabd2893ce75d2ba80eee.jpg",
             "caption": {
               "text": "An inelastic one-dimensional two-object collision. Momentum is conserved, but internal kinetic energy is not conserved. (a) Two objects of equal mass initially head directly toward one another at the same speed. (b) The objects stick together (a perfectly inelastic collision), and so their final velocity is zero. The internal kinetic energy of the system changes in any inelastic collision and is reduced to zero in this example.",
               "inline": []
@@ -2700,7 +2707,7 @@
           {
             "id": "b-6",
             "type": "figure",
-            "asset_url": "images/phy_m42164_Figure_09_05_02a.jpg",
+            "asset_url": "books/secondary_physics/5146f202d2400ab03b20a9a4139bcfcb1cf82f2280fdbfbaba42b31ff795ef30.jpg",
             "caption": {
               "text": "An ice hockey goalie catches a hockey puck and recoils backward. The initial kinetic energy of the puck is almost entirely converted to thermal energy and sound in this inelastic collision.",
               "inline": []
@@ -2815,7 +2822,7 @@
           {
             "id": "b-20",
             "type": "figure",
-            "asset_url": "images/phy_m42164_Figure_09_05_03a.jpg",
+            "asset_url": "books/secondary_physics/cc51a42d0ef0f47749a41da90e8f913fa5e229106a8c94c40a7b27dbbeb033f3.jpg",
             "caption": {
               "text": "An air track is nearly frictionless, so that momentum is conserved. Motion is one-dimensional. In this collision, examined in , the potential energy of a compressed spring is released during the collision and is converted to internal kinetic energy.",
               "inline": []
@@ -3402,6 +3409,7 @@
       "slug": "collisions-of-point-masses-in-two-dimensions",
       "title": "Collisions of Point Masses in Two Dimensions",
       "est_minutes": 16,
+      "facts_inherited": false,
       "learning_objectives": [
         {
           "id": "lo-1",
@@ -3438,7 +3446,7 @@
           {
             "id": "b-4",
             "type": "figure",
-            "asset_url": "images/phy_m42165_Figure_09_06_02a.jpg",
+            "asset_url": "books/secondary_physics/6748e61c366685239b7541c4c9abf07412db0bb2bbe68b966003eecd8b58b376.jpg",
             "caption": {
               "text": "A two-dimensional collision with the coordinate system chosen so that ${m}_{2}$ is initially at rest and ${v}_{1}$ is parallel to the $x$ -axis. This coordinate system is sometimes called the laboratory coordinate system, because many scattering experiments have a target that is stationary in the laboratory, while particles are scattered from it to determine the particles that make-up the target and how they are bound together. The particles may not be observed directly, but their initial and final velocities are.",
               "inline": []
@@ -3537,7 +3545,7 @@
           {
             "id": "b-16",
             "type": "figure",
-            "asset_url": "images/phy_m42165_Figure_09_06_03a-9fe0.jpg",
+            "asset_url": "books/secondary_physics/5226ea0e3211037fc0f4b2e5190e11159d9643bc38b0668624651267a4f9abc3.jpg",
             "caption": {
               "text": "A collision taking place in a dark room is explored in . The incoming object ${m}_{1}$ is scattered by an initially stationary object. Only the stationary object’s mass ${m}_{2}$ is known. By measuring the angle and speed at which ${m}_{1}$ emerges from the room, it is possible to calculate the magnitude and direction of the initially stationary object’s velocity after the collision.",
               "inline": []
@@ -3628,7 +3636,7 @@
           {
             "id": "b-27",
             "type": "figure",
-            "asset_url": "images/phy_m42165_Figure_09_06_05a.jpg",
+            "asset_url": "books/secondary_physics/4bd9ddf54cabacbba4fc06980a8b5a3022a481c6198b5ba09b75403df4966b71.jpg",
             "caption": {
               "text": "A small object approaches a collision with a much more massive cube, after which its velocity has the direction ${θ}_{1}$ . The angles at which the small object can be scattered are determined by the shape of the object it strikes and the impact parameter *$b$* .",
               "inline": []

@@ -1,0 +1,237 @@
+{
+  "module": "m42226",
+  "source_attribution": {
+    "publisher": "OpenStax",
+    "book": "osbooks-college-physics-bundle",
+    "section": "m42226",
+    "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42226/index.cnxml",
+    "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)",
+    "locator": "CNXML module index.cnxml (typed elements, solutions present)"
+  },
+  "blocks": [
+    {
+      "id": "sec-0",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Learning Objectives",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-1",
+      "type": "paragraph",
+      "content": {
+        "text": "By the end of this section, you will be able to:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-2",
+      "type": "paragraph",
+      "content": {
+        "text": "Equally as interesting as the effects of heat transfer on a system are the methods by which this occurs. Whenever there is a temperature difference, heat transfer occurs. Heat transfer may occur rapidly, such as through a cooking pan, or slowly, such as through the walls of a picnic ice chest. We can control rates of heat transfer by choosing materials (such as thick wool clothing for the winter), controlling air movement (such as the use of weather stripping around doors), or by choice of color (such as a white roof to reflect summer sunlight). So many processes involve heat transfer, so that it is hard to imagine a situation where no heat transfer occurs. Yet every process involving heat transfer takes place by only three methods:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-1",
+      "type": "figure",
+      "asset_url": "images/phy_m42226_Figure_15_04_01a.jpg",
+      "caption": {
+        "text": "In a fireplace, heat transfer occurs by all three methods: conduction, convection, and radiation. Radiation is responsible for most of the heat transferred into the room. Heat transfer also occurs through conduction into the room, but at a much slower rate. Heat transfer by convection also occurs through cold air entering the room around windows and hot air leaving the room by rising up the chimney.",
+        "inline": []
+      },
+      "alt": "The figure shows a fireplace in a room. The fireplace is at the lower left side of the figure. There is a window at the right side of the room. From the window cold air enters into the room, and follows some curved blue arrows labeled convection to the fireplace. The air heated by the fire rises up the chimney following some red curved arrows, which are also labeled convection. Yellow wavy lines emanate from the flames of the fire into the room and are labeled radiation. Finally, a black curved line labeled conduction goes from beneath the logs of the fire and points into the floor under the room.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-4",
+      "type": "paragraph",
+      "content": {
+        "text": "We examine these methods in some detail in the three following modules. Each method has unique and interesting characteristics, but all three do have one thing in common: they transfer heat solely because of a temperature difference .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-5",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Name an example from daily life (different from the text) for each mechanism of heat transfer.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "Conduction: Heat transfers into your hands as you hold a hot cup of coffee. Convection: Heat transfers as the barista “steams” cold milk to make hot *cocoa* . Radiation: Reheating a cold cup of coffee in a microwave oven.",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-6",
+      "type": "paragraph",
+      "content": {
+        "text": "Name an example from daily life (different from the text) for each mechanism of heat transfer.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-7",
+      "type": "paragraph",
+      "content": {
+        "text": "Conduction: Heat transfers into your hands as you hold a hot cup of coffee.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-8",
+      "type": "paragraph",
+      "content": {
+        "text": "Convection: Heat transfers as the barista “steams” cold milk to make hot *cocoa* .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-9",
+      "type": "paragraph",
+      "content": {
+        "text": "Radiation: Reheating a cold cup of coffee in a microwave oven.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-10",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Summary",
+        "inline": []
+      }
+    },
+    {
+      "id": "sec-11",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Conceptual Questions",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-12",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "What are the main methods of heat transfer from the hot core of Earth to its surface? From Earth’s surface to outer space?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-13",
+      "type": "paragraph",
+      "content": {
+        "text": "What are the main methods of heat transfer from the hot core of Earth to its surface? From Earth’s surface to outer space?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-14",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "When our bodies get too warm, they respond by sweating and increasing blood circulation to the surface to transfer thermal energy away from the core. What effect will this have on a person in a $40.0ºC$ hot tub?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-15",
+      "type": "paragraph",
+      "content": {
+        "text": "When our bodies get too warm, they respond by sweating and increasing blood circulation to the surface to transfer thermal energy away from the core. What effect will this have on a person in a $40.0ºC$ hot tub?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-16",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "shows a cut-away drawing of a thermos bottle (also known as a Dewar flask), which is a device designed specifically to slow down all forms of heat transfer. Explain the functions of the various parts, such as the vacuum, the silvering of the walls, the thin-walled long glass neck, the rubber support, the air layer, and the stopper.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-17",
+      "type": "paragraph",
+      "content": {
+        "text": "shows a cut-away drawing of a thermos bottle (also known as a Dewar flask), which is a device designed specifically to slow down all forms of heat transfer. Explain the functions of the various parts, such as the vacuum, the silvering of the walls, the thin-walled long glass neck, the rubber support, the air layer, and the stopper.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-2",
+      "type": "figure",
+      "asset_url": "images/phy_m42226_Figure_15_04_02a.jpg",
+      "caption": {
+        "text": "The construction of a thermos bottle is designed to inhibit all methods of heat transfer.",
+        "inline": []
+      },
+      "alt": "The figure shows a  cutaway drawing of a thermos bottle, with various parts labeled.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    }
+  ],
+  "solutions": {
+    "osbooks-college-physics-bundle:m42226:exr-5": [
+      [
+        {
+          "kind": "text",
+          "text": "Conduction: Heat transfers into your hands as you hold a hot cup of coffee."
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "Convection: Heat transfers as the barista “steams” cold milk to make hot"
+        },
+        {
+          "kind": "text",
+          "text": "*cocoa*"
+        },
+        {
+          "kind": "math",
+          "text": "."
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "Radiation: Reheating a cold cup of coffee in a microwave oven."
+        }
+      ]
+    ]
+  }
+}

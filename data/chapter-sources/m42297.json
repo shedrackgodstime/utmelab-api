@@ -1,0 +1,1010 @@
+{
+  "module": "m42297",
+  "source_attribution": {
+    "publisher": "OpenStax",
+    "book": "osbooks-college-physics-bundle",
+    "section": "m42297",
+    "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42297/index.cnxml",
+    "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)",
+    "locator": "CNXML module index.cnxml (typed elements, solutions present)"
+  },
+  "blocks": [
+    {
+      "id": "sec-0",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Learning Objectives",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-1",
+      "type": "paragraph",
+      "content": {
+        "text": "By the end of this section, you will be able to:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-1",
+      "type": "figure",
+      "asset_url": "images/phy_m42297_Figure_18_06_01.jpg",
+      "caption": {
+        "text": "Hearing allows these vocalists, the band, and the fans to enjoy music. (credit: Reggie Mathalone, CC BY)",
+        "inline": []
+      },
+      "alt": "Photograph of a musical band with a person singing.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-3",
+      "type": "paragraph",
+      "content": {
+        "text": "The human ear has a tremendous range and sensitivity. It can give us a wealth of simple information—such as pitch, loudness, and direction. And from its input we can detect musical quality and nuances of voiced emotion. How is our hearing related to the physical qualities of sound, and how does the hearing mechanism work?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-4",
+      "type": "paragraph",
+      "content": {
+        "text": "Hearing is the perception of sound. (Perception is commonly defined to be awareness through the senses, a typically circular definition of higher-level processes in living organisms.) Normal human hearing encompasses frequencies from 20 to 20,000 Hz, an impressive range. Sounds below 20 Hz are called infrasound , whereas those above 20,000 Hz are ultrasound . Neither is perceived by the ear, although infrasound can sometimes be felt as vibrations. When we do hear low-frequency vibrations, such as the sounds of a diving board, we hear the individual vibrations only because there are higher-frequency sounds in each. Other animals have hearing ranges different from that of humans. Dogs can hear sounds as high as 30,000 Hz, whereas bats and dolphins can hear up to 100,000-Hz sounds. You may have noticed that dogs respond to the sound of a dog whistle which produces sound out of the range of human hearing. Elephants are known to respond to frequencies below 20 Hz.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-5",
+      "type": "paragraph",
+      "content": {
+        "text": "The perception of frequency is called pitch . Most of us have excellent relative pitch, which means that we can tell whether one sound has a different frequency from another. Typically, we can discriminate between two sounds if their frequencies differ by 0.3% or more. For example, 500.0 and 501.5 Hz are noticeably different. Pitch perception is directly related to frequency and is not greatly affected by other physical quantities such as intensity. Musical notes are particular sounds that can be produced by most instruments and in Western music have particular names. Combinations of notes constitute music. Some people can identify musical notes, such as A-sharp, C, or E-flat, just by listening to them. This uncommon ability is called perfect pitch.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-6",
+      "type": "paragraph",
+      "content": {
+        "text": "The ear is remarkably sensitive to low-intensity sounds. The lowest audible intensity or threshold is about ${10}^{-12}{W/m}^{2}$ or 0 dB. Sounds as much as ${10}^{12}$ more intense can be briefly tolerated. Very few measuring devices are capable of observations over a range of a trillion. The perception of intensity is called loudness . At a given frequency, it is possible to discern differences of about 1 dB, and a change of 3 dB is easily noticed. But loudness is not related to intensity alone. Frequency has a major effect on how loud a sound seems. The ear has its maximum sensitivity to frequencies in the range of 2000 to 5000 Hz, so that sounds in this range are perceived as being louder than, say, those at 500 or 10,000 Hz, even when they all have the same intensity. Sounds near the high- and low-frequency extremes of the hearing range seem even less loud, because the ear is even less sensitive at those frequencies. gives the dependence of certain human hearing perceptions on physical quantities.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "tbl-7",
+      "type": "table",
+      "title": {
+        "text": "Table",
+        "inline": []
+      },
+      "rows": [
+        [
+          "Perception",
+          "Physical quantity"
+        ],
+        [
+          "Pitch",
+          "Frequency"
+        ],
+        [
+          "Loudness",
+          "Intensity and Frequency"
+        ],
+        [
+          "Timbre",
+          "Number and relative intensity of multiple frequencies. Subtle craftsmanship leads to non-linear effects and more detail."
+        ],
+        [
+          "Note",
+          "Basic unit of music with specific names, combined to generate tunes"
+        ],
+        [
+          "Tone",
+          "Number and relative intensity of multiple frequencies."
+        ]
+      ],
+      "alt": "Table with 6 rows",
+      "level": "core"
+    },
+    {
+      "id": "p-8",
+      "type": "paragraph",
+      "content": {
+        "text": "When a violin plays middle C, there is no mistaking it for a piano playing the same note. The reason is that each instrument produces a distinctive set of frequencies and intensities. We call our perception of these combinations of frequencies and intensities tone quality, or more commonly the timbre of the sound. It is more difficult to correlate timbre perception to physical quantities than it is for loudness or pitch perception. Timbre is more subjective. Terms such as dull, brilliant, warm, cold, pure, and rich are employed to describe the timbre of a sound. So the consideration of timbre takes us into the realm of perceptual psychology, where higher-level processes in the brain are dominant. This is true for other perceptions of sound, such as music and noise. We shall not delve further into them; rather, we will concentrate on the question of loudness perception.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-9",
+      "type": "paragraph",
+      "content": {
+        "text": "A unit called a phon is used to express loudness numerically. Phons differ from decibels because the phon is a unit of loudness perception, whereas the decibel is a unit of physical intensity. shows the relationship of loudness to intensity (or intensity level) and frequency for persons with normal hearing. The curved lines are equal-loudness curves. Each curve is labeled with its loudness in phons. Any sound along a given curve will be perceived as equally loud by the average person. The curves were determined by having large numbers of people compare the loudness of sounds at different frequencies and sound intensity levels. At a frequency of 1000 Hz, phons are taken to be numerically equal to decibels. The following example helps illustrate how to use the graph:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-2",
+      "type": "figure",
+      "asset_url": "images/phy_m42297_Figure_18_06_02.jpg",
+      "caption": {
+        "text": "The relationship of loudness in phons to intensity level (in decibels) and intensity (in watts per meter squared) for persons with normal hearing. The curved lines are equal-loudness curves—all sounds on a given curve are perceived as equally loud. Phons and decibels are defined to be the same at 1000 Hz.",
+        "inline": []
+      },
+      "alt": "A graph of variation of sound level versus frequency is shown. The sound level is along Y axis and frequency is along X axis. There are thirteen curves each for some count on phons from zero to one hundred and twenty with an interval of ten. The graphs are similar in shape but rising in value with increase in phons. The graph has an initial fall from maximum value on Y axis reaches a minimum and then there is a wavy rise.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "ex-11",
+      "type": "example",
+      "kind": "worked",
+      "title": {
+        "text": "Measuring Loudness: Loudness Versus Intensity Level and Frequency",
+        "inline": []
+      },
+      "problem": {
+        "text": "",
+        "inline": []
+      },
+      "answer": null,
+      "level": "core"
+    },
+    {
+      "id": "p-12",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) What is the loudness in phons of a 100-Hz sound that has an intensity level of 80 dB? (b) What is the intensity level in decibels of a 4000-Hz sound having a loudness of 70 phons? (c) At what intensity level will an 8000-Hz sound have the same loudness as a 200-Hz sound at 60 dB?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-13",
+      "type": "paragraph",
+      "content": {
+        "text": "The graph in should be referenced in order to solve this example. To find the loudness of a given sound, you must know its frequency and intensity level and locate that point on the square grid, then interpolate between loudness curves to get the loudness in phons.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-14",
+      "type": "paragraph",
+      "content": {
+        "text": "(1) Identify knowns:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-15",
+      "type": "paragraph",
+      "content": {
+        "text": "(2) Find the loudness: 75 phons.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-16",
+      "type": "paragraph",
+      "content": {
+        "text": "The graph in should be referenced in order to solve this example. To find the intensity level of a sound, you must have its frequency and loudness. Once that point is located, the intensity level can be determined from the vertical axis.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-17",
+      "type": "paragraph",
+      "content": {
+        "text": "(1) Identify knowns:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-18",
+      "type": "paragraph",
+      "content": {
+        "text": "(2) Follow the 70-phon curve until it reaches 4000 Hz. At that point, it is below the 70 dB line at about 67 dB.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-19",
+      "type": "paragraph",
+      "content": {
+        "text": "(3) Find the intensity level:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-20",
+      "type": "paragraph",
+      "content": {
+        "text": "The graph in should be referenced in order to solve this example.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-21",
+      "type": "paragraph",
+      "content": {
+        "text": "(1) Locate the point for a 200 Hz and 60 dB sound.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-22",
+      "type": "paragraph",
+      "content": {
+        "text": "(2) Find the loudness: This point lies just slightly above the 50-phon curve, and so its loudness is 51 phons.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-23",
+      "type": "paragraph",
+      "content": {
+        "text": "(3) Look for the 51-phon level is at 8000 Hz: 63 dB.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-24",
+      "type": "paragraph",
+      "content": {
+        "text": "These answers, like all information extracted from , have uncertainties of several phons or several decibels, partly due to difficulties in interpolation, but mostly related to uncertainties in the equal-loudness curves.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-25",
+      "type": "paragraph",
+      "content": {
+        "text": "Further examination of the graph in reveals some interesting facts about human hearing. First, sounds below the 0-phon curve are not perceived by most people. So, for example, a 60 Hz sound at 40 dB is inaudible. The 0-phon curve represents the threshold of normal hearing. We can hear some sounds at intensity levels below 0 dB. For example, a 3-dB, 5000-Hz sound is audible, because it lies above the 0-phon curve. The loudness curves all have dips in them between about 2000 and 5000 Hz. These dips mean the ear is most sensitive to frequencies in that range. For example, a 15-dB sound at 4000 Hz has a loudness of 20 phons, the same as a 20-dB sound at 1000 Hz. The curves rise at both extremes of the frequency range, indicating that a greater-intensity level sound is needed at those frequencies to be perceived to be as loud as at middle frequencies. For example, a sound at 10,000 Hz must have an intensity level of 30 dB to seem as loud as a 20 dB sound at 1000 Hz. Sounds above 120 phons are painful as well as damaging.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-26",
+      "type": "paragraph",
+      "content": {
+        "text": "We do not often utilize our full range of hearing. This is particularly true for frequencies above 8000 Hz, which are rare in the environment and are unnecessary for understanding conversation or appreciating music. In fact, people who have lost the ability to hear such high frequencies are usually unaware of their loss until tested. The shaded region in is the frequency and intensity region where most conversational sounds fall. The curved lines indicate what effect hearing losses of 40 and 60 phons will have. A 40-phon hearing loss at all frequencies still allows a person to understand conversation, although it will seem very quiet. A person with a 60-phon loss at all frequencies will hear only the lowest frequencies and will not be able to understand speech unless it is much louder than normal. Even so, speech may seem indistinct, because higher frequencies are not as well perceived. The conversational speech region also has a gender component, in that female voices are usually characterized by higher frequencies. So the person with a 60-phon hearing impediment might have difficulty understanding the normal conversation of a woman.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-3",
+      "type": "figure",
+      "asset_url": "images/phy_m42297_Figure_18_06_03.jpg",
+      "caption": {
+        "text": "The shaded region represents frequencies and intensity levels found in normal conversational speech. The 0-phon line represents the normal hearing threshold, while those at 40 and 60 represent thresholds for people with 40- and 60-phon hearing losses, respectively.",
+        "inline": []
+      },
+      "alt": "A graph of variation of intensity versus frequency is shown. The intensity in decibel is along Y axis and frequency is along X axis. There are three curves each for some count on phon zero, forty and sixty. The graphs are similar in shape but rising in value with increase in phon. The graph has an initial fall from maximum value on Y axis reaches a minimum and then there is a wavy rise. The conversational speech distribution is shown as a strip across the graph.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-28",
+      "type": "paragraph",
+      "content": {
+        "text": "Hearing tests are performed over a range of frequencies, usually from 250 to 8000 Hz, and can be displayed graphically in an audiogram like that in . The hearing threshold is measured in dB *relative to the normal threshold* , so that normal hearing registers as 0 dB at all frequencies. Hearing loss caused by noise typically shows a dip near the 4000 Hz frequency, irrespective of the frequency that caused the loss and often affects both ears. The most common form of hearing loss comes with age and is called *presbycusis* —literally elder ear. Such loss is increasingly severe at higher frequencies, and interferes with music appreciation and speech recognition.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-4",
+      "type": "figure",
+      "asset_url": "images/phy_m42297_Figure_18_06_04.jpg",
+      "caption": {
+        "text": "Audiograms showing the threshold in intensity level versus frequency for three different individuals. Intensity level is measured relative to the normal threshold. The top left graph is that of a person with normal hearing. The graph to its right has a dip at 4000 Hz and is that of a child who suffered hearing loss due to a cap gun. The third graph is typical of presbycusis, the progressive loss of higher frequency hearing with age. Tests performed by bone conduction (brackets) can distinguish nerve damage from middle ear damage.",
+        "inline": []
+      },
+      "alt": "Three audiogram output graphs of three individuals’ left and right ear are shown. The graph is for hearing threshold level verses frequency in hertz. The hearing threshold level is on Y axis and frequency is along X axis. The first graph has two curve nearly parallel to X axis. The second graph is straight for some range then has a dip at four thousand hertz. The third graph has a falling curve toward X axis from a maximum value on Y axis.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-30",
+      "type": "paragraph",
+      "content": {
+        "text": "The hearing mechanism involves some interesting physics. The sound wave that impinges upon our ear is a pressure wave. The ear is a transducer that converts sound waves into electrical nerve impulses in a manner much more sophisticated than, but analogous to, a microphone. shows the gross anatomy of the ear with its division into three parts: the outer ear or ear canal; the middle ear, which runs from the eardrum to the cochlea; and the inner ear, which is the cochlea itself. The body part normally referred to as the ear is technically called the pinna.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-5",
+      "type": "figure",
+      "asset_url": "images/phy_m42297_OSX_CP2e_Figure_18_06_05.jpg",
+      "caption": {
+        "text": "The illustration shows the gross anatomy of the human ear.",
+        "inline": []
+      },
+      "alt": "The picture shows the anatomy of a human ear. All organs in the ear are labeled. There is a pinna or the outer end of the ear, followed by a long ear canal in the outer ear. The middle ear has the eardrum little arc shaped. There are small round and oval windows next to it. There are semicircular canals. In the inner ear are snail shell shaped cochlea and cochlea duct. There is a Eustachian tube that leads downward. There are cochlear nerve and vestibular nerves in the inner ear.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-32",
+      "type": "paragraph",
+      "content": {
+        "text": "The outer ear, or ear canal, carries sound to the recessed protected eardrum. The air column in the ear canal resonates and is partially responsible for the sensitivity of the ear to sounds in the 2000 to 5000 Hz range. The middle ear converts sound into mechanical vibrations and applies these vibrations to the cochlea. The lever system of the middle ear takes the force exerted on the eardrum by sound pressure variations, amplifies it and transmits it to the inner ear via the oval window, creating pressure waves in the cochlea approximately 40 times greater than those impinging on the eardrum. (See .) Two muscles in the middle ear (not shown) protect the inner ear from very intense sounds. They react to intense sound in a few milliseconds and reduce the force transmitted to the cochlea. This protective reaction can also be triggered by your own voice, so that humming while shooting a gun, for example, can reduce noise damage.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-6",
+      "type": "figure",
+      "asset_url": "images/phy_m42297_Figure_18_06_06.jpg",
+      "caption": {
+        "text": "This schematic shows the middle ear’s system for converting sound pressure into force, increasing that force through a lever system, and applying the increased force to a small area of the cochlea, thereby creating a pressure about 40 times that in the original sound wave. A protective muscle reaction to intense sounds greatly reduces the mechanical advantage of the lever system.",
+        "inline": []
+      },
+      "alt": "The schematic diagram of the middle ear’s system for converting sound pressure is shown. There is a pressure P one applied on the ear drum shown as a vertical line. The pressure P one travels along a horizontal line marked hammer as force F one. Then up a vertical line marked anvil and reaches a point marked pivot. Then this travels as a force F two along a horizontal line marked stirrup and reaches the oval window shown by a vertical line then passes by it as pressure P two. The pivot point has another support held vertically.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-34",
+      "type": "paragraph",
+      "content": {
+        "text": "shows the middle and inner ear in greater detail. Pressure waves moving through the cochlea cause the tectorial membrane to vibrate, rubbing cilia (called hair cells), which stimulate nerves that send electrical signals to the brain. The membrane resonates at different positions for different frequencies, with high frequencies stimulating nerves at the near end and low frequencies at the far end. The complete operation of the cochlea is still not understood, but several mechanisms for sending information to the brain are known to be involved. For sounds below about 1000 Hz, the nerves send signals at the same frequency as the sound. For frequencies greater than about 1000 Hz, the nerves signal frequency by position. There is a structure to the cilia, and there are connections between nerve cells that perform signal processing before information is sent to the brain. Intensity information is partly indicated by the number of nerve signals and by volleys of signals. The brain processes the cochlear nerve signals to provide additional information such as source direction (based on time and intensity comparisons of sounds from both ears). Higher-level processing produces many nuances, such as music appreciation.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-7",
+      "type": "figure",
+      "asset_url": "images/phy_m42297_OSX_CP2e_Figure_18_06_07.jpg",
+      "caption": {
+        "text": "The inner ear, or cochlea, is a coiled tube about 3 mm in diameter and 3 cm in length if uncoiled. When the oval window is forced inward, as shown, a pressure wave travels through the perilymph in the direction of the arrows, stimulating nerves at the base of cilia in the organ of Corti.",
+        "inline": []
+      },
+      "alt": "Schematic diagram of the middle and inner ear with various parts labeled.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-36",
+      "type": "paragraph",
+      "content": {
+        "text": "Hearing losses can occur because of problems in the middle or inner ear. Conductive losses in the middle ear can be partially overcome by sending sound vibrations to the cochlea through the skull. Hearing aids for this purpose usually press against the bone behind the ear, rather than simply amplifying the sound sent into the ear canal as many hearing aids do. Damage to the nerves in the cochlea is not repairable, but amplification can partially compensate. There is a risk that amplification will produce further damage. Another common failure in the cochlea is damage or loss of the cilia but with nerves remaining functional. Cochlear implants that stimulate the nerves directly are now available and widely accepted. Over 100,000 implants are in use, in about equal numbers of adults and children.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-37",
+      "type": "paragraph",
+      "content": {
+        "text": "The cochlear implant was pioneered in Melbourne, Australia, by Graeme Clark in the 1970s for his deaf father. The implant consists of three external components and two internal components. The external components are a microphone for picking up sound and converting it into an electrical signal, a speech processor to select certain frequencies and a transmitter to transfer the signal to the internal components through electromagnetic induction. The internal components consist of a receiver/transmitter secured in the bone beneath the skin, which converts the signals into electric impulses and sends them through an internal cable to the cochlea and an array of about 24 electrodes wound through the cochlea. These electrodes in turn send the impulses directly into the brain. The electrodes basically emulate the cilia.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-38",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Are ultrasound and infrasound imperceptible to all hearing organisms? Explain your answer.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "No, the range of perceptible sound is based in the range of human hearing. Many other organisms perceive either infrasound or ultrasound.",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-39",
+      "type": "paragraph",
+      "content": {
+        "text": "Are ultrasound and infrasound imperceptible to all hearing organisms? Explain your answer.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-40",
+      "type": "paragraph",
+      "content": {
+        "text": "No, the range of perceptible sound is based in the range of human hearing. Many other organisms perceive either infrasound or ultrasound.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-41",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Section Summary",
+        "inline": []
+      }
+    },
+    {
+      "id": "sec-42",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Conceptual Questions",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-43",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Why can a hearing test show that your threshold of hearing is 0 dB at 250 Hz, when implies that no one can hear such a frequency at less than 20 dB?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-44",
+      "type": "paragraph",
+      "content": {
+        "text": "Why can a hearing test show that your threshold of hearing is 0 dB at 250 Hz, when implies that no one can hear such a frequency at less than 20 dB?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-45",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Problems & Exercises",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-46",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "The factor of ${10}^{-12}$ in the range of intensities to which the ear can respond, from threshold to that causing damage after brief exposure, is truly remarkable. If you could measure distances over the same range with a single instrument and the smallest distance you could measure was 1 mm, what would the largest be?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "\\[$1×{10}^{6}km$\\]",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-47",
+      "type": "paragraph",
+      "content": {
+        "text": "The factor of ${10}^{-12}$ in the range of intensities to which the ear can respond, from threshold to that causing damage after brief exposure, is truly remarkable. If you could measure distances over the same range with a single instrument and the smallest distance you could measure was 1 mm, what would the largest be?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-48",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "The frequencies to which the ear responds vary by a factor of ${10}^{3}$ . Suppose the speedometer on your car measured speeds differing by the same factor of ${10}^{3}$ , and the greatest speed it reads is 90.0 mi/h. What would be the slowest nonzero speed it could read?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-49",
+      "type": "paragraph",
+      "content": {
+        "text": "The frequencies to which the ear responds vary by a factor of ${10}^{3}$ . Suppose the speedometer on your car measured speeds differing by the same factor of ${10}^{3}$ , and the greatest speed it reads is 90.0 mi/h. What would be the slowest nonzero speed it could read?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-50",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "What are the closest frequencies to 500 Hz that an average person can clearly distinguish as being different in frequency from 500 Hz? The sounds are not present simultaneously.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "498.5 or 501.5 Hz",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-51",
+      "type": "paragraph",
+      "content": {
+        "text": "What are the closest frequencies to 500 Hz that an average person can clearly distinguish as being different in frequency from 500 Hz? The sounds are not present simultaneously.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-52",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Can the average person tell that a 2002-Hz sound has a different frequency than a 1999-Hz sound without playing them simultaneously?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-53",
+      "type": "paragraph",
+      "content": {
+        "text": "Can the average person tell that a 2002-Hz sound has a different frequency than a 1999-Hz sound without playing them simultaneously?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-54",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "If your radio is producing an average sound intensity level of 85 dB, what is the next lowest sound intensity level that is clearly less intense?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "82 dB",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-55",
+      "type": "paragraph",
+      "content": {
+        "text": "If your radio is producing an average sound intensity level of 85 dB, what is the next lowest sound intensity level that is clearly less intense?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-56",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Can you tell that your roommate turned up the sound on the TV if its average sound intensity level goes from 70 to 73 dB?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-57",
+      "type": "paragraph",
+      "content": {
+        "text": "Can you tell that your roommate turned up the sound on the TV if its average sound intensity level goes from 70 to 73 dB?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-58",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Based on the graph in , what is the threshold of hearing in decibels for frequencies of 60, 400, 1000, 4000, and 15,000 Hz? Note that many AC electrical appliances produce 60 Hz, music is commonly 400 Hz, a reference frequency is 1000 Hz, your maximum sensitivity is near 4000 Hz, and many older TVs produce a 15,750 Hz whine.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "approximately 48, 9, 0, –7, and 20 dB, respectively",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-59",
+      "type": "paragraph",
+      "content": {
+        "text": "Based on the graph in , what is the threshold of hearing in decibels for frequencies of 60, 400, 1000, 4000, and 15,000 Hz? Note that many AC electrical appliances produce 60 Hz, music is commonly 400 Hz, a reference frequency is 1000 Hz, your maximum sensitivity is near 4000 Hz, and many older TVs produce a 15,750 Hz whine.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-60",
+      "type": "paragraph",
+      "content": {
+        "text": "approximately 48, 9, 0, –7, and 20 dB, respectively",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-61",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "What sound intensity levels must sounds of frequencies 60, 3000, and 8000 Hz have in order to have the same loudness as a 40-dB sound of frequency 1000 Hz (that is, to have a loudness of 40 phons)?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-62",
+      "type": "paragraph",
+      "content": {
+        "text": "What sound intensity levels must sounds of frequencies 60, 3000, and 8000 Hz have in order to have the same loudness as a 40-dB sound of frequency 1000 Hz (that is, to have a loudness of 40 phons)?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-63",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "What is the approximate sound intensity level in decibels of a 600-Hz tone if it has a loudness of 20 phons? If it has a loudness of 70 phons?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a) 23 dB (b) 70 dB",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-64",
+      "type": "paragraph",
+      "content": {
+        "text": "What is the approximate sound intensity level in decibels of a 600-Hz tone if it has a loudness of 20 phons? If it has a loudness of 70 phons?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-65",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "(a) What are the loudnesses in phons of sounds having frequencies of 200, 1000, 5000, and 10,000 Hz, if they are all at the same 60.0-dB sound intensity level? (b) If they are all at 110 dB? (c) If they are all at 20.0 dB?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-66",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) What are the loudnesses in phons of sounds having frequencies of 200, 1000, 5000, and 10,000 Hz, if they are all at the same 60.0-dB sound intensity level? (b) If they are all at 110 dB? (c) If they are all at 20.0 dB?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-67",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Suppose a person has a 50-dB hearing loss at all frequencies. By how many factors of 10 will low-intensity sounds need to be amplified to seem normal to this person? Note that smaller amplification is appropriate for more intense sounds to avoid further hearing damage.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "Five factors of 10",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-68",
+      "type": "paragraph",
+      "content": {
+        "text": "Suppose a person has a 50-dB hearing loss at all frequencies. By how many factors of 10 will low-intensity sounds need to be amplified to seem normal to this person? Note that smaller amplification is appropriate for more intense sounds to avoid further hearing damage.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-69",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "If a woman needs an amplification of $5.0×{10}^{12}$ times the threshold intensity to enable her to hear at all frequencies, what is her overall hearing loss in dB? Note that smaller amplification is appropriate for more intense sounds to avoid further damage to her hearing from levels above 90 dB.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-70",
+      "type": "paragraph",
+      "content": {
+        "text": "If a woman needs an amplification of $5.0×{10}^{12}$ times the threshold intensity to enable her to hear at all frequencies, what is her overall hearing loss in dB? Note that smaller amplification is appropriate for more intense sounds to avoid further damage to her hearing from levels above 90 dB.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-71",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "(a) What is the intensity in watts per meter squared of a just barely audible 200-Hz sound? (b) What is the intensity in watts per meter squared of a barely audible 4000-Hz sound?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a) $2×{10}^{-10}{W/m}^{2}$ (b) $2×{10}^{-13}{W/m}^{2}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-72",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) What is the intensity in watts per meter squared of a just barely audible 200-Hz sound? (b) What is the intensity in watts per meter squared of a barely audible 4000-Hz sound?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-73",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) $2×{10}^{-10}{W/m}^{2}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-74",
+      "type": "paragraph",
+      "content": {
+        "text": "(b) $2×{10}^{-13}{W/m}^{2}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-75",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "(a) Find the intensity in watts per meter squared of a 60.0-Hz sound having a loudness of 60 phons. (b) Find the intensity in watts per meter squared of a 10,000-Hz sound having a loudness of 60 phons.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-76",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) Find the intensity in watts per meter squared of a 60.0-Hz sound having a loudness of 60 phons. (b) Find the intensity in watts per meter squared of a 10,000-Hz sound having a loudness of 60 phons.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-77",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A person has a hearing threshold 10 dB above normal at 100 Hz and 50 dB above normal at 4000 Hz. How much more intense must a 100-Hz tone be than a 4000-Hz tone if they are both barely audible to this person?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "2.5",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-78",
+      "type": "paragraph",
+      "content": {
+        "text": "A person has a hearing threshold 10 dB above normal at 100 Hz and 50 dB above normal at 4000 Hz. How much more intense must a 100-Hz tone be than a 4000-Hz tone if they are both barely audible to this person?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-79",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A child has a hearing loss of 60 dB near 5000 Hz, due to noise exposure, and normal hearing elsewhere. How much more intense is a 5000-Hz tone than a 400-Hz tone if they are both barely audible to the child?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-80",
+      "type": "paragraph",
+      "content": {
+        "text": "A child has a hearing loss of 60 dB near 5000 Hz, due to noise exposure, and normal hearing elsewhere. How much more intense is a 5000-Hz tone than a 400-Hz tone if they are both barely audible to the child?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-81",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "What is the ratio of intensities of two sounds of identical frequency if the first is just barely discernible as louder to a person than the second?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "1.26",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-82",
+      "type": "paragraph",
+      "content": {
+        "text": "What is the ratio of intensities of two sounds of identical frequency if the first is just barely discernible as louder to a person than the second?",
+        "inline": []
+      },
+      "level": "core"
+    }
+  ],
+  "solutions": {
+    "osbooks-college-physics-bundle:m42297:exr-38": [
+      [
+        {
+          "kind": "text",
+          "text": "No, the range of perceptible sound is based in the range of human hearing. Many other organisms perceive either infrasound or ultrasound."
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42297:exr-46": [
+      [
+        {
+          "kind": "math",
+          "text": "1×{10}^{6}km"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42297:exr-50": [
+      [
+        {
+          "kind": "text",
+          "text": "498.5 or 501.5 Hz"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42297:exr-54": [
+      [
+        {
+          "kind": "text",
+          "text": "82 dB"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42297:exr-58": [
+      [
+        {
+          "kind": "text",
+          "text": "approximately 48, 9, 0, –7, and 20 dB, respectively"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42297:exr-63": [
+      [
+        {
+          "kind": "text",
+          "text": "(a) 23 dB"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(b) 70 dB"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42297:exr-67": [
+      [
+        {
+          "kind": "text",
+          "text": "Five factors of 10"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42297:exr-71": [
+      [
+        {
+          "kind": "text",
+          "text": "(a)"
+        },
+        {
+          "kind": "math",
+          "text": "2×{10}^{-10}{W/m}^{2}"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(b)"
+        },
+        {
+          "kind": "math",
+          "text": "2×{10}^{-13}{W/m}^{2}"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42297:exr-77": [
+      [
+        {
+          "kind": "text",
+          "text": "2.5"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42297:exr-81": [
+      [
+        {
+          "kind": "text",
+          "text": "1.26"
+        }
+      ]
+    ]
+  }
+}

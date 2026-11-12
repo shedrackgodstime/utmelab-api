@@ -1,0 +1,1546 @@
+{
+  "module": "m42182",
+  "source_attribution": {
+    "publisher": "OpenStax",
+    "book": "osbooks-college-physics-bundle",
+    "section": "m42182",
+    "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42182/index.cnxml",
+    "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)",
+    "locator": "CNXML module index.cnxml (typed elements, solutions present)"
+  },
+  "blocks": [
+    {
+      "id": "sec-0",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Learning Objectives",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-1",
+      "type": "paragraph",
+      "content": {
+        "text": "By the end of this section, you will be able to:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-2",
+      "type": "paragraph",
+      "content": {
+        "text": "Why does Earth keep on spinning? What started it spinning to begin with? And how does an ice skater manage to spin faster and faster simply by pulling her arms in? Why does she not have to exert a torque to spin faster? Questions like these have answers based in angular momentum, the rotational analog to linear momentum.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-3",
+      "type": "paragraph",
+      "content": {
+        "text": "By now the pattern is clear—every rotational phenomenon has a direct translational analog. It seems quite reasonable, then, to define angular momentum $L$ as",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-4",
+      "type": "paragraph",
+      "content": {
+        "text": "This equation is an analog to the definition of linear momentum as $p=mv$ . Units for linear momentum are $kg\\cdot m/s$ while units for angular momentum are $kg\\cdot {m}^{2}/s$ . As we would expect, an object that has a large moment of inertia $I$ , such as Earth, has a very large angular momentum. An object that has a large angular velocity $ω$ , such as a centrifuge, also has a rather large angular momentum.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-5",
+      "type": "paragraph",
+      "content": {
+        "text": "Angular momentum is completely analogous to linear momentum, first presented in Uniform Circular Motion and Gravitation . It has the same implications in terms of carrying rotation forward, and it is conserved when the net external torque is zero. Angular momentum, like linear momentum, is also a property of the atoms and subatomic particles.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "ex-6",
+      "type": "example",
+      "kind": "worked",
+      "title": {
+        "text": "Calculating Angular Momentum of the Earth",
+        "inline": []
+      },
+      "problem": {
+        "text": "",
+        "inline": []
+      },
+      "answer": null,
+      "level": "core"
+    },
+    {
+      "id": "p-7",
+      "type": "paragraph",
+      "content": {
+        "text": "No information is given in the statement of the problem; so we must look up pertinent data before we can calculate $L=Iω$ . First, according to , the formula for the moment of inertia of a sphere is",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-8",
+      "type": "paragraph",
+      "content": {
+        "text": "Earth’s mass $M$ is $5.979×{10}^{24}kg$ and its radius $R$ is $6.376×{10}^{6}m$ . The Earth’s angular velocity $ω$ is, of course, exactly one revolution per day, but we must covert $ω$ to radians per second to do the calculation in SI units.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-9",
+      "type": "paragraph",
+      "content": {
+        "text": "Substituting $2π$ rad for rev and approximating 1 day as 24 hours or $8.64×{10}^{4}s$ gives",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-10",
+      "type": "paragraph",
+      "content": {
+        "text": "Substituting $2π$ rad for $1$ rev and $8.64×{10}^{4}s$ for 1 day gives",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-11",
+      "type": "paragraph",
+      "content": {
+        "text": "This number is large, demonstrating that Earth, as expected, has a tremendous angular momentum. The answer is approximate, because we have assumed a constant density for Earth in order to estimate its moment of inertia.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-12",
+      "type": "paragraph",
+      "content": {
+        "text": "When you push a merry-go-round, spin a bike wheel, or open a door, you exert a torque. If the torque you exert is greater than opposing torques, then the rotation accelerates, and angular momentum increases. The greater the net torque, the more rapid the increase in $L$ . The relationship between torque and angular momentum is",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-13",
+      "type": "paragraph",
+      "content": {
+        "text": "This expression is exactly analogous to the relationship between force and linear momentum, $F=Δp/Δt$ . The equation $netτ=\\frac{ΔL}{Δt}$ is very fundamental and broadly applicable. It is, in fact, the rotational form of Newton’s second law.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "ex-14",
+      "type": "example",
+      "kind": "worked",
+      "title": {
+        "text": "Calculating the Torque Putting Angular Momentum Into a Rotating Food Tray",
+        "inline": []
+      },
+      "problem": {
+        "text": "",
+        "inline": []
+      },
+      "answer": null,
+      "level": "core"
+    },
+    {
+      "id": "p-15",
+      "type": "paragraph",
+      "content": {
+        "text": "shows a rotating food tray, often called a lazy Susan, being turned by a person in quest of sustenance. Suppose the person exerts a 2.50 N force perpendicular to the lazy Susan’s 0.260-m radius for 0.150 s. (a) What is the final angular momentum of the lazy Susan if it starts from rest, assuming friction is negligible? (b) What is the final angular velocity of the lazy Susan, given that its mass is 4.00 kg and assuming its moment of inertia is that of a disk?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-1",
+      "type": "figure",
+      "asset_url": "images/phy_m42182_Figure_11_05_01a.jpg",
+      "caption": {
+        "text": "A partygoer exerts a torque on a lazy Susan to make it rotate. The equation $netτ=\\frac{ΔL}{Δt}$ gives the relationship between torque and the angular momentum produced.",
+        "inline": []
+      },
+      "alt": "The given figure shows a lazy Susan on which various eatables like cake, salad grapes, and a drink are kept. A hand is shown that applies a force F, indicated by a leftward pointing horizontal arrow. This force is perpendicular to the radius r and thus tangential to the circular lazy Susan.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-17",
+      "type": "paragraph",
+      "content": {
+        "text": "We can find the angular momentum by solving $netτ=\\frac{ΔL}{Δt}$ for $ΔL$ , and using the given information to calculate the torque. The final angular momentum equals the change in angular momentum, because the lazy Susan starts from rest. That is, $ΔL=L$ . To find the final velocity, we must calculate $ω$ from the definition of $L$ in $L=Iω$ .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-18",
+      "type": "paragraph",
+      "content": {
+        "text": "Solving $netτ=\\frac{ΔL}{Δt}$ for $ΔL$ gives",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-19",
+      "type": "paragraph",
+      "content": {
+        "text": "Because the force is perpendicular to $r$ , we see that $netτ=rF$ , so that",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-20",
+      "type": "paragraph",
+      "content": {
+        "text": "The final angular velocity can be calculated from the definition of angular momentum,",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-21",
+      "type": "paragraph",
+      "content": {
+        "text": "Solving for $ω$ and substituting the formula for the moment of inertia of a disk into the resulting equation gives",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-22",
+      "type": "paragraph",
+      "content": {
+        "text": "And substituting known values into the preceding equation yields",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-23",
+      "type": "paragraph",
+      "content": {
+        "text": "Note that the imparted angular momentum does not depend on any property of the object but only on torque and time. The final angular velocity is equivalent to one revolution in 8.71 s (determination of the time period is left as an exercise for the reader), which is about right for a lazy Susan.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "ex-24",
+      "type": "example",
+      "kind": "worked",
+      "title": {
+        "text": "Calculating the Torque in a Kick",
+        "inline": []
+      },
+      "problem": {
+        "text": "",
+        "inline": []
+      },
+      "answer": null,
+      "level": "core"
+    },
+    {
+      "id": "p-25",
+      "type": "paragraph",
+      "content": {
+        "text": "The person whose leg is shown in kicks his leg by exerting a 2000-N force with his upper leg muscle. The effective perpendicular lever arm is 2.20 cm. Given the moment of inertia of the lower leg is $1.25 kg\\cdot {m}^{2}$ , (a) find the angular acceleration of the leg. (b) Neglecting the gravitational force, what is the rotational kinetic energy of the leg after it has rotated through $57.3º$ (1.00 rad)?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-2",
+      "type": "figure",
+      "asset_url": "images/phy_m42182_Figure_11_05_02a.jpg",
+      "caption": {
+        "text": "The muscle in the upper leg gives the lower leg an angular acceleration and imparts rotational kinetic energy to it by exerting a torque about the knee. $F$ is a vector that is perpendicular to $r$ . This example examines the situation.",
+        "inline": []
+      },
+      "alt": "The figure shows a human leg, from the thighs to the feet which is bent at the knee joint. The radius of curvature of the knee is indicated as r equal to two point two zero centimeters and the moment of inertia of the lower half of the leg is indicated as I equal to one point two five kilogram meter square. The direction of torque is indicated by a red arrow in anti-clockwise direction, near the knee.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-27",
+      "type": "paragraph",
+      "content": {
+        "text": "The angular acceleration can be found using the rotational analog to Newton’s second law, or $α=netτ/I$ . The moment of inertia $I$ is given and the torque can be found easily from the given force and perpendicular lever arm. Once the angular acceleration $α$ is known, the final angular velocity and rotational kinetic energy can be calculated.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-28",
+      "type": "paragraph",
+      "content": {
+        "text": "From the rotational analog to Newton’s second law, the angular acceleration $α$ is",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-29",
+      "type": "paragraph",
+      "content": {
+        "text": "Because the force and the perpendicular lever arm are given and the leg is vertical so that its weight does not create a torque, the net torque is thus",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-30",
+      "type": "paragraph",
+      "content": {
+        "text": "Substituting this value for the torque and the given value for the moment of inertia into the expression for $α$ gives",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-31",
+      "type": "paragraph",
+      "content": {
+        "text": "The final angular velocity can be calculated from the kinematic expression",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-32",
+      "type": "paragraph",
+      "content": {
+        "text": "because the initial angular velocity is zero. The kinetic energy of rotation is",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-33",
+      "type": "paragraph",
+      "content": {
+        "text": "so it is most convenient to use the value of ${ω}^{2}$ just found and the given value for the moment of inertia. The kinetic energy is then",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-34",
+      "type": "paragraph",
+      "content": {
+        "text": "These values are reasonable for a person kicking his leg starting from the position shown. The weight of the leg can be neglected in part (a) because it exerts no torque when the center of gravity of the lower leg is directly beneath the pivot in the knee. In part (b), the force exerted by the upper leg is so large that its torque is much greater than that created by the weight of the lower leg as it rotates. The rotational kinetic energy given to the lower leg is enough that it could give a ball a significant velocity by transferring some of this energy in a kick.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-35",
+      "type": "paragraph",
+      "content": {
+        "text": "Angular momentum, like energy and linear momentum, is conserved. This universally applicable law is another sign of underlying unity in physical laws. Angular momentum is conserved when net external torque is zero, just as linear momentum is conserved when the net external force is zero.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-36",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Conservation of Angular Momentum",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-37",
+      "type": "paragraph",
+      "content": {
+        "text": "We can now understand why Earth keeps on spinning. As we saw in the previous example, $ΔL=(netτ)Δt$ . This equation means that, to change angular momentum, a torque must act over some period of time. Because Earth has a large angular momentum, a large torque acting over a long time is needed to change its rate of spin. So what external torques are there? Tidal friction exerts torque that is slowing Earth’s rotation, but tens of millions of years must pass before the change is very significant. Recent research indicates the length of the day was 18 h some 900 million years ago. Only the tides exert significant retarding torques on Earth, and so it will continue to spin, although ever more slowly, for many billions of years.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-38",
+      "type": "paragraph",
+      "content": {
+        "text": "What we have here is, in fact, another conservation law. If the net torque is *zero* , then angular momentum is constant or *conserved* . We can see this rigorously by considering $netτ=\\frac{ΔL}{Δt}$ for the situation in which the net torque is zero. In that case,",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-39",
+      "type": "paragraph",
+      "content": {
+        "text": "If the change in angular momentum $ΔL$ is zero, then the angular momentum is constant; thus,",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-40",
+      "type": "paragraph",
+      "content": {
+        "text": "These expressions are the law of conservation of angular momentum . Conservation laws are as scarce as they are important.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-41",
+      "type": "paragraph",
+      "content": {
+        "text": "An example of conservation of angular momentum is seen in , in which an ice skater is executing a spin. The net torque on her is very close to zero, because there is relatively little friction between her skates and the ice and because the friction is exerted very close to the pivot point. (Both $F$ and $r$ are small, and so $τ$ is negligibly small.) Consequently, she can spin for quite some time. She can do something else, too. She can increase her rate of spin by pulling her arms and legs in. Why does pulling her arms and legs in increase her rate of spin? The answer is that her angular momentum is constant, so that",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-42",
+      "type": "paragraph",
+      "content": {
+        "text": "Expressing this equation in terms of the moment of inertia,",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-43",
+      "type": "paragraph",
+      "content": {
+        "text": "where the primed quantities refer to conditions after she has pulled in her arms and reduced her moment of inertia. Because $I′$ is smaller, the angular velocity $ω′$ must increase to keep the angular momentum constant. The change can be dramatic, as the following example shows.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-44",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) An ice skater is spinning on the tip of her skate with her arms extended. Her angular momentum is conserved because the net torque on her is negligibly small. In the next image, her rate of spin increases greatly when she pulls in her arms, decreasing her moment of inertia. The work she does to pull in her arms results in an increase in rotational kinetic energy.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-3",
+      "type": "figure",
+      "asset_url": "images/phy_m42182_Figure_11_05_03.jpg",
+      "caption": {
+        "text": "(a) An ice skater is spinning on the tip of her skate with her arms extended. Her angular momentum is conserved because the net torque on her is negligibly small. In the next image, her rate of spin increases greatly when she pulls in her arms, decreasing her moment of inertia. The work she does to pull in her arms results in an increase in rotational kinetic energy.",
+        "inline": []
+      },
+      "alt": "The image a shows an ice skater spinning on the tip of her skate with both her arms and one leg extended. The image b shows the ice skater spinning on the tip of one skate, with her arms crossed and one leg supported on another.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "ex-46",
+      "type": "example",
+      "kind": "worked",
+      "title": {
+        "text": "Calculating the Angular Momentum of a Spinning Skater",
+        "inline": []
+      },
+      "problem": {
+        "text": "",
+        "inline": []
+      },
+      "answer": null,
+      "level": "core"
+    },
+    {
+      "id": "p-47",
+      "type": "paragraph",
+      "content": {
+        "text": "Suppose an ice skater, such as the one in , is spinning at 0.800 rev/ s with her arms extended. She has a moment of inertia of $2.34kg\\cdot {m}^{2}$ with her arms extended and of $0.363kg\\cdot {m}^{2}$ with her arms close to her body. (These moments of inertia are based on reasonable assumptions about a 60.0-kg skater.) (a) What is her angular velocity in revolutions per second after she pulls in her arms? (b) What is her rotational kinetic energy before and after she does this?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-48",
+      "type": "paragraph",
+      "content": {
+        "text": "In the first part of the problem, we are looking for the skater’s angular velocity $ω′$ after she has pulled in her arms. To find this quantity, we use the conservation of angular momentum and note that the moments of inertia and initial angular velocity are given. To find the initial and final kinetic energies, we use the definition of rotational kinetic energy given by",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-49",
+      "type": "paragraph",
+      "content": {
+        "text": "Because torque is negligible (as discussed above), the conservation of angular momentum given in $Iω=I′ω′$ is applicable. Thus,",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-50",
+      "type": "paragraph",
+      "content": {
+        "text": "Solving for $ω′$ and substituting known values into the resulting equation gives",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-51",
+      "type": "paragraph",
+      "content": {
+        "text": "Rotational kinetic energy is given by",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-52",
+      "type": "paragraph",
+      "content": {
+        "text": "The initial value is found by substituting known values into the equation and converting the angular velocity to rad/s:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-53",
+      "type": "paragraph",
+      "content": {
+        "text": "The final rotational kinetic energy is",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-54",
+      "type": "paragraph",
+      "content": {
+        "text": "Substituting known values into this equation gives",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-55",
+      "type": "paragraph",
+      "content": {
+        "text": "In both parts, there is an impressive increase. First, the final angular velocity is large, although most world-class skaters can achieve spin rates about this great. Second, the final kinetic energy is much greater than the initial kinetic energy. The increase in rotational kinetic energy comes from work done by the skater in pulling in her arms. This work is internal work that depletes some of the skater’s food energy.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-56",
+      "type": "paragraph",
+      "content": {
+        "text": "There are several other examples of objects that increase their rate of spin because something reduced their moment of inertia. Tornadoes are one example. Storm systems that create tornadoes are slowly rotating. When the radius of rotation narrows, even in a local region, angular velocity increases, sometimes to the furious level of a tornado. Earth is another example. Our planet was born from a huge cloud of gas and dust, the rotation of which came from turbulence in an even larger cloud. Gravitational forces caused the cloud to contract, and the rotation rate increased as a result. (See .)",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-4",
+      "type": "figure",
+      "asset_url": "images/phy_m42182_Figure_11_05_04a.jpg",
+      "caption": {
+        "text": "The Solar System coalesced from a cloud of gas and dust that was originally rotating. The orbital motions and spins of the planets are in the same direction as the original spin and conserve the angular momentum of the parent cloud.",
+        "inline": []
+      },
+      "alt": "The first figure shows a cloud of dust and gas,which is in the shape of a distorted circle, rotating in anti-clockwise direction with an angular velocity omega, indicated by a curved black arrow, and having an angular momentum L. The second figure shows an elliptical cloud of dust with the Sun in the middle of it, rotating in anti-clockwise direction with an angular velocity omega dash, indicated by a curved black arrow, and having an angular momentum L. The third figure depicts the Solar System, with the Sun in the middle of it and the various planets revolve around it in their respective elliptical orbits in anti-clockwise direction, which is indicated by arrows. The angular momentum remains L.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-58",
+      "type": "paragraph",
+      "content": {
+        "text": "In case of human motion, one would not expect angular momentum to be conserved when a body interacts with the environment as its foot pushes off the ground. Astronauts floating in space aboard the International Space Station have no angular momentum relative to the inside of the ship if they are motionless. Their bodies will continue to have this zero value no matter how they twist about as long as they do not give themselves a push off the side of the vessel.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-59",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Is angular momentum completely analogous to linear momentum? What, if any, are their differences?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "Yes, angular and linear momentums are completely analogous. While they are exact analogs they have different units and are not directly inter-convertible like forms of energy are.",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-60",
+      "type": "paragraph",
+      "content": {
+        "text": "Is angular momentum completely analogous to linear momentum? What, if any, are their differences?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-61",
+      "type": "paragraph",
+      "content": {
+        "text": "Yes, angular and linear momentums are completely analogous. While they are exact analogs they have different units and are not directly inter-convertible like forms of energy are.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-62",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Test Prep for AP Courses",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-63",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Which rotational system would be best to use as a model to measure how angular momentum changes when forces on the system are changed? a fishing reel; a planet and its moon; a figure skater spinning; a person's lower leg",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a)",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-64",
+      "type": "paragraph",
+      "content": {
+        "text": "Which rotational system would be best to use as a model to measure how angular momentum changes when forces on the system are changed?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-65",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "You are collecting data to study changes in the angular momentum of a bicycle wheel when a force is applied to it. Which of the following measurements would be least helpful to you? the time for which the force is applied; the radius at which the force is applied; the angular velocity of the wheel when the force is applied; the direction of the force",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-66",
+      "type": "paragraph",
+      "content": {
+        "text": "You are collecting data to study changes in the angular momentum of a bicycle wheel when a force is applied to it. Which of the following measurements would be least helpful to you?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-67",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Which torque applied to a disk with radius 7.0 cm for 3.5 s will produce an angular momentum of 25 N•m•s? 7.1 N•m; 357.1 N•m; 3.6 N•m; 612.5 N•m",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a)",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-68",
+      "type": "paragraph",
+      "content": {
+        "text": "Which torque applied to a disk with radius 7.0 cm for 3.5 s will produce an angular momentum of 25 N•m•s?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-69",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Which of the following would be the best way to produce measurable amounts of torque on a system to test the relationship between the angular momentum of the system, the average torque applied to the system, and the time for which the torque is applied? having different numbers of people push on a merry-go-round; placing known masses on one end of a seesaw; touching the outer edge of a bicycle wheel to a treadmill that is moving at different speeds; hanging known masses from a string that is wound around a spool suspended horizontally on an axle",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-70",
+      "type": "paragraph",
+      "content": {
+        "text": "Which of the following would be the best way to produce measurable amounts of torque on a system to test the relationship between the angular momentum of the system, the average torque applied to the system, and the time for which the torque is applied?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-71",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A curved arrow lies at the side of a gray disk. There is a point at the center of the disk, and around the point there is a dashed circle. There is a point labeled “Child” on the dashed circle. Below the disc is a label saying “Top View”. The diagram above shows a top view of a child of mass *M* on a circular platform of mass 2 *M* that is rotating counterclockwise. Assume the platform rotates without friction. Which of the following describes an action by the child that will increase the angular speed of the platform-child system and why? The child moves toward the center of the platform, increasing the total angular momentum of the system.; The child moves toward the center of the platform, decreasing the rotational inertia of the system.; The child moves away from the center of the platform, increasing the total angular momentum of the system.; The child moves away from the center of the platform, decreasing the rotational inertia of the system.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(b)",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "fig-5",
+      "type": "figure",
+      "asset_url": "images/phy_m42182_Figure_11_05_08a.jpg",
+      "caption": {
+        "text": "A curved arrow lies at the side of a gray disk. There is a point at the center of the disk, and around the point there is a dashed circle. There is a point labeled “Child” on the dashed circle. Below the disc is a label saying “Top View”.",
+        "inline": []
+      },
+      "alt": "The figure is an illustration of the top view of a circular platform that is rotating counterclockwise. The location of a child is shown as a black dot, and the path traced by the child is shown as a dashed circle whose radius is smaller than the radius of the platform.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-73",
+      "type": "paragraph",
+      "content": {
+        "text": "The diagram above shows a top view of a child of mass *M* on a circular platform of mass 2 *M* that is rotating counterclockwise. Assume the platform rotates without friction. Which of the following describes an action by the child that will increase the angular speed of the platform-child system and why?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-74",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A point labeled “Moon” lies on a dashed ellipse. Two other points, labeled “A” and “B”, lie at opposite ends of the ellipse. A point labeled “Planet” lies inside the ellipse. A moon is in an elliptical orbit about a planet as shown above. At point *A* the moon has speed *uA* and is at distance *RA* from the planet. At point *B* the moon has speed *uB* . Has the moon's angular momentum changed? Explain your answer.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "fig-6",
+      "type": "figure",
+      "asset_url": "images/phy_m42182_Figure_11_05_09a.jpg",
+      "caption": {
+        "text": "A point labeled “Moon” lies on a dashed ellipse. Two other points, labeled “A” and “B”, lie at opposite ends of the ellipse. A point labeled “Planet” lies inside the ellipse.",
+        "inline": []
+      },
+      "alt": "The figure illustrates the elliptical orbit of a moon around a planet. The moon orbits clockwise. The planet is at one focus of the ellipse. Points A and B are the end points of the major axis of the ellipse. Point A is shown at the vertex farthest from the planet, and point B is shown at the vertex closest to the planet.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-76",
+      "type": "paragraph",
+      "content": {
+        "text": "A moon is in an elliptical orbit about a planet as shown above. At point *A* the moon has speed *uA* and is at distance *RA* from the planet. At point *B* the moon has speed *uB* . Has the moon's angular momentum changed? Explain your answer.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-77",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A hamster sits 0.10 m from the center of a lazy Susan of negligible mass. The wheel spins with a frequency of 1.0 rev/s. How will the frequency of the lazy Susan change if the hamster walks to 0.30 m from the center of rotation? Assume zero friction and no external torque. It will speed up to 2.0 rev/s.; It will speed up to 9.0 rev/s.; It will slow to 0.11 rev/s.; It will slow to 0.22 rev/s.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(c)",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-78",
+      "type": "paragraph",
+      "content": {
+        "text": "A hamster sits 0.10 m from the center of a lazy Susan of negligible mass. The wheel spins with a frequency of 1.0 rev/s. How will the frequency of the lazy Susan change if the hamster walks to 0.30 m from the center of rotation? Assume zero friction and no external torque.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-79",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Earth has a mass of 6.0 × 10 24 kg, a radius of 6.4 × 10 6 m, and a rotational frequency of 1.2 × 10 –5 rev/s. How would the planet's rotational frequency change if a layer of Earth with mass 1.0 × 10 23 kg broke off of the Earth, decreasing Earth's radius by 0.2 × 10 6 m? Assume no friction.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-80",
+      "type": "paragraph",
+      "content": {
+        "text": "Earth has a mass of 6.0 × 10 24 kg, a radius of 6.4 × 10 6 m, and a rotational frequency of 1.2 × 10 –5 rev/s. How would the planet's rotational frequency change if a layer of Earth with mass 1.0 × 10 23 kg broke off of the Earth, decreasing Earth's radius by 0.2 × 10 6 m? Assume no friction.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-81",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Consider system A, consisting of two disks of radius *R* , with both rotating clockwise. Now consider system B, consisting of one disk of radius *R* rotating counterclockwise and another disk of radius 2 *R* rotating clockwise. All of the disks have the same mass, and all have the same magnitude of angular velocity. Which system has the greatest angular momentum? A; B; They're equal.; Not enough information",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(b)",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-82",
+      "type": "paragraph",
+      "content": {
+        "text": "Consider system A, consisting of two disks of radius *R* , with both rotating clockwise. Now consider system B, consisting of one disk of radius *R* rotating counterclockwise and another disk of radius 2 *R* rotating clockwise. All of the disks have the same mass, and all have the same magnitude of angular velocity.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-83",
+      "type": "paragraph",
+      "content": {
+        "text": "Which system has the greatest angular momentum?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-84",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Assume that a baseball bat being swung at 3π rad/s by a batting machine is equivalent to a 1.1 m thin rod with a mass of 1.0 kg. How fast would a 0.15 kg baseball that squarely hits the very tip of the bat have to be going for the net angular momentum of the bat-ball system to be zero?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-85",
+      "type": "paragraph",
+      "content": {
+        "text": "Assume that a baseball bat being swung at 3π rad/s by a batting machine is equivalent to a 1.1 m thin rod with a mass of 1.0 kg. How fast would a 0.15 kg baseball that squarely hits the very tip of the bat have to be going for the net angular momentum of the bat-ball system to be zero?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-86",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Section Summary",
+        "inline": []
+      }
+    },
+    {
+      "id": "sec-87",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Conceptual Questions",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-88",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "When you start the engine of your car with the transmission in neutral, you notice that the car rocks in the opposite sense of the engine’s rotation. Explain in terms of conservation of angular momentum. Is the angular momentum of the car conserved for long (for more than a few seconds)?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-89",
+      "type": "paragraph",
+      "content": {
+        "text": "When you start the engine of your car with the transmission in neutral, you notice that the car rocks in the opposite sense of the engine’s rotation. Explain in terms of conservation of angular momentum. Is the angular momentum of the car conserved for long (for more than a few seconds)?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-90",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Suppose a child walks from the outer edge of a rotating merry-go round to the inside. Does the angular velocity of the merry-go-round increase, decrease, or remain the same? Explain your answer. A child may jump off a merry-go-round in a variety of directions.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-91",
+      "type": "paragraph",
+      "content": {
+        "text": "Suppose a child walks from the outer edge of a rotating merry-go round to the inside. Does the angular velocity of the merry-go-round increase, decrease, or remain the same? Explain your answer.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-7",
+      "type": "figure",
+      "asset_url": "images/phy_m42182_Figure_11_05_07a.jpg",
+      "caption": {
+        "text": "A child may jump off a merry-go-round in a variety of directions.",
+        "inline": []
+      },
+      "alt": "In figure A, there is a merry go round. A child is jumping radially outward. In figure B, a child is jumping backward to the direction of motion of merry go round. In figure C, a child is jumping from it to hang from the branch of the tree. In figure D, a child is jumping from the merry go round tangentially to its circumference.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "exr-93",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Suppose a child gets off a rotating merry-go-round. Does the angular velocity of the merry-go-round increase, decrease, or remain the same if: (a) He jumps off radially? (b) He jumps backward to land motionless? (c) He jumps straight up and hangs onto an overhead tree branch? (d) He jumps off forward, tangential to the edge? Explain your answers. (Refer to ).",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-94",
+      "type": "paragraph",
+      "content": {
+        "text": "Suppose a child gets off a rotating merry-go-round. Does the angular velocity of the merry-go-round increase, decrease, or remain the same if: (a) He jumps off radially? (b) He jumps backward to land motionless? (c) He jumps straight up and hangs onto an overhead tree branch? (d) He jumps off forward, tangential to the edge? Explain your answers. (Refer to ).",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-95",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Helicopters have a small propeller on their tail to keep them from rotating in the opposite direction of their main lifting blades. Explain in terms of Newton’s third law why the helicopter body rotates in the opposite direction to the blades.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-96",
+      "type": "paragraph",
+      "content": {
+        "text": "Helicopters have a small propeller on their tail to keep them from rotating in the opposite direction of their main lifting blades. Explain in terms of Newton’s third law why the helicopter body rotates in the opposite direction to the blades.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-97",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Whenever a helicopter has two sets of lifting blades, they rotate in opposite directions (and there will be no tail propeller). Explain why it is best to have the blades rotate in opposite directions.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-98",
+      "type": "paragraph",
+      "content": {
+        "text": "Whenever a helicopter has two sets of lifting blades, they rotate in opposite directions (and there will be no tail propeller). Explain why it is best to have the blades rotate in opposite directions.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-99",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Describe how work is done by a skater pulling in her arms during a spin. In particular, identify the force she exerts on each arm to pull it in and the distance each moves, noting that a component of the force is in the direction moved. Why is angular momentum not increased by this action?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-100",
+      "type": "paragraph",
+      "content": {
+        "text": "Describe how work is done by a skater pulling in her arms during a spin. In particular, identify the force she exerts on each arm to pull it in and the distance each moves, noting that a component of the force is in the direction moved. Why is angular momentum not increased by this action?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-101",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "When there is a global heating trend on Earth, the atmosphere expands and the length of the day increases very slightly. Explain why the length of a day increases.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-102",
+      "type": "paragraph",
+      "content": {
+        "text": "When there is a global heating trend on Earth, the atmosphere expands and the length of the day increases very slightly. Explain why the length of a day increases.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-103",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Nearly all conventional piston engines have flywheels on them to smooth out engine vibrations caused by the thrust of individual piston firings. Why does the flywheel have this effect?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-104",
+      "type": "paragraph",
+      "content": {
+        "text": "Nearly all conventional piston engines have flywheels on them to smooth out engine vibrations caused by the thrust of individual piston firings. Why does the flywheel have this effect?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-105",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Jet turbines spin rapidly. They are designed to fly apart if something makes them seize suddenly, rather than transfer angular momentum to the plane’s wing, possibly tearing it off. Explain how flying apart conserves angular momentum without transferring it to the wing.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-106",
+      "type": "paragraph",
+      "content": {
+        "text": "Jet turbines spin rapidly. They are designed to fly apart if something makes them seize suddenly, rather than transfer angular momentum to the plane’s wing, possibly tearing it off. Explain how flying apart conserves angular momentum without transferring it to the wing.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-107",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "An astronaut tightens a bolt on a satellite in orbit. He rotates in a direction opposite to that of the bolt, and the satellite rotates in the same direction as the bolt. Explain why. If a handhold is available on the satellite, can this counter-rotation be prevented? Explain your answer.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-108",
+      "type": "paragraph",
+      "content": {
+        "text": "An astronaut tightens a bolt on a satellite in orbit. He rotates in a direction opposite to that of the bolt, and the satellite rotates in the same direction as the bolt. Explain why. If a handhold is available on the satellite, can this counter-rotation be prevented? Explain your answer.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-109",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Competitive divers pull their limbs in and curl up their bodies when they do flips. Just before entering the water, they fully extend their limbs to enter straight down. Explain the effect of both actions on their angular velocities. Also explain the effect on their angular momenta. The diver spins rapidly when curled up and slows when she extends her limbs before entering the water.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-110",
+      "type": "paragraph",
+      "content": {
+        "text": "Competitive divers pull their limbs in and curl up their bodies when they do flips. Just before entering the water, they fully extend their limbs to enter straight down. Explain the effect of both actions on their angular velocities. Also explain the effect on their angular momenta.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-8",
+      "type": "figure",
+      "asset_url": "images/phy_m42182_Figure_11_05_05a.jpg",
+      "caption": {
+        "text": "The diver spins rapidly when curled up and slows when she extends her limbs before entering the water.",
+        "inline": []
+      },
+      "alt": "The given figure shows a diver who curls her body while flipping and then fully extends her limbs to enter straight down into water.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "exr-112",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Draw a free body diagram to show how a diver gains angular momentum when leaving the diving board.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-113",
+      "type": "paragraph",
+      "content": {
+        "text": "Draw a free body diagram to show how a diver gains angular momentum when leaving the diving board.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-114",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "In terms of angular momentum, what is the advantage of giving a football or a rifle bullet a spin when throwing or releasing it? The image shows a view down the barrel of a cannon, emphasizing its rifling. Rifling in the barrel of a canon causes the projectile to spin just as is the case for rifles (hence the name for the grooves in the barrel). (credit: Elsie esq., Flickr)",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-115",
+      "type": "paragraph",
+      "content": {
+        "text": "In terms of angular momentum, what is the advantage of giving a football or a rifle bullet a spin when throwing or releasing it?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-9",
+      "type": "figure",
+      "asset_url": "images/phy_m42182_Figure_11_05_06a.jpg",
+      "caption": {
+        "text": "The image shows a view down the barrel of a cannon, emphasizing its rifling. Rifling in the barrel of a canon causes the projectile to spin just as is the case for rifles (hence the name for the grooves in the barrel). (credit: Elsie esq., Flickr)",
+        "inline": []
+      },
+      "alt": "A close-up view looking down the rifled barrel of a large artillery piece or cannon, showcasing the distinct spiral grooves inside its muzzle.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "sec-117",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Problems & Exercises",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-118",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "(a) Calculate the angular momentum of the Earth in its orbit around the Sun. (b) Compare this angular momentum with the angular momentum of Earth on its axis.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a) $2.66×{10}^{40}kg\\cdot {m}^{2}/s$ (b) $7.07×{10}^{33}kg\\cdot {m}^{2}/s$ The angular momentum of the Earth in its orbit around the Sun is $3.77×{10}^{6}$ times larger than the angular momentum of the Earth around its axis.",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-119",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) Calculate the angular momentum of the Earth in its orbit around the Sun.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-120",
+      "type": "paragraph",
+      "content": {
+        "text": "(b) Compare this angular momentum with the angular momentum of Earth on its axis.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-121",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) $2.66×{10}^{40}kg\\cdot {m}^{2}/s$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-122",
+      "type": "paragraph",
+      "content": {
+        "text": "(b) $7.07×{10}^{33}kg\\cdot {m}^{2}/s$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-123",
+      "type": "paragraph",
+      "content": {
+        "text": "The angular momentum of the Earth in its orbit around the Sun is $3.77×{10}^{6}$ times larger than the angular momentum of the Earth around its axis.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-124",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "(a) What is the angular momentum of the Moon in its orbit around Earth? (b) How does this angular momentum compare with the angular momentum of the Moon on its axis? Remember that the Moon keeps one side toward Earth at all times. (c) Discuss whether the values found in parts (a) and (b) seem consistent with the fact that tidal effects with Earth have caused the Moon to rotate with one side always facing Earth.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-125",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) What is the angular momentum of the Moon in its orbit around Earth?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-126",
+      "type": "paragraph",
+      "content": {
+        "text": "(b) How does this angular momentum compare with the angular momentum of the Moon on its axis? Remember that the Moon keeps one side toward Earth at all times.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-127",
+      "type": "paragraph",
+      "content": {
+        "text": "(c) Discuss whether the values found in parts (a) and (b) seem consistent with the fact that tidal effects with Earth have caused the Moon to rotate with one side always facing Earth.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-128",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Suppose you start an antique car by exerting a force of 300 N on its crank for 0.250 s. What angular momentum is given to the engine if the handle of the crank is 0.300 m from the pivot and the force is exerted to create maximum torque the entire time?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$22.5 kg\\cdot {m}^{2}/s$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-129",
+      "type": "paragraph",
+      "content": {
+        "text": "Suppose you start an antique car by exerting a force of 300 N on its crank for 0.250 s. What angular momentum is given to the engine if the handle of the crank is 0.300 m from the pivot and the force is exerted to create maximum torque the entire time?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-130",
+      "type": "paragraph",
+      "content": {
+        "text": "$22.5 kg\\cdot {m}^{2}/s$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-131",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A playground merry-go-round has a mass of 120 kg and a radius of 1.80 m and it is rotating with an angular velocity of 0.500 rev/s. What is its angular velocity after a 22.0-kg child gets onto it by grabbing its outer edge? The child is initially at rest.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-132",
+      "type": "paragraph",
+      "content": {
+        "text": "A playground merry-go-round has a mass of 120 kg and a radius of 1.80 m and it is rotating with an angular velocity of 0.500 rev/s. What is its angular velocity after a 22.0-kg child gets onto it by grabbing its outer edge? The child is initially at rest.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-133",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Three children are riding on the edge of a merry-go-round that is 100 kg, has a 1.60-m radius, and is spinning at 20.0 rpm. The children have masses of 22.0, 28.0, and 33.0 kg. If the child who has a mass of 28.0 kg moves to the center of the merry-go-round, what is the new angular velocity in rpm?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "25.3 rpm",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-134",
+      "type": "paragraph",
+      "content": {
+        "text": "Three children are riding on the edge of a merry-go-round that is 100 kg, has a 1.60-m radius, and is spinning at 20.0 rpm. The children have masses of 22.0, 28.0, and 33.0 kg. If the child who has a mass of 28.0 kg moves to the center of the merry-go-round, what is the new angular velocity in rpm?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-135",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "(a) Calculate the angular momentum of an ice skater spinning at 6.00 rev/s given his moment of inertia is $0.400kg\\cdot {m}^{2}$ . (b) He reduces his rate of spin (his angular velocity) by extending his arms and increasing his moment of inertia. Find the value of his moment of inertia if his angular velocity decreases to 1.25 rev/s. (c) Suppose instead he keeps his arms in and allows friction of the ice to slow him to 3.00 rev/s. What average torque was exerted if this takes 15.0 s?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-136",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) Calculate the angular momentum of an ice skater spinning at 6.00 rev/s given his moment of inertia is $0.400kg\\cdot {m}^{2}$ . (b) He reduces his rate of spin (his angular velocity) by extending his arms and increasing his moment of inertia. Find the value of his moment of inertia if his angular velocity decreases to 1.25 rev/s. (c) Suppose instead he keeps his arms in and allows friction of the ice to slow him to 3.00 rev/s. What average torque was exerted if this takes 15.0 s?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-137",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Construct Your Own Problem Consider the Earth-Moon system. Construct a problem in which you calculate the total angular momentum of the system including the spins of the Earth and the Moon on their axes and the orbital angular momentum of the Earth-Moon system in its nearly monthly rotation. Calculate what happens to the Moon’s orbital radius if the Earth’s rotation decreases due to tidal drag. Among the things to be considered are the amount by which the Earth’s rotation slows and the fact that the Moon will continue to have one side always facing the Earth.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-138",
+      "type": "paragraph",
+      "content": {
+        "text": "Construct Your Own Problem Consider the Earth-Moon system. Construct a problem in which you calculate the total angular momentum of the system including the spins of the Earth and the Moon on their axes and the orbital angular momentum of the Earth-Moon system in its nearly monthly rotation. Calculate what happens to the Moon’s orbital radius if the Earth’s rotation decreases due to tidal drag. Among the things to be considered are the amount by which the Earth’s rotation slows and the fact that the Moon will continue to have one side always facing the Earth.",
+        "inline": []
+      },
+      "level": "core"
+    }
+  ],
+  "solutions": {
+    "osbooks-college-physics-bundle:m42182:exr-59": [
+      [
+        {
+          "kind": "text",
+          "text": "Yes, angular and linear momentums are completely analogous. While they are exact analogs they have different units and are not directly inter-convertible like forms of energy are."
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42182:exr-63": [
+      [
+        {
+          "kind": "text",
+          "text": "(a)"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42182:exr-67": [
+      [
+        {
+          "kind": "text",
+          "text": "(a)"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42182:exr-71": [
+      [
+        {
+          "kind": "text",
+          "text": "(b)"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42182:exr-77": [
+      [
+        {
+          "kind": "text",
+          "text": "(c)"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42182:exr-81": [
+      [
+        {
+          "kind": "text",
+          "text": "(b)"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42182:exr-118": [
+      [
+        {
+          "kind": "text",
+          "text": "(a)"
+        },
+        {
+          "kind": "math",
+          "text": "2.66×{10}^{40}kg\\cdot {m}^{2}/s"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(b)"
+        },
+        {
+          "kind": "math",
+          "text": "7.07×{10}^{33}kg\\cdot {m}^{2}/s"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "The angular momentum of the Earth in its orbit around the Sun is"
+        },
+        {
+          "kind": "math",
+          "text": "3.77×{10}^{6}"
+        },
+        {
+          "kind": "text",
+          "text": "times larger than the angular momentum of the Earth around its axis."
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42182:exr-128": [
+      [
+        {
+          "kind": "math",
+          "text": "22.5 kg\\cdot {m}^{2}/s"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42182:exr-133": [
+      [
+        {
+          "kind": "text",
+          "text": "25.3 rpm"
+        }
+      ]
+    ]
+  }
+}

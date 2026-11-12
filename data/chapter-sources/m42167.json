@@ -1,0 +1,63 @@
+{
+  "module": "m42167",
+  "source_attribution": {
+    "publisher": "OpenStax",
+    "book": "osbooks-college-physics-bundle",
+    "section": "m42167",
+    "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42167/index.cnxml",
+    "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)",
+    "locator": "CNXML module index.cnxml (typed elements, solutions present)"
+  },
+  "blocks": [
+    {
+      "id": "fig-1",
+      "type": "figure",
+      "asset_url": "images/phy_m42167_OSX_CP2e_Figure_10_00_01.jpg",
+      "caption": {
+        "text": "On a short time scale, rocks like these in Australia’s Kalbarri National Park are static, or motionless relative to the Earth. (credit: Richard Liblanc/Flickr)",
+        "inline": []
+      },
+      "alt": "A layered rock formation forming a large circular shape from which a landscape is visible.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-1",
+      "type": "paragraph",
+      "content": {
+        "text": "What might desks, bridges, buildings, trees, and mountains have in common—at least in the eyes of a physicist? The answer is that they are ordinarily motionless relative to the Earth. Furthermore, their acceleration is zero because they remain motionless. That means they also have something in common with a car moving at a constant velocity, because anything with a constant velocity also has an acceleration of zero. Now, the important part—Newton’s second law states that net $F=ma$ , and so the net external force is zero for all stationary objects and for all objects moving at constant velocity. There are forces acting, but they are balanced. That is, they are in *equilibrium* .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-2",
+      "type": "paragraph",
+      "content": {
+        "text": "Statics is the study of forces in equilibrium, a large group of situations that makes up a special case of Newton’s second law. We have already considered a few such situations; in this chapter, we cover the topic more thoroughly, including consideration of such possible effects as the rotation and deformation of an object by the forces acting on it.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-3",
+      "type": "paragraph",
+      "content": {
+        "text": "How can we guarantee that a body is in equilibrium and what can we learn from systems that are in equilibrium? There are actually two conditions that must be satisfied to achieve equilibrium. These conditions are the topics of the first two sections of this chapter.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-4",
+      "type": "paragraph",
+      "content": {
+        "text": "OpenStax AP Physics Chapter 9: Statics and Torque (Physics Concept Trailer™)",
+        "inline": []
+      },
+      "level": "core"
+    }
+  ],
+  "solutions": {}
+}

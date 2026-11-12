@@ -1,0 +1,937 @@
+{
+  "module": "m42256",
+  "source_attribution": {
+    "publisher": "OpenStax",
+    "book": "osbooks-college-physics-bundle",
+    "section": "m42256",
+    "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42256/index.cnxml",
+    "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)",
+    "locator": "CNXML module index.cnxml (typed elements, solutions present)"
+  },
+  "blocks": [
+    {
+      "id": "sec-0",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Learning Objectives",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-1",
+      "type": "paragraph",
+      "content": {
+        "text": "By the end of this section, you will be able to:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-1",
+      "type": "figure",
+      "asset_url": "images/phy_m42256_Figure_18_02_01a.jpg",
+      "caption": {
+        "text": "When a firework explodes, the light energy is perceived before the sound energy. Sound travels more slowly than light does. (credit: Dominic Alves, Flickr)",
+        "inline": []
+      },
+      "alt": "A photograph of a fireworks display in the sky.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-3",
+      "type": "paragraph",
+      "content": {
+        "text": "Sound, like all waves, travels at a certain speed and has the properties of frequency and wavelength. You can observe direct evidence of the speed of sound while watching a fireworks display. The flash of an explosion is seen well before its sound is heard, implying both that sound travels at a finite speed and that it is much slower than light. You can also directly sense the frequency of a sound. Perception of frequency is called pitch . The wavelength of sound is not directly sensed, but indirect evidence is found in the correlation of the size of musical instruments with their pitch. Small instruments, such as a piccolo, typically make high-pitch sounds, while large instruments, such as a tuba, typically make low-pitch sounds. High pitch means small wavelength, and the size of a musical instrument is directly related to the wavelengths of sound it produces. So a small instrument creates short-wavelength sounds. Similar arguments hold that a large instrument creates long-wavelength sounds.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-4",
+      "type": "paragraph",
+      "content": {
+        "text": "The relationship of the speed of sound, its frequency, and wavelength is the same as for all waves:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-5",
+      "type": "paragraph",
+      "content": {
+        "text": "where ${v}_{w}$ is the speed of sound, $f$ is its frequency, and *$λ$* is its wavelength. The wavelength of a sound is the distance between adjacent identical parts of a wave—for example, between adjacent compressions as illustrated in . The frequency is the same as that of the source and is the number of waves that pass a point per unit time.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-2",
+      "type": "figure",
+      "asset_url": "images/phy_m42256_Figure_18_02_02a.jpg",
+      "caption": {
+        "text": "A sound wave emanates from a source vibrating at a frequency $f$ , propagates at ${v}_{w}$ , and has a wavelength $λ$ .",
+        "inline": []
+      },
+      "alt": "A picture of a vibrating tuning fork is shown. The sound wave compressions and rarefactions are shown to emanate from the fork on both the sides as semicircular arcs of alternate bold and dotted lines. The wavelength is marked as the distance between two successive bold arcs. The frequency of the vibrations is shown as f and velocity of the wave represented by v sub w.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-7",
+      "type": "paragraph",
+      "content": {
+        "text": "makes it apparent that the speed of sound varies greatly in different media. The speed of sound in a medium is determined by a combination of the medium’s rigidity (or compressibility in gases) and its density. The more rigid (or less compressible) the medium, the faster the speed of sound. For materials that have similar rigidities, sound will travel faster through the one with the lower density because the sound energy is more easily transferred from particle to particle. The speed of sound in air is low, because air is compressible. Because liquids and solids are relatively rigid and very difficult to compress, the speed of sound in such media is generally greater than in gases.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "tbl-8",
+      "type": "table",
+      "title": {
+        "text": "Table",
+        "inline": []
+      },
+      "rows": [
+        [
+          "Medium",
+          "*v* w (m/s)"
+        ],
+        [
+          "**Gases at $0ºC$**"
+        ],
+        [
+          "Air",
+          "331"
+        ],
+        [
+          "Carbon dioxide",
+          "259"
+        ],
+        [
+          "Oxygen",
+          "316"
+        ],
+        [
+          "Helium",
+          "965"
+        ],
+        [
+          "Hydrogen",
+          "1290"
+        ],
+        [
+          "**Liquids at $20ºC$**"
+        ],
+        [
+          "Ethanol",
+          "1160"
+        ],
+        [
+          "Mercury",
+          "1450"
+        ],
+        [
+          "Water, fresh",
+          "1480"
+        ],
+        [
+          "Sea water",
+          "1540"
+        ],
+        [
+          "Human tissue",
+          "1540"
+        ],
+        [
+          "**Solids (longitudinal or bulk)**"
+        ],
+        [
+          "Vulcanized rubber",
+          "54"
+        ],
+        [
+          "Polyethylene",
+          "920"
+        ],
+        [
+          "Marble",
+          "3810"
+        ],
+        [
+          "Glass, Pyrex",
+          "5640"
+        ],
+        [
+          "Lead",
+          "1960"
+        ],
+        [
+          "Aluminum",
+          "5120"
+        ],
+        [
+          "Steel",
+          "5960"
+        ]
+      ],
+      "alt": "Table with 21 rows",
+      "level": "core"
+    },
+    {
+      "id": "p-9",
+      "type": "paragraph",
+      "content": {
+        "text": "Earthquakes, essentially sound waves in Earth’s crust, are an interesting example of how the speed of sound depends on the rigidity of the medium. Earthquakes have both longitudinal and transverse components, and these travel at different speeds. The bulk modulus of granite is greater than its shear modulus. For that reason, the speed of longitudinal or pressure waves (P-waves) in earthquakes in granite is significantly higher than the speed of transverse or shear waves (S-waves). Both components of earthquakes travel slower in less rigid material, such as sediments. P-waves have speeds of 4 to 7 km/s, and S-waves correspondingly range in speed from 2 to 5 km/s, both being faster in more rigid material. The P-wave gets progressively farther ahead of the S-wave as they travel through Earth’s crust. The time between the P- and S-waves is routinely used to determine the distance to their source, the epicenter of the earthquake. The time and nature of these wave differences also provides the evidence for the nature of Earth's core. Through careful analysis of seismographic records of large earthquakes whose waves could be clearly detected around the world, Richard Dixon Oldham established that waves passing through the center of the Earth behaved as if they were moving through a different medium: a liquid. Later on, Inge Lehmann used more precise observations (partly based on a better coordinated network of seismographs she helped set up) to better define the nature of the core: that it was a solid inner core surrounded by a liquid outer core.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-10",
+      "type": "paragraph",
+      "content": {
+        "text": "The speed of sound is affected by temperature in a given medium. For air at sea level, the speed of sound is given by",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-11",
+      "type": "paragraph",
+      "content": {
+        "text": "where the temperature (denoted as $T$ ) is in units of kelvin. The speed of sound in gases is related to the average speed of particles in the gas, ${v}_{rms}$ , and that",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-12",
+      "type": "paragraph",
+      "content": {
+        "text": "where $k$ is the Boltzmann constant ( $1.38×{10}^{−23}J/K$ ) and $m$ is the mass of each (identical) particle in the gas. So, it is reasonable that the speed of sound in air and other gases should depend on the square root of temperature. While not negligible, this is not a strong dependence. At $0ºC$ , the speed of sound is 331 m/s, whereas at $20.0ºC$ it is 343 m/s, less than a 4% increase. shows a use of the speed of sound by a bat to sense distances. Echoes are also used in medical imaging.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-3",
+      "type": "figure",
+      "asset_url": "images/phy_m42256_Figure_18_02_03a.jpg",
+      "caption": {
+        "text": "A bat uses sound echoes to find its way about and to catch prey. The time for the echo to return is directly proportional to the distance.",
+        "inline": []
+      },
+      "alt": "The picture is of a bat trying to catch its prey an insect using sound echoes. The incident sound and sound reflected from the bat are shown as semicircular arcs.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-14",
+      "type": "paragraph",
+      "content": {
+        "text": "One of the more important properties of sound is that its speed is nearly independent of frequency. This independence is certainly true in open air for sounds in the audible range of 20 to 20,000 Hz. If this independence were not true, you would certainly notice it for music played by a marching band in a football stadium, for example. Suppose that high-frequency sounds traveled faster—then the farther you were from the band, the more the sound from the low-pitch instruments would lag that from the high-pitch ones. But the music from all instruments arrives in cadence independent of distance, and so all frequencies must travel at nearly the same speed. Recall that",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-15",
+      "type": "paragraph",
+      "content": {
+        "text": "In a given medium under fixed conditions, ${v}_{w}$ is constant, so that there is a relationship between $f$ and *$λ$* ; the higher the frequency, the smaller the wavelength. See and consider the following example.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-4",
+      "type": "figure",
+      "asset_url": "images/phy_m42256_Figure_18_02_04a.jpg",
+      "caption": {
+        "text": "Because they travel at the same speed in a given medium, low-frequency sounds must have a greater wavelength than high-frequency sounds. Here, the lower-frequency sounds are emitted by the large speaker, called a woofer, while the higher-frequency sounds are emitted by the small speaker, called a tweeter.",
+        "inline": []
+      },
+      "alt": "Picture of a speaker having a woofer and a tweeter. High frequency sound coming out of the woofer shown as small circles closely spaced. Low frequency sound coming out of tweeter are shown as larger circles distantly spaced.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "ex-17",
+      "type": "example",
+      "kind": "worked",
+      "title": {
+        "text": "Calculating Wavelengths: What Are the Wavelengths of Audible Sounds?",
+        "inline": []
+      },
+      "problem": {
+        "text": "",
+        "inline": []
+      },
+      "answer": null,
+      "level": "core"
+    },
+    {
+      "id": "p-18",
+      "type": "paragraph",
+      "content": {
+        "text": "Calculate the wavelengths of sounds at the extremes of the audible range, 20 and 20,000 Hz, in $30.0ºC$ air. (Assume that the frequency values are accurate to two significant figures.)",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-19",
+      "type": "paragraph",
+      "content": {
+        "text": "To find wavelength from frequency, we can use ${v}_{w}=fλ$ .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-20",
+      "type": "paragraph",
+      "content": {
+        "text": "Because the product of $f$ multiplied by *$λ$* equals a constant, the smaller $f$ is, the larger *$λ$* must be, and vice versa.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-21",
+      "type": "paragraph",
+      "content": {
+        "text": "The speed of sound can change when sound travels from one medium to another. However, the frequency usually remains the same because it is like a driven oscillation and has the frequency of the original source. If ${v}_{w}$ changes and $f$ remains the same, then the wavelength $λ$ must change. That is, because ${v}_{w}=fλ$ , the higher the speed of a sound, the greater its wavelength for a given frequency.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-22",
+      "type": "paragraph",
+      "content": {
+        "text": "Suspend a sheet of paper so that the top edge of the paper is fixed and the bottom edge is free to move. You could tape the top edge of the paper to the edge of a table. Gently blow near the edge of the bottom of the sheet and note how the sheet moves. Speak softly and then louder such that the sounds hit the edge of the bottom of the paper, and note how the sheet moves. Explain the effects.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-23",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Imagine you observe two fireworks explode. You hear the explosion of one as soon as you see it. However, you see the other firework for several milliseconds before you hear the explosion. Explain why this is so.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "Sound and light both travel at definite speeds. The speed of sound is slower than the speed of light. The first firework is probably very close by, so the speed difference is not noticeable. The second firework is farther away, so the light arrives at your eyes noticeably sooner than the sound wave arrives at your ears.",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-24",
+      "type": "paragraph",
+      "content": {
+        "text": "Imagine you observe two fireworks explode. You hear the explosion of one as soon as you see it. However, you see the other firework for several milliseconds before you hear the explosion. Explain why this is so.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-25",
+      "type": "paragraph",
+      "content": {
+        "text": "Sound and light both travel at definite speeds. The speed of sound is slower than the speed of light. The first firework is probably very close by, so the speed difference is not noticeable. The second firework is farther away, so the light arrives at your eyes noticeably sooner than the sound wave arrives at your ears.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-26",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "You observe two musical instruments that you cannot identify. One plays high-pitch sounds and the other plays low-pitch sounds. How could you determine which is which without hearing either of them play?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "Compare their sizes. High-pitch instruments are generally smaller than low-pitch instruments because they generate a smaller wavelength.",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-27",
+      "type": "paragraph",
+      "content": {
+        "text": "You observe two musical instruments that you cannot identify. One plays high-pitch sounds and the other plays low-pitch sounds. How could you determine which is which without hearing either of them play?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-28",
+      "type": "paragraph",
+      "content": {
+        "text": "Compare their sizes. High-pitch instruments are generally smaller than low-pitch instruments because they generate a smaller wavelength.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-29",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Test Prep for AP Courses",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-30",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A teacher wants to demonstrate that the speed of sound is not a constant value. Considering her regular classroom voice as the control, which of the following will increase the speed of sound leaving her mouth? Submerge her mouth underwater and speak at the same volume.; Increase the temperature of the room and speak at the same volume.; Increase the pitch of her voice and speak at the same volume. I only; I and II only; I, II and III; II and III; III only",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(b)",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-31",
+      "type": "paragraph",
+      "content": {
+        "text": "A teacher wants to demonstrate that the speed of sound is not a constant value. Considering her regular classroom voice as the control, which of the following will increase the speed of sound leaving her mouth?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-32",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "All members of an orchestra begin tuning their instruments at the same time. While some woodwind instruments play high frequency notes, other stringed instruments play notes of lower frequency. Yet an audience member will hear all notes simultaneously, in apparent contrast to the equation. Explain how a student could demonstrate the flaw in the above logic, using a slinky, stopwatch, and meter stick. Make sure to explain what relationship is truly demonstrated in the above equation, in addition to what would be necessary to get the speed of the slinky to actually change. You may include diagrams and equations as part of your explanation.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-33",
+      "type": "paragraph",
+      "content": {
+        "text": "All members of an orchestra begin tuning their instruments at the same time. While some woodwind instruments play high frequency notes, other stringed instruments play notes of lower frequency. Yet an audience member will hear all notes simultaneously, in apparent contrast to the equation.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-34",
+      "type": "paragraph",
+      "content": {
+        "text": "Explain how a student could demonstrate the flaw in the above logic, using a slinky, stopwatch, and meter stick. Make sure to explain what relationship is truly demonstrated in the above equation, in addition to what would be necessary to get the speed of the slinky to actually change. You may include diagrams and equations as part of your explanation.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-35",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Section Summary",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-36",
+      "type": "paragraph",
+      "content": {
+        "text": "The relationship of the speed of sound ${v}_{w}$ , its frequency $f$ , and its wavelength *$λ$* is given by",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-37",
+      "type": "paragraph",
+      "content": {
+        "text": "which is the same relationship given for all waves.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-38",
+      "type": "paragraph",
+      "content": {
+        "text": "In air, the speed of sound is related to air temperature *$T$* by",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-39",
+      "type": "paragraph",
+      "content": {
+        "text": "${v}_{w}$ is the same for all frequencies and wavelengths.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-40",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Conceptual Questions",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-41",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "How do sound vibrations of atoms differ from thermal motion?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-42",
+      "type": "paragraph",
+      "content": {
+        "text": "How do sound vibrations of atoms differ from thermal motion?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-43",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "When sound passes from one medium to another where its propagation speed is different, does its frequency or wavelength change? Explain your answer briefly.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-44",
+      "type": "paragraph",
+      "content": {
+        "text": "When sound passes from one medium to another where its propagation speed is different, does its frequency or wavelength change? Explain your answer briefly.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-45",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Problems & Exercises",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-46",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "When poked by a spear, an operatic soprano lets out a 1200-Hz shriek. What is its wavelength if the speed of sound is 345 m/s?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "0.288 m",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-47",
+      "type": "paragraph",
+      "content": {
+        "text": "When poked by a spear, an operatic soprano lets out a 1200-Hz shriek. What is its wavelength if the speed of sound is 345 m/s?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-48",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "What frequency sound has a 0.10-m wavelength when the speed of sound is 340 m/s?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-49",
+      "type": "paragraph",
+      "content": {
+        "text": "What frequency sound has a 0.10-m wavelength when the speed of sound is 340 m/s?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-50",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Calculate the speed of sound on a day when a 1500 Hz frequency has a wavelength of 0.221 m.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "332 m/s",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-51",
+      "type": "paragraph",
+      "content": {
+        "text": "Calculate the speed of sound on a day when a 1500 Hz frequency has a wavelength of 0.221 m.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-52",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "(a) What is the speed of sound in a medium where a 100-kHz frequency produces a 5.96-cm wavelength? (b) Which substance in is this likely to be?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-53",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) What is the speed of sound in a medium where a 100-kHz frequency produces a 5.96-cm wavelength? (b) Which substance in is this likely to be?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-54",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Show that the speed of sound in $20.0ºC$ air is 343 m/s, as claimed in the text.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "\\[${v}_{w}=(331 m/s)\\sqrt{\\frac{T}{273 K}}=(331 m/s)\\sqrt{\\frac{293 K}{273 K}}=343 m/s$\\]",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-55",
+      "type": "paragraph",
+      "content": {
+        "text": "Show that the speed of sound in $20.0ºC$ air is 343 m/s, as claimed in the text.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-56",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Air temperature in the Sahara Desert can reach $56.0ºC$ (about $134ºF$ ). What is the speed of sound in air at that temperature?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-57",
+      "type": "paragraph",
+      "content": {
+        "text": "Air temperature in the Sahara Desert can reach $56.0ºC$ (about $134ºF$ ). What is the speed of sound in air at that temperature?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-58",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Dolphins make sounds in air and water. What is the ratio of the wavelength of a sound in air to its wavelength in seawater? Assume air temperature is $20.0ºC$ .",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "0.223",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-59",
+      "type": "paragraph",
+      "content": {
+        "text": "Dolphins make sounds in air and water. What is the ratio of the wavelength of a sound in air to its wavelength in seawater? Assume air temperature is $20.0ºC$ .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-60",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A sonar echo returns to a submarine 1.20 s after being emitted. What is the distance to the object creating the echo? (Assume that the submarine is in the ocean, not in fresh water.)",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-61",
+      "type": "paragraph",
+      "content": {
+        "text": "A sonar echo returns to a submarine 1.20 s after being emitted. What is the distance to the object creating the echo? (Assume that the submarine is in the ocean, not in fresh water.)",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-62",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "(a) If a submarine’s sonar can measure echo times with a precision of 0.0100 s, what is the smallest difference in distances it can detect? (Assume that the submarine is in the ocean, not in fresh water.) (b) Discuss the limits this time resolution imposes on the ability of the sonar system to detect the size and shape of the object creating the echo.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a) 7.70 m (b) This means that sonar is good for spotting and locating large objects, but it isn’t able to resolve smaller objects, or detect the detailed shapes of objects. Objects like ships or large pieces of airplanes can be found by sonar, while smaller pieces must be found by other means.",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-63",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) If a submarine’s sonar can measure echo times with a precision of 0.0100 s, what is the smallest difference in distances it can detect? (Assume that the submarine is in the ocean, not in fresh water.)",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-64",
+      "type": "paragraph",
+      "content": {
+        "text": "(b) Discuss the limits this time resolution imposes on the ability of the sonar system to detect the size and shape of the object creating the echo.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-65",
+      "type": "paragraph",
+      "content": {
+        "text": "(b) This means that sonar is good for spotting and locating large objects, but it isn’t able to resolve smaller objects, or detect the detailed shapes of objects. Objects like ships or large pieces of airplanes can be found by sonar, while smaller pieces must be found by other means.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-66",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A physicist at a fireworks display times the lag between seeing an explosion and hearing its sound, and finds it to be 0.400 s. (a) How far away is the explosion if air temperature is $24.0ºC$ and if you neglect the time taken for light to reach the physicist? (b) Calculate the distance to the explosion taking the speed of light into account. Note that this distance is negligibly greater.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-67",
+      "type": "paragraph",
+      "content": {
+        "text": "A physicist at a fireworks display times the lag between seeing an explosion and hearing its sound, and finds it to be 0.400 s. (a) How far away is the explosion if air temperature is $24.0ºC$ and if you neglect the time taken for light to reach the physicist? (b) Calculate the distance to the explosion taking the speed of light into account. Note that this distance is negligibly greater.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-68",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Suppose a bat uses sound echoes to locate its insect prey, 3.00 m away. (See .) (a) Calculate the echo times for temperatures of $5.00ºC$ and $35.0ºC$ . (b) What percent uncertainty does this cause for the bat in locating the insect? (c) Discuss the significance of this uncertainty and whether it could cause difficulties for the bat. (In practice, the bat continues to use sound as it closes in, eliminating most of any difficulties imposed by this and other effects, such as motion of the prey.)",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a) 18.0 ms, 17.1 ms (b) 5.00% (c) This uncertainty could definitely cause difficulties for the bat, if it didn’t continue to use sound as it closed in on its prey. A 5% uncertainty could be the difference between catching the prey around the neck or around the chest, which means that it could miss grabbing its prey.",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-69",
+      "type": "paragraph",
+      "content": {
+        "text": "Suppose a bat uses sound echoes to locate its insect prey, 3.00 m away. (See .) (a) Calculate the echo times for temperatures of $5.00ºC$ and $35.0ºC$ . (b) What percent uncertainty does this cause for the bat in locating the insect? (c) Discuss the significance of this uncertainty and whether it could cause difficulties for the bat. (In practice, the bat continues to use sound as it closes in, eliminating most of any difficulties imposed by this and other effects, such as motion of the prey.)",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-70",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) 18.0 ms, 17.1 ms",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-71",
+      "type": "paragraph",
+      "content": {
+        "text": "(c) This uncertainty could definitely cause difficulties for the bat, if it didn’t continue to use sound as it closed in on its prey. A 5% uncertainty could be the difference between catching the prey around the neck or around the chest, which means that it could miss grabbing its prey.",
+        "inline": []
+      },
+      "level": "core"
+    }
+  ],
+  "solutions": {
+    "osbooks-college-physics-bundle:m42256:exr-23": [
+      [
+        {
+          "kind": "text",
+          "text": "Sound and light both travel at definite speeds. The speed of sound is slower than the speed of light. The first firework is probably very close by, so the speed difference is not noticeable. The second firework is farther away, so the light arrives at your eyes noticeably sooner than the sound wave arrives at your ears."
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42256:exr-26": [
+      [
+        {
+          "kind": "text",
+          "text": "Compare their sizes. High-pitch instruments are generally smaller than low-pitch instruments because they generate a smaller wavelength."
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42256:exr-30": [
+      [
+        {
+          "kind": "text",
+          "text": "(b)"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42256:exr-46": [
+      [
+        {
+          "kind": "text",
+          "text": "0.288 m"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42256:exr-50": [
+      [
+        {
+          "kind": "text",
+          "text": "332 m/s"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42256:exr-54": [
+      [
+        {
+          "kind": "math",
+          "text": "{v}_{w}=(331 m/s)\\sqrt{\\frac{T}{273 K}}=(331 m/s)\\sqrt{\\frac{293 K}{273 K}}=343 m/s"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42256:exr-58": [
+      [
+        {
+          "kind": "text",
+          "text": "0.223"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42256:exr-62": [
+      [
+        {
+          "kind": "text",
+          "text": "(a) 7.70 m"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(b) This means that sonar is good for spotting and locating large objects, but it isn’t able to resolve smaller objects, or detect the detailed shapes of objects. Objects like ships or large pieces of airplanes can be found by sonar, while smaller pieces must be found by other means."
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42256:exr-68": [
+      [
+        {
+          "kind": "text",
+          "text": "(a) 18.0 ms, 17.1 ms"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(b) 5.00%"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(c) This uncertainty could definitely cause difficulties for the bat, if it didn’t continue to use sound as it closed in on its prey. A 5% uncertainty could be the difference between catching the prey around the neck or around the chest, which means that it could miss grabbing its prey."
+        }
+      ]
+    ]
+  }
+}

@@ -1,0 +1,495 @@
+{
+  "module": "m42246",
+  "source_attribution": {
+    "publisher": "OpenStax",
+    "book": "osbooks-college-physics-bundle",
+    "section": "m42246",
+    "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42246/index.cnxml",
+    "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)",
+    "locator": "CNXML module index.cnxml (typed elements, solutions present)"
+  },
+  "blocks": [
+    {
+      "id": "sec-0",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Learning Objectives",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-1",
+      "type": "paragraph",
+      "content": {
+        "text": "By the end of this section, you will be able to:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-1",
+      "type": "figure",
+      "asset_url": "images/phy_m42246_Figure_17_07_01.jpg",
+      "caption": {
+        "text": "In order to counteract dampening forces, this mom needs to keep pushing the swing. (credit: Erik A. Johnson, Flickr)",
+        "inline": []
+      },
+      "alt": "In the figure shown, a small child is seated in a spring swing, tied with a belt at his waist. In the back is his mother, who is pushing the swing in the to and fro motion.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-3",
+      "type": "paragraph",
+      "content": {
+        "text": "A guitar string stops oscillating a few seconds after being plucked. To keep a child happy on a swing, you must keep pushing. Although we can often make friction and other non-conservative forces negligibly small, completely undamped motion is rare. In fact, we may even want to damp oscillations, such as with car shock absorbers.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-4",
+      "type": "paragraph",
+      "content": {
+        "text": "For a system that has a small amount of damping, the period and frequency are nearly the same as for simple harmonic motion, but the amplitude gradually decreases as shown in . This occurs because the non-conservative damping force removes energy from the system, usually in the form of thermal energy. In general, energy removal by non-conservative forces is described as",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-5",
+      "type": "paragraph",
+      "content": {
+        "text": "where ${W}_{nc}$ is work done by a non-conservative force (here the damping force). For a damped harmonic oscillator, ${W}_{nc}$ is negative because it removes mechanical energy (KE + PE) from the system.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-2",
+      "type": "figure",
+      "asset_url": "images/phy_m42246_Figure_17_07_02a.jpg",
+      "caption": {
+        "text": "In this graph of displacement versus time for a harmonic oscillator with a small amount of damping, the amplitude slowly decreases, but the period and frequency are nearly the same as if the system were completely undamped.",
+        "inline": []
+      },
+      "alt": "The figure shows a graph of displacement, along y axis, versus time for a harmonic oscillator, running along the x axis, equally in positive as well as negative quadrants. The amplitude, X, of the oscillations is shown by a green wave which is decreasing gradually as we move far from the y axis, but the time, T, shown here as the distance between adjacent crests remains the same throughout.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-7",
+      "type": "paragraph",
+      "content": {
+        "text": "If you gradually *increase* the amount of damping in a system, the period and frequency begin to be affected, because damping opposes and hence slows the back and forth motion. (The net force is smaller in both directions.) If there is very large damping, the system does not even oscillate—it slowly moves toward equilibrium. shows the displacement of a harmonic oscillator for different amounts of damping. When we want to damp out oscillations, such as in the suspension of a car, we may want the system to return to equilibrium as quickly as possible Critical damping is defined as the condition in which the damping of an oscillator results in it returning as quickly as possible to its equilibrium position. The critically damped system may overshoot the equilibrium position, but if it does, it will do so only once. Critical damping is represented by Curve A in . With less-than critical damping, the system will return to equilibrium faster but will overshoot and cross over one or more times. Such a system is underdamped ; its displacement is represented by the curve in . Curve B in represents an overdamped system. As with critical damping, it too may overshoot the equilibrium position, but will reach equilibrium over a longer period of time.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-3",
+      "type": "figure",
+      "asset_url": "images/phy_m42246_Figure_17_07_03a.jpg",
+      "caption": {
+        "text": "Displacement versus time for a critically damped harmonic oscillator (A) and an overdamped harmonic oscillator (B). The critically damped oscillator returns to equilibrium at $X=0$ in the smallest time possible without overshooting.",
+        "inline": []
+      },
+      "alt": "The given graph is of displacement, along y-axis, versus time along x axis. Symbol for displacement is given as X subscript zero and for time is given as t. Two curves start at a point along the y axis, where X subscript zero is greater than zero. Curve A is curved downward and meets x axis at a point. Curve B is curved upward and is over curve A and meets x axis at a point which is toward the far right of the meeting point of the curve A and x axis.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-9",
+      "type": "paragraph",
+      "content": {
+        "text": "Critical damping is often desired, because such a system returns to equilibrium rapidly and remains at equilibrium as well. In addition, a constant force applied to a critically damped system moves the system to a new equilibrium position in the shortest time possible without overshooting or oscillating about the new position. For example, when you stand on bathroom scales that have a needle gauge, the needle moves to its equilibrium position without oscillating. It would be quite inconvenient if the needle oscillated about the new equilibrium position for a long time before settling. Damping forces can vary greatly in character. Friction, for example, is sometimes independent of velocity (as assumed in most places in this text). But many damping forces depend on velocity—sometimes in complex ways, sometimes simply being proportional to velocity.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "ex-10",
+      "type": "example",
+      "kind": "worked",
+      "title": {
+        "text": "Damping an Oscillatory Motion: Friction on an Object Connected to a Spring",
+        "inline": []
+      },
+      "problem": {
+        "text": "",
+        "inline": []
+      },
+      "answer": null,
+      "level": "core"
+    },
+    {
+      "id": "p-11",
+      "type": "paragraph",
+      "content": {
+        "text": "Damping oscillatory motion is important in many systems, and the ability to control the damping is even more so. This is generally attained using non-conservative forces such as the friction between surfaces, and viscosity for objects moving through fluids. The following example considers friction. Suppose a 0.200-kg object is connected to a spring as shown in , but there is simple friction between the object and the surface, and the coefficient of friction ${μ}_{k}$ is equal to 0.0800. (a) What is the frictional force between the surfaces? (b) What total distance does the object travel if it is released 0.100 m from equilibrium, starting at $v=0$ ? The force constant of the spring is $k=50.0 N/m$ .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-4",
+      "type": "figure",
+      "asset_url": "images/phy_m42246_Figure_17_07_04a.jpg",
+      "caption": {
+        "text": "The transformation of energy in simple harmonic motion is illustrated for an object attached to a spring on a frictionless surface.",
+        "inline": []
+      },
+      "alt": " The given figure (a) shows a spring on a frictionless surface attached to a bar or wall from the left side and on the right side of the spring, there is an object attached with mass m. Its amplitude is given by X, and X is equal to zero at the equilibrium level. Force F is applied to it from the right side, represented by a red arrow pointing toward the left and velocity v is equal to zero. An arrow showing the direction of force is also given alongside this figure as well as with the other four figures. The energy of the object is half k x squared.           In the given figure (b), after force is applied, the object moves to the left, compressing the spring slightly. The displacement of the object from its initial position is indicated by dots. The force F, here is equal to zero and velocity v, is maximum in the negative direction or the left. The energy of the object in this case is half m times negative v-max whole squared.           In the given figure (c), the spring has been compressed the maximum limit, and the amplitude is minus X. Now the force is toward the right, indicated here with a red arrow pointing to the right and the velocity, v, is zero. The energy of the object now is half k times negative x whole squared.           In the given figure (d), the spring is shown released from its compressed position and the object has moved toward the right side to reach the equilibrium level. Here, F is equal to zero, and the velocity, v, is the maximum. The energy of the object becomes half k times v max squared.           In the given figure (e), the spring has been stretched loose to the maximum possible limit and the object has moved to the far right. Now the velocity v, here is equal to zero and the direction of force is toward the left. As shown here, F is equal to zero. The energy of the object in this case is half k times x squared.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-13",
+      "type": "paragraph",
+      "content": {
+        "text": "This problem requires you to integrate your knowledge of various concepts regarding waves, oscillations, and damping. To solve an integrated concept problem, you must first identify the physical principles involved. Part (a) is about the frictional force. This is a topic involving the application of Newton’s Laws. Part (b) requires an understanding of work and conservation of energy, as well as some understanding of horizontal oscillatory systems.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-14",
+      "type": "paragraph",
+      "content": {
+        "text": "Now that we have identified the principles we must apply in order to solve the problems, we need to identify the knowns and unknowns for each part of the question, as well as the quantity that is constant in Part (a) and Part (b) of the question.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-15",
+      "type": "paragraph",
+      "content": {
+        "text": "The force here is small because the system and the coefficients are small.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-16",
+      "type": "paragraph",
+      "content": {
+        "text": "This is the total distance traveled back and forth across $x=0$ , which is the undamped equilibrium position. The number of oscillations about the equilibrium position will be more than $d/X=(1.59m)/(0.100m)=15.9$ because the amplitude of the oscillations is decreasing with time. At the end of the motion, this system will not return to $x=0$ for this type of damping force, because static friction will exceed the restoring force. This system is underdamped. In contrast, an overdamped system with a simple constant damping force would not cross the equilibrium position $x=0$ a single time. For example, if this system had a damping force 20 times greater, it would only move 0.0484 m toward the equilibrium position from its original 0.100-m position.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-17",
+      "type": "paragraph",
+      "content": {
+        "text": "This worked example illustrates how to apply problem-solving strategies to situations that integrate the different concepts you have learned. The first step is to identify the physical principles involved in the problem. The second step is to solve for the unknowns using familiar problem-solving strategies. These are found throughout the text, and many worked examples show how to use them for single topics. In this integrated concepts example, you can see how to apply them across several topics. You will find these techniques useful in applications of physics outside a physics course, such as in your profession, in other science disciplines, and in everyday life.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-18",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Why are completely undamped harmonic oscillators so rare?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "Friction often comes into play whenever an object is moving. Friction causes damping in a harmonic oscillator.",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-19",
+      "type": "paragraph",
+      "content": {
+        "text": "Why are completely undamped harmonic oscillators so rare?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-20",
+      "type": "paragraph",
+      "content": {
+        "text": "Friction often comes into play whenever an object is moving. Friction causes damping in a harmonic oscillator.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-21",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Describe the difference between overdamping, underdamping, and critical damping.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "An overdamped system moves slowly toward equilibrium. An underdamped system moves quickly to equilibrium, but will oscillate about the equilibrium point as it does so. A critically damped system moves as quickly as possible toward equilibrium without oscillating about the equilibrium.",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-22",
+      "type": "paragraph",
+      "content": {
+        "text": "Describe the difference between overdamping, underdamping, and critical damping.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-23",
+      "type": "paragraph",
+      "content": {
+        "text": "An overdamped system moves slowly toward equilibrium. An underdamped system moves quickly to equilibrium, but will oscillate about the equilibrium point as it does so. A critically damped system moves as quickly as possible toward equilibrium without oscillating about the equilibrium.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-24",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Test Prep for AP Courses",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-25",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "The non-conservative damping force removes energy from a system in which form? Mechanical energy; Electrical energy; Thermal energy; None of the above",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(c)",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-26",
+      "type": "paragraph",
+      "content": {
+        "text": "The non-conservative damping force removes energy from a system in which form?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-27",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "The time rate of change of mechanical energy for a damped oscillator is always: 0; Negative; Positive; Undefined",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-28",
+      "type": "paragraph",
+      "content": {
+        "text": "The time rate of change of mechanical energy for a damped oscillator is always:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-29",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A 0.5-kg object is connected to a spring that undergoes oscillatory motion. There is friction between the object and the surface it is kept on given by coefficient of friction ${μ}_{k}=0.06$ . If the object is released 0.2 m from equilibrium, what is the distance that the object travels? Given that the force constant of the spring is 50 N m -1 and the frictional force between the objects is 0.294 N.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$d=\\frac{k}{2{μ}_{K}mg}{({X}^{2}-\\frac{{μ}_{K}mg}{k})}^{2}$ $wherek=50N\\cdot {m}^{-1}$ ${μ}_{k}=0.06$ $m=0.5kg$ $d=\\frac{50N\\cdot {m}^{-1}}{2×0.06×9.8m\\cdot {s}^{-2}}({(0.2)}^{2}-(\\frac{{(0.06×0.5kg×9.8m\\cdot {s}^{-2})}^{2}}{{(50N\\cdot {m}^{-1})}^{2}}))$ $=1.698m$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-30",
+      "type": "paragraph",
+      "content": {
+        "text": "A 0.5-kg object is connected to a spring that undergoes oscillatory motion. There is friction between the object and the surface it is kept on given by coefficient of friction ${μ}_{k}=0.06$ . If the object is released 0.2 m from equilibrium, what is the distance that the object travels? Given that the force constant of the spring is 50 N m -1 and the frictional force between the objects is 0.294 N.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-31",
+      "type": "paragraph",
+      "content": {
+        "text": "$d=\\frac{k}{2{μ}_{K}mg}{({X}^{2}-\\frac{{μ}_{K}mg}{k})}^{2}$ $wherek=50N\\cdot {m}^{-1}$ ${μ}_{k}=0.06$ $m=0.5kg$ $d=\\frac{50N\\cdot {m}^{-1}}{2×0.06×9.8m\\cdot {s}^{-2}}({(0.2)}^{2}-(\\frac{{(0.06×0.5kg×9.8m\\cdot {s}^{-2})}^{2}}{{(50N\\cdot {m}^{-1})}^{2}}))$ $=1.698m$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-32",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Section Summary",
+        "inline": []
+      }
+    },
+    {
+      "id": "sec-33",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Conceptual Questions",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-34",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Give an example of a damped harmonic oscillator. (They are more common than undamped or simple harmonic oscillators.)",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-35",
+      "type": "paragraph",
+      "content": {
+        "text": "Give an example of a damped harmonic oscillator. (They are more common than undamped or simple harmonic oscillators.)",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-36",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "How would a car bounce after a bump under each of these conditions? overdamping; underdamping; critical damping",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-37",
+      "type": "paragraph",
+      "content": {
+        "text": "How would a car bounce after a bump under each of these conditions? overdamping; underdamping; critical damping",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-38",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Most harmonic oscillators are damped and, if undriven, eventually come to a stop. How is this observation related to the second law of thermodynamics?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-39",
+      "type": "paragraph",
+      "content": {
+        "text": "Most harmonic oscillators are damped and, if undriven, eventually come to a stop. How is this observation related to the second law of thermodynamics?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-40",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Problems & Exercises",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-41",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "The amplitude of a lightly damped oscillator decreases by $3.0%$ during each cycle. What percentage of the mechanical energy of the oscillator is lost in each cycle?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-42",
+      "type": "paragraph",
+      "content": {
+        "text": "The amplitude of a lightly damped oscillator decreases by $3.0%$ during each cycle. What percentage of the mechanical energy of the oscillator is lost in each cycle?",
+        "inline": []
+      },
+      "level": "core"
+    }
+  ],
+  "solutions": {
+    "osbooks-college-physics-bundle:m42246:exr-18": [
+      [
+        {
+          "kind": "text",
+          "text": "Friction often comes into play whenever an object is moving. Friction causes damping in a harmonic oscillator."
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42246:exr-21": [
+      [
+        {
+          "kind": "text",
+          "text": "An overdamped system moves slowly toward equilibrium. An underdamped system moves quickly to equilibrium, but will oscillate about the equilibrium point as it does so. A critically damped system moves as quickly as possible toward equilibrium without oscillating about the equilibrium."
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42246:exr-25": [
+      [
+        {
+          "kind": "text",
+          "text": "(c)"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42246:exr-29": [
+      [
+        {
+          "kind": "math",
+          "text": "d=\\frac{k}{2{μ}_{K}mg}{({X}^{2}-\\frac{{μ}_{K}mg}{k})}^{2}wherek=50N\\cdot {m}^{-1}{μ}_{k}=0.06m=0.5kgd=\\frac{50N\\cdot {m}^{-1}}{2×0.06×9.8m\\cdot {s}^{-2}}({(0.2)}^{2}-(\\frac{{(0.06×0.5kg×9.8m\\cdot {s}^{-2})}^{2}}{{(50N\\cdot {m}^{-1})}^{2}}))=1.698m"
+        }
+      ]
+    ]
+  }
+}

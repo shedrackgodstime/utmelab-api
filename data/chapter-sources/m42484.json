@@ -1,0 +1,1012 @@
+{
+  "module": "m42484",
+  "source_attribution": {
+    "publisher": "OpenStax",
+    "book": "osbooks-college-physics-bundle",
+    "section": "m42484",
+    "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42484/index.cnxml",
+    "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)",
+    "locator": "CNXML module index.cnxml (typed elements, solutions present)"
+  },
+  "blocks": [
+    {
+      "id": "sec-0",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Learning Objectives",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-1",
+      "type": "paragraph",
+      "content": {
+        "text": "By the end of this section, you will be able to:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-2",
+      "type": "paragraph",
+      "content": {
+        "text": "The need for some type of vision correction is very common. Common vision defects are easy to understand, and some are simple to correct. illustrates two common vision defects. Nearsightedness , or myopia , is the inability to see distant objects clearly while close objects are clear. The eye overconverges the nearly parallel rays from a distant object, and the rays cross in front of the retina. More divergent rays from a close object are converged on the retina for a clear image. The distance to the farthest object that can be seen clearly is called the far point of the eye (normally infinity). Farsightedness , or hyperopia , is the inability to see close objects clearly while distant objects may be clear. A farsighted eye does not converge sufficient rays from a close object to make the rays meet on the retina. Less diverging rays from a distant object can be converged for a clear image. The distance to the closest object that can be seen clearly is called the near point of the eye (normally 25 cm).",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-1",
+      "type": "figure",
+      "asset_url": "images/phy_m42484_Figure_27_02_01.jpg",
+      "caption": {
+        "text": "(a) The nearsighted (myopic) eye converges rays from a distant object in front of the retina; thus, they are diverging when they strike the retina, producing a blurry image. This can be caused by the lens of the eye being too powerful or the length of the eye being too great. (b) The farsighted (hyperopic) eye is unable to converge the rays from a close object by the time they strike the retina, producing blurry close vision. This can be caused by insufficient power in the lens or by the eye being too short.",
+        "inline": []
+      },
+      "alt": "Part a shows two figures of cross-sectional area of eye depicting myopia. In both the figures, parallel rays coming from an object placed at infinity are converging in front of the retina. Figure on the left shows the lens of the eye too strong and figure on the right illustrates the shape of the eye too long. Part b shows two figures of cross-sectional area of eye depicting hyperopia. In both the figures, rays coming from a close object are shown which are converging at the back of the retina. Figure on the left shows the lens of the eye too weak and figure on the right illustrates the shape of the eye too short.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-4",
+      "type": "paragraph",
+      "content": {
+        "text": "Since the nearsighted eye over converges light rays, the correction for nearsightedness is to place a diverging spectacle lens in front of the eye. This reduces the power of an eye that is too powerful. Another way of thinking about this is that a diverging spectacle lens produces a case 3 image, which is closer to the eye than the object (see ). To determine the spectacle power needed for correction, you must know the person’s far point—that is, you must know the greatest distance at which the person can see clearly. Then the image produced by a spectacle lens must be at this distance or closer for the nearsighted person to be able to see it clearly. It is worth noting that wearing glasses does not change the eye in any way. The eyeglass lens is simply used to create an image of the object at a distance where the nearsighted person can see it clearly. Whereas someone not wearing glasses can see clearly *objects* that fall between their near point and their far point, someone wearing glasses can see *images* that fall between their near point and their far point.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-2",
+      "type": "figure",
+      "asset_url": "images/phy_m42484_Figure_27_02_02.jpg",
+      "caption": {
+        "text": "Correction of nearsightedness requires a diverging lens that compensates for the overconvergence by the eye. The diverging lens produces an image closer to the eye than the object, so that the nearsighted person can see it clearly.",
+        "inline": []
+      },
+      "alt": "Two illustrations of cross-sectional view of an eye are shown. In the first figure, a diverging spectacle lens is placed in front of the eye structure. A ray diagram for the diverging lens is also shown. Parallel rays from a distant object, taken as tree, are striking the lens and then diverging. A smaller image of the tree is shown in front of the lens. In the second figure, a ray diagram with respect to the diverging lens within the eye structure is shown. Parallel rays from a distant object are striking the diverging lens, entering the lens of the eye, and converging at retina. This explains the correction of nearsightedness using a diverging lens.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "ex-6",
+      "type": "example",
+      "kind": "worked",
+      "title": {
+        "text": "Correcting Nearsightedness",
+        "inline": []
+      },
+      "problem": {
+        "text": "",
+        "inline": []
+      },
+      "answer": null,
+      "level": "core"
+    },
+    {
+      "id": "p-7",
+      "type": "paragraph",
+      "content": {
+        "text": "What power of spectacle lens is needed to correct the vision of a nearsighted person whose far point is 30.0 cm? Assume the spectacle (corrective) lens is held 1.50 cm away from the eye by eyeglass frames.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-8",
+      "type": "paragraph",
+      "content": {
+        "text": "You want this nearsighted person to be able to see very distant objects clearly. That means the spectacle lens must produce an image 30.0 cm from the eye for an object very far away. An image 30.0 cm from the eye will be 28.5 cm to the left of the spectacle lens (see ). Therefore, we must get ${d}_{i}=-28.5 cm$ when ${d}_{o}≈∞$ . The image distance is negative, because it is on the same side of the spectacle as the object.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-9",
+      "type": "paragraph",
+      "content": {
+        "text": "Since ${d}_{i}$ and ${d}_{o}$ are known, the power of the spectacle lens can be found using $P=\\frac{1}{{d}_{o}}+\\frac{1}{{d}_{i}}$ as written earlier:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-10",
+      "type": "paragraph",
+      "content": {
+        "text": "Since $1/∞= 0$ , we obtain:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-11",
+      "type": "paragraph",
+      "content": {
+        "text": "The negative power indicates a diverging (or concave) lens, as expected. The spectacle produces a case 3 image closer to the eye, where the person can see it. If you examine eyeglasses for nearsighted people, you will find the lenses are thinnest in the center. Additionally, if you examine a prescription for eyeglasses for nearsighted people, you will find that the prescribed power is negative and given in units of diopters.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-12",
+      "type": "paragraph",
+      "content": {
+        "text": "Since the farsighted eye under converges light rays, the correction for farsightedness is to place a converging spectacle lens in front of the eye. This increases the power of an eye that is too weak. Another way of thinking about this is that a converging spectacle lens produces a case 2 image, which is farther from the eye than the object (see ). To determine the spectacle power needed for correction, you must know the person’s near point—that is, you must know the smallest distance at which the person can see clearly. Then the image produced by a spectacle lens must be at this distance or farther for the farsighted person to be able to see it clearly.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-3",
+      "type": "figure",
+      "asset_url": "images/phy_m42484_Figure_27_02_03.jpg",
+      "caption": {
+        "text": "Correction of farsightedness uses a converging lens that compensates for the under convergence by the eye. The converging lens produces an image farther from the eye than the object, so that the farsighted person can see it clearly.",
+        "inline": []
+      },
+      "alt": "Two illustrations of a cross-sectional view of an eye are shown. In the upper part of the figure, a converging lens is placed in front of the eye structure and a close object before it. A ray diagram showing the rays from the object are striking the lens; converging a bit and entering the eyes; converging again through the eye lens and forming an image at the retina, and another set of rays converge behind the retina. The lower part of the figure shows a virtual image, an object, a converging lens, and the internal structure of an eye. Parallel rays from the object are entering the eyes and converging at a point on the retina. An image larger than the object image is formed behind the object on the same side of the lens.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "ex-14",
+      "type": "example",
+      "kind": "worked",
+      "title": {
+        "text": "Correcting Farsightedness",
+        "inline": []
+      },
+      "problem": {
+        "text": "",
+        "inline": []
+      },
+      "answer": null,
+      "level": "core"
+    },
+    {
+      "id": "p-15",
+      "type": "paragraph",
+      "content": {
+        "text": "What power of spectacle lens is needed to allow a farsighted person, whose near point is 1.00 m, to see an object clearly that is 25.0 cm away? Assume the spectacle (corrective) lens is held 1.50 cm away from the eye by eyeglass frames.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-16",
+      "type": "paragraph",
+      "content": {
+        "text": "When an object is held 25.0 cm from the person’s eyes, the spectacle lens must produce an image 1.00 m away (the near point). An image 1.00 m from the eye will be 98.5 cm to the left of the spectacle lens because the spectacle lens is 1.50 cm from the eye (see ). Therefore, ${d}_{i}=-98.5 cm$ . The image distance is negative, because it is on the same side of the spectacle as the object. The object is 23.5 cm to the left of the spectacle, so that ${d}_{o}=23.5 cm$ .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-17",
+      "type": "paragraph",
+      "content": {
+        "text": "Since ${d}_{i}$ and ${d}_{o}$ are known, the power of the spectacle lens can be found using $P=\\frac{1}{{d}_{o}}+\\frac{1}{{d}_{i}}$ :",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-18",
+      "type": "paragraph",
+      "content": {
+        "text": "The positive power indicates a converging (convex) lens, as expected. The convex spectacle produces a case 2 image farther from the eye, where the person can see it. If you examine eyeglasses of farsighted people, you will find the lenses to be thickest in the center. In addition, a prescription of eyeglasses for farsighted people has a prescribed power that is positive.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-19",
+      "type": "paragraph",
+      "content": {
+        "text": "Another common vision defect is astigmatism , an unevenness or asymmetry in the focus of the eye. For example, rays passing through a vertical region of the eye may focus closer than rays passing through a horizontal region, resulting in the image appearing elongated. This is mostly due to irregularities in the shape of the cornea but can also be due to lens irregularities or unevenness in the retina. Because of these irregularities, different parts of the lens system produce images at different locations. The eye-brain system can compensate for some of these irregularities, but they generally manifest themselves as less distinct vision or sharper images along certain axes. shows a chart used to detect astigmatism. Astigmatism can be at least partially corrected with a spectacle having the opposite irregularity of the eye. If an eyeglass prescription has a cylindrical correction, it is there to correct astigmatism. The normal corrections for short- or farsightedness are spherical corrections, uniform along all axes.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-4",
+      "type": "figure",
+      "asset_url": "images/phy_m42484_Figure_27_02_04.jpg",
+      "caption": {
+        "text": "This chart can detect astigmatism, unevenness in the focus of the eye. Check each of your eyes separately by looking at the center cross (without spectacles if you wear them). If lines along some axes appear darker or clearer than others, you have an astigmatism.",
+        "inline": []
+      },
+      "alt": "A circle without border and a cross sign in between. A wheel type structure is shown with parallel lines coming from the border of the circle.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-21",
+      "type": "paragraph",
+      "content": {
+        "text": "Contact lenses have advantages over glasses beyond their cosmetic aspects. One problem with glasses is that as the eye moves, it is not at a fixed distance from the spectacle lens. Contacts rest on and move with the eye, eliminating this problem. Because contacts cover a significant portion of the cornea, they provide superior peripheral vision compared with eyeglasses. Contacts also correct some corneal astigmatism caused by surface irregularities. The tear layer between the smooth contact and the cornea fills in the irregularities. Since the index of refraction of the tear layer and the cornea are very similar, you now have a regular optical surface in place of an irregular one. If the curvature of a contact lens is not the same as the cornea (as may be necessary with some individuals to obtain a comfortable fit), the tear layer between the contact and cornea acts as a lens. If the tear layer is thinner in the center than at the edges, it has a negative power, for example. Skilled optometrists will adjust the power of the contact to compensate.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-22",
+      "type": "paragraph",
+      "content": {
+        "text": "Other advances in vision correction demonstrate the interconnectedness and value of scientific research. In the 1980s, Donna Strickland and Gérard Mourou worked on ways to make small but powerful lasers. Up until that time, powerful lasers had to be quite large in order to function properly. Essentially, the intensity of the beam itself would modify the instrument’s ability to function and create too much heat to be practical. Strickland and Mourou used ultrashort laser pulses passed over a grating that modified the beam but retained its power. Chirped pulse amplification, as it became known, has been used to develop most of the highest-powered lasers in the world, but also some of the smallest and most common. Decades after their initial discovery, Strickland and Mourou were awarded the Nobel Prize for Physics (with Strickland becoming the third woman to receive the award) partly due to CPA’s pivotal role in the increasingly common practice of laser vision correction—an application neither planned during their initial research.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-23",
+      "type": "paragraph",
+      "content": {
+        "text": "Laser vision correction has progressed rapidly in the last few years. It is the latest and by far the most successful in a series of procedures that correct vision by reshaping the cornea. As noted at the beginning of this section, the cornea accounts for about two-thirds of the power of the eye. Thus, small adjustments of its curvature have the same effect as putting a lens in front of the eye. To a reasonable approximation, the power of multiple lenses placed close together equals the sum of their powers. For example, a concave spectacle lens (for nearsightedness) having $P=-3.00 D$ has the same effect on vision as reducing the power of the eye itself by 3.00 D. So to correct the eye for nearsightedness, the cornea is flattened to reduce its power. Similarly, to correct for farsightedness, the curvature of the cornea is enhanced to increase the power of the eye—the same effect as the positive power spectacle lens used for farsightedness. Laser vision correction uses high intensity electromagnetic radiation to ablate (to remove material from the surface) and reshape the corneal surfaces.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-24",
+      "type": "paragraph",
+      "content": {
+        "text": "Today, the most commonly used laser vision correction procedure is *Laser in situ Keratomileusis (LASIK)* . The top layer of the cornea is surgically peeled back and the underlying tissue ablated by multiple bursts of finely controlled ultraviolet radiation produced by an excimer laser. Lasers are used because they not only produce well-focused intense light, but they also emit very pure wavelength electromagnetic radiation that can be controlled more accurately than mixed wavelength light. The 193 nm wavelength UV commonly used is extremely and strongly absorbed by corneal tissue, allowing precise evaporation of very thin layers. A computer controlled program applies more bursts, usually at a rate of 10 per second, to the areas that require deeper removal. Typically a spot less than 1 mm in diameter and about $0.3μm$ in thickness is removed by each burst. Nearsightedness, farsightedness, and astigmatism can be corrected with an accuracy that produces normal distant vision in more than 90% of the patients, in many cases right away. The corneal flap is replaced; healing takes place rapidly and is nearly painless. More than 1 million Americans per year undergo LASIK (see ).",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-5",
+      "type": "figure",
+      "asset_url": "images/phy_m42484_Figure_27_02_05.jpg",
+      "caption": {
+        "text": "Laser vision correction is being performed using the LASIK procedure. Reshaping of the cornea by laser ablation is based on a careful assessment of the patient’s vision and is computer controlled. The upper corneal layer is temporarily peeled back and minimally disturbed in LASIK, providing for more rapid and less painful healing of the less sensitive tissues below. (credit: U.S. Navy photo by Mass Communication Specialist 1st Class Brien Aho)",
+        "inline": []
+      },
+      "alt": "The image depicts a surgeon using state-of-the-art equipment for LASIK surgery on a patient who is lying down.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "sec-26",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Test Prep for AP Courses",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-27",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Which of the following types of light have a wavelength greater than that of visible light? gamma rays; infrared; radio; ultraviolet I, II, and III; I and IV only; II and III only; III only",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(c)",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-28",
+      "type": "paragraph",
+      "content": {
+        "text": "Which of the following types of light have a wavelength greater than that of visible light?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-29",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "In LASIK surgery, a coherent UV light of 193 nm is focused on the corneal tissue. Explain the importance of using light that is all the same wavelength.; Explain why UV light is more effective than infrared light at evaporating the corneal tissue.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-30",
+      "type": "paragraph",
+      "content": {
+        "text": "In LASIK surgery, a coherent UV light of 193 nm is focused on the corneal tissue.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-31",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Section Summary",
+        "inline": []
+      }
+    },
+    {
+      "id": "sec-32",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Conceptual Questions",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-33",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "It has become common to replace the cataract-clouded lens of the eye with an internal lens. This intraocular lens can be chosen so that the person has perfect distant vision. Will the person be able to read without glasses? If the person was nearsighted, is the power of the intraocular lens greater or less than the removed lens?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-34",
+      "type": "paragraph",
+      "content": {
+        "text": "It has become common to replace the cataract-clouded lens of the eye with an internal lens. This intraocular lens can be chosen so that the person has perfect distant vision. Will the person be able to read without glasses? If the person was nearsighted, is the power of the intraocular lens greater or less than the removed lens?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-35",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "If the cornea is to be reshaped (this can be done surgically or with contact lenses) to correct myopia, should its curvature be made greater or smaller? Explain. Also explain how hyperopia can be corrected.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-36",
+      "type": "paragraph",
+      "content": {
+        "text": "If the cornea is to be reshaped (this can be done surgically or with contact lenses) to correct myopia, should its curvature be made greater or smaller? Explain. Also explain how hyperopia can be corrected.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-37",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "If there is a fixed percent uncertainty in LASIK reshaping of the cornea, why would you expect those people with the greatest correction to have a poorer chance of normal distant vision after the procedure?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-38",
+      "type": "paragraph",
+      "content": {
+        "text": "If there is a fixed percent uncertainty in LASIK reshaping of the cornea, why would you expect those people with the greatest correction to have a poorer chance of normal distant vision after the procedure?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-39",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A person with presbyopia has lost some or all of the ability to accommodate the power of the eye. If such a person’s distant vision is corrected with LASIK, will she still need reading glasses? Explain.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-40",
+      "type": "paragraph",
+      "content": {
+        "text": "A person with presbyopia has lost some or all of the ability to accommodate the power of the eye. If such a person’s distant vision is corrected with LASIK, will she still need reading glasses? Explain.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-41",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Problem Exercises",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-42",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "What is the far point of a person whose eyes have a relaxed power of 50.5 D?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "2.00 m",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-43",
+      "type": "paragraph",
+      "content": {
+        "text": "What is the far point of a person whose eyes have a relaxed power of 50.5 D?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-44",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "What is the near point of a person whose eyes have an accommodated power of 53.5 D?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-45",
+      "type": "paragraph",
+      "content": {
+        "text": "What is the near point of a person whose eyes have an accommodated power of 53.5 D?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-46",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "(a) A laser vision correction reshaping the cornea of a myopic patient reduces the power of his eye by 9.00 D, with a $±5.0%$ uncertainty in the final correction. What is the range of diopters for spectacle lenses that this person might need after LASIK procedure? (b) Was the person nearsighted or farsighted before the procedure? How do you know?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a) $±0.45 D$ (b) The person was nearsighted because the patient was myopic and the power was reduced.",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-47",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) A laser vision correction reshaping the cornea of a myopic patient reduces the power of his eye by 9.00 D, with a $±5.0%$ uncertainty in the final correction. What is the range of diopters for spectacle lenses that this person might need after LASIK procedure? (b) Was the person nearsighted or farsighted before the procedure? How do you know?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-48",
+      "type": "paragraph",
+      "content": {
+        "text": "(b) The person was nearsighted because the patient was myopic and the power was reduced.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-49",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "In a LASIK vision correction, the power of a patient’s eye is increased by 3.00 D. Assuming this produces normal close vision, what was the patient’s near point before the procedure?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-50",
+      "type": "paragraph",
+      "content": {
+        "text": "In a LASIK vision correction, the power of a patient’s eye is increased by 3.00 D. Assuming this produces normal close vision, what was the patient’s near point before the procedure?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-51",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "What was the previous far point of a patient who had laser vision correction that reduced the power of her eye by 7.00 D, producing normal distant vision for her?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "0.143 m",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-52",
+      "type": "paragraph",
+      "content": {
+        "text": "What was the previous far point of a patient who had laser vision correction that reduced the power of her eye by 7.00 D, producing normal distant vision for her?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-53",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A severely myopic patient has a far point of 5.00 cm. By how many diopters should the power of his eye be reduced in laser vision correction to obtain normal distant vision for him?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-54",
+      "type": "paragraph",
+      "content": {
+        "text": "A severely myopic patient has a far point of 5.00 cm. By how many diopters should the power of his eye be reduced in laser vision correction to obtain normal distant vision for him?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-55",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A student’s eyes, while reading the blackboard, have a power of 51.0 D. How far is the board from his eyes?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "1.00 m",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-56",
+      "type": "paragraph",
+      "content": {
+        "text": "A student’s eyes, while reading the blackboard, have a power of 51.0 D. How far is the board from his eyes?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-57",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "The power of a physician’s eyes is 53.0 D while examining a patient. How far from her eyes is the feature being examined?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-58",
+      "type": "paragraph",
+      "content": {
+        "text": "The power of a physician’s eyes is 53.0 D while examining a patient. How far from her eyes is the feature being examined?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-59",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A young woman with normal distant vision has a 10.0% ability to accommodate (that is, increase) the power of her eyes. What is the closest object she can see clearly?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "20.0 cm",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-60",
+      "type": "paragraph",
+      "content": {
+        "text": "A young woman with normal distant vision has a 10.0% ability to accommodate (that is, increase) the power of her eyes. What is the closest object she can see clearly?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-61",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "The far point of a myopic administrator is 50.0 cm. (a) What is the relaxed power of their eyes? (b) If they have the normal 8.00% ability to accommodate, what is the closest object they can see clearly?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-62",
+      "type": "paragraph",
+      "content": {
+        "text": "The far point of a myopic administrator is 50.0 cm. (a) What is the relaxed power of their eyes? (b) If they have the normal 8.00% ability to accommodate, what is the closest object they can see clearly?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-63",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A very myopic man has a far point of 20.0 cm. What power contact lens (when on the eye) will correct his distant vision?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$–5.00 D$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-64",
+      "type": "paragraph",
+      "content": {
+        "text": "A very myopic man has a far point of 20.0 cm. What power contact lens (when on the eye) will correct his distant vision?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-65",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Repeat the previous problem for eyeglasses held 1.50 cm from the eyes.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-66",
+      "type": "paragraph",
+      "content": {
+        "text": "Repeat the previous problem for eyeglasses held 1.50 cm from the eyes.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-67",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A myopic person sees that their contact lens prescription is $–4.00 D$ . What is their far point?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "25.0 cm",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-68",
+      "type": "paragraph",
+      "content": {
+        "text": "A myopic person sees that their contact lens prescription is $–4.00 D$ . What is their far point?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-69",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Repeat the previous problem for glasses that are 1.75 cm from the eyes.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-70",
+      "type": "paragraph",
+      "content": {
+        "text": "Repeat the previous problem for glasses that are 1.75 cm from the eyes.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-71",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "The contact lens prescription for a mildly farsighted person is 0.750 D, and the person has a near point of 29.0 cm. What is the power of the tear layer between the cornea and the lens if the correction is ideal, taking the tear layer into account?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$–0.198 D$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-72",
+      "type": "paragraph",
+      "content": {
+        "text": "The contact lens prescription for a mildly farsighted person is 0.750 D, and the person has a near point of 29.0 cm. What is the power of the tear layer between the cornea and the lens if the correction is ideal, taking the tear layer into account?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-73",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A nearsighted man cannot see objects clearly beyond 20 cm from his eyes. How close must he stand to a mirror in order to see what he is doing when he shaves?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-74",
+      "type": "paragraph",
+      "content": {
+        "text": "A nearsighted man cannot see objects clearly beyond 20 cm from his eyes. How close must he stand to a mirror in order to see what he is doing when he shaves?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-75",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A teacher sees that a child’s contact lens prescription is 0.750 D. What is the child’s near point?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "30.8 cm",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-76",
+      "type": "paragraph",
+      "content": {
+        "text": "A teacher sees that a child’s contact lens prescription is 0.750 D. What is the child’s near point?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-77",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Repeat the previous problem for glasses that are 2.20 cm from the eyes.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-78",
+      "type": "paragraph",
+      "content": {
+        "text": "Repeat the previous problem for glasses that are 2.20 cm from the eyes.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-79",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "The contact lens prescription for a nearsighted person is $–4.00 D$ and the person has a far point of 22.5 cm. What is the power of the tear layer between the cornea and the lens if the correction is ideal, taking the tear layer into account?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$–0.444 D$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-80",
+      "type": "paragraph",
+      "content": {
+        "text": "The contact lens prescription for a nearsighted person is $–4.00 D$ and the person has a far point of 22.5 cm. What is the power of the tear layer between the cornea and the lens if the correction is ideal, taking the tear layer into account?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-81",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Unreasonable Results A boy has a near point of 50 cm and a far point of 500 cm. Will a $–4.00 D$ lens correct his far point to infinity?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-82",
+      "type": "paragraph",
+      "content": {
+        "text": "Unreasonable Results",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-83",
+      "type": "paragraph",
+      "content": {
+        "text": "A boy has a near point of 50 cm and a far point of 500 cm. Will a $–4.00 D$ lens correct his far point to infinity?",
+        "inline": []
+      },
+      "level": "core"
+    }
+  ],
+  "solutions": {
+    "osbooks-college-physics-bundle:m42484:exr-27": [
+      [
+        {
+          "kind": "text",
+          "text": "(c)"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42484:exr-42": [
+      [
+        {
+          "kind": "text",
+          "text": "2.00 m"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42484:exr-46": [
+      [
+        {
+          "kind": "text",
+          "text": "(a)"
+        },
+        {
+          "kind": "math",
+          "text": "±0.45 D"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(b) The person was nearsighted because the patient was myopic and the power was reduced."
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42484:exr-51": [
+      [
+        {
+          "kind": "text",
+          "text": "0.143 m"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42484:exr-55": [
+      [
+        {
+          "kind": "text",
+          "text": "1.00 m"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42484:exr-59": [
+      [
+        {
+          "kind": "text",
+          "text": "20.0 cm"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42484:exr-63": [
+      [
+        {
+          "kind": "math",
+          "text": "–5.00 D"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42484:exr-67": [
+      [
+        {
+          "kind": "text",
+          "text": "25.0 cm"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42484:exr-71": [
+      [
+        {
+          "kind": "math",
+          "text": "–0.198 D"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42484:exr-75": [
+      [
+        {
+          "kind": "text",
+          "text": "30.8 cm"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42484:exr-79": [
+      [
+        {
+          "kind": "math",
+          "text": "–0.444 D"
+        }
+      ]
+    ]
+  }
+}

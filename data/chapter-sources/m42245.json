@@ -1,0 +1,448 @@
+{
+  "module": "m42245",
+  "source_attribution": {
+    "publisher": "OpenStax",
+    "book": "osbooks-college-physics-bundle",
+    "section": "m42245",
+    "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42245/index.cnxml",
+    "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)",
+    "locator": "CNXML module index.cnxml (typed elements, solutions present)"
+  },
+  "blocks": [
+    {
+      "id": "sec-0",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Learning Objectives",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-1",
+      "type": "paragraph",
+      "content": {
+        "text": "By the end of this section, you will be able to:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-2",
+      "type": "paragraph",
+      "content": {
+        "text": "The horses on this merry-go-round exhibit uniform circular motion. (credit: Wonderlane, Flickr)",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-1",
+      "type": "figure",
+      "asset_url": "images/phy_m42245_Figure_17_06_01a.jpg",
+      "caption": {
+        "text": "The horses on this merry-go-round exhibit uniform circular motion. (credit: Wonderlane, Flickr)",
+        "inline": []
+      },
+      "alt": "The figure shows a clock-wise rotating empty merry go round with iron bars holding the decorated wooden horse statues, four in each column.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-4",
+      "type": "paragraph",
+      "content": {
+        "text": "There is an easy way to produce simple harmonic motion by using uniform circular motion. shows one way of using this method. A ball is attached to a uniformly rotating vertical turntable, and its shadow is projected on the floor as shown. The shadow undergoes simple harmonic motion. Hooke’s law usually describes uniform circular motions ( $ω$ constant) rather than systems that have large visible displacements. So observing the projection of uniform circular motion, as in , is often easier than observing a precise large-scale simple harmonic oscillator. If studied in sufficient depth, simple harmonic motion produced in this manner can give considerable insight into many aspects of oscillations and waves and is very useful mathematically. In our brief treatment, we shall indicate some of the major features of this relationship and how they might be useful.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-2",
+      "type": "figure",
+      "asset_url": "images/phy_m42245_Figure_17_06_02a.jpg",
+      "caption": {
+        "text": "The shadow of a ball rotating at constant angular velocity $ω$ on a turntable goes back and forth in precise simple harmonic motion.",
+        "inline": []
+      },
+      "alt": "The given figure shows a vertical turntable with four floor projecting light bulbs at the top. A smaller sized rectangular bar is attached to this turntable at the bottom half, with a circular knob attached to it. A red colored small ball is rolling along the boundary of this knob in angular direction, and the lights falling through this ball are ball making shadows just under the knob on the floor. The middle shadow is the brightest and starts fading as we look through to the cornered shadow.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-6",
+      "type": "paragraph",
+      "content": {
+        "text": "shows the basic relationship between uniform circular motion and simple harmonic motion. The point P travels around the circle at constant angular velocity $ω$ . The point P is analogous to an object on the merry-go-round. The projection of the position of P onto a fixed axis undergoes simple harmonic motion and is analogous to the shadow of the object. At the time shown in the figure, the projection has position $x$ and moves to the left with velocity $v$ . The velocity of the point P around the circle equals ${v¯}_{max}$ .The projection of ${v¯}_{max}$ on the $x$ -axis is the velocity *$v$* of the simple harmonic motion along the $x$ -axis.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-3",
+      "type": "figure",
+      "asset_url": "images/phy_m42245_Figure_17_06_03a.jpg",
+      "caption": {
+        "text": "A point P moving on a circular path with a constant angular velocity $ω$ is undergoing uniform circular motion. Its projection on the x-axis undergoes simple harmonic motion. Also shown is the velocity of this point around the circle, ${v¯}_{max}$ , and its projection, which is $v$ . Note that these velocities form a similar triangle to the displacement triangle.",
+        "inline": []
+      },
+      "alt": "The figure shows a point P moving through the circumference of a circle in an angular way with angular velocity omega. The diameter is projected along the x axis, with point P making an angle theta at the centre of the circle. A point along the diameter shows the projection of the point P with a dotted perpendicular line from P to this point, the projection of the point is given as v along the circle and its velocity v subscript max, over the top of the projection arrow in an upward left direction.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-8",
+      "type": "paragraph",
+      "content": {
+        "text": "To see that the projection undergoes simple harmonic motion, note that its position $x$ is given by",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-9",
+      "type": "paragraph",
+      "content": {
+        "text": "where $θ=ωt$ , $ω$ is the constant angular velocity, and $X$ is the radius of the circular path. Thus,",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-10",
+      "type": "paragraph",
+      "content": {
+        "text": "The angular velocity $ω$ is in radians per unit time; in this case $2π$ radians is the time for one revolution *$T$* . That is, $ω=2π/T$ . Substituting this expression for $ω$ , we see that the position *$x$* is given by:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-11",
+      "type": "paragraph",
+      "content": {
+        "text": "This expression is the same one we had for the position of a simple harmonic oscillator in Simple Harmonic Motion: A Special Periodic Motion . If we make a graph of position versus time as in , we see again the wavelike character (typical of simple harmonic motion) of the projection of uniform circular motion onto the $x$ -axis.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-4",
+      "type": "figure",
+      "asset_url": "images/phy_m42245_Figure_17_06_04a.jpg",
+      "caption": {
+        "text": "The position of the projection of uniform circular motion performs simple harmonic motion, as this wavelike graph of $x$ versus $t$ indicates.",
+        "inline": []
+      },
+      "alt": "The given figure shows a vertical turntable with four floor projecting light bulbs at the top. A smaller sized rectangular bar is attached to this turntable at the bottom half, with a circular knob attached to it. A red colored small ball is rolling along the boundary of this knob in angular direction. The turnaround table is put upon a roller paper sheet, on which the simple harmonic motion is measured, which is shown here in oscillating waves on the paper sheet in front of the table. A graph of amplitude versus time is also given alongside the figure.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-13",
+      "type": "paragraph",
+      "content": {
+        "text": "Now let us use to do some further analysis of uniform circular motion as it relates to simple harmonic motion. The triangle formed by the velocities in the figure and the triangle formed by the displacements ( $X,x,$ and $\\sqrt{{X}^{2}-{x}^{2}}$ ) are similar right triangles. Taking ratios of similar sides, we see that",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-14",
+      "type": "paragraph",
+      "content": {
+        "text": "We can solve this equation for the speed $v$ or",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-15",
+      "type": "paragraph",
+      "content": {
+        "text": "This expression for the speed of a simple harmonic oscillator is exactly the same as the equation obtained from conservation of energy considerations in Energy and the Simple Harmonic Oscillator .You can begin to see that it is possible to get all of the characteristics of simple harmonic motion from an analysis of the projection of uniform circular motion.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-16",
+      "type": "paragraph",
+      "content": {
+        "text": "Finally, let us consider the period *$T$* of the motion of the projection. This period is the time it takes the point P to complete one revolution. That time is the circumference of the circle $2πX$ divided by the velocity around the circle, ${v}_{max}$ . Thus, the period *$T$* is",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-17",
+      "type": "paragraph",
+      "content": {
+        "text": "We know from conservation of energy considerations that",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-18",
+      "type": "paragraph",
+      "content": {
+        "text": "Solving this equation for $X/{v}_{max}$ gives",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-19",
+      "type": "paragraph",
+      "content": {
+        "text": "Substituting this expression into the equation for *$T$* yields",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-20",
+      "type": "paragraph",
+      "content": {
+        "text": "Thus, the period of the motion is the same as for a simple harmonic oscillator. We have determined the period for any simple harmonic oscillator using the relationship between uniform circular motion and simple harmonic motion.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-21",
+      "type": "paragraph",
+      "content": {
+        "text": "Some modules occasionally refer to the connection between uniform circular motion and simple harmonic motion. Moreover, if you carry your study of physics and its applications to greater depths, you will find this relationship useful. It can, for example, help to analyze how waves add when they are superimposed.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-22",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Identify an object that undergoes uniform circular motion. Describe how you could trace the simple harmonic motion of this object as a wave.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "A record player undergoes uniform circular motion. You could attach dowel rod to one point on the outside edge of the turntable and attach a pen to the other end of the dowel. As the record player turns, the pen will move. You can drag a long piece of paper under the pen, capturing its motion as a wave.",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-23",
+      "type": "paragraph",
+      "content": {
+        "text": "Identify an object that undergoes uniform circular motion. Describe how you could trace the simple harmonic motion of this object as a wave.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-24",
+      "type": "paragraph",
+      "content": {
+        "text": "A record player undergoes uniform circular motion. You could attach dowel rod to one point on the outside edge of the turntable and attach a pen to the other end of the dowel. As the record player turns, the pen will move. You can drag a long piece of paper under the pen, capturing its motion as a wave.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-25",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Test Prep for AP Courses",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-26",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "In the equation $x=Asinwt,$ what values can the position $x$ take? −1 to +1; – *A* to + *A*; 0; – *t* to *t*",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-27",
+      "type": "paragraph",
+      "content": {
+        "text": "In the equation $x=Asinwt,$ what values can the position $x$ take?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-28",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Section Summary",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-29",
+      "type": "paragraph",
+      "content": {
+        "text": "A projection of uniform circular motion undergoes simple harmonic oscillation.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-30",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Problems & Exercises",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-31",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "(a)What is the maximum velocity of an 85.0-kg person bouncing on a bathroom scale having a force constant of $1.50×{10}^{6}N/m$ , if the amplitude of the bounce is 0.200 cm? (b)What is the maximum energy stored in the spring?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "a). 0.266 m/s b). 3.00 J",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-32",
+      "type": "paragraph",
+      "content": {
+        "text": "(a)What is the maximum velocity of an 85.0-kg person bouncing on a bathroom scale having a force constant of $1.50×{10}^{6}N/m$ , if the amplitude of the bounce is 0.200 cm? (b)What is the maximum energy stored in the spring?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-33",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A novelty clock has a 0.0100-kg mass object bouncing on a spring that has a force constant of 1.25 N/m. What is the maximum velocity of the object if the object bounces 3.00 cm above and below its equilibrium position? (b) How many joules of kinetic energy does the object have at its maximum velocity?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-34",
+      "type": "paragraph",
+      "content": {
+        "text": "A novelty clock has a 0.0100-kg mass object bouncing on a spring that has a force constant of 1.25 N/m. What is the maximum velocity of the object if the object bounces 3.00 cm above and below its equilibrium position? (b) How many joules of kinetic energy does the object have at its maximum velocity?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-35",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "At what positions is the speed of a simple harmonic oscillator half its maximum? That is, what values of $x/X$ give $v=±{v}_{max}/2$ , where *$X$* is the amplitude of the motion?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$±\\frac{\\sqrt{3}}{2}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-36",
+      "type": "paragraph",
+      "content": {
+        "text": "At what positions is the speed of a simple harmonic oscillator half its maximum? That is, what values of $x/X$ give $v=±{v}_{max}/2$ , where *$X$* is the amplitude of the motion?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-37",
+      "type": "paragraph",
+      "content": {
+        "text": "$±\\frac{\\sqrt{3}}{2}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-38",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A ladybug sits 12.0 cm from the center of a Beatles music album spinning at 33.33 rpm. What is the maximum velocity of its shadow on the wall behind the turntable, if illuminated parallel to the record by the parallel rays of the setting Sun?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-39",
+      "type": "paragraph",
+      "content": {
+        "text": "A ladybug sits 12.0 cm from the center of a Beatles music album spinning at 33.33 rpm. What is the maximum velocity of its shadow on the wall behind the turntable, if illuminated parallel to the record by the parallel rays of the setting Sun?",
+        "inline": []
+      },
+      "level": "core"
+    }
+  ],
+  "solutions": {
+    "osbooks-college-physics-bundle:m42245:exr-22": [
+      [
+        {
+          "kind": "text",
+          "text": "A record player undergoes uniform circular motion. You could attach dowel rod to one point on the outside edge of the turntable and attach a pen to the other end of the dowel. As the record player turns, the pen will move. You can drag a long piece of paper under the pen, capturing its motion as a wave."
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42245:exr-31": [
+      [
+        {
+          "kind": "text",
+          "text": "a). 0.266 m/s"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "b). 3.00 J"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42245:exr-35": [
+      [
+        {
+          "kind": "math",
+          "text": "±\\frac{\\sqrt{3}}{2}"
+        }
+      ]
+    ]
+  }
+}

@@ -1,0 +1,872 @@
+{
+  "module": "m42408",
+  "source_attribution": {
+    "publisher": "OpenStax",
+    "book": "osbooks-college-physics-bundle",
+    "section": "m42408",
+    "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42408/index.cnxml",
+    "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)",
+    "locator": "CNXML module index.cnxml (typed elements, solutions present)"
+  },
+  "blocks": [
+    {
+      "id": "sec-0",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Learning Objectives",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-1",
+      "type": "paragraph",
+      "content": {
+        "text": "By the end of this section, you will be able to:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-2",
+      "type": "paragraph",
+      "content": {
+        "text": "Electric generators induce an emf by rotating a coil in a magnetic field, as briefly discussed in Induced Emf and Magnetic Flux . We will now explore generators in more detail. Consider the following example.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "ex-3",
+      "type": "example",
+      "kind": "worked",
+      "title": {
+        "text": "Calculating the Emf Induced in a Generator Coil",
+        "inline": []
+      },
+      "problem": {
+        "text": "",
+        "inline": []
+      },
+      "answer": null,
+      "level": "core"
+    },
+    {
+      "id": "p-4",
+      "type": "paragraph",
+      "content": {
+        "text": "The generator coil shown in is rotated through one-fourth of a revolution (from $θ=0º$ to $θ=90º$ ) in 15.0 ms. The 200-turn circular coil has a 5.00 cm radius and is in a uniform 1.25 T magnetic field. What is the average emf induced?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-1",
+      "type": "figure",
+      "asset_url": "images/phy_m42408_Figure_24_05_01.jpg",
+      "caption": {
+        "text": "When this generator coil is rotated through one-fourth of a revolution, the magnetic flux $Φ$ changes from its maximum to zero, inducing an emf.",
+        "inline": []
+      },
+      "alt": "The figure shows a schematic diagram of an electric generator. It consists of a rotating rectangular coil placed between the two poles of a permanent magnet shown as two rectangular blocks curved on side facing the coil. The magnetic field B is shown pointing from the North to the South Pole. The two ends of this coil are connected to the two small rings. The two conducting carbon brushes are kept pressed separately on both the rings. The coil is attached to an axle with a handle at the other end. Outer ends of the two brushes are connected to the galvanometer. The axle is mechanically rotated from outside by an angle of ninety degree that is a one fourth revolution, to rotate the coil inside the magnetic field. A current is shown to flow in the coil in clockwise direction and the galvanometer shows a deflection to left.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-6",
+      "type": "paragraph",
+      "content": {
+        "text": "We use Faraday’s law of induction to find the average emf induced over a time $Δt$ :",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-7",
+      "type": "paragraph",
+      "content": {
+        "text": "We know that $N=200$ and $Δt=15.0ms$ , and so we must determine the change in flux $ΔΦ$ to find emf.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-8",
+      "type": "paragraph",
+      "content": {
+        "text": "Since the area of the loop and the magnetic field strength are constant, we see that",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-9",
+      "type": "paragraph",
+      "content": {
+        "text": "Now, $Δ(cosθ)=-1.0$ , since it was given that $θ$ goes from $0º$ to $90º$ . Thus $ΔΦ=-AB$ , and",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-10",
+      "type": "paragraph",
+      "content": {
+        "text": "The area of the loop is $A={πr}^{2}=(3.14...)(0.0500m{)}^{2}=7.85×{10}^{-3}{m}^{2}$ . Entering this value gives",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-11",
+      "type": "paragraph",
+      "content": {
+        "text": "This is a practical average value, similar to the 120 V used in household power.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-12",
+      "type": "paragraph",
+      "content": {
+        "text": "The emf calculated in is the average over one-fourth of a revolution. What is the emf at any given instant? It varies with the angle between the magnetic field and a perpendicular to the coil. We can get an expression for emf as a function of time by considering the motional emf on a rotating rectangular coil of width $w$ and height $ℓ$ in a uniform magnetic field, as illustrated in .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-2",
+      "type": "figure",
+      "asset_url": "images/phy_m42408_Figure_24_05_02.jpg",
+      "caption": {
+        "text": "A generator with a single rectangular coil rotated at constant angular velocity in a uniform magnetic field produces an emf that varies sinusoidally in time. Note the generator is similar to a motor, except the shaft is rotated to produce a current rather than the other way around.",
+        "inline": []
+      },
+      "alt": "The figure shows a schematic diagram of an electric generator with a single rectangular coil. The rotating rectangular coil is placed between the two poles of a permanent magnet shown as two rectangular blocks curved on side facing the coil. The magnetic field B is shown pointing from the North to the South Pole. The North Pole is on the left and the South Pole is to the right and hence the direction of field is from left to right. The angular velocity of the coil is given as omega. The velocity vector v of the coil makes an angle theta with the direction of field.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-14",
+      "type": "paragraph",
+      "content": {
+        "text": "Charges in the wires of the loop experience the magnetic force, because they are moving in a magnetic field. Charges in the vertical wires experience forces parallel to the wire, causing currents. But those in the top and bottom segments feel a force perpendicular to the wire, which does not cause a current. We can thus find the induced emf by considering only the side wires. Motional emf is given to be $emf=Bℓv$ , where the velocity *v* is perpendicular to the magnetic field $B$ . Here the velocity is at an angle $θ$ with $B$ , so that its component perpendicular to $B$ is $vsinθ$ (see ). Thus in this case the emf induced on each side is $emf=Bℓvsinθ$ , and they are in the same direction. The total emf around the loop is then",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-15",
+      "type": "paragraph",
+      "content": {
+        "text": "This expression is valid, but it does not give emf as a function of time. To find the time dependence of emf, we assume the coil rotates at a constant angular velocity $ω$ . The angle $θ$ is related to angular velocity by *$θ=ωt$* , so that",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-16",
+      "type": "paragraph",
+      "content": {
+        "text": "Now, linear velocity $v$ is related to angular velocity $ω$ by $v=rω$ . Here $r=w/2$ , so that *$v=(w/2)ω$* , and",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-17",
+      "type": "paragraph",
+      "content": {
+        "text": "Noting that the area of the loop is $A=ℓw$ , and allowing for $N$ loops, we find that",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-18",
+      "type": "paragraph",
+      "content": {
+        "text": "is the emf induced in a generator coil of $N$ turns and area $A$ rotating at a constant angular velocity $ω$ in a uniform magnetic field $B$ . This can also be expressed as",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-19",
+      "type": "paragraph",
+      "content": {
+        "text": "is the maximum (peak) emf . Note that the frequency of the oscillation is *$f=ω/2π$* , and the period is $T=1/f=2π/ω$ *.* shows a graph of emf as a function of time, and it now seems reasonable that AC voltage is sinusoidal.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-3",
+      "type": "figure",
+      "asset_url": "images/phy_m42408_Figure_24_05_03.jpg",
+      "caption": {
+        "text": "The emf of a generator is sent to a light bulb with the system of rings and brushes shown. The graph gives the emf of the generator as a function of time. ${emf}_{0}$ is the peak emf. The period is $T=1/f=2π/ω$ , where $f$ is the frequency. Note that the script E stands for emf.",
+        "inline": []
+      },
+      "alt": "The first part of the figure shows a schematic diagram of a single coil electric generator. It consists of a rotating rectangular loop placed between the two poles of a permanent magnet shown as two rectangular blocks curved on side facing the loop. The magnetic field B is shown pointing from the North to the South Pole. The two ends of this loop are connected to the two small rings. The two conducting carbon brushes are kept pressed separately on both the rings. The loop is rotated in the field with an angular velocity omega. Outer ends of the two brushes are connected to an electric bulb which is shown to glow brightly. The second part of the figure shows the graph for e m f generated E as a function of time t. The e m f is along the Y axis and the time t is along the X axis. The graph is a progressive sine wave with a time period T. The crest maxima are at E zero and trough minima are at negative E zero.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-21",
+      "type": "paragraph",
+      "content": {
+        "text": "The fact that the peak emf, ${emf}_{0}=NABω$ , makes good sense. The greater the number of coils, the larger their area, and the stronger the field, the greater the output voltage. It is interesting that the faster the generator is spun (greater $ω$ ), the greater the emf. This is noticeable on bicycle generators—at least the cheaper varieties. One of the authors as a juvenile found it amusing to ride his bicycle fast enough to burn out his lights, until he had to ride home lightless one dark night.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-22",
+      "type": "paragraph",
+      "content": {
+        "text": "shows a scheme by which a generator can be made to produce pulsed DC. More elaborate arrangements of multiple coils and split rings can produce smoother DC, although electronic rather than mechanical means are usually used to make ripple-free DC.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-4",
+      "type": "figure",
+      "asset_url": "images/phy_m42408_Figure_24_05_04.jpg",
+      "caption": {
+        "text": "Split rings, called commutators, produce a pulsed DC emf output in this configuration.",
+        "inline": []
+      },
+      "alt": "The first part of the figure shows a schematic diagram of a single coil D C electric generator. It consists of a rotating rectangular loop placed between the two poles of a permanent magnet shown as two rectangular blocks curved on side facing the loop. The magnetic field B is shown pointing from the North to the South Pole. The two ends of this loop are connected to the two sides of a split ring. The two conducting carbon brushes are kept pressed separately on both sides of the split rings. The loop is rotated in the field with an angular velocity w. Outer ends of the two brushes are connected to an electric bulb which is shown to glow brightly. The second part of the figure shows the graph for e m f generated as a function of time. The e m f is along the Y axis and the time t is along the X axis. The graph is a progressive and rectified sine wave with a time period T. The sine wave has only positive pulses. The crest maxima are at E zero.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "ex-24",
+      "type": "example",
+      "kind": "worked",
+      "title": {
+        "text": "Calculating the Maximum Emf of a Generator",
+        "inline": []
+      },
+      "problem": {
+        "text": "",
+        "inline": []
+      },
+      "answer": null,
+      "level": "core"
+    },
+    {
+      "id": "p-25",
+      "type": "paragraph",
+      "content": {
+        "text": "Calculate the maximum emf, ${emf}_{0}$ , of the generator that was the subject of .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-26",
+      "type": "paragraph",
+      "content": {
+        "text": "Once $ω$ , the angular velocity, is determined, ${emf}_{0}=NABω$ can be used to find ${emf}_{0}$ . All other quantities are known.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-27",
+      "type": "paragraph",
+      "content": {
+        "text": "Angular velocity is defined to be the change in angle per unit time:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-28",
+      "type": "paragraph",
+      "content": {
+        "text": "One-fourth of a revolution is $π/2$ radians, and the time is 0.0150 s; thus,",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-29",
+      "type": "paragraph",
+      "content": {
+        "text": "104.7 rad/s is exactly 1000 rpm. We substitute this value for $ω$ and the information from the previous example into ${emf}_{0}=NABω$ , yielding",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-30",
+      "type": "paragraph",
+      "content": {
+        "text": "The maximum emf is greater than the average emf of 131 V found in the previous example, as it should be.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-31",
+      "type": "paragraph",
+      "content": {
+        "text": "In real life, electric generators look a lot different than the figures in this section, but the principles are the same. The source of mechanical energy that turns the coil can be falling water (hydropower), steam produced by the burning of fossil fuels, or the kinetic energy of wind. shows a cutaway view of a steam turbine; steam moves over the blades connected to the shaft, which rotates the coil within the generator.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-5",
+      "type": "figure",
+      "asset_url": "images/phy_m42408_Figure_24_05_05.jpg",
+      "caption": {
+        "text": "Steam turbine/generator. The steam produced by burning coal impacts the turbine blades, turning the shaft which is connected to the generator. (credit: Nabonaco, Wikimedia Commons)",
+        "inline": []
+      },
+      "alt": "Photograph of a steam turbine connected to a generator.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-33",
+      "type": "paragraph",
+      "content": {
+        "text": "Generators illustrated in this section look very much like the motors illustrated previously. This is not coincidental. In fact, a motor becomes a generator when its shaft rotates. Certain early automobiles used their starter motor as a generator. In Back Emf , we shall further explore the action of a motor as a generator.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-34",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Test Prep for AP Courses",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-35",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "The emf induced in a coil that is rotating in a magnetic field will be at a maximum when the magnetic flux is at a maximum.; the magnetic flux is at a minimum.; the change in magnetic flux is at a maximum.; the change in magnetic flux is at a minimum.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(c)",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-36",
+      "type": "paragraph",
+      "content": {
+        "text": "The emf induced in a coil that is rotating in a magnetic field will be at a maximum when",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-37",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A coil with circular cross section and 20 turns is rotating at a rate of 400 rpm between the poles of a magnet. If the magnetic field strength is 0.6 T and peak voltage is 0.2 V, what is the radius of the coil? If the emf of the coil is zero at *t* = 0 s, when will it reach its peak emf?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-38",
+      "type": "paragraph",
+      "content": {
+        "text": "A coil with circular cross section and 20 turns is rotating at a rate of 400 rpm between the poles of a magnet. If the magnetic field strength is 0.6 T and peak voltage is 0.2 V, what is the radius of the coil? If the emf of the coil is zero at *t* = 0 s, when will it reach its peak emf?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-39",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Section Summary",
+        "inline": []
+      }
+    },
+    {
+      "id": "sec-40",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Conceptual Questions",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-41",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Using RHR-1, show that the emfs in the sides of the generator loop in are in the same sense and thus add.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-42",
+      "type": "paragraph",
+      "content": {
+        "text": "Using RHR-1, show that the emfs in the sides of the generator loop in are in the same sense and thus add.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-43",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "The source of a generator’s electrical energy output is the work done to turn its coils. How is the work needed to turn the generator related to Lenz’s law?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-44",
+      "type": "paragraph",
+      "content": {
+        "text": "The source of a generator’s electrical energy output is the work done to turn its coils. How is the work needed to turn the generator related to Lenz’s law?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-45",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Problems & Exercises",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-46",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Calculate the peak voltage of a generator that rotates its 200-turn, 0.100 m diameter coil at 3600 rpm in a 0.800 T field.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "474 V",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-47",
+      "type": "paragraph",
+      "content": {
+        "text": "Calculate the peak voltage of a generator that rotates its 200-turn, 0.100 m diameter coil at 3600 rpm in a 0.800 T field.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-48",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "At what angular velocity in rpm will the peak voltage of a generator be 480 V, if its 500-turn, 8.00 cm diameter coil rotates in a 0.250 T field?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-49",
+      "type": "paragraph",
+      "content": {
+        "text": "At what angular velocity in rpm will the peak voltage of a generator be 480 V, if its 500-turn, 8.00 cm diameter coil rotates in a 0.250 T field?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-50",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "What is the peak emf generated by rotating a 1000-turn, 20.0 cm diameter coil in the Earth’s $5.00×{10}^{-5}T$ magnetic field, given the plane of the coil is originally perpendicular to the Earth’s field and is rotated to be parallel to the field in 10.0 ms?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "0.247 V",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-51",
+      "type": "paragraph",
+      "content": {
+        "text": "What is the peak emf generated by rotating a 1000-turn, 20.0 cm diameter coil in the Earth’s $5.00×{10}^{-5}T$ magnetic field, given the plane of the coil is originally perpendicular to the Earth’s field and is rotated to be parallel to the field in 10.0 ms?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-52",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "What is the peak emf generated by the rotating coil in ? Assume all the conditions (coil size, rotation rate, and magnetic field) are the same as in",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-53",
+      "type": "paragraph",
+      "content": {
+        "text": "What is the peak emf generated by the rotating coil in ? Assume all the conditions (coil size, rotation rate, and magnetic field) are the same as in",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-54",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "(a) A bicycle generator rotates at 1875 rad/s, producing an 18.0 V peak emf. It has a 1.00 by 3.00 cm rectangular coil in a 0.640 T field. How many turns are in the coil? (b) Is this number of turns of wire practical for a 1.00 by 3.00 cm coil?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a) 50 (b) yes",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-55",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) A bicycle generator rotates at 1875 rad/s, producing an 18.0 V peak emf. It has a 1.00 by 3.00 cm rectangular coil in a 0.640 T field. How many turns are in the coil? (b) Is this number of turns of wire practical for a 1.00 by 3.00 cm coil?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-56",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Integrated Concepts This problem refers to the bicycle generator considered in the previous problem. It is driven by a 1.60 cm diameter wheel that rolls on the outside rim of the bicycle tire. (a) What is the velocity of the bicycle if the generator’s angular velocity is 1875 rad/s? (b) What is the maximum emf of the generator when the bicycle moves at 10.0 m/s, noting that it was 18.0 V under the original conditions? (c) If the sophisticated generator can vary its own magnetic field, what field strength will it need at 5.00 m/s to produce a 9.00 V maximum emf?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-57",
+      "type": "paragraph",
+      "content": {
+        "text": "This problem refers to the bicycle generator considered in the previous problem. It is driven by a 1.60 cm diameter wheel that rolls on the outside rim of the bicycle tire. (a) What is the velocity of the bicycle if the generator’s angular velocity is 1875 rad/s? (b) What is the maximum emf of the generator when the bicycle moves at 10.0 m/s, noting that it was 18.0 V under the original conditions? (c) If the sophisticated generator can vary its own magnetic field, what field strength will it need at 5.00 m/s to produce a 9.00 V maximum emf?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-58",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "(a) A car generator turns at 400 rpm when the engine is idling. Its 300-turn, 5.00 by 8.00 cm rectangular coil rotates in an adjustable magnetic field so that it can produce sufficient voltage even at low rpms. What is the field strength needed to produce a 24.0 V peak emf? (b) Discuss how this required field strength compares to those available in permanent and electromagnets.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a) 0.477 T (b) This field strength is small enough that it can be obtained using either a permanent magnet or an electromagnet.",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-59",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) A car generator turns at 400 rpm when the engine is idling. Its 300-turn, 5.00 by 8.00 cm rectangular coil rotates in an adjustable magnetic field so that it can produce sufficient voltage even at low rpms. What is the field strength needed to produce a 24.0 V peak emf? (b) Discuss how this required field strength compares to those available in permanent and electromagnets.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-60",
+      "type": "paragraph",
+      "content": {
+        "text": "(b) This field strength is small enough that it can be obtained using either a permanent magnet or an electromagnet.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-61",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Show that if a coil rotates at an angular velocity $ω$ , the period of its AC output is $2π/ω$ .",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-62",
+      "type": "paragraph",
+      "content": {
+        "text": "Show that if a coil rotates at an angular velocity $ω$ , the period of its AC output is $2π/ω$ .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-63",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A 75-turn, 10.0 cm diameter coil rotates at an angular velocity of 8.00 rad/s in a 1.25 T field, starting with the plane of the coil parallel to the field. (a) What is the peak emf? (b) At what time is the peak emf first reached? (c) At what time is the emf first at its most negative? (d) What is the period of the AC voltage output?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a) 5.89 V (b) At t=0 (c) 0.393 s (d) 0.785 s",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-64",
+      "type": "paragraph",
+      "content": {
+        "text": "A 75-turn, 10.0 cm diameter coil rotates at an angular velocity of 8.00 rad/s in a 1.25 T field, starting with the plane of the coil parallel to the field. (a) What is the peak emf? (b) At what time is the peak emf first reached? (c) At what time is the emf first at its most negative? (d) What is the period of the AC voltage output?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-65",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "(a) If the emf of a coil rotating in a magnetic field is zero at $t=0$ , and increases to its first peak at $t=0.100ms$ , what is the angular velocity of the coil? (b) At what time will its next maximum occur? (c) What is the period of the output? (d) When is the output first one-fourth of its maximum? (e) When is it next one-fourth of its maximum?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-66",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) If the emf of a coil rotating in a magnetic field is zero at $t=0$ , and increases to its first peak at $t=0.100ms$ , what is the angular velocity of the coil? (b) At what time will its next maximum occur? (c) What is the period of the output? (d) When is the output first one-fourth of its maximum? (e) When is it next one-fourth of its maximum?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-67",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Unreasonable Results A 500-turn coil with a $0.250{m}^{2}$ area is spun in the Earth’s $5.00×{10}^{-5}T$ field, producing a 12.0 kV maximum emf. (a) At what angular velocity must the coil be spun? (b) What is unreasonable about this result? (c) Which assumption or premise is responsible?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a) $1.92×{10}^{6}rad/s$ (b) This angular velocity is unreasonably high, higher than can be obtained for any mechanical system. (c) The assumption that a voltage as great as 12.0 kV could be obtained is unreasonable.",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-68",
+      "type": "paragraph",
+      "content": {
+        "text": "Unreasonable Results",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-69",
+      "type": "paragraph",
+      "content": {
+        "text": "A 500-turn coil with a $0.250{m}^{2}$ area is spun in the Earth’s $5.00×{10}^{-5}T$ field, producing a 12.0 kV maximum emf. (a) At what angular velocity must the coil be spun? (b) What is unreasonable about this result? (c) Which assumption or premise is responsible?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-70",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) $1.92×{10}^{6}rad/s$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-71",
+      "type": "paragraph",
+      "content": {
+        "text": "(b) This angular velocity is unreasonably high, higher than can be obtained for any mechanical system.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-72",
+      "type": "paragraph",
+      "content": {
+        "text": "(c) The assumption that a voltage as great as 12.0 kV could be obtained is unreasonable.",
+        "inline": []
+      },
+      "level": "core"
+    }
+  ],
+  "solutions": {
+    "osbooks-college-physics-bundle:m42408:exr-35": [
+      [
+        {
+          "kind": "text",
+          "text": "(c)"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42408:exr-46": [
+      [
+        {
+          "kind": "text",
+          "text": "474 V"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42408:exr-50": [
+      [
+        {
+          "kind": "text",
+          "text": "0.247 V"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42408:exr-54": [
+      [
+        {
+          "kind": "text",
+          "text": "(a) 50"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(b) yes"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42408:exr-58": [
+      [
+        {
+          "kind": "text",
+          "text": "(a) 0.477 T"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(b) This field strength is small enough that it can be obtained using either a permanent magnet or an electromagnet."
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42408:exr-63": [
+      [
+        {
+          "kind": "text",
+          "text": "(a) 5.89 V"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(b) At t=0"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(c) 0.393 s"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(d) 0.785 s"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42408:exr-67": [
+      [
+        {
+          "kind": "text",
+          "text": "(a)"
+        },
+        {
+          "kind": "math",
+          "text": "1.92×{10}^{6}rad/s"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(b) This angular velocity is unreasonably high, higher than can be obtained for any mechanical system."
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(c) The assumption that a voltage as great as 12.0 kV could be obtained is unreasonable."
+        }
+      ]
+    ]
+  }
+}

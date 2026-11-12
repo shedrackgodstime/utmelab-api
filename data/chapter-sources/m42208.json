@@ -1,0 +1,660 @@
+{
+  "module": "m42208",
+  "source_attribution": {
+    "publisher": "OpenStax",
+    "book": "osbooks-college-physics-bundle",
+    "section": "m42208",
+    "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42208/index.cnxml",
+    "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)",
+    "locator": "CNXML module index.cnxml (typed elements, solutions present)"
+  },
+  "blocks": [
+    {
+      "id": "sec-0",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Learning Objectives",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-1",
+      "type": "paragraph",
+      "content": {
+        "text": "By the end of this section, you will be able to:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-2",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Torricelli’s Theorem",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-3",
+      "type": "paragraph",
+      "content": {
+        "text": "shows water gushing from a large tube through a dam. What is its speed as it emerges? Interestingly, if resistance is negligible, the speed is just what it would be if the water fell a distance $h$ from the surface of the reservoir; the water’s speed is independent of the size of the opening. Let us check this out. Bernoulli’s equation must be used since the depth is not constant. We consider water flowing from the surface (point 1) to the tube’s outlet (point 2). Bernoulli’s equation as stated in previously is",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-4",
+      "type": "paragraph",
+      "content": {
+        "text": "Both ${P}_{1}$ and ${P}_{2}$ equal atmospheric pressure ( ${P}_{1}$ is atmospheric pressure because it is the pressure at the top of the reservoir. ${P}_{2}$ must be atmospheric pressure, since the emerging water is surrounded by the atmosphere and cannot have a pressure different from atmospheric pressure.) and subtract out of the equation, leaving",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-5",
+      "type": "paragraph",
+      "content": {
+        "text": "Solving this equation for ${v}_{2}^{2}$ , noting that the density $ρ$ cancels (because the fluid is incompressible), yields",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-6",
+      "type": "paragraph",
+      "content": {
+        "text": "We let $h={h}_{1}-{h}_{2}$ ; the equation then becomes",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-7",
+      "type": "paragraph",
+      "content": {
+        "text": "where $h$ is the height dropped by the water. This is simply a kinematic equation for any object falling a distance $h$ with negligible resistance. In fluids, this last equation is called *Torricelli’s theorem* . Note that the result is independent of the velocity’s direction, just as we found when applying conservation of energy to falling objects.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-1",
+      "type": "figure",
+      "asset_url": "images/phy_m42208_Figure_13_03_01a.jpg",
+      "caption": {
+        "text": "(a) Water gushes from the base of the Studen Kladenetz dam in Bulgaria. (credit: Kiril Kapustin; http://www.ImagesFromBulgaria.com) (b) In the absence of significant resistance, water flows from the reservoir with the same speed it would have if it fell the distance $h$ without friction. This is an example of Torricelli’s theorem.",
+        "inline": []
+      },
+      "alt": "Part a of the figure shows a photograph of a dam with water gushing from a large tube at the base of a dam. Part b shows the schematic diagram for the flow of water in a reservoir. The reservoir is shown in the form of a triangular section with a horizontal opening along the base little near to the base. The water is shown to flow through the horizontal opening near the base. The height which it falls is shown as h two. The pressure and velocity of water at this point are P two and v two. The height to which the water can fall if it falls from a height h above the opening is given by h 2. The pressure and velocity of water at this point are P one and v one.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "fig-2",
+      "type": "figure",
+      "asset_url": "images/phy_m42208_Figure_13_03_02a.jpg",
+      "caption": {
+        "text": "Pressure in the nozzle of this fire hose is less than at ground level for two reasons: the water has to go uphill to get to the nozzle, and speed increases in the nozzle. In spite of its lowered pressure, the water can exert a large force on anything it strikes, by virtue of its kinetic energy. Pressure in the water stream becomes equal to atmospheric pressure once it emerges into the air.",
+        "inline": []
+      },
+      "alt": "Figure shows a fire engine that is stationed next to a tall building. A floor of the building ten meters above the ground has caught fire. The flames are shown coming out. A fire man has reached close to the fire caught area using a ladder and is spraying water on the fire using a hose attached to the fire engine.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-10",
+      "type": "paragraph",
+      "content": {
+        "text": "All preceding applications of Bernoulli’s equation involved simplifying conditions, such as constant height or constant pressure. The next example is a more general application of Bernoulli’s equation in which pressure, velocity, and height all change. (See .)",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "ex-11",
+      "type": "example",
+      "kind": "worked",
+      "title": {
+        "text": "Calculating Pressure: A Fire Hose Nozzle",
+        "inline": []
+      },
+      "problem": {
+        "text": "",
+        "inline": []
+      },
+      "answer": null,
+      "level": "core"
+    },
+    {
+      "id": "p-12",
+      "type": "paragraph",
+      "content": {
+        "text": "Fire hoses used in major structure fires have inside diameters of 6.40 cm. Suppose such a hose carries a flow of 40.0 L/s starting at a gauge pressure of $1.62×{10}^{6}{N/m}^{2}$ . The hose goes 10.0 m up a ladder to a nozzle having an inside diameter of 3.00 cm. Assuming negligible resistance, what is the initial water pressure at the base of the hose?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-13",
+      "type": "paragraph",
+      "content": {
+        "text": "Here we must use Bernoulli’s equation to solve for the pressure, since depth is not constant.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-14",
+      "type": "paragraph",
+      "content": {
+        "text": "Bernoulli’s equation states",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-15",
+      "type": "paragraph",
+      "content": {
+        "text": "where the subscripts 1 and 2 refer to the initial conditions at ground level and the final conditions inside the nozzle, respectively. We must first find the speeds ${v}_{1}$ and ${v}_{2}$ . Since $Q={A}_{1}{v}_{1}$ , we get",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-16",
+      "type": "paragraph",
+      "content": {
+        "text": "(This rather large speed is helpful in reaching the fire.) Now, taking ${h}_{1}$ to be zero, we solve Bernoulli’s equation for ${P}_{2}$ :",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-17",
+      "type": "paragraph",
+      "content": {
+        "text": "In the proposed solution, ${P}_{2}=0$ , so",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-18",
+      "type": "paragraph",
+      "content": {
+        "text": "This value is a gauge pressure, since the initial pressure was given as a gauge pressure. Thus the nozzle pressure is very close to atmospheric pressure, as it must because the water exits into the atmosphere without changes in its conditions.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-19",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Power in Fluid Flow",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-20",
+      "type": "paragraph",
+      "content": {
+        "text": "Power is the *rate* at which work is done or energy in any form is used or supplied. To see the relationship of power to fluid flow, consider Bernoulli’s equation:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-21",
+      "type": "paragraph",
+      "content": {
+        "text": "All three terms have units of energy per unit volume, as discussed in the previous section. Now, considering units, if we multiply energy per unit volume by flow rate (volume per unit time), we get units of power. That is, $(E/V)(V/t)=E/t$ . This means that if we multiply Bernoulli’s equation by flow rate *$Q$* , we get power. In equation form, this is",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-22",
+      "type": "paragraph",
+      "content": {
+        "text": "Each term has a clear physical meaning. For example, *$PQ$* is the power supplied to a fluid, perhaps by a pump, to give it its pressure *$P$* . Similarly, $\\frac{1}{2}{ρv}^{2}Q$ is the power supplied to a fluid to give it its kinetic energy. And $ρghQ$ is the power going to gravitational potential energy.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-23",
+      "type": "paragraph",
+      "content": {
+        "text": "Power is defined as the rate of energy transferred, or *$E/t$* . Fluid flow involves several types of power. Each type of power is identified with a specific type of energy being expended or changed in form.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "ex-24",
+      "type": "example",
+      "kind": "worked",
+      "title": {
+        "text": "Calculating Power in a Moving Fluid",
+        "inline": []
+      },
+      "problem": {
+        "text": "",
+        "inline": []
+      },
+      "answer": null,
+      "level": "core"
+    },
+    {
+      "id": "p-25",
+      "type": "paragraph",
+      "content": {
+        "text": "Suppose the fire hose in the previous example is fed by a pump that receives water through a hose with a 6.40-cm diameter coming from a hydrant with a pressure of $0.700×{10}^{6}{N/m}^{2}$ . What power does the pump supply to the water?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-26",
+      "type": "paragraph",
+      "content": {
+        "text": "Here we must consider energy forms as well as how they relate to fluid flow. Since the input and output hoses have the same diameters and are at the same height, the pump does not change the speed of the water nor its height, and so the water’s kinetic energy and gravitational potential energy are unchanged. That means the pump only supplies power to increase water pressure by $0.92×{10}^{6}{N/m}^{2}$ (from $0.700×{10}^{6}{N/m}^{2}$ to $1.62×{10}^{6}{N/m}^{2}$ ).",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-27",
+      "type": "paragraph",
+      "content": {
+        "text": "As discussed above, the power associated with pressure is",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-28",
+      "type": "paragraph",
+      "content": {
+        "text": "Such a substantial amount of power requires a large pump, such as is found on some fire trucks. (This kilowatt value converts to about 50 hp.) The pump in this example increases only the water’s pressure. If a pump—such as the heart—directly increases velocity and height as well as pressure, we would have to calculate all three terms to find the power it supplies.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-29",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Test Prep for AP Courses",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-30",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A horizontally oriented pipe has a diameter of 5.6 cm and is filled with water. The pipe draws water from a reservoir that is initially at rest. A manually operated plunger provides a force of 440 N in the pipe. Assuming that the other end of the pipe is open to the air, with what speed does the water emerge from the pipe? 12 m/s; 19 m/s; 150 m/s; 190 m/s",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a)",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-31",
+      "type": "paragraph",
+      "content": {
+        "text": "A horizontally oriented pipe has a diameter of 5.6 cm and is filled with water. The pipe draws water from a reservoir that is initially at rest. A manually operated plunger provides a force of 440 N in the pipe. Assuming that the other end of the pipe is open to the air, with what speed does the water emerge from the pipe?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-32",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A 3.5-cm-diameter pipe contains a pumping mechanism that provides a force of 320 N to push water up into a tall building. Upon entering the piston mechanism, the water is flowing at a rate of 2.5 m/s. The water is then pumped to a level 21 m higher where the other end of the pipe is open to the air. With what speed does water leave the pipe?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-33",
+      "type": "paragraph",
+      "content": {
+        "text": "A 3.5-cm-diameter pipe contains a pumping mechanism that provides a force of 320 N to push water up into a tall building. Upon entering the piston mechanism, the water is flowing at a rate of 2.5 m/s. The water is then pumped to a level 21 m higher where the other end of the pipe is open to the air. With what speed does water leave the pipe?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-34",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A large container of water is open to the air, and it develops a hole of area 10 cm 2 at a point 5 m below the surface of the water. What is the flow rate (m 3 ⁄s) of the water emerging from this hole? 99 m 3 ⁄s; 9.9 m 3 ⁄s; 0.099 m 3 ⁄s; 0.0099 m 3 ⁄s",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(d)",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-35",
+      "type": "paragraph",
+      "content": {
+        "text": "A large container of water is open to the air, and it develops a hole of area 10 cm 2 at a point 5 m below the surface of the water. What is the flow rate (m 3 ⁄s) of the water emerging from this hole?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-36",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A pipe is tapered so that the large end has a diameter twice as large as the small end. What must be the gauge pressure (the difference between pressure at the large end and pressure at the small end) in order for water to emerge from the small end with a speed of 12 m/s if the small end is elevated 8 m above the large end of the pipe?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-37",
+      "type": "paragraph",
+      "content": {
+        "text": "A pipe is tapered so that the large end has a diameter twice as large as the small end. What must be the gauge pressure (the difference between pressure at the large end and pressure at the small end) in order for water to emerge from the small end with a speed of 12 m/s if the small end is elevated 8 m above the large end of the pipe?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-38",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Summary",
+        "inline": []
+      }
+    },
+    {
+      "id": "sec-39",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Conceptual Questions",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-40",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Based on Bernoulli’s equation, what are three forms of energy in a fluid? (Note that these forms are conservative, unlike heat transfer and other dissipative forms not included in Bernoulli’s equation.)",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-41",
+      "type": "paragraph",
+      "content": {
+        "text": "Based on Bernoulli’s equation, what are three forms of energy in a fluid? (Note that these forms are conservative, unlike heat transfer and other dissipative forms not included in Bernoulli’s equation.)",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-42",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Water that has emerged from a hose into the atmosphere has a gauge pressure of zero. Why? When you put your hand in front of the emerging stream you feel a force, yet the water’s gauge pressure is zero. Explain where the force comes from in terms of energy.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-43",
+      "type": "paragraph",
+      "content": {
+        "text": "Water that has emerged from a hose into the atmosphere has a gauge pressure of zero. Why? When you put your hand in front of the emerging stream you feel a force, yet the water’s gauge pressure is zero. Explain where the force comes from in terms of energy.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-44",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "The old rubber boot shown in has two leaks. To what maximum height can the water squirt from Leak 1? How does the velocity of water emerging from Leak 2 differ from that of leak 1? Explain your responses in terms of energy. Water emerges from two leaks in an old boot.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-45",
+      "type": "paragraph",
+      "content": {
+        "text": "The old rubber boot shown in has two leaks. To what maximum height can the water squirt from Leak 1? How does the velocity of water emerging from Leak 2 differ from that of leak 1? Explain your responses in terms of energy.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-3",
+      "type": "figure",
+      "asset_url": "images/phy_m42208_Figure_13_03_03a.jpg",
+      "caption": {
+        "text": "Water emerges from two leaks in an old boot.",
+        "inline": []
+      },
+      "alt": "The picture shows a boot filled with water. The water is shown emerging from two leaks in the old boot, one in front and another at the back. The leaks are at the same height. The leaks are labeled as Leak 1 and Leak 2 respectively.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "exr-47",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Water pressure inside a hose nozzle can be less than atmospheric pressure due to the Bernoulli effect. Explain in terms of energy how the water can emerge from the nozzle against the opposing atmospheric pressure.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-48",
+      "type": "paragraph",
+      "content": {
+        "text": "Water pressure inside a hose nozzle can be less than atmospheric pressure due to the Bernoulli effect. Explain in terms of energy how the water can emerge from the nozzle against the opposing atmospheric pressure.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-49",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Problems & Exercises",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-50",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Hoover Dam on the Colorado River is the highest dam in the United States at 221 m, with a maximum output of 1300 MW. The dam generates electricity with water taken from a depth of 150 m and an average flow rate of $650{m}^{3}/s$ . (a) Calculate the power in this flow. (b) What is the ratio of this power to the facility’s average of 680 MW?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a) $9.56×{10}^{8}W$ (b) 1.41",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-51",
+      "type": "paragraph",
+      "content": {
+        "text": "Hoover Dam on the Colorado River is the highest dam in the United States at 221 m, with a maximum output of 1300 MW. The dam generates electricity with water taken from a depth of 150 m and an average flow rate of $650{m}^{3}/s$ . (a) Calculate the power in this flow. (b) What is the ratio of this power to the facility’s average of 680 MW?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-52",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) $9.56×{10}^{8}W$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-53",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A frequently quoted rule of thumb in aircraft design is that wings should produce about 1000 N of lift per square meter of wing. (The fact that a wing has a top and bottom surface does not double its area.) (a) At takeoff, an aircraft travels at 60.0 m/s, so that the air speed relative to the bottom of the wing is 60.0 m/s. Given the sea level density of air to be $1.29{kg/m}^{3}$ , how fast must it move over the upper surface to create the ideal lift? (b) How fast must air move over the upper surface at a cruising speed of 245 m/s and at an altitude where air density is one-fourth that at sea level? (Note that this is not all of the aircraft’s lift—some comes from the body of the plane, some from engine thrust, and so on. Furthermore, Bernoulli’s principle gives an approximate answer because flow over the wing creates turbulence.)",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-54",
+      "type": "paragraph",
+      "content": {
+        "text": "A frequently quoted rule of thumb in aircraft design is that wings should produce about 1000 N of lift per square meter of wing. (The fact that a wing has a top and bottom surface does not double its area.) (a) At takeoff, an aircraft travels at 60.0 m/s, so that the air speed relative to the bottom of the wing is 60.0 m/s. Given the sea level density of air to be $1.29{kg/m}^{3}$ , how fast must it move over the upper surface to create the ideal lift? (b) How fast must air move over the upper surface at a cruising speed of 245 m/s and at an altitude where air density is one-fourth that at sea level? (Note that this is not all of the aircraft’s lift—some comes from the body of the plane, some from engine thrust, and so on. Furthermore, Bernoulli’s principle gives an approximate answer because flow over the wing creates turbulence.)",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-55",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "The left ventricle of a resting adult’s heart pumps blood at a flow rate of $83.0{cm}^{3}/s$ , increasing its pressure by 110 mm Hg, its speed from zero to 30.0 cm/s, and its height by 5.00 cm. (All numbers are averaged over the entire heartbeat.) Calculate the total power output of the left ventricle. Note that most of the power is used to increase blood pressure.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "1.26 W",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-56",
+      "type": "paragraph",
+      "content": {
+        "text": "The left ventricle of a resting adult’s heart pumps blood at a flow rate of $83.0{cm}^{3}/s$ , increasing its pressure by 110 mm Hg, its speed from zero to 30.0 cm/s, and its height by 5.00 cm. (All numbers are averaged over the entire heartbeat.) Calculate the total power output of the left ventricle. Note that most of the power is used to increase blood pressure.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-57",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A sump pump (used to drain water from the basement of houses built below the water table) is draining a flooded basement at the rate of 0.750 L/s, with an output pressure of $3.00×{10}^{5}{N/m}^{2}$ . (a) The water enters a hose with a 3.00-cm inside diameter and rises 2.50 m above the pump. What is its pressure at this point? (b) The hose goes over the foundation wall, losing 0.500 m in height, and widens to 4.00 cm in diameter. What is the pressure now? You may neglect frictional losses in both parts of the problem.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-58",
+      "type": "paragraph",
+      "content": {
+        "text": "A sump pump (used to drain water from the basement of houses built below the water table) is draining a flooded basement at the rate of 0.750 L/s, with an output pressure of $3.00×{10}^{5}{N/m}^{2}$ . (a) The water enters a hose with a 3.00-cm inside diameter and rises 2.50 m above the pump. What is its pressure at this point? (b) The hose goes over the foundation wall, losing 0.500 m in height, and widens to 4.00 cm in diameter. What is the pressure now? You may neglect frictional losses in both parts of the problem.",
+        "inline": []
+      },
+      "level": "core"
+    }
+  ],
+  "solutions": {
+    "osbooks-college-physics-bundle:m42208:exr-30": [
+      [
+        {
+          "kind": "text",
+          "text": "(a)"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42208:exr-34": [
+      [
+        {
+          "kind": "text",
+          "text": "(d)"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42208:exr-50": [
+      [
+        {
+          "kind": "text",
+          "text": "(a)"
+        },
+        {
+          "kind": "math",
+          "text": "9.56×{10}^{8}W"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(b) 1.41"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42208:exr-55": [
+      [
+        {
+          "kind": "text",
+          "text": "1.26 W"
+        }
+      ]
+    ]
+  }
+}

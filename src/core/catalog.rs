@@ -21,9 +21,14 @@ pub fn resolve_media_url(url: &str, media_base_url: &str) -> String {
         trimmed.to_string()
     } else {
         let path = trimmed.trim_start_matches('/');
-        let image_path = path
-            .strip_prefix("images/")
-            .map_or_else(|| format!("images/{path}"), |rest| format!("images/{rest}"));
+        // The bank's figures live under the host's `images/` namespace. The
+        // book has its own, so a path that already names it is kept as it is.
+        let image_path = if path.starts_with("books/") {
+            path.to_string()
+        } else {
+            path.strip_prefix("images/")
+                .map_or_else(|| format!("images/{path}"), |rest| format!("images/{rest}"))
+        };
         format!("{}/{}", media_base_url.trim_end_matches('/'), image_path)
     }
 }
@@ -32,6 +37,38 @@ pub fn resolve_rich_text(rt: &mut super::models::RichText, media_base_url: &str)
     for inline in &mut rt.inline {
         if let super::models::InlineKind::Image { url, .. } = &mut inline.kind {
             *url = resolve_media_url(url, media_base_url);
+        }
+    }
+}
+
+/// Resolve the figure references a section's teaching text carries.
+///
+/// The teaching text is a JSON document, so the figures inside it are not
+/// typed. A figure block holds its asset in `asset_url`, and the rich text
+/// around it may hold images of its own. Both are resolved, so a client
+/// never sees a stored path.
+pub fn resolve_teaching_text(teaching: &mut serde_json::Value, media_base_url: &str) {
+    let Some(blocks) = teaching.get_mut("blocks").and_then(|b| b.as_array_mut()) else {
+        return;
+    };
+    for block in blocks.iter_mut() {
+        if let Some(asset) = block.get_mut("asset_url").and_then(|a| a.as_str()) {
+            let resolved = resolve_media_url(asset, media_base_url);
+            if let Some(slot) = block.get_mut("asset_url") {
+                *slot = serde_json::Value::String(resolved);
+            }
+        }
+        for field in ["caption", "content", "text"] {
+            if let Some(rt) = block.get_mut(field) {
+                if let Ok(mut parsed) = serde_json::from_value::<super::models::RichText>(
+                    rt.clone(),
+                ) {
+                    resolve_rich_text(&mut parsed, media_base_url);
+                    if let Ok(written) = serde_json::to_value(&parsed) {
+                        *rt = written;
+                    }
+                }
+            }
         }
     }
 }
@@ -456,6 +493,56 @@ mod tests {
         assert_eq!(
             resolve_media_url("data:image/png;base64,abc", base),
             "data:image/png;base64,abc"
+        );
+    }
+
+    #[test]
+    fn the_book_keeps_its_own_directory() {
+        let base = crate::config::DEFAULT_MEDIA_BASE_URL;
+        assert_eq!(
+            resolve_media_url("books/secondary_physics/abc123.jpg", base),
+            "https://gitlab.com/shedrackgodstime/utmelab-bank/-/raw/main/books/secondary_physics/abc123.jpg"
+        );
+    }
+
+    #[test]
+    fn teaching_text_resolves_its_figures() {
+        let base = crate::config::DEFAULT_MEDIA_BASE_URL;
+        let mut teaching = serde_json::json!({
+            "blocks": [
+                {
+                    "id": "b-1",
+                    "type": "figure",
+                    "asset_url": "books/secondary_physics/abc123.jpg",
+                    "caption": {"text": "A figure", "inline": []},
+                    "alt": "alt"
+                },
+                {
+                    "id": "b-2",
+                    "type": "paragraph",
+                    "content": {
+                        "text": "See the figure.",
+                        "inline": [{
+                            "start": 4,
+                            "len": 0,
+                            "kind": "image",
+                            "url": "books/secondary_physics/def456.jpg",
+                            "position": "above"
+                        }]
+                    }
+                }
+            ]
+        });
+        resolve_teaching_text(&mut teaching, base);
+        let blocks = teaching["blocks"].as_array().unwrap();
+        assert_eq!(
+            blocks[0]["asset_url"],
+            "https://gitlab.com/shedrackgodstime/utmelab-bank/-/raw/main/books/secondary_physics/abc123.jpg"
+        );
+        let inline = blocks[1]["content"]["inline"][0]["url"].as_str().unwrap();
+        assert_eq!(
+            inline,
+            "https://gitlab.com/shedrackgodstime/utmelab-bank/-/raw/main/books/secondary_physics/def456.jpg"
         );
     }
 

@@ -1,0 +1,831 @@
+{
+  "module": "m42146",
+  "source_attribution": {
+    "publisher": "OpenStax",
+    "book": "osbooks-college-physics-bundle",
+    "section": "m42146",
+    "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42146/index.cnxml",
+    "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)",
+    "locator": "CNXML module index.cnxml (typed elements, solutions present)"
+  },
+  "blocks": [
+    {
+      "id": "sec-0",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Learning Objectives",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-1",
+      "type": "paragraph",
+      "content": {
+        "text": "By the end of this section, you will be able to:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-2",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "What It Means to Do Work",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-3",
+      "type": "paragraph",
+      "content": {
+        "text": "The scientific definition of work differs in some ways from its everyday meaning. Certain things we think of as hard work, such as writing an exam or carrying a heavy load on level ground, are not work as defined by a scientist. The scientific definition of work reveals its relationship to energy—whenever work is done, energy is transferred.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-4",
+      "type": "paragraph",
+      "content": {
+        "text": "For work, in the scientific sense, to be done, a force must be exerted and there must be displacement in the direction of the force.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-5",
+      "type": "paragraph",
+      "content": {
+        "text": "Formally, the work done on a system by a constant force is defined to be *the product of the component of the force in the direction of motion times the distance through which the force acts* . For one-way motion in one dimension, this is expressed in equation form as",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-6",
+      "type": "paragraph",
+      "content": {
+        "text": "where $W$ is work, $d$ is the displacement of the system, and $θ$ is the angle between the force vector $F$ and the displacement vector $d$ , as in . We can also write this as",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-7",
+      "type": "paragraph",
+      "content": {
+        "text": "To find the work done on a system that undergoes motion that is not one-way or that is in two or three dimensions, we divide the motion into one-way one-dimensional segments and add up the work done over each segment.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-8",
+      "type": "paragraph",
+      "content": {
+        "text": "The work done on a system by a constant force is *the product of the component of the force in the direction of motion times the distance through which the force acts* . For one-way motion in one dimension, this is expressed in equation form as",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-9",
+      "type": "paragraph",
+      "content": {
+        "text": "where $W$ is work, $F$ is the magnitude of the force on the system, $d$ is the magnitude of the displacement of the system, and $θ$ is the angle between the force vector $F$ and the displacement vector $d$ .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-1",
+      "type": "figure",
+      "asset_url": "images/phy_m42146_Figure_08_02_01.jpg",
+      "caption": {
+        "text": "Examples of work. (a) The work done by the force $F$ on this lawn mower is $Fdcosθ$ . Note that $Fcosθ$ is the component of the force in the direction of motion. (b) A person holding a briefcase does no work on it, because there is no displacement. No energy is transferred to or from the briefcase. (c) The person moving the briefcase horizontally at a constant speed does no work on it, and transfers no energy to it. (d) Work *is* done on the briefcase by carrying it up stairs at constant speed, because there is necessarily a component of force $F$ in the direction of the motion. Energy is transferred to the briefcase and could in turn be used to do work. (e) When the briefcase is lowered, energy is transferred out of the briefcase and into an electric generator. Here the work done on the briefcase by the generator is negative, removing energy from the briefcase, because $F$ and $d$ are in opposite directions.",
+        "inline": []
+      },
+      "alt": "Five drawings labeled a through e. In (a), person pushing a lawn mower with a force F. Force is represented by a vector making an angle theta with the horizontal and displacement of the mower is represented by vector d. The component of vector F along vector d is F cosine theta. Work done by the person W is equal to F d cosine theta. (b) A person is standing with a briefcase in his hand. The force F shown by a vector arrow pointing upwards starting from the handle of briefcase and the displacement d is equal to zero. (c) A person is walking holding the briefcase in his hand. Force vector F is in the vertical direction starting from the handle of briefcase and displacement vector d is in horizontal direction starting from the same point as vector F. The angle between F and d theta is equal to 90 degrees. Cosine theta is equal to zero. (d) A briefcase is shown in front of a set of stairs. A vector d starting from the first stair points along the incline of the stair and a force vector F is in vertical direction starting from the same point as vector d. The angle between them is theta. A component of vector F along vector d is F d cosine theta. (e) A briefcase is shown lowered vertically down from an electric generator. The displacement vector d points downwards and force vector F points upwards acting on the briefcase.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-11",
+      "type": "paragraph",
+      "content": {
+        "text": "To examine what the definition of work means, let us consider the other situations shown in . The person holding the briefcase in (b) does no work, for example. Here $d=0$ , so $W=0$ . Why is it you get tired just holding a load? The answer is that your muscles are doing work against one another, *but they are doing no work on the system of interest* (the “briefcase-Earth system”—see Gravitational Potential Energy for more details). There must be displacement for work to be done, and there must be a component of the force in the direction of the motion. For example, the person carrying the briefcase on level ground in (c) does no work on it, because the force is perpendicular to the motion. That is, $cos90º =0$ , and so $W=0$ .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-12",
+      "type": "paragraph",
+      "content": {
+        "text": "In contrast, when a force exerted on the system has a component in the direction of motion, such as in (d), work *is* done—energy is transferred to the briefcase. Finally, in (e), energy is transferred from the briefcase to a generator. There are two good ways to interpret this energy transfer. One interpretation is that the briefcase’s weight does work on the generator, giving it energy. The other interpretation is that the generator does negative work on the briefcase, thus removing energy from it. The drawing shows the latter, with the force from the generator upward on the briefcase, and the displacement downward. This makes $θ=180º$ , and $cos 180º=–1$ ; therefore, $W$ is negative.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-13",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Calculating Work",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-14",
+      "type": "paragraph",
+      "content": {
+        "text": "Work and energy have the same units. From the definition of work, we see that those units are force times distance. Thus, in SI units, work and energy are measured in newton-meters . A newton-meter is given the special name joule (J), and $1J=1N\\cdot m=1kg\\cdot {m}^{2}{/s}^{2}$ . One joule is not a large amount of energy; it would lift a small 100-gram apple a distance of about 1 meter.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "ex-15",
+      "type": "example",
+      "kind": "worked",
+      "title": {
+        "text": "Calculating the Work You Do to Push a Lawn Mower Across a Large Lawn",
+        "inline": []
+      },
+      "problem": {
+        "text": "",
+        "inline": []
+      },
+      "answer": null,
+      "level": "core"
+    },
+    {
+      "id": "p-16",
+      "type": "paragraph",
+      "content": {
+        "text": "How much work is done on the lawn mower by the person in (a) if he exerts a constant force of $75.0N$ at an angle $35º$ below the horizontal and pushes the mower $25.0m$ on level ground? Convert the amount of work from joules to kilocalories and compare it with this person’s average daily intake of $10,000kJ$ (about $2400kcal$ ) of food energy. One *calorie* (1 cal) of heat is the amount required to warm 1 g of water by $1ºC$ , and is equivalent to $4.186J$ , while one *food calorie* (1 kcal) is equivalent to $4186J$ .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-17",
+      "type": "paragraph",
+      "content": {
+        "text": "We can solve this problem by substituting the given values into the definition of work done on a system, stated in the equation $W=Fdcosθ$ . The force, angle, and displacement are given, so that only the work $W$ is unknown.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-18",
+      "type": "paragraph",
+      "content": {
+        "text": "The equation for the work is",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-19",
+      "type": "paragraph",
+      "content": {
+        "text": "Substituting the known values gives",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-20",
+      "type": "paragraph",
+      "content": {
+        "text": "Converting the work in joules to kilocalories yields $W=(1536J)(1kcal/4186J)=0.367kcal$ . The ratio of the work done to the daily consumption is",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-21",
+      "type": "paragraph",
+      "content": {
+        "text": "This ratio is a tiny fraction of what the person consumes, but it is typical. Very little of the energy released in the consumption of food is used to do work. Even when we “work” all day long, less than 10% of our food energy intake is used to do work and more than 90% is converted to thermal energy or stored as chemical energy in fat.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-22",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Test Prep for AP Courses",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-23",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Given about how much force does the rocket engine exert on the 3.0-kg payload? Distance traveled with rocket engine firing (m) Payload final velocity (m/s) 500 310 490 300 1020 450 505 312 150 N; 300 N; 450 N; 600 N",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(b)",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-24",
+      "type": "paragraph",
+      "content": {
+        "text": "Given about how much force does the rocket engine exert on the 3.0-kg payload?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "tbl-25",
+      "type": "table",
+      "title": {
+        "text": "Table",
+        "inline": []
+      },
+      "rows": [
+        [
+          "Distance traveled with rocket engine firing (m)",
+          "Payload final velocity (m/s)"
+        ],
+        [
+          "500",
+          "310"
+        ],
+        [
+          "490",
+          "300"
+        ],
+        [
+          "1020",
+          "450"
+        ],
+        [
+          "505",
+          "312"
+        ]
+      ],
+      "alt": "Table with 5 rows",
+      "level": "core"
+    },
+    {
+      "id": "exr-26",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "You have a cart track, a cart, several masses, and a position-sensing pulley. Design an experiment to examine how the force exerted on the cart does work as it moves through a distance.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-27",
+      "type": "paragraph",
+      "content": {
+        "text": "You have a cart track, a cart, several masses, and a position-sensing pulley. Design an experiment to examine how the force exerted on the cart does work as it moves through a distance.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-28",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Look at (c). You compress a spring by *x* , and then release it. Next you compress the spring by 2 *x* . How much more work did you do the second time than the first? Half as much; The same; Twice as much; Four times as much",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(d)",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-29",
+      "type": "paragraph",
+      "content": {
+        "text": "Look at (c). You compress a spring by *x* , and then release it. Next you compress the spring by 2 *x* . How much more work did you do the second time than the first?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-30",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "You have a cart track, two carts, several masses, a position-sensing pulley, and a piece of carpet (a rough surface) that will fit over the track. Design an experiment to examine how the force exerted on the cart does work as the cart moves through a distance.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-31",
+      "type": "paragraph",
+      "content": {
+        "text": "You have a cart track, two carts, several masses, a position-sensing pulley, and a piece of carpet (a rough surface) that will fit over the track. Design an experiment to examine how the force exerted on the cart does work as the cart moves through a distance.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-32",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A crane is lifting construction materials from the ground to an elevation of 60 m. Over the first 10 m, the motor linearly increases the force it exerts from 0 to 10 kN. It exerts that constant force for the next 40 m, and then winds down to 0 N again over the last 10 m, as shown in the figure. What is the total work done on the construction materials? 500 kJ; 600 kJ; 300 kJ; 18 MJ",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a)",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-33",
+      "type": "paragraph",
+      "content": {
+        "text": "A crane is lifting construction materials from the ground to an elevation of 60 m. Over the first 10 m, the motor linearly increases the force it exerts from 0 to 10 kN. It exerts that constant force for the next 40 m, and then winds down to 0 N again over the last 10 m, as shown in the figure. What is the total work done on the construction materials?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-2",
+      "type": "figure",
+      "asset_url": "images/phy_m42146_CNX_APPhysics_07_M1_cranegraph_img.jpg",
+      "caption": {
+        "text": "The graph has meters on the x axis and kilonewtons on the y axis. A straight line runs from the point (0, 0) to the point (10, 10). Another straight line runs from (10, 10) to (50, 10). A third straight line runs from (50, 10) to (60, 0).",
+        "inline": []
+      },
+      "alt": "The graph has meters on the x axis and kilonewtons on the y axis. A straight line runs from the point (0, 0) to the point (10, 10). Another straight line runs from (10, 10) to (50, 10). A third straight line runs from (50, 10) to (60, 0).",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "sec-35",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Section Summary",
+        "inline": []
+      }
+    },
+    {
+      "id": "sec-36",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Conceptual Questions",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-37",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Give an example of something we think of as work in everyday circumstances that is not work in the scientific sense. Is energy transferred or changed in form in your example? If so, explain how this is accomplished without doing work.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-38",
+      "type": "paragraph",
+      "content": {
+        "text": "Give an example of something we think of as work in everyday circumstances that is not work in the scientific sense. Is energy transferred or changed in form in your example? If so, explain how this is accomplished without doing work.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-39",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Give an example of a situation in which there is a force and a displacement, but the force does no work. Explain why it does no work.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-40",
+      "type": "paragraph",
+      "content": {
+        "text": "Give an example of a situation in which there is a force and a displacement, but the force does no work. Explain why it does no work.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-41",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Describe a situation in which a force is exerted for a long time but does no work. Explain.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-42",
+      "type": "paragraph",
+      "content": {
+        "text": "Describe a situation in which a force is exerted for a long time but does no work. Explain.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-43",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Problems & Exercises",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-44",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "How much work does a supermarket checkout attendant do on a can of soup he pushes 0.600 m horizontally with a force of 5.00 N? Express your answer in joules and kilocalories.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "\\[$3.00J=7.17×{10}^{-4}kcal$\\]",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-45",
+      "type": "paragraph",
+      "content": {
+        "text": "How much work does a supermarket checkout attendant do on a can of soup he pushes 0.600 m horizontally with a force of 5.00 N? Express your answer in joules and kilocalories.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-46",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A 75.0-kg person climbs stairs, gaining 2.50 meters in height. Find the work done to accomplish this task. (Neglect friction in your calculations.)",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-47",
+      "type": "paragraph",
+      "content": {
+        "text": "A 75.0-kg person climbs stairs, gaining 2.50 meters in height. Find the work done to accomplish this task. (Neglect friction in your calculations.)",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-48",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "(a) Calculate the work done on a 1500-kg elevator car by its cable to lift it 40.0 m at constant speed, assuming friction averages 100 N. (b) What is the work done on the elevator car by the gravitational force in this process? (c) What is the total work done on the elevator car?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a) $5.92×{10}^{5}J$ (b) $-5.88×{10}^{5}J$ (c) The net force is zero.",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-49",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) Calculate the work done on a 1500-kg elevator car by its cable to lift it 40.0 m at constant speed, assuming friction averages 100 N. (b) What is the work done on the elevator car by the gravitational force in this process? (c) What is the total work done on the elevator car?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-50",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) $5.92×{10}^{5}J$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-51",
+      "type": "paragraph",
+      "content": {
+        "text": "(b) $-5.88×{10}^{5}J$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-52",
+      "type": "paragraph",
+      "content": {
+        "text": "(c) The net force is zero.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-53",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Suppose a car travels 108 km at a speed of 30.0 m/s, and uses 2.0 gal of gasoline. Only 30% of the gasoline goes into useful work by the force that keeps the car moving at constant speed despite friction. (See for the energy content of gasoline.) (a) What is the magnitude of the force exerted to keep the car moving at constant speed? (b) If the required force is directly proportional to speed, how many gallons will be used to drive 108 km at a speed of 28.0 m/s?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-54",
+      "type": "paragraph",
+      "content": {
+        "text": "Suppose a car travels 108 km at a speed of 30.0 m/s, and uses 2.0 gal of gasoline. Only 30% of the gasoline goes into useful work by the force that keeps the car moving at constant speed despite friction. (See for the energy content of gasoline.) (a) What is the magnitude of the force exerted to keep the car moving at constant speed? (b) If the required force is directly proportional to speed, how many gallons will be used to drive 108 km at a speed of 28.0 m/s?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-55",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Calculate the work done by an 85.0-kg man who pushes a crate 4.00 m up along a ramp that makes an angle of $20.0º$ with the horizontal. (See .) He exerts a force of 500 N on the crate parallel to the ramp and moves at a constant speed. Be certain to include the work he does on the crate *and* on his body to get up the ramp. A man pushes a crate up a ramp.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "\\[$3.14×{10}^{3}J$\\]",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-56",
+      "type": "paragraph",
+      "content": {
+        "text": "Calculate the work done by an 85.0-kg man who pushes a crate 4.00 m up along a ramp that makes an angle of $20.0º$ with the horizontal. (See .) He exerts a force of 500 N on the crate parallel to the ramp and moves at a constant speed. Be certain to include the work he does on the crate *and* on his body to get up the ramp.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-3",
+      "type": "figure",
+      "asset_url": "images/phy_m42146_Figure_08_01_02a-7069.jpg",
+      "caption": {
+        "text": "A man pushes a crate up a ramp.",
+        "inline": []
+      },
+      "alt": "A person is pushing a heavy crate up a ramp. The force vector F applied by the person is acting parallel to the ramp.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "exr-58",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "How much work is done by the boy pulling his sister 30.0 m in a wagon as shown in ? Assume no friction acts on the wagon. The boy does work on the system of the wagon and the child when he pulls them as shown.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-59",
+      "type": "paragraph",
+      "content": {
+        "text": "How much work is done by the boy pulling his sister 30.0 m in a wagon as shown in ? Assume no friction acts on the wagon.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-4",
+      "type": "figure",
+      "asset_url": "images/phy_m42146_Figure_08_01_03-15ce.jpg",
+      "caption": {
+        "text": "The boy does work on the system of the wagon and the child when he pulls them as shown.",
+        "inline": []
+      },
+      "alt": "A child is sitting inside a wagon and being pulled by a boy with a force F at an angle thirty degrees upward from the horizontal. F is equal to fifty newtons, the displacement vector d is horizontal in the direction of motion. The magnitude of d is thirty meters.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "exr-61",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A shopper pushes a grocery cart 20.0 m at constant speed on level ground, against a 35.0 N frictional force. He pushes in a direction $25.0º$ below the horizontal. (a) What is the work done on the cart by friction? (b) What is the work done on the cart by the gravitational force? (c) What is the work done on the cart by the shopper? (d) Find the force the shopper exerts, using energy considerations. (e) What is the total work done on the cart?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a) $-700J$ (b) 0 (c) 700 J (d) 38.6 N (e) 0",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-62",
+      "type": "paragraph",
+      "content": {
+        "text": "A shopper pushes a grocery cart 20.0 m at constant speed on level ground, against a 35.0 N frictional force. He pushes in a direction $25.0º$ below the horizontal. (a) What is the work done on the cart by friction? (b) What is the work done on the cart by the gravitational force? (c) What is the work done on the cart by the shopper? (d) Find the force the shopper exerts, using energy considerations. (e) What is the total work done on the cart?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-63",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Suppose the ski patrol lowers a rescue sled and victim, having a total mass of 90.0 kg, down a $60.0º$ slope at constant speed, as shown in . The coefficient of friction between the sled and the snow is 0.100. (a) How much work is done by friction as the sled moves 30.0 m along the hill? (b) How much work is done by the rope on the sled in this distance? (c) What is the work done by the gravitational force on the sled? (d) What is the total work done? A rescue sled and victim are lowered down a steep slope.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-64",
+      "type": "paragraph",
+      "content": {
+        "text": "Suppose the ski patrol lowers a rescue sled and victim, having a total mass of 90.0 kg, down a $60.0º$ slope at constant speed, as shown in . The coefficient of friction between the sled and the snow is 0.100. (a) How much work is done by friction as the sled moves 30.0 m along the hill? (b) How much work is done by the rope on the sled in this distance? (c) What is the work done by the gravitational force on the sled? (d) What is the total work done?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-5",
+      "type": "figure",
+      "asset_url": "images/phy_m42146_Figure_08_01_04a.jpg",
+      "caption": {
+        "text": "A rescue sled and victim are lowered down a steep slope.",
+        "inline": []
+      },
+      "alt": "A person on a rescue sled is shown being pulled up a slope. The slope makes an angle of sixty degrees from the horizontal. The weight of the person is shown by vector w acting vertically downward. The tension in the rope depicted by vector T is along the incline in the upward direction; vector f depicting frictional force is also acting in the same direction.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    }
+  ],
+  "solutions": {
+    "osbooks-college-physics-bundle:m42146:exr-23": [
+      [
+        {
+          "kind": "text",
+          "text": "(b)"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42146:exr-28": [
+      [
+        {
+          "kind": "text",
+          "text": "(d)"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42146:exr-32": [
+      [
+        {
+          "kind": "text",
+          "text": "(a)"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42146:exr-44": [
+      [
+        {
+          "kind": "math",
+          "text": "3.00J=7.17×{10}^{-4}kcal"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42146:exr-48": [
+      [
+        {
+          "kind": "text",
+          "text": "(a)"
+        },
+        {
+          "kind": "math",
+          "text": "5.92×{10}^{5}J"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(b)"
+        },
+        {
+          "kind": "math",
+          "text": "-5.88×{10}^{5}J"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(c) The net force is zero."
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42146:exr-55": [
+      [
+        {
+          "kind": "math",
+          "text": "3.14×{10}^{3}J"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42146:exr-61": [
+      [
+        {
+          "kind": "text",
+          "text": "(a)"
+        },
+        {
+          "kind": "math",
+          "text": "-700J"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(b) 0"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(c) 700 J"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(d) 38.6 N"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(e) 0"
+        }
+      ]
+    ]
+  }
+}

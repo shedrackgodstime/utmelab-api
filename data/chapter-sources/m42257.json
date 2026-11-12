@@ -1,0 +1,1223 @@
+{
+  "module": "m42257",
+  "source_attribution": {
+    "publisher": "OpenStax",
+    "book": "osbooks-college-physics-bundle",
+    "section": "m42257",
+    "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42257/index.cnxml",
+    "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)",
+    "locator": "CNXML module index.cnxml (typed elements, solutions present)"
+  },
+  "blocks": [
+    {
+      "id": "sec-0",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Learning Objectives",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-1",
+      "type": "paragraph",
+      "content": {
+        "text": "By the end of this section, you will be able to:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-1",
+      "type": "figure",
+      "asset_url": "images/phy_m42257_Figure_18_03_01aa.jpg",
+      "caption": {
+        "text": "Noise on crowded roadways like this one in Delhi makes it hard to hear others unless they shout. (credit: Lingaraj G J, Flickr)",
+        "inline": []
+      },
+      "alt": "Photograph of a road jammed with traffic of all types of vehicles.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-3",
+      "type": "paragraph",
+      "content": {
+        "text": "In a quiet forest, you can sometimes hear a single leaf fall to the ground. After settling into bed, you may hear your blood pulsing through your ears. But when a passing motorist has his stereo turned up, you cannot even hear what the person next to you in your car is saying. We are all very familiar with the loudness of sounds and aware that they are related to how energetically the source is vibrating. In cartoons depicting a screaming person (or an animal making a loud noise), the cartoonist often shows an open mouth with a vibrating uvula, the hanging tissue at the back of the mouth, to suggest a loud sound coming from the throat . High noise exposure is hazardous to hearing, and it is common for musicians to have hearing losses that are sufficiently severe that they interfere with the musicians’ abilities to perform. The relevant physical quantity is sound intensity, a concept that is valid for all sounds whether or not they are in the audible range.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-4",
+      "type": "paragraph",
+      "content": {
+        "text": "Intensity is defined to be the power per unit area carried by a wave. Power is the rate at which energy is transferred by the wave. In equation form, intensity *$I$* is",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-5",
+      "type": "paragraph",
+      "content": {
+        "text": "where $P$ is the power through an area *$A$* . The SI unit for *$I$* is ${W/m}^{2}$ . The intensity of a sound wave is related to its amplitude squared by the following relationship:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-6",
+      "type": "paragraph",
+      "content": {
+        "text": "Here $Δp$ is the pressure variation or pressure amplitude (half the difference between the maximum and minimum pressure in the sound wave) in units of pascals (Pa) or ${N/m}^{2}$ . (We are using a lower case $p$ for pressure to distinguish it from power, denoted by $P$ above.) The energy (as kinetic energy $\\frac{{mv}^{2}}{2}$ ) of an oscillating element of air due to a traveling sound wave is proportional to its amplitude squared. In this equation, $ρ$ is the density of the material in which the sound wave travels, in units of ${kg/m}^{3}$ , and ${v}_{w}$ is the speed of sound in the medium, in units of m/s. The pressure variation is proportional to the amplitude of the oscillation, and so *$I$* varies as $(Δp{)}^{2}$ ( ). This relationship is consistent with the fact that the sound wave is produced by some vibration; the greater its pressure amplitude, the more the air is compressed in the sound it creates.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-2",
+      "type": "figure",
+      "asset_url": "images/phy_m42257_Figure_18_03_01ab.jpg",
+      "caption": {
+        "text": "Graphs of the gauge pressures in two sound waves of different intensities. The more intense sound is produced by a source that has larger-amplitude oscillations and has greater pressure maxima and minima. Because pressures are higher in the greater-intensity sound, it can exert larger forces on the objects it encounters.",
+        "inline": []
+      },
+      "alt": "The image shows two graphs, with a bird positioned to the left of each one. The first graph represents a low frequency sound of a bird. The pressure variation shows small amplitude maxima and minima, represented by a sine curve of gauge pressure versus position with a small amplitude. The second graph represents a high frequency sound of a screaming bird. The pressure variation shows large amplitude maxima and minima, represented by a sine curve of gauge pressure versus position with a large amplitude.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-8",
+      "type": "paragraph",
+      "content": {
+        "text": "Sound intensity levels are quoted in decibels (dB) much more often than sound intensities in watts per meter squared. Decibels are the unit of choice in the scientific literature as well as in the popular media. The reasons for this choice of units are related to how we perceive sounds. How our ears perceive sound can be more accurately described by the logarithm of the intensity rather than directly to the intensity. The sound intensity level *$β$* in decibels of a sound having an intensity $I$ in watts per meter squared is defined to be",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-9",
+      "type": "paragraph",
+      "content": {
+        "text": "where ${I}_{0}={10}^{–12}{W/m}^{2}$ is a reference intensity. In particular, ${I}_{0}$ is the lowest or threshold intensity of sound a person with normal hearing can perceive at a frequency of 1000 Hz. Sound intensity level is not the same as intensity. Because *$β$* is defined in terms of a ratio, it is a unitless quantity telling you the *level* of the sound relative to a fixed standard ( ${10}^{–12}{W/m}^{2}$ , in this case). The units of decibels (dB) are used to indicate this ratio is multiplied by 10 in its definition. The bel, upon which the decibel is based, is named for Alexander Graham Bell, the inventor of the telephone.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "tbl-10",
+      "type": "table",
+      "title": {
+        "text": "Table",
+        "inline": []
+      },
+      "rows": [
+        [
+          "Sound intensity level *β* (dB)",
+          "Intensity *I* (W/m 2 )",
+          "Example/effect"
+        ],
+        [
+          "$0$",
+          "$1×{10}^{–12}$",
+          "Threshold of hearing at 1000 Hz"
+        ],
+        [
+          "$10$",
+          "$1×{10}^{–11}$",
+          "Rustle of leaves"
+        ],
+        [
+          "$20$",
+          "$1×{10}^{–10}$",
+          "Whisper at 1 m distance"
+        ],
+        [
+          "$30$",
+          "$1×{10}^{–9}$",
+          "Quiet home"
+        ],
+        [
+          "$40$",
+          "$1×{10}^{–8}$",
+          "Average home"
+        ],
+        [
+          "$50$",
+          "$1×{10}^{–7}$",
+          "Average office, soft music"
+        ],
+        [
+          "$60$",
+          "$1×{10}^{–6}$",
+          "Normal conversation"
+        ],
+        [
+          "$70$",
+          "$1×{10}^{–5}$",
+          "Noisy office, busy traffic"
+        ],
+        [
+          "$80$",
+          "$1×{10}^{–4}$",
+          "Loud radio, classroom lecture"
+        ],
+        [
+          "$90$",
+          "$1×{10}^{–3}$",
+          "Inside a heavy truck; damage from prolonged exposure Several government agencies and health-related professional associations recommend that 85 dB not be exceeded for 8-hour daily exposures in the absence of hearing protection."
+        ],
+        [
+          "$100$",
+          "$1×{10}^{–2}$",
+          "Noisy factory, siren at 30 m; damage from 8 h per day exposure"
+        ],
+        [
+          "$110$",
+          "$1×{10}^{–1}$",
+          "Damage from 30 min per day exposure"
+        ],
+        [
+          "$120$",
+          "$1$",
+          "Loud rock concert, pneumatic chipper at 2 m; threshold of pain"
+        ],
+        [
+          "$140$",
+          "$1×{10}^{2}$",
+          "Jet airplane at 30 m; severe pain, damage in seconds"
+        ],
+        [
+          "$160$",
+          "$1×{10}^{4}$",
+          "Bursting of eardrums"
+        ]
+      ],
+      "alt": "Table with 16 rows",
+      "level": "core"
+    },
+    {
+      "id": "p-11",
+      "type": "paragraph",
+      "content": {
+        "text": "The decibel level of a sound having the threshold intensity of ${10}^{-12}{W/m}^{2}$ is $β=0dB$ , because ${log}_{10}1=0$ . That is, the threshold of hearing is 0 decibels. gives levels in decibels and intensities in watts per meter squared for some familiar sounds.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-12",
+      "type": "paragraph",
+      "content": {
+        "text": "One of the more striking things about the intensities in is that the intensity in watts per meter squared is quite small for most sounds. The ear is sensitive to as little as a trillionth of a watt per meter squared—even more impressive when you realize that the area of the eardrum is only about ${1 cm}^{2}$ , so that only ${10}^{-16}$ W falls on it at the threshold of hearing! Air molecules in a sound wave of this intensity vibrate over a distance of less than one molecular diameter, and the gauge pressures involved are less than ${10}^{-9}$ atm.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-13",
+      "type": "paragraph",
+      "content": {
+        "text": "Another impressive feature of the sounds in is their numerical range. Sound intensity varies by a factor of ${10}^{12}$ from threshold to a sound that causes damage in seconds. You are unaware of this tremendous range in sound intensity because how your ears respond can be described approximately as the logarithm of intensity. Thus, sound intensity levels in decibels fit your experience better than intensities in watts per meter squared. The decibel scale is also easier to relate to because most people are more accustomed to dealing with numbers such as 0, 53, or 120 than numbers such as $1.00×{10}^{-11}$ .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-14",
+      "type": "paragraph",
+      "content": {
+        "text": "One more observation readily verified by examining or using $I={\\frac{(Δp)}{2{ρv}_{w}}}^{2}$ is that each factor of 10 in intensity corresponds to 10 dB. For example, a 90 dB sound compared with a 60 dB sound is 30 dB greater, or three factors of 10 (that is, ${10}^{3}$ times) as intense. Another example is that if one sound is ${10}^{7}$ as intense as another, it is 70 dB higher. See .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "tbl-15",
+      "type": "table",
+      "title": {
+        "text": "Table",
+        "inline": []
+      },
+      "rows": [
+        [
+          "${I}_{2}/{I}_{1}$",
+          "${β}_{2}-{β}_{1}$"
+        ],
+        [
+          "2.0",
+          "3.0 dB"
+        ],
+        [
+          "5.0",
+          "7.0 dB"
+        ],
+        [
+          "10.0",
+          "10.0 dB"
+        ]
+      ],
+      "alt": "Table with 4 rows",
+      "level": "core"
+    },
+    {
+      "id": "ex-16",
+      "type": "example",
+      "kind": "worked",
+      "title": {
+        "text": "Calculating Sound Intensity Levels: Sound Waves",
+        "inline": []
+      },
+      "problem": {
+        "text": "",
+        "inline": []
+      },
+      "answer": null,
+      "level": "core"
+    },
+    {
+      "id": "p-17",
+      "type": "paragraph",
+      "content": {
+        "text": "Calculate the sound intensity level in decibels for a sound wave traveling in air at $0ºC$ and having a pressure amplitude of 0.656 Pa.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-18",
+      "type": "paragraph",
+      "content": {
+        "text": "We are given $Δp$ , so we can calculate $I$ using the equation $I={(Δp)}^{2}/{(2{pv}_{w})}^{2}$ . Using $I$ , we can calculate $β$ straight from its definition in $β(dB)=10{log}_{10}(I/{I}_{0})$ .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-19",
+      "type": "paragraph",
+      "content": {
+        "text": "(1) Identify knowns:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-20",
+      "type": "paragraph",
+      "content": {
+        "text": "Sound travels at 331 m/s in air at $0ºC$ .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-21",
+      "type": "paragraph",
+      "content": {
+        "text": "Air has a density of $1.29 kg{/m}^{3}$ at atmospheric pressure and $0ºC$ .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-22",
+      "type": "paragraph",
+      "content": {
+        "text": "(2) Enter these values and the pressure amplitude into $I={(Δp)}^{2}/({2ρv}_{w})$ :",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-23",
+      "type": "paragraph",
+      "content": {
+        "text": "(3) Enter the value for $I$ and the known value for ${I}_{0}$ into $β(dB)=10{log}_{10}(I/{I}_{0})$ . Calculate to find the sound intensity level in decibels:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-24",
+      "type": "paragraph",
+      "content": {
+        "text": "This 87 dB sound has an intensity five times as great as an 80 dB sound. So a factor of five in intensity corresponds to a difference of 7 dB in sound intensity level. This value is true for any intensities differing by a factor of five.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "ex-25",
+      "type": "example",
+      "kind": "worked",
+      "title": {
+        "text": "Change Intensity Levels of a Sound: What Happens to the Decibel Level?",
+        "inline": []
+      },
+      "problem": {
+        "text": "",
+        "inline": []
+      },
+      "answer": null,
+      "level": "core"
+    },
+    {
+      "id": "p-26",
+      "type": "paragraph",
+      "content": {
+        "text": "Show that if one sound is twice as intense as another, it has a sound level about 3 dB higher.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-27",
+      "type": "paragraph",
+      "content": {
+        "text": "You are given that the ratio of two intensities is 2 to 1, and are then asked to find the difference in their sound levels in decibels. You can solve this problem using of the properties of logarithms.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-28",
+      "type": "paragraph",
+      "content": {
+        "text": "(1) Identify knowns:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-29",
+      "type": "paragraph",
+      "content": {
+        "text": "The ratio of the two intensities is 2 to 1, or:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-30",
+      "type": "paragraph",
+      "content": {
+        "text": "We wish to show that the difference in sound levels is about 3 dB. That is, we want to show:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-31",
+      "type": "paragraph",
+      "content": {
+        "text": "(2) Use the definition of $β$ to get:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-32",
+      "type": "paragraph",
+      "content": {
+        "text": "This means that the two sound intensity levels differ by 3.01 dB, or about 3 dB, as advertised. Note that because only the ratio ${I}_{2}/{I}_{1}$ is given (and not the actual intensities), this result is true for any intensities that differ by a factor of two. For example, a 56.0 dB sound is twice as intense as a 53.0 dB sound, a 97.0 dB sound is half as intense as a 100 dB sound, and so on.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-33",
+      "type": "paragraph",
+      "content": {
+        "text": "It should be noted at this point that there is another decibel scale in use, called the sound pressure level , based on the ratio of the pressure amplitude to a reference pressure. This scale is used particularly in applications where sound travels in water. It is beyond the scope of most introductory texts to treat this scale because it is not commonly used for sounds in air, but it is important to note that very different decibel levels may be encountered when sound pressure levels are quoted. For example, ocean noise pollution produced by ships may be as great as 200 dB expressed in the sound pressure level, where the more familiar sound intensity level we use here would be something under 140 dB for the same sound.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-34",
+      "type": "paragraph",
+      "content": {
+        "text": "Find a CD player and a CD that has rock music. Place the player on a light table, insert the CD into the player, and start playing the CD. Place your hand gently on the table next to the speakers. Increase the volume and note the level when the table just begins to vibrate as the rock music plays. Increase the reading on the volume control until it doubles. What has happened to the vibrations?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-35",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Describe how amplitude is related to the loudness of a sound.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "Amplitude is directly proportional to the experience of loudness. As amplitude increases, loudness increases.",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-36",
+      "type": "paragraph",
+      "content": {
+        "text": "Describe how amplitude is related to the loudness of a sound.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-37",
+      "type": "paragraph",
+      "content": {
+        "text": "Amplitude is directly proportional to the experience of loudness. As amplitude increases, loudness increases.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-38",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Identify common sounds at the levels of 10 dB, 50 dB, and 100 dB.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "10 dB: Running fingers through your hair. 50 dB: Inside a quiet home with no television or radio. 100 dB: Take-off of a jet plane.",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-39",
+      "type": "paragraph",
+      "content": {
+        "text": "Identify common sounds at the levels of 10 dB, 50 dB, and 100 dB.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-40",
+      "type": "paragraph",
+      "content": {
+        "text": "10 dB: Running fingers through your hair.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-41",
+      "type": "paragraph",
+      "content": {
+        "text": "50 dB: Inside a quiet home with no television or radio.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-42",
+      "type": "paragraph",
+      "content": {
+        "text": "100 dB: Take-off of a jet plane.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-43",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Test Prep for AP Courses",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-44",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "In order to waken a sleeping child, the volume on an alarm clock is tripled. Under this new scenario, how much more energy will be striking the child’s ear drums each second? twice as much; three times as much; approximately 4.8 times as much; six times as much; nine times as much",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(e)",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-45",
+      "type": "paragraph",
+      "content": {
+        "text": "In order to waken a sleeping child, the volume on an alarm clock is tripled. Under this new scenario, how much more energy will be striking the child’s ear drums each second?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-46",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A musician strikes the strings of a guitar such that they vibrate with twice the amplitude. Explain why this requires an energy input greater than twice the original value.; Explain why the sound leaving the string will not result in a decibel level that is twice as great.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-47",
+      "type": "paragraph",
+      "content": {
+        "text": "A musician strikes the strings of a guitar such that they vibrate with twice the amplitude.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-48",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Section Summary",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-49",
+      "type": "paragraph",
+      "content": {
+        "text": "Intensity is the same for a sound wave as was defined for all waves; it is \\[$I=\\frac{P}{A},$\\] where $P$ is the power crossing area $A$ . The SI unit for $I$ is watts per meter squared. The intensity of a sound wave is also related to the pressure amplitude $Δp$ \\[$I=\\frac{{(Δp)}^{2}}{2{ρv}_{w}},$\\] where $ρ$ is the density of the medium in which the sound wave travels and ${v}_{w}$ is the speed of sound in the medium.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-50",
+      "type": "paragraph",
+      "content": {
+        "text": "Sound intensity level in units of decibels (dB) is \\[$β(dB)=10{log}_{10}(\\frac{I}{{I}_{0}}),$\\] where ${I}_{0}={10}^{–12}W/{m}^{2}$ is the threshold intensity of hearing.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-51",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Conceptual Questions",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-52",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Six members of a synchronized swim team wear earplugs to protect themselves against water pressure at depths, but they can still hear the music and perform the combinations in the water perfectly. One day, they were asked to leave the pool so the dive team could practice a few dives, and they tried to practice on a mat, but seemed to have a lot more difficulty. Why might this be?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-53",
+      "type": "paragraph",
+      "content": {
+        "text": "Six members of a synchronized swim team wear earplugs to protect themselves against water pressure at depths, but they can still hear the music and perform the combinations in the water perfectly. One day, they were asked to leave the pool so the dive team could practice a few dives, and they tried to practice on a mat, but seemed to have a lot more difficulty. Why might this be?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-54",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A community is concerned about a plan to bring train service to their downtown from the town’s outskirts. The current sound intensity level, even though the rail yard is blocks away, is 70 dB downtown. The mayor assures the public that there will be a difference of only 30 dB in sound in the downtown area. Should the townspeople be concerned? Why?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-55",
+      "type": "paragraph",
+      "content": {
+        "text": "A community is concerned about a plan to bring train service to their downtown from the town’s outskirts. The current sound intensity level, even though the rail yard is blocks away, is 70 dB downtown. The mayor assures the public that there will be a difference of only 30 dB in sound in the downtown area. Should the townspeople be concerned? Why?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-56",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Problems & Exercises",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-57",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "What is the intensity in watts per meter squared of 85.0-dB sound?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "\\[$3.16×{10}^{–4}{W/m}^{2}$\\]",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-58",
+      "type": "paragraph",
+      "content": {
+        "text": "What is the intensity in watts per meter squared of 85.0-dB sound?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-59",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "The warning tag on a lawn mower states that it produces noise at a level of 91.0 dB. What is this in watts per meter squared?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-60",
+      "type": "paragraph",
+      "content": {
+        "text": "The warning tag on a lawn mower states that it produces noise at a level of 91.0 dB. What is this in watts per meter squared?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-61",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A sound wave traveling in $20ºC$ air has a pressure amplitude of 0.5 Pa. What is the intensity of the wave?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "\\[$3.04×{10}^{–4}{W/m}^{2}$\\]",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-62",
+      "type": "paragraph",
+      "content": {
+        "text": "A sound wave traveling in $20ºC$ air has a pressure amplitude of 0.5 Pa. What is the intensity of the wave?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-63",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "What intensity level does the sound in the preceding problem correspond to?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-64",
+      "type": "paragraph",
+      "content": {
+        "text": "What intensity level does the sound in the preceding problem correspond to?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-65",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "What sound intensity level in dB is produced by earphones that create an intensity of $4.00×{10}^{−2}{W/m}^{2}$ ?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "106 dB",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-66",
+      "type": "paragraph",
+      "content": {
+        "text": "What sound intensity level in dB is produced by earphones that create an intensity of $4.00×{10}^{−2}{W/m}^{2}$ ?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-67",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Show that an intensity of ${10}^{–12}{W/m}^{2}$ is the same as ${10}^{–16}{W/cm}^{2}$ .",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-68",
+      "type": "paragraph",
+      "content": {
+        "text": "Show that an intensity of ${10}^{–12}{W/m}^{2}$ is the same as ${10}^{–16}{W/cm}^{2}$ .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-69",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "(a) What is the decibel level of a sound that is twice as intense as a 90.0-dB sound? (b) What is the decibel level of a sound that is one-fifth as intense as a 90.0-dB sound?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a) 93 dB (b) 83 dB",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-70",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) What is the decibel level of a sound that is twice as intense as a 90.0-dB sound? (b) What is the decibel level of a sound that is one-fifth as intense as a 90.0-dB sound?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-71",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "(a) What is the intensity of a sound that has a level 7.00 dB lower than a $4.00×{10}^{–9}{W/m}^{2}$ sound? (b) What is the intensity of a sound that is 3.00 dB higher than a $4.00×{10}^{–9}{W/m}^{2}$ sound?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-72",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) What is the intensity of a sound that has a level 7.00 dB lower than a $4.00×{10}^{–9}{W/m}^{2}$ sound? (b) What is the intensity of a sound that is 3.00 dB higher than a $4.00×{10}^{–9}{W/m}^{2}$ sound?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-73",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "(a) How much more intense is a sound that has a level 17.0 dB higher than another? (b) If one sound has a level 23.0 dB less than another, what is the ratio of their intensities?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a) 50.1 (b) $5.01×{10}^{–3}$ or $\\frac{1}{200}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-74",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) How much more intense is a sound that has a level 17.0 dB higher than another? (b) If one sound has a level 23.0 dB less than another, what is the ratio of their intensities?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-75",
+      "type": "paragraph",
+      "content": {
+        "text": "(b) $5.01×{10}^{–3}$ or $\\frac{1}{200}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-76",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "People with good hearing can perceive sounds as low in level as $–8.00 dB$ at a frequency of 3000 Hz. What is the intensity of this sound in watts per meter squared?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-77",
+      "type": "paragraph",
+      "content": {
+        "text": "People with good hearing can perceive sounds as low in level as $–8.00 dB$ at a frequency of 3000 Hz. What is the intensity of this sound in watts per meter squared?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-78",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "If a large housefly 3.0 m away from you makes a noise of 40.0 dB, what is the noise level of 1000 flies at that distance, assuming interference has a negligible effect?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "70.0 dB",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-79",
+      "type": "paragraph",
+      "content": {
+        "text": "If a large housefly 3.0 m away from you makes a noise of 40.0 dB, what is the noise level of 1000 flies at that distance, assuming interference has a negligible effect?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-80",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Ten cars in a circle at a boom box competition produce a 120-dB sound intensity level at the center of the circle. What is the average sound intensity level produced there by each stereo, assuming interference effects can be neglected?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-81",
+      "type": "paragraph",
+      "content": {
+        "text": "Ten cars in a circle at a boom box competition produce a 120-dB sound intensity level at the center of the circle. What is the average sound intensity level produced there by each stereo, assuming interference effects can be neglected?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-82",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "The amplitude of a sound wave is measured in terms of its maximum gauge pressure. By what factor does the amplitude of a sound wave increase if the sound intensity level goes up by 40.0 dB?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "100",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-83",
+      "type": "paragraph",
+      "content": {
+        "text": "The amplitude of a sound wave is measured in terms of its maximum gauge pressure. By what factor does the amplitude of a sound wave increase if the sound intensity level goes up by 40.0 dB?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-84",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "If a sound intensity level of 0 dB at 1000 Hz corresponds to a maximum gauge pressure (sound amplitude) of ${10}^{–9}atm$ , what is the maximum gauge pressure in a 60-dB sound? What is the maximum gauge pressure in a 120-dB sound?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-85",
+      "type": "paragraph",
+      "content": {
+        "text": "If a sound intensity level of 0 dB at 1000 Hz corresponds to a maximum gauge pressure (sound amplitude) of ${10}^{–9}atm$ , what is the maximum gauge pressure in a 60-dB sound? What is the maximum gauge pressure in a 120-dB sound?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-86",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "An 8-hour exposure to a sound intensity level of 90.0 dB may cause hearing damage. What energy in joules falls on a 0.800-cm-diameter eardrum so exposed?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "\\[$1.45×{10}^{–3}J$\\]",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-87",
+      "type": "paragraph",
+      "content": {
+        "text": "An 8-hour exposure to a sound intensity level of 90.0 dB may cause hearing damage. What energy in joules falls on a 0.800-cm-diameter eardrum so exposed?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-88",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "(a) Ear trumpets were never very common, but they did aid people with hearing losses by gathering sound over a large area and concentrating it on the smaller area of the eardrum. What decibel increase does an ear trumpet produce if its sound gathering area is ${900 cm}^{2}$ and the area of the eardrum is ${0.500 cm}^{2}$ , but the trumpet only has an efficiency of 5.00% in transmitting the sound to the eardrum? (b) Comment on the usefulness of the decibel increase found in part (a).",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-89",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) Ear trumpets were never very common, but they did aid people with hearing losses by gathering sound over a large area and concentrating it on the smaller area of the eardrum. What decibel increase does an ear trumpet produce if its sound gathering area is ${900 cm}^{2}$ and the area of the eardrum is ${0.500 cm}^{2}$ , but the trumpet only has an efficiency of 5.00% in transmitting the sound to the eardrum? (b) Comment on the usefulness of the decibel increase found in part (a).",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-90",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Sound is more effectively transmitted into a stethoscope by direct contact than through the air, and it is further intensified by being concentrated on the smaller area of the eardrum. It is reasonable to assume that sound is transmitted into a stethoscope 100 times as effectively compared with transmission though the air. What, then, is the gain in decibels produced by a stethoscope that has a sound gathering area of ${15.0 cm}^{2}$ , and concentrates the sound onto two eardrums with a total area of ${0.900 cm}^{2}$ with an efficiency of 40.0%?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "28.2 dB",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-91",
+      "type": "paragraph",
+      "content": {
+        "text": "Sound is more effectively transmitted into a stethoscope by direct contact than through the air, and it is further intensified by being concentrated on the smaller area of the eardrum. It is reasonable to assume that sound is transmitted into a stethoscope 100 times as effectively compared with transmission though the air. What, then, is the gain in decibels produced by a stethoscope that has a sound gathering area of ${15.0 cm}^{2}$ , and concentrates the sound onto two eardrums with a total area of ${0.900 cm}^{2}$ with an efficiency of 40.0%?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-92",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Loudspeakers can produce intense sounds with surprisingly small energy input in spite of their low efficiencies. Calculate the power input needed to produce a 90.0-dB sound intensity level for a 12.0-cm-diameter speaker that has an efficiency of 1.00%. (This value is the sound intensity level right at the speaker.)",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-93",
+      "type": "paragraph",
+      "content": {
+        "text": "Loudspeakers can produce intense sounds with surprisingly small energy input in spite of their low efficiencies. Calculate the power input needed to produce a 90.0-dB sound intensity level for a 12.0-cm-diameter speaker that has an efficiency of 1.00%. (This value is the sound intensity level right at the speaker.)",
+        "inline": []
+      },
+      "level": "core"
+    }
+  ],
+  "solutions": {
+    "osbooks-college-physics-bundle:m42257:exr-35": [
+      [
+        {
+          "kind": "text",
+          "text": "Amplitude is directly proportional to the experience of loudness. As amplitude increases, loudness increases."
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42257:exr-38": [
+      [
+        {
+          "kind": "text",
+          "text": "10 dB: Running fingers through your hair."
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "50 dB: Inside a quiet home with no television or radio."
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "100 dB: Take-off of a jet plane."
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42257:exr-44": [
+      [
+        {
+          "kind": "text",
+          "text": "(e)"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42257:exr-57": [
+      [
+        {
+          "kind": "math",
+          "text": "3.16×{10}^{–4}{W/m}^{2}"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42257:exr-61": [
+      [
+        {
+          "kind": "math",
+          "text": "3.04×{10}^{–4}{W/m}^{2}"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42257:exr-65": [
+      [
+        {
+          "kind": "text",
+          "text": "106 dB"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42257:exr-69": [
+      [
+        {
+          "kind": "text",
+          "text": "(a) 93 dB"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(b) 83 dB"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42257:exr-73": [
+      [
+        {
+          "kind": "text",
+          "text": "(a) 50.1"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(b)"
+        },
+        {
+          "kind": "math",
+          "text": "5.01×{10}^{–3}"
+        },
+        {
+          "kind": "text",
+          "text": "or"
+        },
+        {
+          "kind": "math",
+          "text": "\\frac{1}{200}"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42257:exr-78": [
+      [
+        {
+          "kind": "text",
+          "text": "70.0 dB"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42257:exr-82": [
+      [
+        {
+          "kind": "text",
+          "text": "100"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42257:exr-86": [
+      [
+        {
+          "kind": "math",
+          "text": "1.45×{10}^{–3}J"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42257:exr-90": [
+      [
+        {
+          "kind": "text",
+          "text": "28.2 dB"
+        }
+      ]
+    ]
+  }
+}

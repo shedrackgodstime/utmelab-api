@@ -5,6 +5,7 @@
   "title": "Statics and Torque",
   "book_id": "secondary_physics",
   "part_id": "part-2",
+  "facts_inherited": false,
   "learning_objectives": [
     {
       "id": "lo-1",
@@ -200,6 +201,7 @@
       "slug": "introduction-to-statics-and-torque",
       "title": "Introduction to Statics and Torque",
       "est_minutes": 8,
+      "facts_inherited": false,
       "learning_objectives": [
         {
           "id": "lo-1",
@@ -212,7 +214,7 @@
           {
             "id": "b-1",
             "type": "figure",
-            "asset_url": "images/phy_m42167_OSX_CP2e_Figure_10_00_01.jpg",
+            "asset_url": "books/secondary_physics/75f32dbdd05e2fb727a68e26cf2812fe15ea7fba411db8286428c7962d8cec14.jpg",
             "caption": {
               "text": "On a short time scale, rocks like these in Australia’s Kalbarri National Park are static, or motionless relative to the Earth. (credit: Richard Liblanc/Flickr)",
               "inline": []
@@ -306,6 +308,7 @@
       "slug": "the-first-condition-for-equilibrium",
       "title": "The First Condition for Equilibrium",
       "est_minutes": 14,
+      "facts_inherited": false,
       "learning_objectives": [
         {
           "id": "lo-1",
@@ -342,7 +345,7 @@
           {
             "id": "b-4",
             "type": "figure",
-            "asset_url": "images/phy_m42170_Figure_10_01_01a.jpg",
+            "asset_url": "books/secondary_physics/28179277a3176be43b6e8aadfe22bbe852b6303f088690e4f492a9707d2fb3fc.jpg",
             "caption": {
               "text": "This motionless person is in static equilibrium. The forces acting on him add up to zero. Both forces are vertical in this case.",
               "inline": []
@@ -353,7 +356,7 @@
           {
             "id": "b-5",
             "type": "figure",
-            "asset_url": "images/phy_m42170_Figure_10_01_02a.jpg",
+            "asset_url": "books/secondary_physics/b6d4c9879498dfe4fc8f51c0b4f0ed937a934bc79e3fd69915f73ca2958a10f0.jpg",
             "caption": {
               "text": "This car is in dynamic equilibrium because it is moving at constant velocity. There are horizontal and vertical forces, but the net external force in any direction is zero. The applied force ${F}_{app}$ between the tires and the road is balanced by air friction, and the weight of the car is supported by the normal forces, here shown to be equal for all four tires.",
               "inline": []
@@ -372,7 +375,7 @@
           {
             "id": "b-7",
             "type": "figure",
-            "asset_url": "images/phy_m42170_Figure_10_01_03a.jpg",
+            "asset_url": "books/secondary_physics/1a0efc07f09ab47f3fedb9235a9ba3f8b8c6063c48912a540ced622ed78fd847.jpg",
             "caption": {
               "text": "An ice hockey stick lying flat on ice with two equal and opposite horizontal forces applied to it. Friction is negligible, and the gravitational force is balanced by the support of the ice (a normal force). Thus, $netF=0$ . Equilibrium is achieved, which is static equilibrium in this case.",
               "inline": []
@@ -383,7 +386,7 @@
           {
             "id": "b-8",
             "type": "figure",
-            "asset_url": "images/phy_m42170_Figure_10_01_04a.jpg",
+            "asset_url": "books/secondary_physics/fccddc44046e74d9f35672ba1cb9f64b23fd1e0e851fa0f17318b51e0d638303.jpg",
             "caption": {
               "text": "The same forces are applied at other points and the stick rotates—in fact, it experiences an accelerated rotation. Here $netF=0$ but the system is *not* at equilibrium. Hence, the $netF=0$ is a necessary—but not sufficient—condition for achieving equilibrium.",
               "inline": []
@@ -500,6 +503,7 @@
       "slug": "the-second-condition-for-equilibrium",
       "title": "The Second Condition for Equilibrium",
       "est_minutes": 16,
+      "facts_inherited": false,
       "learning_objectives": [
         {
           "id": "lo-1",
@@ -528,7 +532,7 @@
           {
             "id": "b-3",
             "type": "figure",
-            "asset_url": "images/phy_m42171_Figure_10_02_01a.jpg",
+            "asset_url": "books/secondary_physics/6eb4f824b06bd6aaf93db7bedd3c05dacefac255c228bc686633257e270985d7.jpg",
             "caption": {
               "text": "Torque is the turning or twisting effectiveness of a force, illustrated here for door rotation on its hinges (as viewed from overhead). Torque has both magnitude and direction. (a) Counterclockwise torque is produced by this force, which means that the door will rotate in a counterclockwise due to $F$ . Note that ${r}_{⊥}$ is the perpendicular distance of the pivot from the line of action of the force. (b) A smaller counterclockwise torque is produced by a smaller force $F′$ acting at the same distance from the hinges (the pivot point). (c) The same force as in (a) produces a smaller counterclockwise torque when applied at a smaller distance from the hinges. (d) The same force as in (a), but acting in the opposite direction, produces a clockwise torque. (e) A smaller counterclockwise torque is produced by the same magnitude force acting at the same point but in a different direction. Here, $θ$ is less than $90º$ . (f) Torque is zero here since the force just pulls on the hinges, producing no rotation. In this case, $θ=0º$ .",
               "inline": []
@@ -555,7 +559,7 @@
           {
             "id": "b-6",
             "type": "figure",
-            "asset_url": "images/phy_m42171_Figure_10_02_02abc.jpg",
+            "asset_url": "books/secondary_physics/3967dec7fc8cb4c7af740b6c9c92182277368551763ddc9ab81d8a0da3d38b19.jpg",
             "caption": {
               "text": "A force applied to an object can produce a torque, which depends on the location of the pivot point. (a) The three factors $r$ , $F$ , and $θ$ for pivot point A on a body are shown here— $r$ is the distance from the chosen pivot point to the point where the force $F$ is applied, and $θ$ is the angle between $F$ and the vector directed from the point of application to the pivot point. If the object can rotate around point A, it will rotate counterclockwise. This means that torque is counterclockwise relative to pivot A. (b) In this case, point B is the pivot point. The torque from the applied force will cause a clockwise rotation around point B, and so it is a clockwise torque relative to B.",
               "inline": []
@@ -622,7 +626,7 @@
           {
             "id": "b-14",
             "type": "figure",
-            "asset_url": "images/phy_m42171_Figure_10_02_03.jpg",
+            "asset_url": "books/secondary_physics/31b9018bd82f91171e3b9d5388f75776fcff6c2bdc5c588225b7bc4809add008.jpg",
             "caption": {
               "text": "Two children balancing a seesaw satisfy both conditions for equilibrium. The lighter child sits farther from the pivot to create a torque equal in magnitude to that of the heavier child.",
               "inline": []
@@ -649,7 +653,7 @@
           {
             "id": "b-17",
             "type": "figure",
-            "asset_url": "images/phy_m42171_Figure_09_S2_02.jpg",
+            "asset_url": "books/secondary_physics/e3d896b4fe12ea2f8d307a2c4c7e2fffe4ec237e9d65fa5ef114e74ba19ba05a.jpg",
             "caption": {
               "text": "Five forces acting on an object.",
               "inline": []
@@ -1071,6 +1075,7 @@
       "slug": "stability",
       "title": "Stability",
       "est_minutes": 12,
+      "facts_inherited": false,
       "learning_objectives": [
         {
           "id": "lo-1",
@@ -1099,7 +1104,7 @@
           {
             "id": "b-3",
             "type": "figure",
-            "asset_url": "images/phy_m42172_Figure_10_03_01a.jpg",
+            "asset_url": "books/secondary_physics/8215cdd3682b764c7364e29835cbc99f532e6851062a8be0d513a111b86be95f.jpg",
             "caption": {
               "text": "A man balances a toy doll on one hand.",
               "inline": []
@@ -1118,7 +1123,7 @@
           {
             "id": "b-5",
             "type": "figure",
-            "asset_url": "images/phy_m42172_Figure_10_03_02aa.jpg",
+            "asset_url": "books/secondary_physics/6e6e27546394d20a0c34565bd88dad7ea9025f800d88f56c563aabb2ebe1bcb3.jpg",
             "caption": {
               "text": "This pencil is in the condition of equilibrium. The net force on the pencil is zero and the total torque about any pivot is zero.",
               "inline": []
@@ -1137,7 +1142,7 @@
           {
             "id": "b-7",
             "type": "figure",
-            "asset_url": "images/phy_m42172_Figure_10_03_02bb.jpg",
+            "asset_url": "books/secondary_physics/6b530c54aa730fb2b5198aa66186a4af1779d09835564b36015d519c60924fc9.jpg",
             "caption": {
               "text": "If the pencil is displaced slightly to the side (counterclockwise), it is no longer in equilibrium. Its weight produces a clockwise torque that returns the pencil to its equilibrium position.",
               "inline": []
@@ -1156,7 +1161,7 @@
           {
             "id": "b-9",
             "type": "figure",
-            "asset_url": "images/phy_m42172_Figure_10_03_02cc.jpg",
+            "asset_url": "books/secondary_physics/ebe6d4c769694a843aeec25dd6ed075ae821cb33ebfec66d986b95c7a703e56c.jpg",
             "caption": {
               "text": "If the pencil is displaced too far, the torque caused by its weight changes direction to counterclockwise and causes the displacement to increase.",
               "inline": []
@@ -1167,7 +1172,7 @@
           {
             "id": "b-10",
             "type": "figure",
-            "asset_url": "images/phy_m42172_Figure_10_03_03aa.jpg",
+            "asset_url": "books/secondary_physics/a30d2be6ad3d403ad0c140b9e70af9bcd06adb6966546d62fcc85c39254cb2f9.jpg",
             "caption": {
               "text": "This figure shows unstable equilibrium, although both conditions for equilibrium are satisfied.",
               "inline": []
@@ -1186,7 +1191,7 @@
           {
             "id": "b-12",
             "type": "figure",
-            "asset_url": "images/phy_m42172_Figure_10_03_03bb.jpg",
+            "asset_url": "books/secondary_physics/99449a7afbc1eee140f414a334826442ee39b5d5a9fba14e4d34dc2e0b5ecc45.jpg",
             "caption": {
               "text": "If the pencil is displaced even slightly, a torque is created by its weight that is in the same direction as the displacement, causing the displacement to increase.",
               "inline": []
@@ -1205,7 +1210,7 @@
           {
             "id": "b-14",
             "type": "figure",
-            "asset_url": "images/phy_m42172_Figure_10_03_04a.jpg",
+            "asset_url": "books/secondary_physics/98c50584af814d53007ad0dd22b2ac92ee9437881a00e4960e2b6855c6203660.jpg",
             "caption": {
               "text": "(a) Here we see neutral equilibrium. The cg of a sphere on a flat surface lies directly above the point of support, independent of the position on the surface. The sphere is therefore in equilibrium in any location, and if displaced, it will remain put. (b) Because it has a circular cross section, the pencil is in neutral equilibrium for displacements perpendicular to its length.",
               "inline": []
@@ -1224,7 +1229,7 @@
           {
             "id": "b-16",
             "type": "figure",
-            "asset_url": "images/phy_m42172_Figure_10_03_05a.jpg",
+            "asset_url": "books/secondary_physics/e223fb936d45eb8e70ca9d97158135786c422fc8730ddfacd93bf5da3368004b.jpg",
             "caption": {
               "text": "(a) The center of gravity of an adult is above the hip joints (one of the main pivots in the body) and lies between two narrowly-separated feet. Like a pencil standing on its eraser, this person is in stable equilibrium in relation to sideways displacements, but relatively small displacements take his cg outside the base of support and make him unstable. Humans are less stable relative to forward and backward displacements because the feet are not very long. Muscles are used extensively to balance the body in the front-to-back direction. (b) While bending in the manner shown, stability is increased by lowering the center of gravity. Stability is also increased if the base is expanded by placing the feet farther apart.",
               "inline": []
@@ -1251,7 +1256,7 @@
           {
             "id": "b-19",
             "type": "figure",
-            "asset_url": "images/phy_m42172_Figure_10_03_06a.jpg",
+            "asset_url": "books/secondary_physics/4828d132b334f909193e7e27724e172b35d62554edce2e0b13ab8d22d273e054.jpg",
             "caption": {
               "text": "The center of gravity of a chicken is below the hip joints. The chicken is in stable equilibrium. The body of the chicken is supported from above by the hips and acts as a pendulum between them.",
               "inline": []
@@ -1326,7 +1331,7 @@
           {
             "id": "b-28",
             "type": "figure",
-            "asset_url": "images/phy_m42172_Figure_10_03_07a-e190.jpg",
+            "asset_url": "books/secondary_physics/a065320df3bac3890d7702dae703fcb04ff11c178cedc9b63b56f64417242cca.jpg",
             "caption": {
               "text": "In part a, a horse is standing next to a wall with its legs crossed. A sleepy-looking rider is leaning against the wall. Part b is a drawing of the same horse from a rear view, but this time with no rider. The horse is crossing its rear legs, and its rump is leaning against the wall. The reaction of the wall F is acting on the horse at a height one point two meters above the ground. The weight of the horse is acting at its center of gravity near the base of the tail. The center of gravity is one point four meters above the ground. The line of action of weight is zero point three five meters away from the feet of the horse.",
               "inline": []
@@ -1385,7 +1390,7 @@
           {
             "id": "b-35",
             "type": "figure",
-            "asset_url": "images/phy_m42172_Figure_10_03_08a-99e4.jpg",
+            "asset_url": "books/secondary_physics/e453a081c3cadc81acaf4e3e8371f2a8675c77ba2dc96b40d727e643441c9a7c.jpg",
             "caption": {
               "text": "A seventeen meter high wall is standing on the ground with ten braces to support it. At the base of the figure a brown colored ground is visible. Only one brace is visible from a side. A brace makes an angle of thirty five degree with the wall. The point of contact of the brace is eight point five meters high. You have to find the force exerted by this brace on the wall to support.",
               "inline": []
@@ -1412,7 +1417,7 @@
           {
             "id": "b-38",
             "type": "figure",
-            "asset_url": "images/phy_m42172_Figure_10_03_09a.jpg",
+            "asset_url": "books/secondary_physics/a717fb36927a12fc849f3c22824df1391b7d8dcf2ce839bdeda08da275b2d73e.jpg",
             "caption": {
               "text": "A chicken is trying to balance on its left foot, which is 9 point zero centimeters to the right of the chicken. The force of the wind is blowing from the left toward the chicken’s center of gravity c g, which is 20 cm above the ground. The weight of the chicken w is acting at the center of gravity.",
               "inline": []
@@ -1431,7 +1436,7 @@
           {
             "id": "b-40",
             "type": "figure",
-            "asset_url": "images/phy_m42172_Figure_10_03_10a.jpg",
+            "asset_url": "books/secondary_physics/3446a1a2b0c45105ea3c4d3c42617f79f4886f4d5b1cb6f252fb86bea2fb900e.jpg",
             "caption": {
               "text": "A small drawbridge, showing the forces on the hinges ( $F$ ), its weight ( $w$ ), and the tension in its wires ( $T$ ).",
               "inline": []
@@ -1474,7 +1479,7 @@
           {
             "id": "b-45",
             "type": "figure",
-            "asset_url": "images/phy_m42172_Figure_10_03_11a.jpg",
+            "asset_url": "books/secondary_physics/a5c4a06948d5b963aac1e240ed3bb96913192178934091356c29d628c55b0d64.jpg",
             "caption": {
               "text": "A sandwich board advertising sign demonstrates tension.",
               "inline": []
@@ -1501,7 +1506,7 @@
           {
             "id": "b-48",
             "type": "figure",
-            "asset_url": "images/phy_m42172_Figure_10_03_12a-b4fb.jpg",
+            "asset_url": "books/secondary_physics/9d24f9da18130d200fa4c9a08d7534addb20f6243074fb798bbd815e91343e4b.jpg",
             "caption": {
               "text": "An athlete performs full split. The center of gravity and the various distances from it are shown.",
               "inline": []
@@ -1625,6 +1630,7 @@
       "slug": "applications-of-statics-including-problem-solving-strategies",
       "title": "Applications of Statics, Including Problem-Solving Strategies",
       "est_minutes": 14,
+      "facts_inherited": false,
       "learning_objectives": [
         {
           "id": "lo-1",
@@ -1669,7 +1675,7 @@
           {
             "id": "b-5",
             "type": "figure",
-            "asset_url": "images/phy_m42173_Figure_10_04_01a.jpg",
+            "asset_url": "books/secondary_physics/810e5c39557abf9a9c0c12ec467d766edd3bbe8317bd7ba73637f0a493b294bd.jpg",
             "caption": {
               "text": "A pole vaulter holds a pole horizontally with both hands.",
               "inline": []
@@ -1688,7 +1694,7 @@
           {
             "id": "b-7",
             "type": "figure",
-            "asset_url": "images/phy_m42173_Figure_10_04_01b.jpg",
+            "asset_url": "books/secondary_physics/467486ae63f3ccf8e3d0eaf4adc019560a891ff1ceeafdaf81628267908d26d9.jpg",
             "caption": {
               "text": "A pole vaulter is holding a pole horizontally with both hands. The center of gravity is near his right hand.",
               "inline": []
@@ -1707,7 +1713,7 @@
           {
             "id": "b-9",
             "type": "figure",
-            "asset_url": "images/phy_m42173_Figure_10_04_01c.jpg",
+            "asset_url": "books/secondary_physics/69fe2f0ed0b7aa777a0061bd19af4c62b3c3987927defec602a879e73579dc5f.jpg",
             "caption": {
               "text": "A pole vaulter is holding a pole horizontally with both hands. The center of gravity is to the left side of the vaulter.",
               "inline": []
@@ -1750,7 +1756,7 @@
           {
             "id": "b-14",
             "type": "figure",
-            "asset_url": "images/phy_m42173_Figure_09_S3_03.jpg",
+            "asset_url": "books/secondary_physics/2caccec07890c1fd7125c3099da9205b7cea9640763aaea72c23c0a93f37f0e5.jpg",
             "caption": {
               "text": "3 overlapping stacked books.",
               "inline": []
@@ -2010,6 +2016,7 @@
       "slug": "simple-machines",
       "title": "Simple Machines",
       "est_minutes": 12,
+      "facts_inherited": false,
       "learning_objectives": [
         {
           "id": "lo-1",
@@ -2038,7 +2045,7 @@
           {
             "id": "b-3",
             "type": "figure",
-            "asset_url": "images/phy_m42174_Figure_10_05_01-8f17.jpg",
+            "asset_url": "books/secondary_physics/a551deff67382bfba2807caabfeedf1c9378d40fe068b9bc4cef9c8a484eda47.jpg",
             "caption": {
               "text": "A nail puller is a lever with a large mechanical advantage. The external forces on the nail puller are represented by solid arrows. The force that the nail puller applies to the nail ( ${F}_{o}$ ) is not a force on the nail puller. The reaction force the nail exerts back on the puller ( ${F}_{n}$ ) is an external force and is equal and opposite to ${F}_{o}$ . The perpendicular lever arms of the input and output forces are ${l}_{i}$ and ${l}_{o}$ .",
               "inline": []
@@ -2097,7 +2104,7 @@
           {
             "id": "b-10",
             "type": "figure",
-            "asset_url": "images/phy_m42174_Figure_10_05_02a.jpg",
+            "asset_url": "books/secondary_physics/9ea9d6e6f2533b525178bf7242a36ffd4453e4906fc75296e7d8a762b5819614.jpg",
             "caption": {
               "text": "(a) In the case of the wheelbarrow, the output force or load is between the pivot and the input force. The pivot is the wheel’s axle. Here, the output force is greater than the input force. Thus, a wheelbarrow enables you to lift much heavier loads than you could with your body alone. (b) In the case of the shovel, the input force is between the pivot and the load, but the input lever arm is shorter than the output lever arm. The pivot is at the handle held by the right hand. Here, the output force (supporting the shovel’s load) is less than the input force (from the hand nearest the load), because the input is exerted closer to the pivot than is the output.",
               "inline": []
@@ -2108,7 +2115,7 @@
           {
             "id": "b-11",
             "type": "figure",
-            "asset_url": "images/phy_m42174_Figure_10_05_03.jpg",
+            "asset_url": "books/secondary_physics/9c8f156eae5ff578dc4d722b7324007ba304e232ac54575d2ae1467d1f4ddff5.jpg",
             "caption": {
               "text": "(a) A crank is a type of lever that can be rotated $360º$ about its pivot. Cranks are usually designed to have a large MA. (b) A simplified automobile axle drives a wheel, which has a much larger diameter than the axle. The MA is less than 1. (c) An ordinary pulley is used to lift a heavy load. The pulley changes the direction of the force $T$ exerted by the cord without changing its magnitude. Hence, this machine has an MA of 1.",
               "inline": []
@@ -2127,7 +2134,7 @@
           {
             "id": "b-13",
             "type": "figure",
-            "asset_url": "images/phy_m42174_Figure_10_05_04a.jpg",
+            "asset_url": "books/secondary_physics/12a664e7f8a352ff27b78284955e350c4b1a166b02d0ef8a43b5e396c971c45d.jpg",
             "caption": {
               "text": "(a) The combination of pulleys is used to multiply force. The force is an integral multiple of tension if the pulleys are frictionless. This pulley system has two cables attached to its load, thus applying a force of approximately $2T$ . This machine has $MA≈2$ . (b) Three pulleys are used to lift a load in such a way that the mechanical advantage is about 3. Effectively, there are three cables attached to the load. (c) This pulley system applies a force of $4T$ , so that it has $MA≈4$ . Effectively, four cables are pulling on the system of interest.",
               "inline": []

@@ -1068,9 +1068,189 @@
         "source": "authored"
       },
       "frequency": "candidate"
+    },
+    {
+      "id": "trap-3",
+      "exam": "WAEC",
+      "subject": "physics",
+      "section_id": "sec-4",
+      "misconception": "The fringe spacing in Young's double slit experiment is inversely proportional to the wavelength.",
+      "correction": "It is directly proportional to the wavelength and inversely proportional to the slit separation, since the spacing is $\\frac{\\lambda L}{d}$. A longer wavelength gives wider fringes.",
+      "signal": "Our own question offers the inverse reading as an option.",
+      "status": "candidate",
+      "paper_evidence": {
+        "check_id": "rc-1",
+        "exam": "WAEC",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    },
+    {
+      "id": "trap-4",
+      "exam": "WAEC",
+      "subject": "physics",
+      "section_id": "sec-3",
+      "misconception": "Huygens' principle says that light travels in straight lines through a medium.",
+      "correction": "It says every point on a wavefront acts as a source of secondary wavelets, and the later wavefront is their envelope. That is what lets light bend round an obstacle, which is diffraction.",
+      "signal": "Our own question offers the reflector as an option.",
+      "status": "candidate",
+      "paper_evidence": {
+        "check_id": "rc-2",
+        "exam": "WAEC",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
     }
   ],
-  "exam_recall_checks": [],
+  "exam_recall_checks": [
+    {
+      "id": "rc-1",
+      "exam": "WAEC",
+      "subject": "physics",
+      "section_id": "sec-4",
+      "stem": "In Young's double slit experiment, the fringe spacing is",
+      "options": [
+        {
+          "id": "a",
+          "text": "independent of the slit separation"
+        },
+        {
+          "id": "b",
+          "text": "directly proportional to the wavelength"
+        },
+        {
+          "id": "c",
+          "text": "inversely proportional to the wavelength"
+        },
+        {
+          "id": "d",
+          "text": "independent of the distance to the screen"
+        }
+      ],
+      "answer": "b",
+      "explanation": "The fringe spacing is $\\Delta y = \\frac{\\lambda L}{d}$, so it grows with the wavelength and shrinks as the slits are moved apart.",
+      "difficulty": 3,
+      "source": "authored against the WAEC physics syllabus"
+    },
+    {
+      "id": "rc-2",
+      "exam": "WAEC",
+      "subject": "physics",
+      "section_id": "sec-3",
+      "stem": "Huygens' principle says that every point on a wavefront acts as",
+      "options": [
+        {
+          "id": "a",
+          "text": "a reflector of rays"
+        },
+        {
+          "id": "b",
+          "text": "a source of secondary wavelets"
+        },
+        {
+          "id": "c",
+          "text": "a mirror"
+        },
+        {
+          "id": "d",
+          "text": "an emitter of particles"
+        }
+      ],
+      "answer": "b",
+      "explanation": "Huygens' principle treats each point of a wavefront as a source of secondary wavelets, and the later wavefront is their envelope. It is what explains diffraction.",
+      "difficulty": 2,
+      "source": "authored against the WAEC physics syllabus"
+    },
+    {
+      "id": "rc-3",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-7",
+      "stem": "The Rayleigh criterion says that two points can just be resolved when the central maximum of one diffraction pattern falls on",
+      "options": [
+        {
+          "id": "a",
+          "text": "the central maximum of the other"
+        },
+        {
+          "id": "b",
+          "text": "the first minimum of the other"
+        },
+        {
+          "id": "c",
+          "text": "the second minimum of the other"
+        },
+        {
+          "id": "d",
+          "text": "any part of the other pattern"
+        }
+      ],
+      "answer": "b",
+      "explanation": "The limit of resolution is reached when the central maximum of one pattern coincides with the first minimum of the other.",
+      "difficulty": 3,
+      "source": "authored against the JAMB physics syllabus"
+    },
+    {
+      "id": "rc-4",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-8",
+      "stem": "In thin film interference, the condition for a bright fringe in reflected light is that the optical path difference is",
+      "options": [
+        {
+          "id": "a",
+          "text": "an odd multiple of half a wavelength"
+        },
+        {
+          "id": "b",
+          "text": "a whole number of wavelengths"
+        },
+        {
+          "id": "c",
+          "text": "always zero"
+        },
+        {
+          "id": "d",
+          "text": "a quarter wavelength"
+        }
+      ],
+      "answer": "a",
+      "explanation": "One of the two reflections is from a denser medium and reverses phase, so a bright fringe in reflection needs an odd number of half wavelengths.",
+      "difficulty": 3,
+      "source": "authored against the JAMB physics syllabus"
+    },
+    {
+      "id": "rc-5",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-9",
+      "stem": "Light that is plane polarised and is passed through a polariser whose axis is at right angles to the plane of polarisation is",
+      "options": [
+        {
+          "id": "a",
+          "text": "unchanged"
+        },
+        {
+          "id": "b",
+          "text": "extinguished"
+        },
+        {
+          "id": "c",
+          "text": "rotated through 90 degrees"
+        },
+        {
+          "id": "d",
+          "text": "doubled in intensity"
+        }
+      ],
+      "answer": "b",
+      "explanation": "Malus's law gives $I = I_0\\cos^2\\theta$, so at 90 degrees the intensity is zero and the light is extinguished.",
+      "difficulty": 3,
+      "source": "authored against the JAMB physics syllabus"
+    }
+  ],
   "sources": [
     {
       "publisher": "OpenStax",

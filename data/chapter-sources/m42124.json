@@ -1,0 +1,277 @@
+{
+  "module": "m42124",
+  "source_attribution": {
+    "publisher": "OpenStax",
+    "book": "osbooks-college-physics-bundle",
+    "section": "m42124",
+    "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42124/index.cnxml",
+    "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)",
+    "locator": "CNXML module index.cnxml (typed elements, solutions present)"
+  },
+  "blocks": [
+    {
+      "id": "sec-0",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Learning Objectives",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-1",
+      "type": "paragraph",
+      "content": {
+        "text": "By the end of this section, you will be able to:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-1",
+      "type": "figure",
+      "asset_url": "images/phy_m42124_Figure_02_02_00.jpg",
+      "caption": {
+        "text": "The motion of this Eclipse Concept jet can be described in terms of the distance it has traveled (a scalar quantity) or its displacement in a specific direction (a vector quantity). In order to specify the direction of motion, its displacement must be described based on a coordinate system. In this case, it may be convenient to choose motion toward the left as positive motion (it is the forward direction for the plane), although in many cases, the $x$ -coordinate runs from left to right, with motion to the right as positive and motion to the left as negative. (credit: Armchair Aviator, Flickr)",
+        "inline": []
+      },
+      "alt": "A small jet airplane flying toward the left.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-3",
+      "type": "paragraph",
+      "content": {
+        "text": "What is the difference between distance and displacement? Whereas displacement is defined by both direction and magnitude, distance is defined only by magnitude. Displacement is an example of a vector quantity. Distance is an example of a scalar quantity. A vector is any quantity with both *magnitude and direction* . Other examples of vectors include a velocity of 90 km/h east and a force of 500 newtons straight down.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-4",
+      "type": "paragraph",
+      "content": {
+        "text": "The direction of a vector in one-dimensional motion is given simply by a plus $(+)$ or minus $(-)$ sign. Vectors are represented graphically by arrows. An arrow used to represent a vector has a length proportional to the vector’s magnitude (e.g., the larger the magnitude, the longer the length of the vector) and points in the same direction as the vector.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-5",
+      "type": "paragraph",
+      "content": {
+        "text": "Some physical quantities, like distance, either have no direction or none is specified. A scalar is any quantity that has a magnitude, but no direction. For example, a $20ºC$ temperature, the 250 kilocalories (250 Calories) of energy in a candy bar, a 90 km/h speed limit, a person’s 1.8 m height, and a distance of 2.0 m are all scalars—quantities with no specified direction. Note, however, that a scalar can be negative, such as a $-20ºC$ temperature. In this case, the minus sign indicates a point on a scale rather than a direction. Scalars are never represented by arrows.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-6",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Coordinate Systems for One-Dimensional Motion",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-7",
+      "type": "paragraph",
+      "content": {
+        "text": "In order to describe the direction of a vector quantity, you must designate a coordinate system within the reference frame. For one-dimensional motion, this is a simple coordinate system consisting of a one-dimensional coordinate line. In general, when describing horizontal motion, motion to the right is usually considered positive, and motion to the left is considered negative. With vertical motion, motion up is usually positive and motion down is negative. In some cases, however, as with the jet in , it can be more convenient to switch the positive and negative directions. For example, if you are analyzing the motion of falling objects, it can be useful to define downwards as the positive direction. If people in a race are running to the left, it is useful to define left as the positive direction. It does not matter as long as the system is clear and consistent. Once you assign a positive direction and start solving a problem, you cannot change it.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-2",
+      "type": "figure",
+      "asset_url": "images/phy_m42124_Figure_02_02_00b.jpg",
+      "caption": {
+        "text": "It is usually convenient to consider motion upward or to the right as positive $(+)$ and motion downward or to the left as negative $(-)$ .",
+        "inline": []
+      },
+      "alt": "An x y coordinate system. An arrow pointing toward the right shows the positive x direction. Negative x is toward the left. An arrow pointing up shows the positive y direction. Negative y points downward.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "exr-9",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A person’s speed can stay the same as they round a corner and changes direction. Given this information, is speed a scalar or a vector quantity? Explain.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "Speed is a scalar quantity. It does not change at all with direction changes; therefore, it has magnitude only. If it were a vector quantity, it would change as direction changes (even if its magnitude remained constant).",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-10",
+      "type": "paragraph",
+      "content": {
+        "text": "A person’s speed can stay the same as they round a corner and changes direction. Given this information, is speed a scalar or a vector quantity? Explain.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-11",
+      "type": "paragraph",
+      "content": {
+        "text": "Speed is a scalar quantity. It does not change at all with direction changes; therefore, it has magnitude only. If it were a vector quantity, it would change as direction changes (even if its magnitude remained constant).",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-12",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Test Prep for AP Courses",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-13",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A student is trying to determine the acceleration of a feather as she drops it to the ground. If the student is looking to achieve a positive velocity and positive acceleration, what is the *most sensible* way to set up her coordinate system? Her hand should be a coordinate of zero and the upward direction should be considered positive.; Her hand should be a coordinate of zero and the downward direction should be considered positive.; The floor should be a coordinate of zero and the upward direction should be considered positive.; The floor should be a coordinate of zero and the downward direction should be considered positive.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-14",
+      "type": "paragraph",
+      "content": {
+        "text": "A student is trying to determine the acceleration of a feather as she drops it to the ground. If the student is looking to achieve a positive velocity and positive acceleration, what is the *most sensible* way to set up her coordinate system?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-15",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Section Summary",
+        "inline": []
+      }
+    },
+    {
+      "id": "sec-16",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Conceptual Questions",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-17",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A student writes, “ *A bird that is diving for prey has a speed of* $-10m/s$ .” What is wrong with the student’s statement? What has the student actually described? Explain.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-18",
+      "type": "paragraph",
+      "content": {
+        "text": "A student writes, “ *A bird that is diving for prey has a speed of* $-10m/s$ .” What is wrong with the student’s statement? What has the student actually described? Explain.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-19",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "What is the speed of the bird in ?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-20",
+      "type": "paragraph",
+      "content": {
+        "text": "What is the speed of the bird in ?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-21",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Acceleration is the change in velocity over time. Given this information, is acceleration a vector or a scalar quantity? Explain.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-22",
+      "type": "paragraph",
+      "content": {
+        "text": "Acceleration is the change in velocity over time. Given this information, is acceleration a vector or a scalar quantity? Explain.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-23",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A weather forecast states that the temperature is predicted to be $-5ºC$ the following day. Is this temperature a vector or a scalar quantity? Explain.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-24",
+      "type": "paragraph",
+      "content": {
+        "text": "A weather forecast states that the temperature is predicted to be $-5ºC$ the following day. Is this temperature a vector or a scalar quantity? Explain.",
+        "inline": []
+      },
+      "level": "core"
+    }
+  ],
+  "solutions": {
+    "osbooks-college-physics-bundle:m42124:exr-9": [
+      [
+        {
+          "kind": "text",
+          "text": "Speed is a scalar quantity. It does not change at all with direction changes; therefore, it has magnitude only. If it were a vector quantity, it would change as direction changes (even if its magnitude remained constant)."
+        }
+      ]
+    ]
+  }
+}

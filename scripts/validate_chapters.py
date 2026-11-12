@@ -16,6 +16,9 @@ import sys
 from collections import Counter
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import book_media  # noqa: E402
+
 REQUIRED_TOP = [
     "chapter_id",
     "schema_version",
@@ -107,7 +110,50 @@ def check_provenance(value, path, errors):
         errors.append((path, "provenance.url is not an absolute http(s) url"))
 
 
-def check_blocks(blocks, path, errors, exercise_ids):
+def check_figure_media(asset, book_id, path, errors):
+    """A figure must be a figure, and it must be a figure we published.
+
+    The rule is the same one the publisher applies: real image bytes, under
+    the size ceiling, over the pixel floor. A figure that is already
+    published is checked against the manifest, so the check does not need to
+    fetch it. A figure still on disk is checked against its bytes.
+    """
+    if not book_media.is_published(asset):
+        # A figure that has not been published yet is checked against the
+        # bytes on disk, when they are there.
+        local = book_media.local_path(asset)
+        if local is None:
+            return
+        try:
+            book_media.validate_image(local.read_bytes())
+        except book_media.ImageProblem as error:
+            errors.append((path, f"figure {asset} is not fit to ship: {error}"))
+        return
+
+    parts = asset.split("/")
+    if len(parts) != 3 or parts[0] != book_media.BOOKS_DIR:
+        errors.append((path, f"figure {asset} is not in the book's own directory"))
+        return
+    if parts[1] != book_id:
+        errors.append((path, f"figure {asset} is filed under {parts[1]}, not {book_id}"))
+        return
+
+    manifest = book_media.load_manifest()
+    published = {
+        record.get("published_path"): record
+        for record in manifest.get("figures", {}).values()
+    }
+    record = published.get(asset)
+    if record is None:
+        errors.append((path, f"figure {asset} is not in the published manifest"))
+        return
+    if record.get("bytes", 0) > book_media.MAX_BYTES:
+        errors.append((path, f"figure {asset} is over the size ceiling"))
+    if record.get("width", 0) < book_media.MIN_DIMENSION or record.get("height", 0) < book_media.MIN_DIMENSION:
+        errors.append((path, f"figure {asset} is under the pixel floor"))
+
+
+def check_blocks(blocks, path, errors, exercise_ids, book_id=""):
     if not isinstance(blocks, list):
         errors.append((path, "blocks not list"))
         return
@@ -149,8 +195,10 @@ def check_blocks(blocks, path, errors, exercise_ids):
             asset = block.get("asset_url")
             if not isinstance(asset, str) or not asset.strip():
                 errors.append((path, f"{path}[{block_id}] figure has no asset_url"))
-            elif not asset.startswith(("http://", "https://", "/", "images/", "assets/")):
+            elif not asset.startswith(("http://", "https://", "/", "images/", "assets/", "books/")):
                 errors.append((path, f"{path}[{block_id}] figure asset_url is not a usable path"))
+            else:
+                check_figure_media(asset, book_id, f"{path}[{block_id}]", errors)
             check_richtext(block.get("caption"), f"{path}[{block_id}].caption", errors)
             if not isinstance(block.get("alt"), str) or not block.get("alt", "").strip():
                 errors.append((path, f"{path}[{block_id}] figure has no alt text"))
@@ -216,6 +264,7 @@ def validate(path):
         errors.append((path, "updated_at is not YYYY-MM-DD"))
     if not isinstance(document.get("book_id"), str) or not document.get("book_id", "").strip():
         errors.append((path, "book_id missing"))
+    book_id = document.get("book_id") or ""
 
     # ---- chapter level
     objectives = document.get("learning_objectives")
@@ -363,7 +412,13 @@ def validate(path):
         if not isinstance(teaching, dict) or not teaching.get("blocks"):
             errors.append((path, f"section {section_id} has no teaching text"))
         else:
-            check_blocks(teaching.get("blocks"), f"{path}.{section_id}.teaching_text.blocks", errors, exercise_ids)
+            check_blocks(
+                teaching.get("blocks"),
+                f"{path}.{section_id}.teaching_text.blocks",
+                errors,
+                exercise_ids,
+                book_id,
+            )
         summary = section.get("summary_points")
         if not isinstance(summary, list) or len(summary) < 2:
             errors.append((path, f"section {section_id} needs at least two summary points"))

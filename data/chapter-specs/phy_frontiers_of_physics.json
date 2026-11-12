@@ -1070,7 +1070,95 @@
       "frequency": "candidate"
     }
   ],
-  "exam_recall_checks": [],
+  "exam_recall_checks": [
+    {
+      "id": "rc-1",
+      "exam": "WAEC",
+      "subject": "physics",
+      "section_id": "sec-5",
+      "stem": "The evidence for dark matter comes from the observation that",
+      "options": [
+        {
+          "id": "a",
+          "text": "the visible matter in a galaxy rotates faster than it should"
+        },
+        {
+          "id": "b",
+          "text": "the galaxies are too bright"
+        },
+        {
+          "id": "c",
+          "text": "there are no stars in the outer regions"
+        },
+        {
+          "id": "d",
+          "text": "the universe is expanding in every direction"
+        }
+      ],
+      "answer": "a",
+      "explanation": "The rotation curves of spiral galaxies stay flat well beyond where the visible matter alone would allow, which is the evidence for unseen mass.",
+      "difficulty": 3,
+      "source": "authored against the WAEC physics syllabus"
+    },
+    {
+      "id": "rc-2",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-3",
+      "stem": "General relativity describes gravity as",
+      "options": [
+        {
+          "id": "a",
+          "text": "a force between masses"
+        },
+        {
+          "id": "b",
+          "text": "the curvature of spacetime produced by mass and energy"
+        },
+        {
+          "id": "c",
+          "text": "a magnetic effect of the sun"
+        },
+        {
+          "id": "d",
+          "text": "a change in the electric field"
+        }
+      ],
+      "answer": "b",
+      "explanation": "In general relativity mass and energy curve spacetime, and bodies follow geodesics in that curved spacetime, which we experience as gravity.",
+      "difficulty": 3,
+      "source": "authored against the JAMB physics syllabus"
+    },
+    {
+      "id": "rc-3",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-6",
+      "stem": "A hallmark of chaos is",
+      "options": [
+        {
+          "id": "a",
+          "text": "a loss of predictability after a long time"
+        },
+        {
+          "id": "b",
+          "text": "an increase in the energy of the system"
+        },
+        {
+          "id": "c",
+          "text": "a periodic doubling of the period"
+        },
+        {
+          "id": "d",
+          "text": "perfect reversibility"
+        }
+      ],
+      "answer": "a",
+      "explanation": "In a chaotic system nearby starting points separate exponentially, so the outcome cannot be predicted far ahead even though the laws themselves remain reversible.",
+      "difficulty": 3,
+      "source": "authored against the JAMB physics syllabus"
+    }
+  ],
   "sources": [
     {
       "publisher": "OpenStax",

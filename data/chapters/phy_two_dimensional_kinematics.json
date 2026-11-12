@@ -5,6 +5,7 @@
   "title": "Two-Dimensional Kinematics",
   "book_id": "secondary_physics",
   "part_id": "part-1",
+  "facts_inherited": false,
   "learning_objectives": [
     {
       "id": "lo-1",
@@ -237,6 +238,7 @@
       "slug": "introduction-to-two-dimensional-kinematics",
       "title": "Introduction to Two-Dimensional Kinematics",
       "est_minutes": 8,
+      "facts_inherited": false,
       "learning_objectives": [
         {
           "id": "lo-1",
@@ -249,7 +251,7 @@
           {
             "id": "b-1",
             "type": "figure",
-            "asset_url": "images/phy_m42126_OSX_CP2e_Figure_03_00_01a.jpg",
+            "asset_url": "books/secondary_physics/3ac8a807329edb39966ad5211b029c18a97b41d4c3d9ef600a7d6b22c765cb24.jpg",
             "caption": {
               "text": "Hitting a tennis ball is difficult enough when it is traveling at high speeds in a relatively straight line. However, most motion is in curved, rather than straight-line, paths. Tennis players must account for the arc of the ball and the impact of its spin, while they also predict how it will bounce and plan the location of their shot. Motion along a curved path is two- or three-dimensional motion, and can be described in a similar fashion to one-dimensional motion. (credit: Edwin Martinez/Flickr)",
               "inline": []
@@ -327,6 +329,7 @@
       "slug": "kinematics-in-two-dimensions-an-introduction",
       "title": "Kinematics in Two Dimensions: An Introduction",
       "est_minutes": 14,
+      "facts_inherited": false,
       "learning_objectives": [
         {
           "id": "lo-1",
@@ -339,7 +342,7 @@
           {
             "id": "b-1",
             "type": "figure",
-            "asset_url": "images/phy_m42104_Figure_03_01_00.jpg",
+            "asset_url": "books/secondary_physics/90ed435f0e327e0137aebbdda86350eee1813b4bb0569e3f909569d4b09dad61.jpg",
             "caption": {
               "text": "Walkers and drivers in a city like New York are rarely able to travel in straight lines to reach their destinations. Instead, they must follow roads and sidewalks, making two-dimensional, zigzagged paths. (credit: Margaret W. Carruthers)",
               "inline": []
@@ -366,7 +369,7 @@
           {
             "id": "b-4",
             "type": "figure",
-            "asset_url": "images/phy_m42104_Figure_03_01_01.jpg",
+            "asset_url": "books/secondary_physics/3e5c71252c4276f756cd2906e82e65501327ac93230ec2fa8b279f497165f2ab.jpg",
             "caption": {
               "text": "A pedestrian walks a two-dimensional path between two points in a city. In this scene, all blocks are square and are the same size.",
               "inline": []
@@ -401,7 +404,7 @@
           {
             "id": "b-8",
             "type": "figure",
-            "asset_url": "images/phy_m42104_Figure_03_01_02.jpg",
+            "asset_url": "books/secondary_physics/7731da7058c5ac6fd5cd4e14de00cd672bd89c4fccc38d1b0c4678e9705298de.jpg",
             "caption": {
               "text": "The Pythagorean theorem relates the length of the legs of a right triangle, labeled $a$ and $b$ , with the hypotenuse, labeled $c$ . The relationship is given by: ${a}^{2}+{b}^{2}={c}^{2}$ . This can be rewritten, solving for $c$ : $c=\\sqrt{{a}^{2}+{b}^{2}}$ .",
               "inline": []
@@ -420,7 +423,7 @@
           {
             "id": "b-10",
             "type": "figure",
-            "asset_url": "images/phy_m42104_Figure_03_01_03.jpg",
+            "asset_url": "books/secondary_physics/e5d218d12f09b960bc8c40f9c6dd493094748997bc4ec2937eee6cf729fb0743.jpg",
             "caption": {
               "text": "The straight-line path followed by a helicopter between the two points is shorter than the 14 blocks walked by the pedestrian. All blocks are square and the same size.",
               "inline": []
@@ -479,7 +482,7 @@
           {
             "id": "b-17",
             "type": "figure",
-            "asset_url": "images/phy_m42104_Figure_03_01_04a.jpg",
+            "asset_url": "books/secondary_physics/8f4bcb2f0f0ac4daa24b662582ce54c5c4db656256cf6057004c1dd26daaa2e0.jpg",
             "caption": {
               "text": "This shows the motions of two identical balls—one falls from rest, the other has an initial horizontal velocity. Each subsequent position is an equal time interval. Arrows represent horizontal and vertical velocities at each position. The ball on the right has an initial horizontal velocity, while the ball on the left has no horizontal velocity. Despite the difference in horizontal velocities, the vertical velocities and positions are identical for both balls. This shows that the vertical and horizontal motions are independent.",
               "inline": []
@@ -639,6 +642,7 @@
       "slug": "vector-addition-and-subtraction-graphical-methods",
       "title": "Vector Addition and Subtraction: Graphical Methods",
       "est_minutes": 20,
+      "facts_inherited": false,
       "learning_objectives": [
         {
           "id": "lo-1",
@@ -656,7 +660,7 @@
           {
             "id": "b-1",
             "type": "figure",
-            "asset_url": "images/phy_m42127_Figure_03_02_00a.jpg",
+            "asset_url": "books/secondary_physics/e73b0e5257fc3cc8ee3f13eae8d2d97550c2d55631793567d159bf9257af2361.jpg",
             "caption": {
               "text": "Displacement can be determined graphically using a scale map, such as this one of the Hawaiian Islands. A journey from Hawai’i to Moloka’i has a number of legs, or journey segments. These segments can be added graphically with a ruler to determine the total two-dimensional displacement of the journey. (credit: US Geological Survey)",
               "inline": []
@@ -699,7 +703,7 @@
           {
             "id": "b-6",
             "type": "figure",
-            "asset_url": "images/phy_m42127_Figure_03_02_01.jpg",
+            "asset_url": "books/secondary_physics/0e138bb12905fe57c70e5171f4fb261b8860df6aed34a3553e1009cb6785652c.jpg",
             "caption": {
               "text": "A person walks 9 blocks east and 5 blocks north. The displacement is 10.3 blocks at an angle $29.1º$ north of east.",
               "inline": []
@@ -710,7 +714,7 @@
           {
             "id": "b-7",
             "type": "figure",
-            "asset_url": "images/phy_m42127_Figure_03_02_02a.jpg",
+            "asset_url": "books/secondary_physics/60030dd7ced0f0532d4547a360867b859b03bf7cefb15d9237590fb6e1e4f298.jpg",
             "caption": {
               "text": "To describe the resultant vector for the person walking in a city considered in graphically, draw an arrow to represent the total displacement vector $D$ . Using a protractor, draw a line at an angle $θ$ relative to the east-west axis. The length $D$ of the arrow is proportional to the vector’s magnitude and is measured along the line with a ruler. In this example, the magnitude $D$ of the vector is 10.3 units, and the direction $θ$ is $29.1º$ north of east.",
               "inline": []
@@ -737,7 +741,7 @@
           {
             "id": "b-10",
             "type": "figure",
-            "asset_url": "images/phy_m42127_Figure_03_02_03.jpg",
+            "asset_url": "books/secondary_physics/4fb9ba2fcd092ddf0edb17967019f50cc86db2c6e804440439ff06a847246bcc.jpg",
             "caption": {
               "text": "*Head-to-Tail Method:* The head-to-tail method of graphically adding vectors is illustrated for the two displacements of the person walking in a city considered in . (a) Draw a vector representing the displacement to the east. (b) Draw a vector representing the displacement to the north. The tail of this vector should originate from the head of the first, east-pointing vector. (c) Draw a line from the tail of the east-pointing vector to the head of the north-pointing vector to form the sum or resultant vector $D$ . The length of the arrow $D$ is proportional to the vector’s magnitude and is measured to be 10.3 units . Its direction, described as the angle with respect to the east (or horizontal axis) $θ$ is measured with a protractor to be $29.1º$ .",
               "inline": []
@@ -756,7 +760,7 @@
           {
             "id": "b-12",
             "type": "figure",
-            "asset_url": "images/phy_m42127_Figure_03_02_04a.jpg",
+            "asset_url": "books/secondary_physics/b0d259d4ce222f3900b52439de06a1d938bbd86fc9223b0221ffb54889ecbeca.jpg",
             "caption": {
               "text": "In part a, a vector of magnitude of nine units and making an angle theta is equal to zero degree is drawn from the origin and along the positive direction of x axis.",
               "inline": []
@@ -775,7 +779,7 @@
           {
             "id": "b-14",
             "type": "figure",
-            "asset_url": "images/phy_m42127_Figure_03_02_05a.jpg",
+            "asset_url": "books/secondary_physics/a43b84e9506821db87095572e13e6fb3ccfe89306a83bb1f186ed31132021b4c.jpg",
             "caption": {
               "text": "In part b, a vector of magnitude of nine units and making an angle theta is equal to zero degree is drawn from the origin and along the positive direction of x axis. Then a vertical vector from the head of the horizontal vector is drawn.",
               "inline": []
@@ -802,7 +806,7 @@
           {
             "id": "b-17",
             "type": "figure",
-            "asset_url": "images/phy_m42127_Figure_03_02_06a.jpg",
+            "asset_url": "books/secondary_physics/7283571ded954a12bde565b8225a8fa23f5e86420ab1b15c6e422b968373349b.jpg",
             "caption": {
               "text": "In part c, a vector D of magnitude ten point three is drawn from the tail of the horizontal vector at an angle theta is equal to twenty nine point one degrees from the positive direction of the x axis. The head of the vector D meets the head of the vertical vector. A scale is shown parallel to the vector D to measure its length. Also a protractor is shown to measure the inclination of the vector D.",
               "inline": []
@@ -837,7 +841,7 @@
           {
             "id": "b-21",
             "type": "figure",
-            "asset_url": "images/phy_m42127_Figure_03_02_08-d8f8.jpg",
+            "asset_url": "books/secondary_physics/9aa862aba4d09da2268afa70cdee9ecec7848dbb85baf6f093fbe0f7a1318fc1.jpg",
             "caption": {
               "text": "On the graph a vector of magnitude twenty three meters and inclined above the x axis at an angle theta-b equal to fifteen degrees is shown. This vector is labeled as B.",
               "inline": []
@@ -856,7 +860,7 @@
           {
             "id": "b-23",
             "type": "figure",
-            "asset_url": "images/phy_m42127_Figure_03_02_09.jpg",
+            "asset_url": "books/secondary_physics/d5659eefd39ffa26466c9fb7eb604b9838c04023582fdd24d72932f57a1126f1.jpg",
             "caption": {
               "text": "In this figure a vector A with a positive slope is drawn from the origin. Then from the head of the vector A another vector B with positive slope is drawn and then another vector C with negative slope from the head of the vector B is drawn which cuts the x axis.",
               "inline": []
@@ -875,7 +879,7 @@
           {
             "id": "b-25",
             "type": "figure",
-            "asset_url": "images/phy_m42127_CNX_HSPhysics_05_01_result.jpg",
+            "asset_url": "books/secondary_physics/5246255d0bafa95f52de1d3596ef65916e2992b464e976ec1d633ae642f773dc.jpg",
             "caption": {
               "text": "In this figure a vector A with a positive slope is drawn from the origin. Then from the head of the vector A another vector B with positive slope is drawn and then another vector C with negative slope from the head of the vector B is drawn which cuts the x axis. From the tail of the vector A a vector R of magnitude of fifty point eight meters and with negative slope of five point four seven degrees is drawn. The head of this vector R meets the head of the vector C. The vector R is known as the resultant vector.",
               "inline": []
@@ -894,7 +898,7 @@
           {
             "id": "b-27",
             "type": "figure",
-            "asset_url": "images/phy_m42127_CNX_HSPhysics_05_01_measure.jpg",
+            "asset_url": "books/secondary_physics/9cd3176d1a2637c56c19817120b71706960a189fb9fdeb856059e4f0192249ef.jpg",
             "caption": {
               "text": "In this figure a vector A with a positive slope is drawn from the origin. Then from the head of the vector A another vector B with positive slope is drawn and then another vector C with negative slope from the head of the vector B is drawn which cuts the x axis. From the tail of the vector A a vector R of magnitude of fifty point eight meters and with negative slope of five point four seven degrees is drawn. The head of this vector R meets the head of the vector C. The vector R is known as the resultant vector. A ruler is placed along the vector R to measure it. Also there is a protractor to measure the angle.",
               "inline": []
@@ -921,7 +925,7 @@
           {
             "id": "b-30",
             "type": "figure",
-            "asset_url": "images/phy_m42127_CNX_HSPhysics_05_01_order.jpg",
+            "asset_url": "books/secondary_physics/e5d4b529fde7c065770a918b7803a485fc80e073fedaa10c19885fb861fa7877.jpg",
             "caption": {
               "text": "In this figure a vector C with a negative slope is drawn from the origin. Then from the head of the vector C another vector A with positive slope is drawn and then another vector B with negative slope from the head of the vector A is drawn. From the tail of the vector C a vector R of magnitude of fifty point eight meters and with negative slope of five point four seven degrees is drawn. The head of this vector R meets the head of the vector B. The vector R is known as the resultant vector.",
               "inline": []
@@ -964,7 +968,7 @@
           {
             "id": "b-35",
             "type": "figure",
-            "asset_url": "images/phy_m42127_Figure_03_02_13a.jpg",
+            "asset_url": "books/secondary_physics/0f5390eda316db854dbf823ad647c8278738a229c1fc83aaad0be63a7058a365.jpg",
             "caption": {
               "text": "The negative of a vector is just another vector of the same magnitude but pointing in the opposite direction. So $B$ is the negative of $–B$ ; it has the same length but opposite direction.",
               "inline": []
@@ -991,7 +995,7 @@
           {
             "id": "b-38",
             "type": "figure",
-            "asset_url": "images/phy_m42127_Figure_03_02_14.jpg",
+            "asset_url": "books/secondary_physics/30d029c59f2b3fa15b0642e09cdd47e10dc8d920b193dbf24d2b6f0ae5c0c394.jpg",
             "caption": {
               "text": "A vector of magnitude twenty seven point five meters is shown. It is inclined to the horizontal at an angle of sixty six degrees. Another vector of magnitude thirty point zero meters is shown. It is inclined to the horizontal at an angle of one hundred and twelve degrees.",
               "inline": []
@@ -1010,7 +1014,7 @@
           {
             "id": "b-40",
             "type": "figure",
-            "asset_url": "images/phy_m42127_Figure_03_02_15a.jpg",
+            "asset_url": "books/secondary_physics/cc6efbf97e751e6c85602eefd1bce93d6dd34f55cbcd61f3d43adf7e74abe369.jpg",
             "caption": {
               "text": "A vector labeled negative B is inclined at an angle of sixty-eight degrees below a horizontal line. A dotted line in the reverse direction inclined at one hundred and twelve degrees above the horizontal line is also shown.",
               "inline": []
@@ -1061,7 +1065,7 @@
           {
             "id": "b-46",
             "type": "figure",
-            "asset_url": "images/phy_m42127_Figure_03_02_16a.jpg",
+            "asset_url": "books/secondary_physics/013f2d8950e973faa42dcc209e82f9aa3c71ad5183978fd82ba75eaaedc805d8.jpg",
             "caption": {
               "text": "Vectors A and negative B are connected in head to tail method. Vector A is inclined with horizontal with positive slope and vector negative B with a negative slope. The resultant of these two vectors is shown as a vector R from tail of A to the head of negative B. The length of the resultant is twenty three point zero meters and has a negative slope of seven point five degrees.",
               "inline": []
@@ -1088,7 +1092,7 @@
           {
             "id": "b-49",
             "type": "figure",
-            "asset_url": "images/phy_m42127_Figure_03_02_17a.jpg",
+            "asset_url": "books/secondary_physics/91000767e8fceff2041fe3384e07bd0998f6c271b96ceb7e0a59334ffeefff24.jpg",
             "caption": {
               "text": "A vector A inclined at sixty six degrees with horizontal is shown. From the head of this vector another vector B is started. Vector B is inclined at one hundred and twelve degrees with the horizontal. Another vector labeled as R prime from the tail of vector A to the head of vector B is drawn. The length of this vector is fifty two point nine meters and its inclination with the horizontal is shown as ninety point one degrees. Vector R prime is equal to the sum of vectors A and B.",
               "inline": []
@@ -1275,7 +1279,7 @@
           {
             "id": "b-72",
             "type": "figure",
-            "asset_url": "images/phy_m42127_Figure_03_02_18a.jpg",
+            "asset_url": "books/secondary_physics/93af95bc924f93b8d5f686a129fce7e8f08ff9d628e45ec86223dcc36145a1c8.jpg",
             "caption": {
               "text": "At the southwest corner of the figure is a cabin and in the northeast corner is a lake. A vector S with a length five point zero kilometers connects the cabin to the lake at an angle of 40 degrees north of east. Two winding paths labeled Path 1 and Path 2 represent the routes travelled from the cabin to the lake.",
               "inline": []
@@ -1294,7 +1298,7 @@
           {
             "id": "b-74",
             "type": "figure",
-            "asset_url": "images/phy_m42127_Figure_03_02_19a.jpg",
+            "asset_url": "books/secondary_physics/c0b45149ea4dbdf99249e8b790d460b16a02b5abbbecebc22d292b9f1eba4ff8.jpg",
             "caption": {
               "text": "A map of northern California with a circle with a radius of one hundred twenty three kilometers centered on San Francisco. Sacramento lies on the circumference of this circle in a direction forty-five degrees north of east from San Francisco.",
               "inline": []
@@ -1353,7 +1357,7 @@
           {
             "id": "b-81",
             "type": "figure",
-            "asset_url": "images/phy_m42127_Figure_03_02_20a-b5e9.jpg",
+            "asset_url": "books/secondary_physics/7a813f724ce2cb595446427a2645b952236b48426152f4f4d66d6cdb453f9cce.jpg",
             "caption": {
               "text": "The various lines represent paths taken by different people walking in a city. All blocks are 120 m on a side.",
               "inline": []
@@ -1404,7 +1408,7 @@
           {
             "id": "b-87",
             "type": "figure",
-            "asset_url": "images/phy_m42127_Figure_03_02_21a.jpg",
+            "asset_url": "books/secondary_physics/2a0051ed6bcb355eb098f2f7cfd3d790d551ef54026e5860ae08cfccd0da9c7e.jpg",
             "caption": {
               "text": "The two displacements $A$ and $B$ add to give a total displacement $R$ having magnitude $R$ and direction $θ$ .",
               "inline": []
@@ -1423,7 +1427,7 @@
           {
             "id": "b-89",
             "type": "figure",
-            "asset_url": "images/phy_m42127_Figure_03_02_22a.jpg",
+            "asset_url": "books/secondary_physics/83c4cae90be65ae349c2fadd1a1061c54303afc6daa867ec27333c829d43cf68.jpg",
             "caption": {
               "text": "In the given figure coordinates axes are shown. Vector A with tail at origin is inclined at an angle of twenty degrees with the positive direction of x axis. The magnitude of vector A is twelve meters. Another vector B is starts from the head of vector A and inclined at an angle of forty degrees with the horizontal. The resultant R of the vectors A and B is also drawn from the tail of vector A to the head of vector B. The inclination of vector R is theta with the horizontal.",
               "inline": []
@@ -1506,7 +1510,7 @@
           {
             "id": "b-99",
             "type": "figure",
-            "asset_url": "images/phy_m42127_Figure_03_02_23a.jpg",
+            "asset_url": "books/secondary_physics/d459307b8954fb00ebe5062c5ee8ec9e2a6d11c7f7e7957ec65afa4b80a841dc.jpg",
             "caption": {
               "text": "The two velocities ${v}_{A}$ and ${v}_{B}$ add to give a total ${v}_{tot}$ .",
               "inline": []
@@ -1728,6 +1732,7 @@
       "slug": "vector-addition-and-subtraction-analytical-methods",
       "title": "Vector Addition and Subtraction: Analytical Methods",
       "est_minutes": 22,
+      "facts_inherited": false,
       "learning_objectives": [
         {
           "id": "lo-1",
@@ -1764,7 +1769,7 @@
           {
             "id": "b-4",
             "type": "figure",
-            "asset_url": "images/phy_m42128_Figure_03_03_01a.jpg",
+            "asset_url": "books/secondary_physics/c8e62ba584b9933caa769066203ee5bc1e672f42e2e18edef750471247a29133.jpg",
             "caption": {
               "text": "The vector $A$ , with its tail at the origin of an *x* , *y* -coordinate system, is shown together with its *x* - and *y* -components, ${A}_{x}$ and ${A}_{y}$ . These vectors form a right triangle. The analytical relationships among these vectors are summarized below.",
               "inline": []
@@ -1799,7 +1804,7 @@
           {
             "id": "b-8",
             "type": "figure",
-            "asset_url": "images/phy_m42128_Figure_03_03_02a.jpg",
+            "asset_url": "books/secondary_physics/a80a1da5ff0fd74d75acd40f4f5dcb1b4a458fc54155865616d641d9cbbef24f.jpg",
             "caption": {
               "text": "The magnitudes of the vector components ${A}_{x}$ and ${A}_{y}$ can be related to the resultant vector $A$ and the angle $θ$ with trigonometric identities. Here we see that ${A}_{x}=Acosθ$ and ${A}_{y}=Asinθ$ .",
               "inline": []
@@ -1818,7 +1823,7 @@
           {
             "id": "b-10",
             "type": "figure",
-            "asset_url": "images/phy_m42128_Figure_03_03_03.jpg",
+            "asset_url": "books/secondary_physics/589a80b08efd5684b9d0910987fd8918e27bb8bb70b6577765e2cc10c343a573.jpg",
             "caption": {
               "text": "We can use the relationships ${A}_{x}=Acosθ$ and ${A}_{y}=Asinθ$ to determine the magnitude of the horizontal and vertical component vectors in this example.",
               "inline": []
@@ -1853,7 +1858,7 @@
           {
             "id": "b-14",
             "type": "figure",
-            "asset_url": "images/phy_m42128_Figure_03_03_04a.jpg",
+            "asset_url": "books/secondary_physics/fcf9fd9c56319b4a082ecc324a3334ef969c31b10c1fd2c52847ab3a6f173599.jpg",
             "caption": {
               "text": "The magnitude and direction of the resultant vector can be determined once the horizontal and vertical components ${A}_{x}$ and ${A}_{y}$ have been determined.",
               "inline": []
@@ -1896,7 +1901,7 @@
           {
             "id": "b-19",
             "type": "figure",
-            "asset_url": "images/phy_m42128_Figure_03_03_05a.jpg",
+            "asset_url": "books/secondary_physics/63248b9ad42ec6d1cdeb896c70cfa12a69d4d0530ba5fe3233ed26fa80bee848.jpg",
             "caption": {
               "text": "Vectors $A$ and $B$ are two legs of a walk, and $R$ is the resultant or total displacement. You can use analytical methods to determine the magnitude and direction of $R$ .",
               "inline": []
@@ -1923,7 +1928,7 @@
           {
             "id": "b-22",
             "type": "figure",
-            "asset_url": "images/phy_m42128_Figure_03_03_06a.jpg",
+            "asset_url": "books/secondary_physics/cb103ae5a2cb267351e8b07a78d2074c4049bf4f100bb07e219342061cae3531.jpg",
             "caption": {
               "text": "To add vectors $A$ and $B$ , first determine the horizontal and vertical components of each vector. These are the dotted vectors ${A}_{x}$ , ${A}_{y}$ , ${B}_{x}$ and ${B}_{y}$ shown in the image.",
               "inline": []
@@ -1942,7 +1947,7 @@
           {
             "id": "b-24",
             "type": "figure",
-            "asset_url": "images/phy_m42128_Figure_03_03_07a.jpg",
+            "asset_url": "books/secondary_physics/4d303c28fb05e6a527fab9a6f66fc8ddabc8f18b3bc78a4546a2ed36f5d09ba3.jpg",
             "caption": {
               "text": "The magnitude of the vectors ${A}_{x}$ and ${B}_{x}$ add to give the magnitude ${R}_{x}$ of the resultant vector in the horizontal direction. Similarly, the magnitudes of the vectors ${A}_{y}$ and ${B}_{y}$ add to give the magnitude ${R}_{y}$ of the resultant vector in the vertical direction.",
               "inline": []
@@ -1985,7 +1990,7 @@
           {
             "id": "b-29",
             "type": "figure",
-            "asset_url": "images/phy_m42128_Figure_03_03_08a.jpg",
+            "asset_url": "books/secondary_physics/447d77d4cc1bbdfdab1e4202c7f45016f7715e59b652a549ff54bf603a97f595.jpg",
             "caption": {
               "text": "Vector $A$ has magnitude $53.0 m$ and direction $20.0º$ north of the *x* -axis. Vector $B$ has magnitude $34.0 m$ and direction $63.0º$ north of the *x* -axis. You can use analytical methods to determine the magnitude and direction of $R$ .",
               "inline": []
@@ -2044,7 +2049,7 @@
           {
             "id": "b-36",
             "type": "figure",
-            "asset_url": "images/phy_m42128_Figure_03_03_09a-3f2c.jpg",
+            "asset_url": "books/secondary_physics/f0288218bf83687c65e70e5da7376912ca0c82e18a5c722dfd768b739661ef38.jpg",
             "caption": {
               "text": "Using analytical methods, we see that the magnitude of $R$ is $81.2 m$ and its direction is $36.6º$ north of east.",
               "inline": []
@@ -2087,7 +2092,7 @@
           {
             "id": "b-41",
             "type": "figure",
-            "asset_url": "images/phy_m42128_Figure_03_03_10a.jpg",
+            "asset_url": "books/secondary_physics/af808b54c94080a28bd4c03e7014f6e96ad96c451c6f6738054bf12931a868e3.jpg",
             "caption": {
               "text": "The subtraction of the two vectors shown in . The components of $–B$ are the negatives of the components of $B$ . The method of subtraction is the same as that for addition.",
               "inline": []
@@ -2194,7 +2199,7 @@
           {
             "id": "b-54",
             "type": "figure",
-            "asset_url": "images/phy_m42128_Figure_03_02_20a-b5e9.jpg",
+            "asset_url": "books/secondary_physics/7a813f724ce2cb595446427a2645b952236b48426152f4f4d66d6cdb453f9cce.jpg",
             "caption": {
               "text": "The various lines represent paths taken by different people walking in a city. All blocks are 120 m on a side.",
               "inline": []
@@ -2221,7 +2226,7 @@
           {
             "id": "b-57",
             "type": "figure",
-            "asset_url": "images/phy_m42128_Figure_03_02_19a.jpg",
+            "asset_url": "books/secondary_physics/c0b45149ea4dbdf99249e8b790d460b16a02b5abbbecebc22d292b9f1eba4ff8.jpg",
             "caption": {
               "text": "A map of northern California with a circle with a radius of one hundred twenty three kilometers centered on San Francisco. Sacramento lies on the circumference of this circle in a direction forty-five degrees north of east from San Francisco.",
               "inline": []
@@ -2248,7 +2253,7 @@
           {
             "id": "b-60",
             "type": "figure",
-            "asset_url": "images/phy_m42128_Figure_03_02_21a.jpg",
+            "asset_url": "books/secondary_physics/2a0051ed6bcb355eb098f2f7cfd3d790d551ef54026e5860ae08cfccd0da9c7e.jpg",
             "caption": {
               "text": "The two displacements $A$ and $B$ add to give a total displacement $R$ having magnitude $R$ and direction $θ$ .",
               "inline": []
@@ -2323,7 +2328,7 @@
           {
             "id": "b-69",
             "type": "figure",
-            "asset_url": "images/phy_m42128_Figure_03_03_11a.jpg",
+            "asset_url": "books/secondary_physics/8aba3936fd6040f8de8598c5697b0bc1d0b6c8be0f64f94bc3e65dbdf9f14991.jpg",
             "caption": {
               "text": "In the given figure the sides of a triangular piece of land are shown in vector form. West corner is at origin. A vector starts from the origin towards south east direction and makes an angle twenty-one degrees with the horizontal. Then from the head of this vector another vector B making an angle eleven degrees with the vertical is drawn upwards. Then another vector C from the head of the vector B to the tail of the initial vector is drawn. The length and orientation of side C is indicated as unknown, represented by a question mark.",
               "inline": []
@@ -2358,7 +2363,7 @@
           {
             "id": "b-73",
             "type": "figure",
-            "asset_url": "images/phy_m42128_Figure_03_03_12a-2f84.jpg",
+            "asset_url": "books/secondary_physics/fa6c675f0bba43e1909c169ddb3ef63dcdb81e17b6c5997378a382b34a1df7f6.jpg",
             "caption": {
               "text": "A quadrilateral with sides A, B, C, and D. A begins at the end of D and is 4 point seven zero kilometers at an angle of 7 point 5 degrees south of west. B begins at the end of A and is 2 point four eight kilometers in a direction sixteen degrees west of north. C begins at the end of B and is 3 point zero 2 kilometers in a direction nineteen degrees north of west. D begins at the end of C and runs distance and direction that must be calculated",
               "inline": []
@@ -2393,7 +2398,7 @@
           {
             "id": "b-77",
             "type": "figure",
-            "asset_url": "images/phy_m42128_Figure_03_03_13a-bbd8.jpg",
+            "asset_url": "books/secondary_physics/20c7040c2db3b3fe2e2d6bf77aefc9032af576bb86ff15c2273d4b550f517027.jpg",
             "caption": {
               "text": "A triangle defined by vectors A, B, and R. A begins at the origin and run forty kilometers in a direction sixty degrees north of east. B begins at the end of A and runs thirty kilometers in a direction fifteen degrees north of east. R is the resultant vector and runs from the origin (the beginning of A) to the end of B for a distance and in a direction theta that need to be calculated.",
               "inline": []
@@ -2534,6 +2539,7 @@
       "slug": "projectile-motion",
       "title": "Projectile Motion",
       "est_minutes": 26,
+      "facts_inherited": false,
       "learning_objectives": [
         {
           "id": "lo-1",
@@ -2575,7 +2581,7 @@
           {
             "id": "b-4",
             "type": "figure",
-            "asset_url": "images/phy_m42042_Figure_03_04_01.jpg",
+            "asset_url": "books/secondary_physics/9958fe6a9e606cc9f05a4bb09459a4077345aacefb796dcbc4f44c4010f33742.jpg",
             "caption": {
               "text": "The total displacement $s$ of a soccer ball at a point along its path. The vector $s$ has components $x$ and $y$ along the horizontal and vertical axes. Its magnitude is $s$ , and it makes an angle $θ$ with the horizontal.",
               "inline": []
@@ -2634,7 +2640,7 @@
           {
             "id": "b-11",
             "type": "figure",
-            "asset_url": "images/phy_m42042_Figure_03_04_02.jpg",
+            "asset_url": "books/secondary_physics/c9997d970fc0a703aa3ed1c8f93526f0d9edb235f084924291deeaea2548e922.jpg",
             "caption": {
               "text": "(a) We analyze two-dimensional projectile motion by breaking it into two independent one-dimensional motions along the vertical and horizontal axes. (b) The horizontal motion is simple, because ${a}_{x}=0$ and ${v}_{x}$ is thus constant. (c) The velocity in the vertical direction begins to decrease as the object rises; at its highest point, the vertical velocity is zero. As the object falls towards the Earth again, the vertical velocity increases again in magnitude but points in the opposite direction to the initial vertical velocity. (d) The *x* - and *y* -motions are recombined to give the total velocity at any given point on the trajectory.",
               "inline": []
@@ -2645,7 +2651,7 @@
           {
             "id": "b-12",
             "type": "figure",
-            "asset_url": "images/phy_m42042_Figure_03_04_03a.jpg",
+            "asset_url": "books/secondary_physics/73be1399e498f6041ef6bc0dee910af276ee19ea3f4eeaa652522cf60a3b8442.jpg",
             "caption": {
               "text": "The trajectory of a fireworks shell. The fuse is set to explode the shell at the highest point in its trajectory, which is found to be at a height of 233 m and 125 m away horizontally.",
               "inline": []
@@ -2768,7 +2774,7 @@
           {
             "id": "b-27",
             "type": "figure",
-            "asset_url": "images/phy_m42042_Figure_03_04_04a.jpg",
+            "asset_url": "books/secondary_physics/6e2b2fd47f5cde3705edddc40cb4f0e7b14617c2a1b6a51955ff6460992803c9.jpg",
             "caption": {
               "text": "The trajectory of a rock ejected from the Kilauea volcano.",
               "inline": []
@@ -2891,7 +2897,7 @@
           {
             "id": "b-42",
             "type": "figure",
-            "asset_url": "images/phy_m42042_Figure_03_04_05a.jpg",
+            "asset_url": "books/secondary_physics/56ac8838a42e763f2b66abc5b4fae8cf8cf944beaa14eb5fec1da63c6aeadd5b.jpg",
             "caption": {
               "text": "Trajectories of projectiles on level ground. (a) The greater the initial speed ${v}_{0}$ , the greater the range for a given initial angle. (b) The effect of initial angle ${θ}_{0}$ on the range of a projectile with a given initial speed. Note that the range is the same for $15º$ and $75º$ , although the maximum heights of those paths are different.",
               "inline": []
@@ -2934,7 +2940,7 @@
           {
             "id": "b-47",
             "type": "figure",
-            "asset_url": "images/phy_m42042_Figure_03_04_06a.jpg",
+            "asset_url": "books/secondary_physics/23eb6d4a7eca5ea2f85c692f31d38815e53cde20d34546dfde9d019c5c9722cb.jpg",
             "caption": {
               "text": "Hypothetical projectile to satellite. From this theoretical tower, a projectile is launched from a very high tower to avoid air resistance. With increasing initial speed, the range increases and becomes longer than it would be on level ground because the Earth curves away underneath its path. With a large enough initial speed, orbit is achieved.",
               "inline": []
@@ -3609,6 +3615,7 @@
       "slug": "addition-of-velocities",
       "title": "Addition of Velocities",
       "est_minutes": 22,
+      "facts_inherited": false,
       "learning_objectives": [
         {
           "id": "lo-1",
@@ -3642,7 +3649,7 @@
           {
             "id": "b-3",
             "type": "figure",
-            "asset_url": "images/phy_m42045_Figure_03_05_01a.jpg",
+            "asset_url": "books/secondary_physics/fb69d04b98813dfaaf9f3903e0b97255fd55b9136e180463087b266752cdd9e9.jpg",
             "caption": {
               "text": "A boat trying to head straight across a river will actually move diagonally relative to the shore as shown. Its total velocity (solid arrow) relative to the shore is the sum of its velocity relative to the river plus the velocity of the river relative to the shore.",
               "inline": []
@@ -3653,7 +3660,7 @@
           {
             "id": "b-4",
             "type": "figure",
-            "asset_url": "images/phy_m42045_Figure_03_05_02a.jpg",
+            "asset_url": "books/secondary_physics/78de2fb322e0564a053e0e41fe69bf5c5d4128305787f5bae6217c416ee38a1a.jpg",
             "caption": {
               "text": "An airplane heading straight north is instead carried to the west and slowed down by wind. The plane does not move relative to the ground in the direction it points; rather, it moves in the direction of its total velocity (solid arrow).",
               "inline": []
@@ -3688,7 +3695,7 @@
           {
             "id": "b-8",
             "type": "figure",
-            "asset_url": "images/phy_m42045_Figure_03_05_03a.jpg",
+            "asset_url": "books/secondary_physics/10a9d54af6bdda6076b4a891fcb24ff0c6c9e0ea03f61c96608f0f40a3d608a0.jpg",
             "caption": {
               "text": "The velocity, $v$ , of an object traveling at an angle $θ$ to the horizontal axis is the sum of component vectors ${v}_{x}$ and ${v}_{y}$ .",
               "inline": []
@@ -3715,7 +3722,7 @@
           {
             "id": "b-11",
             "type": "figure",
-            "asset_url": "images/phy_m42045_Figure_03_05_09a.jpg",
+            "asset_url": "books/secondary_physics/a3ba3a649bb502e3fd50c5043f197458fea820bfaf5edf4b7291378b010d4d1b.jpg",
             "caption": {
               "text": "A boat attempts to travel straight across a river at a speed 0.75 m/s. The current in the river, however, flows at a speed of 1.20 m/s to the right.",
               "inline": []
@@ -3766,7 +3773,7 @@
           {
             "id": "b-17",
             "type": "figure",
-            "asset_url": "images/phy_m42045_Figure_03_05_04a.jpg",
+            "asset_url": "books/secondary_physics/f597a09154cfa3e7f6cfbb58da83769b06bdc2e6a41bc6fd51df7452ad337701.jpg",
             "caption": {
               "text": "An airplane is known to be heading north at 45.0 m/s, though its velocity relative to the ground is 38.0 m/s at an angle west of north. What is the speed and direction of the wind?",
               "inline": []
@@ -3897,7 +3904,7 @@
           {
             "id": "b-33",
             "type": "figure",
-            "asset_url": "images/phy_m42045_Figure_03_05_05.jpg",
+            "asset_url": "books/secondary_physics/eb4ada7a65a22a86d460982a8a10dd60b5abcd7a6104d06bee342c923e59de12.jpg",
             "caption": {
               "text": "Classical relativity. The same motion as viewed by two different observers. An observer on the moving ship sees the binoculars dropped from the top of its mast fall straight down. An observer on shore sees the binoculars take the curved path, moving forward with the ship. Both observers see the binoculars strike the deck at the base of the mast. The initial horizontal velocity is different relative to the two observers. (The ship is shown moving rather fast to emphasize the effect.)",
               "inline": []
@@ -3908,7 +3915,7 @@
           {
             "id": "b-34",
             "type": "figure",
-            "asset_url": "images/phy_m42045_Figure_03_05_06a.jpg",
+            "asset_url": "books/secondary_physics/aa94de01fba3ce6d04df40a55ccb634e34fb7fbff5448a13c7b5eaed86b0fc6d.jpg",
             "caption": {
               "text": "The motion of a coin dropped inside an airplane as viewed by two different observers. (a) An observer in the plane sees the coin fall straight down. (b) An observer on the ground sees the coin move almost horizontally.",
               "inline": []
@@ -4223,7 +4230,7 @@
           {
             "id": "b-73",
             "type": "figure",
-            "asset_url": "images/phy_m42045_Figure_03_05_07-12c0.jpg",
+            "asset_url": "books/secondary_physics/008551a6ffc0df130555cf531647ebd5ed7cccca297278c78271596f326f4e3c.jpg",
             "caption": {
               "text": "Five galaxies on a straight line, showing their distances and velocities relative to the Milky Way (MW) Galaxy. The distances are in millions of light years (Mly), where a light year is the distance light travels in one year. The velocities are nearly proportional to the distances. The sizes of the galaxies are greatly exaggerated; an average galaxy is about 0.1 Mly across.",
               "inline": []
@@ -4306,7 +4313,7 @@
           {
             "id": "b-83",
             "type": "figure",
-            "asset_url": "images/phy_m42045_Figure_03_05_08a-fe2d.jpg",
+            "asset_url": "books/secondary_physics/4bf5497278fb833593a732dcb1158fcded6a1dfd966215372db46762be00b2a2.jpg",
             "caption": {
               "text": "An ice hockey player moving across the rink must shoot backward to give the puck a velocity toward the goal.",
               "inline": []
@@ -4365,7 +4372,7 @@
           {
             "id": "b-90",
             "type": "figure",
-            "asset_url": "images/phy_m42045_OSX_CP2e_Figure_03_05Sol_CTQ01c.jpg",
+            "asset_url": "books/secondary_physics/d1e8372cc0d5c99379d8e263841d56fd804cbcf7bf10a86df6007afcfebf4175.jpg",
             "caption": {
               "text": "The figure shows speed (absolute value of v) graphed as a function of position y. The plot of A is linear, with a negative slope, starting at v sub zero A and ending at speed zero. The plot of B is linear, with the same negative slope as that of A, starting at v sub zero B, which is greater than v sub zero A, and ending at speed zero.",
               "inline": []

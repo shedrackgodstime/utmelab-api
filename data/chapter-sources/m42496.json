@@ -1,0 +1,49 @@
+{
+  "module": "m42496",
+  "source_attribution": {
+    "publisher": "OpenStax",
+    "book": "osbooks-college-physics-bundle",
+    "section": "m42496",
+    "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42496/index.cnxml",
+    "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)",
+    "locator": "CNXML module index.cnxml (typed elements, solutions present)"
+  },
+  "blocks": [
+    {
+      "id": "fig-1",
+      "type": "figure",
+      "asset_url": "images/phy_m42496_OSX_CP2e_Figure_28_00_01.jpg",
+      "caption": {
+        "text": "Katharine Burr Blodgett (1898–1979) was a physicist and chemist who made significant advancements in the study of surfaces and thin films. The trough she developed is still used in thousands of labs around the world, and her invention of non-reflective glass has had massive impact in cinema, medical, and scientific research arenas. (credit: Smithsonian Institution)",
+        "inline": []
+      },
+      "alt": "Katharine Burr Blodgett using equipment.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-1",
+      "type": "paragraph",
+      "content": {
+        "text": "If you have ever looked at the reds, blues, and greens in a sunlit soap bubble and wondered how straw-colored soapy water could produce them, you have hit upon one of the many phenomena that can only be explained by the wave character of light (see ). The same is true for the colors seen in an oil slick or in the light reflected from a compact disc. These and other interesting phenomena, such as the dispersion of white light into a rainbow of colors when passed through a narrow slit, cannot be explained fully by geometric optics. In these cases, light interacts with small objects and exhibits its wave characteristics. The branch of optics that considers the behavior of light when it exhibits wave characteristics (particularly when it interacts with small objects) is called wave optics (sometimes called physical optics). It is the topic of this chapter.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-2",
+      "type": "figure",
+      "asset_url": "images/phy_m42496_Figure_28_00_02a.jpg",
+      "caption": {
+        "text": "These soap bubbles exhibit brilliant colors when exposed to sunlight. How are the colors produced if they are not pigments in the soap? (credit: Scott Robinson, Flickr)",
+        "inline": []
+      },
+      "alt": "Soap bubbles reflecting mostly purple and blue light with some regions of orange.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    }
+  ],
+  "solutions": {}
+}

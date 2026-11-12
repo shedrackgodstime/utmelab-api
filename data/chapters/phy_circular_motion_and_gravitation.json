@@ -5,6 +5,7 @@
   "title": "Uniform Circular Motion and Gravitation",
   "book_id": "secondary_physics",
   "part_id": "part-1",
+  "facts_inherited": false,
   "learning_objectives": [
     {
       "id": "lo-1",
@@ -237,6 +238,7 @@
       "slug": "introduction-to-uniform-circular-motion-and-gravitation",
       "title": "Introduction to Uniform Circular Motion and Gravitation",
       "est_minutes": 8,
+      "facts_inherited": false,
       "learning_objectives": [
         {
           "id": "lo-1",
@@ -249,7 +251,7 @@
           {
             "id": "b-1",
             "type": "figure",
-            "asset_url": "images/phy_m42140_Figure_07_00_01a.jpg",
+            "asset_url": "books/secondary_physics/f4147649ba9ebe5cc505e504fd55fef91ca3ad073d14536961b4aeb2b45e51ec.jpg",
             "caption": {
               "text": "This Australian Grand Prix Formula 1 race car moves in a circular path as it makes the turn. Its wheels also spin rapidly—the latter completing many revolutions, the former only part of one (a circular arc). The same physical principles are involved in each. (credit: Richard Munckton)",
               "inline": []
@@ -327,6 +329,7 @@
       "slug": "rotation-angle-and-angular-velocity",
       "title": "Rotation Angle and Angular Velocity",
       "est_minutes": 18,
+      "facts_inherited": false,
       "learning_objectives": [
         {
           "id": "lo-1",
@@ -376,7 +379,7 @@
           {
             "id": "b-5",
             "type": "figure",
-            "asset_url": "images/phy_m42083_Figure_07_01_01aa.jpg",
+            "asset_url": "books/secondary_physics/b8e29ad061285ed261a4f35a8ff9f03d69af58b9a06b31137097d02d591af817.jpg",
             "caption": {
               "text": "All points on a CD travel in circular arcs. The pits along a line from the center to the edge all move through the same angle $Δθ$ in a time $Δt$ .",
               "inline": []
@@ -387,7 +390,7 @@
           {
             "id": "b-6",
             "type": "figure",
-            "asset_url": "images/phy_m42083_Figure_07_01_01ab.jpg",
+            "asset_url": "books/secondary_physics/f7ace33c44333976e9731f6661c6fc490fdb81f09393b8fca23132fa2a72e698.jpg",
             "caption": {
               "text": "The radius of a circle is rotated through an angle $Δθ$ . The arc length $Δs$ is described on the circumference.",
               "inline": []
@@ -430,7 +433,7 @@
           {
             "id": "b-11",
             "type": "figure",
-            "asset_url": "images/phy_m42083_Figure_07_01_02a.jpg",
+            "asset_url": "books/secondary_physics/b8ed5d6721e97d35bf2bd52cb50a9173c998f1005a79b53f353441d13b950b39.jpg",
             "caption": {
               "text": "Points 1 and 2 rotate through the same angle ( $Δθ$ ), but point 2 moves through a greater arc length $(Δs)$ because it is at a greater distance from the center of rotation $(r)$ .",
               "inline": []
@@ -505,7 +508,7 @@
           {
             "id": "b-20",
             "type": "figure",
-            "asset_url": "images/phy_m42083_Figure_07_01_03a.jpg",
+            "asset_url": "books/secondary_physics/51a05633e747ac0ce70cd0b1e16ef3e862b20f232dd380c1d16c124fe48a020d.jpg",
             "caption": {
               "text": "A car moving at a velocity $v$ to the right has a tire rotating with an angular velocity $ω$ .The speed of the tread of the tire relative to the axle is $v$ , the same as if the car were jacked up. Thus the car moves forward at linear velocity $v=rω$ , where $r$ is the tire radius. A larger angular velocity for the tire means a greater velocity for the car.",
               "inline": []
@@ -516,7 +519,7 @@
           {
             "id": "b-21",
             "type": "figure",
-            "asset_url": "images/phy_m42083_Figure_07_01_04a.jpg",
+            "asset_url": "books/secondary_physics/460ff10b733222f6ec410996061970b6f553880813463bd87471d0f397fbc1be.jpg",
             "caption": {
               "text": "As an object moves in a circle, here a fly on the edge of an old-fashioned vinyl record, its instantaneous velocity is always tangent to the circle. The direction of the angular velocity is clockwise in this case.",
               "inline": []
@@ -862,6 +865,7 @@
       "slug": "centripetal-acceleration",
       "title": "Centripetal Acceleration",
       "est_minutes": 20,
+      "facts_inherited": false,
       "learning_objectives": [
         {
           "id": "lo-1",
@@ -895,7 +899,7 @@
           {
             "id": "b-3",
             "type": "figure",
-            "asset_url": "images/phy_m42084_Figure_07_02_01a.jpg",
+            "asset_url": "books/secondary_physics/c1579b9e14a48dc4a63053b20a8bcd57795f7768c7f4cb70fa18dc9b644f67dd.jpg",
             "caption": {
               "text": "The directions of the velocity of an object at two different points are shown, and the change in velocity $Δv$ is seen to point directly toward the center of curvature. (See small inset.) Because ${a}_{c}=Δv/Δt$ , the acceleration is also toward the center; ${a}_{c}$ is called centripetal acceleration. (Because $Δθ$ is very small, the arc length $Δs$ is equal to the chord length $Δr$ for small time differences.)",
               "inline": []
@@ -970,7 +974,7 @@
           {
             "id": "b-12",
             "type": "figure",
-            "asset_url": "images/phy_m42084_Figure_07_02_02a.jpg",
+            "asset_url": "books/secondary_physics/f87f9223f432d194d335d7086bb43db4ebe1b1346869d8ef29de571725d2c023.jpg",
             "caption": {
               "text": "(a) The car following a circular path at constant speed is accelerated perpendicular to its velocity, as shown. The magnitude of this centripetal acceleration is found in . (b) A particle of mass in a centrifuge is rotating at constant angular velocity . It must be accelerated perpendicular to its velocity or it would continue in a straight line. The magnitude of the necessary acceleration is found in .",
               "inline": []
@@ -1631,6 +1635,7 @@
       "slug": "centripetal-force",
       "title": "Centripetal Force",
       "est_minutes": 20,
+      "facts_inherited": false,
       "learning_objectives": [
         {
           "id": "lo-1",
@@ -1696,7 +1701,7 @@
           {
             "id": "b-7",
             "type": "figure",
-            "asset_url": "images/phy_m42086_Figure_07_03_01a.jpg",
+            "asset_url": "books/secondary_physics/a49753f9996ef5ce80e3d9f1d2200f77421151159d03c0ae2305ffe64cfd9fec.jpg",
             "caption": {
               "text": "The frictional force supplies the centripetal force and is numerically equal to it. Centripetal force is perpendicular to velocity and causes uniform circular motion. The larger the ${F}_{c}$ , the smaller the radius of curvature $r$ and the sharper the curve. The second curve has the same $v$ , but a larger ${F}_{c}$ produces a smaller $r′$ .",
               "inline": []
@@ -1707,7 +1712,7 @@
           {
             "id": "b-8",
             "type": "figure",
-            "asset_url": "images/phy_m42086_Figure_07_03_02a.jpg",
+            "asset_url": "books/secondary_physics/bddb589ab620417c74799438a2503e58881493714eb83cc911b1f115d15f9c17.jpg",
             "caption": {
               "text": "This car on level ground is moving away and turning to the left. The centripetal force causing the car to turn in a circular path is due to friction between the tires and the road. A minimum coefficient of friction is needed, or the car will move in a larger-radius curve and leave the roadway.",
               "inline": []
@@ -1774,7 +1779,7 @@
           {
             "id": "b-16",
             "type": "figure",
-            "asset_url": "images/phy_m42086_Figure_07_03_03a.jpg",
+            "asset_url": "books/secondary_physics/757c7bd0279519854215db7e416dc940b5e9ec6f6eb7c2a241fc020146f620eb.jpg",
             "caption": {
               "text": "The car on this banked curve is moving away and turning to the left.",
               "inline": []
@@ -1825,7 +1830,7 @@
           {
             "id": "b-22",
             "type": "figure",
-            "asset_url": "images/phy_m42086_Figure_07_03_04a.jpg",
+            "asset_url": "books/secondary_physics/913d5e0f044551bc4aa25c32563da1289b70f1ef1f608129e534aba820802d34.jpg",
             "caption": {
               "text": "Two paths around a race track curve are shown. Race car drivers will take the inside path (called cutting the corner) whenever possible because it allows them to take the curve at the highest speed.",
               "inline": []
@@ -1860,7 +1865,7 @@
           {
             "id": "b-26",
             "type": "figure",
-            "asset_url": "images/phy_m42086_Figure_07_03_05a.jpg",
+            "asset_url": "books/secondary_physics/51885c2e841f47a8c556a6bd78f3c37441f5c67800c876d657e7f74ad0c18da3.jpg",
             "caption": {
               "text": "Amusement rides with a vertical loop are an example of a form of curved motion.",
               "inline": []
@@ -1919,7 +1924,7 @@
           {
             "id": "b-33",
             "type": "figure",
-            "asset_url": "images/phy_m42086_Figure_07_03_06a.jpg",
+            "asset_url": "books/secondary_physics/11a695aa301df0f263648e54577560415515d85e90a03f27458f5b4ed6198d69.jpg",
             "caption": {
               "text": "A child riding on a merry-go-round releases her lunch box at point P. This is a view from above the clockwise rotation. Assuming it slides with negligible friction, will it follow path A, B, or C, as viewed from Earth’s frame of reference? What will be the shape of the path it leaves in the dust on the merry-go-round?",
               "inline": []
@@ -1946,7 +1951,7 @@
           {
             "id": "b-36",
             "type": "figure",
-            "asset_url": "images/phy_m42086_Figure_07_03_07a.jpg",
+            "asset_url": "books/secondary_physics/ffaf6dae4f57ae91a24dfff057e3fdb55b605c31634dd3adcfe2567e128ba551.jpg",
             "caption": {
               "text": "A mass attached to a nail on a frictionless table moves in a circular path. The force stretching the string is real and not fictional. What is the physical origin of the force on the string?",
               "inline": []
@@ -2077,7 +2082,7 @@
           {
             "id": "b-52",
             "type": "figure",
-            "asset_url": "images/phy_m42086_Figure_07_03_08-6eb6.jpg",
+            "asset_url": "books/secondary_physics/576ced3888bebf3bb5928f26bfbda334e7d1383a390422a4640c1d07083b6f8f.jpg",
             "caption": {
               "text": "A bicyclist negotiating a turn on level ground must lean at the correct angle—the ability to do this becomes instinctive. The force of the ground on the wheel needs to be on a line through the center of gravity. The net external force on the system is the centripetal force. The vertical component of the force on the wheel cancels the weight of the system while its horizontal component must supply the centripetal force. This process produces a relationship among the angle $θ$ , the speed $v$ , and the radius of curvature $r$ of the turn similar to that for the ideal banking of roadways.",
               "inline": []
@@ -2120,7 +2125,7 @@
           {
             "id": "b-57",
             "type": "figure",
-            "asset_url": "images/phy_m42086_OSX_CPhysics2e_06_03_P22_img.jpg",
+            "asset_url": "books/secondary_physics/5a730a0a987aac9d2baea67493498967544b7d9748ad98074e89a78fd9409f35.jpg",
             "caption": {
               "text": "(a) NASA centrifuge used to subject trainees to accelerations similar to those experienced in rocket launches and reentries. (credit: NASA) (b) Rider in cage showing how the cage pivots outward during rotation. This allows the total force exerted on the rider by the cage to be along its axis at all times.",
               "inline": []
@@ -2147,7 +2152,7 @@
           {
             "id": "b-60",
             "type": "figure",
-            "asset_url": "images/phy_m42086_Figure_07_03_10a.jpg",
+            "asset_url": "books/secondary_physics/d3ebaf5a4db12946da23c0a7960a8bf795f40a86feb5a9deb50621809cd28e62.jpg",
             "caption": {
               "text": "Teardrop-shaped loops are used in the latest roller coasters so that the radius of curvature gradually decreases to a minimum at the top. This means that the centripetal acceleration builds from zero to a maximum at the top and gradually decreases again. A circular loop would cause a jolting change in acceleration at entry, a disadvantage discovered long ago in railroad curve design. With a small radius of curvature at the top, the centripetal acceleration can more easily be kept greater than $g$ so that the passengers do not lose contact with their seats nor do they need seat belts to keep them in place.",
               "inline": []
@@ -2470,6 +2475,7 @@
       "slug": "fictitious-forces-and-non-inertial-frames-the-coriolis-force",
       "title": "Fictitious Forces and Non-inertial Frames: The Coriolis Force",
       "est_minutes": 16,
+      "facts_inherited": false,
       "learning_objectives": [
         {
           "id": "lo-1",
@@ -2511,7 +2517,7 @@
           {
             "id": "b-4",
             "type": "figure",
-            "asset_url": "images/phy_m42142_Figure_07_04_01a.jpg",
+            "asset_url": "books/secondary_physics/1fd563e303c6e0394644edd6df515aa8955d8cc302fc0b4c14b78c0e60cac9d1.jpg",
             "caption": {
               "text": "(a) The car driver feels herself forced to the left relative to the car when she makes a right turn. This is a fictitious force arising from the use of the car as a frame of reference. (b) In the Earth’s frame of reference, the driver moves in a straight line, obeying Newton’s first law, and the car moves to the right. There is no real force to the left on the driver relative to Earth. There is a real force to the right on the car to make it turn.",
               "inline": []
@@ -2546,7 +2552,7 @@
           {
             "id": "b-8",
             "type": "figure",
-            "asset_url": "images/phy_m42142_Figure_07_04_02a.jpg",
+            "asset_url": "books/secondary_physics/b941850cbf6cc263312796ccb7723fb952ad670e5a0aaf7c4e2002db81b92f06.jpg",
             "caption": {
               "text": "(a) A rider on a merry-go-round feels as if he is being thrown off. This fictitious force is called the centrifugal force—it explains the rider’s motion in the rotating frame of reference. (b) In an inertial frame of reference and according to Newton’s laws, it is his inertia that carries him off and not a real force (the unshaded rider has ${F}_{net}=0$ and heads in a straight line). A real force, ${F}_{centripetal}$ , is needed to cause a circular path.",
               "inline": []
@@ -2565,7 +2571,7 @@
           {
             "id": "b-10",
             "type": "figure",
-            "asset_url": "images/phy_m42142_Figure_07_04_03a.jpg",
+            "asset_url": "books/secondary_physics/05ae4fa488268dbb1c622164bbdd7a401b3e638e8463aee0f5fbc9435a1231cb.jpg",
             "caption": {
               "text": "Centrifuges use inertia to perform their task. Particles in the fluid sediment come out because their inertia carries them away from the center of rotation. The large angular velocity of the centrifuge quickens the sedimentation. Ultimately, the particles will come into contact with the test tube walls, which will then supply the centripetal force needed to make them move in a circle of constant radius.",
               "inline": []
@@ -2584,7 +2590,7 @@
           {
             "id": "b-12",
             "type": "figure",
-            "asset_url": "images/phy_m42142_Figure_07_04_04a.jpg",
+            "asset_url": "books/secondary_physics/0c6a6cce7ee12e6fa5915769a2707a48ca6a17de50026c42167792c7342fdce4.jpg",
             "caption": {
               "text": "Looking down on the counterclockwise rotation of a merry-go-round, we see that a ball slid straight toward the edge follows a path curved to the right. The person slides the ball toward point B, starting at point A. Both points rotate to the shaded positions (A’ and B’) shown in the time that the ball follows the curved path in the rotating frame and a straight path in Earth’s frame.",
               "inline": []
@@ -2619,7 +2625,7 @@
           {
             "id": "b-16",
             "type": "figure",
-            "asset_url": "images/phy_m42142_Figure_07_04_05a.jpg",
+            "asset_url": "books/secondary_physics/1f9c89563d52d7ebd34b06fd38c3b5065e6833a3baee821989147a93c1ec8bae.jpg",
             "caption": {
               "text": "(a) The counterclockwise rotation of this northern hemisphere hurricane is a major consequence of the Coriolis force. (credit: NASA) (b) Without the Coriolis force, air would flow straight into a low-pressure zone, such as that found in tropical cyclones. (c) The Coriolis force deflects the winds to the right, producing a counterclockwise rotation. (d) Wind flowing away from a high-pressure zone is also deflected to the right, producing a clockwise rotation. (e) The opposite direction of rotation is produced by the Coriolis force in the southern hemisphere, leading to tropical cyclones. (credit: NASA)",
               "inline": []
@@ -2729,6 +2735,7 @@
       "slug": "newton-s-universal-law-of-gravitation",
       "title": "Newton's Universal Law of Gravitation",
       "est_minutes": 22,
+      "facts_inherited": false,
       "learning_objectives": [
         {
           "id": "lo-1",
@@ -2762,7 +2769,7 @@
           {
             "id": "b-3",
             "type": "figure",
-            "asset_url": "images/phy_m42143_OSX_CP2e_Figure_07_05_01.jpg",
+            "asset_url": "books/secondary_physics/b105ad29268395259c957daee06ff05c220fd330681d6ba78b2b7daba7338a6c.jpg",
             "caption": {
               "text": "According to early accounts, Newton was inspired to make the connection between falling bodies and astronomical motions when he saw an apple fall from a tree and realized that if the gravitational force could extend above the ground to a tree, it might also reach the Sun. The inspiration of Newton’s apple is a part of worldwide folklore and may even be based in fact. Newton’s universal law of gravitation and his laws of motion answered very old questions about nature and gave tremendous support to the notion of underlying simplicity and unity in nature. Like many revolutionary discoveries, it was not immediately accepted. Prominent French scientist and philosopher Émilie du Châtelet helped establish Newton's theory in France and mainland Europe.",
               "inline": []
@@ -2781,7 +2788,7 @@
           {
             "id": "b-5",
             "type": "figure",
-            "asset_url": "images/phy_m42143_Figure_07_05_02a.jpg",
+            "asset_url": "books/secondary_physics/dcd7b03e522d4bf5bde0de776dab8d3d38075c4638cb220e8cb1fb9d8fe5b9f6.jpg",
             "caption": {
               "text": "Gravitational attraction is along a line joining the centers of mass of these two bodies. The magnitude of the force is the same on each, consistent with Newton’s third law.",
               "inline": []
@@ -2856,7 +2863,7 @@
           {
             "id": "b-14",
             "type": "figure",
-            "asset_url": "images/phy_m42143_Figure_07_05_03a.jpg",
+            "asset_url": "books/secondary_physics/d37f2aed9e9737dd3135baffe959720c66dddc07eae87f55c1e8f5d6bf0cc0ad.jpg",
             "caption": {
               "text": "The distance between the centers of mass of Earth and an object on its surface is very nearly the same as the radius of Earth, because Earth is so much larger than the object.",
               "inline": []
@@ -2899,7 +2906,7 @@
           {
             "id": "b-19",
             "type": "figure",
-            "asset_url": "images/phy_m42143_Figure_07_05_04a.jpg",
+            "asset_url": "books/secondary_physics/225c0394c2aca832f114b5d736591e2bf5e3ed6ad080829c458692281f184580.jpg",
             "caption": {
               "text": "(a) Earth and the Moon rotate approximately once a month around their common center of mass. (b) Their center of mass orbits the Sun in an elliptical orbit, but Earth’s path around the Sun has “wiggles” in it. Similar wiggles in the paths of stars have been observed and are considered direct evidence of planets orbiting those stars. This is important because the planets’ reflected light is often too dim to be observed.",
               "inline": []
@@ -2926,7 +2933,7 @@
           {
             "id": "b-22",
             "type": "figure",
-            "asset_url": "images/phy_m42143_Figure_07_05_05a.jpg",
+            "asset_url": "books/secondary_physics/ac9edf6a288e1c154780da98b80714fb18cf55916ac8d0913e72bd1153dbc3b2.jpg",
             "caption": {
               "text": "The Moon causes ocean tides by attracting the water on the near side more than Earth, and by attracting Earth more than the water on the far side. The distances and sizes are not to scale. For this simplified representation of the Earth-Moon system, there are two high and two low tides per day at any location, because Earth rotates under the tidal bulge.",
               "inline": []
@@ -2945,7 +2952,7 @@
           {
             "id": "b-24",
             "type": "figure",
-            "asset_url": "images/phy_m42143_Figure_07_05_06a.jpg",
+            "asset_url": "books/secondary_physics/0dead4b7b3581d1f3b7dafd4eb6c0f7ba95394d2e71ee34f83a5e33f4e3412ef.jpg",
             "caption": {
               "text": "(a, b) Spring tides: The highest tides occur when Earth, the Moon, and the Sun are aligned. (c) Neap tide: The lowest tides occur when the Sun lies at $90º$ to the Earth-Moon alignment. Note that this figure is not drawn to scale.",
               "inline": []
@@ -2964,7 +2971,7 @@
           {
             "id": "b-26",
             "type": "figure",
-            "asset_url": "images/phy_m42143_Figure_07_05_07aa.jpg",
+            "asset_url": "books/secondary_physics/e53b8602276df115ff9c8bbc4dc92875a0e05ca9cfd27314ec41a04567d3c961.jpg",
             "caption": {
               "text": "A black hole is an object with such strong gravity that not even light can escape it. This black hole was created by the supernova of one star in a two-star system. The tidal forces created by the black hole are so great that it tears matter from the companion star. This matter is compressed and heated as it is sucked into the black hole, creating light and X-rays observable from Earth.",
               "inline": []
@@ -2991,7 +2998,7 @@
           {
             "id": "b-29",
             "type": "figure",
-            "asset_url": "images/phy_m42143_Figure_07_05_07.jpg",
+            "asset_url": "books/secondary_physics/fc03199dedcea1a61578aaea1c442caf0d995dbef11d9b657e9caa85321fb684.jpg",
             "caption": {
               "text": "Astronauts experiencing weightlessness on board the International Space Station. (credit: NASA)",
               "inline": []
@@ -3090,7 +3097,7 @@
           {
             "id": "b-41",
             "type": "figure",
-            "asset_url": "images/phy_m42143_Figure_07_05_08a.jpg",
+            "asset_url": "books/secondary_physics/9cd00f0ac4d109a98a629c3b953485817ba50145bb559270a8ca12e40abaa2f8.jpg",
             "caption": {
               "text": "Cavendish used an apparatus like this to measure the gravitational attraction between the two suspended spheres ( $m$ ) and the two on the stand ( $M$ ) by observing the amount of torsion (twisting) created in the fiber. Distance between the masses can be varied to check the dependence of the force on distance. Modern experiments of this type continue to explore gravity.",
               "inline": []
@@ -3710,6 +3717,7 @@
       "slug": "satellites-and-kepler-s-laws-an-argument-for-simplicity",
       "title": "Satellites and Kepler's Laws: An Argument for Simplicity",
       "est_minutes": 20,
+      "facts_inherited": false,
       "learning_objectives": [
         {
           "id": "lo-1",
@@ -3783,7 +3791,7 @@
           {
             "id": "b-8",
             "type": "figure",
-            "asset_url": "images/phy_m42144_Figure_07_06_01a.jpg",
+            "asset_url": "books/secondary_physics/1727a774f5748717af58c29e53d7cd457c12755c28c96cdf04ab4bdc935eb647.jpg",
             "caption": {
               "text": "(a) An ellipse is a closed curve such that the sum of the distances from a point on the curve to the two foci ( ${f}_{1}$ and ${f}_{2}$ ) is a constant. You can draw an ellipse as shown by putting a pin at each focus, and then placing a string around a pencil and the pins and tracing a line on paper. A circle is a special case of an ellipse in which the two foci coincide (thus any point on the circle is the same distance from the center). (b) For any closed gravitational orbit, $m$ follows an elliptical path with $M$ at one focus. Kepler’s first law states this fact for planets orbiting the Sun.",
               "inline": []
@@ -3834,7 +3842,7 @@
           {
             "id": "b-14",
             "type": "figure",
-            "asset_url": "images/phy_m42144_Figure_07_06_02a.jpg",
+            "asset_url": "books/secondary_physics/1c98802b7358eded10ecaaa723847541691dc1889b5d9c345185f55c3886e396.jpg",
             "caption": {
               "text": "The shaded regions have equal areas. It takes equal times for $m$ to go from A to B, from C to D, and from E to F. The mass $m$ moves fastest when it is closest to $M$ . Kepler’s second law was originally devised for planets orbiting the Sun, but it has broader validity.",
               "inline": []
@@ -4029,7 +4037,7 @@
           {
             "id": "b-38",
             "type": "figure",
-            "asset_url": "images/phy_m42144_Figure_07_06_03a.jpg",
+            "asset_url": "books/secondary_physics/fb247a465f3a81279d754033a81a4ff9b085e26f308a448c5dca3bff36de3675.jpg",
             "caption": {
               "text": "(a) The Ptolemaic model of the universe has Earth at the center with the Moon, the planets, the Sun, and the stars revolving about it in complex superpositions of circular paths. This geocentric model, which can be made progressively more accurate by adding more circles, is purely descriptive, containing no hints as to what are the causes of these motions. (b) The Copernican model has the Sun at the center of the solar system. It is fully explained by a small number of laws of physics, including Newton’s universal law of gravitation.",
               "inline": []
@@ -4248,7 +4256,7 @@
           {
             "id": "b-65",
             "type": "figure",
-            "asset_url": "images/phy_m42144_OSX_CP2e_Figure_06_06Sol_CTQ01c.jpg",
+            "asset_url": "books/secondary_physics/b1426b0d1954be7daf3fb055246f0eab468502c7327f8547a2e0d33e0079a438.jpg",
             "caption": {
               "text": "The figure is a plot of v as a function of r. The function starts at the origin and increases monotonically, with decreasing slope.",
               "inline": []

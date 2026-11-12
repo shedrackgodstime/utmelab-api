@@ -1,0 +1,162 @@
+{
+  "module": "m42573",
+  "source_attribution": {
+    "publisher": "OpenStax",
+    "book": "osbooks-college-physics-bundle",
+    "section": "m42573",
+    "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42573/index.cnxml",
+    "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)",
+    "locator": "CNXML module index.cnxml (typed elements, solutions present)"
+  },
+  "blocks": [
+    {
+      "id": "sec-0",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Learning Objectives",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-1",
+      "type": "paragraph",
+      "content": {
+        "text": "By the end of this section, you will be able to:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-2",
+      "type": "paragraph",
+      "content": {
+        "text": "We have long known that EM radiation is a wave, capable of interference and diffraction. We now see that light can be modeled as photons, which are massless particles. This may seem contradictory, since we ordinarily deal with large objects that never act like both wave and particle. An ocean wave, for example, looks nothing like a rock. To understand small-scale phenomena, we make analogies with the large-scale phenomena we observe directly. When we say something behaves like a wave, we mean it shows interference effects analogous to those seen in overlapping water waves. (See .) Two examples of waves are sound and EM radiation. When we say something behaves like a particle, we mean that it interacts as a discrete unit with no interference effects. Examples of particles include electrons, atoms, and photons of EM radiation. How do we talk about a phenomenon that acts like both a particle and a wave?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-1",
+      "type": "figure",
+      "asset_url": "images/phy_m42573_Figure_30_05_01a.jpg",
+      "caption": {
+        "text": "(a) The interference pattern for light through a double slit is a wave property understood by analogy to water waves. (b) The properties of photons having quantized energy and momentum and acting as a concentrated unit are understood by analogy to macroscopic particles.",
+        "inline": []
+      },
+      "alt": "Part a shows interaction of light rays emerging from two slits as semicircles overlapping one another. The direction of light waves is shown using arrows. The interacting waves spread out and end on a screen where points of maximum and minimum are marked. In part b, a photon is depicted as an ellipse enclosing a wave and a sand particle is shown enlarged. An arrow is drawn between the two from the photon to the sand particle.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-4",
+      "type": "paragraph",
+      "content": {
+        "text": "There is no doubt that EM radiation interferes and has the properties of wavelength and frequency. There is also no doubt that it behaves as particles—photons with discrete energy. We call this twofold nature the particle-wave duality , meaning that EM radiation has both particle and wave properties. This so-called duality is simply a term for properties of the photon analogous to phenomena we can observe directly, on a macroscopic scale. If this term seems strange, it is because we do not ordinarily observe details on the quantum level directly, and our observations yield either particle *or* wavelike properties, but never both simultaneously.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-5",
+      "type": "paragraph",
+      "content": {
+        "text": "Since we have a particle-wave duality for photons, and since we have seen connections between photons and matter in that both have momentum, it is reasonable to ask whether there is a particle-wave duality for matter as well. If the EM radiation we once thought to be a pure wave has particle properties, is it possible that matter has wave properties? The answer is yes. The consequences are tremendous, as we will begin to see in the next section.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-6",
+      "type": "paragraph",
+      "content": {
+        "text": "When do photons, electrons, and atoms behave like particles and when do they behave like waves? Watch waves spread out and interfere as they pass through a double slit, then get detected on a screen as tiny dots. Use quantum detectors to explore how measurements change the waves and the patterns they produce on the screen.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-7",
+      "type": "paragraph",
+      "content": {
+        "text": "Click to view content .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-8",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Test Prep for AP Courses",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-9",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "The ground state of a certain type of atom has energy of – *E* 0 . What is the wavelength of a photon with enough energy to ionize the atom when it is in the ground state, so that the ejected electron has kinetic energy equal to 2 *E* 0 ? $λ=\\frac{hc}{3{E}_{0}}$; $λ=\\frac{hc}{2{E}_{0}}$; $λ=\\frac{hc}{{E}_{0}}$; $λ=\\frac{2hc}{{E}_{0}}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a)",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-10",
+      "type": "paragraph",
+      "content": {
+        "text": "The ground state of a certain type of atom has energy of – *E* 0 . What is the wavelength of a photon with enough energy to ionize the atom when it is in the ground state, so that the ejected electron has kinetic energy equal to 2 *E* 0 ?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-11",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "While the quantum model explains many physical processes that the classical model cannot, it must be consistent with those processes that the classical model does explain. Energy and momentum conservation are fundamental principles of classical physics. Use the Compton and photoelectric effects to explain how these conservation principles carry over to the quantum model of light.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-12",
+      "type": "paragraph",
+      "content": {
+        "text": "While the quantum model explains many physical processes that the classical model cannot, it must be consistent with those processes that the classical model does explain. Energy and momentum conservation are fundamental principles of classical physics. Use the Compton and photoelectric effects to explain how these conservation principles carry over to the quantum model of light.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-13",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Section Summary",
+        "inline": []
+      }
+    }
+  ],
+  "solutions": {
+    "osbooks-college-physics-bundle:m42573:exr-9": [
+      [
+        {
+          "kind": "text",
+          "text": "(a)"
+        }
+      ]
+    ]
+  }
+}

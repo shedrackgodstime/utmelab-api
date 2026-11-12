@@ -1238,9 +1238,189 @@
         "source": "authored"
       },
       "frequency": "candidate"
+    },
+    {
+      "id": "trap-3",
+      "exam": "WAEC",
+      "subject": "physics",
+      "section_id": "sec-3",
+      "misconception": "Faraday's law says the induced emf is proportional to the magnetic flux itself.",
+      "correction": "It is proportional to the rate of change of the flux, so a steady flux induces nothing at all. The minus sign in Lenz's law is what says the induced current opposes the change.",
+      "signal": "Our own question offers the flux itself as an option.",
+      "status": "candidate",
+      "paper_evidence": {
+        "check_id": "rc-1",
+        "exam": "WAEC",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    },
+    {
+      "id": "trap-4",
+      "exam": "WAEC",
+      "subject": "physics",
+      "section_id": "sec-3",
+      "misconception": "The induced current flows so as to reinforce the magnetic field that caused it.",
+      "correction": "It opposes the change that produced it, which is how the conservation of energy shows up in induction. A current that reinforced the field would give away energy for nothing.",
+      "signal": "Our own question offers the reinforcing direction as an option.",
+      "status": "candidate",
+      "paper_evidence": {
+        "check_id": "rc-2",
+        "exam": "WAEC",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
     }
   ],
-  "exam_recall_checks": [],
+  "exam_recall_checks": [
+    {
+      "id": "rc-1",
+      "exam": "WAEC",
+      "subject": "physics",
+      "section_id": "sec-3",
+      "stem": "Faraday's law states that the induced emf is proportional to",
+      "options": [
+        {
+          "id": "a",
+          "text": "the magnetic flux"
+        },
+        {
+          "id": "b",
+          "text": "the rate of change of magnetic flux"
+        },
+        {
+          "id": "c",
+          "text": "the current in the coil"
+        },
+        {
+          "id": "d",
+          "text": "the area of the coil alone"
+        }
+      ],
+      "answer": "b",
+      "explanation": "Faraday's law gives $\\mathcal{E} = -N\\frac{\\Delta\\Phi}{\\Delta t}$, so it is the rate of change of the flux, not the flux itself.",
+      "difficulty": 2,
+      "source": "authored against the WAEC physics syllabus"
+    },
+    {
+      "id": "rc-2",
+      "exam": "WAEC",
+      "subject": "physics",
+      "section_id": "sec-3",
+      "stem": "Lenz's law says that the direction of the induced current is such that it",
+      "options": [
+        {
+          "id": "a",
+          "text": "adds to the magnetic field that caused it"
+        },
+        {
+          "id": "b",
+          "text": "opposes the change that produced it"
+        },
+        {
+          "id": "c",
+          "text": "is always clockwise"
+        },
+        {
+          "id": "d",
+          "text": "is the same as the current in the primary coil"
+        }
+      ],
+      "answer": "b",
+      "explanation": "The induced current opposes the change in magnetic flux that produced it, which is how the conservation of energy appears here.",
+      "difficulty": 2,
+      "source": "authored against the WAEC physics syllabus"
+    },
+    {
+      "id": "rc-3",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-8",
+      "stem": "A transformer steps a voltage down from $240\\,\\text{V}$ to $12\\,\\text{V}$. If the primary has 1200 turns, the secondary has",
+      "options": [
+        {
+          "id": "a",
+          "text": "60 turns"
+        },
+        {
+          "id": "b",
+          "text": "120 turns"
+        },
+        {
+          "id": "c",
+          "text": "240 turns"
+        },
+        {
+          "id": "d",
+          "text": "24000 turns"
+        }
+      ],
+      "answer": "a",
+      "explanation": "For an ideal transformer the turns ratio equals the voltage ratio, so $N_s = 1200 \\times \\frac{12}{240} = 60$ turns.",
+      "difficulty": 3,
+      "source": "authored against the JAMB physics syllabus"
+    },
+    {
+      "id": "rc-4",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-4",
+      "stem": "A conductor of length $L$ moves at speed $v$ perpendicular to a magnetic field $B$. The motional emf is",
+      "options": [
+        {
+          "id": "a",
+          "text": "$BLv$"
+        },
+        {
+          "id": "b",
+          "text": "$B/Lv$"
+        },
+        {
+          "id": "c",
+          "text": "$BL/v$"
+        },
+        {
+          "id": "d",
+          "text": "$Bv/L$"
+        }
+      ],
+      "answer": "a",
+      "explanation": "The motional emf is $\\mathcal{E} = BLv$ when the motion is perpendicular to the field and to the rod.",
+      "difficulty": 3,
+      "source": "authored against the JAMB physics syllabus"
+    },
+    {
+      "id": "rc-5",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-12",
+      "stem": "The reactance of a capacitor in an AC circuit",
+      "options": [
+        {
+          "id": "a",
+          "text": "increases with frequency"
+        },
+        {
+          "id": "b",
+          "text": "decreases with frequency"
+        },
+        {
+          "id": "c",
+          "text": "does not depend on frequency"
+        },
+        {
+          "id": "d",
+          "text": "is zero at all frequencies"
+        }
+      ],
+      "answer": "b",
+      "explanation": "The capacitive reactance is $X_C = \\frac{1}{2\\pi f C}$, so it falls as the frequency rises. The inductive reactance $X_L = 2\\pi f L$ rises.",
+      "difficulty": 3,
+      "source": "authored against the JAMB physics syllabus"
+    }
+  ],
   "sources": [
     {
       "publisher": "OpenStax",

@@ -1,0 +1,45 @@
+{
+  "module": "m42204",
+  "source_attribution": {
+    "publisher": "OpenStax",
+    "book": "osbooks-college-physics-bundle",
+    "section": "m42204",
+    "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42204/index.cnxml",
+    "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)",
+    "locator": "CNXML module index.cnxml (typed elements, solutions present)"
+  },
+  "blocks": [
+    {
+      "id": "fig-1",
+      "type": "figure",
+      "asset_url": "images/phy_m42204_Figure_13_00_01a_D.jpg",
+      "caption": {
+        "text": "Many fluids are flowing in this scene. Water from the hose and smoke from the fire are visible flows. Less visible are the flow of air and the flow of fluids on the ground and within the people fighting the fire. (credit: Andrew Magill, Flickr)",
+        "inline": []
+      },
+      "alt": "Photograph shows a group of firefighters in uniform using a hose to put out a fire that is consuming two cars.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-1",
+      "type": "paragraph",
+      "content": {
+        "text": "We have dealt with many situations in which fluids are static. But by their very definition, fluids flow. Examples come easily—a column of smoke rises from a camp fire, water streams from a fire hose, blood courses through your veins. Why does rising smoke curl and twist? How does a nozzle increase the speed of water emerging from a hose? How does the body regulate blood flow? The physics of fluids in motion— fluid dynamics —allows us to answer these and many other questions.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-2",
+      "type": "paragraph",
+      "content": {
+        "text": "OpenStax AP Physics Chapter 12: Fluid Flow (Physics Concept Trailer™)",
+        "inline": []
+      },
+      "level": "core"
+    }
+  ],
+  "solutions": {}
+}

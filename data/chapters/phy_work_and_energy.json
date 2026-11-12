@@ -5,6 +5,7 @@
   "title": "Work, Energy, and Energy Resources",
   "book_id": "secondary_physics",
   "part_id": "part-2",
+  "facts_inherited": false,
   "learning_objectives": [
     {
       "id": "lo-1",
@@ -261,6 +262,7 @@
       "slug": "introduction-to-work-energy-and-energy-resources",
       "title": "Introduction to Work, Energy, and Energy Resources",
       "est_minutes": 8,
+      "facts_inherited": false,
       "learning_objectives": [
         {
           "id": "lo-1",
@@ -273,7 +275,7 @@
           {
             "id": "b-1",
             "type": "figure",
-            "asset_url": "images/phy_m42145_Figure_08_00_01a_D.jpg",
+            "asset_url": "books/secondary_physics/9990d85fd9477479bffa711569eb631f26faf021b1cb41486f6ecfc6e4c54dac.jpg",
             "caption": {
               "text": "How many forms of energy can you identify in this photograph of a wind farm in Iowa? (credit: Jürgen from Sandesneben, Germany, Wikimedia Commons)",
               "inline": []
@@ -371,6 +373,7 @@
       "slug": "work-the-scientific-definition",
       "title": "Work: The Scientific Definition",
       "est_minutes": 14,
+      "facts_inherited": false,
       "learning_objectives": [
         {
           "id": "lo-1",
@@ -447,7 +450,7 @@
           {
             "id": "b-9",
             "type": "figure",
-            "asset_url": "images/phy_m42146_Figure_08_02_01.jpg",
+            "asset_url": "books/secondary_physics/2b6ce411aa79c244dcc0b4133a4f670526ab0fb7f253d717bfa64c103998d468.jpg",
             "caption": {
               "text": "Examples of work. (a) The work done by the force $F$ on this lawn mower is $Fdcosθ$ . Note that $Fcosθ$ is the component of the force in the direction of motion. (b) A person holding a briefcase does no work on it, because there is no displacement. No energy is transferred to or from the briefcase. (c) The person moving the briefcase horizontally at a constant speed does no work on it, and transfers no energy to it. (d) Work *is* done on the briefcase by carrying it up stairs at constant speed, because there is necessarily a component of force $F$ in the direction of the motion. Energy is transferred to the briefcase and could in turn be used to do work. (e) When the briefcase is lowered, energy is transferred out of the briefcase and into an electric generator. Here the work done on the briefcase by the generator is negative, removing energy from the briefcase, because $F$ and $d$ are in opposite directions.",
               "inline": []
@@ -530,7 +533,7 @@
           {
             "id": "b-19",
             "type": "figure",
-            "asset_url": "images/phy_m42146_CNX_APPhysics_07_M1_cranegraph_img.jpg",
+            "asset_url": "books/secondary_physics/106aa86be45c71e2bda1b677aae5f22f9b7d90b8532659e73d8a18e4d4d826fc.jpg",
             "caption": {
               "text": "The graph has meters on the x axis and kilonewtons on the y axis. A straight line runs from the point (0, 0) to the point (10, 10). Another straight line runs from (10, 10) to (50, 10). A third straight line runs from (50, 10) to (60, 0).",
               "inline": []
@@ -637,7 +640,7 @@
           {
             "id": "b-32",
             "type": "figure",
-            "asset_url": "images/phy_m42146_Figure_08_01_02a-7069.jpg",
+            "asset_url": "books/secondary_physics/78b68b5ac584e83bc3cb621abda0c11c678d9d5bca157fc49e5cffb1ffbae421.jpg",
             "caption": {
               "text": "A man pushes a crate up a ramp.",
               "inline": []
@@ -656,7 +659,7 @@
           {
             "id": "b-34",
             "type": "figure",
-            "asset_url": "images/phy_m42146_Figure_08_01_03-15ce.jpg",
+            "asset_url": "books/secondary_physics/a29f37df1f8dcf95c0a297770ada53a80e8f5e0549181cc0fda8e1b842d54878.jpg",
             "caption": {
               "text": "The boy does work on the system of the wagon and the child when he pulls them as shown.",
               "inline": []
@@ -683,7 +686,7 @@
           {
             "id": "b-37",
             "type": "figure",
-            "asset_url": "images/phy_m42146_Figure_08_01_04a.jpg",
+            "asset_url": "books/secondary_physics/a8d2dfb1f1f1f7553b1ca63eca3fcd35e185961a6333eee7585b69983a6e9fee.jpg",
             "caption": {
               "text": "A rescue sled and victim are lowered down a steep slope.",
               "inline": []
@@ -860,6 +863,7 @@
       "slug": "kinetic-energy-and-the-work-energy-theorem",
       "title": "Kinetic Energy and the Work-Energy Theorem",
       "est_minutes": 14,
+      "facts_inherited": false,
       "learning_objectives": [
         {
           "id": "lo-1",
@@ -928,7 +932,7 @@
           {
             "id": "b-8",
             "type": "figure",
-            "asset_url": "images/phy_m42147_Figure_08_02_02a.jpg",
+            "asset_url": "books/secondary_physics/63d42bdf2546135b07c4d61775202dbf2220acc336a5564b7af1c9349a8c490e.jpg",
             "caption": {
               "text": "(a) A graph of $Fcosθ$ vs. $d$ , when $Fcosθ$ is constant. The area under the curve represents the work done by the force. (b) A graph of $Fcosθ$ vs. $d$ in which the force varies. The work done for each interval is the area of each strip; thus, the total area under the curve equals the total work done.",
               "inline": []
@@ -947,7 +951,7 @@
           {
             "id": "b-10",
             "type": "figure",
-            "asset_url": "images/phy_m42147_Figure_08_02_03a.jpg",
+            "asset_url": "books/secondary_physics/7561e98cfedb735848f22fc7725e4e2447795681fd655199cd0b5a7c3d55af2c.jpg",
             "caption": {
               "text": "A package on a roller belt is pushed horizontally through a distance $d$ .",
               "inline": []
@@ -1190,7 +1194,7 @@
           {
             "id": "b-40",
             "type": "figure",
-            "asset_url": "images/phy_m42147_OSX_CP2e_Figure_08_02_04.jpg",
+            "asset_url": "books/secondary_physics/1a636303c36393a67658013d5660a95d3d159b3639f3cd8778fcf331d2d90d76.jpg",
             "caption": {
               "text": "A person pushing a lawn mower with a force F. Force is represented by a vector making an angle theta below the horizontal and distance moved by the mover is represented by vector d. The component of vector F along vector d is F cosine theta. Work done by the person, W, is equal to F d cosine theta.",
               "inline": []
@@ -1615,6 +1619,7 @@
       "slug": "gravitational-potential-energy",
       "title": "Gravitational Potential Energy",
       "est_minutes": 14,
+      "facts_inherited": false,
       "learning_objectives": [
         {
           "id": "lo-1",
@@ -1667,7 +1672,7 @@
           {
             "id": "b-6",
             "type": "figure",
-            "asset_url": "images/phy_m42148_Figure_08_03_01a.jpg",
+            "asset_url": "books/secondary_physics/441d62a16933388c359e37ec8a0c240d754575032cfee0b9846cc72c33512386.jpg",
             "caption": {
               "text": "(a) The work done to lift the weight is stored in the mass-Earth system as gravitational potential energy. (b) As the weight moves downward, this gravitational potential energy is transferred to the cuckoo clock.",
               "inline": []
@@ -1718,7 +1723,7 @@
           {
             "id": "b-12",
             "type": "figure",
-            "asset_url": "images/phy_m42148_Figure_08_03_02a.jpg",
+            "asset_url": "books/secondary_physics/3f432c2474504606e69ba5e9537b22f6adfe120c137ff853f3c41219f395a3be.jpg",
             "caption": {
               "text": "The change in gravitational potential energy $(Δ{PE}_{g})$ between points A and B is independent of the path. $Δ{PE}_{g}=mgh$ for any path between the two points. Gravity is one of a small class of forces where the work done by or against the force depends only on the starting and ending points, not on the path between them.",
               "inline": []
@@ -1729,7 +1734,7 @@
           {
             "id": "b-13",
             "type": "figure",
-            "asset_url": "images/phy_m42148_Figure_08_03_03.jpg",
+            "asset_url": "books/secondary_physics/dab05906a84c61f3be109cb217bc9c7dec643a2e7eb1d84a7407846361d07862.jpg",
             "caption": {
               "text": "The work done by the ground upon the kangaroo reduces its kinetic energy to zero as it lands. However, by applying the force of the ground on the hind legs over a longer distance, the impact on the bones is reduced. (credit: Chris Samuel, Flickr)",
               "inline": []
@@ -1740,7 +1745,7 @@
           {
             "id": "b-14",
             "type": "figure",
-            "asset_url": "images/phy_m42148_Figure_08_03_04a.jpg",
+            "asset_url": "books/secondary_physics/cfb05c9ef0491665ce17a66b6604704d4c8248c4ba2009013e1c5881ddc21d36.jpg",
             "caption": {
               "text": "The speed of a roller coaster increases as gravity pulls it downhill and is greatest at its lowest point. Viewed in terms of energy, the roller-coaster-Earth system’s gravitational potential energy is converted to kinetic energy. If work done by friction is negligible, all $Δ{PE}_{g}$ is converted to $KE$ .",
               "inline": []
@@ -1839,7 +1844,7 @@
           {
             "id": "b-26",
             "type": "figure",
-            "asset_url": "images/phy_m42148_Figure_08_03_05a.jpg",
+            "asset_url": "books/secondary_physics/fcb568bf768e23f97b6a0383e0bb48d94ca82c92de6d99832da984e8308290b1.jpg",
             "caption": {
               "text": "A marble rolls down a ruler, and its speed on the level surface is measured.",
               "inline": []
@@ -1914,7 +1919,7 @@
           {
             "id": "b-35",
             "type": "figure",
-            "asset_url": "images/phy_m42148_Figure_08_03_06a-8cbf.jpg",
+            "asset_url": "books/secondary_physics/7c4b5587a65262345ba5ee6a3a6937d8fecd326b2eae574d8251a3cc6571552d.jpg",
             "caption": {
               "text": "Hydroelectric facility (credit: Denis Belevich, Wikimedia Commons)",
               "inline": []
@@ -1973,7 +1978,7 @@
           {
             "id": "b-42",
             "type": "figure",
-            "asset_url": "images/phy_m42148_Figure_08_03_07a-5a6c.jpg",
+            "asset_url": "books/secondary_physics/474c5ab170c5c4e613f70f7ad15be7458aa0b508c4dc421e0e65053077107b15.jpg",
             "caption": {
               "text": "A toy car moves up a sloped track. (credit: Leszek Leszczynski, Flickr)",
               "inline": []
@@ -2181,6 +2186,7 @@
       "slug": "conservative-forces-and-potential-energy",
       "title": "Conservative Forces and Potential Energy",
       "est_minutes": 14,
+      "facts_inherited": false,
       "learning_objectives": [
         {
           "id": "lo-1",
@@ -2257,7 +2263,7 @@
           {
             "id": "b-9",
             "type": "figure",
-            "asset_url": "images/phy_m42149_Figure_08_04_01a.jpg",
+            "asset_url": "books/secondary_physics/7ce769530e840fc76cc6a089788d3414c35ea4e38a84d09e1e140099366f6e29.jpg",
             "caption": {
               "text": "(a) An undeformed spring has no ${PE}_{s}$ stored in it. (b) The force needed to stretch (or compress) the spring a distance $x$ has a magnitude $F=kx$ , and the work done to stretch (or compress) it is $\\frac{1}{2}{kx}^{2}$ . Because the force is conservative, this work is stored as potential energy $({PE}_{s})$ in the spring, and it can be fully recovered. (c) A graph of $F$ vs. $x$ has a slope of $k$ , and the area under the graph is $\\frac{1}{2}{kx}^{2}$ . Thus the work done or potential energy stored is $\\frac{1}{2}{kx}^{2}$ .",
               "inline": []
@@ -2276,7 +2282,7 @@
           {
             "id": "b-11",
             "type": "figure",
-            "asset_url": "images/phy_m42149_Figure_08_04_02a.jpg",
+            "asset_url": "books/secondary_physics/67eb729a3ab4936d73a0415587af7ae3ad5932303c875ceb1655f10bf5ee2b14.jpg",
             "caption": {
               "text": "Work is done to deform the guitar string, giving it potential energy. When released, the potential energy is converted to kinetic energy and back to potential as the string oscillates back and forth. A very small fraction is dissipated as sound energy, slowly removing energy from the string.",
               "inline": []
@@ -2343,7 +2349,7 @@
           {
             "id": "b-19",
             "type": "figure",
-            "asset_url": "images/phy_m42149_Figure_08_04_03a.jpg",
+            "asset_url": "books/secondary_physics/c86169e676309a068414264bf9b9c6716cd36b7f9d6068fa9a059644e7c472e0.jpg",
             "caption": {
               "text": "A toy car is pushed by a compressed spring and coasts up a slope. Assuming negligible friction, the potential energy in the spring is first completely converted to kinetic energy, and then to a combination of kinetic and gravitational potential energy as the car rises. The details of the path are unimportant because all forces are conservative—the car would have the same final speed if it took the alternate path shown.",
               "inline": []
@@ -2693,6 +2699,7 @@
       "slug": "nonconservative-forces",
       "title": "Nonconservative Forces",
       "est_minutes": 10,
+      "facts_inherited": false,
       "learning_objectives": [
         {
           "id": "lo-1",
@@ -2721,7 +2728,7 @@
           {
             "id": "b-3",
             "type": "figure",
-            "asset_url": "images/phy_m42150_Figure_08_05_01ab1.jpg",
+            "asset_url": "books/secondary_physics/6917094f92253a81a647007e7dd092415d3b6fcacb0c60ee33e3fd0c07b4e166.jpg",
             "caption": {
               "text": "The amount of the happy face erased depends on the path taken by the eraser between points A and B, as does the work done against friction. Less work is done and less of the face is erased for the path in (a) than for the path in (b). The force here is friction, and most of the work goes into thermal energy that subsequently leaves the system (the happy face plus the eraser). The energy expended cannot be fully recovered.",
               "inline": []
@@ -2748,7 +2755,7 @@
           {
             "id": "b-6",
             "type": "figure",
-            "asset_url": "images/phy_m42150_Figure_08_05_02a.jpg",
+            "asset_url": "books/secondary_physics/afa5e20068a3035a55495e14f25db953c34d86aa17c4f6d28ae8bae05618b822.jpg",
             "caption": {
               "text": "Comparison of the effects of conservative and nonconservative forces on the mechanical energy of a system. (a) A system with only conservative forces. When a rock is dropped onto a spring, its mechanical energy remains constant (neglecting air resistance) because the force in the spring is conservative. The spring can propel the rock back to its original height, where it once again has only potential energy due to gravity. (b) A system with nonconservative forces. When the same rock is dropped onto the ground, it is stopped by nonconservative forces that dissipate its mechanical energy as thermal energy, sound, and surface distortion. The rock has lost mechanical energy.",
               "inline": []
@@ -2783,7 +2790,7 @@
           {
             "id": "b-10",
             "type": "figure",
-            "asset_url": "images/phy_m42150_Figure_08_05_03a.jpg",
+            "asset_url": "books/secondary_physics/76154189f86d73f5649bcff7d082caa616b63c9e3fa92bf52efa92b81a692c4f.jpg",
             "caption": {
               "text": "A person pushes a crate up a ramp, doing work on the crate. Friction and gravitational force (not shown) also do work on the crate; both forces oppose the person’s push. As the crate is pushed up the ramp, it gains mechanical energy, implying that the work done by the person is greater than the work done by friction.",
               "inline": []
@@ -2842,7 +2849,7 @@
           {
             "id": "b-17",
             "type": "figure",
-            "asset_url": "images/phy_m42150_Figure_08_05_04a.jpg",
+            "asset_url": "books/secondary_physics/2a808dc61fda728eee11d402944dff6c44e23e73b5bd7f9b5ca51a15e34006cb.jpg",
             "caption": {
               "text": "The baseball player slides to a stop in a distance $d$ . In the process, friction removes the player’s kinetic energy by doing an amount of work $fd$ equal to the initial kinetic energy.",
               "inline": []
@@ -2885,7 +2892,7 @@
           {
             "id": "b-22",
             "type": "figure",
-            "asset_url": "images/phy_m42150_Figure_08_05_05a.jpg",
+            "asset_url": "books/secondary_physics/023b411fa4b310bb9b44f4fbc9ca9da2205405d0d8411f9f6e25ce6a33d67035.jpg",
             "caption": {
               "text": "The same baseball player slides to a stop on a $5.00º$ slope.",
               "inline": []
@@ -2960,7 +2967,7 @@
           {
             "id": "b-31",
             "type": "figure",
-            "asset_url": "images/phy_m42150_Figure_08_05_06a.jpg",
+            "asset_url": "books/secondary_physics/79c018c888b082e92853fe0b0132be20b2c7f0cf40580fd68fc5cf509f64f035.jpg",
             "caption": {
               "text": "Rolling a marble down a ruler into a foam cup.",
               "inline": []
@@ -3019,7 +3026,7 @@
           {
             "id": "b-38",
             "type": "figure",
-            "asset_url": "images/phy_m42150_Figure_08_05_07a-9e45.jpg",
+            "asset_url": "books/secondary_physics/5d84078dd7c9b354df924831888576e44f91cb512d224b168a1188480e433834.jpg",
             "caption": {
               "text": "The skier’s initial kinetic energy is partially used in coasting to the top of a rise.",
               "inline": []
@@ -3175,6 +3182,7 @@
       "slug": "conservation-of-energy",
       "title": "Conservation of Energy",
       "est_minutes": 16,
+      "facts_inherited": false,
       "learning_objectives": [
         {
           "id": "lo-1",
@@ -3371,7 +3379,7 @@
           {
             "id": "b-24",
             "type": "figure",
-            "asset_url": "images/phy_m42151_Figure_08_06_01a.jpg",
+            "asset_url": "books/secondary_physics/848d18823e4da6667eb1464a7805fa245aa0bf8f17c6ad4a1d781844d64b518e.jpg",
             "caption": {
               "text": "Solar energy is converted into electrical energy by solar cells, which is used to run a motor in this solar-power aircraft. (credit: NASA)",
               "inline": []
@@ -3502,7 +3510,7 @@
           {
             "id": "b-40",
             "type": "figure",
-            "asset_url": "images/phy_m42151_Figure_08_06_02a.jpg",
+            "asset_url": "books/secondary_physics/1b7aad0f41e7f7b465611557aec704274f1d691a33f8b77c4c4916f79733a1a7.jpg",
             "caption": {
               "text": "A car experiencing non-negligible friction coasts down a hill, over a small crest, then downhill again, and comes to a stop at a gas station.",
               "inline": []
@@ -3729,6 +3737,7 @@
       "slug": "power",
       "title": "Power",
       "est_minutes": 12,
+      "facts_inherited": false,
       "learning_objectives": [
         {
           "id": "lo-1",
@@ -3757,7 +3766,7 @@
           {
             "id": "b-3",
             "type": "figure",
-            "asset_url": "images/phy_m42152_Figure_08_07_01a.jpg",
+            "asset_url": "books/secondary_physics/31e2acafec451831a2e608699a6e3256c2976ef20912b5f848fc6e9e44d71857.jpg",
             "caption": {
               "text": "This powerful rocket on the Space Shuttle *Endeavor* did work and consumed energy at a very high rate. (credit: NASA)",
               "inline": []
@@ -3808,7 +3817,7 @@
           {
             "id": "b-9",
             "type": "figure",
-            "asset_url": "images/phy_m42152_Figure_08_07_02.jpg",
+            "asset_url": "books/secondary_physics/fdf3cd3e62a20b45103e1239982da76039bcd7fb3ebd1ef8ba45a57af2327f21.jpg",
             "caption": {
               "text": "When this woman runs upstairs starting from rest, she converts the chemical energy originally from food into kinetic energy and gravitational potential energy. Her power output depends on how fast she does this.",
               "inline": []
@@ -3891,7 +3900,7 @@
           {
             "id": "b-19",
             "type": "figure",
-            "asset_url": "images/phy_m42152_Figure_08_07_03a.jpg",
+            "asset_url": "books/secondary_physics/51c2955ad5615e85726602d3c23d7ea9fc675adcf3670f602b5826fda54b55af.jpg",
             "caption": {
               "text": "Tremendous amounts of electric power are generated by coal-fired power plants such as this one in China, but an even larger amount of power goes into heat transfer to the surroundings. The large cooling towers here are needed to transfer heat as rapidly as it is produced. The transfer of heat is not unique to coal plants but is an unavoidable consequence of generating electric power from any fuel—nuclear, coal, oil, natural gas, or the like. (credit: Kleinolive, Wikimedia Commons)",
               "inline": []
@@ -3966,7 +3975,7 @@
           {
             "id": "b-28",
             "type": "figure",
-            "asset_url": "images/phy_m42152_graphics4-80ec.jpg",
+            "asset_url": "books/secondary_physics/b5906c98e86bf15379f991382adb6968ff8c663f07b9c0a7784ed071713cb062.jpg",
             "caption": {
               "text": "Crab Nebula (credit: ESO, via Wikimedia Commons)",
               "inline": []

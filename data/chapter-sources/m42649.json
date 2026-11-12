@@ -1,0 +1,601 @@
+{
+  "module": "m42649",
+  "source_attribution": {
+    "publisher": "OpenStax",
+    "book": "osbooks-college-physics-bundle",
+    "section": "m42649",
+    "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42649/index.cnxml",
+    "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)",
+    "locator": "CNXML module index.cnxml (typed elements, solutions present)"
+  },
+  "blocks": [
+    {
+      "id": "sec-0",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Learning Objectives",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-1",
+      "type": "paragraph",
+      "content": {
+        "text": "By the end of this section, you will be able to:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-2",
+      "type": "paragraph",
+      "content": {
+        "text": "Most medical and related applications of nuclear physics are driven, at their core, by the difference between a radioactive substance and a non-radioactive substance. One of the first such methods is the precision measurement and detection method known as radioimmunoassay (RIA). Developed by Rosalyn Sussman Yalow and Solomon Berson in the late 1950s, RIA relies on the principle of competitive binding. For the particular substance being measured, a sample containing a radioactive isotope is prepared. A known quantity of antibodies is then introduced. By measuring the amount of \"unbound\" antibodies after the reaction, technicians can detect and measure the precise amount of the target substance. Radioimmunoassay is essential in cancer screening, hepatitis diagnosis, narcotics investigation, and other analyses.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-3",
+      "type": "paragraph",
+      "content": {
+        "text": "A host of medical imaging techniques employ nuclear radiation. What makes nuclear radiation so useful? First, $γ$ radiation can easily penetrate tissue; hence, it is a useful probe to monitor conditions inside the body. Second, nuclear radiation depends on the nuclide and not on the chemical compound it is in, so that a radioactive nuclide can be put into a compound designed for specific purposes. The compound is said to be tagged . A tagged compound used for medical purposes is called a radiopharmaceutical . Radiation detectors external to the body can determine the location and concentration of a radiopharmaceutical to yield medically useful information. For example, certain drugs are concentrated in inflamed regions of the body, and this information can aid diagnosis and treatment as seen in . Another application utilizes a radiopharmaceutical which the body sends to bone cells, particularly those that are most active, to detect cancerous tumors or healing points. Images can then be produced of such bone scans. Radioisotopes are also used to determine the functioning of body organs, such as blood flow, heart muscle activity, and iodine uptake in the thyroid gland.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-1",
+      "type": "figure",
+      "asset_url": "images/phy_m42649_Figure_33_01_01.jpg",
+      "caption": {
+        "text": "A radiopharmaceutical is used to produce this brain image of a patient with Alzheimer’s disease. Certain features are computer enhanced. (credit: National Institutes of Health)",
+        "inline": []
+      },
+      "alt": "A brain scan. Different regions of the brain are shown in different colors.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "sec-5",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Medical Application",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-6",
+      "type": "paragraph",
+      "content": {
+        "text": "lists certain medical diagnostic uses of radiopharmaceuticals, including isotopes and activities that are typically administered. Many organs can be imaged with a variety of nuclear isotopes replacing a stable element by a radioactive isotope. One common diagnostic employs iodine to image the thyroid, since iodine is concentrated in that organ. The most active thyroid cells, including cancerous cells, concentrate the most iodine and, therefore, emit the most radiation. Conversely, hypothyroidism is indicated by lack of iodine uptake. Note that there is more than one isotope that can be used for several types of scans. Another common nuclear diagnostic is the thallium scan for the cardiovascular system, particularly used to evaluate blockages in the coronary arteries and examine heart activity. The salt TlCl can be used, because it acts like NaCl and follows the blood. Gallium-67 accumulates where there is rapid cell growth, such as in tumors and sites of infection. Hence, it is useful in cancer imaging. Usually, the patient receives the injection one day and has a whole body scan 3 or 4 days later because it can take several days for the gallium to build up.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "tbl-7",
+      "type": "table",
+      "title": {
+        "text": "Table",
+        "inline": []
+      },
+      "rows": [
+        [
+          "*Procedure, isotope*",
+          "Typical activity (mCi), where $1 mCi=3.7×{10}^{7}Bq$"
+        ],
+        [
+          "***Brain scan***"
+        ],
+        [
+          "${}^{99m}Tc$",
+          "7.5"
+        ],
+        [
+          "${}^{113m}In$",
+          "7.5"
+        ],
+        [
+          "${}^{11}C (PET)$",
+          "20"
+        ],
+        [
+          "${}^{13}N (PET)$",
+          "20"
+        ],
+        [
+          "${}^{15}O (PET)$",
+          "50"
+        ],
+        [
+          "${}^{18}F (PET)$",
+          "10"
+        ],
+        [
+          "**Lung scan**"
+        ],
+        [
+          "${}^{99m}Tc$",
+          "2"
+        ],
+        [
+          "${}^{133}Xe$",
+          "7.5"
+        ],
+        [
+          "**Cardiovascular blood pool**"
+        ],
+        [
+          "${}^{131}I$",
+          "0.2"
+        ],
+        [
+          "${}^{99m}Tc$",
+          "2"
+        ],
+        [
+          "**Cardiovascular arterial flow**"
+        ],
+        [
+          "${}^{201}Tl$",
+          "3"
+        ],
+        [
+          "${}^{24}Na$",
+          "7.5"
+        ],
+        [
+          "**Thyroid scan**"
+        ],
+        [
+          "${}^{131}I$",
+          "0.05"
+        ],
+        [
+          "${}^{123}I$",
+          "0.07"
+        ],
+        [
+          "**Liver scan**"
+        ],
+        [
+          "${}^{198}Au$ (colloid)",
+          "0.1"
+        ],
+        [
+          "${}^{99m}Tc$ (colloid)",
+          "2"
+        ],
+        [
+          "**Bone scan**"
+        ],
+        [
+          "${}^{85}Sr$",
+          "0.1"
+        ],
+        [
+          "${}^{99m}Tc$",
+          "10"
+        ],
+        [
+          "**Kidney scan**"
+        ],
+        [
+          "${}^{197}Hg$",
+          "0.1"
+        ],
+        [
+          "${}^{99m}Tc$",
+          "1.5"
+        ]
+      ],
+      "alt": "Table with 29 rows",
+      "level": "core"
+    },
+    {
+      "id": "p-8",
+      "type": "paragraph",
+      "content": {
+        "text": "Note that lists many diagnostic uses for ${}^{99m}Tc$ , where “m” stands for a metastable state of the technetium nucleus. Perhaps 80 percent of all radiopharmaceutical procedures employ ${}^{99m}Tc$ because of its many advantages. One is that the decay of its metastable state produces a single, easily identified 0.142-MeV $γ$ ray. Additionally, the radiation dose to the patient is limited by the short 6.0-h half-life of ${}^{99m}Tc$ . And, although its half-life is short, it is easily and continuously produced on site. The basic process for production is neutron activation of molybdenum, which quickly $β$ decays into ${}^{99m}Tc$ . Technetium-99m can be attached to many compounds to allow the imaging of the skeleton, heart, lungs, kidneys, etc.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-9",
+      "type": "paragraph",
+      "content": {
+        "text": "shows one of the simpler methods of imaging the concentration of nuclear activity, employing a device called an Anger camera or gamma camera . A piece of lead with holes bored through it collimates $γ$ rays emerging from the patient, allowing detectors to receive $γ$ rays from specific directions only. The computer analysis of detector signals produces an image. One of the disadvantages of this detection method is that there is no depth information (i.e., it provides a two-dimensional view of the tumor as opposed to a three-dimensional view), because radiation from any location under that detector produces a signal.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-2",
+      "type": "figure",
+      "asset_url": "images/phy_m42649_Figure_33_01_02.jpg",
+      "caption": {
+        "text": "An Anger or gamma camera consists of a lead collimator and an array of detectors. Gamma rays produce light flashes in the scintillators. The light output is converted to an electrical signal by the photomultipliers. A computer constructs an image from the detector output.",
+        "inline": []
+      },
+      "alt": "The image shows the head of a man scanned by an Anger camera. The camera consists of a lead collimator and array of detectors. Gamma rays emerging from the man’s head pass through the lead collimator and produce light flashes in the scintillators. The photomultiplier tubes convert the light output to electrical signals for computer image generation.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-11",
+      "type": "paragraph",
+      "content": {
+        "text": "Imaging techniques much like those in x-ray computed tomography (CT) scans use nuclear activity in patients to form three-dimensional images. shows a patient in a circular array of detectors that may be stationary or rotated, with detector output used by a computer to construct a detailed image. This technique is called single-photon-emission computed tomography(SPECT) or sometimes simply SPET. The spatial resolution of this technique is poor, about 1 cm, but the contrast (i.e. the difference in visual properties that makes an object distinguishable from other objects and the background) is good.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-3",
+      "type": "figure",
+      "asset_url": "images/phy_m42649_Figure_33_01_04.jpg",
+      "caption": {
+        "text": "SPECT uses a geometry similar to a CT scanner to form an image of the concentration of a radiopharmaceutical compound. (credit: Woldo, Wikimedia Commons)",
+        "inline": []
+      },
+      "alt": "A man lying down, going through a cylindrical scanning machine.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-13",
+      "type": "paragraph",
+      "content": {
+        "text": "Images produced by ${β}^{+}$ emitters have become important in recent years. When the emitted positron ( ${β}^{+}$ ) encounters an electron, mutual annihilation occurs, producing two $γ$ rays. These $γ$ rays have identical 0.511-MeV energies (the energy comes from the destruction of an electron or positron mass) and they move directly away from one another, allowing detectors to determine their point of origin accurately, as shown in . The system is called positron emission tomography (PET) . It requires detectors on opposite sides to simultaneously (i.e., at the same time) detect photons of 0.511-MeV energy and utilizes computer imaging techniques similar to those in SPECT and CT scans. Examples of ${β}^{+}$ -emitting isotopes used in PET are ${}^{11}C$ , ${}^{13}N$ , ${}^{15}O$ , and ${}^{18}F$ , as seen in . This list includes C, N, and O, and so they have the advantage of being able to function as tags for natural body compounds. Its resolution of 0.5 cm is better than that of SPECT; the accuracy and sensitivity of PET scans make them useful for examining the brain’s anatomy and function. The brain’s use of oxygen and water can be monitored with ${}^{15}O$ . PET is used extensively for diagnosing brain disorders. It can note decreased metabolism in certain regions prior to a confirmation of Alzheimer’s disease. PET can locate regions in the brain that become active when a person carries out specific activities, such as speaking, closing their eyes, and so on.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-4",
+      "type": "figure",
+      "asset_url": "images/phy_m42649_Figure_33_01_05.jpg",
+      "caption": {
+        "text": "A PET system takes advantage of the two identical $γ$ -ray photons produced by positron-electron annihilation. These $γ$ rays are emitted in opposite directions, so that the line along which each pair is emitted is determined. Various events detected by several pairs of detectors are then analyzed by the computer to form an accurate image.",
+        "inline": []
+      },
+      "alt": "The figure shows a patient undergoing a scan in a cylindrical device. The P E T system uses two gamma ray photons produced by positron electron annihilation. These gamma rays are emitted in opposite directions.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-15",
+      "type": "paragraph",
+      "content": {
+        "text": "Is it a tumor? Magnetic Resonance Imaging (MRI) can tell. Your head is full of tiny radio transmitters (the nuclear spins of the hydrogen nuclei of your water molecules). In an MRI unit, these little radios can be made to broadcast their positions, giving a detailed picture of the inside of your head.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-16",
+      "type": "paragraph",
+      "content": {
+        "text": "Click to view content .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-17",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Section Summary",
+        "inline": []
+      }
+    },
+    {
+      "id": "sec-18",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Conceptual Questions",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-19",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "In terms of radiation dose, what is the major difference between medical diagnostic uses of radiation and medical therapeutic uses?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-20",
+      "type": "paragraph",
+      "content": {
+        "text": "In terms of radiation dose, what is the major difference between medical diagnostic uses of radiation and medical therapeutic uses?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-21",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "One of the methods used to limit radiation dose to the patient in medical imaging is to employ isotopes with short half-lives. How would this limit the dose?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-22",
+      "type": "paragraph",
+      "content": {
+        "text": "One of the methods used to limit radiation dose to the patient in medical imaging is to employ isotopes with short half-lives. How would this limit the dose?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-23",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Problems & Exercises",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-24",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A neutron generator uses an $α$ source, such as radium, to bombard beryllium, inducing the reaction ${}^{4}He+{}^{9}Be→{}^{12}C+n$ . Such neutron sources are called RaBe sources, or PuBe sources if they use plutonium to get the $α$ s. Calculate the energy output of the reaction in MeV.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "5.701 MeV",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-25",
+      "type": "paragraph",
+      "content": {
+        "text": "A neutron generator uses an $α$ source, such as radium, to bombard beryllium, inducing the reaction ${}^{4}He+{}^{9}Be→{}^{12}C+n$ . Such neutron sources are called RaBe sources, or PuBe sources if they use plutonium to get the $α$ s. Calculate the energy output of the reaction in MeV.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-26",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Neutrons from a source (perhaps the one discussed in the preceding problem) bombard natural molybdenum, which is 24 percent ${}^{98}Mo$ . What is the energy output of the reaction ${}^{98}Mo+n→{}^{99}Mo+γ$ ? The mass of ${}^{98}Mo$ is given in Appendix A: Atomic Masses , and that of ${}^{99}Mo$ is 98.907711 u.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-27",
+      "type": "paragraph",
+      "content": {
+        "text": "Neutrons from a source (perhaps the one discussed in the preceding problem) bombard natural molybdenum, which is 24 percent ${}^{98}Mo$ . What is the energy output of the reaction ${}^{98}Mo+n→{}^{99}Mo+γ$ ? The mass of ${}^{98}Mo$ is given in Appendix A: Atomic Masses , and that of ${}^{99}Mo$ is 98.907711 u.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-28",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "The purpose of producing ${}^{99}Mo$ (usually by neutron activation of natural molybdenum, as in the preceding problem) is to produce ${}^{99m}Tc.$ Using the rules, verify that the ${β}^{-}$ decay of ${}^{99}Mo$ produces ${}^{99m}Tc$ . (Most ${}^{99m}Tc$ nuclei produced in this decay are left in a metastable excited state denoted ${}^{99m}Tc$ .)",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "${}_{42}^{99}{Mo}_{57}→{}_{43}^{99}{Tc}_{56}+{β}^{-}+{v¯}_{e}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-29",
+      "type": "paragraph",
+      "content": {
+        "text": "The purpose of producing ${}^{99}Mo$ (usually by neutron activation of natural molybdenum, as in the preceding problem) is to produce ${}^{99m}Tc.$ Using the rules, verify that the ${β}^{-}$ decay of ${}^{99}Mo$ produces ${}^{99m}Tc$ . (Most ${}^{99m}Tc$ nuclei produced in this decay are left in a metastable excited state denoted ${}^{99m}Tc$ .)",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-30",
+      "type": "paragraph",
+      "content": {
+        "text": "${}_{42}^{99}{Mo}_{57}→{}_{43}^{99}{Tc}_{56}+{β}^{-}+{v¯}_{e}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-31",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "(a) Two annihilation $γ$ rays in a PET scan originate at the same point and travel to detectors on either side of the patient. If the point of origin is 9.00 cm closer to one of the detectors, what is the difference in arrival times of the photons? (This could be used to give position information, but the time difference is small enough to make it difficult.) (b) How accurately would you need to be able to measure arrival time differences to get a position resolution of 1.00 mm?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-32",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) Two annihilation $γ$ rays in a PET scan originate at the same point and travel to detectors on either side of the patient. If the point of origin is 9.00 cm closer to one of the detectors, what is the difference in arrival times of the photons? (This could be used to give position information, but the time difference is small enough to make it difficult.)",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-33",
+      "type": "paragraph",
+      "content": {
+        "text": "(b) How accurately would you need to be able to measure arrival time differences to get a position resolution of 1.00 mm?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-34",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "indicates that 7.50 mCi of ${}^{99m}Tc$ is used in a brain scan. What is the mass of technetium?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$1.43×{10}^{-9}g$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-35",
+      "type": "paragraph",
+      "content": {
+        "text": "indicates that 7.50 mCi of ${}^{99m}Tc$ is used in a brain scan. What is the mass of technetium?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-36",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "The activities of ${}^{131}I$ and ${}^{123}I$ used in thyroid scans are given in to be 50 and $70 μCi$ , respectively. Find and compare the masses of ${}^{131}I$ and ${}^{123}I$ in such scans, given their respective half-lives are 8.04 d and 13.2 h. The masses are so small that the radioiodine is usually mixed with stable iodine as a carrier to ensure normal chemistry and distribution in the body.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-37",
+      "type": "paragraph",
+      "content": {
+        "text": "The activities of ${}^{131}I$ and ${}^{123}I$ used in thyroid scans are given in to be 50 and $70 μCi$ , respectively. Find and compare the masses of ${}^{131}I$ and ${}^{123}I$ in such scans, given their respective half-lives are 8.04 d and 13.2 h. The masses are so small that the radioiodine is usually mixed with stable iodine as a carrier to ensure normal chemistry and distribution in the body.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-38",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "(a) Neutron activation of sodium, which is 100% ${}^{23}Na$ , produces ${}^{24}Na$ , which is used in some heart scans, as seen in . The equation for the reaction is ${}^{23}Na+n→{}^{24}Na+γ$ . Find its energy output, given the mass of ${}^{24}Na$ is 23.990962 u. (b) What mass of ${}^{24}Na$ produces the needed 5.0-mCi activity, given its half-life is 15.0 h?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a) 6.958 MeV (b) $5.7×{10}^{-10}g$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-39",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) Neutron activation of sodium, which is 100% ${}^{23}Na$ , produces ${}^{24}Na$ , which is used in some heart scans, as seen in . The equation for the reaction is ${}^{23}Na+n→{}^{24}Na+γ$ . Find its energy output, given the mass of ${}^{24}Na$ is 23.990962 u.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-40",
+      "type": "paragraph",
+      "content": {
+        "text": "(b) What mass of ${}^{24}Na$ produces the needed 5.0-mCi activity, given its half-life is 15.0 h?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-41",
+      "type": "paragraph",
+      "content": {
+        "text": "(b) $5.7×{10}^{-10}g$",
+        "inline": []
+      },
+      "level": "core"
+    }
+  ],
+  "solutions": {
+    "osbooks-college-physics-bundle:m42649:exr-24": [
+      [
+        {
+          "kind": "text",
+          "text": "5.701 MeV"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42649:exr-28": [
+      [
+        {
+          "kind": "math",
+          "text": "{}_{42}^{99}{Mo}_{57}→{}_{43}^{99}{Tc}_{56}+{β}^{-}+{v¯}_{e}"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42649:exr-34": [
+      [
+        {
+          "kind": "math",
+          "text": "1.43×{10}^{-9}g"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42649:exr-38": [
+      [
+        {
+          "kind": "text",
+          "text": "(a) 6.958 MeV"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(b)"
+        },
+        {
+          "kind": "math",
+          "text": "5.7×{10}^{-10}g"
+        }
+      ]
+    ]
+  }
+}

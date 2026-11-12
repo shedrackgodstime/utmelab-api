@@ -881,7 +881,153 @@
       "frequency": "candidate"
     }
   ],
-  "exam_recall_checks": [],
+  "exam_recall_checks": [
+    {
+      "id": "rc-1",
+      "exam": "WAEC",
+      "subject": "physics",
+      "section_id": "sec-2",
+      "stem": "The SI unit of flow rate is",
+      "options": [
+        {
+          "id": "a",
+          "text": "m/s"
+        },
+        {
+          "id": "b",
+          "text": "m^3/s"
+        },
+        {
+          "id": "c",
+          "text": "kg/m^3"
+        },
+        {
+          "id": "d",
+          "text": "m^2"
+        }
+      ],
+      "answer": "b",
+      "explanation": "Flow rate is the volume of fluid passing a point per unit time, so its unit is cubic metres per second.",
+      "difficulty": 2,
+      "source": "authored against the WAEC physics syllabus"
+    },
+    {
+      "id": "rc-2",
+      "exam": "WAEC",
+      "subject": "physics",
+      "section_id": "sec-3",
+      "stem": "Bernoulli's equation for a fluid flowing along a streamline is a statement of the conservation of",
+      "options": [
+        {
+          "id": "a",
+          "text": "mass"
+        },
+        {
+          "id": "b",
+          "text": "charge"
+        },
+        {
+          "id": "c",
+          "text": "mechanical energy"
+        },
+        {
+          "id": "d",
+          "text": "momentum"
+        }
+      ],
+      "answer": "c",
+      "explanation": "Bernoulli's equation says the sum of pressure, kinetic energy per unit volume and gravitational potential energy per unit volume is constant along a streamline.",
+      "difficulty": 3,
+      "source": "authored against the WAEC physics syllabus"
+    },
+    {
+      "id": "rc-3",
+      "exam": "WAEC",
+      "subject": "physics",
+      "section_id": "sec-3",
+      "stem": "A fluid flows faster through a narrow pipe section. The pressure there is",
+      "options": [
+        {
+          "id": "a",
+          "text": "higher"
+        },
+        {
+          "id": "b",
+          "text": "lower"
+        },
+        {
+          "id": "c",
+          "text": "the same"
+        },
+        {
+          "id": "d",
+          "text": "zero"
+        }
+      ],
+      "answer": "b",
+      "explanation": "The continuity equation ties the higher speed to a lower pressure, so the narrower section is at lower pressure.",
+      "difficulty": 2,
+      "source": "authored against the WAEC physics syllabus"
+    },
+    {
+      "id": "rc-4",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-5",
+      "stem": "Poiseuille's law says that the volume flow rate of a fluid through a tube varies as",
+      "options": [
+        {
+          "id": "a",
+          "text": "$r^4$"
+        },
+        {
+          "id": "b",
+          "text": "$r^2$"
+        },
+        {
+          "id": "c",
+          "text": "$r$"
+        },
+        {
+          "id": "d",
+          "text": "$1/r$"
+        }
+      ],
+      "answer": "a",
+      "explanation": "The flow rate varies as the fourth power of the radius, so a tube twice as wide carries sixteen times the flow.",
+      "difficulty": 3,
+      "source": "authored against the JAMB physics syllabus"
+    },
+    {
+      "id": "rc-5",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-7",
+      "stem": "A small object falling through a viscous fluid eventually reaches a constant speed because",
+      "options": [
+        {
+          "id": "a",
+          "text": "the buoyant force balances its weight"
+        },
+        {
+          "id": "b",
+          "text": "the viscous drag balances the weight less buoyancy"
+        },
+        {
+          "id": "c",
+          "text": "it runs out of momentum"
+        },
+        {
+          "id": "d",
+          "text": "gravity becomes weaker"
+        }
+      ],
+      "answer": "b",
+      "explanation": "At the terminal speed the net force is zero, so the upward viscous drag balances the downward weight less the buoyant force.",
+      "difficulty": 3,
+      "source": "authored against the JAMB physics syllabus"
+    }
+  ],
   "sources": [
     {
       "publisher": "OpenStax",

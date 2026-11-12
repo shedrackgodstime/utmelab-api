@@ -1,0 +1,1925 @@
+{
+  "module": "m42296",
+  "source_attribution": {
+    "publisher": "OpenStax",
+    "book": "osbooks-college-physics-bundle",
+    "section": "m42296",
+    "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42296/index.cnxml",
+    "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)",
+    "locator": "CNXML module index.cnxml (typed elements, solutions present)"
+  },
+  "blocks": [
+    {
+      "id": "sec-0",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Learning Objectives",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-1",
+      "type": "paragraph",
+      "content": {
+        "text": "By the end of this section, you will be able to:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-1",
+      "type": "figure",
+      "asset_url": "images/phy_m42296_Figure_18_05_01a.jpg",
+      "caption": {
+        "text": "Some types of headphones use the phenomena of constructive and destructive interference to cancel out outside noises. (credit: JVC America, Flickr)",
+        "inline": []
+      },
+      "alt": "Photograph of a pair of headphones and the jack used to connect it to the sound system.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-3",
+      "type": "paragraph",
+      "content": {
+        "text": "Interference is the hallmark of waves, all of which exhibit constructive and destructive interference exactly analogous to that seen for water waves. In fact, one way to prove something “is a wave” is to observe interference effects. So, sound being a wave, we expect it to exhibit interference; we have already mentioned a few such effects, such as the beats from two similar notes played simultaneously.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-4",
+      "type": "paragraph",
+      "content": {
+        "text": "shows a clever use of sound interference to cancel noise. Larger-scale applications of active noise reduction by destructive interference are contemplated for entire passenger compartments in commercial aircraft. To obtain destructive interference, a fast electronic analysis is performed, and a second sound is introduced with its maxima and minima exactly reversed from the incoming noise. Sound waves in fluids are pressure waves and consistent with Pascal’s principle; pressures from two different sources add and subtract like simple numbers; that is, positive and negative gauge pressures add to a much smaller pressure, producing a lower-intensity sound. Although completely destructive interference is possible only under the simplest conditions, it is possible to reduce noise levels by 30 dB or more using this technique.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-2",
+      "type": "figure",
+      "asset_url": "images/phy_m42296_Figure_18_05_02a.jpg",
+      "caption": {
+        "text": "Headphones designed to cancel noise with destructive interference create a sound wave exactly opposite to the incoming sound. These headphones can be more effective than the simple passive attenuation used in most ear protection. Such headphones were used on the record-setting, around the world nonstop flight of the Voyager aircraft to protect the pilots’ hearing from engine noise.",
+        "inline": []
+      },
+      "alt": "A detailed picture of headphones with all its parts labeled. It shows the noise cancellation system in both the ear plugs consisting of the noise sensor, driver, pressure servo and cushions. There is a boom mic with low frequency housing, a boom adjustment, boom and cable all attached to one side of the power input cable. The power input cable is shown to have an on/off switch.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-6",
+      "type": "paragraph",
+      "content": {
+        "text": "Where else can we observe sound interference? All sound resonances, such as in musical instruments, are due to constructive and destructive interference. Only the resonant frequencies interfere constructively to form standing waves, while others interfere destructively and are absent. From the toot made by blowing over a bottle, to the characteristic flavor of a violin’s sounding box, to the recognizability of a great singer’s voice, resonance and standing waves play a vital role.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-7",
+      "type": "paragraph",
+      "content": {
+        "text": "Interference is such a fundamental aspect of waves that observing interference is proof that something is a wave. The wave nature of light was established by experiments showing interference. Similarly, when electrons scattered from crystals exhibited interference, their wave nature was confirmed to be exactly as predicted by symmetry with certain wave characteristics of light.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-8",
+      "type": "paragraph",
+      "content": {
+        "text": "Suppose we hold a tuning fork near the end of a tube that is closed at the other end, as shown in , , , and . If the tuning fork has just the right frequency, the air column in the tube resonates loudly, but at most frequencies it vibrates very little. This observation just means that the air column has only certain natural frequencies. The figures show how a resonance at the lowest of these natural frequencies is formed. A disturbance travels down the tube at the speed of sound and bounces off the closed end. If the tube is just the right length, the reflected sound arrives back at the tuning fork exactly half a cycle later, and it interferes constructively with the continuing sound produced by the tuning fork. The incoming and reflected sounds form a standing wave in the tube as shown.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-3",
+      "type": "figure",
+      "asset_url": "images/phy_m42296_Figure_18_05_03aa.jpg",
+      "caption": {
+        "text": "Resonance of air in a tube closed at one end, caused by a tuning fork. A disturbance moves down the tube.",
+        "inline": []
+      },
+      "alt": "The right side shows a vibrating tuning fork with right arm of fork moving right and left arm moving left. The left side shows a cone of resonance waves moving across a tube from the open end to the closed end. The tip of the cone is at the open end of the tube.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "fig-4",
+      "type": "figure",
+      "asset_url": "images/phy_m42296_Figure_18_05_03ab.jpg",
+      "caption": {
+        "text": "Resonance of air in a tube closed at one end, caused by a tuning fork. The disturbance reflects from the closed end of the tube.",
+        "inline": []
+      },
+      "alt": "The right side shows a vibrating tuning fork. The left side shows a cone of resonance waves reflected at the closed end of the tube. The tip of the cone is at the closed end of the tube, and the mouth of the cone is moving toward the open end of the tube.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "fig-5",
+      "type": "figure",
+      "asset_url": "images/phy_m42296_Figure_18_05_03ac.jpg",
+      "caption": {
+        "text": "Resonance of air in a tube closed at one end, caused by a tuning fork. If the length of the tube $L$ is just right, the disturbance gets back to the tuning fork half a cycle later and interferes constructively with the continuing sound from the tuning fork. This interference forms a standing wave, and the air column resonates.",
+        "inline": []
+      },
+      "alt": "The left side shows a cone of resonance waves reflected at the closed end of the tube. The mouth of the cone has reached the open end of the tube  The right side shows a vibrating tuning fork with its left arm of fork moving rightward and its right arm moving leftward.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "fig-6",
+      "type": "figure",
+      "asset_url": "images/phy_m42296_Figure_18_05_03ac.jpg",
+      "caption": {
+        "text": "Resonance of air in a tube closed at one end, caused by a tuning fork. A graph of air displacement along the length of the tube shows none at the closed end, where the motion is constrained, and a maximum at the open end. This standing wave has one-fourth of its wavelength in the tube, so that $λ=4L$ .",
+        "inline": []
+      },
+      "alt": "The right side shows a vibrating tuning fork with its right arm moving rightward and left arm moving leftward. The left side shows a cone of resonance waves reflected at the closed end of the tube. The curve side of the cone has reached the tuning fork. The length of the tube is given to be equal to lambda divided by four.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-13",
+      "type": "paragraph",
+      "content": {
+        "text": "The standing wave formed in the tube has its maximum air displacement (an antinode ) at the open end, where motion is unconstrained, and no displacement (a node ) at the closed end, where air movement is halted. The distance from a node to an antinode is one-fourth of a wavelength, and this equals the length of the tube; thus, $λ=4L$ . This same resonance can be produced by a vibration introduced at or near the closed end of the tube, as shown in . It is best to consider this a natural vibration of the air column independently of how it is induced.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-7",
+      "type": "figure",
+      "asset_url": "images/phy_m42296_Figure_18_05_04ab.jpg",
+      "caption": {
+        "text": "The same standing wave is created in the tube by a vibration introduced near its closed end.",
+        "inline": []
+      },
+      "alt": "A cone of resonance waves reflected at the closed end of the tube is shown. A tuning fork is shown to vibrate at a small opening above the closed end of the tube. The length of the tube L is given to be equal to lambda divided by four.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-15",
+      "type": "paragraph",
+      "content": {
+        "text": "Given that maximum air displacements are possible at the open end and none at the closed end, there are other, shorter wavelengths that can resonate in the tube, such as the one shown in . Here the standing wave has three-fourths of its wavelength in the tube, or $L=(3/4)λ′$ , so that $λ′=4L/3$ . Continuing this process reveals a whole series of shorter-wavelength and higher-frequency sounds that resonate in the tube. We use specific terms for the resonances in any system. The lowest resonant frequency is called the fundamental , while all higher resonant frequencies are called overtones . All resonant frequencies are integral multiples of the fundamental, and they are collectively called harmonics . The fundamental is the first harmonic, the first overtone is the second harmonic, and so on. shows the fundamental and the first three overtones (the first four harmonics) in a tube closed at one end.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-8",
+      "type": "figure",
+      "asset_url": "images/phy_m42296_Figure_18_05_05aa.jpg",
+      "caption": {
+        "text": "Another resonance for a tube closed at one end. This has maximum air displacements at the open end, and none at the closed end. The wavelength is shorter, with three-fourths $λ′$ equaling the length of the tube, so that $λ′=4L/3$ . This higher-frequency vibration is the first overtone.",
+        "inline": []
+      },
+      "alt": "A cone of resonance waves reflected at the closed end of the tube is shown as a wave. There is three-fourth of the wave inside the tube and one-fourth outside shown as dotted curve. The length of the tube is given as three-fourth times lambda prime.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "fig-9",
+      "type": "figure",
+      "asset_url": "images/phy_m42296_CNX_HSPhysics_14_04_ClosedOver.jpg",
+      "caption": {
+        "text": "The fundamental and three lowest overtones for a tube closed at one end. All have maximum air displacements at the open end and none at the closed end.",
+        "inline": []
+      },
+      "alt": "There are four tubes, each of which is closed at one end. Each tube has resonance waves reflected at the closed end. In the first tube, marked Fundamental, the wavelength is long and only one-fourth of the wave is inside the tube, with the maximum air displacement at the open end. In the second tube, marked First overtone, the wavelength is slightly shorter and three-fourths of the wave is inside the tube, with the maximum air displacement at the open end. In the third tube, marked Second overtone, the wavelength is still shorter and one and one-fourth of the wave is inside the tube, with the maximum air displacement at the open end. In the fourth tube, marked Third overtone, the wavelength is shorter than the others, and one and three-fourths of the wave is inside the tube, with the maximum air displacement at the open end.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-18",
+      "type": "paragraph",
+      "content": {
+        "text": "The fundamental and overtones can be present simultaneously in a variety of combinations. For example, middle C on a trumpet has a sound distinctively different from middle C on a clarinet, both instruments being modified versions of a tube closed at one end. The fundamental frequency is the same (and usually the most intense), but the overtones and their mix of intensities are different and subject to shading by the musician. This mix is what gives various musical instruments (and human voices) their distinctive characteristics, whether they have air columns, strings, sounding boxes, or drumheads. In fact, much of our speech is determined by shaping the cavity formed by the throat and mouth and positioning the tongue to adjust the fundamental and combination of overtones. Simple resonant cavities can be made to resonate with the sound of the vowels, for example. (See .) In males, at puberty, the larynx grows and the shape of the resonant cavity changes giving rise to the difference in predominant frequencies in speech between different sexes.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-10",
+      "type": "figure",
+      "asset_url": "images/phy_m42296_Figure_18_05_07a.jpg",
+      "caption": {
+        "text": "The throat and mouth form an air column closed at one end that resonates in response to vibrations in the voice box. The spectrum of overtones and their intensities vary with mouth shaping and tongue position to form different sounds. The voice box can be replaced with a mechanical vibrator, and understandable speech is still possible. Variations in basic shapes make different voices recognizable.",
+        "inline": []
+      },
+      "alt": "Two pictures of the throat and mouth in cross-section are shown. The first picture has parts of the mouth and throat labeled. The first picture shows the position of the mouth and tongue when producing an a a a sound, and the second picture shows the position of the mouth and tongue when producing an e e e sound.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-20",
+      "type": "paragraph",
+      "content": {
+        "text": "Now let us look for a pattern in the resonant frequencies for a simple tube that is closed at one end. The fundamental has $λ=4L$ , and frequency is related to wavelength and the speed of sound as given by:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-21",
+      "type": "paragraph",
+      "content": {
+        "text": "Solving for $f$ in this equation gives",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-22",
+      "type": "paragraph",
+      "content": {
+        "text": "where ${v}_{w}$ is the speed of sound in air. Similarly, the first overtone has $λ′=4L/3$ (see ), so that",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-23",
+      "type": "paragraph",
+      "content": {
+        "text": "Because $f′=3f$ , we call the first overtone the third harmonic. Continuing this process, we see a pattern that can be generalized in a single expression. The resonant frequencies of a tube closed at one end are",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-24",
+      "type": "paragraph",
+      "content": {
+        "text": "where ${f}_{1}$ is the fundamental, ${f}_{3}$ is the first overtone, and so on. It is interesting that the resonant frequencies depend on the speed of sound and, hence, on temperature. This dependence is the reason why musicians commonly bring their wind instruments to room temperature before playing them together with other types of instruments.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "ex-25",
+      "type": "example",
+      "kind": "worked",
+      "title": {
+        "text": "Find the Length of a Tube with a 128 Hz Fundamental",
+        "inline": []
+      },
+      "problem": {
+        "text": "",
+        "inline": []
+      },
+      "answer": null,
+      "level": "core"
+    },
+    {
+      "id": "p-26",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) What length should a tube closed at one end have on a day when the air temperature, is $22.0ºC$ , if its fundamental frequency is to be 128 Hz (C below middle C)?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-27",
+      "type": "paragraph",
+      "content": {
+        "text": "(b) What is the frequency of its fourth overtone?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-28",
+      "type": "paragraph",
+      "content": {
+        "text": "The length $L$ can be found from the relationship in ${f}_{n}=n\\frac{{v}_{w}}{4L}$ , but we will first need to find the speed of sound ${v}_{w}$ .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-29",
+      "type": "paragraph",
+      "content": {
+        "text": "(1) Identify knowns:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-30",
+      "type": "paragraph",
+      "content": {
+        "text": "(2) Use ${f}_{n}=n\\frac{{v}_{w}}{4L}$ to find the fundamental frequency ( $n=1$ ).",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-31",
+      "type": "paragraph",
+      "content": {
+        "text": "(3) Solve this equation for length.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-32",
+      "type": "paragraph",
+      "content": {
+        "text": "(4) Find the speed of sound using ${v}_{w}=(331 m/s)\\sqrt{\\frac{T}{273 K}}$ .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-33",
+      "type": "paragraph",
+      "content": {
+        "text": "(5) Enter the values of the speed of sound and frequency into the expression for $L$ .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-34",
+      "type": "paragraph",
+      "content": {
+        "text": "Many wind instruments are modified tubes that have finger holes, valves, and other devices for changing the length of the resonating air column and hence, the frequency of the note played. Horns producing very low frequencies, such as tubas, require tubes so long that they are coiled into loops.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-35",
+      "type": "paragraph",
+      "content": {
+        "text": "(1) Identify knowns:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-36",
+      "type": "paragraph",
+      "content": {
+        "text": "(2) Enter the value for the fourth overtone into ${f}_{n}=n\\frac{{v}_{w}}{4L}$ .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-37",
+      "type": "paragraph",
+      "content": {
+        "text": "Whether this overtone occurs in a simple tube or a musical instrument depends on how it is stimulated to vibrate and the details of its shape. The trombone, for example, is usually not played to produce its fundamental frequency and typically only the overtones are used.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-38",
+      "type": "paragraph",
+      "content": {
+        "text": "Another type of tube is one that is *open* at both ends. Examples are some organ pipes, flutes, and oboes. The resonances of tubes open at both ends can be analyzed in a very similar fashion to those for tubes closed at one end. The air columns in tubes open at both ends have maximum air displacements at both ends, as illustrated in . Standing waves form as shown.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-11",
+      "type": "figure",
+      "asset_url": "images/phy_m42296_Figure_18_05_08a.jpg",
+      "caption": {
+        "text": "The resonant frequencies of a tube open at both ends are shown, including the fundamental and the first three overtones. In all cases the maximum air displacements occur at both ends of the tube, giving it different natural frequencies than a tube closed at one end.",
+        "inline": []
+      },
+      "alt": "The resonant frequency waves in a tube open at both ends are shown. There are a set of four images. The first image shows a tube of length L marked fundamental having half a wave. The maxima of the vibrations are on both the open ends of the tube. The second image shows a tube of length L marked first over tone having a full wave. The maxima of the vibrations are on both the open ends of the tube. The third image shows a tube of length L marked second over tone having a full wave and a half. The maxima of the vibrations are on both the open ends of the tube. The fourth image shows a tube of length L marked third over tone having two full waves. The maxima of the vibrations are on both the open ends of the tube.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-40",
+      "type": "paragraph",
+      "content": {
+        "text": "Based on the fact that a tube open at both ends has maximum air displacements at both ends, and using as a guide, we can see that the resonant frequencies of a tube open at both ends are:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-41",
+      "type": "paragraph",
+      "content": {
+        "text": "where ${f}_{1}$ is the fundamental, ${f}_{2}$ is the first overtone, ${f}_{3}$ is the second overtone, and so on. Note that a tube open at both ends has a fundamental frequency twice what it would have if closed at one end. It also has a different spectrum of overtones than a tube closed at one end. So if you had two tubes with the same fundamental frequency but one was open at both ends and the other was closed at one end, they would sound different when played because they have different overtones. A note sounds richer when played on an instrument that includes many overtones in addition to the dominant frequency being played. Organists manually select extra harmonics to adjust the timbre of the notes they are playing. Organs often have multiple keyboards so that the overtone spectrum can be set differently for notes being played by the left hand, by the right hand, and by the feet.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-42",
+      "type": "paragraph",
+      "content": {
+        "text": "Resonance occurs in many different systems, including strings, air columns, and atoms. Resonance is the driven or forced oscillation of a system at its natural frequency. At resonance, energy is transferred rapidly to the oscillating system, and the amplitude of its oscillations grows until the system can no longer be described by Hooke’s law. An example of this is the distorted sound intentionally produced in certain types of rock music.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-43",
+      "type": "paragraph",
+      "content": {
+        "text": "Wind instruments use resonance in air columns to amplify tones made by lips or vibrating reeds. Other instruments also use air resonance in clever ways to amplify sound. shows a violin and a guitar, both of which have sounding boxes but with different shapes, resulting in different overtone structures. The vibrating string creates a sound that resonates in the sounding box, greatly amplifying the sound and creating overtones that give the instrument its characteristic flavor. The more complex the shape of the sounding box, the greater its ability to resonate over a wide range of frequencies. The marimba, like the one shown in uses pots or gourds below the wooden slats to amplify their tones. The resonance of the pot can be adjusted by adding water.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-12",
+      "type": "figure",
+      "asset_url": "images/phy_m42296_Figure_18_05_09a.jpg",
+      "caption": {
+        "text": "String instruments such as violins and guitars use resonance in their sounding boxes to amplify and enrich the sound created by their vibrating strings. The bridge and supports couple the string vibrations to the sounding boxes and air within. (credits: guitar, Feliciano Guimares, Fotopedia; violin, Steve Snodgrass, Flickr)",
+        "inline": []
+      },
+      "alt": "First photograph is of a person playing the guitar and the second photograph is of a violin.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "fig-13",
+      "type": "figure",
+      "asset_url": "images/phy_m42296_Figure_18_05_10a.jpg",
+      "caption": {
+        "text": "Resonance has been used in musical instruments since prehistoric times. This marimba uses gourds as resonance chambers to amplify its sound. (credit: APC Events, Flickr)",
+        "inline": []
+      },
+      "alt": "Photograph of two people playing a marimba with gourds as resonance chambers.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-46",
+      "type": "paragraph",
+      "content": {
+        "text": "We have emphasized sound applications in our discussions of resonance and standing waves, but these ideas apply to any system that has wave characteristics. Vibrating strings, for example, are actually resonating and have fundamentals and overtones similar to those for air columns. More subtle are the resonances in atoms due to the wave character of their electrons. Their orbitals can be viewed as standing waves, which have a fundamental (ground state) and overtones (excited states). It is fascinating that wave characteristics apply to such a wide range of physical systems.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-47",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Describe how noise-canceling headphones differ from standard headphones used to block outside sounds.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "Regular headphones only block sound waves with a physical barrier. Noise-canceling headphones use destructive interference to reduce the loudness of outside sounds.",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-48",
+      "type": "paragraph",
+      "content": {
+        "text": "Describe how noise-canceling headphones differ from standard headphones used to block outside sounds.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-49",
+      "type": "paragraph",
+      "content": {
+        "text": "Regular headphones only block sound waves with a physical barrier. Noise-canceling headphones use destructive interference to reduce the loudness of outside sounds.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-50",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "How is it possible to use a standing wave's node and antinode to determine the length of a closed-end tube?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "When the tube resonates at its natural frequency, the wave's node is located at the closed end of the tube, and the antinode is located at the open end. The length of the tube is equal to one-fourth of the wavelength of this wave. Thus, if we know the wavelength of the wave, we can determine the length of the tube.",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-51",
+      "type": "paragraph",
+      "content": {
+        "text": "How is it possible to use a standing wave's node and antinode to determine the length of a closed-end tube?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-52",
+      "type": "paragraph",
+      "content": {
+        "text": "When the tube resonates at its natural frequency, the wave's node is located at the closed end of the tube, and the antinode is located at the open end. The length of the tube is equal to one-fourth of the wavelength of this wave. Thus, if we know the wavelength of the wave, we can determine the length of the tube.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-53",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Test Prep for AP Courses",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-54",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A common misconception is that two wave pulses traveling in opposite directions will reflect off each other. Outline a procedure that you would use to convince someone that the two wave pulses do not reflect off each other, but instead travel through each other. You may use sketches to represent your understanding. Be sure to provide evidence to not only refute the original claim, but to support yours as well.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "Answers vary. Students could include a sketch showing an increased amplitude when two waves occupy the same location. Students could also cite conceptual evidence such as sound waves passing through each other.",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-55",
+      "type": "paragraph",
+      "content": {
+        "text": "A common misconception is that two wave pulses traveling in opposite directions will reflect off each other. Outline a procedure that you would use to convince someone that the two wave pulses do not reflect off each other, but instead travel through each other. You may use sketches to represent your understanding. Be sure to provide evidence to not only refute the original claim, but to support yours as well.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-56",
+      "type": "paragraph",
+      "content": {
+        "text": "Answers vary. Students could include a sketch showing an increased amplitude when two waves occupy the same location. Students could also cite conceptual evidence such as sound waves passing through each other.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-57",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Two wave pulses are traveling toward each other on a string, as shown below. Which of the following representations correctly shows the string as the two pulses overlap?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-58",
+      "type": "paragraph",
+      "content": {
+        "text": "Two wave pulses are traveling toward each other on a string, as shown below. Which of the following representations correctly shows the string as the two pulses overlap?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-14",
+      "type": "figure",
+      "asset_url": "images/phy_m42296_CNX_APPhysics_17_M5_wavese1_img.jpg",
+      "caption": {
+        "text": "Two sinusoidal waves of the same magnitude but opposite phase with only one full period are approaching each other.",
+        "inline": []
+      },
+      "alt": "Two sinusoidal waves of the same magnitude but opposite phase with only one full period are approaching each other.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "fig-15",
+      "type": "figure",
+      "asset_url": "images/phy_m42296_CNX_APPhysics_17_M5_wavese1a_img.jpg",
+      "caption": {
+        "text": "A sinusoidal wave with the same magnitude as the two waves but showing one and a half periods.",
+        "inline": []
+      },
+      "alt": "A sinusoidal wave with the same magnitude as the two waves but showing one and a half periods.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "fig-16",
+      "type": "figure",
+      "asset_url": "images/phy_m42296_CNX_APPhysics_17_M5_wavese1b_img.jpg",
+      "caption": {
+        "text": "A shape formed by joining the two sinusoidal waves at the point at which they first touch.",
+        "inline": []
+      },
+      "alt": "A shape formed by joining the two sinusoidal waves at the point at which they first touch.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "fig-17",
+      "type": "figure",
+      "asset_url": "images/phy_m42296_CNX_APPhysics_17_M5_wavese1c_img.jpg",
+      "caption": {
+        "text": "",
+        "inline": []
+      },
+      "alt": "A solid dark blue background with a subtle, lighter blue vertical gradient along the right side, creating a slight visual depth.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "fig-18",
+      "type": "figure",
+      "asset_url": "images/phy_m42296_CNX_APPhysics_17_M5_wavese1d_img.jpg",
+      "caption": {
+        "text": "A sinusoidal wave with double the magnitude but the phase of one of the waves.",
+        "inline": []
+      },
+      "alt": "A sinusoidal wave with double the magnitude but the phase of one of the waves.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "exr-64",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A student sends a transverse wave pulse of amplitude *A* along a rope attached at one end. As the pulse returns to the student, a second pulse of amplitude 3 *A* is sent along the opposite side of the rope. What is the resulting amplitude when the two pulses interact? 4 *A*; *A*; 2 *A* , on the side of the original wave pulse; 2 *A* , on the side of the second wave pulse",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(d)",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-65",
+      "type": "paragraph",
+      "content": {
+        "text": "A student sends a transverse wave pulse of amplitude *A* along a rope attached at one end. As the pulse returns to the student, a second pulse of amplitude 3 *A* is sent along the opposite side of the rope. What is the resulting amplitude when the two pulses interact?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-66",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A student would like to demonstrate destructive interference using two sound sources. Explain how the student could set up this demonstration and what restrictions they would need to place upon their sources. Be sure to consider both the layout of space and the sounds created in your explanation.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-67",
+      "type": "paragraph",
+      "content": {
+        "text": "A student would like to demonstrate destructive interference using two sound sources. Explain how the student could set up this demonstration and what restrictions they would need to place upon their sources. Be sure to consider both the layout of space and the sounds created in your explanation.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-68",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A student is shaking a flexible string attached to a wooden board in a rhythmic manner. Which of the following choices will decrease the wavelength within the rope? The student could shake her hand back and forth with greater frequency.; The student could shake her hand back in forth with a greater amplitude.; The student could increase the tension within the rope by stepping backwards from the board. I only; I and II; I and III; II and III; I, II, and III",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(c)",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-69",
+      "type": "paragraph",
+      "content": {
+        "text": "A student is shaking a flexible string attached to a wooden board in a rhythmic manner. Which of the following choices will decrease the wavelength within the rope?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-70",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A ripple tank has two locations (L1 and L2) that vibrate in tandem as shown below. Both L1 and L2 vibrate in a plane perpendicular to the page, creating a two-dimensional interference pattern. Describe an experimental procedure to determine the speed of the waves created within the water, including all additional equipment that you would need. You may use the diagram below to help your description, or you may create one of your own. Include enough detail so that another student could carry out your experiment.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-71",
+      "type": "paragraph",
+      "content": {
+        "text": "A ripple tank has two locations (L1 and L2) that vibrate in tandem as shown below. Both L1 and L2 vibrate in a plane perpendicular to the page, creating a two-dimensional interference pattern.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-19",
+      "type": "figure",
+      "asset_url": "images/phy_m42296_CNX_APPhysics_17_M5_rippletnk_img.jpg",
+      "caption": {
+        "text": "A rounded rectangle with two points near the top, symmetrically spaced, labelled L1 and L2.",
+        "inline": []
+      },
+      "alt": "A rounded rectangle with two points near the top, symmetrically spaced, labelled L1 and L2.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-73",
+      "type": "paragraph",
+      "content": {
+        "text": "Describe an experimental procedure to determine the speed of the waves created within the water, including all additional equipment that you would need. You may use the diagram below to help your description, or you may create one of your own. Include enough detail so that another student could carry out your experiment.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-74",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A string is vibrating between two posts as shown above. Students are to determine the speed of the wave within this string. They have already measured the amount of time necessary for the wave to oscillate up and down. The students must also take what other measurements to determine the speed of the wave? The distance between the two posts.; The amplitude of the wave; The tension in the string; The amplitude of the wave and the tension in the string; The distance between the two posts, the amplitude of the wave, and the tension in the string",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a)",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-75",
+      "type": "paragraph",
+      "content": {
+        "text": "A string is vibrating between two posts as shown above. Students are to determine the speed of the wave within this string. They have already measured the amount of time necessary for the wave to oscillate up and down. The students must also take what other measurements to determine the speed of the wave?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-76",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "The accepted speed of sound in room temperature air is 346 m/s. Knowing that their school is colder than usual, a group of students is asked to determine the speed of sound in their room. They are permitted to use any materials necessary; however, their lab procedure must utilize standing wave patterns. The students collect the information . Trial Number Wavelength (m) Frequency (Hz) 1 3.45 95 2 2.32 135 3 1.70 190 4 1.45 240 5 1.08 305 Describe an experimental procedure the group of students could have used to obtain this data. Include diagrams of the experimental setup and any equipment used in the process.; Select a set of data points from the table and plot those points on a graph to determine the speed of sound within the classroom. Fill in the blank column in the table for any quantities you graph other than the given data. Label the axes and indicate the scale for each. Draw a best-fit line or curve through your data points.; Using information from the graph, determine the speed of sound within the student’s classroom, and explain what characteristic of the graph provides this evidence.; Determine the temperature of the classroom.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-77",
+      "type": "paragraph",
+      "content": {
+        "text": "The accepted speed of sound in room temperature air is 346 m/s. Knowing that their school is colder than usual, a group of students is asked to determine the speed of sound in their room. They are permitted to use any materials necessary; however, their lab procedure must utilize standing wave patterns. The students collect the information .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "tbl-78",
+      "type": "table",
+      "title": {
+        "text": "Table",
+        "inline": []
+      },
+      "rows": [
+        [
+          "Trial Number",
+          "Wavelength (m)",
+          "Frequency (Hz)",
+          ""
+        ],
+        [
+          "1",
+          "3.45",
+          "95",
+          ""
+        ],
+        [
+          "2",
+          "2.32",
+          "135",
+          ""
+        ],
+        [
+          "3",
+          "1.70",
+          "190",
+          ""
+        ],
+        [
+          "4",
+          "1.45",
+          "240",
+          ""
+        ],
+        [
+          "5",
+          "1.08",
+          "305",
+          ""
+        ]
+      ],
+      "alt": "Table with 6 rows",
+      "level": "core"
+    },
+    {
+      "id": "exr-79",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A tube is open at one end. If the fundamental frequency *f* is created by a wavelength λ, then which of the following describes the frequency and wavelength associated with the tube’s fourth overtone? *f* *λ* (a) 4 *f* *λ* /4 (b) 4 *f* *λ* (c) 9 *f* *λ* /9 (d) 9 *f* *λ*",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(c)",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-80",
+      "type": "paragraph",
+      "content": {
+        "text": "A tube is open at one end. If the fundamental frequency *f* is created by a wavelength λ, then which of the following describes the frequency and wavelength associated with the tube’s fourth overtone?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "tbl-81",
+      "type": "table",
+      "title": {
+        "text": "Table",
+        "inline": []
+      },
+      "rows": [
+        [
+          "",
+          "*f*",
+          "*λ*"
+        ],
+        [
+          "(a)",
+          "4 *f*",
+          "*λ* /4"
+        ],
+        [
+          "(b)",
+          "4 *f*",
+          "*λ*"
+        ],
+        [
+          "(c)",
+          "9 *f*",
+          "*λ* /9"
+        ],
+        [
+          "(d)",
+          "9 *f*",
+          "*λ*"
+        ]
+      ],
+      "alt": "Table with 5 rows",
+      "level": "core"
+    },
+    {
+      "id": "exr-82",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A group of students were tasked with collecting information about standing waves. a series of their data, showing the length of an air column and a resonant frequency present when the column is struck. Length (m) Resonant Frequency (Hz) 1 85.75 2 43 3 29 4 21.5 From their data, determine whether the air column was open or closed on each end.; Predict the resonant frequency of the column at a length of 2.5 meters.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-83",
+      "type": "paragraph",
+      "content": {
+        "text": "A group of students were tasked with collecting information about standing waves. a series of their data, showing the length of an air column and a resonant frequency present when the column is struck.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "tbl-84",
+      "type": "table",
+      "title": {
+        "text": "Table",
+        "inline": []
+      },
+      "rows": [
+        [
+          "Length (m)",
+          "Resonant Frequency (Hz)"
+        ],
+        [
+          "1",
+          "85.75"
+        ],
+        [
+          "2",
+          "43"
+        ],
+        [
+          "3",
+          "29"
+        ],
+        [
+          "4",
+          "21.5"
+        ]
+      ],
+      "alt": "Table with 5 rows",
+      "level": "core"
+    },
+    {
+      "id": "exr-85",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "When a student blows across a glass half-full of water, a resonant frequency is created within the air column remaining in the glass. Which of the following can the student do to increase this resonant frequency? Add more water to the glass.; Replace the water with a more dense fluid.; Increase the temperature of the room. I only; I and III; II and III; all of the above",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(b)",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-86",
+      "type": "paragraph",
+      "content": {
+        "text": "When a student blows across a glass half-full of water, a resonant frequency is created within the air column remaining in the glass. Which of the following can the student do to increase this resonant frequency?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-87",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A student decides to test the speed of sound through wood using a wooden ruler. The student rests the ruler on a desk with half of its length protruding off the desk edge. The student then holds one end in place and strikes the protruding end with his other hand, creating a musical sound, and counts the number of vibrations of the ruler. Explain why the student would not be able to measure the speed of sound through wood using this method.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "Striking the end of a protruding ruler would create transverse waves, not sound waves. Any measurable, audible sound would come from the repetitive striking of the ruler against the desk. The student is confused about the speed of sound through solids versus the speed of sound in air.",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-88",
+      "type": "paragraph",
+      "content": {
+        "text": "A student decides to test the speed of sound through wood using a wooden ruler. The student rests the ruler on a desk with half of its length protruding off the desk edge. The student then holds one end in place and strikes the protruding end with his other hand, creating a musical sound, and counts the number of vibrations of the ruler. Explain why the student would not be able to measure the speed of sound through wood using this method.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-89",
+      "type": "paragraph",
+      "content": {
+        "text": "Striking the end of a protruding ruler would create transverse waves, not sound waves. Any measurable, audible sound would come from the repetitive striking of the ruler against the desk. The student is confused about the speed of sound through solids versus the speed of sound in air.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-90",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A musician stands outside in a field and plucks a string on an acoustic guitar. Standing waves will most likely occur in which of the following media? Select two answers. The guitar string; The air inside the guitar; The air surrounding the guitar; The ground beneath the musician",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a), (b)",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-91",
+      "type": "paragraph",
+      "content": {
+        "text": "A musician stands outside in a field and plucks a string on an acoustic guitar. Standing waves will most likely occur in which of the following media? Select two answers.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-92",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "This figure shows two tubes that are identical except for their slightly different lengths. Both tubes have one open end and one closed end. A speaker connected to a variable frequency generator is placed in front of the tubes, as shown. The speaker is set to produce a note of very low frequency when turned on. The frequency is then slowly increased to produce resonances in the tubes. Students observe that at first only one of the tubes resonates at a time. Later, as the frequency gets very high, there are times when both tubes resonate. In a clear, coherent, paragraph-length answer, explain why there are some high frequencies, but no low frequencies, at which both tubes resonate. You may include diagrams and/or equations as part of your explanation.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "fig-20",
+      "type": "figure",
+      "asset_url": "images/phy_m42296_CNX_APPhysics_17_M5_spkr_img.jpg",
+      "caption": {
+        "text": "",
+        "inline": []
+      },
+      "alt": "Two tubes of slightly different length are oriented parallel to each other, with the smaller one on top. Their open ends are pointed toward a speaker that is hooked up to a power source.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-94",
+      "type": "paragraph",
+      "content": {
+        "text": "This figure shows two tubes that are identical except for their slightly different lengths. Both tubes have one open end and one closed end. A speaker connected to a variable frequency generator is placed in front of the tubes, as shown. The speaker is set to produce a note of very low frequency when turned on. The frequency is then slowly increased to produce resonances in the tubes. Students observe that at first only one of the tubes resonates at a time. Later, as the frequency gets very high, there are times when both tubes resonate.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-95",
+      "type": "paragraph",
+      "content": {
+        "text": "In a clear, coherent, paragraph-length answer, explain why there are some high frequencies, but no low frequencies, at which both tubes resonate. You may include diagrams and/or equations as part of your explanation.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-21",
+      "type": "figure",
+      "asset_url": "images/phy_m42296_image029.png",
+      "caption": {
+        "text": "",
+        "inline": []
+      },
+      "alt": "An oscillator is set on a table that has a pulley on one end. This oscillator is connected by a string through the pulley to a mass. There are arrows on the connection between the pulley and string to indicate that the oscillator is moving the string.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "exr-97",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A student connects one end of a string with negligible mass to an oscillator. The other end of the string is passed over a pulley and attached to a suspended weight, as shown above. The student finds that a standing wave with one antinode is formed on the string when the frequency of the oscillator is *f* 0 . The student then moves the oscillator to shorten the horizontal segment of string to half its original length. At what frequency will a standing wave with one antinode now be formed on the string? *f* 0 /2; *f* 0; 2 *f* 0; There is no frequency at which a standing wave will be formed.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(c)",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-98",
+      "type": "paragraph",
+      "content": {
+        "text": "A student connects one end of a string with negligible mass to an oscillator. The other end of the string is passed over a pulley and attached to a suspended weight, as shown above. The student finds that a standing wave with one antinode is formed on the string when the frequency of the oscillator is *f* 0 . The student then moves the oscillator to shorten the horizontal segment of string to half its original length. At what frequency will a standing wave with one antinode now be formed on the string?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-99",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A guitar string of length *L* is bound at both ends. shows the string’s harmonic frequencies when struck. Harmonic Number Frequency 1 225/ *L* 2 450/ *L* 3 675/ *L* 4 900/ *L* Based on the information above, what is the speed of the wave within the string?; The guitarist then slides her finger along the neck of the guitar, changing the string length as a result. Calculate the fundamental frequency of the string and wave speed present if the string length is reduced to 2/3 *L* .",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-100",
+      "type": "paragraph",
+      "content": {
+        "text": "A guitar string of length *L* is bound at both ends. shows the string’s harmonic frequencies when struck.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "tbl-101",
+      "type": "table",
+      "title": {
+        "text": "Table",
+        "inline": []
+      },
+      "rows": [
+        [
+          "Harmonic Number",
+          "Frequency"
+        ],
+        [
+          "1",
+          "225/ *L*"
+        ],
+        [
+          "2",
+          "450/ *L*"
+        ],
+        [
+          "3",
+          "675/ *L*"
+        ],
+        [
+          "4",
+          "900/ *L*"
+        ]
+      ],
+      "alt": "Table with 5 rows",
+      "level": "core"
+    },
+    {
+      "id": "sec-102",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Section Summary",
+        "inline": []
+      }
+    },
+    {
+      "id": "sec-103",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Conceptual Questions",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-104",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "How does an unamplified guitar produce sounds so much more intense than those of a plucked string held taut by a simple stick?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-105",
+      "type": "paragraph",
+      "content": {
+        "text": "How does an unamplified guitar produce sounds so much more intense than those of a plucked string held taut by a simple stick?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-106",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "You are given two wind instruments of identical length. One is open at both ends, whereas the other is closed at one end. Which is able to produce the lowest frequency?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-107",
+      "type": "paragraph",
+      "content": {
+        "text": "You are given two wind instruments of identical length. One is open at both ends, whereas the other is closed at one end. Which is able to produce the lowest frequency?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-108",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "What is the difference between an overtone and a harmonic? Are all harmonics overtones? Are all overtones harmonics?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-109",
+      "type": "paragraph",
+      "content": {
+        "text": "What is the difference between an overtone and a harmonic? Are all harmonics overtones? Are all overtones harmonics?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-110",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Problems & Exercises",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-111",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A “showy” custom-built car has two brass horns that are supposed to produce the same frequency but actually emit 263.8 and 264.5 Hz. What beat frequency is produced?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "0.7 Hz",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-112",
+      "type": "paragraph",
+      "content": {
+        "text": "A “showy” custom-built car has two brass horns that are supposed to produce the same frequency but actually emit 263.8 and 264.5 Hz. What beat frequency is produced?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-113",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "What beat frequencies will be present: (a) If the musical notes A and C are played together (frequencies of 220 and 264 Hz)? (b) If D and F are played together (frequencies of 297 and 352 Hz)? (c) If all four are played together?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-114",
+      "type": "paragraph",
+      "content": {
+        "text": "What beat frequencies will be present: (a) If the musical notes A and C are played together (frequencies of 220 and 264 Hz)? (b) If D and F are played together (frequencies of 297 and 352 Hz)? (c) If all four are played together?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-115",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "What beat frequencies result if a piano hammer hits three strings that emit frequencies of 127.8, 128.1, and 128.3 Hz?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "0.3 Hz, 0.2 Hz, 0.5 Hz",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-116",
+      "type": "paragraph",
+      "content": {
+        "text": "What beat frequencies result if a piano hammer hits three strings that emit frequencies of 127.8, 128.1, and 128.3 Hz?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-117",
+      "type": "paragraph",
+      "content": {
+        "text": "0.3 Hz, 0.2 Hz, 0.5 Hz",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-118",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A piano tuner hears a beat every 2.00 s when listening to a 264.0-Hz tuning fork and a single piano string. What are the two possible frequencies of the string?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-119",
+      "type": "paragraph",
+      "content": {
+        "text": "A piano tuner hears a beat every 2.00 s when listening to a 264.0-Hz tuning fork and a single piano string. What are the two possible frequencies of the string?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-120",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "(a) What is the fundamental frequency of a 0.672-m-long tube, open at both ends, on a day when the speed of sound is 344 m/s? (b) What is the frequency of its second harmonic?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a) 256 Hz (b) 512 Hz",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-121",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) What is the fundamental frequency of a 0.672-m-long tube, open at both ends, on a day when the speed of sound is 344 m/s? (b) What is the frequency of its second harmonic?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-122",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "If a wind instrument, such as a tuba, has a fundamental frequency of 32.0 Hz, what are its first three overtones? It is closed at one end. (The overtones of a real tuba are more complex than this example, because it is a tapered tube.)",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-123",
+      "type": "paragraph",
+      "content": {
+        "text": "If a wind instrument, such as a tuba, has a fundamental frequency of 32.0 Hz, what are its first three overtones? It is closed at one end. (The overtones of a real tuba are more complex than this example, because it is a tapered tube.)",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-124",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "What are the first three overtones of a bassoon that has a fundamental frequency of 90.0 Hz? It is open at both ends. (The overtones of a real bassoon are more complex than this example, because its double reed makes it act more like a tube closed at one end.)",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "180 Hz, 270 Hz, 360 Hz",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-125",
+      "type": "paragraph",
+      "content": {
+        "text": "What are the first three overtones of a bassoon that has a fundamental frequency of 90.0 Hz? It is open at both ends. (The overtones of a real bassoon are more complex than this example, because its double reed makes it act more like a tube closed at one end.)",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-126",
+      "type": "paragraph",
+      "content": {
+        "text": "180 Hz, 270 Hz, 360 Hz",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-127",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "How long must a flute be in order to have a fundamental frequency of 262 Hz (this frequency corresponds to middle C on the evenly tempered chromatic scale) on a day when air temperature is $20.0ºC$ ? It is open at both ends.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-128",
+      "type": "paragraph",
+      "content": {
+        "text": "How long must a flute be in order to have a fundamental frequency of 262 Hz (this frequency corresponds to middle C on the evenly tempered chromatic scale) on a day when air temperature is $20.0ºC$ ? It is open at both ends.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-129",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "What length should an oboe have to produce a fundamental frequency of 110 Hz on a day when the speed of sound is 343 m/s? It is open at both ends.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "1.56 m",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-130",
+      "type": "paragraph",
+      "content": {
+        "text": "What length should an oboe have to produce a fundamental frequency of 110 Hz on a day when the speed of sound is 343 m/s? It is open at both ends.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-131",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "What is the length of a tube that has a fundamental frequency of 176 Hz and a first overtone of 352 Hz if the speed of sound is 343 m/s?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-132",
+      "type": "paragraph",
+      "content": {
+        "text": "What is the length of a tube that has a fundamental frequency of 176 Hz and a first overtone of 352 Hz if the speed of sound is 343 m/s?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-133",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "(a) Find the length of an organ pipe closed at one end that produces a fundamental frequency of 256 Hz when air temperature is $18.0ºC$ . (b) What is its fundamental frequency at $25.0ºC$ ?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a) 0.334 m (b) 259 Hz",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-134",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) Find the length of an organ pipe closed at one end that produces a fundamental frequency of 256 Hz when air temperature is $18.0ºC$ . (b) What is its fundamental frequency at $25.0ºC$ ?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-135",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "By what fraction will the frequencies produced by a wind instrument change when air temperature goes from $10.0ºC$ to $30.0ºC$ ? That is, find the ratio of the frequencies at those temperatures.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-136",
+      "type": "paragraph",
+      "content": {
+        "text": "By what fraction will the frequencies produced by a wind instrument change when air temperature goes from $10.0ºC$ to $30.0ºC$ ? That is, find the ratio of the frequencies at those temperatures.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-137",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "The ear canal resonates like a tube closed at one end. (See .) If ear canals range in length from 1.80 to 2.60 cm in an average population, what is the range of fundamental resonant frequencies? Take air temperature to be $37.0ºC$ , which is the same as body temperature. How does this result correlate with the intensity versus frequency graph ( of the human ear?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "3.39 to 4.90 kHz",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-138",
+      "type": "paragraph",
+      "content": {
+        "text": "The ear canal resonates like a tube closed at one end. (See .) If ear canals range in length from 1.80 to 2.60 cm in an average population, what is the range of fundamental resonant frequencies? Take air temperature to be $37.0ºC$ , which is the same as body temperature. How does this result correlate with the intensity versus frequency graph ( of the human ear?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-139",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Calculate the first overtone in an ear canal, which resonates like a 2.40-cm-long tube closed at one end, by taking air temperature to be $37.0ºC$ . Is the ear particularly sensitive to such a frequency? (The resonances of the ear canal are complicated by its nonuniform shape, which we shall ignore.)",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-140",
+      "type": "paragraph",
+      "content": {
+        "text": "Calculate the first overtone in an ear canal, which resonates like a 2.40-cm-long tube closed at one end, by taking air temperature to be $37.0ºC$ . Is the ear particularly sensitive to such a frequency? (The resonances of the ear canal are complicated by its nonuniform shape, which we shall ignore.)",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-141",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A crude approximation of voice production is to consider the breathing passages and mouth to be a resonating tube closed at one end. (See .) (a) What is the fundamental frequency if the tube is 0.240-m long, by taking air temperature to be $37.0ºC$ ? (b) What would this frequency become if the person replaced the air with helium? Assume the same temperature dependence for helium as for air.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a) 367 Hz (b) 1.07 kHz",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-142",
+      "type": "paragraph",
+      "content": {
+        "text": "A crude approximation of voice production is to consider the breathing passages and mouth to be a resonating tube closed at one end. (See .) (a) What is the fundamental frequency if the tube is 0.240-m long, by taking air temperature to be $37.0ºC$ ? (b) What would this frequency become if the person replaced the air with helium? Assume the same temperature dependence for helium as for air.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-143",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "(a) Students in a physics lab are asked to find the length of an air column in a tube closed at one end that has a fundamental frequency of 256 Hz. They hold the tube vertically and fill it with water to the top, then lower the water while a 256-Hz tuning fork is rung and listen for the first resonance. What is the air temperature if the resonance occurs for a length of 0.336 m? (b) At what length will they observe the second resonance (first overtone)?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-144",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) Students in a physics lab are asked to find the length of an air column in a tube closed at one end that has a fundamental frequency of 256 Hz. They hold the tube vertically and fill it with water to the top, then lower the water while a 256-Hz tuning fork is rung and listen for the first resonance. What is the air temperature if the resonance occurs for a length of 0.336 m? (b) At what length will they observe the second resonance (first overtone)?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-145",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "What frequencies will a 1.80-m-long tube produce in the audible range at $20.0ºC$ if: (a) The tube is closed at one end? (b) It is open at both ends?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a) ${f}_{n}=n(47.6 Hz),n=1,3,5,...,419$ (b) ${f}_{n}=n(95.3 Hz),n=1,2,3,...,210$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-146",
+      "type": "paragraph",
+      "content": {
+        "text": "What frequencies will a 1.80-m-long tube produce in the audible range at $20.0ºC$ if: (a) The tube is closed at one end? (b) It is open at both ends?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-147",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) ${f}_{n}=n(47.6 Hz),n=1,3,5,...,419$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-148",
+      "type": "paragraph",
+      "content": {
+        "text": "(b) ${f}_{n}=n(95.3 Hz),n=1,2,3,...,210$",
+        "inline": []
+      },
+      "level": "core"
+    }
+  ],
+  "solutions": {
+    "osbooks-college-physics-bundle:m42296:exr-47": [
+      [
+        {
+          "kind": "text",
+          "text": "Regular headphones only block sound waves with a physical barrier. Noise-canceling headphones use destructive interference to reduce the loudness of outside sounds."
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42296:exr-50": [
+      [
+        {
+          "kind": "text",
+          "text": "When the tube resonates at its natural frequency, the wave's node is located at the closed end of the tube, and the antinode is located at the open end. The length of the tube is equal to one-fourth of the wavelength of this wave. Thus, if we know the wavelength of the wave, we can determine the length of the tube."
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42296:exr-54": [
+      [
+        {
+          "kind": "text",
+          "text": "Answers vary. Students could include a sketch showing an increased amplitude when two waves occupy the same location. Students could also cite conceptual evidence such as sound waves passing through each other."
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42296:exr-64": [
+      [
+        {
+          "kind": "text",
+          "text": "(d)"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42296:exr-68": [
+      [
+        {
+          "kind": "text",
+          "text": "(c)"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42296:exr-74": [
+      [
+        {
+          "kind": "text",
+          "text": "(a)"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42296:exr-79": [
+      [
+        {
+          "kind": "text",
+          "text": "(c)"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42296:exr-85": [
+      [
+        {
+          "kind": "text",
+          "text": "(b)"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42296:exr-87": [
+      [
+        {
+          "kind": "text",
+          "text": "Striking the end of a protruding ruler would create transverse waves, not sound waves. Any measurable, audible sound would come from the repetitive striking of the ruler against the desk. The student is confused about the speed of sound through solids versus the speed of sound in air."
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42296:exr-90": [
+      [
+        {
+          "kind": "text",
+          "text": "(a), (b)"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42296:exr-97": [
+      [
+        {
+          "kind": "text",
+          "text": "(c)"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42296:exr-111": [
+      [
+        {
+          "kind": "text",
+          "text": "0.7 Hz"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42296:exr-115": [
+      [
+        {
+          "kind": "text",
+          "text": "0.3 Hz, 0.2 Hz, 0.5 Hz"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42296:exr-120": [
+      [
+        {
+          "kind": "text",
+          "text": "(a) 256 Hz"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(b) 512 Hz"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42296:exr-124": [
+      [
+        {
+          "kind": "text",
+          "text": "180 Hz, 270 Hz, 360 Hz"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42296:exr-129": [
+      [
+        {
+          "kind": "text",
+          "text": "1.56 m"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42296:exr-133": [
+      [
+        {
+          "kind": "text",
+          "text": "(a) 0.334 m"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(b) 259 Hz"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42296:exr-137": [
+      [
+        {
+          "kind": "text",
+          "text": "3.39 to 4.90 kHz"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42296:exr-141": [
+      [
+        {
+          "kind": "text",
+          "text": "(a) 367 Hz"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(b) 1.07 kHz"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42296:exr-145": [
+      [
+        {
+          "kind": "text",
+          "text": "(a)"
+        },
+        {
+          "kind": "math",
+          "text": "{f}_{n}=n(47.6 Hz),n=1,3,5,...,419"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(b)"
+        },
+        {
+          "kind": "math",
+          "text": "{f}_{n}=n(95.3 Hz),n=1,2,3,...,210"
+        }
+      ]
+    ]
+  }
+}

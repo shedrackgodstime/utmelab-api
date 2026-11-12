@@ -1,0 +1,837 @@
+{
+  "module": "m42306",
+  "source_attribution": {
+    "publisher": "OpenStax",
+    "book": "osbooks-college-physics-bundle",
+    "section": "m42306",
+    "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42306/index.cnxml",
+    "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)",
+    "locator": "CNXML module index.cnxml (typed elements, solutions present)"
+  },
+  "blocks": [
+    {
+      "id": "sec-0",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Learning Objectives",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-1",
+      "type": "paragraph",
+      "content": {
+        "text": "By the end of this section, you will be able to:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-1",
+      "type": "figure",
+      "asset_url": "images/phy_m42306_Figure_19_02_01a.jpg",
+      "caption": {
+        "text": "This power adapter uses metal wires and connectors to conduct electricity from the wall socket to a laptop computer. The conducting wires allow electrons to move freely through the cables, which are shielded by rubber and plastic. These materials act as insulators that don’t allow electric charge to escape outward. (credit: Evan-Amos, Wikimedia Commons)",
+        "inline": []
+      },
+      "alt": "This black power charging unit connects a laptop to an electrical outlet, allowing the laptop to be charged up.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-3",
+      "type": "paragraph",
+      "content": {
+        "text": "Some substances, such as metals and salty water, allow charges to move through them with relative ease. Some of the electrons in metals and similar conductors are not bound to individual atoms or sites in the material. These free electrons can move through the material much as air moves through loose sand. Any substance that has free electrons and allows charge to move relatively freely through it is called a conductor . The moving electrons may collide with fixed atoms and molecules, losing some energy, but they can move in a conductor. Superconductors allow the movement of charge without any loss of energy. Salty water and other similar conducting materials contain free ions that can move through them. An ion is an atom or molecule having a positive or negative (nonzero) total charge. In other words, the total number of electrons is not equal to the total number of protons.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-4",
+      "type": "paragraph",
+      "content": {
+        "text": "Other substances, such as glass, do not allow charges to move through them. These are called insulators . Electrons and ions in insulators are bound in the structure and cannot move easily—as much as ${10}^{23}$ times more slowly than in conductors. Pure water and dry table salt are insulators, for example, whereas molten salt and salty water are conductors.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-2",
+      "type": "figure",
+      "asset_url": "images/phy_m42306_Figure_19_02_02a.jpg",
+      "caption": {
+        "text": "An electroscope is a favorite instrument in physics demonstrations and student laboratories. It is typically made with gold foil leaves hung from a (conducting) metal stem and is insulated from the room air in a glass-walled container. (a) A positively charged glass rod is brought near the tip of the electroscope, attracting electrons to the top and leaving a net positive charge on the leaves. Like charges in the light flexible gold leaves repel, separating them. (b) When the rod is touched against the ball, electrons are attracted and transferred, reducing the net charge on the glass rod but leaving the electroscope positively charged. (c) The excess charges are evenly distributed in the stem and leaves of the electroscope once the glass rod is removed.",
+        "inline": []
+      },
+      "alt": "In part a, an electroscope is shown. A glass rod with positive signs is close to the tip of the electroscope which has negative signs on it and the leaves have has plus signs on it. In part b, the glass rod with positive sign is in contact with the tip of electroscope having negative signs. The negative signs are shown moving to the rod by arrows pointing toward the rod. The surfaces of the leaves now have both positive and negative charge. In part c, the glass rod is absent. The tip and the leaves of the electroscope have both positive and negative signs on them.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "sec-6",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Charging by Contact",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-7",
+      "type": "paragraph",
+      "content": {
+        "text": "shows an electroscope being charged by touching it with a positively charged glass rod. Because the glass rod is an insulator, it must actually touch the electroscope to transfer charge to or from it. (Note that the extra positive charges reside on the surface of the glass rod as a result of rubbing it with silk before starting the experiment.) Since only electrons move in metals, we see that they are attracted to the top of the electroscope. There, some are transferred to the positive rod by touch, leaving the electroscope with a net positive charge.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-8",
+      "type": "paragraph",
+      "content": {
+        "text": "Electrostatic repulsion in the leaves of the charged electroscope separates them. The electrostatic force has a horizontal component that results in the leaves moving apart as well as a vertical component that is balanced by the gravitational force. Similarly, the electroscope can be negatively charged by contact with a negatively charged object.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-9",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Charging by Induction",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-10",
+      "type": "paragraph",
+      "content": {
+        "text": "It is not necessary to transfer excess charge directly to an object in order to charge it. shows a method of induction wherein a charge is created in a nearby object, without direct contact. Here we see two neutral metal spheres in contact with one another but insulated from the rest of the world. A positively charged rod is brought near one of them, attracting negative charge to that side, leaving the other sphere positively charged.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-11",
+      "type": "paragraph",
+      "content": {
+        "text": "This is an example of induced polarization of neutral objects. Polarization is the separation of charges in an object that remains neutral. If the spheres are now separated (before the rod is pulled away), each sphere will have a net charge. Note that the object closest to the charged rod receives an opposite charge when charged by induction. Note also that no charge is removed from the charged rod, so that this process can be repeated without depleting the supply of excess charge.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-12",
+      "type": "paragraph",
+      "content": {
+        "text": "Another method of charging by induction is shown in . The neutral metal sphere is polarized when a charged rod is brought near it. The sphere is then grounded, meaning that a conducting wire is run from the sphere to the ground. Since the earth is large and most ground is a good conductor, it can supply or accept excess charge easily. In this case, electrons are attracted to the sphere through a wire called the ground wire, because it supplies a conducting path to the ground. The ground connection is broken before the charged rod is removed, leaving the sphere with an excess charge opposite to that of the rod. Again, an opposite charge is achieved when charging by induction and the charged rod loses none of its excess charge.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-3",
+      "type": "figure",
+      "asset_url": "images/phy_m42306_Figure_19_02_03a.jpg",
+      "caption": {
+        "text": "Charging by induction. (a) Two uncharged or neutral metal spheres are in contact with each other but insulated from the rest of the world. (b) A positively charged glass rod is brought near the sphere on the left, attracting negative charge and leaving the other sphere positively charged. (c) The spheres are separated before the rod is removed, thus separating negative and positive charge. (d) The spheres retain net charges after the inducing rod is removed—without ever having been touched by a charged object.",
+        "inline": []
+      },
+      "alt": "In part a, a pair of neutral metal spheres are in contact. In part b, a rod with positive signs is close to one surface of the sphere and the negative signs are shown on this surface toward the rod and positive signs are shown on the outermost face of the other sphere. In part c, the rod and the spheres are not in contact. The outermost surface of one sphere has negative signs and the outermost surface of another sphere has positive signs. In part d, the glass rod is not shown. The inner surfaces of the metallic spheres have opposite charges. One sphere has negative signs and the other has positive signs facing each other.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "fig-4",
+      "type": "figure",
+      "asset_url": "images/phy_m42306_Figure_19_02_04a.jpg",
+      "caption": {
+        "text": "Charging by induction, using a ground connection. (a) A positively charged rod is brought near a neutral metal sphere, polarizing it. (b) The sphere is grounded, allowing electrons to be attracted from the earth’s ample supply. (c) The ground connection is broken. (d) The positive rod is removed, leaving the sphere with an induced negative charge.",
+        "inline": []
+      },
+      "alt": " In part a, a rod with positive sign is brought near a neutral metal sphere. One surface toward the rod has negative signs and the other surface has positive signs. In part b, a rod with positive sign is close to one surface of the sphere having negative signs and the other surface has low number of positive signs and a wire is attached to that face which is connected to the ground. In part c, a rod with positive sign is close to one surface of the sphere having negative signs and the other surface has low number of positive signs. In part d, the positive rod is absent, and the sphere has negative signs on it.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "fig-5",
+      "type": "figure",
+      "asset_url": "images/phy_m42306_Figure_19_02_05a.jpg",
+      "caption": {
+        "text": "Both positive and negative objects attract a neutral object by polarizing its molecules. (a) A positive object brought near a neutral insulator polarizes its molecules. There is a slight shift in the distribution of the electrons orbiting the molecule, with unlike charges being brought nearer and like charges moved away. Since the electrostatic force decreases with distance, there is a net attraction. (b) A negative object produces the opposite polarization, but again attracts the neutral object. (c) The same effect occurs for a conductor; since the unlike charges are closer, there is a net attraction.",
+        "inline": []
+      },
+      "alt": "Microscopic views of objects are shown. A positive rod with positive signs is close to an insulator. The negative ends of all the molecules of the insulator are aligned toward the rod and positive ends of all molecules shown as spheres are away from the rod. In part b, a negative rod with negative signs is close to an insulator. The positive ends of all the molecules of the insulator are aligned toward the rod and negative ends of all molecules shown as spheres are away from the rod. In part c, a rod with negative signs and insulator with the surface closer to the rod has positive signs. The other surface has negative signs.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-16",
+      "type": "paragraph",
+      "content": {
+        "text": "Neutral objects can be attracted to any charged object. The pieces of straw attracted to polished amber are neutral, for example. If you run a plastic comb through your hair, the charged comb can pick up neutral pieces of paper. shows how the polarization of atoms and molecules in neutral objects results in their attraction to a charged object.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-17",
+      "type": "paragraph",
+      "content": {
+        "text": "When a charged rod is brought near a neutral substance, an insulator in this case, the distribution of charge in atoms and molecules is shifted slightly. Opposite charge is attracted nearer the external charged rod, while like charge is repelled. Since the electrostatic force decreases with distance, the repulsion of like charges is weaker than the attraction of unlike charges, and so there is a net attraction. Thus a positively charged glass rod attracts neutral pieces of paper, as will a negatively charged rubber rod. Some molecules, like water, are polar molecules. Polar molecules have a natural or inherent separation of charge, although they are neutral overall. Polar molecules are particularly affected by other charged objects and show greater polarization effects than molecules with naturally uniform charge distributions.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-18",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Can you explain the attraction of water to the charged rod in the figure below?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "Water molecules are polarized, giving them slightly positive and slightly negative sides. This makes water even more susceptible to a charged rod’s attraction. In addition, tap water contains dissolved ions (positive and negative charges). As the water flows downward, due to the force of gravity, the charged conductor exerts a net attraction to the opposite charges in the stream of water, pulling it closer.",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-19",
+      "type": "paragraph",
+      "content": {
+        "text": "Can you explain the attraction of water to the charged rod in the figure below?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-6",
+      "type": "figure",
+      "asset_url": "images/phy_m42306_Figure_19_02_06a.jpg",
+      "caption": {
+        "text": "Water flowing out of a glass pipette changes its course when a charged rod is brought close to it.",
+        "inline": []
+      },
+      "alt": "Water flowing out of a glass pipette changes its course when a charged rod is brought close to it.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-21",
+      "type": "paragraph",
+      "content": {
+        "text": "Water molecules are polarized, giving them slightly positive and slightly negative sides. This makes water even more susceptible to a charged rod’s attraction. In addition, tap water contains dissolved ions (positive and negative charges). As the water flows downward, due to the force of gravity, the charged conductor exerts a net attraction to the opposite charges in the stream of water, pulling it closer.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-22",
+      "type": "paragraph",
+      "content": {
+        "text": "Make sparks fly with John Travoltage. Wiggle Johnnie's foot and he picks up charges from the carpet. Bring his hand close to the door knob and get rid of the excess charge.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-23",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Test Prep for AP Courses",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-24",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Some students experimenting with an uncharged metal sphere want to give the sphere a net charge using a charged aluminum pie plate. Which of the following steps would give the sphere a net charge of the same sign as the pie plate? bringing the pie plate close to, but not touching, the metal sphere, then moving the pie plate away.; bringing the pie plate close to, but not touching, the metal sphere, then momentarily touching a grounding wire to the metal sphere.; bringing the pie plate close to, but not touching, the metal sphere, then momentarily touching a grounding wire to the pie plate.; touching the pie plate to the metal sphere.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-25",
+      "type": "paragraph",
+      "content": {
+        "text": "Some students experimenting with an uncharged metal sphere want to give the sphere a net charge using a charged aluminum pie plate. Which of the following steps would give the sphere a net charge of the same sign as the pie plate?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-26",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Balloon and sphere. When the balloon is brought closer to the sphere, there will be a redistribution of charges. What is this phenomenon called? electrostatic repulsion; conduction; polarization; none of the above",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(c)",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "fig-7",
+      "type": "figure",
+      "asset_url": "images/phy_m42306_Figure_Ch18_S01.jpg",
+      "caption": {
+        "text": "Balloon and sphere.",
+        "inline": []
+      },
+      "alt": "An elliptical with 3 pluses and a curvy line below represents a balloon. The second object shows a 3d sphere on a pedestal with the label x on the left side and y on the right side.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-28",
+      "type": "paragraph",
+      "content": {
+        "text": "When the balloon is brought closer to the sphere, there will be a redistribution of charges. What is this phenomenon called?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-29",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "What will be the charge at Y (i.e., the part of the sphere furthest from the balloon)? positive; negative; zero; It can be positive or negative depending on the material.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-30",
+      "type": "paragraph",
+      "content": {
+        "text": "What will be the charge at Y (i.e., the part of the sphere furthest from the balloon)?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-31",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "What will be the net charge on the sphere? positive; negative; zero; It can be positive or negative depending on the material.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(c)",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-32",
+      "type": "paragraph",
+      "content": {
+        "text": "What will be the net charge on the sphere?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-33",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "If Y is grounded while the balloon is still close to X, which of the following will be true? Electrons will flow from the sphere to the ground.; Electrons will flow from the ground to the sphere.; Protons will flow from the sphere to the ground.; Protons will flow from the ground to the sphere.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-34",
+      "type": "paragraph",
+      "content": {
+        "text": "If Y is grounded while the balloon is still close to X, which of the following will be true?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-35",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "If the balloon is moved away after grounding, what will be the net charge on the sphere? positive; negative; zero; It can be positive or negative depending on the material.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(b)",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-36",
+      "type": "paragraph",
+      "content": {
+        "text": "If the balloon is moved away after grounding, what will be the net charge on the sphere?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-37",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A positively charged rod is used to charge a sphere by induction. Which of the following is true? The sphere must be a conductor.; The sphere must be an insulator.; The sphere can be a conductor or insulator but must be connected to ground.; The sphere can be a conductor or insulator but must be already charged.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-38",
+      "type": "paragraph",
+      "content": {
+        "text": "A positively charged rod is used to charge a sphere by induction. Which of the following is true?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-39",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Rod and metal balls. As shown in the figure above, two metal balls are suspended and a negatively charged rod is brought close to them. If the two balls are in contact with each other what will be the charges on each ball?; Explain how the balls get these charges.; What will happen to the charge on the second ball (i.e., the ball further away from the rod) if it is momentarily grounded while the rod is still there?; If (instead of grounding) the second ball is moved away and then the rod is removed from the first ball, will the two balls have induced charges? If yes, what will be the charges? If no, why not?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "a) Ball 1 will have positive charge and Ball 2 will have negative charge. b) The negatively charged rod attracts positive charge of Ball 1. The electrons of Ball 1 are transferred to Ball 2, making it negatively charged. c) If Ball 2 is grounded while the rod is still there, it will lose its negative charge to the ground. d) Yes, Ball 1 will be positively charged and Ball 2 will be negatively charge.",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-40",
+      "type": "paragraph",
+      "content": {
+        "text": "Rod and metal balls.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-8",
+      "type": "figure",
+      "asset_url": "images/phy_m42306_Figure_Ch18_S02.jpg",
+      "caption": {
+        "text": "Rod and metal balls.",
+        "inline": []
+      },
+      "alt": "A rod is represented by a long oval with a circle on the end. The brown rod has 6 minus signs. Two hanging spheres are shown to the right of the rod.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-42",
+      "type": "paragraph",
+      "content": {
+        "text": "As shown in the figure above, two metal balls are suspended and a negatively charged rod is brought close to them.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-43",
+      "type": "paragraph",
+      "content": {
+        "text": "a) Ball 1 will have positive charge and Ball 2 will have negative charge. b) The negatively charged rod attracts positive charge of Ball 1. The electrons of Ball 1 are transferred to Ball 2, making it negatively charged. c) If Ball 2 is grounded while the rod is still there, it will lose its negative charge to the ground. d) Yes, Ball 1 will be positively charged and Ball 2 will be negatively charge.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-44",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Two experiments are performed using positively charged glass rods and neutral electroscopes. In the first experiment the rod is brought in contact with the electroscope. In the second experiment the rod is only brought close to the electroscope but not in contact. However, while the rod is close, the electroscope is momentarily grounded and then the rod is removed. In both experiments the needles of the electroscopes deflect, which indicates the presence of charges. What is the charging method in each of the two experiments?; What is the net charge on the electroscope in the first experiment? Explain how the electroscope obtains that charge.; Is the net charge on the electroscope in the second experiment different from that of the first experiment? Explain why.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-45",
+      "type": "paragraph",
+      "content": {
+        "text": "Two experiments are performed using positively charged glass rods and neutral electroscopes. In the first experiment the rod is brought in contact with the electroscope. In the second experiment the rod is only brought close to the electroscope but not in contact. However, while the rod is close, the electroscope is momentarily grounded and then the rod is removed. In both experiments the needles of the electroscopes deflect, which indicates the presence of charges.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-46",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Section Summary",
+        "inline": []
+      }
+    },
+    {
+      "id": "sec-47",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Conceptual Questions",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-48",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "An eccentric inventor attempts to levitate by first placing a large negative charge on himself and then putting a large positive charge on the ceiling of his workshop. Instead, while attempting to place a large negative charge on himself, his clothes fly off. Explain.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-49",
+      "type": "paragraph",
+      "content": {
+        "text": "An eccentric inventor attempts to levitate by first placing a large negative charge on himself and then putting a large positive charge on the ceiling of his workshop. Instead, while attempting to place a large negative charge on himself, his clothes fly off. Explain.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-50",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "If you have charged an electroscope by contact with a positively charged object, describe how you could use it to determine the charge of other objects. Specifically, what would the leaves of the electroscope do if other charged objects were brought near its knob?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-51",
+      "type": "paragraph",
+      "content": {
+        "text": "If you have charged an electroscope by contact with a positively charged object, describe how you could use it to determine the charge of other objects. Specifically, what would the leaves of the electroscope do if other charged objects were brought near its knob?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-52",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "When a glass rod is rubbed with silk, it becomes positive and the silk becomes negative—yet both attract dust. Does the dust have a third type of charge that is attracted to both positive and negative? Explain.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-53",
+      "type": "paragraph",
+      "content": {
+        "text": "When a glass rod is rubbed with silk, it becomes positive and the silk becomes negative—yet both attract dust. Does the dust have a third type of charge that is attracted to both positive and negative? Explain.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-54",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Why does a car always attract dust right after it is polished? (Note that car wax and car tires are insulators.)",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-55",
+      "type": "paragraph",
+      "content": {
+        "text": "Why does a car always attract dust right after it is polished? (Note that car wax and car tires are insulators.)",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-56",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Describe how a positively charged object can be used to give another object a negative charge. What is the name of this process?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-57",
+      "type": "paragraph",
+      "content": {
+        "text": "Describe how a positively charged object can be used to give another object a negative charge. What is the name of this process?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-58",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "What is grounding? What effect does it have on a charged conductor? On a charged insulator?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-59",
+      "type": "paragraph",
+      "content": {
+        "text": "What is grounding? What effect does it have on a charged conductor? On a charged insulator?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-60",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Problems & Exercises",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-61",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Suppose a speck of dust in an electrostatic precipitator has $1.0000×{10}^{12}$ protons in it and has a net charge of –5.00 nC (a very large charge for a small speck). How many electrons does it have?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$1.03×{10}^{12}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-62",
+      "type": "paragraph",
+      "content": {
+        "text": "Suppose a speck of dust in an electrostatic precipitator has $1.0000×{10}^{12}$ protons in it and has a net charge of –5.00 nC (a very large charge for a small speck). How many electrons does it have?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-63",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "An amoeba has $1.00×{10}^{16}$ protons and a net charge of 0.300 pC. (a) How many fewer electrons are there than protons? (b) If you paired them up, what fraction of the protons would have no electrons?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-64",
+      "type": "paragraph",
+      "content": {
+        "text": "An amoeba has $1.00×{10}^{16}$ protons and a net charge of 0.300 pC. (a) How many fewer electrons are there than protons? (b) If you paired them up, what fraction of the protons would have no electrons?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-65",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A 50.0 g ball of copper has a net charge of $2.00µC$ . What fraction of the copper’s electrons has been removed? (Each copper atom has 29 protons, and copper has an atomic mass of 63.5.)",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$9.09×{10}^{-13}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-66",
+      "type": "paragraph",
+      "content": {
+        "text": "A 50.0 g ball of copper has a net charge of $2.00µC$ . What fraction of the copper’s electrons has been removed? (Each copper atom has 29 protons, and copper has an atomic mass of 63.5.)",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-67",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "What net charge would you place on a 100 g piece of sulfur if you put an extra electron on 1 in ${10}^{12}$ of its atoms? (Sulfur has an atomic mass of 32.1.)",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-68",
+      "type": "paragraph",
+      "content": {
+        "text": "What net charge would you place on a 100 g piece of sulfur if you put an extra electron on 1 in ${10}^{12}$ of its atoms? (Sulfur has an atomic mass of 32.1.)",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-69",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "How many coulombs of positive charge are there in 4.00 kg of plutonium, given its atomic mass is 244 and that each plutonium atom has 94 protons?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$1.48×{10}^{8}C$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-70",
+      "type": "paragraph",
+      "content": {
+        "text": "How many coulombs of positive charge are there in 4.00 kg of plutonium, given its atomic mass is 244 and that each plutonium atom has 94 protons?",
+        "inline": []
+      },
+      "level": "core"
+    }
+  ],
+  "solutions": {
+    "osbooks-college-physics-bundle:m42306:exr-18": [
+      [
+        {
+          "kind": "text",
+          "text": "Water molecules are polarized, giving them slightly positive and slightly negative sides. This makes water even more susceptible to a charged rod’s attraction. In addition, tap water contains dissolved ions (positive and negative charges). As the water flows downward, due to the force of gravity, the charged conductor exerts a net attraction to the opposite charges in the stream of water, pulling it closer."
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42306:exr-26": [
+      [
+        {
+          "kind": "text",
+          "text": "(c)"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42306:exr-31": [
+      [
+        {
+          "kind": "text",
+          "text": "(c)"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42306:exr-35": [
+      [
+        {
+          "kind": "text",
+          "text": "(b)"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42306:exr-39": [
+      [
+        {
+          "kind": "text",
+          "text": "a) Ball 1 will have positive charge and Ball 2 will have negative charge. b) The negatively charged rod attracts positive charge of Ball 1. The electrons of Ball 1 are transferred to Ball 2, making it negatively charged. c) If Ball 2 is grounded while the rod is still there, it will lose its negative charge to the ground. d) Yes, Ball 1 will be positively charged and Ball 2 will be negatively charge."
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42306:exr-61": [
+      [
+        {
+          "kind": "math",
+          "text": "1.03×{10}^{12}"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42306:exr-65": [
+      [
+        {
+          "kind": "math",
+          "text": "9.09×{10}^{-13}"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42306:exr-69": [
+      [
+        {
+          "kind": "math",
+          "text": "1.48×{10}^{8}C"
+        }
+      ]
+    ]
+  }
+}

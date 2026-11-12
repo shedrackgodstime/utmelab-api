@@ -1,0 +1,714 @@
+{
+  "module": "m42177",
+  "source_attribution": {
+    "publisher": "OpenStax",
+    "book": "osbooks-college-physics-bundle",
+    "section": "m42177",
+    "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42177/index.cnxml",
+    "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)",
+    "locator": "CNXML module index.cnxml (typed elements, solutions present)"
+  },
+  "blocks": [
+    {
+      "id": "sec-0",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Learning Objectives",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-1",
+      "type": "paragraph",
+      "content": {
+        "text": "By the end of this section, you will be able to:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-2",
+      "type": "paragraph",
+      "content": {
+        "text": "Uniform Circular Motion and Gravitation discussed only uniform circular motion, which is motion in a circle at constant speed and, hence, constant angular velocity. Recall that angular velocity $ω$ was defined as the time rate of change of angle $θ$ :",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-3",
+      "type": "paragraph",
+      "content": {
+        "text": "where $θ$ is the angle of rotation as seen in . The relationship between angular velocity $ω$ and linear velocity $v$ was also defined in Rotation Angle and Angular Velocity as",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-4",
+      "type": "paragraph",
+      "content": {
+        "text": "where $r$ is the radius of curvature, also seen in . According to the sign convention, the counter clockwise direction is considered as positive direction and clockwise direction as negative",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-1",
+      "type": "figure",
+      "asset_url": "images/phy_m42177_Figure_11_01_01a.jpg",
+      "caption": {
+        "text": "This figure shows uniform circular motion and some of its defined quantities.",
+        "inline": []
+      },
+      "alt": "The given figure shows counterclockwise circular motion with a horizontal line, depicting radius r, drawn from the center of the circle to the right side on its circumference and another line is drawn in such a manner that it makes an acute angle delta theta with the horizontal line. Tangential velocity vectors are indicated at the end of the two lines. At the bottom right side of the figure, the formula for angular velocity is given as v upon r.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-6",
+      "type": "paragraph",
+      "content": {
+        "text": "Angular velocity is not constant when a skater pulls in her arms, when a child starts up a merry-go-round from rest, or when a computer’s hard disk slows to a halt when switched off. In all these cases, there is an angular acceleration , in which $ω$ changes. The faster the change occurs, the greater the angular acceleration. Angular acceleration $α$ is defined as the rate of change of angular velocity. In equation form, angular acceleration is expressed as follows:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-7",
+      "type": "paragraph",
+      "content": {
+        "text": "where $Δω$ is the change in angular velocity and $Δt$ is the change in time. The units of angular acceleration are $(rad/s)/s$ , or ${rad/s}^{2}$ . If $ω$ increases, then $α$ is positive. If $ω$ decreases, then $α$ is negative.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "ex-8",
+      "type": "example",
+      "kind": "worked",
+      "title": {
+        "text": "Calculating the Angular Acceleration and Deceleration of a Bike Wheel",
+        "inline": []
+      },
+      "problem": {
+        "text": "",
+        "inline": []
+      },
+      "answer": null,
+      "level": "core"
+    },
+    {
+      "id": "p-9",
+      "type": "paragraph",
+      "content": {
+        "text": "Suppose a teenager puts her bicycle on its back and starts the rear wheel spinning from rest to a final angular velocity of 250 rpm in 5.00 s. (a) Calculate the angular acceleration in ${rad/s}^{2}$ . (b) If she now slams on the brakes, causing an angular acceleration of $-87.3{rad/s}^{2}$ , how long does it take the wheel to stop?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-10",
+      "type": "paragraph",
+      "content": {
+        "text": "The angular acceleration can be found directly from its definition in $α=\\frac{Δω}{Δt}$ because the final angular velocity and time are given. We see that $Δω$ is 250 rpm and $Δt$ is 5.00 s.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-11",
+      "type": "paragraph",
+      "content": {
+        "text": "Entering known information into the definition of angular acceleration, we get",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-12",
+      "type": "paragraph",
+      "content": {
+        "text": "Because $Δω$ is in revolutions per minute (rpm) and we want the standard units of ${rad/s}^{2}$ for angular acceleration, we need to convert $Δω$ from rpm to rad/s:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-13",
+      "type": "paragraph",
+      "content": {
+        "text": "Entering this quantity into the expression for $α$ , we get",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-14",
+      "type": "paragraph",
+      "content": {
+        "text": "In this part, we know the angular acceleration and the initial angular velocity. We can find the stoppage time by using the definition of angular acceleration and solving for $Δt$ , yielding",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-15",
+      "type": "paragraph",
+      "content": {
+        "text": "Here the angular velocity decreases from $26.2 rad/s$ (250 rpm) to zero, so that $Δω$ is $-26.2 rad/s$ , and $α$ is given to be $-87.3{rad/s}^{2}$ . Thus,",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-16",
+      "type": "paragraph",
+      "content": {
+        "text": "Note that the angular acceleration as the girl spins the wheel is small and positive; it takes 5 s to produce an appreciable angular velocity. When she hits the brake, the angular acceleration is large and negative. The angular velocity quickly goes to zero. In both cases, the relationships are analogous to what happens with linear motion. For example, there is a large deceleration when you crash into a brick wall—the velocity change is large in a short time interval.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-17",
+      "type": "paragraph",
+      "content": {
+        "text": "If the bicycle in the preceding example had been on its wheels instead of upside-down, it would first have accelerated along the ground and then come to a stop. This connection between circular motion and linear motion needs to be explored. For example, it would be useful to know how linear and angular acceleration are related. In circular motion, linear acceleration is *tangent* to the circle at the point of interest, as seen in . Thus, linear acceleration is called tangential acceleration ${a}_{t}$ .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-2",
+      "type": "figure",
+      "asset_url": "images/phy_m42177_Figure_11_01_02a.jpg",
+      "caption": {
+        "text": "In circular motion, linear acceleration $a$ , occurs as the magnitude of the velocity changes: $a$ is tangent to the motion. In the context of circular motion, linear acceleration is also called tangential acceleration ${a}_{t}$ .",
+        "inline": []
+      },
+      "alt": "In the figure, a semicircle is drawn, with its radius r, shown here as a line segment. The anti-clockwise motion of the circle is shown with an arrow on the path of the circle. Tangential velocity vector, v, of the point, which is on the meeting point of radius with the circle, is shown as a green arrow and the linear acceleration, a-t is shown as a yellow arrow in the same direction along v.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-19",
+      "type": "paragraph",
+      "content": {
+        "text": "Linear or tangential acceleration refers to changes in the magnitude of velocity but not its direction. We know from Uniform Circular Motion and Gravitation that in circular motion centripetal acceleration, ${a}_{c}$ , refers to changes in the direction of the velocity but not its magnitude. An object undergoing circular motion experiences centripetal acceleration, as seen in . Thus, ${a}_{t}$ and ${a}_{c}$ are perpendicular and independent of one another. Tangential acceleration ${a}_{t}$ is directly related to the angular acceleration $α$ and is linked to an increase or decrease in the velocity, but not its direction.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-3",
+      "type": "figure",
+      "asset_url": "images/phy_m42177_Figure_11_01_03a.jpg",
+      "caption": {
+        "text": "Centripetal acceleration ${a}_{c}$ occurs as the direction of velocity changes; it is perpendicular to the circular motion. Centripetal and tangential acceleration are thus perpendicular to each other.",
+        "inline": []
+      },
+      "alt": "In the figure, a semicircle is drawn, with its radius r, shown here as a line segment. The anti-clockwise motion of the circle is shown with an arrow on the path of the circle. Tangential velocity vector, v, of the point, which is on the meeting point of radius with the circle, is shown as a green arrow and the linear acceleration, a sub t is shown as a yellow arrow in the same direction along v. The centripetal acceleration, a sub c, is also shown as a yellow arrow drawn perpendicular to a sub t, toward the direction of the center of the circle. A label in the figures states a sub t affects magnitude and a sub c affects direction.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-21",
+      "type": "paragraph",
+      "content": {
+        "text": "Now we can find the exact relationship between linear acceleration ${a}_{t}$ and angular acceleration $α$ . Because linear acceleration is proportional to a change in the magnitude of the velocity, it is defined (as it was in One-Dimensional Kinematics ) to be",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-22",
+      "type": "paragraph",
+      "content": {
+        "text": "For circular motion, note that $v=rω$ , so that",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-23",
+      "type": "paragraph",
+      "content": {
+        "text": "The radius $r$ is constant for circular motion, and so $Δ(rω)=r(Δω)$ . Thus,",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-24",
+      "type": "paragraph",
+      "content": {
+        "text": "By definition, $α=\\frac{Δω}{Δt}$ . Thus,",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-25",
+      "type": "paragraph",
+      "content": {
+        "text": "These equations mean that linear acceleration and angular acceleration are directly proportional. The greater the angular acceleration is, the larger the linear (tangential) acceleration is, and vice versa. For example, the greater the angular acceleration of a car’s drive wheels, the greater the acceleration of the car. The radius also matters. For example, the smaller a wheel, the smaller its linear acceleration for a given angular acceleration $α$ .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "ex-26",
+      "type": "example",
+      "kind": "worked",
+      "title": {
+        "text": "Calculating the Angular Acceleration of a Motorcycle Wheel",
+        "inline": []
+      },
+      "problem": {
+        "text": "",
+        "inline": []
+      },
+      "answer": null,
+      "level": "core"
+    },
+    {
+      "id": "p-27",
+      "type": "paragraph",
+      "content": {
+        "text": "A powerful motorcycle can accelerate from 0 to 30.0 m/s (about 108 km/h) in 4.20 s. What is the angular acceleration of its 0.320-m-radius wheels? (See .)",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-4",
+      "type": "figure",
+      "asset_url": "images/phy_m42177_Figure_11_01_04a.jpg",
+      "caption": {
+        "text": "The linear acceleration of a motorcycle is accompanied by an angular acceleration of its wheels.",
+        "inline": []
+      },
+      "alt": "The figure shows the right side view of a man riding a motorcycle hence, depicting linear acceleration a of the motorcycle pointing toward the front of the bike as a horizontal arrow and the angular acceleration alpha of its wheels, shown here as curved arrows along the front of both the wheels pointing downward.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-29",
+      "type": "paragraph",
+      "content": {
+        "text": "We are given information about the linear velocities of the motorcycle. Thus, we can find its linear acceleration ${a}_{t}$ . Then, the expression $α=\\frac{{a}_{t}}{r}$ can be used to find the angular acceleration.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-30",
+      "type": "paragraph",
+      "content": {
+        "text": "Solution The linear acceleration is",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-31",
+      "type": "paragraph",
+      "content": {
+        "text": "We also know the radius of the wheels. Entering the values for ${a}_{t}$ and $r$ into $α=\\frac{{a}_{t}}{r}$ , we get",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-32",
+      "type": "paragraph",
+      "content": {
+        "text": "Units of radians are dimensionless and appear in any relationship between angular and linear quantities.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-33",
+      "type": "paragraph",
+      "content": {
+        "text": "So far, we have defined three rotational quantities— $θ,ω$ , and $α$ . These quantities are analogous to the translational quantities $x,v$ , and $a$ . displays rotational quantities, the analogous translational quantities, and the relationships between them.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "tbl-34",
+      "type": "table",
+      "title": {
+        "text": "Table",
+        "inline": []
+      },
+      "rows": [
+        [
+          "Rotational",
+          "Translational",
+          "Relationship"
+        ],
+        [
+          "$θ$",
+          "$x$",
+          "$θ=\\frac{x}{r}$"
+        ],
+        [
+          "$ω$",
+          "$v$",
+          "$ω=\\frac{v}{r}$"
+        ],
+        [
+          "$α$",
+          "$a$",
+          "$α=\\frac{{a}_{t}}{r}$"
+        ]
+      ],
+      "alt": "Table with 4 rows",
+      "level": "core"
+    },
+    {
+      "id": "p-35",
+      "type": "paragraph",
+      "content": {
+        "text": "Sit down with your feet on the ground on a chair that rotates. Lift one of your legs such that it is unbent (straightened out). Using the other leg, begin to rotate yourself by pushing on the ground. Stop using your leg to push the ground but allow the chair to rotate. From the origin where you began, sketch the angle, angular velocity, and angular acceleration of your leg as a function of time in the form of three separate graphs. Estimate the magnitudes of these quantities.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-36",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Angular acceleration is a vector, having both magnitude and direction. How do we denote its magnitude and direction? Illustrate with an example.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "The magnitude of angular acceleration is $α$ and its most common units are ${rad/s}^{2}$ . The direction of angular acceleration along a fixed axis is denoted by a + or a – sign, just as the direction of linear acceleration in one dimension is denoted by a + or a – sign. For example, consider a gymnast doing a forward flip. Her angular momentum would be parallel to the mat and to her left. The magnitude of her angular acceleration would be proportional to her angular velocity (spin rate) and her moment of inertia about her spin axis.",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-37",
+      "type": "paragraph",
+      "content": {
+        "text": "Angular acceleration is a vector, having both magnitude and direction. How do we denote its magnitude and direction? Illustrate with an example.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-38",
+      "type": "paragraph",
+      "content": {
+        "text": "The magnitude of angular acceleration is $α$ and its most common units are ${rad/s}^{2}$ . The direction of angular acceleration along a fixed axis is denoted by a + or a – sign, just as the direction of linear acceleration in one dimension is denoted by a + or a – sign. For example, consider a gymnast doing a forward flip. Her angular momentum would be parallel to the mat and to her left. The magnitude of her angular acceleration would be proportional to her angular velocity (spin rate) and her moment of inertia about her spin axis.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-39",
+      "type": "paragraph",
+      "content": {
+        "text": "Join the ladybug in an exploration of rotational motion. Rotate the merry-go-round to change its angle, or choose a constant angular velocity or angular acceleration. Explore how circular motion relates to the bug's x,y position, velocity, and acceleration using vectors or graphs.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-40",
+      "type": "paragraph",
+      "content": {
+        "text": "Click to view content .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-41",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Section Summary",
+        "inline": []
+      }
+    },
+    {
+      "id": "sec-42",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Conceptual Questions",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-43",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Analogies exist between rotational and translational physical quantities. Identify the rotational term analogous to each of the following: acceleration, force, mass, work, translational kinetic energy, linear momentum, impulse.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-44",
+      "type": "paragraph",
+      "content": {
+        "text": "Analogies exist between rotational and translational physical quantities. Identify the rotational term analogous to each of the following: acceleration, force, mass, work, translational kinetic energy, linear momentum, impulse.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-45",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Explain why centripetal acceleration changes the direction of velocity in circular motion but not its magnitude.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-46",
+      "type": "paragraph",
+      "content": {
+        "text": "Explain why centripetal acceleration changes the direction of velocity in circular motion but not its magnitude.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-47",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "In circular motion, a tangential acceleration can change the magnitude of the velocity but not its direction. Explain your answer.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-48",
+      "type": "paragraph",
+      "content": {
+        "text": "In circular motion, a tangential acceleration can change the magnitude of the velocity but not its direction. Explain your answer.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-49",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Suppose a piece of food is on the edge of a rotating microwave oven plate. Does it experience nonzero tangential acceleration, centripetal acceleration, or both when: (a) The plate starts to spin? (b) The plate rotates at constant angular velocity? (c) The plate slows to a halt?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-50",
+      "type": "paragraph",
+      "content": {
+        "text": "Suppose a piece of food is on the edge of a rotating microwave oven plate. Does it experience nonzero tangential acceleration, centripetal acceleration, or both when: (a) The plate starts to spin? (b) The plate rotates at constant angular velocity? (c) The plate slows to a halt?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-51",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Problems & Exercises",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-52",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "At its peak, a tornado is 60.0 m in diameter and carries 500 km/h winds. What is its angular velocity in revolutions per second?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$ω=0.737 rev/s$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-53",
+      "type": "paragraph",
+      "content": {
+        "text": "At its peak, a tornado is 60.0 m in diameter and carries 500 km/h winds. What is its angular velocity in revolutions per second?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-54",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Integrated Concepts An ultracentrifuge accelerates from rest to 100,000 rpm in 2.00 min. (a) What is its angular acceleration in ${rad/s}^{2}$ ? (b) What is the tangential acceleration of a point 9.50 cm from the axis of rotation? (c) What is the radial acceleration in ${m/s}^{2}$ and multiples of $g$ of this point at full rpm?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-55",
+      "type": "paragraph",
+      "content": {
+        "text": "An ultracentrifuge accelerates from rest to 100,000 rpm in 2.00 min. (a) What is its angular acceleration in ${rad/s}^{2}$ ? (b) What is the tangential acceleration of a point 9.50 cm from the axis of rotation? (c) What is the radial acceleration in ${m/s}^{2}$ and multiples of $g$ of this point at full rpm?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-56",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Integrated Concepts You have a grindstone (a disk) that is 90.0 kg, has a 0.340-m radius, and is turning at 90.0 rpm, and you press a steel axe against it with a radial force of 20.0 N. (a) Assuming the kinetic coefficient of friction between steel and stone is 0.20, calculate the angular acceleration of the grindstone. (b) How many turns will the stone make before coming to rest?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a) $-0.{26 rad/s}^{2}$ (b) $27rev$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-57",
+      "type": "paragraph",
+      "content": {
+        "text": "You have a grindstone (a disk) that is 90.0 kg, has a 0.340-m radius, and is turning at 90.0 rpm, and you press a steel axe against it with a radial force of 20.0 N. (a) Assuming the kinetic coefficient of friction between steel and stone is 0.20, calculate the angular acceleration of the grindstone. (b) How many turns will the stone make before coming to rest?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-58",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) $-0.{26 rad/s}^{2}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-59",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Unreasonable Results You are told that a basketball player spins the ball with an angular acceleration of $100{rad/s}^{2}$ . (a) What is the ball’s final angular velocity if the ball starts from rest and the acceleration lasts 2.00 s? (b) What is unreasonable about the result? (c) Which premises are unreasonable or inconsistent?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-60",
+      "type": "paragraph",
+      "content": {
+        "text": "Unreasonable Results",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-61",
+      "type": "paragraph",
+      "content": {
+        "text": "You are told that a basketball player spins the ball with an angular acceleration of $100{rad/s}^{2}$ . (a) What is the ball’s final angular velocity if the ball starts from rest and the acceleration lasts 2.00 s? (b) What is unreasonable about the result? (c) Which premises are unreasonable or inconsistent?",
+        "inline": []
+      },
+      "level": "core"
+    }
+  ],
+  "solutions": {
+    "osbooks-college-physics-bundle:m42177:exr-36": [
+      [
+        {
+          "kind": "text",
+          "text": "The magnitude of angular acceleration is"
+        },
+        {
+          "kind": "math",
+          "text": "α"
+        },
+        {
+          "kind": "text",
+          "text": "and its most common units are"
+        },
+        {
+          "kind": "math",
+          "text": "{rad/s}^{2}"
+        },
+        {
+          "kind": "text",
+          "text": ". The direction of angular acceleration along a fixed axis is denoted by a + or a – sign, just as the direction of linear acceleration in one dimension is denoted by a + or a – sign. For example, consider a gymnast doing a forward flip. Her angular momentum would be parallel to the mat and to her left. The magnitude of her angular acceleration would be proportional to her angular velocity (spin rate) and her moment of inertia about her spin axis."
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42177:exr-52": [
+      [
+        {
+          "kind": "math",
+          "text": "ω=0.737 rev/s"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42177:exr-56": [
+      [
+        {
+          "kind": "text",
+          "text": "(a)"
+        },
+        {
+          "kind": "math",
+          "text": "-0.{26 rad/s}^{2}"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(b)"
+        },
+        {
+          "kind": "math",
+          "text": "27rev"
+        }
+      ]
+    ]
+  }
+}

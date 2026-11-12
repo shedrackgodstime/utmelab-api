@@ -21,9 +21,13 @@ import re
 import sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import book_media  # noqa: E402
+
 ROOT = Path(__file__).resolve().parent.parent
-CONCEPTS = ROOT / "data/concepts"
-SOLUTIONS = ROOT / "data/staging/openstax_clean_solutions.json"
+#: The source material the factory reads. It is tracked, so a clean checkout
+#: can rebuild a chapter and the content gate can check it.
+SOURCES = ROOT / "data/chapter-sources"
 CHAPTERS = ROOT / "data/chapters"
 BOOKS = ROOT / "data/books"
 
@@ -38,25 +42,16 @@ def slugify(text):
     return re.sub(r"[^a-z0-9]+", "-", text.lower()).strip("-")[:60]
 
 
-def load_solutions():
-    if not SOLUTIONS.exists():
-        return {}
-    return json.loads(SOLUTIONS.read_text())
-
-
-def find_concept(module):
-    """The concept document built from a source module."""
-    for path in sorted(CONCEPTS.glob("*.json")):
-        if path.name.startswith("audit-"):
-            continue
-        try:
-            document = json.loads(path.read_text())
-        except Exception:
-            continue
-        source = document.get("source_attribution") or {}
-        if (source.get("section") or "") == module:
-            return document, path
-    return None, None
+def find_source(module):
+    """The source extract for a module, with the solutions that go with it."""
+    path = SOURCES / f"{module}.json"
+    if not path.exists():
+        return None, None
+    try:
+        document = json.loads(path.read_text())
+    except Exception:
+        return None, None
+    return document, document.get("solutions") or {}
 
 
 def render_parts(parts):
@@ -158,16 +153,17 @@ def tier_for_grouping(grouping):
     return GROUP_TIERS.get((grouping or "").strip().lower(), "core")
 
 
-def source_blocks(concept, module, solutions):
+def source_blocks(document, module, solutions, manifest):
     """Teaching blocks, worked examples and exercises, from the source."""
-    blocks = concept["deep_context"]["blocks"]
-    source = concept.get("source_attribution") or {}
+    blocks = document["blocks"]
+    source = document.get("source_attribution") or {}
     book = source.get("book") or ""
     teaching = []
     worked = []
     exercises = []
     pending = None
     grouping = None
+    skipped: list[tuple[str, str]] = []
 
     def provenance(locator):
         return {
@@ -198,10 +194,22 @@ def source_blocks(concept, module, solutions):
                 continue
             teaching.append({"id": f"b-{len(teaching) + 1}", "type": "paragraph", "content": rt(text)})
         elif kind == "figure":
+            asset = block.get("asset_url") or ""
+            reason = book_media.was_rejected(manifest, asset)
+            if reason:
+                # A figure that failed the media rules does not ship, so it
+                # does not teach. It is left out, and the manifest says why.
+                skipped.append((asset, reason))
+                continue
+            published = book_media.published_for(manifest, asset)
+            if published is None:
+                raise SystemExit(
+                    f"figure {asset} has not been published: run scripts/publish_book_images.py"
+                )
             teaching.append({
                 "id": f"b-{len(teaching) + 1}",
                 "type": "figure",
-                "asset_url": block.get("asset_url"),
+                "asset_url": published,
                 "caption": block.get("caption") or rt(""),
                 "alt": block.get("alt") or "",
                 "licence": source.get("licence") or "",
@@ -266,11 +274,11 @@ def source_blocks(concept, module, solutions):
     # sits in the exercise nested inside it, and that exercise carries the
     # solution.
     worked = [item for item in worked if item.get("steps")]
-    return teaching, worked, exercises
+    return teaching, worked, exercises, skipped
 
 
 def build(spec):
-    solutions = load_solutions()
+    manifest = book_media.load_manifest()
     sections = []
     exercises = []
     number = 0
@@ -283,10 +291,15 @@ def build(spec):
         source_exercises = []
 
         if module:
-            concept, path = find_concept(module)
-            if concept is None:
-                raise SystemExit(f"no concept document for module {module}")
-            source_teaching, source_worked, source_exercises = source_blocks(concept, module, solutions)
+            document, solutions = find_source(module)
+            if document is None:
+                raise SystemExit(f"no source extract for module {module}")
+            (
+                source_teaching,
+                source_worked,
+                source_exercises,
+                skipped,
+            ) = source_blocks(document, module, solutions, manifest)
 
         teaching = list(source_teaching)
         for position, block in enumerate(section_spec.get("blocks", []), start=len(teaching) + 1):

@@ -1,0 +1,4346 @@
+{
+  "module": "m51242",
+  "source_attribution": {
+    "publisher": "OpenStax",
+    "book": "osbooks-college-algebra-bundle",
+    "section": "m51242",
+    "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51242/index.cnxml",
+    "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)",
+    "locator": "CNXML module index.cnxml (typed elements, solutions present)"
+  },
+  "blocks": [
+    {
+      "id": "p-0",
+      "type": "paragraph",
+      "content": {
+        "text": "In this section, you will:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-1",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Learning Objective:",
+        "inline": []
+      }
+    },
+    {
+      "id": "sec-2",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Objective 1: Investigate the discipline called learning science and the idea of a knowledge space.",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-3",
+      "type": "paragraph",
+      "content": {
+        "text": "The brain is a complex organ. It is the control center for our bodies, while the mind is where thinking and learning take place. In an attempt to understand the processes that occur in learning, researchers study a collection of disciplines called learning sciences . This interdisciplinary field includes study of psychological, sociological, anthropological, and computational approaches to learning.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-4",
+      "type": "paragraph",
+      "content": {
+        "text": "In this skill sheet we will investigate the mathematics of mastery and knowledge spaces. A knowledge space includes the possible states of knowledge of a human learner. The theory of knowledge space was introduced in 1985 by mathematical psychologists Jean-Paul Doignon and Jean-Claude Falmagne and has since been studied by many researchers. Doignon, J.-P.; Falmagne, J.-Cl. (1985), \"Spaces for the assessment of knowledge\", International Journal of Man-Machine Studies.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-5",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Practice Makes Perfect",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-6",
+      "type": "paragraph",
+      "content": {
+        "text": "*Investigation* : There are 32 student-learning outcomes (SLO’s) in a typical College Algebra course. These are topics a student needs to master to show proficiency in College Algebra. Let’s begin by looking at just a few of these skills. Let’s assign the variables, A, B, C, and D to the following topics. We will name the set containing each of these 4 topics, Q.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-7",
+      "type": "paragraph",
+      "content": {
+        "text": "Using roster notation Q = {A, B, C, D}.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-8",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "List each of the possible subsets of the 4 topics listed above using roster notation. Remember a subset is a collection of topics in which each topic listed is an element of the set Q we defined above. By including a topic, we are indicating that the student has mastered the topic.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-9",
+      "type": "paragraph",
+      "content": {
+        "text": "List each of the possible subsets of the 4 topics listed above using roster notation. Remember a subset is a collection of topics in which each topic listed is an element of the set Q we defined above. By including a topic, we are indicating that the student has mastered the topic.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-10",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Verify in your work above you have listed all 16 subsets to set Q. Remember that a subset may contain all of the topics listed in Q.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-11",
+      "type": "paragraph",
+      "content": {
+        "text": "Verify in your work above you have listed all 16 subsets to set Q. Remember that a subset may contain all of the topics listed in Q.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-12",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "What formula could you use to help you determine the number of possible subsets? Remember that each topic could be mastered or not by a student. Show below that your formula would be equal to 16 for a list of 4 topics.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-13",
+      "type": "paragraph",
+      "content": {
+        "text": "What formula could you use to help you determine the number of possible subsets? Remember that each topic could be mastered or not by a student. Show below that your formula would be equal to 16 for a list of 4 topics.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-14",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Now use the formula you found in #3 to find the number of subsets possible if we include all 32 student-learning outcomes. Hint: In evaluating exponential terms, the function values increase very rapidly. To display very large (or very small) values, a calculator will use scientific notation. For example: 2.56 E6 is telling you to move the decimal point 6 places to the right and to insert zeros where you have missing values. For example: 2.56 E6 = 2,560,000 or 2 million, five hundred, sixty thousand.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-15",
+      "type": "paragraph",
+      "content": {
+        "text": "Now use the formula you found in #3 to find the number of subsets possible if we include all 32 student-learning outcomes.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-16",
+      "type": "paragraph",
+      "content": {
+        "text": "Hint: In evaluating exponential terms, the function values increase very rapidly. To display very large (or very small) values, a calculator will use scientific notation. For example: 2.56 E6 is telling you to move the decimal point 6 places to the right and to insert zeros where you have missing values.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-17",
+      "type": "paragraph",
+      "content": {
+        "text": "For example: 2.56 E6 = 2,560,000 or 2 million, five hundred, sixty thousand.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-18",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "The subsets you created in #1 are referred to as knowledge spaces in the field of learning science. In this context mastery of one concept may depend on your mastery of another. *List one skill* in mathematics that would help to master each of the following SLO’s: A = Graph the basic functions listed in the library of functions.; B = Find the domain of a function defined by an equation.; C = Create a new function through composition of functions.; D = Find linear functions that model data sets.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-19",
+      "type": "paragraph",
+      "content": {
+        "text": "The subsets you created in #1 are referred to as knowledge spaces in the field of learning science. In this context mastery of one concept may depend on your mastery of another.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-20",
+      "type": "paragraph",
+      "content": {
+        "text": "*List one skill* in mathematics that would help to master each of the following SLO’s:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-21",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Mastery of what are called linchpin topics will make it easier to learn other topics. For example, the ability to solve linear equations with variables on both sides can “unlock” a whole set of new skills for a student to master. List 3 other linchpin topics that would help you to master this math course. Discuss these with others in your class. Did they identify the same topics?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-22",
+      "type": "paragraph",
+      "content": {
+        "text": "Mastery of what are called linchpin topics will make it easier to learn other topics. For example, the ability to solve linear equations with variables on both sides can “unlock” a whole set of new skills for a student to master.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-23",
+      "type": "paragraph",
+      "content": {
+        "text": "List 3 other linchpin topics that would help you to master this math course. Discuss these with others in your class. Did they identify the same topics?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-24",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A corequisite course in mathematics is designed to provide support to a student by reviewing linchpin topics right when and where students need the help. Review of these important foundational ideas allow the learner to move on and master the student learning objectives for the course. Brainstorm ideas with your classmates about ways this corequisite support course could help you in your learning.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-25",
+      "type": "paragraph",
+      "content": {
+        "text": "A corequisite course in mathematics is designed to provide support to a student by reviewing linchpin topics right when and where students need the help. Review of these important foundational ideas allow the learner to move on and master the student learning objectives for the course.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-26",
+      "type": "paragraph",
+      "content": {
+        "text": "Brainstorm ideas with your classmates about ways this corequisite support course could help you in your learning.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-27",
+      "type": "paragraph",
+      "content": {
+        "text": "A hardware store sells 16-ft ladders and 24-ft ladders. A window is located 12 feet above the ground. A ladder needs to be purchased that will reach the window from a point on the ground 5 feet from the building. To find out the length of ladder needed, we can draw a right triangle as shown in , and use the Pythagorean Theorem.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-1",
+      "type": "figure",
+      "asset_url": "images/math_surds_CNX_CAT_Figure_01_03_001.jpg",
+      "caption": {
+        "text": "A right triangle with a base of 5 feet, a height of 12 feet, and a hypotenuse labeled c",
+        "inline": []
+      },
+      "alt": "A right triangle with a base of 5 feet, a height of 12 feet, and a hypotenuse labeled c",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-29",
+      "type": "paragraph",
+      "content": {
+        "text": "Now, we need to find out the length that, when squared, is 169, to determine which ladder to choose. In other words, we need to find a square root. In this section, we will investigate methods of finding solutions to problems such as this one.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-30",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Evaluating Square Roots",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-31",
+      "type": "paragraph",
+      "content": {
+        "text": "When the square root of a number is squared, the result is the original number. Since ${4}^{2}=16,$ the square root of $16$ is $4.$ The square root function is the inverse of the squaring function just as subtraction is the inverse of addition. To undo squaring, we take the square root.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-32",
+      "type": "paragraph",
+      "content": {
+        "text": "In general terms, if $a$ is a positive real number, then the square root of $a$ is a number that, when multiplied by itself, gives $a.$ The square root could be positive or negative because multiplying two negative numbers gives a positive number. The principal square root is the nonnegative number that when multiplied by itself equals $a.$ The square root obtained using a calculator is the principal square root.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-33",
+      "type": "paragraph",
+      "content": {
+        "text": "The principal square root of $a$ is written as $\\sqrt{a}.$ The symbol is called a radical , the term under the symbol is called the radicand , and the entire expression is called a radical expression .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-34",
+      "type": "paragraph",
+      "content": {
+        "text": "The principal square root of $a$ is the nonnegative number that, when multiplied by itself, equals $a.$ It is written as a radical expression *,* with a symbol called a radical over the term called the radicand : $\\sqrt{a}.$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-35",
+      "type": "paragraph",
+      "content": {
+        "text": "*Does* $\\sqrt{25}=±5?$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-36",
+      "type": "paragraph",
+      "content": {
+        "text": "*No. Although both* ${5}^{2}$ *and* ${(−5)}^{2}$ *are* $25,$ *the radical symbol implies only a nonnegative root, the principal square root. The principal square root of 25 is* $\\sqrt{25}=5.$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "ex-37",
+      "type": "example",
+      "kind": "worked",
+      "title": {
+        "text": "Example",
+        "inline": []
+      },
+      "problem": {
+        "text": "",
+        "inline": []
+      },
+      "answer": null,
+      "level": "core"
+    },
+    {
+      "id": "exr-38",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Evaluating Square Roots Evaluate each expression. ⓐ $\\sqrt{100}$; ⓑ $\\sqrt{\\sqrt{16}}$; ⓒ $\\sqrt{25+144}$; ⓓ $\\sqrt{49}-\\sqrt{81}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "ⓐ $\\sqrt{100}=10$ because ${10}^{2}=100$; ⓑ $\\sqrt{\\sqrt{16}}=\\sqrt{4}=2$ because ${4}^{2}=16$ and ${2}^{2}=4$; ⓒ $\\sqrt{25+144}=\\sqrt{169}=13$ because ${13}^{2}=169$; ⓓ $\\sqrt{49}-\\sqrt{81}=7-9=−2$ because ${7}^{2}=49$ and ${9}^{2}=81$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-39",
+      "type": "paragraph",
+      "content": {
+        "text": "Evaluate each expression.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-40",
+      "type": "paragraph",
+      "content": {
+        "text": "*For $\\sqrt{25+144},$ can we find the square roots before adding?*",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-41",
+      "type": "paragraph",
+      "content": {
+        "text": "*No.* $\\sqrt{25}+\\sqrt{144}=5+12=17.$ *This is not equivalent to* $\\sqrt{25+144}=13.$ *The order of operations requires us to add the terms in the radicand before finding the square root.*",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-42",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Evaluate each expression. ⓐ $\\sqrt{225}$; ⓑ $\\sqrt{\\sqrt{81}}$; ⓒ $\\sqrt{25-9}$; ⓓ $\\sqrt{36}+\\sqrt{121}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "ⓐ $15$; ⓑ $3$; ⓒ $4$; ⓓ $17$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-43",
+      "type": "paragraph",
+      "content": {
+        "text": "Evaluate each expression.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-44",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Using the Product Rule to Simplify Square Roots",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-45",
+      "type": "paragraph",
+      "content": {
+        "text": "To simplify a square root, we rewrite it such that there are no perfect squares in the radicand. There are several properties of square roots that allow us to simplify complicated radical expressions. The first rule we will look at is the *product rule for simplifying square roots,* which allows us to separate the square root of a product of two numbers into the product of two separate rational expressions. For instance, we can rewrite $\\sqrt{15}$ as $\\sqrt{3}\\cdot \\sqrt{5}.$ We can also use the product rule to express the product of multiple radical expressions as a single radical expression.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-46",
+      "type": "paragraph",
+      "content": {
+        "text": "If $a$ and $b$ are nonnegative, the square root of the product $ab$ is equal to the product of the square roots of $a$ and $b.$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-47",
+      "type": "paragraph",
+      "content": {
+        "text": "*Given a square root radical expression, use the product rule to simplify it.*",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "ex-48",
+      "type": "example",
+      "kind": "worked",
+      "title": {
+        "text": "Example",
+        "inline": []
+      },
+      "problem": {
+        "text": "",
+        "inline": []
+      },
+      "answer": null,
+      "level": "core"
+    },
+    {
+      "id": "exr-49",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Using the Product Rule to Simplify Square Roots Simplify the radical expression. ⓐ $\\sqrt{300}$; ⓑ $\\sqrt{162{a}^{5}{b}^{4}}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "ⓐ $\\sqrt{100\\cdot 3}Factor perfect square from radicand.\\sqrt{100}\\cdot \\sqrt{3}Write radical expression as product of radical expressions.10\\sqrt{3}Simplify.$; ⓑ $\\sqrt{81{a}^{4}{b}^{4}\\cdot 2a}Factor perfect square from radicand.\\sqrt{81{a}^{4}{b}^{4}}\\cdot \\sqrt{2a}Write radical expression as product of radical expressions.9{a}^{2}{b}^{2}\\sqrt{2a}Simplify.$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-50",
+      "type": "paragraph",
+      "content": {
+        "text": "Simplify the radical expression.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-51",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Simplify $\\sqrt{50{x}^{2}{y}^{3}z}.$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$5|x||y|\\sqrt{2yz}.$ Notice the absolute value signs around *x* and *y* ? That’s because their value must be positive!",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-52",
+      "type": "paragraph",
+      "content": {
+        "text": "Simplify $\\sqrt{50{x}^{2}{y}^{3}z}.$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-53",
+      "type": "paragraph",
+      "content": {
+        "text": "$5|x||y|\\sqrt{2yz}.$ Notice the absolute value signs around *x* and *y* ? That’s because their value must be positive!",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-54",
+      "type": "paragraph",
+      "content": {
+        "text": "*Given the product of multiple radical expressions, use the product rule to combine them into one radical expression.*",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "ex-55",
+      "type": "example",
+      "kind": "worked",
+      "title": {
+        "text": "Example",
+        "inline": []
+      },
+      "problem": {
+        "text": "",
+        "inline": []
+      },
+      "answer": null,
+      "level": "core"
+    },
+    {
+      "id": "exr-56",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Using the Product Rule to Simplify the Product of Multiple Square Roots Simplify the radical expression. $\\sqrt{12}\\cdot \\sqrt{3}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$\\sqrt{12\\cdot 3}Express the product as a single radical expression.\\sqrt{36}Simplify.6$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-57",
+      "type": "paragraph",
+      "content": {
+        "text": "Simplify the radical expression. $\\sqrt{12}\\cdot \\sqrt{3}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-58",
+      "type": "paragraph",
+      "content": {
+        "text": "$\\sqrt{12\\cdot 3}Express the product as a single radical expression.\\sqrt{36}Simplify.6$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-59",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Simplify $\\sqrt{50x}\\cdot \\sqrt{2x}$ assuming $x>0.$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$10|x|$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-60",
+      "type": "paragraph",
+      "content": {
+        "text": "Simplify $\\sqrt{50x}\\cdot \\sqrt{2x}$ assuming $x>0.$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-61",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Using the Quotient Rule to Simplify Square Roots",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-62",
+      "type": "paragraph",
+      "content": {
+        "text": "Just as we can rewrite the square root of a product as a product of square roots, so too can we rewrite the square root of a quotient as a quotient of square roots, using the *quotient rule for simplifying square roots.* It can be helpful to separate the numerator and denominator of a fraction under a radical so that we can take their square roots separately. We can rewrite $\\sqrt{\\frac{5}{2}}$ as $\\frac{\\sqrt{5}}{\\sqrt{2}}.$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-63",
+      "type": "paragraph",
+      "content": {
+        "text": "The square root of the quotient $\\frac{a}{b}$ is equal to the quotient of the square roots of $a$ and $b,$ where $b≠0.$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-64",
+      "type": "paragraph",
+      "content": {
+        "text": "*Given a radical expression, use the quotient rule to simplify it.*",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "ex-65",
+      "type": "example",
+      "kind": "worked",
+      "title": {
+        "text": "Example",
+        "inline": []
+      },
+      "problem": {
+        "text": "",
+        "inline": []
+      },
+      "answer": null,
+      "level": "core"
+    },
+    {
+      "id": "exr-66",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Using the Quotient Rule to Simplify Square Roots Simplify the radical expression. $\\sqrt{\\frac{5}{36}}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$\\frac{\\sqrt{5}}{\\sqrt{36}}Write as quotient of two radical expressions.\\frac{\\sqrt{5}}{6}Simplify denominator.$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-67",
+      "type": "paragraph",
+      "content": {
+        "text": "Simplify the radical expression.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-68",
+      "type": "paragraph",
+      "content": {
+        "text": "$\\sqrt{\\frac{5}{36}}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-69",
+      "type": "paragraph",
+      "content": {
+        "text": "$\\frac{\\sqrt{5}}{\\sqrt{36}}Write as quotient of two radical expressions.\\frac{\\sqrt{5}}{6}Simplify denominator.$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-70",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Simplify $\\sqrt{\\frac{2{x}^{2}}{9{y}^{4}}}.$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$\\frac{x\\sqrt{2}}{3{y}^{2}}.$ We do not need the absolute value signs for ${y}^{2}$ because that term will always be nonnegative.",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-71",
+      "type": "paragraph",
+      "content": {
+        "text": "Simplify $\\sqrt{\\frac{2{x}^{2}}{9{y}^{4}}}.$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-72",
+      "type": "paragraph",
+      "content": {
+        "text": "$\\frac{x\\sqrt{2}}{3{y}^{2}}.$ We do not need the absolute value signs for ${y}^{2}$ because that term will always be nonnegative.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "ex-73",
+      "type": "example",
+      "kind": "worked",
+      "title": {
+        "text": "Example",
+        "inline": []
+      },
+      "problem": {
+        "text": "",
+        "inline": []
+      },
+      "answer": null,
+      "level": "core"
+    },
+    {
+      "id": "exr-74",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Using the Quotient Rule to Simplify an Expression with Two Square Roots Simplify the radical expression. $\\frac{\\sqrt{234{x}^{11}y}}{\\sqrt{26{x}^{7}y}}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$\\sqrt{\\frac{234{x}^{11}y}{26{x}^{7}y}}Combine numerator and denominator into one radical expression.\\sqrt{9{x}^{4}}Simplify fraction.3{x}^{2}Simplify square root.$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-75",
+      "type": "paragraph",
+      "content": {
+        "text": "Simplify the radical expression.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-76",
+      "type": "paragraph",
+      "content": {
+        "text": "$\\frac{\\sqrt{234{x}^{11}y}}{\\sqrt{26{x}^{7}y}}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-77",
+      "type": "paragraph",
+      "content": {
+        "text": "$\\sqrt{\\frac{234{x}^{11}y}{26{x}^{7}y}}Combine numerator and denominator into one radical expression.\\sqrt{9{x}^{4}}Simplify fraction.3{x}^{2}Simplify square root.$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-78",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Simplify $\\frac{\\sqrt{9{a}^{5}{b}^{14}}}{\\sqrt{3{a}^{4}{b}^{5}}}.$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "${b}^{4}\\sqrt{3ab}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-79",
+      "type": "paragraph",
+      "content": {
+        "text": "Simplify $\\frac{\\sqrt{9{a}^{5}{b}^{14}}}{\\sqrt{3{a}^{4}{b}^{5}}}.$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-80",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Adding and Subtracting Square Roots",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-81",
+      "type": "paragraph",
+      "content": {
+        "text": "We can add or subtract radical expressions only when they have the same radicand and when they have the same radical type such as square roots. For example, the sum of $\\sqrt{2}$ and $3\\sqrt{2}$ is $4\\sqrt{2}.$ However, it is often possible to simplify radical expressions, and that may change the radicand. The radical expression $\\sqrt{18}$ can be written with a $2$ in the radicand, as $3\\sqrt{2},$ so $\\sqrt{2}+\\sqrt{18}=\\sqrt{2}+3\\sqrt{2}=4\\sqrt{2}.$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-82",
+      "type": "paragraph",
+      "content": {
+        "text": "*Given a radical expression requiring addition or subtraction of square roots, simplify.*",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "ex-83",
+      "type": "example",
+      "kind": "worked",
+      "title": {
+        "text": "Example",
+        "inline": []
+      },
+      "problem": {
+        "text": "",
+        "inline": []
+      },
+      "answer": null,
+      "level": "core"
+    },
+    {
+      "id": "exr-84",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Adding Square Roots Add $5\\sqrt{12}+2\\sqrt{3}.$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "We can rewrite $5\\sqrt{12}$ as $5\\sqrt{4\\cdot 3}.$ According the product rule, this becomes $5\\sqrt{4}\\sqrt{3}.$ The square root of $\\sqrt{4}$ is 2, so the expression becomes $5(2)\\sqrt{3},$ which is $10\\sqrt{3}.$ Now the terms have the same radicand so we can add. $10\\sqrt{3}+2\\sqrt{3}=12\\sqrt{3}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-85",
+      "type": "paragraph",
+      "content": {
+        "text": "Add $5\\sqrt{12}+2\\sqrt{3}.$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-86",
+      "type": "paragraph",
+      "content": {
+        "text": "We can rewrite $5\\sqrt{12}$ as $5\\sqrt{4\\cdot 3}.$ According the product rule, this becomes $5\\sqrt{4}\\sqrt{3}.$ The square root of $\\sqrt{4}$ is 2, so the expression becomes $5(2)\\sqrt{3},$ which is $10\\sqrt{3}.$ Now the terms have the same radicand so we can add.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-87",
+      "type": "paragraph",
+      "content": {
+        "text": "$10\\sqrt{3}+2\\sqrt{3}=12\\sqrt{3}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-88",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Add $\\sqrt{5}+6\\sqrt{20}.$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$13\\sqrt{5}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-89",
+      "type": "paragraph",
+      "content": {
+        "text": "Add $\\sqrt{5}+6\\sqrt{20}.$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "ex-90",
+      "type": "example",
+      "kind": "worked",
+      "title": {
+        "text": "Example",
+        "inline": []
+      },
+      "problem": {
+        "text": "",
+        "inline": []
+      },
+      "answer": null,
+      "level": "core"
+    },
+    {
+      "id": "exr-91",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Subtracting Square Roots Subtract $20\\sqrt{72{a}^{3}{b}^{4}c}-14\\sqrt{8{a}^{3}{b}^{4}c}.$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "Factor 9 out of the first term so that both terms have equal radicands. \\[$20\\sqrt{72{a}^{3}{b}^{4}c}=20\\sqrt{9}=20\\sqrt{9}\\sqrt{8}=20(3)\\sqrt{8}=60\\sqrt{8}$\\] So \\[$20\\sqrt{72}-14\\sqrt{8}=60\\sqrt{8}-14\\sqrt{8}=46\\sqrt{8}$\\]",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-92",
+      "type": "paragraph",
+      "content": {
+        "text": "Subtract $20\\sqrt{72{a}^{3}{b}^{4}c}-14\\sqrt{8{a}^{3}{b}^{4}c}.$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-93",
+      "type": "paragraph",
+      "content": {
+        "text": "Factor 9 out of the first term so that both terms have equal radicands.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-94",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Subtract $3\\sqrt{80x}-4\\sqrt{45x}.$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$0$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-95",
+      "type": "paragraph",
+      "content": {
+        "text": "Subtract $3\\sqrt{80x}-4\\sqrt{45x}.$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-96",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Rationalizing Denominators",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-97",
+      "type": "paragraph",
+      "content": {
+        "text": "When an expression involving square root radicals is written in simplest form, it will not contain a radical in the denominator. We can remove radicals from the denominators of fractions using a process called *rationalizing the denominator* .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-98",
+      "type": "paragraph",
+      "content": {
+        "text": "We know that multiplying by 1 does not change the value of an expression. We use this property of multiplication to change expressions that contain radicals in the denominator. To remove radicals from the denominators of fractions, multiply by the form of 1 that will eliminate the radical.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-99",
+      "type": "paragraph",
+      "content": {
+        "text": "For a denominator containing a single term, multiply by the radical in the denominator over itself. In other words, if the denominator is $b\\sqrt{c},$ multiply by $\\frac{\\sqrt{c}}{\\sqrt{c}}.$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-100",
+      "type": "paragraph",
+      "content": {
+        "text": "For a denominator containing the sum or difference of a rational and an irrational term, multiply the numerator and denominator by the conjugate of the denominator, which is found by changing the sign of the radical portion of the denominator. If the denominator is $a+b\\sqrt{c},$ then the conjugate is $a-b\\sqrt{c}.$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-101",
+      "type": "paragraph",
+      "content": {
+        "text": "*Given an expression with a single square root radical term in the denominator, rationalize the denominator.*",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "ex-102",
+      "type": "example",
+      "kind": "worked",
+      "title": {
+        "text": "Example",
+        "inline": []
+      },
+      "problem": {
+        "text": "",
+        "inline": []
+      },
+      "answer": null,
+      "level": "core"
+    },
+    {
+      "id": "exr-103",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Rationalizing a Denominator Containing a Single Term Write $\\frac{2\\sqrt{3}}{3\\sqrt{10}}$ in simplest form.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "The radical in the denominator is $\\sqrt{10}.$ So multiply the fraction by $\\frac{\\sqrt{10}}{\\sqrt{10}}.$ Then simplify. \\[$\\frac{2\\sqrt{3}}{3\\sqrt{10}}\\cdot \\frac{\\sqrt{10}}{\\sqrt{10}}\\frac{2\\sqrt{30}}{30}\\frac{\\sqrt{30}}{15}$\\]",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-104",
+      "type": "paragraph",
+      "content": {
+        "text": "Write $\\frac{2\\sqrt{3}}{3\\sqrt{10}}$ in simplest form.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-105",
+      "type": "paragraph",
+      "content": {
+        "text": "The radical in the denominator is $\\sqrt{10}.$ So multiply the fraction by $\\frac{\\sqrt{10}}{\\sqrt{10}}.$ Then simplify.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-106",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Write $\\frac{12\\sqrt{3}}{\\sqrt{2}}$ in simplest form.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$6\\sqrt{6}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-107",
+      "type": "paragraph",
+      "content": {
+        "text": "Write $\\frac{12\\sqrt{3}}{\\sqrt{2}}$ in simplest form.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-108",
+      "type": "paragraph",
+      "content": {
+        "text": "*Given an expression with a radical term and a constant in the denominator, rationalize the denominator.*",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "ex-109",
+      "type": "example",
+      "kind": "worked",
+      "title": {
+        "text": "Example",
+        "inline": []
+      },
+      "problem": {
+        "text": "",
+        "inline": []
+      },
+      "answer": null,
+      "level": "core"
+    },
+    {
+      "id": "exr-110",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Rationalizing a Denominator Containing Two Terms Write $\\frac{4}{1+\\sqrt{5}}$ in simplest form.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "Begin by finding the conjugate of the denominator by writing the denominator and changing the sign. So the conjugate of $1+\\sqrt{5}$ is $1-\\sqrt{5}.$ Then multiply the fraction by $\\frac{1-\\sqrt{5}}{1-\\sqrt{5}}.$ \\[$\\frac{4}{1+\\sqrt{5}}\\cdot \\frac{1-\\sqrt{5}}{1-\\sqrt{5}}\\frac{4-4\\sqrt{5}}{-4}Use the distributive property.\\sqrt{5}-1Simplify.$\\]",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-111",
+      "type": "paragraph",
+      "content": {
+        "text": "Write $\\frac{4}{1+\\sqrt{5}}$ in simplest form.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-112",
+      "type": "paragraph",
+      "content": {
+        "text": "Begin by finding the conjugate of the denominator by writing the denominator and changing the sign. So the conjugate of $1+\\sqrt{5}$ is $1-\\sqrt{5}.$ Then multiply the fraction by $\\frac{1-\\sqrt{5}}{1-\\sqrt{5}}.$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-113",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Write $\\frac{7}{2+\\sqrt{3}}$ in simplest form.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$14−7\\sqrt{3}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-114",
+      "type": "paragraph",
+      "content": {
+        "text": "Write $\\frac{7}{2+\\sqrt{3}}$ in simplest form.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-115",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Using Rational Roots",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-116",
+      "type": "paragraph",
+      "content": {
+        "text": "Although square roots are the most common rational roots, we can also find cube roots, 4th roots, 5th roots, and more. Just as the square root function is the inverse of the squaring function, these roots are the inverse of their respective power functions. These functions can be useful when we need to determine the number that, when raised to a certain power, gives a certain number.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-117",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Understanding",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-118",
+      "type": "paragraph",
+      "content": {
+        "text": "Suppose we know that ${a}^{3}=8.$ We want to find what number raised to the 3rd power is equal to 8. Since ${2}^{3}=8,$ we say that 2 is the cube root of 8.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-119",
+      "type": "paragraph",
+      "content": {
+        "text": "The *n* th root of $a$ is a number that, when raised to the *n* th power, gives $a.$ For example, $−3$ is the 5th root of $−243$ because ${(−3)}^{5}=−243.$ If $a$ is a real number with at least one *n* th root, then the principal *n* th root of $a$ is the number with the same sign as $a$ that, when raised to the *n* th power, equals $a.$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-120",
+      "type": "paragraph",
+      "content": {
+        "text": "The principal *n* th root of $a$ is written as $an,$ where $n$ is a positive integer greater than or equal to 2. In the radical expression, $n$ is called the index of the radical.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-121",
+      "type": "paragraph",
+      "content": {
+        "text": "If $a$ is a real number with at least one *n* th root, then the principal *n* th root of $a,$ written as $an,$ is the number with the same sign as $a$ that, when raised to the *n* th power, equals $a.$ The index of the radical is $n.$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "ex-122",
+      "type": "example",
+      "kind": "worked",
+      "title": {
+        "text": "Example",
+        "inline": []
+      },
+      "problem": {
+        "text": "",
+        "inline": []
+      },
+      "answer": null,
+      "level": "core"
+    },
+    {
+      "id": "exr-123",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Simplifying *n* th Roots Simplify each of the following: ⓐ $−325$; ⓑ $44\\cdot 1,0244$; ⓒ $-\\frac{8{x}^{6}}{125}3$; ⓓ $834-484$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "ⓐ $−325=−2$ because ${(−2)}^{5}=−32$; ⓑ First, express the product as a single radical expression. $4,0964=8$ because ${8}^{4}=4,096$; ⓒ $\\frac{-8{x}^{6}3}{1253}Write as quotient of two radical expressions.\\frac{-2{x}^{2}}{5}Simplify.$; ⓓ $834-234Simplify to get equal radicands.634Add.$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-124",
+      "type": "paragraph",
+      "content": {
+        "text": "Simplify each of the following:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-125",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Simplify. ⓐ $−2163$; ⓑ $\\frac{3804}{54}$; ⓒ $69,0003+75763$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "ⓐ $−6$; ⓑ $6$; ⓒ $8893$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "sec-126",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Using Rational Exponents",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-127",
+      "type": "paragraph",
+      "content": {
+        "text": "Radical expressions can also be written without using the radical symbol. We can use rational (fractional) exponents. The index must be a positive integer. If the index $n$ is even, then $a$ cannot be negative.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-128",
+      "type": "paragraph",
+      "content": {
+        "text": "We can also have rational exponents with numerators other than 1. In these cases, the exponent must be a fraction in lowest terms. We raise the base to a power and take an *n* th root. The numerator tells us the power and the denominator tells us the root.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-129",
+      "type": "paragraph",
+      "content": {
+        "text": "All of the properties of exponents that we learned for integer exponents also hold for rational exponents.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-130",
+      "type": "paragraph",
+      "content": {
+        "text": "Rational exponents are another way to express principal *n* th roots. The general form for converting between a radical expression with a radical symbol and one with a rational exponent is",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-131",
+      "type": "paragraph",
+      "content": {
+        "text": "*Given an expression with a rational exponent, write the expression as a radical.*",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "ex-132",
+      "type": "example",
+      "kind": "worked",
+      "title": {
+        "text": "Example",
+        "inline": []
+      },
+      "problem": {
+        "text": "",
+        "inline": []
+      },
+      "answer": null,
+      "level": "core"
+    },
+    {
+      "id": "exr-133",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Writing Rational Exponents as Radicals Write ${343}^{\\frac{2}{3}}$ as a radical. Simplify.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "The 2 tells us the power and the 3 tells us the root. ${343}^{\\frac{2}{3}}={(3433)}^{2}={343}^{2}3$ We know that $3433=7$ because ${7}^{3}=343.$ Because the cube root is easy to find, it is easiest to find the cube root before squaring for this problem. In general, it is easier to find the root first and then raise it to a power. ${343}^{\\frac{2}{3}}={(3433)}^{2}={7}^{2}=49$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-134",
+      "type": "paragraph",
+      "content": {
+        "text": "Write ${343}^{\\frac{2}{3}}$ as a radical. Simplify.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-135",
+      "type": "paragraph",
+      "content": {
+        "text": "The 2 tells us the power and the 3 tells us the root.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-136",
+      "type": "paragraph",
+      "content": {
+        "text": "${343}^{\\frac{2}{3}}={(3433)}^{2}={343}^{2}3$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-137",
+      "type": "paragraph",
+      "content": {
+        "text": "We know that $3433=7$ because ${7}^{3}=343.$ Because the cube root is easy to find, it is easiest to find the cube root before squaring for this problem. In general, it is easier to find the root first and then raise it to a power.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-138",
+      "type": "paragraph",
+      "content": {
+        "text": "${343}^{\\frac{2}{3}}={(3433)}^{2}={7}^{2}=49$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-139",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Write ${9}^{\\frac{5}{2}}$ as a radical. Simplify.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "${(\\sqrt{9})}^{5}={3}^{5}=243$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-140",
+      "type": "paragraph",
+      "content": {
+        "text": "Write ${9}^{\\frac{5}{2}}$ as a radical. Simplify.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-141",
+      "type": "paragraph",
+      "content": {
+        "text": "${(\\sqrt{9})}^{5}={3}^{5}=243$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "ex-142",
+      "type": "example",
+      "kind": "worked",
+      "title": {
+        "text": "Example",
+        "inline": []
+      },
+      "problem": {
+        "text": "",
+        "inline": []
+      },
+      "answer": null,
+      "level": "core"
+    },
+    {
+      "id": "exr-143",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Writing Radicals as Rational Exponents Write $\\frac{4}{{a}^{2}7}$ using a rational exponent.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "The power is 2 and the root is 7, so the rational exponent will be $\\frac{2}{7}.$ We get $\\frac{4}{{a}^{\\frac{2}{7}}}.$ Using properties of exponents, we get $\\frac{4}{{a}^{2}7}=4{a}^{\\frac{−2}{7}}.$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-144",
+      "type": "paragraph",
+      "content": {
+        "text": "Write $\\frac{4}{{a}^{2}7}$ using a rational exponent.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-145",
+      "type": "paragraph",
+      "content": {
+        "text": "The power is 2 and the root is 7, so the rational exponent will be $\\frac{2}{7}.$ We get $\\frac{4}{{a}^{\\frac{2}{7}}}.$ Using properties of exponents, we get $\\frac{4}{{a}^{2}7}=4{a}^{\\frac{−2}{7}}.$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-146",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Write $x\\sqrt{{(5y)}^{9}}$ using a rational exponent.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$x{(5y)}^{\\frac{9}{2}}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-147",
+      "type": "paragraph",
+      "content": {
+        "text": "Write $x\\sqrt{{(5y)}^{9}}$ using a rational exponent.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-148",
+      "type": "paragraph",
+      "content": {
+        "text": "$x{(5y)}^{\\frac{9}{2}}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "ex-149",
+      "type": "example",
+      "kind": "worked",
+      "title": {
+        "text": "Example",
+        "inline": []
+      },
+      "problem": {
+        "text": "",
+        "inline": []
+      },
+      "answer": null,
+      "level": "core"
+    },
+    {
+      "id": "exr-150",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Simplifying Rational Exponents Simplify: ⓐ $5(2{x}^{\\frac{3}{4}})(3{x}^{\\frac{1}{5}})$; ⓑ ${(\\frac{16}{9})}^{-\\frac{1}{2}}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "ⓐ $30{x}^{\\frac{3}{4}}{x}^{\\frac{1}{5}}Multiply the coefficients.30{x}^{\\frac{3}{4}+\\frac{1}{5}}Use properties of exponents.30{x}^{\\frac{19}{20}}Simplify.$ ⓑ ${(\\frac{9}{16})}^{\\frac{1}{2}}Use definition of negative exponents.\\sqrt{\\frac{9}{16}}Rewrite as a radical.\\frac{\\sqrt{9}}{\\sqrt{16}}Use the quotient rule.\\frac{3}{4}Simplify.$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-151",
+      "type": "paragraph",
+      "content": {
+        "text": "ⓐ $30{x}^{\\frac{3}{4}}{x}^{\\frac{1}{5}}Multiply the coefficients.30{x}^{\\frac{3}{4}+\\frac{1}{5}}Use properties of exponents.30{x}^{\\frac{19}{20}}Simplify.$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-152",
+      "type": "paragraph",
+      "content": {
+        "text": "ⓑ ${(\\frac{9}{16})}^{\\frac{1}{2}}Use definition of negative exponents.\\sqrt{\\frac{9}{16}}Rewrite as a radical.\\frac{\\sqrt{9}}{\\sqrt{16}}Use the quotient rule.\\frac{3}{4}Simplify.$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-153",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Simplify ${(8x)}^{\\frac{1}{3}}(14{x}^{\\frac{6}{5}}).$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$28{x}^{\\frac{23}{15}}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-154",
+      "type": "paragraph",
+      "content": {
+        "text": "Simplify ${(8x)}^{\\frac{1}{3}}(14{x}^{\\frac{6}{5}}).$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-155",
+      "type": "paragraph",
+      "content": {
+        "text": "$28{x}^{\\frac{23}{15}}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-156",
+      "type": "paragraph",
+      "content": {
+        "text": "Access these online resources for additional instruction and practice with radicals and rational exponents.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-157",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Key Concepts",
+        "inline": []
+      }
+    },
+    {
+      "id": "sec-158",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Section Exercises",
+        "inline": []
+      }
+    },
+    {
+      "id": "sec-159",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Verbal",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-160",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "What does it mean when a radical does not have an index? Is the expression equal to the radicand? Explain.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "When there is no index, it is assumed to be 2 or the square root. The expression would only be equal to the radicand if the index were 1.",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-161",
+      "type": "paragraph",
+      "content": {
+        "text": "What does it mean when a radical does not have an index? Is the expression equal to the radicand? Explain.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-162",
+      "type": "paragraph",
+      "content": {
+        "text": "When there is no index, it is assumed to be 2 or the square root. The expression would only be equal to the radicand if the index were 1.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-163",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Where would radicals come in the order of operations? Explain why.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-164",
+      "type": "paragraph",
+      "content": {
+        "text": "Where would radicals come in the order of operations? Explain why.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-165",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Every number will have two square roots. What is the principal square root?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "The principal square root is the nonnegative root of the number.",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-166",
+      "type": "paragraph",
+      "content": {
+        "text": "Every number will have two square roots. What is the principal square root?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-167",
+      "type": "paragraph",
+      "content": {
+        "text": "The principal square root is the nonnegative root of the number.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-168",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Can a radical with a negative radicand have a real square root? Why or why not?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-169",
+      "type": "paragraph",
+      "content": {
+        "text": "Can a radical with a negative radicand have a real square root? Why or why not?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-170",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Numeric",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-171",
+      "type": "paragraph",
+      "content": {
+        "text": "For the following exercises, simplify each expression.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-172",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$\\sqrt{256}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "16",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "exr-173",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$\\sqrt{\\sqrt{256}}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "exr-174",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$\\sqrt{4(9+16)}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "10",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "exr-175",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$\\sqrt{289}-\\sqrt{121}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-176",
+      "type": "paragraph",
+      "content": {
+        "text": "$\\sqrt{289}-\\sqrt{121}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-177",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$\\sqrt{196}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "14",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "exr-178",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$\\sqrt{1}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "exr-179",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$\\sqrt{98}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$7\\sqrt{2}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "exr-180",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$\\sqrt{\\frac{27}{64}}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-181",
+      "type": "paragraph",
+      "content": {
+        "text": "$\\sqrt{\\frac{27}{64}}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-182",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$\\sqrt{\\frac{81}{5}}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$\\frac{9\\sqrt{5}}{5}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-183",
+      "type": "paragraph",
+      "content": {
+        "text": "$\\sqrt{\\frac{81}{5}}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-184",
+      "type": "paragraph",
+      "content": {
+        "text": "$\\frac{9\\sqrt{5}}{5}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-185",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$\\sqrt{800}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "exr-186",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$\\sqrt{169}+\\sqrt{144}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "25",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-187",
+      "type": "paragraph",
+      "content": {
+        "text": "$\\sqrt{169}+\\sqrt{144}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-188",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$\\sqrt{\\frac{8}{50}}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-189",
+      "type": "paragraph",
+      "content": {
+        "text": "$\\sqrt{\\frac{8}{50}}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-190",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$\\frac{18}{\\sqrt{162}}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$\\sqrt{2}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-191",
+      "type": "paragraph",
+      "content": {
+        "text": "$\\frac{18}{\\sqrt{162}}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-192",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$\\sqrt{192}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "exr-193",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$14\\sqrt{6}-6\\sqrt{24}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$2\\sqrt{6}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-194",
+      "type": "paragraph",
+      "content": {
+        "text": "$14\\sqrt{6}-6\\sqrt{24}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-195",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$15\\sqrt{5}+7\\sqrt{45}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-196",
+      "type": "paragraph",
+      "content": {
+        "text": "$15\\sqrt{5}+7\\sqrt{45}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-197",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$\\sqrt{150}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$5\\sqrt{6}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "exr-198",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$\\sqrt{\\frac{96}{100}}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-199",
+      "type": "paragraph",
+      "content": {
+        "text": "$\\sqrt{\\frac{96}{100}}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-200",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$(\\sqrt{42})(\\sqrt{30})$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$6\\sqrt{35}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-201",
+      "type": "paragraph",
+      "content": {
+        "text": "$(\\sqrt{42})(\\sqrt{30})$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-202",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$12\\sqrt{3}-4\\sqrt{75}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-203",
+      "type": "paragraph",
+      "content": {
+        "text": "$12\\sqrt{3}-4\\sqrt{75}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-204",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$\\sqrt{\\frac{4}{225}}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$\\frac{2}{15}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-205",
+      "type": "paragraph",
+      "content": {
+        "text": "$\\sqrt{\\frac{4}{225}}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-206",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$\\sqrt{\\frac{405}{324}}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-207",
+      "type": "paragraph",
+      "content": {
+        "text": "$\\sqrt{\\frac{405}{324}}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-208",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$\\sqrt{\\frac{360}{361}}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$\\frac{6\\sqrt{10}}{19}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-209",
+      "type": "paragraph",
+      "content": {
+        "text": "$\\sqrt{\\frac{360}{361}}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-210",
+      "type": "paragraph",
+      "content": {
+        "text": "$\\frac{6\\sqrt{10}}{19}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-211",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$\\frac{5}{1+\\sqrt{3}}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-212",
+      "type": "paragraph",
+      "content": {
+        "text": "$\\frac{5}{1+\\sqrt{3}}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-213",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$\\frac{8}{1-\\sqrt{17}}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$-\\frac{1+\\sqrt{17}}{2}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-214",
+      "type": "paragraph",
+      "content": {
+        "text": "$\\frac{8}{1-\\sqrt{17}}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-215",
+      "type": "paragraph",
+      "content": {
+        "text": "$-\\frac{1+\\sqrt{17}}{2}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-216",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$164$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "exr-217",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$1283+323$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$723$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "exr-218",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$\\frac{−32}{243}5$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "exr-219",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$\\frac{151254}{54}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$15\\sqrt{5}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "exr-220",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$3−4323+163$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "sec-221",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Algebraic",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-222",
+      "type": "paragraph",
+      "content": {
+        "text": "For the following exercises, simplify each expression.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-223",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$\\sqrt{400{x}^{4}}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$20{x}^{2}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "exr-224",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$\\sqrt{4{y}^{2}}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "exr-225",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$\\sqrt{49p}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$7\\sqrt{p}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "exr-226",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "${(144{p}^{2}{q}^{6})}^{\\frac{1}{2}}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-227",
+      "type": "paragraph",
+      "content": {
+        "text": "${(144{p}^{2}{q}^{6})}^{\\frac{1}{2}}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-228",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "${m}^{\\frac{5}{2}}\\sqrt{289}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$17{m}^{2}\\sqrt{m}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-229",
+      "type": "paragraph",
+      "content": {
+        "text": "${m}^{\\frac{5}{2}}\\sqrt{289}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-230",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$9\\sqrt{3{m}^{2}}+\\sqrt{27}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-231",
+      "type": "paragraph",
+      "content": {
+        "text": "$9\\sqrt{3{m}^{2}}+\\sqrt{27}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-232",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$3\\sqrt{a{b}^{2}}-b\\sqrt{a}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$2b\\sqrt{a}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-233",
+      "type": "paragraph",
+      "content": {
+        "text": "$3\\sqrt{a{b}^{2}}-b\\sqrt{a}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-234",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$\\frac{4\\sqrt{2n}}{\\sqrt{16{n}^{4}}}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-235",
+      "type": "paragraph",
+      "content": {
+        "text": "$\\frac{4\\sqrt{2n}}{\\sqrt{16{n}^{4}}}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-236",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$\\sqrt{\\frac{225{x}^{3}}{49x}}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$\\frac{15x}{7}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-237",
+      "type": "paragraph",
+      "content": {
+        "text": "$\\sqrt{\\frac{225{x}^{3}}{49x}}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-238",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$3\\sqrt{44z}+\\sqrt{99z}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-239",
+      "type": "paragraph",
+      "content": {
+        "text": "$3\\sqrt{44z}+\\sqrt{99z}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-240",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$\\sqrt{50{y}^{8}}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$5{y}^{4}\\sqrt{2}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "exr-241",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$\\sqrt{490b{c}^{2}}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-242",
+      "type": "paragraph",
+      "content": {
+        "text": "$\\sqrt{490b{c}^{2}}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-243",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$\\sqrt{\\frac{32}{14d}}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$\\frac{4\\sqrt{7d}}{7d}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-244",
+      "type": "paragraph",
+      "content": {
+        "text": "$\\sqrt{\\frac{32}{14d}}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-245",
+      "type": "paragraph",
+      "content": {
+        "text": "$\\frac{4\\sqrt{7d}}{7d}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-246",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "${q}^{\\frac{3}{2}}\\sqrt{63p}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-247",
+      "type": "paragraph",
+      "content": {
+        "text": "${q}^{\\frac{3}{2}}\\sqrt{63p}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-248",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$\\frac{\\sqrt{8}}{1-\\sqrt{3x}}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$\\frac{2\\sqrt{2}+2\\sqrt{6x}}{1−3x}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-249",
+      "type": "paragraph",
+      "content": {
+        "text": "$\\frac{\\sqrt{8}}{1-\\sqrt{3x}}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-250",
+      "type": "paragraph",
+      "content": {
+        "text": "$\\frac{2\\sqrt{2}+2\\sqrt{6x}}{1−3x}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-251",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$\\sqrt{\\frac{20}{121{d}^{4}}}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-252",
+      "type": "paragraph",
+      "content": {
+        "text": "$\\sqrt{\\frac{20}{121{d}^{4}}}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-253",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "${w}^{\\frac{3}{2}}\\sqrt{32}-{w}^{\\frac{3}{2}}\\sqrt{50}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$-w\\sqrt{2w}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-254",
+      "type": "paragraph",
+      "content": {
+        "text": "${w}^{\\frac{3}{2}}\\sqrt{32}-{w}^{\\frac{3}{2}}\\sqrt{50}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-255",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$\\sqrt{108{x}^{4}}+\\sqrt{27{x}^{4}}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-256",
+      "type": "paragraph",
+      "content": {
+        "text": "$\\sqrt{108{x}^{4}}+\\sqrt{27{x}^{4}}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-257",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$\\frac{\\sqrt{12x}}{2+2\\sqrt{3}}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$\\frac{3\\sqrt{x}-\\sqrt{3x}}{2}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-258",
+      "type": "paragraph",
+      "content": {
+        "text": "$\\frac{\\sqrt{12x}}{2+2\\sqrt{3}}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-259",
+      "type": "paragraph",
+      "content": {
+        "text": "$\\frac{3\\sqrt{x}-\\sqrt{3x}}{2}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-260",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$\\sqrt{147{k}^{3}}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "exr-261",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$\\sqrt{125{n}^{10}}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$5{n}^{5}\\sqrt{5}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-262",
+      "type": "paragraph",
+      "content": {
+        "text": "$\\sqrt{125{n}^{10}}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-263",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$\\sqrt{\\frac{42q}{36{q}^{3}}}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-264",
+      "type": "paragraph",
+      "content": {
+        "text": "$\\sqrt{\\frac{42q}{36{q}^{3}}}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-265",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$\\sqrt{\\frac{81m}{361{m}^{2}}}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$\\frac{9\\sqrt{m}}{19m}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-266",
+      "type": "paragraph",
+      "content": {
+        "text": "$\\sqrt{\\frac{81m}{361{m}^{2}}}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-267",
+      "type": "paragraph",
+      "content": {
+        "text": "$\\frac{9\\sqrt{m}}{19m}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-268",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$\\sqrt{72c}-2\\sqrt{2c}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-269",
+      "type": "paragraph",
+      "content": {
+        "text": "$\\sqrt{72c}-2\\sqrt{2c}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-270",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$\\sqrt{\\frac{144}{324{d}^{2}}}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$\\frac{2}{3d}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-271",
+      "type": "paragraph",
+      "content": {
+        "text": "$\\sqrt{\\frac{144}{324{d}^{2}}}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-272",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$24{x}^{6}3+81{x}^{6}3$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-273",
+      "type": "paragraph",
+      "content": {
+        "text": "$24{x}^{6}3+81{x}^{6}3$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-274",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$\\frac{162{x}^{6}}{16{x}^{4}}4$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$\\frac{32{x}^{2}4}{2}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-275",
+      "type": "paragraph",
+      "content": {
+        "text": "$\\frac{162{x}^{6}}{16{x}^{4}}4$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-276",
+      "type": "paragraph",
+      "content": {
+        "text": "$\\frac{32{x}^{2}4}{2}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-277",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$64y3$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "exr-278",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$128{z}^{3}3-−16{z}^{3}3$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$6z23$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-279",
+      "type": "paragraph",
+      "content": {
+        "text": "$128{z}^{3}3-−16{z}^{3}3$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-280",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$1,024{c}^{10}5$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "sec-281",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Real-World Applications",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-282",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A guy wire for a suspension bridge runs from the ground diagonally to the top of the closest pylon to make a triangle. We can use the Pythagorean Theorem to find the length of guy wire needed. The square of the distance between the wire on the ground and the pylon on the ground is 90,000 feet. The square of the height of the pylon is 160,000 feet. So the length of the guy wire can be found by evaluating $\\sqrt{90,000+160,000}.$ What is the length of the guy wire?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "500 feet",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-283",
+      "type": "paragraph",
+      "content": {
+        "text": "A guy wire for a suspension bridge runs from the ground diagonally to the top of the closest pylon to make a triangle. We can use the Pythagorean Theorem to find the length of guy wire needed. The square of the distance between the wire on the ground and the pylon on the ground is 90,000 feet. The square of the height of the pylon is 160,000 feet. So the length of the guy wire can be found by evaluating $\\sqrt{90,000+160,000}.$ What is the length of the guy wire?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-284",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A car accelerates at a rate of $6-\\frac{\\sqrt{4}}{\\sqrt{t}}{m/s}^{2}$ where *t* is the time in seconds after the car moves from rest. Simplify the expression.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-285",
+      "type": "paragraph",
+      "content": {
+        "text": "A car accelerates at a rate of $6-\\frac{\\sqrt{4}}{\\sqrt{t}}{m/s}^{2}$ where *t* is the time in seconds after the car moves from rest. Simplify the expression.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-286",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Extensions",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-287",
+      "type": "paragraph",
+      "content": {
+        "text": "For the following exercises, simplify each expression.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-288",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$\\frac{\\sqrt{8}-\\sqrt{16}}{4-\\sqrt{2}}-{2}^{\\frac{1}{2}}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$\\frac{−5\\sqrt{2}−6}{7}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-289",
+      "type": "paragraph",
+      "content": {
+        "text": "$\\frac{\\sqrt{8}-\\sqrt{16}}{4-\\sqrt{2}}-{2}^{\\frac{1}{2}}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-290",
+      "type": "paragraph",
+      "content": {
+        "text": "$\\frac{−5\\sqrt{2}−6}{7}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-291",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$\\frac{{4}^{\\frac{3}{2}}-{16}^{\\frac{3}{2}}}{{8}^{\\frac{1}{3}}}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-292",
+      "type": "paragraph",
+      "content": {
+        "text": "$\\frac{{4}^{\\frac{3}{2}}-{16}^{\\frac{3}{2}}}{{8}^{\\frac{1}{3}}}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-293",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$\\frac{\\sqrt{m{n}^{3}}}{{a}^{2}\\sqrt{{c}^{−3}}}\\cdot \\frac{{a}^{−7}{n}^{−2}}{\\sqrt{{m}^{2}{c}^{4}}}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$\\frac{\\sqrt{mnc}}{{a}^{9}cmn}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-294",
+      "type": "paragraph",
+      "content": {
+        "text": "$\\frac{\\sqrt{m{n}^{3}}}{{a}^{2}\\sqrt{{c}^{−3}}}\\cdot \\frac{{a}^{−7}{n}^{−2}}{\\sqrt{{m}^{2}{c}^{4}}}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-295",
+      "type": "paragraph",
+      "content": {
+        "text": "$\\frac{\\sqrt{mnc}}{{a}^{9}cmn}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-296",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$\\frac{a}{a-\\sqrt{c}}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-297",
+      "type": "paragraph",
+      "content": {
+        "text": "$\\frac{a}{a-\\sqrt{c}}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-298",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$\\frac{x\\sqrt{64y}+4\\sqrt{y}}{\\sqrt{128y}}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$\\frac{2x+1}{2\\sqrt{2}}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-299",
+      "type": "paragraph",
+      "content": {
+        "text": "$\\frac{x\\sqrt{64y}+4\\sqrt{y}}{\\sqrt{128y}}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-300",
+      "type": "paragraph",
+      "content": {
+        "text": "$\\frac{2x+1}{2\\sqrt{2}}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-301",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$(\\frac{\\sqrt{250{x}^{2}}}{\\sqrt{100{b}^{3}}})(\\frac{7\\sqrt{b}}{\\sqrt{125x}})$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-302",
+      "type": "paragraph",
+      "content": {
+        "text": "$(\\frac{\\sqrt{250{x}^{2}}}{\\sqrt{100{b}^{3}}})(\\frac{7\\sqrt{b}}{\\sqrt{125x}})$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-303",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$\\sqrt{\\frac{643+2564}{\\sqrt{64}+\\sqrt{256}}}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$\\frac{\\sqrt{3}}{3}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-304",
+      "type": "paragraph",
+      "content": {
+        "text": "$\\sqrt{\\frac{643+2564}{\\sqrt{64}+\\sqrt{256}}}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-305",
+      "type": "paragraph",
+      "content": {
+        "text": "$\\frac{\\sqrt{3}}{3}$",
+        "inline": []
+      },
+      "level": "core"
+    }
+  ],
+  "solutions": {
+    "osbooks-college-algebra-bundle:m51242:exr-38": [
+      [
+        {
+          "kind": "math",
+          "text": "ⓐ\\sqrt{100}=10"
+        },
+        {
+          "kind": "text",
+          "text": "because"
+        },
+        {
+          "kind": "math",
+          "text": "{10}^{2}=100ⓑ\\sqrt{\\sqrt{16}}=\\sqrt{4}=2"
+        },
+        {
+          "kind": "text",
+          "text": "because"
+        },
+        {
+          "kind": "math",
+          "text": "{4}^{2}=16"
+        },
+        {
+          "kind": "text",
+          "text": "and"
+        },
+        {
+          "kind": "math",
+          "text": "{2}^{2}=4ⓒ\\sqrt{25+144}=\\sqrt{169}=13"
+        },
+        {
+          "kind": "text",
+          "text": "because"
+        },
+        {
+          "kind": "math",
+          "text": "{13}^{2}=169ⓓ\\sqrt{49}-\\sqrt{81}=7-9=−2"
+        },
+        {
+          "kind": "text",
+          "text": "because"
+        },
+        {
+          "kind": "math",
+          "text": "{7}^{2}=49"
+        },
+        {
+          "kind": "text",
+          "text": "and"
+        },
+        {
+          "kind": "math",
+          "text": "{9}^{2}=81"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51242:exr-42": [
+      [
+        {
+          "kind": "math",
+          "text": "ⓐ15ⓑ3ⓒ4ⓓ17"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51242:exr-49": [
+      [
+        {
+          "kind": "math",
+          "text": "ⓐ\\sqrt{100\\cdot 3}"
+        },
+        {
+          "kind": "text",
+          "text": "Factor perfect square from radicand"
+        },
+        {
+          "kind": "math",
+          "text": ".\\sqrt{100}\\cdot \\sqrt{3}"
+        },
+        {
+          "kind": "text",
+          "text": "Write radical expression as product of radical expressions"
+        },
+        {
+          "kind": "math",
+          "text": ".10\\sqrt{3}"
+        },
+        {
+          "kind": "text",
+          "text": "Simplify"
+        },
+        {
+          "kind": "math",
+          "text": ".ⓑ\\sqrt{81{a}^{4}{b}^{4}\\cdot 2a}"
+        },
+        {
+          "kind": "text",
+          "text": "Factor perfect square from radicand"
+        },
+        {
+          "kind": "math",
+          "text": ".\\sqrt{81{a}^{4}{b}^{4}}\\cdot \\sqrt{2a}"
+        },
+        {
+          "kind": "text",
+          "text": "Write radical expression as product of radical expressions"
+        },
+        {
+          "kind": "math",
+          "text": ".9{a}^{2}{b}^{2}\\sqrt{2a}"
+        },
+        {
+          "kind": "text",
+          "text": "Simplify"
+        },
+        {
+          "kind": "math",
+          "text": "."
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51242:exr-51": [
+      [
+        {
+          "kind": "math",
+          "text": "5|x||y|\\sqrt{2yz}."
+        },
+        {
+          "kind": "text",
+          "text": "Notice the absolute value signs around"
+        },
+        {
+          "kind": "text",
+          "text": "*x*"
+        },
+        {
+          "kind": "text",
+          "text": "and"
+        },
+        {
+          "kind": "text",
+          "text": "*y*"
+        },
+        {
+          "kind": "text",
+          "text": "? That’s because their value must be positive!"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51242:exr-56": [
+      [
+        {
+          "kind": "math",
+          "text": "\\sqrt{12\\cdot 3}"
+        },
+        {
+          "kind": "text",
+          "text": "Express the product as a single radical expression"
+        },
+        {
+          "kind": "math",
+          "text": ".\\sqrt{36}"
+        },
+        {
+          "kind": "text",
+          "text": "Simplify"
+        },
+        {
+          "kind": "math",
+          "text": ".6"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51242:exr-59": [
+      [
+        {
+          "kind": "math",
+          "text": "10|x|"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51242:exr-66": [
+      [
+        {
+          "kind": "math",
+          "text": "\\frac{\\sqrt{5}}{\\sqrt{36}}"
+        },
+        {
+          "kind": "text",
+          "text": "Write as quotient of two radical expressions"
+        },
+        {
+          "kind": "math",
+          "text": ".\\frac{\\sqrt{5}}{6}"
+        },
+        {
+          "kind": "text",
+          "text": "Simplify denominator"
+        },
+        {
+          "kind": "math",
+          "text": "."
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51242:exr-70": [
+      [
+        {
+          "kind": "math",
+          "text": "\\frac{x\\sqrt{2}}{3{y}^{2}}."
+        },
+        {
+          "kind": "text",
+          "text": "We do not need the absolute value signs for"
+        },
+        {
+          "kind": "math",
+          "text": "{y}^{2}"
+        },
+        {
+          "kind": "text",
+          "text": "because that term will always be nonnegative."
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51242:exr-74": [
+      [
+        {
+          "kind": "math",
+          "text": "\\sqrt{\\frac{234{x}^{11}y}{26{x}^{7}y}}"
+        },
+        {
+          "kind": "text",
+          "text": "Combine numerator and denominator into one radical expression"
+        },
+        {
+          "kind": "math",
+          "text": ".\\sqrt{9{x}^{4}}"
+        },
+        {
+          "kind": "text",
+          "text": "Simplify fraction"
+        },
+        {
+          "kind": "math",
+          "text": ".3{x}^{2}"
+        },
+        {
+          "kind": "text",
+          "text": "Simplify square root"
+        },
+        {
+          "kind": "math",
+          "text": "."
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51242:exr-78": [
+      [
+        {
+          "kind": "math",
+          "text": "{b}^{4}\\sqrt{3ab}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51242:exr-84": [
+      [
+        {
+          "kind": "text",
+          "text": "We can rewrite"
+        },
+        {
+          "kind": "math",
+          "text": "5\\sqrt{12}"
+        },
+        {
+          "kind": "text",
+          "text": "as"
+        },
+        {
+          "kind": "math",
+          "text": "5\\sqrt{4\\cdot 3}."
+        },
+        {
+          "kind": "text",
+          "text": "According the product rule, this becomes"
+        },
+        {
+          "kind": "math",
+          "text": "5\\sqrt{4}\\sqrt{3}."
+        },
+        {
+          "kind": "text",
+          "text": "The square root of"
+        },
+        {
+          "kind": "math",
+          "text": "\\sqrt{4}"
+        },
+        {
+          "kind": "text",
+          "text": "is 2, so the expression becomes"
+        },
+        {
+          "kind": "math",
+          "text": "5(2)\\sqrt{3},"
+        },
+        {
+          "kind": "text",
+          "text": "which is"
+        },
+        {
+          "kind": "math",
+          "text": "10\\sqrt{3}."
+        },
+        {
+          "kind": "text",
+          "text": "Now the terms have the same radicand so we can add."
+        }
+      ],
+      [
+        {
+          "kind": "math",
+          "text": "10\\sqrt{3}+2\\sqrt{3}=12\\sqrt{3}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51242:exr-88": [
+      [
+        {
+          "kind": "math",
+          "text": "13\\sqrt{5}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51242:exr-91": [
+      [
+        {
+          "kind": "text",
+          "text": "Factor 9 out of the first term so that both terms have equal radicands."
+        }
+      ],
+      [
+        {
+          "kind": "math",
+          "text": "20\\sqrt{72{a}^{3}{b}^{4}c}=20\\sqrt{9}=20\\sqrt{9}\\sqrt{8}=20(3)\\sqrt{8}=60\\sqrt{8}"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "So"
+        }
+      ],
+      [
+        {
+          "kind": "math",
+          "text": "20\\sqrt{72}-14\\sqrt{8}=60\\sqrt{8}-14\\sqrt{8}=46\\sqrt{8}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51242:exr-94": [
+      [
+        {
+          "kind": "math",
+          "text": "0"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51242:exr-103": [
+      [
+        {
+          "kind": "text",
+          "text": "The radical in the denominator is"
+        },
+        {
+          "kind": "math",
+          "text": "\\sqrt{10}."
+        },
+        {
+          "kind": "text",
+          "text": "So multiply the fraction by"
+        },
+        {
+          "kind": "math",
+          "text": "\\frac{\\sqrt{10}}{\\sqrt{10}}."
+        },
+        {
+          "kind": "text",
+          "text": "Then simplify."
+        }
+      ],
+      [
+        {
+          "kind": "math",
+          "text": "\\frac{2\\sqrt{3}}{3\\sqrt{10}}\\cdot \\frac{\\sqrt{10}}{\\sqrt{10}}\\frac{2\\sqrt{30}}{30}\\frac{\\sqrt{30}}{15}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51242:exr-106": [
+      [
+        {
+          "kind": "math",
+          "text": "6\\sqrt{6}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51242:exr-110": [
+      [
+        {
+          "kind": "text",
+          "text": "Begin by finding the conjugate of the denominator by writing the denominator and changing the sign. So the conjugate of"
+        },
+        {
+          "kind": "math",
+          "text": "1+\\sqrt{5}"
+        },
+        {
+          "kind": "text",
+          "text": "is"
+        },
+        {
+          "kind": "math",
+          "text": "1-\\sqrt{5}."
+        },
+        {
+          "kind": "text",
+          "text": "Then multiply the fraction by"
+        },
+        {
+          "kind": "math",
+          "text": "\\frac{1-\\sqrt{5}}{1-\\sqrt{5}}."
+        }
+      ],
+      [
+        {
+          "kind": "math",
+          "text": "\\frac{4}{1+\\sqrt{5}}\\cdot \\frac{1-\\sqrt{5}}{1-\\sqrt{5}}\\frac{4-4\\sqrt{5}}{-4}"
+        },
+        {
+          "kind": "text",
+          "text": "Use the distributive property"
+        },
+        {
+          "kind": "math",
+          "text": ".\\sqrt{5}-1"
+        },
+        {
+          "kind": "text",
+          "text": "Simplify"
+        },
+        {
+          "kind": "math",
+          "text": "."
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51242:exr-113": [
+      [
+        {
+          "kind": "math",
+          "text": "14−7\\sqrt{3}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51242:exr-123": [
+      [
+        {
+          "kind": "math",
+          "text": "ⓐ−325=−2"
+        },
+        {
+          "kind": "text",
+          "text": "because"
+        },
+        {
+          "kind": "math",
+          "text": "{(−2)}^{5}=−32ⓑ"
+        },
+        {
+          "kind": "text",
+          "text": "First, express the product as a single radical expression."
+        },
+        {
+          "kind": "math",
+          "text": "4,0964=8"
+        },
+        {
+          "kind": "text",
+          "text": "because"
+        },
+        {
+          "kind": "math",
+          "text": "{8}^{4}=4,096ⓒ\\frac{-8{x}^{6}3}{1253}"
+        },
+        {
+          "kind": "text",
+          "text": "Write as quotient of two radical expressions"
+        },
+        {
+          "kind": "math",
+          "text": ".\\frac{-2{x}^{2}}{5}"
+        },
+        {
+          "kind": "text",
+          "text": "Simplify"
+        },
+        {
+          "kind": "math",
+          "text": ".ⓓ834-234"
+        },
+        {
+          "kind": "text",
+          "text": "Simplify to get equal radicands"
+        },
+        {
+          "kind": "math",
+          "text": ".634Add."
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51242:exr-125": [
+      [
+        {
+          "kind": "math",
+          "text": "ⓐ−6ⓑ6ⓒ8893"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51242:exr-133": [
+      [
+        {
+          "kind": "text",
+          "text": "The 2 tells us the power and the 3 tells us the root."
+        }
+      ],
+      [
+        {
+          "kind": "math",
+          "text": "{343}^{\\frac{2}{3}}={(3433)}^{2}={343}^{2}3"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "We know that"
+        },
+        {
+          "kind": "math",
+          "text": "3433=7"
+        },
+        {
+          "kind": "text",
+          "text": "because"
+        },
+        {
+          "kind": "math",
+          "text": "{7}^{3}=343."
+        },
+        {
+          "kind": "text",
+          "text": "Because the cube root is easy to find, it is easiest to find the cube root before squaring for this problem. In general, it is easier to find the root first and then raise it to a power."
+        }
+      ],
+      [
+        {
+          "kind": "math",
+          "text": "{343}^{\\frac{2}{3}}={(3433)}^{2}={7}^{2}=49"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51242:exr-139": [
+      [
+        {
+          "kind": "math",
+          "text": "{(\\sqrt{9})}^{5}={3}^{5}=243"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51242:exr-143": [
+      [
+        {
+          "kind": "text",
+          "text": "The power is 2 and the root is 7, so the rational exponent will be"
+        },
+        {
+          "kind": "math",
+          "text": "\\frac{2}{7}."
+        },
+        {
+          "kind": "text",
+          "text": "We get"
+        },
+        {
+          "kind": "math",
+          "text": "\\frac{4}{{a}^{\\frac{2}{7}}}."
+        },
+        {
+          "kind": "text",
+          "text": "Using properties of exponents, we get"
+        },
+        {
+          "kind": "math",
+          "text": "\\frac{4}{{a}^{2}7}=4{a}^{\\frac{−2}{7}}."
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51242:exr-146": [
+      [
+        {
+          "kind": "math",
+          "text": "x{(5y)}^{\\frac{9}{2}}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51242:exr-150": [
+      [
+        {
+          "kind": "math",
+          "text": "ⓐ30{x}^{\\frac{3}{4}}{x}^{\\frac{1}{5}}"
+        },
+        {
+          "kind": "text",
+          "text": "Multiply the coefficients"
+        },
+        {
+          "kind": "math",
+          "text": ".30{x}^{\\frac{3}{4}+\\frac{1}{5}}"
+        },
+        {
+          "kind": "text",
+          "text": "Use properties of exponents"
+        },
+        {
+          "kind": "math",
+          "text": ".30{x}^{\\frac{19}{20}}"
+        },
+        {
+          "kind": "text",
+          "text": "Simplify"
+        },
+        {
+          "kind": "math",
+          "text": "."
+        }
+      ],
+      [
+        {
+          "kind": "math",
+          "text": "ⓑ{(\\frac{9}{16})}^{\\frac{1}{2}}"
+        },
+        {
+          "kind": "text",
+          "text": "Use definition of negative exponents"
+        },
+        {
+          "kind": "math",
+          "text": ".\\sqrt{\\frac{9}{16}}"
+        },
+        {
+          "kind": "text",
+          "text": "Rewrite as a radical"
+        },
+        {
+          "kind": "math",
+          "text": ".\\frac{\\sqrt{9}}{\\sqrt{16}}"
+        },
+        {
+          "kind": "text",
+          "text": "Use the quotient rule"
+        },
+        {
+          "kind": "math",
+          "text": ".\\frac{3}{4}"
+        },
+        {
+          "kind": "text",
+          "text": "Simplify"
+        },
+        {
+          "kind": "math",
+          "text": "."
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51242:exr-153": [
+      [
+        {
+          "kind": "math",
+          "text": "28{x}^{\\frac{23}{15}}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51242:exr-160": [
+      [
+        {
+          "kind": "text",
+          "text": "When there is no index, it is assumed to be 2 or the square root. The expression would only be equal to the radicand if the index were 1."
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51242:exr-165": [
+      [
+        {
+          "kind": "text",
+          "text": "The principal square root is the nonnegative root of the number."
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51242:exr-172": [
+      [
+        {
+          "kind": "text",
+          "text": "16"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51242:exr-174": [
+      [
+        {
+          "kind": "text",
+          "text": "10"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51242:exr-177": [
+      [
+        {
+          "kind": "text",
+          "text": "14"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51242:exr-179": [
+      [
+        {
+          "kind": "math",
+          "text": "7\\sqrt{2}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51242:exr-182": [
+      [
+        {
+          "kind": "math",
+          "text": "\\frac{9\\sqrt{5}}{5}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51242:exr-186": [
+      [
+        {
+          "kind": "text",
+          "text": "25"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51242:exr-190": [
+      [
+        {
+          "kind": "math",
+          "text": "\\sqrt{2}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51242:exr-193": [
+      [
+        {
+          "kind": "math",
+          "text": "2\\sqrt{6}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51242:exr-197": [
+      [
+        {
+          "kind": "math",
+          "text": "5\\sqrt{6}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51242:exr-200": [
+      [
+        {
+          "kind": "math",
+          "text": "6\\sqrt{35}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51242:exr-204": [
+      [
+        {
+          "kind": "math",
+          "text": "\\frac{2}{15}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51242:exr-208": [
+      [
+        {
+          "kind": "math",
+          "text": "\\frac{6\\sqrt{10}}{19}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51242:exr-213": [
+      [
+        {
+          "kind": "math",
+          "text": "-\\frac{1+\\sqrt{17}}{2}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51242:exr-217": [
+      [
+        {
+          "kind": "math",
+          "text": "723"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51242:exr-219": [
+      [
+        {
+          "kind": "math",
+          "text": "15\\sqrt{5}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51242:exr-223": [
+      [
+        {
+          "kind": "math",
+          "text": "20{x}^{2}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51242:exr-225": [
+      [
+        {
+          "kind": "math",
+          "text": "7\\sqrt{p}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51242:exr-228": [
+      [
+        {
+          "kind": "math",
+          "text": "17{m}^{2}\\sqrt{m}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51242:exr-232": [
+      [
+        {
+          "kind": "math",
+          "text": "2b\\sqrt{a}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51242:exr-236": [
+      [
+        {
+          "kind": "math",
+          "text": "\\frac{15x}{7}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51242:exr-240": [
+      [
+        {
+          "kind": "math",
+          "text": "5{y}^{4}\\sqrt{2}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51242:exr-243": [
+      [
+        {
+          "kind": "math",
+          "text": "\\frac{4\\sqrt{7d}}{7d}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51242:exr-248": [
+      [
+        {
+          "kind": "math",
+          "text": "\\frac{2\\sqrt{2}+2\\sqrt{6x}}{1−3x}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51242:exr-253": [
+      [
+        {
+          "kind": "math",
+          "text": "-w\\sqrt{2w}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51242:exr-257": [
+      [
+        {
+          "kind": "math",
+          "text": "\\frac{3\\sqrt{x}-\\sqrt{3x}}{2}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51242:exr-261": [
+      [
+        {
+          "kind": "math",
+          "text": "5{n}^{5}\\sqrt{5}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51242:exr-265": [
+      [
+        {
+          "kind": "math",
+          "text": "\\frac{9\\sqrt{m}}{19m}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51242:exr-270": [
+      [
+        {
+          "kind": "math",
+          "text": "\\frac{2}{3d}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51242:exr-274": [
+      [
+        {
+          "kind": "math",
+          "text": "\\frac{32{x}^{2}4}{2}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51242:exr-278": [
+      [
+        {
+          "kind": "math",
+          "text": "6z23"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51242:exr-282": [
+      [
+        {
+          "kind": "text",
+          "text": "500 feet"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51242:exr-288": [
+      [
+        {
+          "kind": "math",
+          "text": "\\frac{−5\\sqrt{2}−6}{7}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51242:exr-293": [
+      [
+        {
+          "kind": "math",
+          "text": "\\frac{\\sqrt{mnc}}{{a}^{9}cmn}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51242:exr-298": [
+      [
+        {
+          "kind": "math",
+          "text": "\\frac{2x+1}{2\\sqrt{2}}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51242:exr-303": [
+      [
+        {
+          "kind": "math",
+          "text": "\\frac{\\sqrt{3}}{3}"
+        }
+      ]
+    ]
+  }
+}

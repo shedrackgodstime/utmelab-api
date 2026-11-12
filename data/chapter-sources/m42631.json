@@ -1,0 +1,882 @@
+{
+  "module": "m42631",
+  "source_attribution": {
+    "publisher": "OpenStax",
+    "book": "osbooks-college-physics-bundle",
+    "section": "m42631",
+    "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42631/index.cnxml",
+    "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)",
+    "locator": "CNXML module index.cnxml (typed elements, solutions present)"
+  },
+  "blocks": [
+    {
+      "id": "sec-0",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Learning Objectives",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-1",
+      "type": "paragraph",
+      "content": {
+        "text": "By the end of this section, you will be able to:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-2",
+      "type": "paragraph",
+      "content": {
+        "text": "What is inside the nucleus? Why are some nuclei stable while others decay? (See .) Why are there different types of decay ( $α$ , $β$ and $γ$ )? Why are nuclear decay energies so large? Pursuing natural questions like these has led to far more fundamental discoveries than you might imagine.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-1",
+      "type": "figure",
+      "asset_url": "images/phy_m42631_Figure_32_03_01a.jpg",
+      "caption": {
+        "text": "Why is most of the carbon in this coal stable (a), while the uranium in the disk (b) slowly decays over billions of years? Why is cesium in this ampule (c) even less stable than the uranium, decaying in far less than 1/1,000,000 the time? What is the reason uranium and cesium undergo different types of decay ( $α$ and $β$ , respectively)? (credits: (a) Bresson Thomas, Wikimedia Commons; (b) U.S. Department of Energy; (c) Tomihahndorf, Wikimedia Commons)",
+        "inline": []
+      },
+      "alt": "The first image shows a lump of coal. The second image shows a pair of hands holding a metal uranium disk. Third image shows a cylindrical glass tube containing slivery-brown cesium.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-4",
+      "type": "paragraph",
+      "content": {
+        "text": "We have already identified protons as the particles that carry positive charge in the nuclei. However, there are actually *two* types of particles in the nuclei—the *proton* and the *neutron* , referred to collectively as nucleons , the constituents of nuclei. As its name implies, the neutron is a neutral particle ( $q=0$ ) that has nearly the same mass and intrinsic spin as the proton. compares the masses of protons, neutrons, and electrons. Note how close the proton and neutron masses are, but the neutron is slightly more massive once you look past the third digit. Both nucleons are much more massive than an electron. In fact, ${m}_{p}=1836{m}_{e}$ (as noted in Medical Applications of Nuclear Physics and ${m}_{n}=1839{m}_{e}$ .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-5",
+      "type": "paragraph",
+      "content": {
+        "text": "also gives masses in terms of mass units that are more convenient than kilograms on the atomic and nuclear scale. The first of these is the *unified atomic mass unit* (u), defined as",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-6",
+      "type": "paragraph",
+      "content": {
+        "text": "This unit is defined so that a neutral carbon ${}^{12}C$ atom has a mass of exactly 12 u. Masses are also expressed in units of $MeV/{c}^{2}$ . These units are very convenient when considering the conversion of mass into energy (and vice versa), as is so prominent in nuclear processes. Using $E={mc}^{2}$ and units of $m$ in $MeV/{c}^{2}$ , we find that ${c}^{2}$ cancels and $E$ comes out conveniently in MeV. For example, if the rest mass of a proton is converted entirely into energy, then",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-7",
+      "type": "paragraph",
+      "content": {
+        "text": "It is useful to note that 1 u of mass converted to energy produces 931.5 MeV, or",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-8",
+      "type": "paragraph",
+      "content": {
+        "text": "All properties of a nucleus are determined by the number of protons and neutrons it has. A specific combination of protons and neutrons is called a nuclide and is a unique nucleus. The following notation is used to represent a particular nuclide:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-9",
+      "type": "paragraph",
+      "content": {
+        "text": "where the symbols $A$ , $X$ , $Z$ , and $N$ are defined as follows: The *number of protons in a nucleus* is the atomic number $Z$ , as defined in Medical Applications of Nuclear Physics . X is the *symbol for the element* , such as Ca for calcium. However, once $Z$ is known, the element is known; hence, $Z$ and $X$ are redundant. For example, $Z=20$ is always calcium, and calcium always has $Z=20$ . $N$ is the *number of neutrons* in a nucleus. In the notation for a nuclide, the subscript $N$ is usually omitted. The symbol $A$ is defined as the number of nucleons or the *total number of protons and neutrons* ,",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-10",
+      "type": "paragraph",
+      "content": {
+        "text": "where $A$ is also called the mass number . This name for $A$ is logical; the mass of an atom is nearly equal to the mass of its nucleus, since electrons have so little mass. The mass of the nucleus turns out to be nearly equal to the sum of the masses of the protons and neutrons in it, which is proportional to $A$ . In this context, it is particularly convenient to express masses in units of u. Both protons and neutrons have masses close to 1 u, and so the mass of an atom is close to $A$ u. For example, in an oxygen nucleus with eight protons and eight neutrons, $A=16$ , and its mass is 16 u. As noticed, the unified atomic mass unit is defined so that a neutral carbon atom (actually a ${}^{12}C$ atom) has a mass of *exactly* 12 $u$ . Carbon was chosen as the standard, partly because of its importance in organic chemistry (see Appendix A ).",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "tbl-11",
+      "type": "table",
+      "title": {
+        "text": "Table",
+        "inline": []
+      },
+      "rows": [
+        [
+          "Particle",
+          "Symbol",
+          "kg",
+          "u",
+          "MeV/ *c* 2"
+        ],
+        [
+          "Proton",
+          "*p*",
+          "$1.67262×{10}^{-27}$",
+          "1.007276",
+          "938.27"
+        ],
+        [
+          "Neutron",
+          "*n*",
+          "$1.67493×{10}^{-27}$",
+          "1.008665",
+          "939.57"
+        ],
+        [
+          "Electron",
+          "*e*",
+          "$9.1094×{10}^{-31}$",
+          "0.00054858",
+          "0.511"
+        ]
+      ],
+      "alt": "Table with 4 rows",
+      "level": "core"
+    },
+    {
+      "id": "p-12",
+      "type": "paragraph",
+      "content": {
+        "text": "Let us look at a few examples of nuclides expressed in the ${}_{Z}^{A}{X}_{N}$ notation. The nucleus of the simplest atom, hydrogen, is a single proton, or ${}_{1}^{1}H$ (the zero for no neutrons is often omitted). To check this symbol, refer to the periodic table—you see that the atomic number $Z$ of hydrogen is 1. Since you are given that there are no neutrons, the mass number $A$ is also 1. Suppose you are told that the helium nucleus or $α$ particle has two protons and two neutrons. You can then see that it is written ${}_{2}^{4}{He}_{2}$ . There is a scarce form of hydrogen found in nature called deuterium; its nucleus has one proton and one neutron and, hence, twice the mass of common hydrogen. The symbol for deuterium is, thus, ${}_{1}^{2}{H}_{1}$ (sometimes $D$ is used, as for deuterated water ${D}_{2}O$ ). An even rarer—and radioactive—form of hydrogen is called tritium, since it has a single proton and two neutrons, and it is written ${}_{1}^{3}{H}_{2}$ . These three varieties of hydrogen have nearly identical chemistries, but the nuclei differ greatly in mass, stability, and other characteristics. Nuclei (such as those of hydrogen) having the same $Z$ and different $N$ s are defined to be isotopes of the same element.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-13",
+      "type": "paragraph",
+      "content": {
+        "text": "There is some redundancy in the symbols $A$ , $X$ , $Z$ , and $N$ . If the element $X$ is known, then $Z$ can be found in a periodic table and is always the same for a given element. If both $A$ and $X$ are known, then $N$ can also be determined (first find $Z$ ; then, $N=A-Z$ ). Thus the simpler notation for nuclides is",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-14",
+      "type": "paragraph",
+      "content": {
+        "text": "which is sufficient and is most commonly used. For example, in this simpler notation, the three isotopes of hydrogen are ${}^{1}H,{}^{2}H,$ and ${}^{3}H,$ while the $α$ particle is ${}^{4}He$ . We read this backward, saying helium-4 for ${}^{4}He$ , or uranium-238 for ${}^{238}U$ . So for ${}^{238}U$ , should we need to know, we can determine that $Z=92$ for uranium from the periodic table, and, thus, $N=238-92=146$ .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-15",
+      "type": "paragraph",
+      "content": {
+        "text": "A variety of experiments indicate that a nucleus behaves something like a tightly packed ball of nucleons, as illustrated in . These nucleons have large kinetic energies and, thus, move rapidly in very close contact. Nucleons can be separated by a large force, such as in a collision with another nucleus, but resist strongly being pushed closer together. The most compelling evidence that nucleons are closely packed in a nucleus is that the radius of a nucleus , $r$ , is found to be given approximately by",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-16",
+      "type": "paragraph",
+      "content": {
+        "text": "where ${r}_{0}=1.2 fm$ and $A$ is the mass number of the nucleus. Note that ${r}^{3}∝A$ . Since many nuclei are spherical, and the volume of a sphere is $V=(4/3){πr}^{3}$ , we see that $V∝A$ —that is, the volume of a nucleus is proportional to the number of nucleons in it. This is what would happen if you pack nucleons so closely that there is no empty space between them.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-2",
+      "type": "figure",
+      "asset_url": "images/phy_m42631_Figure_32_03_02a.jpg",
+      "caption": {
+        "text": "A model of the nucleus.",
+        "inline": []
+      },
+      "alt": "This figure shows group of small green and blue spherical objects placed very close to each other forming a bigger sphere representing the nucleus. Blue spheres are labeled as protons and green spheres are labeled as neutrons.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-18",
+      "type": "paragraph",
+      "content": {
+        "text": "Nucleons are held together by nuclear forces and resist both being pulled apart and pushed inside one another. The volume of the nucleus is the sum of the volumes of the nucleons in it, here shown in different colors to represent protons and neutrons.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "ex-19",
+      "type": "example",
+      "kind": "worked",
+      "title": {
+        "text": "How Small and Dense Is a Nucleus?",
+        "inline": []
+      },
+      "problem": {
+        "text": "",
+        "inline": []
+      },
+      "answer": null,
+      "level": "core"
+    },
+    {
+      "id": "p-20",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) Find the radius of an iron-56 nucleus. (b) Find its approximate density in $kg/{m}^{3}$ , approximating the mass of ${}^{56}Fe$ to be 56 u.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-21",
+      "type": "paragraph",
+      "content": {
+        "text": "Strategy and Concept",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-22",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) Finding the radius of ${}^{56}Fe$ is a straightforward application of $r={r}_{0}{A}^{1/3},$ given $A=56$ . (b) To find the approximate density, we assume the nucleus is spherical (this one actually is), calculate its volume using the radius found in part (a), and then find its density from $ρ=m/V$ . Finally, we will need to convert density from units of $u/{fm}^{3}$ to $kg/{m}^{3}$ .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-23",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) The radius of a nucleus is given by",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-24",
+      "type": "paragraph",
+      "content": {
+        "text": "Substituting the values for ${r}_{0}$ and $A$ yields",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-25",
+      "type": "paragraph",
+      "content": {
+        "text": "(b) Density is defined to be $ρ=m/V$ , which for a sphere of radius $r$ is",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-26",
+      "type": "paragraph",
+      "content": {
+        "text": "Substituting known values gives",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-27",
+      "type": "paragraph",
+      "content": {
+        "text": "Converting to units of $kg/{m}^{3}$ , we find",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-28",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) The radius of this medium-sized nucleus is found to be approximately 4.6 fm, and so its diameter is about 10 fm, or ${10}^{–14}m$ . In our discussion of Rutherford’s discovery of the nucleus, we noticed that it is about ${10}^{–15}m$ in diameter (which is for lighter nuclei), consistent with this result to an order of magnitude. The nucleus is much smaller in diameter than the typical atom, which has a diameter of the order of ${10}^{–10}m$ .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-29",
+      "type": "paragraph",
+      "content": {
+        "text": "(b) The density found here is so large as to cause disbelief. It is consistent with earlier discussions we have had about the nucleus being very small and containing nearly all of the mass of the atom. Nuclear densities, such as found here, are about $2×{10}^{14}$ times greater than that of water, which has a density of “only” ${10}^{3}{kg/m}^{3}$ . One cubic meter of nuclear matter, such as found in a neutron star, has the same mass as a cube of water 61 km on a side.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-30",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Nuclear Forces and Stability",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-31",
+      "type": "paragraph",
+      "content": {
+        "text": "What forces hold a nucleus together? The nucleus is very small and its protons, being positive, exert tremendous repulsive forces on one another. (The Coulomb force increases as charges get closer, since it is proportional to $1/{r}^{2}$ , even at the tiny distances found in nuclei.) The answer is that two previously unknown forces hold the nucleus together and make it into a tightly packed ball of nucleons. These forces are called the *weak and strong nuclear forces* . Nuclear forces are so short ranged that they fall to zero strength when nucleons are separated by only a few fm. However, like glue, they are strongly attracted when the nucleons get close to one another. The strong nuclear force is about 100 times more attractive than the repulsive EM force, easily holding the nucleons together. Nuclear forces become extremely repulsive if the nucleons get too close, making nucleons strongly resist being pushed inside one another, something like ball bearings.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-32",
+      "type": "paragraph",
+      "content": {
+        "text": "The fact that nuclear forces are very strong is responsible for the very large energies emitted in nuclear decay. During decay, the forces do work, and since work is force times the distance ( $W=Fdcosθ$ ), a large force can result in a large emitted energy. In fact, we know that there are *two* distinct nuclear forces because of the different types of nuclear decay—the strong nuclear force is responsible for $α$ decay, while the weak nuclear force is responsible for $β$ decay.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-33",
+      "type": "paragraph",
+      "content": {
+        "text": "The many stable and unstable nuclei we have explored, and the hundreds we have not discussed, can be arranged in a table called the chart of the nuclides , a simplified version of which is shown in . Nuclides are located on a plot of $N$ versus $Z$ . Examination of a detailed chart of the nuclides reveals patterns in the characteristics of nuclei, such as stability, abundance, and types of decay, analogous to but more complex than the systematics in the periodic table of the elements.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-3",
+      "type": "figure",
+      "asset_url": "images/phy_m42631_Figure_32_03_03a.jpg",
+      "caption": {
+        "text": "Simplified chart of the nuclides, a graph of $N$ versus $Z$ for known nuclides. The patterns of stable and unstable nuclides reveal characteristics of the nuclear forces. The dashed line is for $N=Z$ . Numbers along diagonals are mass numbers $A$ .",
+        "inline": []
+      },
+      "alt": "A chart of nuclides is shown with x axis labeled as number of protons or atomic number with range zero to one hundred ten and y axis labeled as number of neutrons with range zero to one hundred sixty. A straight dashed line is shown for equal atomic number and number of nuclides. A number of points are plotted above the dashed line. The region up to atomic number eighty and neutron number one hundred thirty is shown as stable nuclei and above this region is unstable nuclei.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-35",
+      "type": "paragraph",
+      "content": {
+        "text": "In principle, a nucleus can have any combination of protons and neutrons, but shows a definite pattern for those that are stable. For low-mass nuclei, there is a strong tendency for $N$ and $Z$ to be nearly equal. This means that the nuclear force is more attractive when $N=Z$ . More detailed examination reveals greater stability when $N$ and $Z$ are even numbers—nuclear forces are more attractive when neutrons and protons are in pairs. For increasingly higher masses, there are progressively more neutrons than protons in stable nuclei. This is due to the ever-growing repulsion between protons. Since nuclear forces are short ranged, and the Coulomb force is long ranged, an excess of neutrons keeps the protons a little farther apart, reducing Coulomb repulsion. Decay modes of nuclides out of the region of stability consistently produce nuclides closer to the region of stability. There are more stable nuclei having certain numbers of protons and neutrons, called magic numbers . Magic numbers indicate a shell structure for the nucleus in which closed shells are more stable. Nuclear shell theory has been very successful in explaining nuclear energy levels, nuclear decay, and the greater stability of nuclei with closed shells. We have been producing ever-heavier transuranic elements since the early 1940s, and we have now produced the element with $Z=118$ . There are theoretical predictions of an island of relative stability for nuclei with such high $Z$ s.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-4",
+      "type": "figure",
+      "asset_url": "images/phy_m42631_Figure_32_03_04a.jpg",
+      "caption": {
+        "text": "The German-born American physicist Maria Goeppert Mayer (1906–1972) shared the 1963 Nobel Prize in physics with J. Jensen for the creation of the nuclear shell model. This successful nuclear model has nucleons filling shells analogous to electron shells in atoms. It was inspired by patterns observed in nuclear properties. (credit: Nobel Foundation via Wikimedia Commons)",
+        "inline": []
+      },
+      "alt": "Portrait of Maria Goeppert Mayer",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "sec-37",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Test Prep for AP Courses",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-38",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A typical carbon nucleus contains 6 neutrons and 6 protons. The 6 protons are all positively charged and in very close proximity, with separations on the order of 10 -15 meters, which should result in an enormous repulsive force. What prevents the nucleus from dismantling itself due to the repulsion of the electric force? The attractive nature of the strong nuclear force overpowers the electric force.; The weak nuclear force barely offsets the electric force.; Magnetic forces generated by the orbiting electrons create a stable minimum in which the nuclear charged particles reside.; The attractive electric force of the surrounding electrons is equal in all directions and cancels out, leaving no net electric force.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a)",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-39",
+      "type": "paragraph",
+      "content": {
+        "text": "A typical carbon nucleus contains 6 neutrons and 6 protons. The 6 protons are all positively charged and in very close proximity, with separations on the order of 10 -15 meters, which should result in an enormous repulsive force. What prevents the nucleus from dismantling itself due to the repulsion of the electric force?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-40",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Section Summary",
+        "inline": []
+      }
+    },
+    {
+      "id": "sec-41",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Conceptual Questions",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-42",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "The weak and strong nuclear forces are basic to the structure of matter. Why we do not experience them directly?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-43",
+      "type": "paragraph",
+      "content": {
+        "text": "The weak and strong nuclear forces are basic to the structure of matter. Why we do not experience them directly?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-44",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Define and make clear distinctions between the terms neutron, nucleon, nucleus, nuclide, and neutrino.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-45",
+      "type": "paragraph",
+      "content": {
+        "text": "Define and make clear distinctions between the terms neutron, nucleon, nucleus, nuclide, and neutrino.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-46",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "What are isotopes? Why do different isotopes of the same element have similar chemistries?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-47",
+      "type": "paragraph",
+      "content": {
+        "text": "What are isotopes? Why do different isotopes of the same element have similar chemistries?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-48",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Problems & Exercises",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-49",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Verify that a $2.3×{10}^{17}kg$ mass of water at normal density would make a cube 60 km on a side, as claimed in . (This mass at nuclear density would make a cube 1.0 m on a side.)",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "\\[$m=ρV={ρd}^{3}⇒a={(\\frac{m}{ρ})}^{1/3}={(\\frac{2.3×{10}^{17}kg}{1000{kg/m}^{3}})}^{\\frac{1}{3}}=61×{10}^{3}m=61 km$\\]",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-50",
+      "type": "paragraph",
+      "content": {
+        "text": "Verify that a $2.3×{10}^{17}kg$ mass of water at normal density would make a cube 60 km on a side, as claimed in . (This mass at nuclear density would make a cube 1.0 m on a side.)",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-51",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Find the length of a side of a cube having a mass of 1.0 kg and the density of nuclear matter, taking this to be $2.3×{10}^{17}{kg/m}^{3}$ .",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-52",
+      "type": "paragraph",
+      "content": {
+        "text": "Find the length of a side of a cube having a mass of 1.0 kg and the density of nuclear matter, taking this to be $2.3×{10}^{17}{kg/m}^{3}$ .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-53",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "What is the radius of an $α$ particle?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$1.9 fm$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-54",
+      "type": "paragraph",
+      "content": {
+        "text": "What is the radius of an $α$ particle?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-55",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Find the radius of a ${}^{238}Pu$ nucleus. ${}^{238}Pu$ is a manufactured nuclide that is used as a power source on some space probes.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-56",
+      "type": "paragraph",
+      "content": {
+        "text": "Find the radius of a ${}^{238}Pu$ nucleus. ${}^{238}Pu$ is a manufactured nuclide that is used as a power source on some space probes.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-57",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "(a) Calculate the radius of ${}^{58}Ni$ , one of the most tightly bound stable nuclei. (b) What is the ratio of the radius of ${}^{58}Ni$ to that of ${}^{258}Ha$ , one of the largest nuclei ever made? Note that the radius of the largest nucleus is still much smaller than the size of an atom.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a) $4.6 fm$ (b) $0.61 to 1$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-58",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) Calculate the radius of ${}^{58}Ni$ , one of the most tightly bound stable nuclei.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-59",
+      "type": "paragraph",
+      "content": {
+        "text": "(b) What is the ratio of the radius of ${}^{58}Ni$ to that of ${}^{258}Ha$ , one of the largest nuclei ever made? Note that the radius of the largest nucleus is still much smaller than the size of an atom.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-60",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "The unified atomic mass unit is defined to be $1u=1.6605×{10}^{−27}kg$ . Verify that this amount of mass converted to energy yields 931.5 MeV. Note that you must use four-digit or better values for $c$ and $∣{q}_{e}∣$ .",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-61",
+      "type": "paragraph",
+      "content": {
+        "text": "The unified atomic mass unit is defined to be $1u=1.6605×{10}^{−27}kg$ . Verify that this amount of mass converted to energy yields 931.5 MeV. Note that you must use four-digit or better values for $c$ and $∣{q}_{e}∣$ .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-62",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "What is the ratio of the velocity of a $β$ particle to that of an $α$ particle, if they have the same nonrelativistic kinetic energy?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$85.4 to 1$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-63",
+      "type": "paragraph",
+      "content": {
+        "text": "What is the ratio of the velocity of a $β$ particle to that of an $α$ particle, if they have the same nonrelativistic kinetic energy?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-64",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "If a 1.50-cm-thick piece of lead can absorb 90.0% of the $γ$ rays from a radioactive source, how many centimeters of lead are needed to absorb all but 0.100% of the $γ$ rays?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-65",
+      "type": "paragraph",
+      "content": {
+        "text": "If a 1.50-cm-thick piece of lead can absorb 90.0% of the $γ$ rays from a radioactive source, how many centimeters of lead are needed to absorb all but 0.100% of the $γ$ rays?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-66",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "The detail observable using a probe is limited by its wavelength. Calculate the energy of a $γ$ -ray photon that has a wavelength of $1×{10}^{-16}m$ , small enough to detect details about one-tenth the size of a nucleon. Note that a photon having this energy is difficult to produce and interacts poorly with the nucleus, limiting the practicability of this probe.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$12.4 GeV$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-67",
+      "type": "paragraph",
+      "content": {
+        "text": "The detail observable using a probe is limited by its wavelength. Calculate the energy of a $γ$ -ray photon that has a wavelength of $1×{10}^{-16}m$ , small enough to detect details about one-tenth the size of a nucleon. Note that a photon having this energy is difficult to produce and interacts poorly with the nucleus, limiting the practicability of this probe.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-68",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "(a) Show that if you assume the average nucleus is spherical with a radius $r={r}_{0}{A}^{1/3}$ , and with a mass of $A$ u, then its density is independent of $A$ . (b) Calculate that density in ${u/fm}^{3}$ and ${kg/m}^{3}$ , and compare your results with those found in for ${}^{56}Fe$ .",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-69",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) Show that if you assume the average nucleus is spherical with a radius $r={r}_{0}{A}^{1/3}$ , and with a mass of $A$ u, then its density is independent of $A$ .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-70",
+      "type": "paragraph",
+      "content": {
+        "text": "(b) Calculate that density in ${u/fm}^{3}$ and ${kg/m}^{3}$ , and compare your results with those found in for ${}^{56}Fe$ .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-71",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "What is the ratio of the velocity of a 5.00-MeV $β$ ray to that of an $α$ particle with the same kinetic energy? This should confirm that $β$ s travel much faster than $α$ s even when relativity is taken into consideration. (See also .)",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "19.3 to 1",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-72",
+      "type": "paragraph",
+      "content": {
+        "text": "What is the ratio of the velocity of a 5.00-MeV $β$ ray to that of an $α$ particle with the same kinetic energy? This should confirm that $β$ s travel much faster than $α$ s even when relativity is taken into consideration. (See also .)",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-73",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "(a) What is the kinetic energy in MeV of a $β$ ray that is traveling at $0.998c$ ? This gives some idea of how energetic a $β$ ray must be to travel at nearly the same speed as a $γ$ ray. (b) What is the velocity of the $γ$ ray relative to the $β$ ray?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-74",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) What is the kinetic energy in MeV of a $β$ ray that is traveling at $0.998c$ ? This gives some idea of how energetic a $β$ ray must be to travel at nearly the same speed as a $γ$ ray. (b) What is the velocity of the $γ$ ray relative to the $β$ ray?",
+        "inline": []
+      },
+      "level": "core"
+    }
+  ],
+  "solutions": {
+    "osbooks-college-physics-bundle:m42631:exr-38": [
+      [
+        {
+          "kind": "text",
+          "text": "(a)"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42631:exr-49": [
+      [
+        {
+          "kind": "math",
+          "text": "m=ρV={ρd}^{3}⇒a={(\\frac{m}{ρ})}^{1/3}={(\\frac{2.3×{10}^{17}kg}{1000{kg/m}^{3}})}^{\\frac{1}{3}}=61×{10}^{3}m=61 km"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42631:exr-53": [
+      [
+        {
+          "kind": "math",
+          "text": "1.9 fm"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42631:exr-57": [
+      [
+        {
+          "kind": "text",
+          "text": "(a)"
+        },
+        {
+          "kind": "math",
+          "text": "4.6 fm"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(b)"
+        },
+        {
+          "kind": "math",
+          "text": "0.61 to 1"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42631:exr-62": [
+      [
+        {
+          "kind": "math",
+          "text": "85.4 to 1"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42631:exr-66": [
+      [
+        {
+          "kind": "math",
+          "text": "12.4 GeV"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42631:exr-71": [
+      [
+        {
+          "kind": "text",
+          "text": "19.3 to 1"
+        }
+      ]
+    ]
+  }
+}

@@ -1052,7 +1052,124 @@
       "frequency": "candidate"
     }
   ],
-  "exam_recall_checks": [],
+  "exam_recall_checks": [
+    {
+      "id": "rc-1",
+      "exam": "WAEC",
+      "subject": "physics",
+      "section_id": "sec-2",
+      "stem": "In medical imaging, a tracer is chosen because it",
+      "options": [
+        {
+          "id": "a",
+          "text": "emits a strong beam of visible light"
+        },
+        {
+          "id": "b",
+          "text": "emits radiation that can be detected outside the body"
+        },
+        {
+          "id": "c",
+          "text": "is chemically inert everywhere"
+        },
+        {
+          "id": "d",
+          "text": "has a very long half-life"
+        }
+      ],
+      "answer": "b",
+      "explanation": "The radiation emitted must be able to leave the body and be detected, and the tracer must be taken up by the tissue being examined.",
+      "difficulty": 3,
+      "source": "authored against the WAEC physics syllabus"
+    },
+    {
+      "id": "rc-2",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-3",
+      "stem": "The most damaging effect of ionising radiation on the body is",
+      "options": [
+        {
+          "id": "a",
+          "text": "heating of the skin"
+        },
+        {
+          "id": "b",
+          "text": "damage to the genetic material in cells"
+        },
+        {
+          "id": "c",
+          "text": "a change in colour of the blood"
+        },
+        {
+          "id": "d",
+          "text": "loss of body weight"
+        }
+      ],
+      "answer": "b",
+      "explanation": "The danger is that the radiation damages DNA, which can kill cells or cause mutations that become cancers.",
+      "difficulty": 3,
+      "source": "authored against the JAMB physics syllabus"
+    },
+    {
+      "id": "rc-3",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-7",
+      "stem": "In nuclear fission",
+      "options": [
+        {
+          "id": "a",
+          "text": "two light nuclei join to form a heavier one"
+        },
+        {
+          "id": "b",
+          "text": "a heavy nucleus splits into lighter ones and releases energy"
+        },
+        {
+          "id": "c",
+          "text": "mass is converted entirely into energy"
+        },
+        {
+          "id": "d",
+          "text": "a nucleus changes its charge without splitting"
+        }
+      ],
+      "answer": "b",
+      "explanation": "Fission is the splitting of a heavy nucleus into lighter nuclei with the release of neutrons and energy.",
+      "difficulty": 2,
+      "source": "authored against the JAMB physics syllabus"
+    },
+    {
+      "id": "rc-4",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-6",
+      "stem": "The main difficulty with nuclear fusion as a power source is that",
+      "options": [
+        {
+          "id": "a",
+          "text": "it produces too little energy"
+        },
+        {
+          "id": "b",
+          "text": "the nuclei must be brought together against their mutual repulsion at very high temperatures"
+        },
+        {
+          "id": "c",
+          "text": "the reaction cannot be sustained at all"
+        },
+        {
+          "id": "d",
+          "text": "it produces radioactive waste only"
+        }
+      ],
+      "answer": "b",
+      "explanation": "Fusion needs temperatures of millions of kelvin to overcome the electrostatic repulsion between the nuclei, which is why it is hard to sustain.",
+      "difficulty": 3,
+      "source": "authored against the JAMB physics syllabus"
+    }
+  ],
   "sources": [
     {
       "publisher": "OpenStax",

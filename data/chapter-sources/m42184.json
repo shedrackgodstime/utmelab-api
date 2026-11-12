@@ -1,0 +1,536 @@
+{
+  "module": "m42184",
+  "source_attribution": {
+    "publisher": "OpenStax",
+    "book": "osbooks-college-physics-bundle",
+    "section": "m42184",
+    "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42184/index.cnxml",
+    "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)",
+    "locator": "CNXML module index.cnxml (typed elements, solutions present)"
+  },
+  "blocks": [
+    {
+      "id": "sec-0",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Learning Objectives",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-1",
+      "type": "paragraph",
+      "content": {
+        "text": "By the end of this section, you will be able to:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-2",
+      "type": "paragraph",
+      "content": {
+        "text": "Angular momentum is a vector and, therefore, *has direction as well as magnitude* . Torque affects both the direction and the magnitude of angular momentum. What is the direction of the angular momentum of a rotating object like the disk in ? The figure shows the right-hand rule used to find the direction of both angular momentum and angular velocity. Both $L$ and $ω$ are vectors—each has direction and magnitude. Both can be represented by arrows. The right-hand rule defines both to be perpendicular to the plane of rotation in the direction shown. Because angular momentum is related to angular velocity by $L=Iω$ , the direction of $L$ is the same as the direction of $ω$ . Notice in the figure that both point along the axis of rotation.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-3",
+      "type": "paragraph",
+      "content": {
+        "text": "Figure (a) shows a disk is rotating counterclockwise when viewed from above. Figure (b) shows the right-hand rule. The direction of angular velocity $ω$ size and angular momentum $L$ are defined to be the direction in which the thumb of your right hand points when you curl your fingers in the direction of the disk’s rotation as shown.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-1",
+      "type": "figure",
+      "asset_url": "images/phy_m42184_Figure_11_07_01.jpg",
+      "caption": {
+        "text": "Figure (a) shows a disk is rotating counterclockwise when viewed from above. Figure (b) shows the right-hand rule. The direction of angular velocity $ω$ size and angular momentum $L$ are defined to be the direction in which the thumb of your right hand points when you curl your fingers in the direction of the disk’s rotation as shown.",
+        "inline": []
+      },
+      "alt": "In figure a, a disk is rotating in counter clockwise direction. The direction of the angular momentum is shown as an upward vector at the centre of the disk. The vector is labeled as L is equal to I-omega. In figure b, a right hand is shown. The fingers are curled in the direction of rotation and the thumb is pointed vertically upward in the direction of angular velocity and angular momentum.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-5",
+      "type": "paragraph",
+      "content": {
+        "text": "Now, recall that torque changes angular momentum as expressed by",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-6",
+      "type": "paragraph",
+      "content": {
+        "text": "This equation means that the direction of $ΔL$ is the same as the direction of the torque $τ$ that creates it. This result is illustrated in , which shows the direction of torque and the angular momentum it creates.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-7",
+      "type": "paragraph",
+      "content": {
+        "text": "Let us now consider a bicycle wheel with a couple of handles attached to it, as shown in . (This device is popular in demonstrations among physicists, because it does unexpected things.) With the wheel rotating as shown, its angular momentum is to the woman's left. Suppose the person holding the wheel tries to rotate it as in the figure. Her natural expectation is that the wheel will rotate in the direction she pushes it—but what happens is quite different. The forces exerted create a torque that is horizontal toward the person, as shown in (a). This torque creates a change in angular momentum $L$ in the same direction, perpendicular to the original angular momentum $L$ , thus changing the direction of $L$ but not the magnitude of $L$ . shows how $ΔL$ and $L$ add, giving a new angular momentum with direction that is inclined more toward the person than before. The axis of the wheel has thus moved *perpendicular to the forces exerted on it* , instead of in the expected direction.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-8",
+      "type": "paragraph",
+      "content": {
+        "text": "In figure (a), the torque is perpendicular to the plane formed by $r$ and $F$ and is the direction your right thumb would point to if you curled your fingers in the direction of $F$ . Figure (b) shows that the direction of the torque is the same as that of the angular momentum it produces.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-2",
+      "type": "figure",
+      "asset_url": "images/phy_m42184_Figure_11_07_02a.jpg",
+      "caption": {
+        "text": "In figure (a), the torque is perpendicular to the plane formed by $r$ and $F$ and is the direction your right thumb would point to if you curled your fingers in the direction of $F$ . Figure (b) shows that the direction of the torque is the same as that of the angular momentum it produces.",
+        "inline": []
+      },
+      "alt": "In figure a, a plane is shown. Force F, lying in the same plane, is acting at a point in the plane. At a point, at distant-r from the force, a vertical vector is shown labeled as tau, the torque. In figure b, there is a child on a horse on a merry-go-round. The radius of the merry-go-round is r units. At the foot of the horse, a vector along the plane of merry-go-round is shown. At the centre, the direction of torque tau, angular velocity omega, and angular momentum L are shown as vertical vectors.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-10",
+      "type": "paragraph",
+      "content": {
+        "text": "In figure (a), a person holding the spinning bike wheel lifts it with her right hand and pushes down with her left hand in an attempt to rotate the wheel. This action creates a torque directly toward her. This torque causes a change in angular momentum $ΔL$ in exactly the same direction. Figure (b) shows a vector diagram depicting how $ΔL$ and $L$ add, producing a new angular momentum pointing more toward the person. The wheel moves toward the person, perpendicular to the forces she exerts on it.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-3",
+      "type": "figure",
+      "asset_url": "images/phy_m42184_Figure_11_07_03a.jpg",
+      "caption": {
+        "text": "In figure (a), a person holding the spinning bike wheel lifts it with her right hand and pushes down with her left hand in an attempt to rotate the wheel. This action creates a torque directly toward her. This torque causes a change in angular momentum $ΔL$ in exactly the same direction. Figure (b) shows a vector diagram depicting how $ΔL$ and $L$ add, producing a new angular momentum pointing more toward the person. The wheel moves toward the person, perpendicular to the forces she exerts on it.",
+        "inline": []
+      },
+      "alt": "In figure a, a lady is holding the spinning bike wheel with her hands. The wheel is rotating in counter clockwise direction. The direction of the force applied by her left hand is shown downward and that by her right hand in upward direction. The direction of angular momentum is along the axis of rotation of the wheel. In figure b, addition of two vectors L and delta-L is shown. The resultant of the two vectors is labeled as L plus delta L. The direction of rotation is counterclockwise.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-12",
+      "type": "paragraph",
+      "content": {
+        "text": "This same logic explains the behavior of gyroscopes. shows the two forces acting on a spinning gyroscope. The torque produced is perpendicular to the angular momentum, thus the direction of the torque is changed, but not its magnitude. The gyroscope *precesses* around a vertical axis, since the torque is always horizontal and perpendicular to $L$ . If the gyroscope is *not* spinning, it acquires angular momentum in the direction of the torque ( $L=ΔL$ ), and it rotates around a horizontal axis, falling over just as we would expect.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-13",
+      "type": "paragraph",
+      "content": {
+        "text": "Earth itself acts like a gigantic gyroscope. Its angular momentum is along its axis and points at Polaris, the North Star. But Earth is slowly precessing (once in about 26,000 years) due to the torque of the Sun and the Moon on its nonspherical shape.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-14",
+      "type": "paragraph",
+      "content": {
+        "text": "As seen in figure (a), the forces on a spinning gyroscope are its weight and the supporting force from the stand. These forces create a horizontal torque on the gyroscope, which create a change in angular momentum $ΔL$ that is also horizontal. In figure (b), $ΔL$ and $L$ add to produce a new angular momentum with the same magnitude, but different direction, so that the gyroscope precesses in the direction shown instead of falling over.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-4",
+      "type": "figure",
+      "asset_url": "images/phy_m42184_Figure_11_07_04a.jpg",
+      "caption": {
+        "text": "As seen in figure (a), the forces on a spinning gyroscope are its weight and the supporting force from the stand. These forces create a horizontal torque on the gyroscope, which create a change in angular momentum $ΔL$ that is also horizontal. In figure (b), $ΔL$ and $L$ add to produce a new angular momentum with the same magnitude, but different direction, so that the gyroscope precesses in the direction shown instead of falling over.",
+        "inline": []
+      },
+      "alt": "In figure a, the gyroscope is rotating in counter clockwise direction. The weight of the gyroscope is acting downward. The supportive force is acting at the base. The line of action of the weight and supportive force are different. The torque is acting along the radius of the horizontal circular part of gyroscope. In figure b, the two vectors L and L plus delta L are shown. The vectors start from a point at the bottom of the figure and terminate at two points on a horizontal dotted circle, directed in counter clockwise direction, at the top of the figure. Another vector delta L starts from the head of vector L and terminates at the head of vector L plus delta L.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "exr-16",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Rotational kinetic energy is associated with angular momentum? Does that mean that rotational kinetic energy is a vector?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "No, energy is always a scalar whether motion is involved or not. No form of energy has a direction in space and you can see that rotational kinetic energy does not depend on the direction of motion just as linear kinetic energy is independent of the direction of motion.",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-17",
+      "type": "paragraph",
+      "content": {
+        "text": "Rotational kinetic energy is associated with angular momentum? Does that mean that rotational kinetic energy is a vector?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-18",
+      "type": "paragraph",
+      "content": {
+        "text": "No, energy is always a scalar whether motion is involved or not. No form of energy has a direction in space and you can see that rotational kinetic energy does not depend on the direction of motion just as linear kinetic energy is independent of the direction of motion.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-19",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Test Prep for AP Courses",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-20",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A globe (model of the Earth) is a hollow sphere with a radius of 16 cm. By wrapping a cord around the equator of a globe and pulling on it, a person exerts a torque on the globe of 120 N • m for 1.2 s. What angular momentum does the globe have after 1.2 s?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "Since the globe is stationary to start with, $τ=\\frac{ΔL}{Δt}$ $τ\\cdot Δt=ΔL$ By substituting, 120 N•m • 1.2 s = 144 N•m•s. The angular momentum of the globe after 1.2 s is 144 N•m•s.",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-21",
+      "type": "paragraph",
+      "content": {
+        "text": "A globe (model of the Earth) is a hollow sphere with a radius of 16 cm. By wrapping a cord around the equator of a globe and pulling on it, a person exerts a torque on the globe of 120 N • m for 1.2 s. What angular momentum does the globe have after 1.2 s?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-22",
+      "type": "paragraph",
+      "content": {
+        "text": "Since the globe is stationary to start with,",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-23",
+      "type": "paragraph",
+      "content": {
+        "text": "120 N•m • 1.2 s = 144 N•m•s.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-24",
+      "type": "paragraph",
+      "content": {
+        "text": "The angular momentum of the globe after 1.2 s is 144 N•m•s.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-25",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "How could you use a fishing reel to test the relationship between the torque applied to a system, the time for which the torque was applied, and the resulting angular momentum of the system? How would you measure angular momentum?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-26",
+      "type": "paragraph",
+      "content": {
+        "text": "How could you use a fishing reel to test the relationship between the torque applied to a system, the time for which the torque was applied, and the resulting angular momentum of the system? How would you measure angular momentum?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-27",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Section Summary",
+        "inline": []
+      }
+    },
+    {
+      "id": "sec-28",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Conceptual Questions",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-29",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "While driving his motorcycle at highway speed, a physics student notices that pulling back lightly on the right handlebar tips the cycle to the left and produces a left turn. Explain why this happens.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-30",
+      "type": "paragraph",
+      "content": {
+        "text": "While driving his motorcycle at highway speed, a physics student notices that pulling back lightly on the right handlebar tips the cycle to the left and produces a left turn. Explain why this happens.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-31",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Gyroscopes used in guidance systems to indicate directions in space must have an angular momentum that does not change in direction. Yet they are often subjected to large forces and accelerations. How can the direction of their angular momentum be constant when they are accelerated?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-32",
+      "type": "paragraph",
+      "content": {
+        "text": "Gyroscopes used in guidance systems to indicate directions in space must have an angular momentum that does not change in direction. Yet they are often subjected to large forces and accelerations. How can the direction of their angular momentum be constant when they are accelerated?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-33",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Problem Exercises",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-34",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Integrated Concepts The axis of Earth makes a 23.5° angle with a direction perpendicular to the plane of Earth’s orbit. As shown in , this axis precesses, making one complete rotation in 25,780 y. (a) Calculate the change in angular momentum in half this time. (b) What is the average torque producing this change in angular momentum? (c) If this torque were created by a single force (it is not) acting at the most effective point on the equator, what would its magnitude be? The Earth’s axis slowly precesses, always making an angle of 23.5° with the direction perpendicular to the plane of Earth’s orbit. The change in angular momentum for the two shown positions is quite large, although the magnitude $L$ is unchanged.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a) $5.64×{10}^{33}kg\\cdot {m}^{2}/s$ (b) $1.39×{10}^{22}N\\cdot m$ (c) $2.17×{10}^{15}N$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-35",
+      "type": "paragraph",
+      "content": {
+        "text": "The axis of Earth makes a 23.5° angle with a direction perpendicular to the plane of Earth’s orbit. As shown in , this axis precesses, making one complete rotation in 25,780 y.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-36",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) Calculate the change in angular momentum in half this time.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-37",
+      "type": "paragraph",
+      "content": {
+        "text": "(b) What is the average torque producing this change in angular momentum?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-38",
+      "type": "paragraph",
+      "content": {
+        "text": "(c) If this torque were created by a single force (it is not) acting at the most effective point on the equator, what would its magnitude be?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-39",
+      "type": "paragraph",
+      "content": {
+        "text": "The Earth’s axis slowly precesses, always making an angle of 23.5° with the direction perpendicular to the plane of Earth’s orbit. The change in angular momentum for the two shown positions is quite large, although the magnitude $L$ is unchanged.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-5",
+      "type": "figure",
+      "asset_url": "images/phy_m42184_Figure_11_07_06a.jpg",
+      "caption": {
+        "text": "The Earth’s axis slowly precesses, always making an angle of 23.5° with the direction perpendicular to the plane of Earth’s orbit. The change in angular momentum for the two shown positions is quite large, although the magnitude $L$ is unchanged.",
+        "inline": []
+      },
+      "alt": "In the figure, the Earth’s image is shown. There are two vectors inclined at an angle of twenty three point five degree to the vertical, starting from the centre of the Earth. At the heads of the two vectors there is a circular shape, directed in counter clockwise direction. An angular momentum vector, directed toward left, along its diameter, is shown. The plane of the Earth’s orbit is shown as a horizontal line through its center.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-41",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) $5.64×{10}^{33}kg\\cdot {m}^{2}/s$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-42",
+      "type": "paragraph",
+      "content": {
+        "text": "(b) $1.39×{10}^{22}N\\cdot m$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-43",
+      "type": "paragraph",
+      "content": {
+        "text": "(c) $2.17×{10}^{15}N$",
+        "inline": []
+      },
+      "level": "core"
+    }
+  ],
+  "solutions": {
+    "osbooks-college-physics-bundle:m42184:exr-16": [
+      [
+        {
+          "kind": "text",
+          "text": "No, energy is always a scalar whether motion is involved or not. No form of energy has a direction in space and you can see that rotational kinetic energy does not depend on the direction of motion just as linear kinetic energy is independent of the direction of motion."
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42184:exr-20": [
+      [
+        {
+          "kind": "text",
+          "text": "Since the globe is stationary to start with,"
+        }
+      ],
+      [
+        {
+          "kind": "math",
+          "text": "τ=\\frac{ΔL}{Δt}"
+        }
+      ],
+      [
+        {
+          "kind": "math",
+          "text": "τ\\cdotΔt=ΔL"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "By substituting,"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "120 N•m • 1.2 s = 144 N•m•s."
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "The angular momentum of the globe after 1.2 s is 144 N•m•s."
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42184:exr-34": [
+      [
+        {
+          "kind": "text",
+          "text": "(a)"
+        },
+        {
+          "kind": "math",
+          "text": "5.64×{10}^{33}kg\\cdot {m}^{2}/s"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(b)"
+        },
+        {
+          "kind": "math",
+          "text": "1.39×{10}^{22}N\\cdot m"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(c)"
+        },
+        {
+          "kind": "math",
+          "text": "2.17×{10}^{15}N"
+        }
+      ]
+    ]
+  }
+}

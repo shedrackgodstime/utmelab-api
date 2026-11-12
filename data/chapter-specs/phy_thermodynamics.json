@@ -917,7 +917,145 @@
       "frequency": "candidate"
     }
   ],
-  "exam_recall_checks": [],
+  "exam_recall_checks": [
+    {
+      "id": "rc-1",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-2",
+      "stem": "The first law of thermodynamics is a statement of the conservation of",
+      "options": [
+        {
+          "id": "a",
+          "text": "momentum"
+        },
+        {
+          "id": "b",
+          "text": "energy"
+        },
+        {
+          "id": "c",
+          "text": "charge"
+        },
+        {
+          "id": "d",
+          "text": "mass"
+        }
+      ],
+      "answer": "b",
+      "explanation": "The first law says the change in internal energy equals the heat added less the work done by the gas.",
+      "difficulty": 2,
+      "source": "authored against the JAMB physics syllabus"
+    },
+    {
+      "id": "rc-2",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-2",
+      "stem": "Heat added to a gas always raises its temperature.",
+      "options": [
+        {
+          "id": "a",
+          "text": "True"
+        },
+        {
+          "id": "b",
+          "text": "False"
+        }
+      ],
+      "answer": "b",
+      "explanation": "The heat may go into raising the temperature, into doing work as the gas expands, or into both. The first law says where it goes, not where it ends.",
+      "difficulty": 3,
+      "source": "authored against the JAMB physics syllabus"
+    },
+    {
+      "id": "rc-3",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-4",
+      "stem": "The efficiency of a heat engine is",
+      "options": [
+        {
+          "id": "a",
+          "text": "the ratio of the work done to the heat absorbed"
+        },
+        {
+          "id": "b",
+          "text": "the ratio of the heat rejected to the heat absorbed"
+        },
+        {
+          "id": "c",
+          "text": "the heat absorbed divided by the work done"
+        },
+        {
+          "id": "d",
+          "text": "always 100 percent"
+        }
+      ],
+      "answer": "a",
+      "explanation": "The efficiency is $\\eta = W/Q_h$, the useful work as a fraction of the heat taken from the hot source. It is always less than one.",
+      "difficulty": 3,
+      "source": "authored against the JAMB physics syllabus"
+    },
+    {
+      "id": "rc-4",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-5",
+      "stem": "The Carnot efficiency is",
+      "options": [
+        {
+          "id": "a",
+          "text": "$\\eta = 1 - T_c/T_h$"
+        },
+        {
+          "id": "b",
+          "text": "$\\eta = T_h/T_c$"
+        },
+        {
+          "id": "c",
+          "text": "$\\eta = 1 - T_h/T_c$"
+        },
+        {
+          "id": "d",
+          "text": "$\\eta = T_h - T_c$"
+        }
+      ],
+      "answer": "a",
+      "explanation": "The Carnot efficiency depends only on the absolute temperatures of the source and the sink: $\\eta = 1 - T_c/T_h$.",
+      "difficulty": 3,
+      "source": "authored against the JAMB physics syllabus"
+    },
+    {
+      "id": "rc-5",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-7",
+      "stem": "The second law of thermodynamics says that",
+      "options": [
+        {
+          "id": "a",
+          "text": "energy is not conserved"
+        },
+        {
+          "id": "b",
+          "text": "the entropy of an isolated system never decreases"
+        },
+        {
+          "id": "c",
+          "text": "all processes are reversible"
+        },
+        {
+          "id": "d",
+          "text": "heat flows from cold to hot spontaneously"
+        }
+      ],
+      "answer": "b",
+      "explanation": "The second law states that the total entropy of an isolated system cannot decrease. It does not affect the conservation of energy, which is the first law.",
+      "difficulty": 3,
+      "source": "authored against the JAMB physics syllabus"
+    }
+  ],
   "sources": [
     {
       "publisher": "OpenStax",

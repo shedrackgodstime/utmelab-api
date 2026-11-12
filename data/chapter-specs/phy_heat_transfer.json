@@ -794,9 +794,189 @@
         "source": "authored"
       },
       "frequency": "candidate"
+    },
+    {
+      "id": "trap-3",
+      "exam": "WAEC",
+      "subject": "physics",
+      "section_id": "sec-4",
+      "misconception": "The temperature of a liquid rises steadily while it boils away.",
+      "correction": "It stays at the boiling point until the liquid has gone. The heat supplied goes into the latent heat of vaporisation, breaking the bonds between molecules rather than raising the temperature.",
+      "signal": "Our own question offers the steady rise as an option.",
+      "status": "candidate",
+      "paper_evidence": {
+        "check_id": "rc-2",
+        "exam": "WAEC",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    },
+    {
+      "id": "trap-4",
+      "exam": "WAEC",
+      "subject": "physics",
+      "section_id": "sec-6",
+      "misconception": "Conduction is the transfer of heat by the movement of the heated substance.",
+      "correction": "Conduction is by collisions between neighbouring particles, without the substance moving. The bulk movement of a heated fluid is convection, which is a different mechanism.",
+      "signal": "Our own question offers the movement reading as an option.",
+      "status": "candidate",
+      "paper_evidence": {
+        "check_id": "rc-3",
+        "exam": "WAEC",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
     }
   ],
-  "exam_recall_checks": [],
+  "exam_recall_checks": [
+    {
+      "id": "rc-1",
+      "exam": "WAEC",
+      "subject": "physics",
+      "section_id": "sec-3",
+      "stem": "The heat capacity of a body is the heat needed to raise its temperature by",
+      "options": [
+        {
+          "id": "a",
+          "text": "one degree Celsius"
+        },
+        {
+          "id": "b",
+          "text": "one kelvin"
+        },
+        {
+          "id": "c",
+          "text": "one joule"
+        },
+        {
+          "id": "d",
+          "text": "one kilogram"
+        }
+      ],
+      "answer": "b",
+      "explanation": "The heat capacity is the heat required for a one kelvin rise, and it depends on the size and substance of the body.",
+      "difficulty": 2,
+      "source": "authored against the WAEC physics syllabus"
+    },
+    {
+      "id": "rc-2",
+      "exam": "WAEC",
+      "subject": "physics",
+      "section_id": "sec-4",
+      "stem": "During a change of state the temperature of the substance",
+      "options": [
+        {
+          "id": "a",
+          "text": "rises steadily"
+        },
+        {
+          "id": "b",
+          "text": "falls steadily"
+        },
+        {
+          "id": "c",
+          "text": "stays constant"
+        },
+        {
+          "id": "d",
+          "text": "rises and falls alternately"
+        }
+      ],
+      "answer": "c",
+      "explanation": "The heat supplied during a change of state goes into breaking the intermolecular bonds rather than raising the temperature, so the temperature stays constant.",
+      "difficulty": 2,
+      "source": "authored against the WAEC physics syllabus"
+    },
+    {
+      "id": "rc-3",
+      "exam": "WAEC",
+      "subject": "physics",
+      "section_id": "sec-6",
+      "stem": "Heat conducted along a rod is transferred by",
+      "options": [
+        {
+          "id": "a",
+          "text": "the movement of the molecules themselves"
+        },
+        {
+          "id": "b",
+          "text": "collisions between neighbouring molecules and electrons"
+        },
+        {
+          "id": "c",
+          "text": "the movement of air over the rod"
+        },
+        {
+          "id": "d",
+          "text": "radiation from the rod's surface"
+        }
+      ],
+      "answer": "b",
+      "explanation": "Conduction is the transfer of energy by collisions between neighbouring particles, without the bulk movement of the substance.",
+      "difficulty": 2,
+      "source": "authored against the WAEC physics syllabus"
+    },
+    {
+      "id": "rc-4",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-7",
+      "stem": "In convection, the heated fluid",
+      "options": [
+        {
+          "id": "a",
+          "text": "expands, becomes less dense and rises"
+        },
+        {
+          "id": "b",
+          "text": "contracts, becomes denser and rises"
+        },
+        {
+          "id": "c",
+          "text": "expands, becomes denser and rises"
+        },
+        {
+          "id": "d",
+          "text": "flows downwards as it is heated"
+        }
+      ],
+      "answer": "a",
+      "explanation": "Heating makes the fluid expand and less dense, so it rises and cooler denser fluid takes its place. That circulation carries the heat.",
+      "difficulty": 3,
+      "source": "authored against the JAMB physics syllabus"
+    },
+    {
+      "id": "rc-5",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-8",
+      "stem": "The radiation emitted by a body depends on",
+      "options": [
+        {
+          "id": "a",
+          "text": "only its temperature"
+        },
+        {
+          "id": "b",
+          "text": "only its surface area"
+        },
+        {
+          "id": "c",
+          "text": "its temperature and its surface area and colour"
+        },
+        {
+          "id": "d",
+          "text": "the medium surrounding it"
+        }
+      ],
+      "answer": "c",
+      "explanation": "A hot dark surface radiates far better than a hot polished one, and the rate rises with the fourth power of the absolute temperature.",
+      "difficulty": 3,
+      "source": "authored against the JAMB physics syllabus"
+    }
+  ],
   "sources": [
     {
       "publisher": "OpenStax",

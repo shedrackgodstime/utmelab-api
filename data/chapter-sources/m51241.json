@@ -1,0 +1,4596 @@
+{
+  "module": "m51241",
+  "source_attribution": {
+    "publisher": "OpenStax",
+    "book": "osbooks-college-algebra-bundle",
+    "section": "m51241",
+    "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51241/index.cnxml",
+    "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)",
+    "locator": "CNXML module index.cnxml (typed elements, solutions present)"
+  },
+  "blocks": [
+    {
+      "id": "p-0",
+      "type": "paragraph",
+      "content": {
+        "text": "In this section, you will:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-1",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Learning Objective:",
+        "inline": []
+      }
+    },
+    {
+      "id": "sec-2",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Objective 1: Plan your weekly academic schedule for the term.",
+        "inline": []
+      }
+    },
+    {
+      "id": "tbl-3",
+      "type": "table",
+      "title": {
+        "text": "Table",
+        "inline": []
+      },
+      "rows": [
+        [
+          "Credit hours (hours in class)",
+          "Study time outside of class",
+          "Total time spent in class and studying"
+        ],
+        [
+          "9",
+          "(2,2)",
+          "(2,3)"
+        ],
+        [
+          "12",
+          "(3,2)",
+          "(3,3)"
+        ],
+        [
+          "15",
+          "(3,2)",
+          "(3,3)"
+        ],
+        [
+          "18",
+          "(4,2)",
+          "(4,3)"
+        ],
+        [
+          "21",
+          "(5,2)",
+          "(5,3)"
+        ]
+      ],
+      "alt": "Table with 6 rows",
+      "level": "core"
+    },
+    {
+      "id": "p-4",
+      "type": "paragraph",
+      "content": {
+        "text": "Consider spending at least 2 hours of your study time each week at your campus (or virtual) math tutoring center or with a study group, the time will be well spent!",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "tbl-5",
+      "type": "table",
+      "title": {
+        "text": "Table",
+        "inline": []
+      },
+      "rows": [
+        [
+          "Best practices:",
+          "Will consider:",
+          "Not for me:"
+        ],
+        [
+          "*1. Attend each class session.* It will take much more time to teach yourself the content.",
+          "",
+          ""
+        ],
+        [
+          "*2. Ask your instructor.* If you are unsure of a concept being taught in class, ask for clarification right away. Your instructor is an expert in their field and can provide the most efficient path to understanding.",
+          "",
+          ""
+        ],
+        [
+          "*3. Be prepared for each class.* Having completed prior assignments can go a long way in math understanding since mastery of most learning objectives depends on knowledge of prior concepts. Also, reading through a section prior to class will help to make concepts much clearer.",
+          "",
+          ""
+        ],
+        [
+          "*4. Stay organized.* Keeping your math materials in a 3-ring binder organized by lecture notes, class handouts, PowerPoint slides, and homework problems will save you time in finding materials when you need them. Having two spiral notebooks dedicated to math works well too, use one for class notes and one for homework assignments.",
+          "",
+          ""
+        ],
+        [
+          "*5. Find a study partner.* Making a connection either in class or virtually with a fellow student can save time in that now there are two sources for gathering important information. If you have to miss class or an online session for an important appointment, your study partner can provide you class notes, share in-class handouts, or relay announcements for your instructor. Study partner’s name: Study partner’s number: Study partner’s email address:",
+          "",
+          ""
+        ],
+        [
+          "*6. Begin exam review time by reworking each of the examples your instructor worked in class.* Your instructor will emphasize the same topics in both lecture and on exams based on student learning objectives required by your college or university or even the state where the course is offered. Follow their lead in assigning importance to an objective and master these topics first.",
+          "",
+          ""
+        ]
+      ],
+      "alt": "Table with 7 rows",
+      "level": "core"
+    },
+    {
+      "id": "p-6",
+      "type": "paragraph",
+      "content": {
+        "text": "Optional: also include if you want a more comprehensive view of your time commitments",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-7",
+      "type": "paragraph",
+      "content": {
+        "text": "Term: ________________________________",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-8",
+      "type": "paragraph",
+      "content": {
+        "text": "Name: ________________________________________",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-9",
+      "type": "paragraph",
+      "content": {
+        "text": "Date: ________________________________________",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "tbl-10",
+      "type": "table",
+      "title": {
+        "text": "Table",
+        "inline": []
+      },
+      "rows": [
+        [
+          "",
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        [
+          "6:30-7:00am",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "7:00-7:30am",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "7:30-8am",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "8-8:30am",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "8:30-9am",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "9-9:30am",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "9:30-10am",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "10-10:30am",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "10:30-11am",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "11-11:30am",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "11:30-12pm",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "12-12:30pm",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "12:30-1pm",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "1-1:30pm",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "1:30-2pm",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "2-2:30pm",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "2:30-3pm",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "3-3:30pm",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "3:30-4pm",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "4-4:30pm",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "4:30-5pm",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "5-5:30pm",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "5:30-6pm",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "6-6:30pm",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "6:30-7pm",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "7-7:30pm",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "7:30-8pm",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "8-8:30pm",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "8:30-9pm",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "9-9:30pm",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "9:30-10pm",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "10-10:30pm",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "10:30-11pm",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "11-11:30pm",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ]
+      ],
+      "alt": "Table with 35 rows",
+      "level": "core"
+    },
+    {
+      "id": "p-11",
+      "type": "paragraph",
+      "content": {
+        "text": "Mathematicians, scientists, and economists commonly encounter very large and very small numbers. But it may not be obvious how common such figures are in everyday life. For instance, a pixel is the smallest unit of light that can be perceived and recorded by a digital camera. A particular camera might record an image that is 2,048 pixels by 1,536 pixels, which is a very high resolution picture. It can also perceive a color depth (gradations in colors) of up to 48 bits per pixel, and can shoot the equivalent of 24 frames per second. The maximum possible number of bits of information used to film a one-hour (3,600-second) digital film is then an extremely large number.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-12",
+      "type": "paragraph",
+      "content": {
+        "text": "Using a calculator, we enter $2,048×1,536×48×24×3,600$ and press ENTER. The calculator displays 1.304596316E13. What does this mean? The “E13” portion of the result represents the exponent 13 of ten, so there are a maximum of approximately $1.3×{10}^{13}$ bits of data in that one-hour film. In this section, we review rules of exponents first and then apply them to calculations involving very large or small numbers.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-13",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Using the Product Rule of Exponents",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-14",
+      "type": "paragraph",
+      "content": {
+        "text": "Consider the product ${x}^{3}\\cdot {x}^{4}.$ Both terms have the same base, *x* , but they are raised to different exponents. Expand each expression, and then rewrite the resulting expression.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-15",
+      "type": "paragraph",
+      "content": {
+        "text": "The result is that ${x}^{3}\\cdot {x}^{4}={x}^{3+4}={x}^{7}.$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-16",
+      "type": "paragraph",
+      "content": {
+        "text": "Notice that the exponent of the product is the sum of the exponents of the terms. In other words, when multiplying exponential expressions with the same base, we write the result with the common base and add the exponents. This is the *product rule of exponents.*",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-17",
+      "type": "paragraph",
+      "content": {
+        "text": "Now consider an example with real numbers.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-18",
+      "type": "paragraph",
+      "content": {
+        "text": "We can always check that this is true by simplifying each exponential expression. We find that ${2}^{3}$ is 8, ${2}^{4}$ is 16, and ${2}^{7}$ is 128. The product $8\\cdot 16$ equals 128, so the relationship is true. We can use the product rule of exponents to simplify expressions that are a product of two numbers or expressions with the same base but different exponents.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-19",
+      "type": "paragraph",
+      "content": {
+        "text": "For any real number $a$ and natural numbers $m$ and $n,$ the product rule of exponents states that",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "ex-20",
+      "type": "example",
+      "kind": "worked",
+      "title": {
+        "text": "Example",
+        "inline": []
+      },
+      "problem": {
+        "text": "",
+        "inline": []
+      },
+      "answer": null,
+      "level": "core"
+    },
+    {
+      "id": "exr-21",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Using the Product Rule Write each of the following products with a single base. Do not simplify further. ⓐ ${t}^{5}\\cdot {t}^{3}$; ⓑ ${(−3)}^{5}\\cdot (−3)$; ⓒ ${x}^{2}\\cdot {x}^{5}\\cdot {x}^{3}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "Use the product rule to simplify each expression. ⓐ ${t}^{5}\\cdot {t}^{3}={t}^{5+3}={t}^{8}$; ⓑ ${(−3)}^{5}\\cdot (−3)={(−3)}^{5}\\cdot {(−3)}^{1}={(−3)}^{5+1}={(−3)}^{6}$; ⓒ ${x}^{2}\\cdot {x}^{5}\\cdot {x}^{3}$ At first, it may appear that we cannot simplify a product of three factors. However, using the associative property of multiplication, begin by simplifying the first two. \\[${x}^{2}\\cdot {x}^{5}\\cdot {x}^{3}=({x}^{2}\\cdot {x}^{5})\\cdot {x}^{3}=({x}^{2+5})\\cdot {x}^{3}={x}^{7}\\cdot {x}^{3}={x}^{7+3}={x}^{10}$\\] Notice we get the same result by adding the three exponents in one step. \\[${x}^{2}\\cdot {x}^{5}\\cdot {x}^{3}={x}^{2+5+3}={x}^{10}$\\]",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-22",
+      "type": "paragraph",
+      "content": {
+        "text": "Write each of the following products with a single base. Do not simplify further.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-23",
+      "type": "paragraph",
+      "content": {
+        "text": "Use the product rule to simplify each expression.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-24",
+      "type": "paragraph",
+      "content": {
+        "text": "At first, it may appear that we cannot simplify a product of three factors. However, using the associative property of multiplication, begin by simplifying the first two.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-25",
+      "type": "paragraph",
+      "content": {
+        "text": "Notice we get the same result by adding the three exponents in one step.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-26",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Write each of the following products with a single base. Do not simplify further. ⓐ ${k}^{6}\\cdot {k}^{9}$; ⓑ ${(\\frac{2}{y})}^{4}\\cdot (\\frac{2}{y})$; ⓒ ${t}^{3}\\cdot {t}^{6}\\cdot {t}^{5}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "ⓐ ${k}^{15}$; ⓑ ${(\\frac{2}{y})}^{5}$; ⓒ ${t}^{14}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-27",
+      "type": "paragraph",
+      "content": {
+        "text": "Write each of the following products with a single base. Do not simplify further.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-28",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Using the Quotient Rule of Exponents",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-29",
+      "type": "paragraph",
+      "content": {
+        "text": "The *quotient rule of exponents* allows us to simplify an expression that divides two numbers with the same base but different exponents. In a similar way to the product rule, we can simplify an expression such as $\\frac{{y}^{m}}{{y}^{n}},$ where $m>n.$ Consider the example $\\frac{{y}^{9}}{{y}^{5}}.$ Perform the division by canceling common factors.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-30",
+      "type": "paragraph",
+      "content": {
+        "text": "Notice that the exponent of the quotient is the difference between the exponents of the divisor and dividend.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-31",
+      "type": "paragraph",
+      "content": {
+        "text": "In other words, when dividing exponential expressions with the same base, we write the result with the common base and subtract the exponents.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-32",
+      "type": "paragraph",
+      "content": {
+        "text": "For the time being, we must be aware of the condition $m>n.$ Otherwise, the difference $m-n$ could be zero or negative. Those possibilities will be explored shortly. Also, instead of qualifying variables as nonzero each time, we will simplify matters and assume from here on that all variables represent nonzero real numbers.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-33",
+      "type": "paragraph",
+      "content": {
+        "text": "For any real number $a$ and natural numbers $m$ and $n,$ such that $m>n,$ the quotient rule of exponents states that",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "ex-34",
+      "type": "example",
+      "kind": "worked",
+      "title": {
+        "text": "Example",
+        "inline": []
+      },
+      "problem": {
+        "text": "",
+        "inline": []
+      },
+      "answer": null,
+      "level": "core"
+    },
+    {
+      "id": "exr-35",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Using the Quotient Rule Write each of the following products with a single base. Do not simplify further. ⓐ $\\frac{{(−2)}^{14}}{{(−2)}^{9}}$; ⓑ $\\frac{{t}^{23}}{{t}^{15}}$; ⓒ $\\frac{{(z\\sqrt{2})}^{5}}{z\\sqrt{2}}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "Use the quotient rule to simplify each expression. ⓐ $\\frac{{(−2)}^{14}}{{(−2)}^{9}}={(−2)}^{14-9}={(−2)}^{5}$; ⓑ $\\frac{{t}^{23}}{{t}^{15}}={t}^{23-15}={t}^{8}$; ⓒ $\\frac{{(z\\sqrt{2})}^{5}}{z\\sqrt{2}}={(z\\sqrt{2})}^{5-1}={(z\\sqrt{2})}^{4}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-36",
+      "type": "paragraph",
+      "content": {
+        "text": "Write each of the following products with a single base. Do not simplify further.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-37",
+      "type": "paragraph",
+      "content": {
+        "text": "Use the quotient rule to simplify each expression.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-38",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Write each of the following products with a single base. Do not simplify further. ⓐ $\\frac{{s}^{75}}{{s}^{68}}$; ⓑ $\\frac{{(−3)}^{6}}{−3}$; ⓒ $\\frac{{(e{f}^{2})}^{5}}{{(e{f}^{2})}^{3}}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "ⓐ ${s}^{7}$; ⓑ ${(−3)}^{5}$; ⓒ ${(e{f}^{2})}^{2}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-39",
+      "type": "paragraph",
+      "content": {
+        "text": "Write each of the following products with a single base. Do not simplify further.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-40",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Using the Power Rule of Exponents",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-41",
+      "type": "paragraph",
+      "content": {
+        "text": "Suppose an exponential expression is raised to some power. Can we simplify the result? Yes. To do this, we use the *power rule of exponents* . Consider the expression ${({x}^{2})}^{3}.$ The expression inside the parentheses is multiplied twice because it has an exponent of 2. Then the result is multiplied three times because the entire expression has an exponent of 3.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-42",
+      "type": "paragraph",
+      "content": {
+        "text": "The exponent of the answer is the product of the exponents: ${({x}^{2})}^{3}={x}^{2\\cdot 3}={x}^{6}.$ In other words, when raising an exponential expression to a power, we write the result with the common base and the product of the exponents.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-43",
+      "type": "paragraph",
+      "content": {
+        "text": "Be careful to distinguish between uses of the product rule and the power rule. When using the product rule, different terms with the same bases are raised to exponents. In this case, you add the exponents. When using the power rule, a term in exponential notation is raised to a power. In this case, you multiply the exponents.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-44",
+      "type": "paragraph",
+      "content": {
+        "text": "For any real number $a$ and positive integers $m$ and $n,$ the power rule of exponents states that",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "ex-45",
+      "type": "example",
+      "kind": "worked",
+      "title": {
+        "text": "Example",
+        "inline": []
+      },
+      "problem": {
+        "text": "",
+        "inline": []
+      },
+      "answer": null,
+      "level": "core"
+    },
+    {
+      "id": "exr-46",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Using the Power Rule Write each of the following products with a single base. Do not simplify further. ⓐ ${({x}^{2})}^{7}$; ⓑ ${({(2t)}^{5})}^{3}$; ⓒ ${({(−3)}^{5})}^{11}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "Use the power rule to simplify each expression. ⓐ ${({x}^{2})}^{7}={x}^{2\\cdot 7}={x}^{14}$; ⓑ ${({(2t)}^{5})}^{3}={(2t)}^{5\\cdot 3}={(2t)}^{15}$; ⓒ ${({(−3)}^{5})}^{11}={(−3)}^{5\\cdot 11}={(−3)}^{55}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-47",
+      "type": "paragraph",
+      "content": {
+        "text": "Write each of the following products with a single base. Do not simplify further.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-48",
+      "type": "paragraph",
+      "content": {
+        "text": "Use the power rule to simplify each expression.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-49",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Write each of the following products with a single base. Do not simplify further. ⓐ ${({(3y)}^{8})}^{3}$; ⓑ ${({t}^{5})}^{7}$; ⓒ ${({(-g)}^{4})}^{4}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "ⓐ ${(3y)}^{24}$; ⓑ ${t}^{35}$; ⓒ ${(-g)}^{16}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-50",
+      "type": "paragraph",
+      "content": {
+        "text": "Write each of the following products with a single base. Do not simplify further.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-51",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Using the Zero Exponent Rule of Exponents",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-52",
+      "type": "paragraph",
+      "content": {
+        "text": "Return to the quotient rule. We made the condition that $m>n$ so that the difference $m-n$ would never be zero or negative. What would happen if $m=n?$ In this case, we would use the *zero exponent rule of exponents* to simplify the expression to 1. To see how this is done, let us begin with an example.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-53",
+      "type": "paragraph",
+      "content": {
+        "text": "If we were to simplify the original expression using the quotient rule, we would have",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-54",
+      "type": "paragraph",
+      "content": {
+        "text": "If we equate the two answers, the result is ${t}^{0}=1.$ This is true for any nonzero real number, or any variable representing a real number.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-55",
+      "type": "paragraph",
+      "content": {
+        "text": "The sole exception is the expression ${0}^{0}.$ This appears later in more advanced courses, but for now, we will consider the value to be undefined.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-56",
+      "type": "paragraph",
+      "content": {
+        "text": "For any nonzero real number $a,$ the zero exponent rule of exponents states that",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "ex-57",
+      "type": "example",
+      "kind": "worked",
+      "title": {
+        "text": "Example",
+        "inline": []
+      },
+      "problem": {
+        "text": "",
+        "inline": []
+      },
+      "answer": null,
+      "level": "core"
+    },
+    {
+      "id": "exr-58",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Using the Zero Exponent Rule Simplify each expression using the zero exponent rule of exponents. ⓐ $\\frac{{c}^{3}}{{c}^{3}}$; ⓑ $\\frac{−3{x}^{5}}{{x}^{5}}$; ⓒ $\\frac{{({j}^{2}k)}^{4}}{({j}^{2}k)\\cdot {({j}^{2}k)}^{3}}$; ⓓ $\\frac{5{(r{s}^{2})}^{2}}{{(r{s}^{2})}^{2}}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "Use the zero exponent and other rules to simplify each expression. ⓐ $\\frac{{c}^{3}}{{c}^{3}}={c}^{3-3}={c}^{0}=1$ ⓑ $\\frac{−3{x}^{5}}{{x}^{5}}=−3\\cdot \\frac{{x}^{5}}{{x}^{5}}=−3\\cdot {x}^{5-5}=−3\\cdot {x}^{0}=−3\\cdot 1=−3$ ⓒ $\\frac{{({j}^{2}k)}^{4}}{({j}^{2}k)\\cdot {({j}^{2}k)}^{3}}=\\frac{{({j}^{2}k)}^{4}}{{({j}^{2}k)}^{1+3}}Use the product rule in the denominator.=\\frac{{({j}^{2}k)}^{4}}{{({j}^{2}k)}^{4}}Simplify.={({j}^{2}k)}^{4-4}Use the quotient rule.={({j}^{2}k)}^{0}Simplify.=1$ ⓓ $\\frac{5{(r{s}^{2})}^{2}}{{(r{s}^{2})}^{2}}=5{(r{s}^{2})}^{2-2}Use the quotient rule.=5{(r{s}^{2})}^{0}Simplify.=5\\cdot 1Use the zero exponent rule.=5Simplify.$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-59",
+      "type": "paragraph",
+      "content": {
+        "text": "Simplify each expression using the zero exponent rule of exponents.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-60",
+      "type": "paragraph",
+      "content": {
+        "text": "Use the zero exponent and other rules to simplify each expression.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-61",
+      "type": "paragraph",
+      "content": {
+        "text": "ⓐ $\\frac{{c}^{3}}{{c}^{3}}={c}^{3-3}={c}^{0}=1$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-62",
+      "type": "paragraph",
+      "content": {
+        "text": "ⓑ $\\frac{−3{x}^{5}}{{x}^{5}}=−3\\cdot \\frac{{x}^{5}}{{x}^{5}}=−3\\cdot {x}^{5-5}=−3\\cdot {x}^{0}=−3\\cdot 1=−3$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-63",
+      "type": "paragraph",
+      "content": {
+        "text": "ⓒ $\\frac{{({j}^{2}k)}^{4}}{({j}^{2}k)\\cdot {({j}^{2}k)}^{3}}=\\frac{{({j}^{2}k)}^{4}}{{({j}^{2}k)}^{1+3}}Use the product rule in the denominator.=\\frac{{({j}^{2}k)}^{4}}{{({j}^{2}k)}^{4}}Simplify.={({j}^{2}k)}^{4-4}Use the quotient rule.={({j}^{2}k)}^{0}Simplify.=1$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-64",
+      "type": "paragraph",
+      "content": {
+        "text": "ⓓ $\\frac{5{(r{s}^{2})}^{2}}{{(r{s}^{2})}^{2}}=5{(r{s}^{2})}^{2-2}Use the quotient rule.=5{(r{s}^{2})}^{0}Simplify.=5\\cdot 1Use the zero exponent rule.=5Simplify.$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-65",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Simplify each expression using the zero exponent rule of exponents. ⓐ $\\frac{{t}^{7}}{{t}^{7}}$; ⓑ $\\frac{{(d{e}^{2})}^{11}}{2{(d{e}^{2})}^{11}}$; ⓒ $\\frac{{w}^{4}\\cdot {w}^{2}}{{w}^{6}}$; ⓓ $\\frac{{t}^{3}\\cdot {t}^{4}}{{t}^{2}\\cdot {t}^{5}}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "ⓐ $1$; ⓑ $\\frac{1}{2}$; ⓒ $1$; ⓓ $1$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-66",
+      "type": "paragraph",
+      "content": {
+        "text": "Simplify each expression using the zero exponent rule of exponents.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-67",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Using the Negative Rule of Exponents",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-68",
+      "type": "paragraph",
+      "content": {
+        "text": "Another useful result occurs if we relax the condition that $m>n$ in the quotient rule even further. For example, can we simplify $\\frac{{h}^{3}}{{h}^{5}}?$ When $m<n$ —that is, where the difference $m-n$ is negative—we can use the *negative rule of exponents* to simplify the expression to its reciprocal.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-69",
+      "type": "paragraph",
+      "content": {
+        "text": "Divide one exponential expression by another with a larger exponent. Use our example, $\\frac{{h}^{3}}{{h}^{5}}.$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-70",
+      "type": "paragraph",
+      "content": {
+        "text": "If we were to simplify the original expression using the quotient rule, we would have",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-71",
+      "type": "paragraph",
+      "content": {
+        "text": "Putting the answers together, we have ${h}^{−2}=\\frac{1}{{h}^{2}}.$ This is true for any nonzero real number, or any variable representing a nonzero real number.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-72",
+      "type": "paragraph",
+      "content": {
+        "text": "A factor with a negative exponent becomes the same factor with a positive exponent if it is moved across the fraction bar—from numerator to denominator or vice versa.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-73",
+      "type": "paragraph",
+      "content": {
+        "text": "We have shown that the exponential expression ${a}^{n}$ is defined when $n$ is a natural number, 0, or the negative of a natural number. That means that ${a}^{n}$ is defined for any integer $n.$ Also, the product and quotient rules and all of the rules we will look at soon hold for any integer $n.$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-74",
+      "type": "paragraph",
+      "content": {
+        "text": "For any nonzero real number $a$ and natural number $n,$ the negative rule of exponents states that",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "ex-75",
+      "type": "example",
+      "kind": "worked",
+      "title": {
+        "text": "Example",
+        "inline": []
+      },
+      "problem": {
+        "text": "",
+        "inline": []
+      },
+      "answer": null,
+      "level": "core"
+    },
+    {
+      "id": "exr-76",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Using the Negative Exponent Rule Write each of the following quotients with a single base. Do not simplify further. Write answers with positive exponents. ⓐ $\\frac{{θ}^{3}}{{θ}^{10}}$; ⓑ $\\frac{{z}^{2}\\cdot z}{{z}^{4}}$; ⓒ $\\frac{{(−5{t}^{3})}^{4}}{{(−5{t}^{3})}^{8}}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "ⓐ $\\frac{{θ}^{3}}{{θ}^{10}}={θ}^{3-10}={θ}^{−7}=\\frac{1}{{θ}^{7}}$; ⓑ $\\frac{{z}^{2}\\cdot z}{{z}^{4}}=\\frac{{z}^{2+1}}{{z}^{4}}=\\frac{{z}^{3}}{{z}^{4}}={z}^{3-4}={z}^{−1}=\\frac{1}{z}$; ⓒ $\\frac{{(−5{t}^{3})}^{4}}{{(−5{t}^{3})}^{8}}={(−5{t}^{3})}^{4-8}={(−5{t}^{3})}^{−4}=\\frac{1}{{(−5{t}^{3})}^{4}}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-77",
+      "type": "paragraph",
+      "content": {
+        "text": "Write each of the following quotients with a single base. Do not simplify further. Write answers with positive exponents.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-78",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Write each of the following quotients with a single base. Do not simplify further. Write answers with positive exponents. ⓐ $\\frac{{(−3t)}^{2}}{{(−3t)}^{8}}$; ⓑ $\\frac{{f}^{47}}{{f}^{49}\\cdot f}$; ⓒ $\\frac{2{k}^{4}}{5{k}^{7}}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "ⓐ $\\frac{1}{{(−3t)}^{6}}$; ⓑ $\\frac{1}{{f}^{3}}$; ⓒ $\\frac{2}{5{k}^{3}}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-79",
+      "type": "paragraph",
+      "content": {
+        "text": "Write each of the following quotients with a single base. Do not simplify further. Write answers with positive exponents.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "ex-80",
+      "type": "example",
+      "kind": "worked",
+      "title": {
+        "text": "Example",
+        "inline": []
+      },
+      "problem": {
+        "text": "",
+        "inline": []
+      },
+      "answer": null,
+      "level": "core"
+    },
+    {
+      "id": "exr-81",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Using the Product and Quotient Rules Write each of the following products with a single base. Do not simplify further. Write answers with positive exponents. ⓐ ${b}^{2}\\cdot {b}^{−8}$; ⓑ ${(-x)}^{5}\\cdot {(-x)}^{−5}$; ⓒ $\\frac{−7z}{{(−7z)}^{5}}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "ⓐ ${b}^{2}\\cdot {b}^{−8}={b}^{2-8}={b}^{−6}=\\frac{1}{{b}^{6}}$; ⓑ ${(-x)}^{5}\\cdot {(-x)}^{−5}={(-x)}^{5-5}={(-x)}^{0}=1$; ⓒ $\\frac{−7z}{{(−7z)}^{5}}=\\frac{{(−7z)}^{1}}{{(−7z)}^{5}}={(−7z)}^{1-5}={(−7z)}^{−4}=\\frac{1}{{(−7z)}^{4}}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-82",
+      "type": "paragraph",
+      "content": {
+        "text": "Write each of the following products with a single base. Do not simplify further. Write answers with positive exponents.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-83",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Write each of the following products with a single base. Do not simplify further. Write answers with positive exponents. ⓐ ${t}^{−11}\\cdot {t}^{6}$; ⓑ $\\frac{{25}^{12}}{{25}^{13}}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "ⓐ ${t}^{−5}=\\frac{1}{{t}^{5}}$; ⓑ $\\frac{1}{25}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-84",
+      "type": "paragraph",
+      "content": {
+        "text": "Write each of the following products with a single base. Do not simplify further. Write answers with positive exponents.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-85",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Finding the Power of a Product",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-86",
+      "type": "paragraph",
+      "content": {
+        "text": "To simplify the power of a product of two exponential expressions, we can use the *power of a product rule of exponents,* which breaks up the power of a product of factors into the product of the powers of the factors. For instance, consider ${(pq)}^{3}.$ We begin by using the associative and commutative properties of multiplication to regroup the factors.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-87",
+      "type": "paragraph",
+      "content": {
+        "text": "In other words, ${(pq)}^{3}={p}^{3}\\cdot {q}^{3}.$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-88",
+      "type": "paragraph",
+      "content": {
+        "text": "For any real numbers $a$ and $b$ and any integer $n,$ the power of a product rule of exponents states that",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "ex-89",
+      "type": "example",
+      "kind": "worked",
+      "title": {
+        "text": "Example",
+        "inline": []
+      },
+      "problem": {
+        "text": "",
+        "inline": []
+      },
+      "answer": null,
+      "level": "core"
+    },
+    {
+      "id": "exr-90",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Using the Power of a Product Rule Simplify each of the following products as much as possible using the power of a product rule. Write answers with positive exponents. ⓐ ${(a{b}^{2})}^{3}$; ⓑ ${(2t)}^{15}$; ⓒ ${(−2{w}^{3})}^{3}$; ⓓ $\\frac{1}{{(−7z)}^{4}}$; ⓔ ${({e}^{−2}{f}^{2})}^{7}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "Use the product and quotient rules and the new definitions to simplify each expression. ⓐ ${(a{b}^{2})}^{3}={(a)}^{3}\\cdot {({b}^{2})}^{3}={a}^{1\\cdot 3}\\cdot {b}^{2\\cdot 3}={a}^{3}{b}^{6}$; ⓑ ${(2t)}^{15}={(2)}^{15}\\cdot {(t)}^{15}={2}^{15}{t}^{15}=32,768{t}^{15}$; ⓒ ${(−2{w}^{3})}^{3}={(−2)}^{3}\\cdot {({w}^{3})}^{3}=−8\\cdot {w}^{3\\cdot 3}=−8{w}^{9}$; ⓓ $\\frac{1}{{(−7z)}^{4}}=\\frac{1}{{(−7)}^{4}\\cdot {(z)}^{4}}=\\frac{1}{2,401{z}^{4}}$; ⓔ ${({e}^{−2}{f}^{2})}^{7}={({e}^{−2})}^{7}\\cdot {({f}^{2})}^{7}={e}^{−2\\cdot 7}\\cdot {f}^{2\\cdot 7}={e}^{−14}{f}^{14}=\\frac{{f}^{14}}{{e}^{14}}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-91",
+      "type": "paragraph",
+      "content": {
+        "text": "Simplify each of the following products as much as possible using the power of a product rule. Write answers with positive exponents.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-92",
+      "type": "paragraph",
+      "content": {
+        "text": "Use the product and quotient rules and the new definitions to simplify each expression.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-93",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Simplify each of the following products as much as possible using the power of a product rule. Write answers with positive exponents. ⓐ ${({g}^{2}{h}^{3})}^{5}$; ⓑ ${(5t)}^{3}$; ⓒ ${(−3{y}^{5})}^{3}$; ⓓ $\\frac{1}{{({a}^{6}{b}^{7})}^{3}}$; ⓔ ${({r}^{3}{s}^{−2})}^{4}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "ⓐ ${g}^{10}{h}^{15}$; ⓑ $125{t}^{3}$; ⓒ $−27{y}^{15}$; ⓓ $\\frac{1}{{a}^{18}{b}^{21}}$; ⓔ $\\frac{{r}^{12}}{{s}^{8}}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-94",
+      "type": "paragraph",
+      "content": {
+        "text": "Simplify each of the following products as much as possible using the power of a product rule. Write answers with positive exponents.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-95",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Finding the Power of a Quotient",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-96",
+      "type": "paragraph",
+      "content": {
+        "text": "To simplify the power of a quotient of two expressions, we can use the *power of a quotient rule,* which states that the power of a quotient of factors is the quotient of the powers of the factors. For example, let’s look at the following example.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-97",
+      "type": "paragraph",
+      "content": {
+        "text": "Let’s rewrite the original problem differently and look at the result.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-98",
+      "type": "paragraph",
+      "content": {
+        "text": "It appears from the last two steps that we can use the power of a product rule as a power of a quotient rule.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-99",
+      "type": "paragraph",
+      "content": {
+        "text": "For any real numbers $a$ and $b$ and any integer $n,$ the power of a quotient rule of exponents states that",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "ex-100",
+      "type": "example",
+      "kind": "worked",
+      "title": {
+        "text": "Example",
+        "inline": []
+      },
+      "problem": {
+        "text": "",
+        "inline": []
+      },
+      "answer": null,
+      "level": "core"
+    },
+    {
+      "id": "exr-101",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Using the Power of a Quotient Rule Simplify each of the following quotients as much as possible using the power of a quotient rule. Write answers with positive exponents. ⓐ ${(\\frac{4}{{z}^{11}})}^{3}$; ⓑ ${(\\frac{p}{{q}^{3}})}^{6}$; ⓒ ${(\\frac{−1}{{t}^{2}})}^{27}$; ⓓ ${({j}^{3}{k}^{−2})}^{4}$; ⓔ ${({m}^{−2}{n}^{−2})}^{3}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "ⓐ ${(\\frac{4}{{z}^{11}})}^{3}=\\frac{{(4)}^{3}}{{({z}^{11})}^{3}}=\\frac{64}{{z}^{11\\cdot 3}}=\\frac{64}{{z}^{33}}$; ⓑ ${(\\frac{p}{{q}^{3}})}^{6}=\\frac{{(p)}^{6}}{{({q}^{3})}^{6}}=\\frac{{p}^{1\\cdot 6}}{{q}^{3\\cdot 6}}=\\frac{{p}^{6}}{{q}^{18}}$; ⓒ ${(\\frac{−1}{{t}^{2}})}^{27}=\\frac{{(−1)}^{27}}{{({t}^{2})}^{27}}=\\frac{−1}{{t}^{2\\cdot 27}}=\\frac{−1}{{t}^{54}}=-\\frac{1}{{t}^{54}}$; ⓓ ${({j}^{3}{k}^{−2})}^{4}={(\\frac{{j}^{3}}{{k}^{2}})}^{4}=\\frac{{({j}^{3})}^{4}}{{({k}^{2})}^{4}}=\\frac{{j}^{3\\cdot 4}}{{k}^{2\\cdot 4}}=\\frac{{j}^{12}}{{k}^{8}}$; ⓔ ${({m}^{−2}{n}^{−2})}^{3}={(\\frac{1}{{m}^{2}{n}^{2}})}^{3}=\\frac{{(1)}^{3}}{{({m}^{2}{n}^{2})}^{3}}=\\frac{1}{{({m}^{2})}^{3}{({n}^{2})}^{3}}=\\frac{1}{{m}^{2\\cdot 3}\\cdot {n}^{2\\cdot 3}}=\\frac{1}{{m}^{6}{n}^{6}}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-102",
+      "type": "paragraph",
+      "content": {
+        "text": "Simplify each of the following quotients as much as possible using the power of a quotient rule. Write answers with positive exponents.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-103",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Simplify each of the following quotients as much as possible using the power of a quotient rule. Write answers with positive exponents. ⓐ ${(\\frac{{b}^{5}}{c})}^{3}$; ⓑ ${(\\frac{5}{{u}^{8}})}^{4}$; ⓒ ${(\\frac{−1}{{w}^{3}})}^{35}$; ⓓ ${({p}^{−4}{q}^{3})}^{8}$; ⓔ ${({c}^{−5}{d}^{−3})}^{4}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "ⓐ $\\frac{{b}^{15}}{{c}^{3}}$; ⓑ $\\frac{625}{{u}^{32}}$; ⓒ $\\frac{−1}{{w}^{105}}$; ⓓ $\\frac{{q}^{24}}{{p}^{32}}$; ⓔ $\\frac{1}{{c}^{20}{d}^{12}}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-104",
+      "type": "paragraph",
+      "content": {
+        "text": "Simplify each of the following quotients as much as possible using the power of a quotient rule. Write answers with positive exponents.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-105",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Simplifying Exponential Expressions",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-106",
+      "type": "paragraph",
+      "content": {
+        "text": "Recall that to simplify an expression means to rewrite it by combining terms or exponents; in other words, to write the expression more simply with fewer terms. The rules for exponents may be combined to simplify expressions.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "ex-107",
+      "type": "example",
+      "kind": "worked",
+      "title": {
+        "text": "Example",
+        "inline": []
+      },
+      "problem": {
+        "text": "",
+        "inline": []
+      },
+      "answer": null,
+      "level": "core"
+    },
+    {
+      "id": "exr-108",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Simplifying Exponential Expressions Simplify each expression and write the answer with positive exponents only. ⓐ ${(6{m}^{2}{n}^{−1})}^{3}$; ⓑ ${17}^{5}\\cdot {17}^{−4}\\cdot {17}^{−3}$; ⓒ ${(\\frac{{u}^{−1}v}{{v}^{−1}})}^{2}$; ⓓ $(−2{a}^{3}{b}^{−1})(5{a}^{−2}{b}^{2})$; ⓔ ${({x}^{2}\\sqrt{2})}^{4}{({x}^{2}\\sqrt{2})}^{−4}$; ⓕ $\\frac{{(3{w}^{2})}^{5}}{{(6{w}^{−2})}^{2}}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "ⓐ ${(6{m}^{2}{n}^{−1})}^{3}={(6)}^{3}{({m}^{2})}^{3}{({n}^{−1})}^{3}The power of a product rule={6}^{3}{m}^{2\\cdot 3}{n}^{−1\\cdot 3}The power rule=216{m}^{6}{n}^{−3}Simplify.=\\frac{216{m}^{6}}{{n}^{3}}The negative exponent rule$; ⓑ ${17}^{5}\\cdot {17}^{−4}\\cdot {17}^{−3}={17}^{5-4-3}The product rule={17}^{−2}Simplify.=\\frac{1}{{17}^{2}}or\\frac{1}{289}The negative exponent rule$; ⓒ ${(\\frac{{u}^{−1}v}{{v}^{−1}})}^{2}=\\frac{{({u}^{−1}v)}^{2}}{{({v}^{−1})}^{2}}The power of a quotient rule=\\frac{{u}^{−2}{v}^{2}}{{v}^{−2}}The power of a product rule={u}^{−2}{v}^{2-(−2)}The quotient rule={u}^{−2}{v}^{4}Simplify.=\\frac{{v}^{4}}{{u}^{2}}The negative exponent rule$; ⓓ $(−2{a}^{3}{b}^{-1})(5{a}^{−2}{b}^{2})=−2\\cdot 5\\cdot {a}^{3}\\cdot {a}^{−2}\\cdot {b}^{−1}\\cdot {b}^{2}Commutative and associative laws of multiplication=−10\\cdot {a}^{3-2}\\cdot {b}^{−1+2}The product rule=−10abSimplify.$; ⓔ ${({x}^{2}\\sqrt{2})}^{4}{({x}^{2}\\sqrt{2})}^{−4}={({x}^{2}\\sqrt{2})}^{4-4}The product rule={({x}^{2}\\sqrt{2})}^{0}Simplify.=1The zero exponent rule$; ⓕ $\\frac{{(3{w}^{2})}^{5}}{{(6{w}^{−2})}^{2}}=\\frac{{(3)}^{5}\\cdot {({w}^{2})}^{5}}{{(6)}^{2}\\cdot {({w}^{−2})}^{2}}The power of a product rule=\\frac{{3}^{5}{w}^{2\\cdot 5}}{{6}^{2}{w}^{−2\\cdot 2}}The power rule=\\frac{243{w}^{10}}{36{w}^{−4}}Simplify.=\\frac{27{w}^{10-(−4)}}{4}The quotient rule and reduce fraction=\\frac{27{w}^{14}}{4}Simplify.$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-109",
+      "type": "paragraph",
+      "content": {
+        "text": "Simplify each expression and write the answer with positive exponents only.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-110",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Simplify each expression and write the answer with positive exponents only. ⓐ ${(2u{v}^{-2})}^{−3}$; ⓑ ${x}^{8}\\cdot {x}^{−12}\\cdot x$; ⓒ ${(\\frac{{e}^{2}{f}^{-3}}{{f}^{−1}})}^{2}$; ⓓ $(9{r}^{−5}{s}^{3})(3{r}^{6}{s}^{−4})$; ⓔ ${(\\frac{4}{9}t{w}^{−2})}^{−3}{(\\frac{4}{9}t{w}^{−2})}^{3}$; ⓕ $\\frac{{(2{h}^{2}k)}^{4}}{{(7{h}^{−1}{k}^{2})}^{2}}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "ⓐ $\\frac{{v}^{6}}{8{u}^{3}}$; ⓑ $\\frac{1}{{x}^{3}}$; ⓒ $\\frac{{e}^{4}}{{f}^{4}}$; ⓓ $\\frac{27r}{s}$; ⓔ $1$; ⓕ $\\frac{16{h}^{10}}{49}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-111",
+      "type": "paragraph",
+      "content": {
+        "text": "Simplify each expression and write the answer with positive exponents only.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-112",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Using Scientific Notation",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-113",
+      "type": "paragraph",
+      "content": {
+        "text": "Recall at the beginning of the section that we found the number $1.3×{10}^{13}$ when describing bits of information in digital images. Other extreme numbers include the width of a human hair, which is about 0.00005 m, and the radius of an electron, which is about 0.00000000000047 m. How can we effectively work, read, compare, and calculate with numbers such as these?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-114",
+      "type": "paragraph",
+      "content": {
+        "text": "A shorthand method of writing very small and very large numbers is called scientific notation , in which we express numbers in terms of exponents of 10. To write a number in scientific notation, move the decimal point to the right of the first digit in the number. Write the digits as a decimal number between 1 and 10. Count the number of places *n* that you moved the decimal point. Multiply the decimal number by 10 raised to a power of *n* . If you moved the decimal left as in a very large number, $n$ is positive. If you moved the decimal right as in a very small number, $n$ is negative.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-115",
+      "type": "paragraph",
+      "content": {
+        "text": "For example, consider the number 2,780,418. Move the decimal left until it is to the right of the first nonzero digit, which is 2.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-116",
+      "type": "paragraph",
+      "content": {
+        "text": "We obtain 2.780418 by moving the decimal point 6 places to the left. Therefore, the exponent of 10 is 6, and it is positive because we moved the decimal point to the left. This is what we should expect for a large number.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-117",
+      "type": "paragraph",
+      "content": {
+        "text": "Working with small numbers is similar. Take, for example, the radius of an electron, 0.00000000000047 m. Perform the same series of steps as above, except move the decimal point to the right.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-118",
+      "type": "paragraph",
+      "content": {
+        "text": "Be careful not to include the leading 0 in your count. We move the decimal point 13 places to the right, so the exponent of 10 is 13. The exponent is negative because we moved the decimal point to the right. This is what we should expect for a small number.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-119",
+      "type": "paragraph",
+      "content": {
+        "text": "A number is written in scientific notation if it is written in the form $a×{10}^{n},$ where $1≤|a|<10$ and $n$ is an integer.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "ex-120",
+      "type": "example",
+      "kind": "worked",
+      "title": {
+        "text": "Example",
+        "inline": []
+      },
+      "problem": {
+        "text": "",
+        "inline": []
+      },
+      "answer": null,
+      "level": "core"
+    },
+    {
+      "id": "exr-121",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Converting Standard Notation to Scientific Notation Write each number in scientific notation. ⓐ Distance to Andromeda Galaxy from Earth: 24,000,000,000,000,000,000,000 m ⓑ Diameter of Andromeda Galaxy: 1,300,000,000,000,000,000,000 m ⓒ Number of stars in Andromeda Galaxy: 1,000,000,000,000 ⓓ Diameter of electron: 0.00000000000094 m ⓔ Probability of being struck by lightning in any single year: 0.00000143",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "ⓐ $24,000,000,000,000,000,000,000m24,000,000,000,000,000,000,000m←22places2.4×{10}^{22}m$ ⓑ $1,300,000,000,000,000,000,000m1,300,000,000,000,000,000,000m←21places1.3×{10}^{21}m$ ⓒ $1,000,000,000,0001,000,000,000,000←12places1×{10}^{12}$ ⓓ $0.00000000000094m0.00000000000094m→13places9.4×{10}^{−13}m$ ⓔ $0.000001430.00000143→6places1.43×{10}^{−6}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-122",
+      "type": "paragraph",
+      "content": {
+        "text": "Write each number in scientific notation.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-123",
+      "type": "paragraph",
+      "content": {
+        "text": "ⓐ Distance to Andromeda Galaxy from Earth: 24,000,000,000,000,000,000,000 m",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-124",
+      "type": "paragraph",
+      "content": {
+        "text": "ⓑ Diameter of Andromeda Galaxy: 1,300,000,000,000,000,000,000 m",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-125",
+      "type": "paragraph",
+      "content": {
+        "text": "ⓒ Number of stars in Andromeda Galaxy: 1,000,000,000,000",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-126",
+      "type": "paragraph",
+      "content": {
+        "text": "ⓓ Diameter of electron: 0.00000000000094 m",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-127",
+      "type": "paragraph",
+      "content": {
+        "text": "ⓔ Probability of being struck by lightning in any single year: 0.00000143",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-128",
+      "type": "paragraph",
+      "content": {
+        "text": "ⓐ $24,000,000,000,000,000,000,000m24,000,000,000,000,000,000,000m←22places2.4×{10}^{22}m$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-129",
+      "type": "paragraph",
+      "content": {
+        "text": "ⓑ $1,300,000,000,000,000,000,000m1,300,000,000,000,000,000,000m←21places1.3×{10}^{21}m$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-130",
+      "type": "paragraph",
+      "content": {
+        "text": "ⓒ $1,000,000,000,0001,000,000,000,000←12places1×{10}^{12}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-131",
+      "type": "paragraph",
+      "content": {
+        "text": "ⓓ $0.00000000000094m0.00000000000094m→13places9.4×{10}^{−13}m$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-132",
+      "type": "paragraph",
+      "content": {
+        "text": "ⓔ $0.000001430.00000143→6places1.43×{10}^{−6}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-133",
+      "type": "paragraph",
+      "content": {
+        "text": "Observe that, if the given number is greater than 1, as in examples a–c, the exponent of 10 is positive; and if the number is less than 1, as in examples d–e, the exponent is negative.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-134",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Write each number in scientific notation. ⓐ U.S. national debt per taxpayer (April 2014): $152,000; ⓑ World population (April 2014): 7,158,000,000; ⓒ World gross national income (April 2014): $85,500,000,000,000; ⓓ Time for light to travel 1 m: 0.00000000334 s; ⓔ Probability of winning lottery (match 6 of 49 possible numbers): 0.0000000715",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "ⓐ $1.52×{10}^{5}$; ⓑ $7.158×{10}^{9}$; ⓒ $8.55×{10}^{13}$; ⓓ $3.34×{10}^{−9}$; ⓔ $7.15×{10}^{−8}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-135",
+      "type": "paragraph",
+      "content": {
+        "text": "Write each number in scientific notation.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-136",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Converting from Scientific to Standard Notation",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-137",
+      "type": "paragraph",
+      "content": {
+        "text": "To convert a number in scientific notation to standard notation, simply reverse the process. Move the decimal $n$ places to the right if $n$ is positive or $n$ places to the left if $n$ is negative and add zeros as needed. Remember, if $n$ is positive, the absolute value of the number is greater than 1, and if $n$ is negative, the absolute value of the number is less than one.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "ex-138",
+      "type": "example",
+      "kind": "worked",
+      "title": {
+        "text": "Example",
+        "inline": []
+      },
+      "problem": {
+        "text": "",
+        "inline": []
+      },
+      "answer": null,
+      "level": "core"
+    },
+    {
+      "id": "exr-139",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Converting Scientific Notation to Standard Notation Convert each number in scientific notation to standard notation. ⓐ $3.547×{10}^{14}$; ⓑ $−2×{10}^{6}$; ⓒ $7.91×{10}^{−7}$; ⓓ $−8.05×{10}^{−12}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "ⓐ $3.547×{10}^{14}3.54700000000000→14places354,700,000,000,000$; ⓑ $−2×{10}^{6}−2.000000→6places−2,000,000$; ⓒ $7.91×{10}^{−7}0000007.91←7places0.000000791$; ⓓ $−8.05×{10}^{−12}−000000000008.05←12places−0.00000000000805$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-140",
+      "type": "paragraph",
+      "content": {
+        "text": "Convert each number in scientific notation to standard notation.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-141",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Convert each number in scientific notation to standard notation. ⓐ $7.03×{10}^{5}$; ⓑ $−8.16×{10}^{11}$; ⓒ $−3.9×{10}^{−13}$; ⓓ $8×{10}^{−6}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "ⓐ $703,000$; ⓑ $−816,000,000,000$; ⓒ $−0.00000000000039$; ⓓ $0.000008$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-142",
+      "type": "paragraph",
+      "content": {
+        "text": "Convert each number in scientific notation to standard notation.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-143",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Using Scientific Notation in Applications",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-144",
+      "type": "paragraph",
+      "content": {
+        "text": "Scientific notation, used with the rules of exponents, makes calculating with large or small numbers much easier than doing so using standard notation. For example, suppose we are asked to calculate the number of atoms in 1 L of water. Each water molecule contains 3 atoms (2 hydrogen and 1 oxygen). The average drop of water contains around $1.32×{10}^{21}$ molecules of water and 1 L of water holds about $1.22×{10}^{4}$ average drops. Therefore, there are approximately $3\\cdot (1.32×{10}^{21})\\cdot (1.22×{10}^{4})≈4.83×{10}^{25}$ atoms in 1 L of water. We simply multiply the decimal terms and add the exponents. Imagine having to perform the calculation without using scientific notation!",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-145",
+      "type": "paragraph",
+      "content": {
+        "text": "When performing calculations with scientific notation, be sure to write the answer in proper scientific notation. For example, consider the product $(7×{10}^{4})\\cdot (5×{10}^{6})=35×{10}^{10}.$ The answer is not in proper scientific notation because 35 is greater than 10. Consider 35 as $3.5×10.$ That adds a ten to the exponent of the answer.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "ex-146",
+      "type": "example",
+      "kind": "worked",
+      "title": {
+        "text": "Example",
+        "inline": []
+      },
+      "problem": {
+        "text": "",
+        "inline": []
+      },
+      "answer": null,
+      "level": "core"
+    },
+    {
+      "id": "exr-147",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Using Scientific Notation Perform the operations and write the answer in scientific notation. ⓐ $(8.14×{10}^{−7})(6.5×{10}^{10})$; ⓑ $(4×{10}^{5})÷(−1.52×{10}^{9})$; ⓒ $(2.7×{10}^{5})(6.04×{10}^{13})$; ⓓ $(1.2×{10}^{8})÷(9.6×{10}^{5})$; ⓔ $(3.33×{10}^{4})(−1.05×{10}^{7})(5.62×{10}^{5})$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "ⓐ $(8.14×{10}^{−7})(6.5×{10}^{10})=(8.14×6.5)({10}^{−7}×{10}^{10})Commutative and associativeproperties of multiplication=(52.91)({10}^{3})Product rule of exponents=5.291×{10}^{4}Scientific notation$; ⓑ $(4×{10}^{5})÷(−1.52×{10}^{9})=(\\frac{4}{−1.52})(\\frac{{10}^{5}}{{10}^{9}})Commutative and associativeproperties of multiplication≈(−2.63)({10}^{−4})Quotient rule of exponents=−2.63×{10}^{−4}Scientific notation$; ⓒ $(2.7×{10}^{5})(6.04×{10}^{13})=(2.7×6.04)({10}^{5}×{10}^{13})Commutative and associativeproperties of multiplication=(16.308)({10}^{18})Product rule of exponents=1.6308×{10}^{19}Scientific notation$; ⓓ $(1.2×{10}^{8})÷(9.6×{10}^{5})=(\\frac{1.2}{9.6})(\\frac{{10}^{8}}{{10}^{5}})Commutative and associativeproperties of multiplication=(0.125)({10}^{3})Quotient rule of exponents=1.25×{10}^{2}Scientific notation$; ⓔ $(3.33×{10}^{4})(−1.05×{10}^{7})(5.62×{10}^{5})=[3.33×(−1.05)×5.62]({10}^{4}×{10}^{7}×{10}^{5})≈(−19.65)({10}^{16})=−1.965×{10}^{17}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-148",
+      "type": "paragraph",
+      "content": {
+        "text": "Perform the operations and write the answer in scientific notation.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-149",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Perform the operations and write the answer in scientific notation. ⓐ $(−7.5×{10}^{8})(1.13×{10}^{−2})$; ⓑ $(1.24×{10}^{11})÷(1.55×{10}^{18})$; ⓒ $(3.72×{10}^{9})(8×{10}^{3})$; ⓓ $(9.933×{10}^{23})÷(-2.31×{10}^{17})$; ⓔ $(−6.04×{10}^{9})(7.3×{10}^{2})(−2.81×{10}^{2})$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "ⓐ $-8.475×{10}^{6}$; ⓑ $8×{10}^{-8}$; ⓒ $2.976×{10}^{13}$; ⓓ $-4.3×{10}^{6}$; ⓔ $≈1.24×{10}^{15}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-150",
+      "type": "paragraph",
+      "content": {
+        "text": "Perform the operations and write the answer in scientific notation.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "ex-151",
+      "type": "example",
+      "kind": "worked",
+      "title": {
+        "text": "Example",
+        "inline": []
+      },
+      "problem": {
+        "text": "",
+        "inline": []
+      },
+      "answer": null,
+      "level": "core"
+    },
+    {
+      "id": "exr-152",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Applying Scientific Notation to Solve Problems In April 2014, the population of the United States was about 308,000,000 people. The national debt was about $17,547,000,000,000. Write each number in scientific notation, rounding figures to two decimal places, and find the amount of the debt per U.S. citizen. Write the answer in both scientific and standard notations.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "The population was $308,000,000=3.08×{10}^{8}.$ The national debt was $17,547,000,000,000≈1.75×{10}^{13}.$ To find the amount of debt per citizen, divide the national debt by the number of citizens. \\[$(1.75×{10}^{13})÷(3.08×{10}^{8})=(\\frac{1.75}{3.08})\\cdot (\\frac{{10}^{13}}{{10}^{8}})≈0.57×{10}^{5}=5.7×{10}^{4}$\\] The debt per citizen at the time was about $5.7×{10}^{4},$ or $57,000.",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-153",
+      "type": "paragraph",
+      "content": {
+        "text": "In April 2014, the population of the United States was about 308,000,000 people. The national debt was about $17,547,000,000,000. Write each number in scientific notation, rounding figures to two decimal places, and find the amount of the debt per U.S. citizen. Write the answer in both scientific and standard notations.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-154",
+      "type": "paragraph",
+      "content": {
+        "text": "The population was $308,000,000=3.08×{10}^{8}.$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-155",
+      "type": "paragraph",
+      "content": {
+        "text": "The national debt was $17,547,000,000,000≈1.75×{10}^{13}.$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-156",
+      "type": "paragraph",
+      "content": {
+        "text": "To find the amount of debt per citizen, divide the national debt by the number of citizens.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-157",
+      "type": "paragraph",
+      "content": {
+        "text": "The debt per citizen at the time was about $5.7×{10}^{4},$ or $57,000.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-158",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "An average human body contains around 30,000,000,000,000 red blood cells. Each cell measures approximately 0.000008 m long. Write each number in scientific notation and find the total length if the cells were laid end-to-end. Write the answer in both scientific and standard notations.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "Number of cells: $3×{10}^{13};$ length of a cell: $8×{10}^{−6}$ m; total length: $2.4×{10}^{8}$ m or $240,000,000$ m.",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-159",
+      "type": "paragraph",
+      "content": {
+        "text": "An average human body contains around 30,000,000,000,000 red blood cells. Each cell measures approximately 0.000008 m long. Write each number in scientific notation and find the total length if the cells were laid end-to-end. Write the answer in both scientific and standard notations.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-160",
+      "type": "paragraph",
+      "content": {
+        "text": "Number of cells: $3×{10}^{13};$ length of a cell: $8×{10}^{−6}$ m; total length: $2.4×{10}^{8}$ m or $240,000,000$ m.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-161",
+      "type": "paragraph",
+      "content": {
+        "text": "Access these online resources for additional instruction and practice with exponents and scientific notation.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-162",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Key Equations",
+        "inline": []
+      }
+    },
+    {
+      "id": "tbl-163",
+      "type": "table",
+      "title": {
+        "text": "Table",
+        "inline": []
+      },
+      "rows": [
+        [
+          "*Rules of Exponents* For nonzero real numbers $a$ and $b$ and integers $m$ and $n$"
+        ],
+        [
+          "Product rule",
+          "${a}^{m}\\cdot {a}^{n}={a}^{m+n}$"
+        ],
+        [
+          "Quotient rule",
+          "$\\frac{{a}^{m}}{{a}^{n}}={a}^{m-n}$"
+        ],
+        [
+          "Power rule",
+          "${({a}^{m})}^{n}={a}^{m\\cdot n}$"
+        ],
+        [
+          "Zero exponent rule",
+          "${a}^{0}=1$"
+        ],
+        [
+          "Negative rule",
+          "${a}^{-n}=\\frac{1}{{a}^{n}}$"
+        ],
+        [
+          "Power of a product rule",
+          "${(a\\cdot b)}^{n}={a}^{n}\\cdot {b}^{n}$"
+        ],
+        [
+          "Power of a quotient rule",
+          "${(\\frac{a}{b})}^{n}=\\frac{{a}^{n}}{{b}^{n}}$"
+        ]
+      ],
+      "alt": "Table with 8 rows",
+      "level": "core"
+    },
+    {
+      "id": "sec-164",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Key Concepts",
+        "inline": []
+      }
+    },
+    {
+      "id": "sec-165",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Section Exercises",
+        "inline": []
+      }
+    },
+    {
+      "id": "sec-166",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Verbal",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-167",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Is ${2}^{3}$ the same as ${3}^{2}?$ Explain.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "No, the two expressions are not the same. An exponent tells how many times you multiply the base. So ${2}^{3}$ is the same as $2×2×2,$ which is 8. ${3}^{2}$ is the same as $3×3,$ which is 9.",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-168",
+      "type": "paragraph",
+      "content": {
+        "text": "Is ${2}^{3}$ the same as ${3}^{2}?$ Explain.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-169",
+      "type": "paragraph",
+      "content": {
+        "text": "No, the two expressions are not the same. An exponent tells how many times you multiply the base. So ${2}^{3}$ is the same as $2×2×2,$ which is 8. ${3}^{2}$ is the same as $3×3,$ which is 9.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-170",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "When can you add two exponents?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-171",
+      "type": "paragraph",
+      "content": {
+        "text": "When can you add two exponents?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-172",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "What is the purpose of scientific notation?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "It is a method of writing very small and very large numbers.",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-173",
+      "type": "paragraph",
+      "content": {
+        "text": "What is the purpose of scientific notation?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-174",
+      "type": "paragraph",
+      "content": {
+        "text": "It is a method of writing very small and very large numbers.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-175",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Explain what a negative exponent does.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-176",
+      "type": "paragraph",
+      "content": {
+        "text": "Explain what a negative exponent does.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-177",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Numeric",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-178",
+      "type": "paragraph",
+      "content": {
+        "text": "For the following exercises, simplify the given expression. Write answers with positive exponents.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-179",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "${9}^{2}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "81",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "exr-180",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "${15}^{−2}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "exr-181",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "${3}^{2}×{3}^{3}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "243",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "exr-182",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "${4}^{4}÷4$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "exr-183",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "${({2}^{2})}^{−2}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$\\frac{1}{16}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "exr-184",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "${(5-8)}^{0}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "exr-185",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "${11}^{3}÷{11}^{4}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$\\frac{1}{11}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "exr-186",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "${6}^{5}×{6}^{−7}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "exr-187",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "${({8}^{0})}^{2}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "1",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "exr-188",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "${5}^{−2}÷{5}^{2}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-189",
+      "type": "paragraph",
+      "content": {
+        "text": "For the following exercises, write each expression with a single base. Do not simplify further. Write answers with positive exponents.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-190",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "${4}^{2}×{4}^{3}÷{4}^{−4}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "${4}^{9}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-191",
+      "type": "paragraph",
+      "content": {
+        "text": "${4}^{2}×{4}^{3}÷{4}^{−4}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-192",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$\\frac{{6}^{12}}{{6}^{9}}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-193",
+      "type": "paragraph",
+      "content": {
+        "text": "$\\frac{{6}^{12}}{{6}^{9}}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-194",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "${({12}^{3}×12)}^{10}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "${12}^{40}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-195",
+      "type": "paragraph",
+      "content": {
+        "text": "${({12}^{3}×12)}^{10}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-196",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "${10}^{6}÷{({10}^{10})}^{−2}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-197",
+      "type": "paragraph",
+      "content": {
+        "text": "${10}^{6}÷{({10}^{10})}^{−2}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-198",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "${7}^{−6}×{7}^{−3}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$\\frac{1}{{7}^{9}}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "exr-199",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "${({3}^{3}÷{3}^{4})}^{5}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-200",
+      "type": "paragraph",
+      "content": {
+        "text": "${({3}^{3}÷{3}^{4})}^{5}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-201",
+      "type": "paragraph",
+      "content": {
+        "text": "For the following exercises, express the decimal in scientific notation.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-202",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "0.0000314",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$3.14×{10}^{-5}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "exr-203",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "148,000,000",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-204",
+      "type": "paragraph",
+      "content": {
+        "text": "For the following exercises, convert each number in scientific notation to standard notation.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-205",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$1.6×{10}^{10}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "16,000,000,000",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "exr-206",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$9.8×{10}^{−9}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "sec-207",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Algebraic",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-208",
+      "type": "paragraph",
+      "content": {
+        "text": "For the following exercises, simplify the given expression. Write answers with positive exponents.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-209",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$\\frac{{a}^{3}{a}^{2}}{a}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "${a}^{4}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-210",
+      "type": "paragraph",
+      "content": {
+        "text": "$\\frac{{a}^{3}{a}^{2}}{a}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-211",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$\\frac{m{n}^{2}}{{m}^{−2}}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-212",
+      "type": "paragraph",
+      "content": {
+        "text": "$\\frac{m{n}^{2}}{{m}^{−2}}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-213",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "${({b}^{3}{c}^{4})}^{2}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "${b}^{6}{c}^{8}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-214",
+      "type": "paragraph",
+      "content": {
+        "text": "${({b}^{3}{c}^{4})}^{2}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-215",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "${(\\frac{{x}^{−3}}{{y}^{2}})}^{−5}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-216",
+      "type": "paragraph",
+      "content": {
+        "text": "${(\\frac{{x}^{−3}}{{y}^{2}})}^{−5}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-217",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$a{b}^{2}÷{d}^{−3}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$a{b}^{2}{d}^{3}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "exr-218",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "${({w}^{0}{x}^{5})}^{−1}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-219",
+      "type": "paragraph",
+      "content": {
+        "text": "${({w}^{0}{x}^{5})}^{−1}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-220",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$\\frac{{m}^{4}}{{n}^{0}}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "${m}^{4}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-221",
+      "type": "paragraph",
+      "content": {
+        "text": "$\\frac{{m}^{4}}{{n}^{0}}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-222",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "${y}^{−4}{({y}^{2})}^{2}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-223",
+      "type": "paragraph",
+      "content": {
+        "text": "${y}^{−4}{({y}^{2})}^{2}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-224",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$\\frac{{p}^{−4}{q}^{2}}{{p}^{2}{q}^{−3}}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$\\frac{{q}^{5}}{{p}^{6}}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-225",
+      "type": "paragraph",
+      "content": {
+        "text": "$\\frac{{p}^{−4}{q}^{2}}{{p}^{2}{q}^{−3}}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-226",
+      "type": "paragraph",
+      "content": {
+        "text": "$\\frac{{q}^{5}}{{p}^{6}}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-227",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "${(l×w)}^{2}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "exr-228",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "${({y}^{7})}^{3}÷{x}^{14}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$\\frac{{y}^{21}}{{x}^{14}}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-229",
+      "type": "paragraph",
+      "content": {
+        "text": "${({y}^{7})}^{3}÷{x}^{14}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-230",
+      "type": "paragraph",
+      "content": {
+        "text": "$\\frac{{y}^{21}}{{x}^{14}}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-231",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "${(\\frac{a}{{2}^{3}})}^{2}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-232",
+      "type": "paragraph",
+      "content": {
+        "text": "${(\\frac{a}{{2}^{3}})}^{2}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-233",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$(25m)÷({5}^{0}m)$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$25$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "exr-234",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$\\frac{{(16\\sqrt{x})}^{2}}{{y}^{−1}}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-235",
+      "type": "paragraph",
+      "content": {
+        "text": "$\\frac{{(16\\sqrt{x})}^{2}}{{y}^{−1}}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-236",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$\\frac{{2}^{3}}{{(3a)}^{−2}}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$72{a}^{2}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-237",
+      "type": "paragraph",
+      "content": {
+        "text": "$\\frac{{2}^{3}}{{(3a)}^{−2}}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-238",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "${(m{a}^{6})}^{2}\\frac{1}{{m}^{3}{a}^{2}}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-239",
+      "type": "paragraph",
+      "content": {
+        "text": "${(m{a}^{6})}^{2}\\frac{1}{{m}^{3}{a}^{2}}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-240",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "${({b}^{−3}c)}^{3}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$\\frac{{c}^{3}}{{b}^{9}}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-241",
+      "type": "paragraph",
+      "content": {
+        "text": "$\\frac{{c}^{3}}{{b}^{9}}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-242",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "${({x}^{2}{y}^{13}÷{y}^{0})}^{2}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-243",
+      "type": "paragraph",
+      "content": {
+        "text": "${({x}^{2}{y}^{13}÷{y}^{0})}^{2}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-244",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "${(9{z}^{3})}^{−2}y$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$\\frac{y}{81{z}^{6}}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-245",
+      "type": "paragraph",
+      "content": {
+        "text": "${(9{z}^{3})}^{−2}y$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-246",
+      "type": "paragraph",
+      "content": {
+        "text": "$\\frac{y}{81{z}^{6}}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-247",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Real-World Applications",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-248",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "To reach escape velocity, a rocket must travel at the rate of $2.2×{10}^{6}$ ft/min. Rewrite the rate in standard notation.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-249",
+      "type": "paragraph",
+      "content": {
+        "text": "To reach escape velocity, a rocket must travel at the rate of $2.2×{10}^{6}$ ft/min. Rewrite the rate in standard notation.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-250",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A dime is the thinnest coin in U.S. currency. A dime’s thickness measures $1.35×{10}^{−3}$ m. Rewrite the number in standard notation.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "0.00135 m",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-251",
+      "type": "paragraph",
+      "content": {
+        "text": "A dime is the thinnest coin in U.S. currency. A dime’s thickness measures $1.35×{10}^{−3}$ m. Rewrite the number in standard notation.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-252",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "The average distance between Earth and the Sun is 92,960,000 mi. Rewrite the distance using scientific notation.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-253",
+      "type": "paragraph",
+      "content": {
+        "text": "The average distance between Earth and the Sun is 92,960,000 mi. Rewrite the distance using scientific notation.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-254",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A terabyte is made of approximately 1,099,500,000,000 bytes. Rewrite in scientific notation.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$1.0995×{10}^{12}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-255",
+      "type": "paragraph",
+      "content": {
+        "text": "A terabyte is made of approximately 1,099,500,000,000 bytes. Rewrite in scientific notation.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-256",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "The Gross Domestic Product (GDP) for the United States in the first quarter of 2014 was $1.71496×{10}^{13}.$ Rewrite the GDP in standard notation.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-257",
+      "type": "paragraph",
+      "content": {
+        "text": "The Gross Domestic Product (GDP) for the United States in the first quarter of 2014 was $1.71496×{10}^{13}.$ Rewrite the GDP in standard notation.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-258",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "One picometer is approximately $3.397×{10}^{−11}$ in. Rewrite this length using standard notation.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "0.00000000003397 in.",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-259",
+      "type": "paragraph",
+      "content": {
+        "text": "One picometer is approximately $3.397×{10}^{−11}$ in. Rewrite this length using standard notation.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-260",
+      "type": "paragraph",
+      "content": {
+        "text": "0.00000000003397 in.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-261",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "The value of the services sector of the U.S. economy in the first quarter of 2012 was $10,633.6 billion. Rewrite this amount in scientific notation.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-262",
+      "type": "paragraph",
+      "content": {
+        "text": "The value of the services sector of the U.S. economy in the first quarter of 2012 was $10,633.6 billion. Rewrite this amount in scientific notation.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-263",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Technology",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-264",
+      "type": "paragraph",
+      "content": {
+        "text": "For the following exercises, use a graphing calculator to simplify. Round the answers to the nearest hundredth.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-265",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "${(\\frac{{12}^{3}{m}^{33}}{{4}^{−3}})}^{2}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "12,230,590,464 ${m}^{66}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-266",
+      "type": "paragraph",
+      "content": {
+        "text": "${(\\frac{{12}^{3}{m}^{33}}{{4}^{−3}})}^{2}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-267",
+      "type": "paragraph",
+      "content": {
+        "text": "12,230,590,464 ${m}^{66}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-268",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "${17}^{3}÷{15}^{2}{x}^{3}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-269",
+      "type": "paragraph",
+      "content": {
+        "text": "${17}^{3}÷{15}^{2}{x}^{3}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-270",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Extensions",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-271",
+      "type": "paragraph",
+      "content": {
+        "text": "For the following exercises, simplify the given expression. Write answers with positive exponents.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-272",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "${(\\frac{{3}^{2}}{{a}^{3}})}^{−2}{(\\frac{{a}^{4}}{{2}^{2}})}^{2}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$\\frac{{a}^{14}}{1296}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-273",
+      "type": "paragraph",
+      "content": {
+        "text": "${(\\frac{{3}^{2}}{{a}^{3}})}^{−2}{(\\frac{{a}^{4}}{{2}^{2}})}^{2}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-274",
+      "type": "paragraph",
+      "content": {
+        "text": "$\\frac{{a}^{14}}{1296}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-275",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "${({6}^{2}−24)}^{2}÷{(\\frac{x}{y})}^{−5}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-276",
+      "type": "paragraph",
+      "content": {
+        "text": "${({6}^{2}−24)}^{2}÷{(\\frac{x}{y})}^{−5}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-277",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "$\\frac{{m}^{2}{n}^{3}}{{a}^{2}{c}^{−3}}\\cdot \\frac{{a}^{−7}{n}^{−2}}{{m}^{2}{c}^{4}}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$\\frac{n}{{a}^{9}c}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-278",
+      "type": "paragraph",
+      "content": {
+        "text": "$\\frac{{m}^{2}{n}^{3}}{{a}^{2}{c}^{−3}}\\cdot \\frac{{a}^{−7}{n}^{−2}}{{m}^{2}{c}^{4}}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-279",
+      "type": "paragraph",
+      "content": {
+        "text": "$\\frac{n}{{a}^{9}c}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-280",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "${(\\frac{{x}^{6}{y}^{3}}{{x}^{3}{y}^{−3}}\\cdot \\frac{{y}^{−7}}{{x}^{−3}})}^{10}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-281",
+      "type": "paragraph",
+      "content": {
+        "text": "${(\\frac{{x}^{6}{y}^{3}}{{x}^{3}{y}^{−3}}\\cdot \\frac{{y}^{−7}}{{x}^{−3}})}^{10}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-282",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "${(\\frac{{(a{b}^{2}c)}^{−3}}{{b}^{−3}})}^{2}$",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$\\frac{1}{{a}^{6}{b}^{6}{c}^{6}}$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-283",
+      "type": "paragraph",
+      "content": {
+        "text": "${(\\frac{{(a{b}^{2}c)}^{−3}}{{b}^{−3}})}^{2}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-284",
+      "type": "paragraph",
+      "content": {
+        "text": "$\\frac{1}{{a}^{6}{b}^{6}{c}^{6}}$",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-285",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Avogadro’s constant is used to calculate the number of particles in a mole. A mole is a basic unit in chemistry to measure the amount of a substance. The constant is $6.0221413×{10}^{23}.$ Write Avogadro’s constant in standard notation.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-286",
+      "type": "paragraph",
+      "content": {
+        "text": "Avogadro’s constant is used to calculate the number of particles in a mole. A mole is a basic unit in chemistry to measure the amount of a substance. The constant is $6.0221413×{10}^{23}.$ Write Avogadro’s constant in standard notation.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-287",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Planck’s constant is an important unit of measure in quantum physics. It describes the relationship between energy and frequency. The constant is written as $6.62606957×{10}^{−34}.$ Write Planck’s constant in standard notation.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "0.000000000000000000000000000000000662606957",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-288",
+      "type": "paragraph",
+      "content": {
+        "text": "Planck’s constant is an important unit of measure in quantum physics. It describes the relationship between energy and frequency. The constant is written as $6.62606957×{10}^{−34}.$ Write Planck’s constant in standard notation.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-289",
+      "type": "paragraph",
+      "content": {
+        "text": "0.000000000000000000000000000000000662606957",
+        "inline": []
+      },
+      "level": "core"
+    }
+  ],
+  "solutions": {
+    "osbooks-college-algebra-bundle:m51241:exr-21": [
+      [
+        {
+          "kind": "text",
+          "text": "Use the product rule to simplify each expression."
+        }
+      ],
+      [
+        {
+          "kind": "math",
+          "text": "ⓐ{t}^{5}\\cdot {t}^{3}={t}^{5+3}={t}^{8}ⓑ{(−3)}^{5}\\cdot (−3)={(−3)}^{5}\\cdot {(−3)}^{1}={(−3)}^{5+1}={(−3)}^{6}ⓒ{x}^{2}\\cdot {x}^{5}\\cdot {x}^{3}"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "At first, it may appear that we cannot simplify a product of three factors. However, using the associative property of multiplication, begin by simplifying the first two."
+        }
+      ],
+      [
+        {
+          "kind": "math",
+          "text": "{x}^{2}\\cdot {x}^{5}\\cdot {x}^{3}=({x}^{2}\\cdot {x}^{5})\\cdot {x}^{3}=({x}^{2+5})\\cdot {x}^{3}={x}^{7}\\cdot {x}^{3}={x}^{7+3}={x}^{10}"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "Notice we get the same result by adding the three exponents in one step."
+        }
+      ],
+      [
+        {
+          "kind": "math",
+          "text": "{x}^{2}\\cdot {x}^{5}\\cdot {x}^{3}={x}^{2+5+3}={x}^{10}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51241:exr-26": [
+      [
+        {
+          "kind": "math",
+          "text": "ⓐ{k}^{15}ⓑ{(\\frac{2}{y})}^{5}ⓒ{t}^{14}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51241:exr-35": [
+      [
+        {
+          "kind": "text",
+          "text": "Use the quotient rule to simplify each expression."
+        }
+      ],
+      [
+        {
+          "kind": "math",
+          "text": "ⓐ\\frac{{(−2)}^{14}}{{(−2)}^{9}}={(−2)}^{14-9}={(−2)}^{5}ⓑ\\frac{{t}^{23}}{{t}^{15}}={t}^{23-15}={t}^{8}ⓒ\\frac{{(z\\sqrt{2})}^{5}}{z\\sqrt{2}}={(z\\sqrt{2})}^{5-1}={(z\\sqrt{2})}^{4}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51241:exr-38": [
+      [
+        {
+          "kind": "math",
+          "text": "ⓐ{s}^{7}ⓑ{(−3)}^{5}ⓒ{(e{f}^{2})}^{2}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51241:exr-46": [
+      [
+        {
+          "kind": "text",
+          "text": "Use the power rule to simplify each expression."
+        }
+      ],
+      [
+        {
+          "kind": "math",
+          "text": "ⓐ{({x}^{2})}^{7}={x}^{2\\cdot 7}={x}^{14}ⓑ{({(2t)}^{5})}^{3}={(2t)}^{5\\cdot 3}={(2t)}^{15}ⓒ{({(−3)}^{5})}^{11}={(−3)}^{5\\cdot 11}={(−3)}^{55}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51241:exr-49": [
+      [
+        {
+          "kind": "math",
+          "text": "ⓐ{(3y)}^{24}ⓑ{t}^{35}ⓒ{(-g)}^{16}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51241:exr-58": [
+      [
+        {
+          "kind": "text",
+          "text": "Use the zero exponent and other rules to simplify each expression."
+        }
+      ],
+      [
+        {
+          "kind": "math",
+          "text": "ⓐ\\frac{{c}^{3}}{{c}^{3}}={c}^{3-3}={c}^{0}=1"
+        }
+      ],
+      [
+        {
+          "kind": "math",
+          "text": "ⓑ\\frac{−3{x}^{5}}{{x}^{5}}=−3\\cdot \\frac{{x}^{5}}{{x}^{5}}=−3\\cdot {x}^{5-5}=−3\\cdot {x}^{0}=−3\\cdot 1=−3"
+        }
+      ],
+      [
+        {
+          "kind": "math",
+          "text": "ⓒ\\frac{{({j}^{2}k)}^{4}}{({j}^{2}k)\\cdot {({j}^{2}k)}^{3}}=\\frac{{({j}^{2}k)}^{4}}{{({j}^{2}k)}^{1+3}}"
+        },
+        {
+          "kind": "text",
+          "text": "Use the product rule in the denominator"
+        },
+        {
+          "kind": "math",
+          "text": ".=\\frac{{({j}^{2}k)}^{4}}{{({j}^{2}k)}^{4}}"
+        },
+        {
+          "kind": "text",
+          "text": "Simplify"
+        },
+        {
+          "kind": "math",
+          "text": ".={({j}^{2}k)}^{4-4}"
+        },
+        {
+          "kind": "text",
+          "text": "Use the quotient rule"
+        },
+        {
+          "kind": "math",
+          "text": ".={({j}^{2}k)}^{0}"
+        },
+        {
+          "kind": "text",
+          "text": "Simplify"
+        },
+        {
+          "kind": "math",
+          "text": ".=1"
+        }
+      ],
+      [
+        {
+          "kind": "math",
+          "text": "ⓓ\\frac{5{(r{s}^{2})}^{2}}{{(r{s}^{2})}^{2}}=5{(r{s}^{2})}^{2-2}"
+        },
+        {
+          "kind": "text",
+          "text": "Use the quotient rule"
+        },
+        {
+          "kind": "math",
+          "text": ".=5{(r{s}^{2})}^{0}"
+        },
+        {
+          "kind": "text",
+          "text": "Simplify"
+        },
+        {
+          "kind": "math",
+          "text": ".=5\\cdot 1"
+        },
+        {
+          "kind": "text",
+          "text": "Use the zero exponent rule"
+        },
+        {
+          "kind": "math",
+          "text": ".=5"
+        },
+        {
+          "kind": "text",
+          "text": "Simplify"
+        },
+        {
+          "kind": "math",
+          "text": "."
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51241:exr-65": [
+      [
+        {
+          "kind": "math",
+          "text": "ⓐ1ⓑ\\frac{1}{2}ⓒ1ⓓ1"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51241:exr-76": [
+      [
+        {
+          "kind": "math",
+          "text": "ⓐ\\frac{{θ}^{3}}{{θ}^{10}}={θ}^{3-10}={θ}^{−7}=\\frac{1}{{θ}^{7}}ⓑ\\frac{{z}^{2}\\cdot z}{{z}^{4}}=\\frac{{z}^{2+1}}{{z}^{4}}=\\frac{{z}^{3}}{{z}^{4}}={z}^{3-4}={z}^{−1}=\\frac{1}{z}ⓒ\\frac{{(−5{t}^{3})}^{4}}{{(−5{t}^{3})}^{8}}={(−5{t}^{3})}^{4-8}={(−5{t}^{3})}^{−4}=\\frac{1}{{(−5{t}^{3})}^{4}}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51241:exr-78": [
+      [
+        {
+          "kind": "math",
+          "text": "ⓐ\\frac{1}{{(−3t)}^{6}}ⓑ\\frac{1}{{f}^{3}}ⓒ\\frac{2}{5{k}^{3}}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51241:exr-81": [
+      [
+        {
+          "kind": "math",
+          "text": "ⓐ{b}^{2}\\cdot {b}^{−8}={b}^{2-8}={b}^{−6}=\\frac{1}{{b}^{6}}ⓑ{(-x)}^{5}\\cdot {(-x)}^{−5}={(-x)}^{5-5}={(-x)}^{0}=1ⓒ\\frac{−7z}{{(−7z)}^{5}}=\\frac{{(−7z)}^{1}}{{(−7z)}^{5}}={(−7z)}^{1-5}={(−7z)}^{−4}=\\frac{1}{{(−7z)}^{4}}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51241:exr-83": [
+      [
+        {
+          "kind": "math",
+          "text": "ⓐ{t}^{−5}=\\frac{1}{{t}^{5}}ⓑ\\frac{1}{25}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51241:exr-90": [
+      [
+        {
+          "kind": "text",
+          "text": "Use the product and quotient rules and the new definitions to simplify each expression."
+        }
+      ],
+      [
+        {
+          "kind": "math",
+          "text": "ⓐ{(a{b}^{2})}^{3}={(a)}^{3}\\cdot {({b}^{2})}^{3}={a}^{1\\cdot 3}\\cdot {b}^{2\\cdot 3}={a}^{3}{b}^{6}ⓑ{(2t)}^{15}={(2)}^{15}\\cdot {(t)}^{15}={2}^{15}{t}^{15}=32,768{t}^{15}ⓒ{(−2{w}^{3})}^{3}={(−2)}^{3}\\cdot {({w}^{3})}^{3}=−8\\cdot {w}^{3\\cdot 3}=−8{w}^{9}ⓓ\\frac{1}{{(−7z)}^{4}}=\\frac{1}{{(−7)}^{4}\\cdot {(z)}^{4}}=\\frac{1}{2,401{z}^{4}}ⓔ{({e}^{−2}{f}^{2})}^{7}={({e}^{−2})}^{7}\\cdot {({f}^{2})}^{7}={e}^{−2\\cdot 7}\\cdot {f}^{2\\cdot 7}={e}^{−14}{f}^{14}=\\frac{{f}^{14}}{{e}^{14}}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51241:exr-93": [
+      [
+        {
+          "kind": "math",
+          "text": "ⓐ{g}^{10}{h}^{15}ⓑ125{t}^{3}ⓒ−27{y}^{15}ⓓ\\frac{1}{{a}^{18}{b}^{21}}ⓔ\\frac{{r}^{12}}{{s}^{8}}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51241:exr-101": [
+      [
+        {
+          "kind": "math",
+          "text": "ⓐ{(\\frac{4}{{z}^{11}})}^{3}=\\frac{{(4)}^{3}}{{({z}^{11})}^{3}}=\\frac{64}{{z}^{11\\cdot 3}}=\\frac{64}{{z}^{33}}ⓑ{(\\frac{p}{{q}^{3}})}^{6}=\\frac{{(p)}^{6}}{{({q}^{3})}^{6}}=\\frac{{p}^{1\\cdot 6}}{{q}^{3\\cdot 6}}=\\frac{{p}^{6}}{{q}^{18}}ⓒ{(\\frac{−1}{{t}^{2}})}^{27}=\\frac{{(−1)}^{27}}{{({t}^{2})}^{27}}=\\frac{−1}{{t}^{2\\cdot 27}}=\\frac{−1}{{t}^{54}}=-\\frac{1}{{t}^{54}}ⓓ{({j}^{3}{k}^{−2})}^{4}={(\\frac{{j}^{3}}{{k}^{2}})}^{4}=\\frac{{({j}^{3})}^{4}}{{({k}^{2})}^{4}}=\\frac{{j}^{3\\cdot 4}}{{k}^{2\\cdot 4}}=\\frac{{j}^{12}}{{k}^{8}}ⓔ{({m}^{−2}{n}^{−2})}^{3}={(\\frac{1}{{m}^{2}{n}^{2}})}^{3}=\\frac{{(1)}^{3}}{{({m}^{2}{n}^{2})}^{3}}=\\frac{1}{{({m}^{2})}^{3}{({n}^{2})}^{3}}=\\frac{1}{{m}^{2\\cdot 3}\\cdot {n}^{2\\cdot 3}}=\\frac{1}{{m}^{6}{n}^{6}}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51241:exr-103": [
+      [
+        {
+          "kind": "math",
+          "text": "ⓐ\\frac{{b}^{15}}{{c}^{3}}ⓑ\\frac{625}{{u}^{32}}ⓒ\\frac{−1}{{w}^{105}}ⓓ\\frac{{q}^{24}}{{p}^{32}}ⓔ\\frac{1}{{c}^{20}{d}^{12}}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51241:exr-108": [
+      [
+        {
+          "kind": "math",
+          "text": "ⓐ{(6{m}^{2}{n}^{−1})}^{3}={(6)}^{3}{({m}^{2})}^{3}{({n}^{−1})}^{3}"
+        },
+        {
+          "kind": "text",
+          "text": "The power of a product rule"
+        },
+        {
+          "kind": "math",
+          "text": "={6}^{3}{m}^{2\\cdot 3}{n}^{−1\\cdot 3}"
+        },
+        {
+          "kind": "text",
+          "text": "The power rule"
+        },
+        {
+          "kind": "math",
+          "text": "=216{m}^{6}{n}^{−3}"
+        },
+        {
+          "kind": "text",
+          "text": "Simplify"
+        },
+        {
+          "kind": "math",
+          "text": ".=\\frac{216{m}^{6}}{{n}^{3}}"
+        },
+        {
+          "kind": "text",
+          "text": "The negative exponent rule"
+        },
+        {
+          "kind": "math",
+          "text": "ⓑ{17}^{5}\\cdot {17}^{−4}\\cdot {17}^{−3}={17}^{5-4-3}"
+        },
+        {
+          "kind": "text",
+          "text": "The product rule"
+        },
+        {
+          "kind": "math",
+          "text": "={17}^{−2}"
+        },
+        {
+          "kind": "text",
+          "text": "Simplify"
+        },
+        {
+          "kind": "math",
+          "text": ".=\\frac{1}{{17}^{2}}or\\frac{1}{289}"
+        },
+        {
+          "kind": "text",
+          "text": "The negative exponent rule"
+        },
+        {
+          "kind": "math",
+          "text": "ⓒ{(\\frac{{u}^{−1}v}{{v}^{−1}})}^{2}=\\frac{{({u}^{−1}v)}^{2}}{{({v}^{−1})}^{2}}"
+        },
+        {
+          "kind": "text",
+          "text": "The power of a quotient rule"
+        },
+        {
+          "kind": "math",
+          "text": "=\\frac{{u}^{−2}{v}^{2}}{{v}^{−2}}"
+        },
+        {
+          "kind": "text",
+          "text": "The power of a product rule"
+        },
+        {
+          "kind": "math",
+          "text": "={u}^{−2}{v}^{2-(−2)}"
+        },
+        {
+          "kind": "text",
+          "text": "The quotient rule"
+        },
+        {
+          "kind": "math",
+          "text": "={u}^{−2}{v}^{4}"
+        },
+        {
+          "kind": "text",
+          "text": "Simplify"
+        },
+        {
+          "kind": "math",
+          "text": ".=\\frac{{v}^{4}}{{u}^{2}}"
+        },
+        {
+          "kind": "text",
+          "text": "The negative exponent rule"
+        },
+        {
+          "kind": "math",
+          "text": "ⓓ(−2{a}^{3}{b}^{-1})(5{a}^{−2}{b}^{2})=−2\\cdot 5\\cdot {a}^{3}\\cdot {a}^{−2}\\cdot {b}^{−1}\\cdot {b}^{2}"
+        },
+        {
+          "kind": "text",
+          "text": "Commutative and associative laws of multiplication"
+        },
+        {
+          "kind": "math",
+          "text": "=−10\\cdot {a}^{3-2}\\cdot {b}^{−1+2}"
+        },
+        {
+          "kind": "text",
+          "text": "The product rule"
+        },
+        {
+          "kind": "math",
+          "text": "=−10ab"
+        },
+        {
+          "kind": "text",
+          "text": "Simplify"
+        },
+        {
+          "kind": "math",
+          "text": ".ⓔ{({x}^{2}\\sqrt{2})}^{4}{({x}^{2}\\sqrt{2})}^{−4}={({x}^{2}\\sqrt{2})}^{4-4}"
+        },
+        {
+          "kind": "text",
+          "text": "The product rule"
+        },
+        {
+          "kind": "math",
+          "text": "={({x}^{2}\\sqrt{2})}^{0}"
+        },
+        {
+          "kind": "text",
+          "text": "Simplify"
+        },
+        {
+          "kind": "math",
+          "text": ".=1"
+        },
+        {
+          "kind": "text",
+          "text": "The zero exponent rule"
+        },
+        {
+          "kind": "math",
+          "text": "ⓕ\\frac{{(3{w}^{2})}^{5}}{{(6{w}^{−2})}^{2}}=\\frac{{(3)}^{5}\\cdot {({w}^{2})}^{5}}{{(6)}^{2}\\cdot {({w}^{−2})}^{2}}"
+        },
+        {
+          "kind": "text",
+          "text": "The power of a product rule"
+        },
+        {
+          "kind": "math",
+          "text": "=\\frac{{3}^{5}{w}^{2\\cdot 5}}{{6}^{2}{w}^{−2\\cdot 2}}"
+        },
+        {
+          "kind": "text",
+          "text": "The power rule"
+        },
+        {
+          "kind": "math",
+          "text": "=\\frac{243{w}^{10}}{36{w}^{−4}}"
+        },
+        {
+          "kind": "text",
+          "text": "Simplify"
+        },
+        {
+          "kind": "math",
+          "text": ".=\\frac{27{w}^{10-(−4)}}{4}"
+        },
+        {
+          "kind": "text",
+          "text": "The quotient rule and reduce fraction"
+        },
+        {
+          "kind": "math",
+          "text": "=\\frac{27{w}^{14}}{4}"
+        },
+        {
+          "kind": "text",
+          "text": "Simplify"
+        },
+        {
+          "kind": "math",
+          "text": "."
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51241:exr-110": [
+      [
+        {
+          "kind": "math",
+          "text": "ⓐ\\frac{{v}^{6}}{8{u}^{3}}ⓑ\\frac{1}{{x}^{3}}ⓒ\\frac{{e}^{4}}{{f}^{4}}ⓓ\\frac{27r}{s}ⓔ1ⓕ\\frac{16{h}^{10}}{49}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51241:exr-121": [
+      [
+        {
+          "kind": "math",
+          "text": "ⓐ24,000,000,000,000,000,000,000m24,000,000,000,000,000,000,000m←22places2.4×{10}^{22}m"
+        }
+      ],
+      [
+        {
+          "kind": "math",
+          "text": "ⓑ1,300,000,000,000,000,000,000m1,300,000,000,000,000,000,000m←21places1.3×{10}^{21}m"
+        }
+      ],
+      [
+        {
+          "kind": "math",
+          "text": "ⓒ1,000,000,000,0001,000,000,000,000←12places1×{10}^{12}"
+        }
+      ],
+      [
+        {
+          "kind": "math",
+          "text": "ⓓ0.00000000000094m0.00000000000094m→13places9.4×{10}^{−13}m"
+        }
+      ],
+      [
+        {
+          "kind": "math",
+          "text": "ⓔ0.000001430.00000143→6places1.43×{10}^{−6}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51241:exr-134": [
+      [
+        {
+          "kind": "math",
+          "text": "ⓐ1.52×{10}^{5}ⓑ7.158×{10}^{9}ⓒ8.55×{10}^{13}ⓓ3.34×{10}^{−9}ⓔ7.15×{10}^{−8}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51241:exr-139": [
+      [
+        {
+          "kind": "math",
+          "text": "ⓐ3.547×{10}^{14}3.54700000000000→14places354,700,000,000,000ⓑ−2×{10}^{6}−2.000000→6places−2,000,000ⓒ7.91×{10}^{−7}0000007.91←7places0.000000791ⓓ−8.05×{10}^{−12}−000000000008.05←12places−0.00000000000805"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51241:exr-141": [
+      [
+        {
+          "kind": "math",
+          "text": "ⓐ703,000ⓑ−816,000,000,000ⓒ−0.00000000000039ⓓ0.000008"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51241:exr-147": [
+      [
+        {
+          "kind": "math",
+          "text": "ⓐ(8.14×{10}^{−7})(6.5×{10}^{10})=(8.14×6.5)({10}^{−7}×{10}^{10})"
+        },
+        {
+          "kind": "text",
+          "text": "Commutative and associative"
+        },
+        {
+          "kind": "text",
+          "text": "properties of multiplication"
+        },
+        {
+          "kind": "math",
+          "text": "=(52.91)({10}^{3})"
+        },
+        {
+          "kind": "text",
+          "text": "Product rule of exponents"
+        },
+        {
+          "kind": "math",
+          "text": "=5.291×{10}^{4}"
+        },
+        {
+          "kind": "text",
+          "text": "Scientific notation"
+        },
+        {
+          "kind": "math",
+          "text": "ⓑ(4×{10}^{5})÷(−1.52×{10}^{9})=(\\frac{4}{−1.52})(\\frac{{10}^{5}}{{10}^{9}})"
+        },
+        {
+          "kind": "text",
+          "text": "Commutative and associative"
+        },
+        {
+          "kind": "text",
+          "text": "properties of multiplication"
+        },
+        {
+          "kind": "math",
+          "text": "≈(−2.63)({10}^{−4})"
+        },
+        {
+          "kind": "text",
+          "text": "Quotient rule of exponents"
+        },
+        {
+          "kind": "math",
+          "text": "=−2.63×{10}^{−4}"
+        },
+        {
+          "kind": "text",
+          "text": "Scientific notation"
+        },
+        {
+          "kind": "math",
+          "text": "ⓒ(2.7×{10}^{5})(6.04×{10}^{13})=(2.7×6.04)({10}^{5}×{10}^{13})"
+        },
+        {
+          "kind": "text",
+          "text": "Commutative and associative"
+        },
+        {
+          "kind": "text",
+          "text": "properties of multiplication"
+        },
+        {
+          "kind": "math",
+          "text": "=(16.308)({10}^{18})"
+        },
+        {
+          "kind": "text",
+          "text": "Product rule of exponents"
+        },
+        {
+          "kind": "math",
+          "text": "=1.6308×{10}^{19}"
+        },
+        {
+          "kind": "text",
+          "text": "Scientific notation"
+        },
+        {
+          "kind": "math",
+          "text": "ⓓ(1.2×{10}^{8})÷(9.6×{10}^{5})=(\\frac{1.2}{9.6})(\\frac{{10}^{8}}{{10}^{5}})"
+        },
+        {
+          "kind": "text",
+          "text": "Commutative and associative"
+        },
+        {
+          "kind": "text",
+          "text": "properties of multiplication"
+        },
+        {
+          "kind": "math",
+          "text": "=(0.125)({10}^{3})"
+        },
+        {
+          "kind": "text",
+          "text": "Quotient rule of exponents"
+        },
+        {
+          "kind": "math",
+          "text": "=1.25×{10}^{2}"
+        },
+        {
+          "kind": "text",
+          "text": "Scientific notation"
+        },
+        {
+          "kind": "math",
+          "text": "ⓔ(3.33×{10}^{4})(−1.05×{10}^{7})(5.62×{10}^{5})=[3.33×(−1.05)×5.62]({10}^{4}×{10}^{7}×{10}^{5})≈(−19.65)({10}^{16})=−1.965×{10}^{17}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51241:exr-149": [
+      [
+        {
+          "kind": "math",
+          "text": "ⓐ-8.475×{10}^{6}ⓑ8×{10}^{-8}ⓒ2.976×{10}^{13}ⓓ-4.3×{10}^{6}ⓔ≈1.24×{10}^{15}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51241:exr-152": [
+      [
+        {
+          "kind": "text",
+          "text": "The population was"
+        },
+        {
+          "kind": "math",
+          "text": "308,000,000=3.08×{10}^{8}."
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "The national debt was"
+        },
+        {
+          "kind": "math",
+          "text": "$17,547,000,000,000≈$1.75×{10}^{13}."
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "To find the amount of debt per citizen, divide the national debt by the number of citizens."
+        }
+      ],
+      [
+        {
+          "kind": "math",
+          "text": "(1.75×{10}^{13})÷(3.08×{10}^{8})=(\\frac{1.75}{3.08})\\cdot (\\frac{{10}^{13}}{{10}^{8}})≈0.57×{10}^{5}=5.7×{10}^{4}"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "The debt per citizen at the time was about"
+        },
+        {
+          "kind": "math",
+          "text": "$5.7×{10}^{4},"
+        },
+        {
+          "kind": "text",
+          "text": "or $57,000."
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51241:exr-158": [
+      [
+        {
+          "kind": "text",
+          "text": "Number of cells:"
+        },
+        {
+          "kind": "math",
+          "text": "3×{10}^{13};"
+        },
+        {
+          "kind": "text",
+          "text": "length of a cell:"
+        },
+        {
+          "kind": "math",
+          "text": "8×{10}^{−6}"
+        },
+        {
+          "kind": "text",
+          "text": "m; total length:"
+        },
+        {
+          "kind": "math",
+          "text": "2.4×{10}^{8}"
+        },
+        {
+          "kind": "text",
+          "text": "m or"
+        },
+        {
+          "kind": "math",
+          "text": "240,000,000"
+        },
+        {
+          "kind": "text",
+          "text": "m."
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51241:exr-167": [
+      [
+        {
+          "kind": "text",
+          "text": "No, the two expressions are not the same. An exponent tells how many times you multiply the base. So"
+        },
+        {
+          "kind": "math",
+          "text": "{2}^{3}"
+        },
+        {
+          "kind": "text",
+          "text": "is the same as"
+        },
+        {
+          "kind": "math",
+          "text": "2×2×2,"
+        },
+        {
+          "kind": "text",
+          "text": "which is 8."
+        },
+        {
+          "kind": "math",
+          "text": "{3}^{2}"
+        },
+        {
+          "kind": "text",
+          "text": "is the same as"
+        },
+        {
+          "kind": "math",
+          "text": "3×3,"
+        },
+        {
+          "kind": "text",
+          "text": "which is 9."
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51241:exr-172": [
+      [
+        {
+          "kind": "text",
+          "text": "It is a method of writing very small and very large numbers."
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51241:exr-179": [
+      [
+        {
+          "kind": "text",
+          "text": "81"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51241:exr-181": [
+      [
+        {
+          "kind": "text",
+          "text": "243"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51241:exr-183": [
+      [
+        {
+          "kind": "math",
+          "text": "\\frac{1}{16}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51241:exr-185": [
+      [
+        {
+          "kind": "math",
+          "text": "\\frac{1}{11}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51241:exr-187": [
+      [
+        {
+          "kind": "text",
+          "text": "1"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51241:exr-190": [
+      [
+        {
+          "kind": "math",
+          "text": "{4}^{9}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51241:exr-194": [
+      [
+        {
+          "kind": "math",
+          "text": "{12}^{40}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51241:exr-198": [
+      [
+        {
+          "kind": "math",
+          "text": "\\frac{1}{{7}^{9}}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51241:exr-202": [
+      [
+        {
+          "kind": "math",
+          "text": "3.14×{10}^{-5}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51241:exr-205": [
+      [
+        {
+          "kind": "text",
+          "text": "16,000,000,000"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51241:exr-209": [
+      [
+        {
+          "kind": "math",
+          "text": "{a}^{4}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51241:exr-213": [
+      [
+        {
+          "kind": "math",
+          "text": "{b}^{6}{c}^{8}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51241:exr-217": [
+      [
+        {
+          "kind": "math",
+          "text": "a{b}^{2}{d}^{3}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51241:exr-220": [
+      [
+        {
+          "kind": "math",
+          "text": "{m}^{4}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51241:exr-224": [
+      [
+        {
+          "kind": "math",
+          "text": "\\frac{{q}^{5}}{{p}^{6}}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51241:exr-228": [
+      [
+        {
+          "kind": "math",
+          "text": "\\frac{{y}^{21}}{{x}^{14}}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51241:exr-233": [
+      [
+        {
+          "kind": "math",
+          "text": "25"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51241:exr-236": [
+      [
+        {
+          "kind": "math",
+          "text": "72{a}^{2}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51241:exr-240": [
+      [
+        {
+          "kind": "math",
+          "text": "\\frac{{c}^{3}}{{b}^{9}}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51241:exr-244": [
+      [
+        {
+          "kind": "math",
+          "text": "\\frac{y}{81{z}^{6}}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51241:exr-250": [
+      [
+        {
+          "kind": "text",
+          "text": "0.00135 m"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51241:exr-254": [
+      [
+        {
+          "kind": "math",
+          "text": "1.0995×{10}^{12}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51241:exr-258": [
+      [
+        {
+          "kind": "text",
+          "text": "0.00000000003397 in."
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51241:exr-265": [
+      [
+        {
+          "kind": "text",
+          "text": "12,230,590,464"
+        },
+        {
+          "kind": "math",
+          "text": "{m}^{66}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51241:exr-272": [
+      [
+        {
+          "kind": "math",
+          "text": "\\frac{{a}^{14}}{1296}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51241:exr-277": [
+      [
+        {
+          "kind": "math",
+          "text": "\\frac{n}{{a}^{9}c}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51241:exr-282": [
+      [
+        {
+          "kind": "math",
+          "text": "\\frac{1}{{a}^{6}{b}^{6}{c}^{6}}"
+        }
+      ]
+    ],
+    "osbooks-college-algebra-bundle:m51241:exr-287": [
+      [
+        {
+          "kind": "text",
+          "text": "0.000000000000000000000000000000000662606957"
+        }
+      ]
+    ]
+  }
+}

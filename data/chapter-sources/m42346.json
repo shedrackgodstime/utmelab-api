@@ -1,0 +1,1323 @@
+{
+  "module": "m42346",
+  "source_attribution": {
+    "publisher": "OpenStax",
+    "book": "osbooks-college-physics-bundle",
+    "section": "m42346",
+    "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42346/index.cnxml",
+    "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)",
+    "locator": "CNXML module index.cnxml (typed elements, solutions present)"
+  },
+  "blocks": [
+    {
+      "id": "sec-0",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Learning Objectives",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-1",
+      "type": "paragraph",
+      "content": {
+        "text": "By the end of this section, you will be able to:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-2",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Material and Shape Dependence of Resistance",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-3",
+      "type": "paragraph",
+      "content": {
+        "text": "The resistance of an object depends on its shape and the material of which it is composed. The cylindrical resistor in is easy to analyze, and, by so doing, we can gain insight into the resistance of more complicated shapes. As you might expect, the cylinder’s electric resistance $R$ is directly proportional to its length $L$ , similar to the resistance of a pipe to fluid flow. The longer the cylinder, the more collisions charges will make with its atoms. The greater the diameter of the cylinder, the more current it can carry (again similar to the flow of fluid through a pipe). In fact, $R$ is inversely proportional to the cylinder’s cross-sectional area $A$ .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-1",
+      "type": "figure",
+      "asset_url": "images/phy_m42346_Figure_21_03_01a.jpg",
+      "caption": {
+        "text": "A uniform cylinder of length $L$ and cross-sectional area $A$ . Its resistance to the flow of current is similar to the resistance posed by a pipe to fluid flow. The longer the cylinder, the greater its resistance. The larger its cross-sectional area $A$ , the smaller its resistance.",
+        "inline": []
+      },
+      "alt": "A cylindrical conductor of length L and cross section A is shown. The resistivity of the cylindrical section is represented as rho. The resistance of this cross section R is equal to rho L divided by A. The section of length L of cylindrical conductor is shown equivalent to a resistor represented by symbol R.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-5",
+      "type": "paragraph",
+      "content": {
+        "text": "For a given shape, the resistance depends on the material of which the object is composed. Different materials offer different resistance to the flow of charge. We define the resistivity $ρ$ of a substance so that the *resistance* $R$ of an object is directly proportional to $ρ$ . Resistivity $ρ$ is an *intrinsic* property of a material, independent of its shape or size. The resistance $R$ of a uniform cylinder of length $L$ , of cross-sectional area $A$ , and made of a material with resistivity $ρ$ , is",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-6",
+      "type": "paragraph",
+      "content": {
+        "text": "gives representative values of $ρ$ . The materials listed in the table are separated into categories of conductors, semiconductors, and insulators, based on broad groupings of resistivities. Conductors have the smallest resistivities, and insulators have the largest; semiconductors have intermediate resistivities. Conductors have varying but large free charge densities, whereas most charges in insulators are bound to atoms and are not free to move. Semiconductors are intermediate, having far fewer free charges than conductors, but having properties that make the number of free charges depend strongly on the type and amount of impurities in the semiconductor. These unique properties of semiconductors are put to use in modern electronics, as will be explored in later chapters.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "tbl-7",
+      "type": "table",
+      "title": {
+        "text": "Table",
+        "inline": []
+      },
+      "rows": [
+        [
+          "Material",
+          "Resistivity $ρ$ *(* $Ω\\cdot m$ *)*"
+        ],
+        [
+          "*Conductors*",
+          ""
+        ],
+        [
+          "Silver",
+          "$1.59×{10}^{-8}$"
+        ],
+        [
+          "Copper",
+          "$1.72×{10}^{-8}$"
+        ],
+        [
+          "Gold",
+          "$2.44×{10}^{-8}$"
+        ],
+        [
+          "Aluminum",
+          "$2.65×{10}^{-8}$"
+        ],
+        [
+          "Tungsten",
+          "$5.6×{10}^{-8}$"
+        ],
+        [
+          "Iron",
+          "$9.71×{10}^{-8}$"
+        ],
+        [
+          "Platinum",
+          "$10.6×{10}^{-8}$"
+        ],
+        [
+          "Steel",
+          "$20×{10}^{-8}$"
+        ],
+        [
+          "Lead",
+          "$22×{10}^{-8}$"
+        ],
+        [
+          "Manganin (Cu, Mn, Ni alloy)",
+          "$44×{10}^{-8}$"
+        ],
+        [
+          "Constantan (Cu, Ni alloy)",
+          "$49×{10}^{-8}$"
+        ],
+        [
+          "Mercury",
+          "$96×{10}^{-8}$"
+        ],
+        [
+          "Nichrome (Ni, Fe, Cr alloy)",
+          "$100×{10}^{-8}$"
+        ],
+        [
+          "*Semiconductors* Values depend strongly on amounts and types of impurities",
+          ""
+        ],
+        [
+          "Carbon (pure)",
+          "$3.5×{10}^{–5}$"
+        ],
+        [
+          "Carbon",
+          "$(3.5-60)×{10}^{–5}$"
+        ],
+        [
+          "Germanium (pure)",
+          "$600×{10}^{-3}$"
+        ],
+        [
+          "Germanium",
+          "$(1-600)×{10}^{-3}$"
+        ],
+        [
+          "Silicon (pure)",
+          "$2300$"
+        ],
+        [
+          "Silicon",
+          "$0.1–2300$"
+        ],
+        [
+          "*Insulators*",
+          ""
+        ],
+        [
+          "Amber",
+          "$5×{10}^{14}$"
+        ],
+        [
+          "Glass",
+          "${10}^{9}-{10}^{14}$"
+        ],
+        [
+          "Lucite",
+          "${>10}^{13}$"
+        ],
+        [
+          "Mica",
+          "${10}^{11}-{10}^{15}$"
+        ],
+        [
+          "Quartz (fused)",
+          "$75×{10}^{16}$"
+        ],
+        [
+          "Rubber (hard)",
+          "${10}^{13}-{10}^{16}$"
+        ],
+        [
+          "Sulfur",
+          "${10}^{15}$"
+        ],
+        [
+          "Teflon",
+          "${>10}^{13}$"
+        ],
+        [
+          "Wood",
+          "${10}^{8}-{10}^{11}$"
+        ]
+      ],
+      "alt": "Table with 32 rows",
+      "level": "core"
+    },
+    {
+      "id": "ex-8",
+      "type": "example",
+      "kind": "worked",
+      "title": {
+        "text": "Calculating Resistor Diameter: A Headlight Filament",
+        "inline": []
+      },
+      "problem": {
+        "text": "",
+        "inline": []
+      },
+      "answer": null,
+      "level": "core"
+    },
+    {
+      "id": "p-9",
+      "type": "paragraph",
+      "content": {
+        "text": "A car headlight filament is made of tungsten and has a cold resistance of $0.350Ω$ . If the filament is a cylinder 4.00 cm long (it may be coiled to save space), what is its diameter?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-10",
+      "type": "paragraph",
+      "content": {
+        "text": "We can rearrange the equation $R=\\frac{ρL}{A}$ to find the cross-sectional area $A$ of the filament from the given information. Then its diameter can be found by assuming it has a circular cross-section.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-11",
+      "type": "paragraph",
+      "content": {
+        "text": "The cross-sectional area, found by rearranging the expression for the resistance of a cylinder given in $R=\\frac{ρL}{A}$ , is",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-12",
+      "type": "paragraph",
+      "content": {
+        "text": "Substituting the given values, and taking $ρ$ from , yields",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-13",
+      "type": "paragraph",
+      "content": {
+        "text": "The area of a circle is related to its diameter $D$ by",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-14",
+      "type": "paragraph",
+      "content": {
+        "text": "Solving for the diameter $D$ , and substituting the value found for $A$ , gives",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-15",
+      "type": "paragraph",
+      "content": {
+        "text": "The diameter is just under a tenth of a millimeter. It is quoted to only two digits, because $ρ$ is known to only two digits.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-16",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Temperature Variation of Resistance",
+        "inline": []
+      }
+    },
+    {
+      "id": "p-17",
+      "type": "paragraph",
+      "content": {
+        "text": "The resistivity of all materials depends on temperature. Some even become superconductors (zero resistivity) at very low temperatures. (See .) Conversely, the resistivity of conductors increases with increasing temperature. Since the atoms vibrate more rapidly and over larger distances at higher temperatures, the electrons moving through a metal make more collisions, effectively making the resistivity higher. Over relatively small temperature changes (about $100ºC$ or less), resistivity $ρ$ varies with temperature change $ΔT$ as expressed in the following equation",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-18",
+      "type": "paragraph",
+      "content": {
+        "text": "where ${ρ}_{0}$ is the original resistivity and $α$ is the temperature coefficient of resistivity . (See the values of $α$ in below.) For larger temperature changes, $α$ may vary or a nonlinear equation may be needed to find $ρ$ . Note that $α$ is positive for metals, meaning their resistivity increases with temperature. Some alloys have been developed specifically to have a small temperature dependence. Manganin (which is made of copper, manganese and nickel), for example, has $α$ close to zero (to three digits on the scale in ), and so its resistivity varies only slightly with temperature. This is useful for making a temperature-independent resistance standard, for example.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-2",
+      "type": "figure",
+      "asset_url": "images/phy_m42346_Figure_21_03_02a.jpg",
+      "caption": {
+        "text": "The resistance of a sample of mercury is zero at very low temperatures—it is a superconductor up to about 4.2 K. Above that critical temperature, its resistance makes a sudden jump and then increases nearly linearly with temperature.",
+        "inline": []
+      },
+      "alt": "A graph for variation of resistance R with temperature T for a mercury sample is shown. The temperature T is plotted along the x axis and is measured in Kelvin, and the resistance R is plotted along the y axis and is measured in ohms. The curve starts at x equals zero and y equals zero, and coincides with the X axis until the value of temperature is four point two Kelvin, known as the critical temperature T sub c. At temperature T sub c, the curve shows a vertical rise, represented by a dotted line, until the resistance is about zero point one one ohms. After this temperature the resistance shows a nearly linear increase with temperature T.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "tbl-20",
+      "type": "table",
+      "title": {
+        "text": "Table",
+        "inline": []
+      },
+      "rows": [
+        [
+          "Material",
+          "Coefficient $α$ (1/°C) Values at  20°C."
+        ],
+        [
+          "*Conductors*"
+        ],
+        [
+          "Silver",
+          "$3.8×{10}^{-3}$"
+        ],
+        [
+          "Copper",
+          "$3.9×{10}^{-3}$"
+        ],
+        [
+          "Gold",
+          "$3.4×{10}^{-3}$"
+        ],
+        [
+          "Aluminum",
+          "$3.9×{10}^{-3}$"
+        ],
+        [
+          "Tungsten",
+          "$4.5×{10}^{-3}$"
+        ],
+        [
+          "Iron",
+          "$5.0×{10}^{-3}$"
+        ],
+        [
+          "Platinum",
+          "$3.93×{10}^{-3}$"
+        ],
+        [
+          "Lead",
+          "$3.9×{10}^{-3}$"
+        ],
+        [
+          "Manganin (Cu, Mn, Ni alloy)",
+          "$0.000×{10}^{-3}$"
+        ],
+        [
+          "Constantan (Cu, Ni alloy)",
+          "$0.002×{10}^{-3}$"
+        ],
+        [
+          "Mercury",
+          "$0.89×{10}^{-3}$"
+        ],
+        [
+          "Nichrome (Ni, Fe, Cr alloy)",
+          "$0.4×{10}^{-3}$"
+        ],
+        [
+          "*Semiconductors*"
+        ],
+        [
+          "Carbon (pure)",
+          "$-0.5×{10}^{-3}$"
+        ],
+        [
+          "Germanium (pure)",
+          "$-50×{10}^{-3}$"
+        ],
+        [
+          "Silicon (pure)",
+          "$-70×{10}^{-3}$"
+        ]
+      ],
+      "alt": "Table with 18 rows",
+      "level": "core"
+    },
+    {
+      "id": "p-21",
+      "type": "paragraph",
+      "content": {
+        "text": "Note also that $α$ is negative for the semiconductors listed in , meaning that their resistivity decreases with increasing temperature. They become better conductors at higher temperature, because increased thermal agitation increases the number of free charges available to carry current. This property of decreasing $ρ$ with temperature is also related to the type and amount of impurities present in the semiconductors.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-22",
+      "type": "paragraph",
+      "content": {
+        "text": "The resistance of an object also depends on temperature, since ${R}_{0}$ is directly proportional to $ρ$ . For a cylinder we know $R=ρL/A$ , and so, if $L$ and $A$ do not change greatly with temperature, $R$ will have the same temperature dependence as $ρ$ . (Examination of the coefficients of linear expansion shows them to be about two orders of magnitude less than typical temperature coefficients of resistivity, and so the effect of temperature on $L$ and $A$ is about two orders of magnitude less than on $ρ$ .) Thus,",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-23",
+      "type": "paragraph",
+      "content": {
+        "text": "is the temperature dependence of the resistance of an object, where ${R}_{0}$ is the original resistance and $R$ is the resistance after a temperature change $ΔT$ . Numerous thermometers are based on the effect of temperature on resistance. (See .) One of the most common is the thermistor, a semiconductor crystal with a strong temperature dependence, the resistance of which is measured to obtain its temperature. The device is small, so that it quickly comes into thermal equilibrium with the part of a person it touches.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-3",
+      "type": "figure",
+      "asset_url": "images/phy_m42346_Figure_21_03_03a.jpg",
+      "caption": {
+        "text": "These familiar thermometers are based on the automated measurement of a thermistor’s temperature-dependent resistance. (credit: Biol, Wikimedia Commons)",
+        "inline": []
+      },
+      "alt": "A photograph showing two digital thermometers used for measuring body temperature.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "ex-25",
+      "type": "example",
+      "kind": "worked",
+      "title": {
+        "text": "Calculating Resistance: Hot-Filament Resistance",
+        "inline": []
+      },
+      "problem": {
+        "text": "",
+        "inline": []
+      },
+      "answer": null,
+      "level": "core"
+    },
+    {
+      "id": "p-26",
+      "type": "paragraph",
+      "content": {
+        "text": "Although caution must be used in applying $ρ={ρ}_{0}(1+αΔT)$ and $R={R}_{0}(1+αΔT)$ for temperature changes greater than $100ºC$ , for tungsten the equations work reasonably well for very large temperature changes. What, then, is the resistance of the tungsten filament in the previous example if its temperature is increased from room temperature ( $20ºC$ ) to a typical operating temperature of $2850ºC$ ?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-27",
+      "type": "paragraph",
+      "content": {
+        "text": "This is a straightforward application of $R={R}_{0}(1+αΔT)$ , since the original resistance of the filament was given to be ${R}_{0}=0.350 Ω$ , and the temperature change is $ΔT=2830ºC$ .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-28",
+      "type": "paragraph",
+      "content": {
+        "text": "The hot resistance $R$ is obtained by entering known values into the above equation:",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-29",
+      "type": "paragraph",
+      "content": {
+        "text": "This value is consistent with the headlight resistance example in Ohm’s Law: Resistance and Simple Circuits .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-30",
+      "type": "paragraph",
+      "content": {
+        "text": "Learn about the physics of resistance in a wire. Change its resistivity, length, and area to see how they affect the wire's resistance. The sizes of the symbols in the equation change along with the diagram of a wire.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-31",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Test Prep for AP Courses",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-32",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Which of the following affect the resistivity of a wire? length; area of cross section; material; all of the above",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-33",
+      "type": "paragraph",
+      "content": {
+        "text": "Which of the following affect the resistivity of a wire?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-34",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "The lengths and diameters of four wires are given as shown. If the four wires are made from the same material, which of the following is true? Select *two* answers. Resistance of Wire 3 > Resistance of Wire 2; Resistance of Wire 1 > Resistance of Wire 2; Resistance of Wire 1 < Resistance of Wire 4; Resistance of Wire 4 < Resistance of Wire 3",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(b), (d)",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-35",
+      "type": "paragraph",
+      "content": {
+        "text": "The lengths and diameters of four wires are given as shown.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-4",
+      "type": "figure",
+      "asset_url": "images/phy_m42346_CNX_APPhysics_20_M3_S03_img.jpg",
+      "caption": {
+        "text": "The figure shows four cylinders representing sections of wire. The length and diameter of the wires are indicated graphically and with labels below. The wires labeled 2L are the same length and twice as long as the wires labeled L. The wires labeled 2D are twice as thick as the wires labeled D. Wire 1: 2L, D (long, thin). Wire 2: L, D (short, thin). Wire 3: 2L, 2D (long, thick). Wire 4: L, 2D (short, thick).",
+        "inline": []
+      },
+      "alt": "The figure shows four cylinders representing sections of wire. The length and diameter of the wires are indicated graphically and with labels below. The wires labeled 2L are the same length and twice as long as the wires labeled L. The wires labeled 2D are twice as thick as the wires labeled D. Wire 1: 2L, D (long, thin). Wire 2: L, D (short, thin). Wire 3: 2L, 2D (long, thick). Wire 4: L, 2D (short, thick).",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "p-37",
+      "type": "paragraph",
+      "content": {
+        "text": "If the four wires are made from the same material, which of the following is true? Select *two* answers.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-38",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Suppose the resistance of a wire is *R* Ω. What will be the resistance of another wire of the same material having the same length but double the diameter? *R* /2; 2 *R*; *R* /4; 4 *R*",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-39",
+      "type": "paragraph",
+      "content": {
+        "text": "Suppose the resistance of a wire is *R* Ω. What will be the resistance of another wire of the same material having the same length but double the diameter?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-40",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "The resistances of two wires having the same lengths and cross section areas are 3 Ω and 11 Ω. If the resistivity of the 3 Ω wire is 2.65 × 10 −8 Ω∙m, find the resistivity of the 1 Ω wire.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "9.72 × 10 −8 Ω∙m",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-41",
+      "type": "paragraph",
+      "content": {
+        "text": "The resistances of two wires having the same lengths and cross section areas are 3 Ω and 11 Ω. If the resistivity of the 3 Ω wire is 2.65 × 10 −8 Ω∙m, find the resistivity of the 1 Ω wire.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-42",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "The lengths and diameters of three wires are given below. If they all have the same resistance, find the ratio of their resistivities. *Wire* *Length* *Diameter* Wire 1 2 m 1 cm Wire 2 1 m 0.5 cm Wire 3 1 m 1 cm",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-43",
+      "type": "paragraph",
+      "content": {
+        "text": "The lengths and diameters of three wires are given below. If they all have the same resistance, find the ratio of their resistivities.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "tbl-44",
+      "type": "table",
+      "title": {
+        "text": "Table",
+        "inline": []
+      },
+      "rows": [
+        [
+          "*Wire*",
+          "*Length*",
+          "*Diameter*"
+        ],
+        [
+          "Wire 1",
+          "2 m",
+          "1 cm"
+        ],
+        [
+          "Wire 2",
+          "1 m",
+          "0.5 cm"
+        ],
+        [
+          "Wire 3",
+          "1 m",
+          "1 cm"
+        ]
+      ],
+      "alt": "Table with 4 rows",
+      "level": "core"
+    },
+    {
+      "id": "exr-45",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Suppose the resistance of a wire is 2 Ω. If the wire is stretched to three times its length, what will be its resistance? Assume that the volume does not change.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "18 Ω",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-46",
+      "type": "paragraph",
+      "content": {
+        "text": "Suppose the resistance of a wire is 2 Ω. If the wire is stretched to three times its length, what will be its resistance? Assume that the volume does not change.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-47",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Section Summary",
+        "inline": []
+      }
+    },
+    {
+      "id": "sec-48",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Conceptual Questions",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-49",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "In which of the three semiconducting materials listed in do impurities supply free charges? (Hint: Examine the range of resistivity for each and determine whether the pure semiconductor has the higher or lower conductivity.)",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-50",
+      "type": "paragraph",
+      "content": {
+        "text": "In which of the three semiconducting materials listed in do impurities supply free charges? (Hint: Examine the range of resistivity for each and determine whether the pure semiconductor has the higher or lower conductivity.)",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-51",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Does the resistance of an object depend on the path current takes through it? Consider, for example, a rectangular bar—is its resistance the same along its length as across its width? (See .) Does current taking two different paths through the same object encounter different resistance?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-52",
+      "type": "paragraph",
+      "content": {
+        "text": "Does the resistance of an object depend on the path current takes through it? Consider, for example, a rectangular bar—is its resistance the same along its length as across its width? (See .)",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "fig-5",
+      "type": "figure",
+      "asset_url": "images/phy_m42346_Figure_21_03_04a.jpg",
+      "caption": {
+        "text": "Does current taking two different paths through the same object encounter different resistance?",
+        "inline": []
+      },
+      "alt": "Part a of the figure shows a voltage V applied along the length of a rectangular bar using a battery. The current is shown to emerge from the positive terminal, pass along the length of the rectangular bar, and enter the negative terminal of the battery. The resistance of the rectangular bar along the length is shown as R and the current is shown as I. Part b of the figure shows a voltage V applied along the width of the same rectangular bar using a battery. The current is shown to emerge from the positive terminal, pass along the width of the rectangular bar, and enter the negative terminal of the battery. The resistance of the rectangular bar along the width is shown as R prime, and the current is shown as I prime.",
+      "licence": "CC BY-NC-SA 4.0",
+      "credit": "OpenStax",
+      "level": "core"
+    },
+    {
+      "id": "exr-54",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "If aluminum and copper wires of the same length have the same resistance, which has the larger diameter? Why?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-55",
+      "type": "paragraph",
+      "content": {
+        "text": "If aluminum and copper wires of the same length have the same resistance, which has the larger diameter? Why?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-56",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Explain why $R={R}_{0}(1+αΔT)$ for the temperature variation of the resistance $R$ of an object is not as accurate as $ρ={ρ}_{0}(1+αΔT)$ , which gives the temperature variation of resistivity $ρ$ .",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-57",
+      "type": "paragraph",
+      "content": {
+        "text": "Explain why $R={R}_{0}(1+αΔT)$ for the temperature variation of the resistance $R$ of an object is not as accurate as $ρ={ρ}_{0}(1+αΔT)$ , which gives the temperature variation of resistivity $ρ$ .",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "sec-58",
+      "type": "heading",
+      "level": "core",
+      "text": {
+        "text": "Problems & Exercises",
+        "inline": []
+      }
+    },
+    {
+      "id": "exr-59",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "What is the resistance of a 20.0-m-long piece of 12-gauge copper wire having a 2.053-mm diameter?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$0.104 Ω$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-60",
+      "type": "paragraph",
+      "content": {
+        "text": "What is the resistance of a 20.0-m-long piece of 12-gauge copper wire having a 2.053-mm diameter?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-61",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "The diameter of 0-gauge copper wire is 8.252 mm. Find the resistance of a 1.00-km length of such wire used for power transmission.",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-62",
+      "type": "paragraph",
+      "content": {
+        "text": "The diameter of 0-gauge copper wire is 8.252 mm. Find the resistance of a 1.00-km length of such wire used for power transmission.",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-63",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "If the 0.010-mm diameter tungsten filament in a light bulb is to have a resistance of $0.200 Ω$ at $20.00ºC$ , how long should it be?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$2.81×{10}^{-4}m$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-64",
+      "type": "paragraph",
+      "content": {
+        "text": "If the 0.010-mm diameter tungsten filament in a light bulb is to have a resistance of $0.200 Ω$ at $20.00ºC$ , how long should it be?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-65",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Find the ratio of the diameter of aluminum to copper wire, if they have the same resistance per unit length (as they might in household wiring).",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-66",
+      "type": "paragraph",
+      "content": {
+        "text": "Find the ratio of the diameter of aluminum to copper wire, if they have the same resistance per unit length (as they might in household wiring).",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-67",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "What current flows through a 2.54-cm-diameter rod of pure silicon that is 20.0 cm long, when ${1.00 × 10}^{3}V$ is applied to it? (Such a rod may be used to make nuclear-particle detectors, for example.)",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$1.10×{10}^{-3}A$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-68",
+      "type": "paragraph",
+      "content": {
+        "text": "What current flows through a 2.54-cm-diameter rod of pure silicon that is 20.0 cm long, when ${1.00 × 10}^{3}V$ is applied to it? (Such a rod may be used to make nuclear-particle detectors, for example.)",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-69",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "(a) To what temperature must you raise a copper wire, originally at $20.0ºC$ , to double its resistance, neglecting any changes in dimensions? (b) Does this happen in household wiring under ordinary circumstances?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-70",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) To what temperature must you raise a copper wire, originally at $20.0ºC$ , to double its resistance, neglecting any changes in dimensions? (b) Does this happen in household wiring under ordinary circumstances?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-71",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A resistor made of Nichrome wire is used in an application where its resistance cannot change more than 1.00% from its value at $20.0ºC$ . Over what temperature range can it be used?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$-5ºC to 45ºC$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-72",
+      "type": "paragraph",
+      "content": {
+        "text": "A resistor made of Nichrome wire is used in an application where its resistance cannot change more than 1.00% from its value at $20.0ºC$ . Over what temperature range can it be used?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-73",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Of what material is a resistor made if its resistance is 40.0% greater at $100ºC$ than at $20.0ºC$ ?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-74",
+      "type": "paragraph",
+      "content": {
+        "text": "Of what material is a resistor made if its resistance is 40.0% greater at $100ºC$ than at $20.0ºC$ ?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-75",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "An electronic device designed to operate at any temperature in the range from $–10.0ºC to 55.0ºC$ contains pure carbon resistors. By what factor does their resistance increase over this range?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "1.03",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-76",
+      "type": "paragraph",
+      "content": {
+        "text": "An electronic device designed to operate at any temperature in the range from $–10.0ºC to 55.0ºC$ contains pure carbon resistors. By what factor does their resistance increase over this range?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-77",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "(a) Of what material is a wire made, if it is 25.0 m long with a 0.100 mm diameter and has a resistance of $77.7Ω$ at $20.0ºC$ ? (b) What is its resistance at $150ºC$ ?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-78",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) Of what material is a wire made, if it is 25.0 m long with a 0.100 mm diameter and has a resistance of $77.7Ω$ at $20.0ºC$ ? (b) What is its resistance at $150ºC$ ?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-79",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Assuming a constant temperature coefficient of resistivity, what is the maximum percent decrease in the resistance of a constantan wire starting at $20.0ºC$ ?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "0.06%",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-80",
+      "type": "paragraph",
+      "content": {
+        "text": "Assuming a constant temperature coefficient of resistivity, what is the maximum percent decrease in the resistance of a constantan wire starting at $20.0ºC$ ?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-81",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A wire is drawn through a die, stretching it to four times its original length. By what factor does its resistance increase?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-82",
+      "type": "paragraph",
+      "content": {
+        "text": "A wire is drawn through a die, stretching it to four times its original length. By what factor does its resistance increase?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-83",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "A copper wire has a resistance of $0.500Ω$ at $20.0ºC$ , and an iron wire has a resistance of $0.525Ω$ at the same temperature. At what temperature are their resistances equal?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "$-17ºC$",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-84",
+      "type": "paragraph",
+      "content": {
+        "text": "A copper wire has a resistance of $0.500Ω$ at $20.0ºC$ , and an iron wire has a resistance of $0.525Ω$ at the same temperature. At what temperature are their resistances equal?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-85",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "(a) Digital medical thermometers determine temperature by measuring the resistance of a semiconductor device called a thermistor (which has $α=-0.0600/ºC$ ) when it is at the same temperature as the patient. What is a patient’s temperature if the thermistor’s resistance at that temperature is 82.0% of its value at $37.0ºC$ (normal body temperature)? (b) The negative value for $α$ may not be maintained for very high temperatures. Discuss why and whether this is the case here. (Hint: Resistance can’t become negative.)",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-86",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) Digital medical thermometers determine temperature by measuring the resistance of a semiconductor device called a thermistor (which has $α=-0.0600/ºC$ ) when it is at the same temperature as the patient. What is a patient’s temperature if the thermistor’s resistance at that temperature is 82.0% of its value at $37.0ºC$ (normal body temperature)? (b) The negative value for $α$ may not be maintained for very high temperatures. Discuss why and whether this is the case here. (Hint: Resistance can’t become negative.)",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-87",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Integrated Concepts (a) Redo taking into account the thermal expansion of the tungsten filament. You may assume a thermal expansion coefficient of $12×{10}^{-6}/ºC$ . (b) By what percentage does your answer differ from that in the example?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": {
+        "text": "(a) $4.7Ω$ (total) (b) 3.0% decrease",
+        "inline": []
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "p-88",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) Redo taking into account the thermal expansion of the tungsten filament. You may assume a thermal expansion coefficient of $12×{10}^{-6}/ºC$ . (b) By what percentage does your answer differ from that in the example?",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "exr-89",
+      "type": "exercise",
+      "category": "section",
+      "prompt": {
+        "text": "Unreasonable Results (a) To what temperature must you raise a resistor made of constantan to double its resistance, assuming a constant temperature coefficient of resistivity? (b) To cut it in half? (c) What is unreasonable about these results? (d) Which assumptions are unreasonable, or which premises are inconsistent?",
+        "inline": []
+      },
+      "level": "core",
+      "solution": null,
+      "solution_provenance": "no solution element in CNXML"
+    },
+    {
+      "id": "p-90",
+      "type": "paragraph",
+      "content": {
+        "text": "Unreasonable Results",
+        "inline": []
+      },
+      "level": "core"
+    },
+    {
+      "id": "p-91",
+      "type": "paragraph",
+      "content": {
+        "text": "(a) To what temperature must you raise a resistor made of constantan to double its resistance, assuming a constant temperature coefficient of resistivity? (b) To cut it in half? (c) What is unreasonable about these results? (d) Which assumptions are unreasonable, or which premises are inconsistent?",
+        "inline": []
+      },
+      "level": "core"
+    }
+  ],
+  "solutions": {
+    "osbooks-college-physics-bundle:m42346:exr-34": [
+      [
+        {
+          "kind": "text",
+          "text": "(b), (d)"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42346:exr-40": [
+      [
+        {
+          "kind": "text",
+          "text": "9.72 × 10"
+        },
+        {
+          "kind": "text",
+          "text": "−8"
+        },
+        {
+          "kind": "text",
+          "text": "Ω∙m"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42346:exr-45": [
+      [
+        {
+          "kind": "text",
+          "text": "18 Ω"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42346:exr-59": [
+      [
+        {
+          "kind": "math",
+          "text": "0.104 Ω"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42346:exr-63": [
+      [
+        {
+          "kind": "math",
+          "text": "2.81×{10}^{-4}m"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42346:exr-67": [
+      [
+        {
+          "kind": "math",
+          "text": "1.10×{10}^{-3}A"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42346:exr-71": [
+      [
+        {
+          "kind": "math",
+          "text": "-5ºC to 45ºC"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42346:exr-75": [
+      [
+        {
+          "kind": "text",
+          "text": "1.03"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42346:exr-79": [
+      [
+        {
+          "kind": "text",
+          "text": "0.06%"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42346:exr-83": [
+      [
+        {
+          "kind": "math",
+          "text": "-17ºC"
+        }
+      ]
+    ],
+    "osbooks-college-physics-bundle:m42346:exr-87": [
+      [
+        {
+          "kind": "text",
+          "text": "(a)"
+        },
+        {
+          "kind": "math",
+          "text": "4.7Ω"
+        },
+        {
+          "kind": "text",
+          "text": "(total)"
+        }
+      ],
+      [
+        {
+          "kind": "text",
+          "text": "(b) 3.0% decrease"
+        }
+      ]
+    ]
+  }
+}
