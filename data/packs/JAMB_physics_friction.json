@@ -22,7 +22,9 @@
   ],
   "traps": [
     {
-      "id": "trap-1",
+      "id": "phy_friction_drag_and_elasticity:trap-1",
+      "chapter_id": "phy_friction_drag_and_elasticity",
+      "status": "proven",
       "section_id": "sec-2",
       "misconception": {
         "text": "Weight is the force that opposes an object sliding on a surface.",
@@ -46,7 +48,9 @@
       "frequency": "recurring"
     },
     {
-      "id": "trap-2",
+      "id": "phy_friction_drag_and_elasticity:trap-2",
+      "chapter_id": "phy_friction_drag_and_elasticity",
+      "status": "proven",
       "section_id": "sec-2",
       "misconception": {
         "text": "The coefficient of friction is the acceleration of the sliding body.",
@@ -72,7 +76,8 @@
   ],
   "recall_checks": [
     {
-      "id": "rc-1",
+      "id": "phy_friction_drag_and_elasticity:rc-1",
+      "chapter_id": "phy_friction_drag_and_elasticity",
       "section_id": "sec-2",
       "stem": {
         "text": "The normal force on a 20 kg block resting on a horizontal table is 200 N. The coefficient of kinetic friction is 0.3. What is the kinetic friction force on the block while it slides?",
@@ -115,9 +120,24 @@
     "ex-sec-2-08"
   ],
   "past_papers": [
-    "q_claim_2025_physics_74476",
-    "q_claim_2025_physics_75421"
+    {
+      "question_id": "q_claim_2025_physics_74476",
+      "year": 2025,
+      "source": "claimed_paper",
+      "exam": "JAMB",
+      "subject": "physics",
+      "subtopic_slug": "static-and-dynamic-friction"
+    },
+    {
+      "question_id": "q_claim_2025_physics_75421",
+      "year": 2025,
+      "source": "claimed_paper",
+      "exam": "JAMB",
+      "subject": "physics",
+      "subtopic_slug": "static-and-dynamic-friction"
+    }
   ],
+  "paper_note": "2 of 2 papers are self-published claims, labelled as such, and the rest are confirmed.",
   "coverage": {
     "sections": 1,
     "traps": 2,

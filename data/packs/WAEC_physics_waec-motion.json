@@ -59,7 +59,9 @@
   ],
   "traps": [
     {
-      "id": "trap-3",
+      "id": "phy_circular_motion_and_gravitation:trap-3",
+      "chapter_id": "phy_circular_motion_and_gravitation",
+      "status": "proven",
       "section_id": "sec-2",
       "misconception": {
         "text": "The angular speed of an object moving in a circle is the linear speed times the radius.",
@@ -83,7 +85,9 @@
       "frequency": "recurring"
     },
     {
-      "id": "trap-4",
+      "id": "phy_circular_motion_and_gravitation:trap-4",
+      "chapter_id": "phy_circular_motion_and_gravitation",
+      "status": "candidate",
       "section_id": "sec-3",
       "misconception": {
         "text": "Centripetal acceleration pushes the object outward, away from the centre.",
@@ -106,7 +110,9 @@
       "frequency": "candidate"
     },
     {
-      "id": "trap-5",
+      "id": "phy_circular_motion_and_gravitation:trap-5",
+      "chapter_id": "phy_circular_motion_and_gravitation",
+      "status": "candidate",
       "section_id": "sec-4",
       "misconception": {
         "text": "Centripetal force is a new kind of force that pulls objects to the centre.",
@@ -129,7 +135,9 @@
       "frequency": "candidate"
     },
     {
-      "id": "trap-3",
+      "id": "phy_friction_drag_and_elasticity:trap-3",
+      "chapter_id": "phy_friction_drag_and_elasticity",
+      "status": "proven",
       "section_id": "sec-2",
       "misconception": {
         "text": "The force opposing a body sliding down an incline is the friction alone.",
@@ -155,7 +163,8 @@
   ],
   "recall_checks": [
     {
-      "id": "rc-1",
+      "id": "phy_circular_motion_and_gravitation:rc-1",
+      "chapter_id": "phy_circular_motion_and_gravitation",
       "section_id": "sec-2",
       "stem": {
         "text": "A wheel of radius 0.5 m turns at 4 rad/s. What is the linear speed of a point on the rim?",
@@ -187,7 +196,8 @@
       "difficulty": 1
     },
     {
-      "id": "rc-4",
+      "id": "phy_circular_motion_and_gravitation:rc-4",
+      "chapter_id": "phy_circular_motion_and_gravitation",
       "section_id": "sec-3",
       "stem": {
         "text": "A car travels at 20 m/s round a circle of radius 50 m. What is its centripetal acceleration?",
@@ -219,7 +229,8 @@
       "difficulty": 3
     },
     {
-      "id": "rc-5",
+      "id": "phy_circular_motion_and_gravitation:rc-5",
+      "chapter_id": "phy_circular_motion_and_gravitation",
       "section_id": "sec-4",
       "stem": {
         "text": "A 1000 kg car goes round a bend of radius 100 m at 20 m/s. What centripetal force is needed?",
@@ -251,7 +262,8 @@
       "difficulty": 3
     },
     {
-      "id": "rc-8",
+      "id": "phy_circular_motion_and_gravitation:rc-8",
+      "chapter_id": "phy_circular_motion_and_gravitation",
       "section_id": "sec-3",
       "stem": {
         "text": "A car travels at 20 m/s round a circle of radius 50 m. What is the centripetal acceleration?",
@@ -283,7 +295,8 @@
       "difficulty": 3
     },
     {
-      "id": "rc-9",
+      "id": "phy_circular_motion_and_gravitation:rc-9",
+      "chapter_id": "phy_circular_motion_and_gravitation",
       "section_id": "sec-4",
       "stem": {
         "text": "A 1000 kg car goes round a bend of radius 100 m at 20 m/s. What centripetal force is needed?",
@@ -315,7 +328,8 @@
       "difficulty": 3
     },
     {
-      "id": "rc-3",
+      "id": "phy_friction_drag_and_elasticity:rc-3",
+      "chapter_id": "phy_friction_drag_and_elasticity",
       "section_id": "sec-2",
       "stem": {
         "text": "A body slides on a horizontal surface at constant speed. The horizontal force applied to it is",
@@ -370,8 +384,16 @@
     "ex-sec-4-05"
   ],
   "past_papers": [
-    "q_waec_2025_physics_76333"
+    {
+      "question_id": "q_waec_2025_physics_76333",
+      "year": 2025,
+      "source": "claimed_paper",
+      "exam": "WAEC",
+      "subject": "physics",
+      "subtopic_slug": "waec-simple-ideas-of-circular-motion"
+    }
   ],
+  "paper_note": "1 of 1 papers are self-published claims, labelled as such, and the rest are confirmed.",
   "coverage": {
     "sections": 4,
     "traps": 4,

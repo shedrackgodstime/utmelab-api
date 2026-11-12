@@ -88,7 +88,9 @@
   ],
   "traps": [
     {
-      "id": "trap-1",
+      "id": "math_laws_of_indices_and_surds:trap-1",
+      "chapter_id": "math_laws_of_indices_and_surds",
+      "status": "proven",
       "section_id": "sec-5",
       "misconception": {
         "text": "A factor with a negative index can be used as it is.",
@@ -112,7 +114,9 @@
       "frequency": "recurring"
     },
     {
-      "id": "trap-2",
+      "id": "math_laws_of_indices_and_surds:trap-2",
+      "chapter_id": "math_laws_of_indices_and_surds",
+      "status": "proven",
       "section_id": "sec-5",
       "misconception": {
         "text": "In $(1/2)^{t-1} = 64$ the value of $t$ is the exponent of the base.",
@@ -136,7 +140,9 @@
       "frequency": "occasional"
     },
     {
-      "id": "trap-3",
+      "id": "math_laws_of_indices_and_surds:trap-3",
+      "chapter_id": "math_laws_of_indices_and_surds",
+      "status": "candidate",
       "section_id": "sec-9",
       "misconception": {
         "text": "Rationalising the denominator means multiplying the numerator by the surd as well.",
@@ -160,7 +166,9 @@
       "frequency": "occurring"
     },
     {
-      "id": "trap-4",
+      "id": "math_laws_of_indices_and_surds:trap-4",
+      "chapter_id": "math_laws_of_indices_and_surds",
+      "status": "proven",
       "section_id": "sec-8",
       "misconception": {
         "text": "Only the first radical in an expression needs simplifying.",
@@ -184,7 +192,9 @@
       "frequency": "occasional"
     },
     {
-      "id": "trap-5",
+      "id": "math_laws_of_indices_and_surds:trap-5",
+      "chapter_id": "math_laws_of_indices_and_surds",
+      "status": "candidate",
       "section_id": "sec-2",
       "misconception": {
         "text": "In a product of two powers with the same base you add the indices.",
@@ -207,7 +217,9 @@
       "frequency": "candidate"
     },
     {
-      "id": "trap-6",
+      "id": "math_laws_of_indices_and_surds:trap-6",
+      "chapter_id": "math_laws_of_indices_and_surds",
+      "status": "candidate",
       "section_id": "sec-3",
       "misconception": {
         "text": "In a quotient of two powers with the same base you add the indices.",
@@ -230,7 +242,9 @@
       "frequency": "candidate"
     },
     {
-      "id": "trap-7",
+      "id": "math_laws_of_indices_and_surds:trap-7",
+      "chapter_id": "math_laws_of_indices_and_surds",
+      "status": "candidate",
       "section_id": "sec-4",
       "misconception": {
         "text": "Raising a power to a power adds the indices.",
@@ -253,7 +267,9 @@
       "frequency": "candidate"
     },
     {
-      "id": "trap-9",
+      "id": "math_laws_of_indices_and_surds:trap-9",
+      "chapter_id": "math_laws_of_indices_and_surds",
+      "status": "candidate",
       "section_id": "sec-7",
       "misconception": {
         "text": "The square root of a sum is the sum of the square roots.",
@@ -278,7 +294,8 @@
   ],
   "recall_checks": [
     {
-      "id": "rc-1",
+      "id": "math_laws_of_indices_and_surds:rc-1",
+      "chapter_id": "math_laws_of_indices_and_surds",
       "section_id": "sec-2",
       "stem": {
         "text": "Simplify $2^3 \\times 2^5$.",
@@ -310,7 +327,8 @@
       "difficulty": 1
     },
     {
-      "id": "rc-2",
+      "id": "math_laws_of_indices_and_surds:rc-2",
+      "chapter_id": "math_laws_of_indices_and_surds",
       "section_id": "sec-4",
       "stem": {
         "text": "Simplify $(3^2)^3$.",
@@ -342,7 +360,8 @@
       "difficulty": 2
     },
     {
-      "id": "rc-3",
+      "id": "math_laws_of_indices_and_surds:rc-3",
+      "chapter_id": "math_laws_of_indices_and_surds",
       "section_id": "sec-7",
       "stem": {
         "text": "Simplify $\\sqrt{72}$.",
@@ -374,7 +393,8 @@
       "difficulty": 2
     },
     {
-      "id": "rc-4",
+      "id": "math_laws_of_indices_and_surds:rc-4",
+      "chapter_id": "math_laws_of_indices_and_surds",
       "section_id": "sec-9",
       "stem": {
         "text": "Write $\\frac{7}{2+\\sqrt{3}}$ in its simplest form.",
@@ -406,7 +426,8 @@
       "difficulty": 3
     },
     {
-      "id": "rc-8",
+      "id": "math_laws_of_indices_and_surds:rc-8",
+      "chapter_id": "math_laws_of_indices_and_surds",
       "section_id": "sec-2",
       "stem": {
         "text": "Simplify $2^3 \\times 2^4$.",
@@ -438,7 +459,8 @@
       "difficulty": 2
     },
     {
-      "id": "rc-9",
+      "id": "math_laws_of_indices_and_surds:rc-9",
+      "chapter_id": "math_laws_of_indices_and_surds",
       "section_id": "sec-3",
       "stem": {
         "text": "Simplify $\\frac{2^7}{2^4}$.",
@@ -470,7 +492,8 @@
       "difficulty": 2
     },
     {
-      "id": "rc-10",
+      "id": "math_laws_of_indices_and_surds:rc-10",
+      "chapter_id": "math_laws_of_indices_and_surds",
       "section_id": "sec-4",
       "stem": {
         "text": "Simplify $(2^3)^2$.",
@@ -502,7 +525,8 @@
       "difficulty": 3
     },
     {
-      "id": "rc-12",
+      "id": "math_laws_of_indices_and_surds:rc-12",
+      "chapter_id": "math_laws_of_indices_and_surds",
       "section_id": "sec-7",
       "stem": {
         "text": "What is the value of $\\sqrt{9+16}$?",
@@ -577,12 +601,48 @@
     "ex-sec-9-06"
   ],
   "past_papers": [
-    "q_authored_math_indices_001",
-    "q_authored_math_surds_001",
-    "q_claim_2025_mathematics_74095",
-    "q_claim_2025_mathematics_74189",
-    "q_claim_2025_mathematics_74194"
+    {
+      "question_id": "q_authored_math_indices_001",
+      "year": 2025,
+      "source": "authored",
+      "exam": "JAMB",
+      "subject": "mathematics",
+      "subtopic_slug": "laws-of-indices"
+    },
+    {
+      "question_id": "q_authored_math_surds_001",
+      "year": 2025,
+      "source": "authored",
+      "exam": "JAMB",
+      "subject": "mathematics",
+      "subtopic_slug": "surds"
+    },
+    {
+      "question_id": "q_claim_2025_mathematics_74095",
+      "year": 2025,
+      "source": "claimed_paper",
+      "exam": "JAMB",
+      "subject": "mathematics",
+      "subtopic_slug": "laws-of-indices"
+    },
+    {
+      "question_id": "q_claim_2025_mathematics_74189",
+      "year": 2025,
+      "source": "claimed_paper",
+      "exam": "JAMB",
+      "subject": "mathematics",
+      "subtopic_slug": "laws-of-indices"
+    },
+    {
+      "question_id": "q_claim_2025_mathematics_74194",
+      "year": 2025,
+      "source": "claimed_paper",
+      "exam": "JAMB",
+      "subject": "mathematics",
+      "subtopic_slug": "surds"
+    }
   ],
+  "paper_note": "3 of 5 papers are self-published claims, labelled as such, and the rest are confirmed.",
   "coverage": {
     "sections": 7,
     "traps": 8,

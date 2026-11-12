@@ -336,7 +336,8 @@
           "topic_slug": "scalars-and-vectors",
           "subtopic_slug": "types-of-force-contact-force-and-field-force",
           "status": "covered",
-          "question_ids": []
+          "question_ids": [],
+          "papers": []
         }
       ]
     },
@@ -431,6 +432,18 @@
           "question_ids": [
             "q_claim_2025_physics_74552",
             "q_claim_2025_physics_74561"
+          ],
+          "papers": [
+            {
+              "question_id": "q_claim_2025_physics_74552",
+              "year": 2025,
+              "source": "claimed_paper"
+            },
+            {
+              "question_id": "q_claim_2025_physics_74561",
+              "year": 2025,
+              "source": "claimed_paper"
+            }
           ]
         }
       ]
@@ -521,6 +534,18 @@
           "question_ids": [
             "q_claim_2025_physics_74552",
             "q_claim_2025_physics_74561"
+          ],
+          "papers": [
+            {
+              "question_id": "q_claim_2025_physics_74552",
+              "year": 2025,
+              "source": "claimed_paper"
+            },
+            {
+              "question_id": "q_claim_2025_physics_74561",
+              "year": 2025,
+              "source": "claimed_paper"
+            }
           ]
         },
         {
@@ -531,6 +556,13 @@
           "status": "covered",
           "question_ids": [
             "q_waec_2023_physics_69404"
+          ],
+          "papers": [
+            {
+              "question_id": "q_waec_2023_physics_69404",
+              "year": 2023,
+              "source": "claimed_paper"
+            }
           ]
         }
       ]
@@ -625,6 +657,18 @@
           "question_ids": [
             "q_claim_2025_physics_74552",
             "q_claim_2025_physics_74561"
+          ],
+          "papers": [
+            {
+              "question_id": "q_claim_2025_physics_74552",
+              "year": 2025,
+              "source": "claimed_paper"
+            },
+            {
+              "question_id": "q_claim_2025_physics_74561",
+              "year": 2025,
+              "source": "claimed_paper"
+            }
           ]
         }
       ]

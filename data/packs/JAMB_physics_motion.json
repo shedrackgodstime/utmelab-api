@@ -85,7 +85,9 @@
   ],
   "traps": [
     {
-      "id": "trap-4",
+      "id": "phy_forces_and_newtons_laws:trap-4",
+      "chapter_id": "phy_forces_and_newtons_laws",
+      "status": "candidate",
       "section_id": "sec-5",
       "misconception": {
         "text": "The action and the reaction cancel, so nothing can move.",
@@ -110,7 +112,8 @@
   ],
   "recall_checks": [
     {
-      "id": "rc-1",
+      "id": "phy_forces_and_newtons_laws:rc-1",
+      "chapter_id": "phy_forces_and_newtons_laws",
       "section_id": "sec-4",
       "stem": {
         "text": "A net force of 12 N acts on a body of mass 3 kg. What is the acceleration of the body?",
@@ -142,7 +145,8 @@
       "difficulty": 1
     },
     {
-      "id": "rc-6",
+      "id": "phy_forces_and_newtons_laws:rc-6",
+      "chapter_id": "phy_forces_and_newtons_laws",
       "section_id": "sec-5",
       "stem": {
         "text": "A book rests on a table. The force the table exerts on the book is",
@@ -174,7 +178,8 @@
       "difficulty": 3
     },
     {
-      "id": "rc-8",
+      "id": "phy_forces_and_newtons_laws:rc-8",
+      "chapter_id": "phy_forces_and_newtons_laws",
       "section_id": "sec-5",
       "stem": {
         "text": "A swimmer pushes the wall of a pool with 200 N. What force does the wall exert on the swimmer?",
@@ -206,7 +211,8 @@
       "difficulty": 2
     },
     {
-      "id": "rc-2",
+      "id": "phy_motion_along_a_straight_line:rc-2",
+      "chapter_id": "phy_motion_along_a_straight_line",
       "section_id": "sec-6",
       "stem": {
         "text": "A body starts from rest and accelerates uniformly at 4 m/s². What distance does it cover in the first 3 s?",
@@ -238,7 +244,8 @@
       "difficulty": 2
     },
     {
-      "id": "rc-5",
+      "id": "phy_motion_along_a_straight_line:rc-5",
+      "chapter_id": "phy_motion_along_a_straight_line",
       "section_id": "sec-4",
       "stem": {
         "text": "A car covers 120 km in 3 hours. What is its average speed?",
@@ -270,7 +277,8 @@
       "difficulty": 1
     },
     {
-      "id": "rc-5",
+      "id": "phy_two_dimensional_kinematics:rc-5",
+      "chapter_id": "phy_two_dimensional_kinematics",
       "section_id": "sec-5",
       "stem": {
         "text": "A projectile is launched at 30 degrees to the horizontal. Which statement about its motion is correct?",
@@ -338,10 +346,32 @@
     "ex-sec-6-13"
   ],
   "past_papers": [
-    "q_claim_2025_physics_74552",
-    "q_claim_2025_physics_74561",
-    "q_claim_2025_physics_74658"
+    {
+      "question_id": "q_claim_2025_physics_74552",
+      "year": 2025,
+      "source": "claimed_paper",
+      "exam": "JAMB",
+      "subject": "physics",
+      "subtopic_slug": "newton-s-laws-of-motion-inertia-mass-impulse-momentum-and-co"
+    },
+    {
+      "question_id": "q_claim_2025_physics_74561",
+      "year": 2025,
+      "source": "claimed_paper",
+      "exam": "JAMB",
+      "subject": "physics",
+      "subtopic_slug": "newton-s-laws-of-motion-inertia-mass-impulse-momentum-and-co"
+    },
+    {
+      "question_id": "q_claim_2025_physics_74658",
+      "year": 2025,
+      "source": "claimed_paper",
+      "exam": "JAMB",
+      "subject": "physics",
+      "subtopic_slug": "linear-motion-speed-velocity-acceleration-equations-of-unifo"
+    }
   ],
+  "paper_note": "3 of 3 papers are self-published claims, labelled as such, and the rest are confirmed.",
   "coverage": {
     "sections": 6,
     "traps": 1,

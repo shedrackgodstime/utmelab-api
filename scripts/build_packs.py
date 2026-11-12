@@ -57,7 +57,13 @@ def main():
                     "subtopic_slug": link["subtopic_slug"],
                 })
                 pack["exercises"].extend(section.get("exercise_ids", []))
-                pack["past_papers"].extend(link.get("question_ids", []))
+                for paper in link.get("papers", []):
+                    pack["past_papers"].append({
+                        **paper,
+                        "exam": link["exam"],
+                        "subject": link["subject"],
+                        "subtopic_slug": link["subtopic_slug"],
+                    })
 
         for trap in chapter.get("exam_traps", []):
             key = (trap["exam"], trap["subject"], None)
@@ -69,7 +75,9 @@ def main():
                         continue
                     pack = packs[(link["exam"], link["subject"], link["topic_slug"])]
                     pack["traps"].append({
-                        "id": trap["id"],
+                        "id": f"{chapter['chapter_id']}:{trap['id']}",
+                        "chapter_id": chapter["chapter_id"],
+                        "status": trap.get("status", "proven"),
                         "section_id": trap["section_id"],
                         "misconception": trap["misconception"],
                         "correction": trap["correction"],
@@ -86,7 +94,8 @@ def main():
                         continue
                     pack = packs[(link["exam"], link["subject"], link["topic_slug"])]
                     pack["recall_checks"].append({
-                        "id": check["id"],
+                        "id": f"{chapter['chapter_id']}:{check['id']}",
+                        "chapter_id": chapter["chapter_id"],
                         "section_id": check["section_id"],
                         "stem": check["stem"],
                         "options": check["options"],
@@ -99,7 +108,20 @@ def main():
     for key, pack in sorted(packs.items()):
         pack["sections"] = sorted(pack["sections"], key=lambda item: (item["chapter_id"], item["section_id"]))
         pack["exercises"] = sorted(set(pack["exercises"]))
-        pack["past_papers"] = sorted(set(pack["past_papers"]))
+        unique = {}
+        for paper in pack["past_papers"]:
+            unique.setdefault(paper["question_id"], paper)
+        pack["past_papers"] = sorted(
+            unique.values(),
+            key=lambda paper: (-(paper.get("year") or 0), paper.get("question_id") or ""),
+        )
+        claimed = sum(1 for paper in pack["past_papers"] if paper.get("source") == "claimed_paper")
+        pack["paper_note"] = (
+            f"{claimed} of {len(pack['past_papers'])} papers are self-published claims, "
+            "labelled as such, and the rest are confirmed."
+            if pack["past_papers"] else
+            "No past paper for this topic yet."
+        )
         pack["subtopic_slugs"] = sorted(pack["subtopic_slugs"])
         pack["coverage"] = {
             "sections": len(pack["sections"]),

@@ -23,7 +23,9 @@
   ],
   "traps": [
     {
-      "id": "trap-3",
+      "id": "phy_forces_and_newtons_laws:trap-3",
+      "chapter_id": "phy_forces_and_newtons_laws",
+      "status": "candidate",
       "section_id": "sec-2",
       "misconception": {
         "text": "A body can exert a force on itself.",
@@ -48,7 +50,8 @@
   ],
   "recall_checks": [
     {
-      "id": "rc-3",
+      "id": "phy_forces_and_newtons_laws:rc-3",
+      "chapter_id": "phy_forces_and_newtons_laws",
       "section_id": "sec-2",
       "stem": {
         "text": "Which of the following is a contact force?",
@@ -80,7 +83,8 @@
       "difficulty": 1
     },
     {
-      "id": "rc-7",
+      "id": "phy_forces_and_newtons_laws:rc-7",
+      "chapter_id": "phy_forces_and_newtons_laws",
       "section_id": "sec-2",
       "stem": {
         "text": "A hawk accelerates as it glides. What causes the acceleration?",
@@ -117,6 +121,7 @@
     "ex-sec-2-02"
   ],
   "past_papers": [],
+  "paper_note": "No past paper for this topic yet.",
   "coverage": {
     "sections": 1,
     "traps": 1,

@@ -43,7 +43,9 @@
   ],
   "traps": [
     {
-      "id": "trap-10",
+      "id": "math_laws_of_indices_and_surds:trap-10",
+      "chapter_id": "math_laws_of_indices_and_surds",
+      "status": "candidate",
       "section_id": "sec-7",
       "misconception": {
         "text": "When surds are added, the numbers under the radical signs are added.",
@@ -66,7 +68,9 @@
       "frequency": "candidate"
     },
     {
-      "id": "trap-11",
+      "id": "math_laws_of_indices_and_surds:trap-11",
+      "chapter_id": "math_laws_of_indices_and_surds",
+      "status": "candidate",
       "section_id": "sec-9",
       "misconception": {
         "text": "A surd can be left in the denominator of a fraction.",
@@ -91,7 +95,8 @@
   ],
   "recall_checks": [
     {
-      "id": "rc-5",
+      "id": "math_laws_of_indices_and_surds:rc-5",
+      "chapter_id": "math_laws_of_indices_and_surds",
       "section_id": "sec-7",
       "stem": {
         "text": "Simplify $\\sqrt{50x^2y^3z}$, taking x and y to be positive.",
@@ -123,7 +128,8 @@
       "difficulty": 3
     },
     {
-      "id": "rc-6",
+      "id": "math_laws_of_indices_and_surds:rc-6",
+      "chapter_id": "math_laws_of_indices_and_surds",
       "section_id": "sec-9",
       "stem": {
         "text": "Write $\\frac{4}{1+\\sqrt{5}}$ in its simplest form.",
@@ -155,7 +161,8 @@
       "difficulty": 3
     },
     {
-      "id": "rc-7",
+      "id": "math_laws_of_indices_and_surds:rc-7",
+      "chapter_id": "math_laws_of_indices_and_surds",
       "section_id": "sec-6",
       "stem": {
         "text": "Simplify $\\sqrt{\\frac{16}{25}}$.",
@@ -187,7 +194,8 @@
       "difficulty": 1
     },
     {
-      "id": "rc-13",
+      "id": "math_laws_of_indices_and_surds:rc-13",
+      "chapter_id": "math_laws_of_indices_and_surds",
       "section_id": "sec-7",
       "stem": {
         "text": "What is the value of $\\sqrt{12} + \\sqrt{27}$?",
@@ -219,7 +227,8 @@
       "difficulty": 3
     },
     {
-      "id": "rc-14",
+      "id": "math_laws_of_indices_and_surds:rc-14",
+      "chapter_id": "math_laws_of_indices_and_surds",
       "section_id": "sec-9",
       "stem": {
         "text": "Write $\\dfrac{6}{\\sqrt{3}}$ in its simplest form.",
@@ -279,6 +288,7 @@
     "ex-sec-9-06"
   ],
   "past_papers": [],
+  "paper_note": "No past paper for this topic yet.",
   "coverage": {
     "sections": 3,
     "traps": 2,

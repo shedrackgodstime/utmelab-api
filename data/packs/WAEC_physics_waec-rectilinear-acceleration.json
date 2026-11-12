@@ -56,7 +56,9 @@
   ],
   "traps": [
     {
-      "id": "trap-3",
+      "id": "phy_motion_along_a_straight_line:trap-3",
+      "chapter_id": "phy_motion_along_a_straight_line",
+      "status": "candidate",
       "section_id": "sec-5",
       "misconception": {
         "text": "An object with zero acceleration must be at rest.",
@@ -79,7 +81,9 @@
       "frequency": "candidate"
     },
     {
-      "id": "trap-4",
+      "id": "phy_motion_along_a_straight_line:trap-4",
+      "chapter_id": "phy_motion_along_a_straight_line",
+      "status": "candidate",
       "section_id": "sec-6",
       "misconception": {
         "text": "The equations of constant acceleration hold for any motion.",
@@ -104,7 +108,8 @@
   ],
   "recall_checks": [
     {
-      "id": "rc-7",
+      "id": "phy_motion_along_a_straight_line:rc-7",
+      "chapter_id": "phy_motion_along_a_straight_line",
       "section_id": "sec-9",
       "stem": {
         "text": "On a position against time graph, the gradient of the line gives the",
@@ -136,7 +141,8 @@
       "difficulty": 2
     },
     {
-      "id": "rc-10",
+      "id": "phy_motion_along_a_straight_line:rc-10",
+      "chapter_id": "phy_motion_along_a_straight_line",
       "section_id": "sec-5",
       "stem": {
         "text": "A body moves at a steady 20 m/s along a straight road. What is its acceleration?",
@@ -168,7 +174,8 @@
       "difficulty": 2
     },
     {
-      "id": "rc-11",
+      "id": "phy_motion_along_a_straight_line:rc-11",
+      "chapter_id": "phy_motion_along_a_straight_line",
       "section_id": "sec-6",
       "stem": {
         "text": "A body accelerates at 2 m/s² for 3 s and then at 5 m/s² for 2 s. Which set of equations gives its distance?",
@@ -236,9 +243,24 @@
     "ex-sec-9-05"
   ],
   "past_papers": [
-    "q_waec_1988_physics_16334",
-    "q_waec_2023_physics_69384"
+    {
+      "question_id": "q_waec_2023_physics_69384",
+      "year": 2023,
+      "source": "claimed_paper",
+      "exam": "WAEC",
+      "subject": "physics",
+      "subtopic_slug": "waec-velocity-time-graph-2"
+    },
+    {
+      "question_id": "q_waec_1988_physics_16334",
+      "year": 1988,
+      "source": "claimed_paper",
+      "exam": "WAEC",
+      "subject": "physics",
+      "subtopic_slug": "waec-velocity-time-graph-2"
+    }
   ],
+  "paper_note": "2 of 2 papers are self-published claims, labelled as such, and the rest are confirmed.",
   "coverage": {
     "sections": 4,
     "traps": 2,

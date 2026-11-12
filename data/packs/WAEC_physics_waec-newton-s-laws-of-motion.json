@@ -23,7 +23,9 @@
   ],
   "traps": [
     {
-      "id": "trap-1",
+      "id": "phy_forces_and_newtons_laws:trap-1",
+      "chapter_id": "phy_forces_and_newtons_laws",
+      "status": "proven",
       "section_id": "sec-4",
       "misconception": {
         "text": "The same force for the same time gives the massive body the higher velocity.",
@@ -49,7 +51,8 @@
   ],
   "recall_checks": [
     {
-      "id": "rc-5",
+      "id": "phy_forces_and_newtons_laws:rc-5",
+      "chapter_id": "phy_forces_and_newtons_laws",
       "section_id": "sec-4",
       "stem": {
         "text": "A net force of 15 N acts on a body of mass 5 kg. What is its acceleration?",
@@ -90,8 +93,16 @@
     "ex-sec-4-06"
   ],
   "past_papers": [
-    "q_waec_2023_physics_69404"
+    {
+      "question_id": "q_waec_2023_physics_69404",
+      "year": 2023,
+      "source": "claimed_paper",
+      "exam": "WAEC",
+      "subject": "physics",
+      "subtopic_slug": "waec-second-law-force-acceleration-momentum-and-impulse-2"
+    }
   ],
+  "paper_note": "1 of 1 papers are self-published claims, labelled as such, and the rest are confirmed.",
   "coverage": {
     "sections": 1,
     "traps": 1,

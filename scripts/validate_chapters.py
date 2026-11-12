@@ -425,8 +425,18 @@ def validate(path):
                     errors.append((path, f"section {section.get('id')} exam link missing {key}"))
             if link.get("status") not in {"covered", "partial", "not_catalogued"}:
                 errors.append((path, f"section {section.get('id')} exam link status unknown"))
-            if not isinstance(link.get("question_ids"), list):
-                errors.append((path, f"section {section.get('id')} exam link question_ids must be a list"))
+            papers = link.get("papers")
+            if not isinstance(papers, list):
+                errors.append((path, f"section {section.get('id')} exam link papers must be a list"))
+            else:
+                for paper in papers:
+                    if not isinstance(paper, dict):
+                        errors.append((path, f"section {section.get('id')} exam link paper is not an object"))
+                        continue
+                    if not isinstance(paper.get("question_id"), str) or not paper.get("question_id", "").strip():
+                        errors.append((path, f"section {section.get('id')} exam link paper has no question id"))
+                    if paper.get("source") not in {"claimed_paper", "official", "past_paper", "imported", "authored"}:
+                        errors.append((path, f"section {section.get('id')} exam link paper source unknown"))
 
     traps = document.get("exam_traps", [])
     if traps is not None and not isinstance(traps, list):

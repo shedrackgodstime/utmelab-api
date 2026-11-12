@@ -322,6 +322,18 @@ University of Nigeria for GST 101 and GST 102, Contemporary Mathematics for
 the Nigerian general mathematics course, and the Nigerian tertiary accounting
 courses. They are already in the corpus.
 
+### What we show about a paper
+
+Most of the questions in the bank are `claimed_paper`: self-published claims
+of a past paper rather than confirmed official ones. We show them, and we
+label them. Every paper in a pack carries its year and its provenance, and
+the pack says how many of its papers are claims.
+
+The reasoning: a candidate practising on a claimed paper is better informed
+than a candidate practising on nothing, as long as nobody tells them the
+paper is official. A confirmed paper always wins the label, and the label is
+never dropped.
+
 ## 11. The rules that keep it honest
 
 - **No invention.** Every fact, figure, example and answer traces to a source

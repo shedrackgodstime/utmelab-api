@@ -729,7 +729,8 @@
           "topic_slug": "measurements-and-units",
           "subtopic_slug": "measurement-position-distance-and-displacement-coordinates-a",
           "status": "covered",
-          "question_ids": []
+          "question_ids": [],
+          "papers": []
         },
         {
           "exam": "WAEC",
@@ -737,7 +738,8 @@
           "topic_slug": "waec-position-distance-and-displacement",
           "subtopic_slug": "waec-measurement-of-distance-displacement",
           "status": "covered",
-          "question_ids": []
+          "question_ids": [],
+          "papers": []
         }
       ],
       "provenance": {
@@ -1512,6 +1514,13 @@
           "status": "covered",
           "question_ids": [
             "q_claim_2025_physics_74658"
+          ],
+          "papers": [
+            {
+              "question_id": "q_claim_2025_physics_74658",
+              "year": 2025,
+              "source": "claimed_paper"
+            }
           ]
         },
         {
@@ -1520,7 +1529,8 @@
           "topic_slug": "waec-speed-and-velocity",
           "subtopic_slug": "waec-concept-of-velocity-as-change-of-displacement-with-time-2",
           "status": "covered",
-          "question_ids": []
+          "question_ids": [],
+          "papers": []
         }
       ],
       "provenance": {
@@ -2536,7 +2546,8 @@
           "topic_slug": "waec-rectilinear-acceleration",
           "subtopic_slug": "waec-uniform-non-uniform-acceleration-2",
           "status": "covered",
-          "question_ids": []
+          "question_ids": [],
+          "papers": []
         }
       ],
       "provenance": {
@@ -3917,6 +3928,13 @@
           "status": "covered",
           "question_ids": [
             "q_claim_2025_physics_74658"
+          ],
+          "papers": [
+            {
+              "question_id": "q_claim_2025_physics_74658",
+              "year": 2025,
+              "source": "claimed_paper"
+            }
           ]
         },
         {
@@ -3925,7 +3943,8 @@
           "topic_slug": "waec-rectilinear-acceleration",
           "subtopic_slug": "waec-equations-of-motion-with-constant-motion-under-gravity-as-a",
           "status": "covered",
-          "question_ids": []
+          "question_ids": [],
+          "papers": []
         }
       ],
       "provenance": {
@@ -5189,7 +5208,8 @@
           "topic_slug": "waec-rectilinear-acceleration",
           "subtopic_slug": "waec-equations-of-motion-with-constant-motion-under-gravity-as-a",
           "status": "covered",
-          "question_ids": []
+          "question_ids": [],
+          "papers": []
         }
       ],
       "provenance": {
@@ -6092,6 +6112,18 @@
           "question_ids": [
             "q_waec_2023_physics_69384",
             "q_waec_1988_physics_16334"
+          ],
+          "papers": [
+            {
+              "question_id": "q_waec_2023_physics_69384",
+              "year": 2023,
+              "source": "claimed_paper"
+            },
+            {
+              "question_id": "q_waec_1988_physics_16334",
+              "year": 1988,
+              "source": "claimed_paper"
+            }
           ]
         }
       ],
@@ -7884,7 +7916,8 @@
       "topic_slug": "measurements-and-units",
       "subtopic_slug": "measurement-position-distance-and-displacement-coordinates-a",
       "status": "covered",
-      "question_ids": []
+      "question_ids": [],
+      "papers": []
     },
     {
       "exam": "JAMB",
@@ -7894,6 +7927,13 @@
       "status": "covered",
       "question_ids": [
         "q_claim_2025_physics_74658"
+      ],
+      "papers": [
+        {
+          "question_id": "q_claim_2025_physics_74658",
+          "year": 2025,
+          "source": "claimed_paper"
+        }
       ]
     },
     {
@@ -7902,7 +7942,8 @@
       "topic_slug": "waec-position-distance-and-displacement",
       "subtopic_slug": "waec-measurement-of-distance-displacement",
       "status": "covered",
-      "question_ids": []
+      "question_ids": [],
+      "papers": []
     },
     {
       "exam": "WAEC",
@@ -7910,7 +7951,8 @@
       "topic_slug": "waec-rectilinear-acceleration",
       "subtopic_slug": "waec-equations-of-motion-with-constant-motion-under-gravity-as-a",
       "status": "covered",
-      "question_ids": []
+      "question_ids": [],
+      "papers": []
     },
     {
       "exam": "WAEC",
@@ -7918,7 +7960,8 @@
       "topic_slug": "waec-rectilinear-acceleration",
       "subtopic_slug": "waec-uniform-non-uniform-acceleration-2",
       "status": "covered",
-      "question_ids": []
+      "question_ids": [],
+      "papers": []
     },
     {
       "exam": "WAEC",
@@ -7929,6 +7972,18 @@
       "question_ids": [
         "q_waec_2023_physics_69384",
         "q_waec_1988_physics_16334"
+      ],
+      "papers": [
+        {
+          "question_id": "q_waec_2023_physics_69384",
+          "year": 2023,
+          "source": "claimed_paper"
+        },
+        {
+          "question_id": "q_waec_1988_physics_16334",
+          "year": 1988,
+          "source": "claimed_paper"
+        }
       ]
     },
     {
@@ -7937,7 +7992,8 @@
       "topic_slug": "waec-speed-and-velocity",
       "subtopic_slug": "waec-concept-of-velocity-as-change-of-displacement-with-time-2",
       "status": "covered",
-      "question_ids": []
+      "question_ids": [],
+      "papers": []
     }
   ],
   "exam_traps": [

@@ -80,16 +80,23 @@ def main():
         links.extend(spec.get("exam_links", []))
         for link in links:
             if not link.get("subtopic_slug"):
-                link["question_ids"] = []
+                link["papers"] = []
                 continue
             rows = query(
-                "SELECT id FROM questions WHERE exam = ? AND subject = ? AND subtopic_id = ? "
+                "SELECT id, year, source FROM questions WHERE exam = ? AND subject = ? AND subtopic_id = ? "
                 "ORDER BY year DESC, id",
                 [link["exam"], link["subject"], link["subtopic_slug"]],
             )
-            ids = [row["id"] for row in rows]
-            if link.get("question_ids") != ids:
-                link["question_ids"] = ids
+            papers = [
+                {
+                    "question_id": row["id"],
+                    "year": int(row["year"]) if row.get("year") is not None else None,
+                    "source": row.get("source") or "unknown",
+                }
+                for row in rows
+            ]
+            if link.get("papers") != papers:
+                link["papers"] = papers
                 changed = True
             report.append({
                 "chapter_id": spec["chapter_id"],
@@ -97,7 +104,8 @@ def main():
                 "subject": link["subject"],
                 "topic_slug": link["topic_slug"],
                 "subtopic_slug": link["subtopic_slug"],
-                "questions": len(ids),
+                "questions": len(papers),
+                "claimed": sum(1 for paper in papers if paper["source"] == "claimed_paper"),
             })
         if changed:
             path.write_text(json.dumps(spec, ensure_ascii=False, indent=2) + "\n")

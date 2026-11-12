@@ -22,7 +22,9 @@
   ],
   "traps": [
     {
-      "id": "trap-1",
+      "id": "phy_two_dimensional_kinematics:trap-1",
+      "chapter_id": "phy_two_dimensional_kinematics",
+      "status": "proven",
       "section_id": "sec-5",
       "misconception": {
         "text": "A projectile reaches its maximum range at an angle of 30 degrees to the horizontal.",
@@ -48,7 +50,8 @@
   ],
   "recall_checks": [
     {
-      "id": "rc-2",
+      "id": "phy_two_dimensional_kinematics:rc-2",
+      "chapter_id": "phy_two_dimensional_kinematics",
       "section_id": "sec-5",
       "stem": {
         "text": "A ball is projected horizontally at 20 m/s from a height of 45 m. How long does it take to reach the ground? (Take g = 10 m/s².)",
@@ -95,9 +98,24 @@
     "ex-sec-5-12"
   ],
   "past_papers": [
-    "q_waec_2023_physics_69391",
-    "q_waec_2025_physics_76334"
+    {
+      "question_id": "q_waec_2025_physics_76334",
+      "year": 2025,
+      "source": "claimed_paper",
+      "exam": "WAEC",
+      "subject": "physics",
+      "subtopic_slug": "waec-projectiles-as-an-object-thrown-release"
+    },
+    {
+      "question_id": "q_waec_2023_physics_69391",
+      "year": 2023,
+      "source": "claimed_paper",
+      "exam": "WAEC",
+      "subject": "physics",
+      "subtopic_slug": "waec-projectiles-as-an-object-thrown-release"
+    }
   ],
+  "paper_note": "2 of 2 papers are self-published claims, labelled as such, and the rest are confirmed.",
   "coverage": {
     "sections": 1,
     "traps": 1,

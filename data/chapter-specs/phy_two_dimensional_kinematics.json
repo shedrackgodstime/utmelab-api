@@ -103,7 +103,8 @@
           "topic_slug": "waec-scalars-and-vectors",
           "subtopic_slug": "waec-resultant-velocity-using-vector-representation-2",
           "status": "covered",
-          "question_ids": []
+          "question_ids": [],
+          "papers": []
         }
       ]
     },
@@ -140,7 +141,8 @@
           "topic_slug": "waec-scalars-and-vectors",
           "subtopic_slug": "waec-resultant-velocity-using-vector-representation-2",
           "status": "covered",
-          "question_ids": []
+          "question_ids": [],
+          "papers": []
         }
       ]
     },
@@ -178,7 +180,8 @@
           "topic_slug": "motion",
           "subtopic_slug": "projectiles-range-maximum-height-time-of-flight-and-applicat",
           "status": "covered",
-          "question_ids": []
+          "question_ids": [],
+          "papers": []
         },
         {
           "exam": "WAEC",
@@ -189,6 +192,18 @@
           "question_ids": [
             "q_waec_2025_physics_76334",
             "q_waec_2023_physics_69391"
+          ],
+          "papers": [
+            {
+              "question_id": "q_waec_2025_physics_76334",
+              "year": 2025,
+              "source": "claimed_paper"
+            },
+            {
+              "question_id": "q_waec_2023_physics_69391",
+              "year": 2023,
+              "source": "claimed_paper"
+            }
           ]
         }
       ]
@@ -226,7 +241,8 @@
           "topic_slug": "waec-scalars-and-vectors",
           "subtopic_slug": "waec-resultant-velocity-using-vector-representation-2",
           "status": "covered",
-          "question_ids": []
+          "question_ids": [],
+          "papers": []
         }
       ]
     }

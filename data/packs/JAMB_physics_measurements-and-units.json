@@ -21,7 +21,9 @@
   ],
   "traps": [
     {
-      "id": "trap-1",
+      "id": "phy_motion_along_a_straight_line:trap-1",
+      "chapter_id": "phy_motion_along_a_straight_line",
+      "status": "candidate",
       "section_id": "sec-2",
       "misconception": {
         "text": "Distance travelled and displacement are the same quantity.",
@@ -46,7 +48,8 @@
   ],
   "recall_checks": [
     {
-      "id": "rc-3",
+      "id": "phy_motion_along_a_straight_line:rc-3",
+      "chapter_id": "phy_motion_along_a_straight_line",
       "section_id": "sec-2",
       "stem": {
         "text": "A body moves 6 m east and then 4 m west. What is its displacement?",
@@ -78,7 +81,8 @@
       "difficulty": 2
     },
     {
-      "id": "rc-8",
+      "id": "phy_motion_along_a_straight_line:rc-8",
+      "chapter_id": "phy_motion_along_a_straight_line",
       "section_id": "sec-2",
       "stem": {
         "text": "A body moves 6 m east and then 4 m west. What is its displacement?",
@@ -116,6 +120,7 @@
     "ex-sec-2-03"
   ],
   "past_papers": [],
+  "paper_note": "No past paper for this topic yet.",
   "coverage": {
     "sections": 1,
     "traps": 1,

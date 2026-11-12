@@ -22,7 +22,9 @@
   ],
   "traps": [
     {
-      "id": "trap-7",
+      "id": "phy_circular_motion_and_gravitation:trap-7",
+      "chapter_id": "phy_circular_motion_and_gravitation",
+      "status": "candidate",
       "section_id": "sec-6",
       "misconception": {
         "text": "A heavier body feels a greater pull from the Earth.",
@@ -47,7 +49,8 @@
   ],
   "recall_checks": [
     {
-      "id": "rc-6",
+      "id": "phy_circular_motion_and_gravitation:rc-6",
+      "chapter_id": "phy_circular_motion_and_gravitation",
       "section_id": "sec-6",
       "stem": {
         "text": "The gravitational force between two bodies is 9 N. If one of the masses is doubled, the force becomes",
@@ -79,7 +82,8 @@
       "difficulty": 2
     },
     {
-      "id": "rc-11",
+      "id": "phy_circular_motion_and_gravitation:rc-11",
+      "chapter_id": "phy_circular_motion_and_gravitation",
       "section_id": "sec-6",
       "stem": {
         "text": "A body has a weight of 60 N on the Earth. What is its weight on the Moon?",
@@ -122,11 +126,40 @@
     "ex-sec-6-08"
   ],
   "past_papers": [
-    "q_waec_2023_physics_69369",
-    "q_waec_2023_physics_69379",
-    "q_waec_2023_physics_69421",
-    "q_waec_2023_physics_69422"
+    {
+      "question_id": "q_waec_2023_physics_69369",
+      "year": 2023,
+      "source": "claimed_paper",
+      "exam": "WAEC",
+      "subject": "physics",
+      "subtopic_slug": "waec-gravitational-force-between-two"
+    },
+    {
+      "question_id": "q_waec_2023_physics_69379",
+      "year": 2023,
+      "source": "claimed_paper",
+      "exam": "WAEC",
+      "subject": "physics",
+      "subtopic_slug": "waec-gravitational-force-between-two"
+    },
+    {
+      "question_id": "q_waec_2023_physics_69421",
+      "year": 2023,
+      "source": "claimed_paper",
+      "exam": "WAEC",
+      "subject": "physics",
+      "subtopic_slug": "waec-gravitational-force-between-two"
+    },
+    {
+      "question_id": "q_waec_2023_physics_69422",
+      "year": 2023,
+      "source": "claimed_paper",
+      "exam": "WAEC",
+      "subject": "physics",
+      "subtopic_slug": "waec-gravitational-force-between-two"
+    }
   ],
+  "paper_note": "4 of 4 papers are self-published claims, labelled as such, and the rest are confirmed.",
   "coverage": {
     "sections": 1,
     "traps": 1,
