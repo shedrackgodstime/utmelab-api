@@ -182,6 +182,98 @@
         "url": "https://api.utmelab.com/api/v1/questions/q_claim_2025_mathematics_74194"
       },
       "frequency": "occasional"
+    },
+    {
+      "id": "trap-5",
+      "section_id": "sec-2",
+      "misconception": {
+        "text": "In a product of two powers with the same base you add the indices.",
+        "inline": []
+      },
+      "correction": {
+        "text": "You do add them, so $2^3 \\times 2^4 = 2^7 = 128$, never $2^{12}$.",
+        "inline": []
+      },
+      "signal": {
+        "text": "Our own question offers the multiplied indices as an option.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "check_id": "rc-8",
+        "exam": "JAMB",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    },
+    {
+      "id": "trap-6",
+      "section_id": "sec-3",
+      "misconception": {
+        "text": "In a quotient of two powers with the same base you add the indices.",
+        "inline": []
+      },
+      "correction": {
+        "text": "A quotient subtracts them, so $\\frac{2^7}{2^4} = 2^{7-4} = 2^3 = 8$.",
+        "inline": []
+      },
+      "signal": {
+        "text": "Our own question offers the added indices as an option.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "check_id": "rc-9",
+        "exam": "JAMB",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    },
+    {
+      "id": "trap-7",
+      "section_id": "sec-4",
+      "misconception": {
+        "text": "Raising a power to a power adds the indices.",
+        "inline": []
+      },
+      "correction": {
+        "text": "It multiplies them, so $(2^3)^2 = 2^{3 \\times 2} = 2^6 = 64$.",
+        "inline": []
+      },
+      "signal": {
+        "text": "Our own question offers the added indices as an option.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "check_id": "rc-10",
+        "exam": "JAMB",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    },
+    {
+      "id": "trap-9",
+      "section_id": "sec-7",
+      "misconception": {
+        "text": "The square root of a sum is the sum of the square roots.",
+        "inline": []
+      },
+      "correction": {
+        "text": "It is not. The radicand is worked out first, so $\\sqrt{9+16} = \\sqrt{25} = 5$, not $3 + 4 = 7$.",
+        "inline": []
+      },
+      "signal": {
+        "text": "Our own question offers the sum of the roots as an option.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "check_id": "rc-12",
+        "exam": "JAMB",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
     }
   ],
   "recall_checks": [
@@ -312,6 +404,134 @@
         "inline": []
       },
       "difficulty": 3
+    },
+    {
+      "id": "rc-8",
+      "section_id": "sec-2",
+      "stem": {
+        "text": "Simplify $2^3 \\times 2^4$.",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "64"
+        },
+        {
+          "id": "b",
+          "text": "128"
+        },
+        {
+          "id": "c",
+          "text": "256"
+        },
+        {
+          "id": "d",
+          "text": "512"
+        }
+      ],
+      "answer": "b",
+      "explanation": {
+        "text": "The product rule adds the indices, so $2^{3+4} = 2^7 = 128$. Multiplying the indices gives $2^{12}$, which is the power rule, not the product rule.",
+        "inline": []
+      },
+      "difficulty": 2
+    },
+    {
+      "id": "rc-9",
+      "section_id": "sec-3",
+      "stem": {
+        "text": "Simplify $\\frac{2^7}{2^4}$.",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "8"
+        },
+        {
+          "id": "b",
+          "text": "16"
+        },
+        {
+          "id": "c",
+          "text": "128"
+        },
+        {
+          "id": "d",
+          "text": "2048"
+        }
+      ],
+      "answer": "a",
+      "explanation": {
+        "text": "The quotient rule subtracts the indices, so the answer is $2^3 = 8$. Adding them would give $2^{11} = 2048$.",
+        "inline": []
+      },
+      "difficulty": 2
+    },
+    {
+      "id": "rc-10",
+      "section_id": "sec-4",
+      "stem": {
+        "text": "Simplify $(2^3)^2$.",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "32"
+        },
+        {
+          "id": "b",
+          "text": "64"
+        },
+        {
+          "id": "c",
+          "text": "128"
+        },
+        {
+          "id": "d",
+          "text": "512"
+        }
+      ],
+      "answer": "b",
+      "explanation": {
+        "text": "The power rule multiplies the indices, so the answer is $2^6 = 64$. Adding them gives $2^5 = 32$.",
+        "inline": []
+      },
+      "difficulty": 3
+    },
+    {
+      "id": "rc-12",
+      "section_id": "sec-7",
+      "stem": {
+        "text": "What is the value of $\\sqrt{9+16}$?",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "5"
+        },
+        {
+          "id": "b",
+          "text": "7"
+        },
+        {
+          "id": "c",
+          "text": "10"
+        },
+        {
+          "id": "d",
+          "text": "25"
+        }
+      ],
+      "answer": "a",
+      "explanation": {
+        "text": "The order of operations gives $\\sqrt{25} = 5$. Taking the roots first gives $3 + 4 = 7$, which is the mistake.",
+        "inline": []
+      },
+      "difficulty": 2
     }
   ],
   "exercises": [
@@ -365,8 +585,8 @@
   ],
   "coverage": {
     "sections": 7,
-    "traps": 4,
-    "recall_checks": 4,
+    "traps": 8,
+    "recall_checks": 8,
     "exercises": 40,
     "past_papers": 5,
     "gaps": []

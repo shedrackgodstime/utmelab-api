@@ -83,6 +83,52 @@
       "frequency": "recurring"
     },
     {
+      "id": "trap-4",
+      "section_id": "sec-3",
+      "misconception": {
+        "text": "Centripetal acceleration pushes the object outward, away from the centre.",
+        "inline": []
+      },
+      "correction": {
+        "text": "It points inward. The inward acceleration is what keeps the object on the circle.",
+        "inline": []
+      },
+      "signal": {
+        "text": "Our own question offers the outward direction as an option.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "check_id": "rc-8",
+        "exam": "WAEC",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    },
+    {
+      "id": "trap-5",
+      "section_id": "sec-4",
+      "misconception": {
+        "text": "Centripetal force is a new kind of force that pulls objects to the centre.",
+        "inline": []
+      },
+      "correction": {
+        "text": "It is the name for the net inward force, whatever provides it: gravity, tension or friction.",
+        "inline": []
+      },
+      "signal": {
+        "text": "Our own question offers the new force as an option.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "check_id": "rc-9",
+        "exam": "WAEC",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    },
+    {
       "id": "trap-3",
       "section_id": "sec-2",
       "misconception": {
@@ -205,6 +251,70 @@
       "difficulty": 3
     },
     {
+      "id": "rc-8",
+      "section_id": "sec-3",
+      "stem": {
+        "text": "A car travels at 20 m/s round a circle of radius 50 m. What is the centripetal acceleration?",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "2 m/s²"
+        },
+        {
+          "id": "b",
+          "text": "4 m/s²"
+        },
+        {
+          "id": "c",
+          "text": "8 m/s²"
+        },
+        {
+          "id": "d",
+          "text": "20 m/s²"
+        }
+      ],
+      "answer": "c",
+      "explanation": {
+        "text": "The centripetal acceleration is $v^2/r = 400/50 = 8$ m/s², directed to the centre.",
+        "inline": []
+      },
+      "difficulty": 3
+    },
+    {
+      "id": "rc-9",
+      "section_id": "sec-4",
+      "stem": {
+        "text": "A 1000 kg car goes round a bend of radius 100 m at 20 m/s. What centripetal force is needed?",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "200 N"
+        },
+        {
+          "id": "b",
+          "text": "2000 N"
+        },
+        {
+          "id": "c",
+          "text": "4000 N"
+        },
+        {
+          "id": "d",
+          "text": "20000 N"
+        }
+      ],
+      "answer": "c",
+      "explanation": {
+        "text": "The centripetal force is $F = mv^2/r = 1000 \\times 400/100 = 4000$ N, supplied by the friction between the tyres and the road.",
+        "inline": []
+      },
+      "difficulty": 3
+    },
+    {
       "id": "rc-3",
       "section_id": "sec-2",
       "stem": {
@@ -264,8 +374,8 @@
   ],
   "coverage": {
     "sections": 4,
-    "traps": 2,
-    "recall_checks": 4,
+    "traps": 4,
+    "recall_checks": 6,
     "exercises": 20,
     "past_papers": 1,
     "gaps": []

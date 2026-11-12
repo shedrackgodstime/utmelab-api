@@ -673,6 +673,40 @@
         "url": "https://api.utmelab.com/api/v1/questions/q_waec_2024_physics_72028"
       },
       "frequency": "recurring"
+    },
+    {
+      "id": "trap-3",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-2",
+      "misconception": "A body can exert a force on itself.",
+      "correction": "It cannot. A hawk that accelerates while gliding is pushed by the air and pulled by the Earth.",
+      "signal": "Our own question offers the body as its own source of force.",
+      "status": "candidate",
+      "paper_evidence": {
+        "check_id": "rc-7",
+        "exam": "JAMB",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    },
+    {
+      "id": "trap-4",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-5",
+      "misconception": "The action and the reaction cancel, so nothing can move.",
+      "correction": "They act on two different bodies, so they never cancel on one body. That is why the swimmer accelerates away from the wall.",
+      "signal": "Our own question offers the cancellation as an option.",
+      "status": "candidate",
+      "paper_evidence": {
+        "check_id": "rc-8",
+        "exam": "JAMB",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
     }
   ],
   "exam_recall_checks": [
@@ -848,6 +882,64 @@
       "answer": "b",
       "explanation": "The book is in equilibrium, so the upward force from the table equals its weight. They act on different bodies, so they do not cancel.",
       "difficulty": 3,
+      "source": "authored against the JAMB physics syllabus"
+    },
+    {
+      "id": "rc-7",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-2",
+      "stem": "A hawk accelerates as it glides. What causes the acceleration?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The hawk's own wings pushing against the air"
+        },
+        {
+          "id": "b",
+          "text": "The force of the air on the hawk and the pull of the Earth"
+        },
+        {
+          "id": "c",
+          "text": "The speed the hawk already has"
+        },
+        {
+          "id": "d",
+          "text": "The heat from the sun"
+        }
+      ],
+      "answer": "b",
+      "explanation": "A body cannot exert a force on itself. The hawk is pushed by the air and pulled by the Earth.",
+      "difficulty": 2,
+      "source": "authored against the JAMB physics syllabus"
+    },
+    {
+      "id": "rc-8",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-5",
+      "stem": "A swimmer pushes the wall of a pool with 200 N. What force does the wall exert on the swimmer?",
+      "options": [
+        {
+          "id": "a",
+          "text": "0 N"
+        },
+        {
+          "id": "b",
+          "text": "100 N"
+        },
+        {
+          "id": "c",
+          "text": "200 N in the opposite direction"
+        },
+        {
+          "id": "d",
+          "text": "400 N"
+        }
+      ],
+      "answer": "c",
+      "explanation": "The forces are equal in magnitude and opposite in direction, and they act on two different bodies, so they do not cancel.",
+      "difficulty": 2,
       "source": "authored against the JAMB physics syllabus"
     }
   ]

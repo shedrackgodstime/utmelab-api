@@ -549,6 +549,74 @@
         "url": "https://api.utmelab.com/api/v1/questions/q_waec_2025_physics_76333"
       },
       "frequency": "recurring"
+    },
+    {
+      "id": "trap-4",
+      "exam": "WAEC",
+      "subject": "physics",
+      "section_id": "sec-3",
+      "misconception": "Centripetal acceleration pushes the object outward, away from the centre.",
+      "correction": "It points inward. The inward acceleration is what keeps the object on the circle.",
+      "signal": "Our own question offers the outward direction as an option.",
+      "status": "candidate",
+      "paper_evidence": {
+        "check_id": "rc-8",
+        "exam": "WAEC",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    },
+    {
+      "id": "trap-5",
+      "exam": "WAEC",
+      "subject": "physics",
+      "section_id": "sec-4",
+      "misconception": "Centripetal force is a new kind of force that pulls objects to the centre.",
+      "correction": "It is the name for the net inward force, whatever provides it: gravity, tension or friction.",
+      "signal": "Our own question offers the new force as an option.",
+      "status": "candidate",
+      "paper_evidence": {
+        "check_id": "rc-9",
+        "exam": "WAEC",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    },
+    {
+      "id": "trap-6",
+      "exam": "WAEC",
+      "subject": "physics",
+      "section_id": "sec-7",
+      "misconception": "A satellite is held up by the engine that keeps it flying.",
+      "correction": "Most of them coast. A satellite falls towards the Earth while moving sideways fast enough to keep missing it.",
+      "signal": "Our own question offers the engine as the answer.",
+      "status": "candidate",
+      "paper_evidence": {
+        "check_id": "rc-10",
+        "exam": "WAEC",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    },
+    {
+      "id": "trap-7",
+      "exam": "WAEC",
+      "subject": "physics",
+      "section_id": "sec-6",
+      "misconception": "A heavier body feels a greater pull from the Earth.",
+      "correction": "Every body on the Earth feels the same pull per unit mass. The weight of a body on the Moon is one sixth of its weight on the Earth, whatever its mass.",
+      "signal": "Our own question offers the same weight as an option.",
+      "status": "candidate",
+      "paper_evidence": {
+        "check_id": "rc-11",
+        "exam": "WAEC",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
     }
   ],
   "exam_recall_checks": [
@@ -752,6 +820,122 @@
       ],
       "answer": "b",
       "explanation": "The orbital speed grows as the radius shrinks, so a lower orbit is a faster one.",
+      "difficulty": 3,
+      "source": "authored against the WAEC physics syllabus"
+    },
+    {
+      "id": "rc-8",
+      "exam": "WAEC",
+      "subject": "physics",
+      "section_id": "sec-3",
+      "stem": "A car travels at 20 m/s round a circle of radius 50 m. What is the centripetal acceleration?",
+      "options": [
+        {
+          "id": "a",
+          "text": "2 m/s²"
+        },
+        {
+          "id": "b",
+          "text": "4 m/s²"
+        },
+        {
+          "id": "c",
+          "text": "8 m/s²"
+        },
+        {
+          "id": "d",
+          "text": "20 m/s²"
+        }
+      ],
+      "answer": "c",
+      "explanation": "The centripetal acceleration is $v^2/r = 400/50 = 8$ m/s², directed to the centre.",
+      "difficulty": 3,
+      "source": "authored against the WAEC physics syllabus"
+    },
+    {
+      "id": "rc-9",
+      "exam": "WAEC",
+      "subject": "physics",
+      "section_id": "sec-4",
+      "stem": "A 1000 kg car goes round a bend of radius 100 m at 20 m/s. What centripetal force is needed?",
+      "options": [
+        {
+          "id": "a",
+          "text": "200 N"
+        },
+        {
+          "id": "b",
+          "text": "2000 N"
+        },
+        {
+          "id": "c",
+          "text": "4000 N"
+        },
+        {
+          "id": "d",
+          "text": "20000 N"
+        }
+      ],
+      "answer": "c",
+      "explanation": "The centripetal force is $F = mv^2/r = 1000 \\times 400/100 = 4000$ N, supplied by the friction between the tyres and the road.",
+      "difficulty": 3,
+      "source": "authored against the WAEC physics syllabus"
+    },
+    {
+      "id": "rc-10",
+      "exam": "WAEC",
+      "subject": "physics",
+      "section_id": "sec-7",
+      "stem": "A satellite moves in a circular orbit. What holds it in that orbit?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The engine firing continuously"
+        },
+        {
+          "id": "b",
+          "text": "Its forward motion, which makes it keep falling past the Earth"
+        },
+        {
+          "id": "c",
+          "text": "The pull of the Earth alone, with no motion"
+        },
+        {
+          "id": "d",
+          "text": "The air high above the atmosphere"
+        }
+      ],
+      "answer": "b",
+      "explanation": "An orbit is a fall that keeps missing the ground. The forward motion carries the satellite sideways while gravity pulls it inward.",
+      "difficulty": 3,
+      "source": "authored against the WAEC physics syllabus"
+    },
+    {
+      "id": "rc-11",
+      "exam": "WAEC",
+      "subject": "physics",
+      "section_id": "sec-6",
+      "stem": "A body has a weight of 60 N on the Earth. What is its weight on the Moon?",
+      "options": [
+        {
+          "id": "a",
+          "text": "60 N"
+        },
+        {
+          "id": "b",
+          "text": "10 N"
+        },
+        {
+          "id": "c",
+          "text": "360 N"
+        },
+        {
+          "id": "d",
+          "text": "30 N"
+        }
+      ],
+      "answer": "b",
+      "explanation": "The Moon's pull is one sixth of the Earth's, so the weight is 60/6 = 10 N. The mass has not changed.",
       "difficulty": 3,
       "source": "authored against the WAEC physics syllabus"
     }

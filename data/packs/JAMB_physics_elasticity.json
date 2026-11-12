@@ -20,7 +20,31 @@
       "subtopic_slug": "elastic-limit-yield-point-and-breaking-point"
     }
   ],
-  "traps": [],
+  "traps": [
+    {
+      "id": "trap-5",
+      "section_id": "sec-4",
+      "misconception": {
+        "text": "A spring returns to its original length however hard it is pulled.",
+        "inline": []
+      },
+      "correction": {
+        "text": "Not past the elastic limit. Beyond it the material does not return to its shape.",
+        "inline": []
+      },
+      "signal": {
+        "text": "Our own question offers the unlimited stretch as an option.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "check_id": "rc-6",
+        "exam": "JAMB",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    }
+  ],
   "recall_checks": [
     {
       "id": "rc-4",
@@ -53,6 +77,38 @@
         "inline": []
       },
       "difficulty": 2
+    },
+    {
+      "id": "rc-6",
+      "section_id": "sec-4",
+      "stem": {
+        "text": "A spring is stretched and then released. What happens if it is stretched past its elastic limit?",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "It returns to its original length"
+        },
+        {
+          "id": "b",
+          "text": "It stays stretched and does not return"
+        },
+        {
+          "id": "c",
+          "text": "It breaks immediately"
+        },
+        {
+          "id": "d",
+          "text": "It becomes twice as stiff"
+        }
+      ],
+      "answer": "b",
+      "explanation": {
+        "text": "Past the elastic limit the material does not return to its original shape, so it stays stretched.",
+        "inline": []
+      },
+      "difficulty": 3
     }
   ],
   "exercises": [
@@ -68,12 +124,11 @@
   "past_papers": [],
   "coverage": {
     "sections": 1,
-    "traps": 0,
-    "recall_checks": 1,
+    "traps": 1,
+    "recall_checks": 2,
     "exercises": 8,
     "past_papers": 0,
     "gaps": [
-      "traps",
       "past_papers"
     ]
   }

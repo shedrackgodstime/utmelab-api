@@ -19,7 +19,31 @@
       "subtopic_slug": "waec-measurement-of-distance-displacement"
     }
   ],
-  "traps": [],
+  "traps": [
+    {
+      "id": "trap-5",
+      "section_id": "sec-2",
+      "misconception": {
+        "text": "Distance travelled and displacement are the same quantity.",
+        "inline": []
+      },
+      "correction": {
+        "text": "The distance here is 8 m, the length of the path. The displacement is zero, because the body ends where it started.",
+        "inline": []
+      },
+      "signal": {
+        "text": "Our own question offers the distance as an option.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "check_id": "rc-12",
+        "exam": "WAEC",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    }
+  ],
   "recall_checks": [
     {
       "id": "rc-4",
@@ -52,6 +76,38 @@
         "inline": []
       },
       "difficulty": 2
+    },
+    {
+      "id": "rc-12",
+      "section_id": "sec-2",
+      "stem": {
+        "text": "A body walks 4 m east and then 4 m west. What is its displacement?",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "8 m"
+        },
+        {
+          "id": "b",
+          "text": "zero"
+        },
+        {
+          "id": "c",
+          "text": "4 m east"
+        },
+        {
+          "id": "d",
+          "text": "4 m west"
+        }
+      ],
+      "answer": "b",
+      "explanation": {
+        "text": "The displacement is the change in position, and the body ends where it started, so it is zero. The distance travelled is 8 m.",
+        "inline": []
+      },
+      "difficulty": 2
     }
   ],
   "exercises": [
@@ -62,12 +118,11 @@
   "past_papers": [],
   "coverage": {
     "sections": 1,
-    "traps": 0,
-    "recall_checks": 1,
+    "traps": 1,
+    "recall_checks": 2,
     "exercises": 3,
     "past_papers": 0,
     "gaps": [
-      "traps",
       "past_papers"
     ]
   }

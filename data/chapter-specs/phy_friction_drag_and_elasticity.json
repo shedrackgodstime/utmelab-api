@@ -409,6 +409,40 @@
         "url": "https://api.utmelab.com/api/v1/questions/q_waec_2023_physics_69369"
       },
       "frequency": "recurring"
+    },
+    {
+      "id": "trap-4",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-3",
+      "misconception": "Drag is a small force that only matters at very high speed.",
+      "correction": "At low speeds the drag grows with the square of the speed, so it matters for anything that moves quickly through air.",
+      "signal": "Our own question offers the drag as negligible.",
+      "status": "candidate",
+      "paper_evidence": {
+        "check_id": "rc-5",
+        "exam": "JAMB",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    },
+    {
+      "id": "trap-5",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-4",
+      "misconception": "A spring returns to its original length however hard it is pulled.",
+      "correction": "Not past the elastic limit. Beyond it the material does not return to its shape.",
+      "signal": "Our own question offers the unlimited stretch as an option.",
+      "status": "candidate",
+      "paper_evidence": {
+        "check_id": "rc-6",
+        "exam": "JAMB",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
     }
   ],
   "exam_recall_checks": [
@@ -526,6 +560,64 @@
       "answer": "c",
       "explanation": "Hooke's law gives F = kx, so the force is proportional to the extension.",
       "difficulty": 2,
+      "source": "authored against the JAMB physics syllabus"
+    },
+    {
+      "id": "rc-5",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-3",
+      "stem": "A car travels at 20 m/s and then at 40 m/s. How many times larger is the drag force?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Twice as large"
+        },
+        {
+          "id": "b",
+          "text": "Four times as large"
+        },
+        {
+          "id": "c",
+          "text": "Eight times as large"
+        },
+        {
+          "id": "d",
+          "text": "The same"
+        }
+      ],
+      "answer": "b",
+      "explanation": "The drag grows with the square of the speed, so doubling the speed makes it four times as large.",
+      "difficulty": 2,
+      "source": "authored against the JAMB physics syllabus"
+    },
+    {
+      "id": "rc-6",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-4",
+      "stem": "A spring is stretched and then released. What happens if it is stretched past its elastic limit?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It returns to its original length"
+        },
+        {
+          "id": "b",
+          "text": "It stays stretched and does not return"
+        },
+        {
+          "id": "c",
+          "text": "It breaks immediately"
+        },
+        {
+          "id": "d",
+          "text": "It becomes twice as stiff"
+        }
+      ],
+      "answer": "b",
+      "explanation": "Past the elastic limit the material does not return to its original shape, so it stays stretched.",
+      "difficulty": 3,
       "source": "authored against the JAMB physics syllabus"
     }
   ]

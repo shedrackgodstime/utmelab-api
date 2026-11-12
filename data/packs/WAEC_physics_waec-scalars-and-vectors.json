@@ -43,7 +43,77 @@
       "subtopic_slug": "waec-resultant-velocity-using-vector-representation-2"
     }
   ],
-  "traps": [],
+  "traps": [
+    {
+      "id": "trap-2",
+      "section_id": "sec-3",
+      "misconception": {
+        "text": "Vectors are added by adding their magnitudes.",
+        "inline": []
+      },
+      "correction": {
+        "text": "Vectors are added as arrows, head to tail, and the resultant is the diagonal.",
+        "inline": []
+      },
+      "signal": {
+        "text": "Our own question offers the sum of the magnitudes as an option.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "check_id": "rc-7",
+        "exam": "WAEC",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    },
+    {
+      "id": "trap-3",
+      "section_id": "sec-4",
+      "misconception": {
+        "text": "The components of a vector are found by adding it up and dividing.",
+        "inline": []
+      },
+      "correction": {
+        "text": "The components are the projections of the vector on the axes, and the magnitude follows from them.",
+        "inline": []
+      },
+      "signal": {
+        "text": "Our own question offers the sum of the components as an option.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "check_id": "rc-8",
+        "exam": "WAEC",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    },
+    {
+      "id": "trap-4",
+      "section_id": "sec-6",
+      "misconception": {
+        "text": "The velocity an observer sees is the velocity of the object alone.",
+        "inline": []
+      },
+      "correction": {
+        "text": "It is the sum of the object's velocity and the velocity of the frame the observer is in.",
+        "inline": []
+      },
+      "signal": {
+        "text": "Our own question offers the velocity of the frame as an option.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "check_id": "rc-9",
+        "exam": "WAEC",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    }
+  ],
   "recall_checks": [
     {
       "id": "rc-3",
@@ -140,6 +210,102 @@
         "inline": []
       },
       "difficulty": 2
+    },
+    {
+      "id": "rc-7",
+      "section_id": "sec-3",
+      "stem": {
+        "text": "What is the resultant of a 3 N force to the east and a 4 N force to the north?",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "5 N"
+        },
+        {
+          "id": "b",
+          "text": "7 N"
+        },
+        {
+          "id": "c",
+          "text": "12 N"
+        },
+        {
+          "id": "d",
+          "text": "1 N"
+        }
+      ],
+      "answer": "a",
+      "explanation": {
+        "text": "The resultant is the diagonal of the right angled triangle, so it is $\\sqrt{3^2+4^2} = 5$ N. Adding the magnitudes gives 7 N.",
+        "inline": []
+      },
+      "difficulty": 2
+    },
+    {
+      "id": "rc-8",
+      "section_id": "sec-4",
+      "stem": {
+        "text": "A vector has a component of 3 N along the x axis and 4 N along the y axis. What is its magnitude?",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "5 N"
+        },
+        {
+          "id": "b",
+          "text": "7 N"
+        },
+        {
+          "id": "c",
+          "text": "12 N"
+        },
+        {
+          "id": "d",
+          "text": "1 N"
+        }
+      ],
+      "answer": "a",
+      "explanation": {
+        "text": "The magnitude is $\\sqrt{3^2 + 4^2} = 5$ N. Adding the components gives 7 N.",
+        "inline": []
+      },
+      "difficulty": 1
+    },
+    {
+      "id": "rc-9",
+      "section_id": "sec-6",
+      "stem": {
+        "text": "A train moves at 15 m/s and a passenger walks forward at 2 m/s inside it. What is the passenger's velocity relative to the ground?",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "13 m/s"
+        },
+        {
+          "id": "b",
+          "text": "15 m/s"
+        },
+        {
+          "id": "c",
+          "text": "17 m/s"
+        },
+        {
+          "id": "d",
+          "text": "30 m/s"
+        }
+      ],
+      "answer": "c",
+      "explanation": {
+        "text": "The velocities add as vectors: 15 m/s + 2 m/s = 17 m/s. The velocity of the train alone gives 15 m/s.",
+        "inline": []
+      },
+      "difficulty": 2
     }
   ],
   "exercises": [
@@ -166,12 +332,11 @@
   "past_papers": [],
   "coverage": {
     "sections": 3,
-    "traps": 0,
-    "recall_checks": 3,
+    "traps": 3,
+    "recall_checks": 6,
     "exercises": 19,
     "past_papers": 0,
     "gaps": [
-      "traps",
       "past_papers"
     ]
   }

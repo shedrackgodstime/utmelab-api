@@ -5690,6 +5690,138 @@
         "locator": "paper question q_waec_2025_physics_76333",
         "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
       }
+    },
+    {
+      "id": "trap-4",
+      "exam": "WAEC",
+      "subject": "physics",
+      "section_id": "sec-3",
+      "misconception": {
+        "text": "Centripetal acceleration pushes the object outward, away from the centre.",
+        "inline": []
+      },
+      "correction": {
+        "text": "It points inward. The inward acceleration is what keeps the object on the circle.",
+        "inline": []
+      },
+      "signal": {
+        "text": "Our own question offers the outward direction as an option.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "check_id": "rc-8",
+        "exam": "WAEC",
+        "year": null,
+        "source": "authored"
+      },
+      "status": "candidate",
+      "frequency": "candidate",
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://api.utmelab.com/api/v1/chapters/phy_circular_motion_and_gravitation/sections/sec-3",
+        "locator": "our practice question rc-8",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "trap-5",
+      "exam": "WAEC",
+      "subject": "physics",
+      "section_id": "sec-4",
+      "misconception": {
+        "text": "Centripetal force is a new kind of force that pulls objects to the centre.",
+        "inline": []
+      },
+      "correction": {
+        "text": "It is the name for the net inward force, whatever provides it: gravity, tension or friction.",
+        "inline": []
+      },
+      "signal": {
+        "text": "Our own question offers the new force as an option.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "check_id": "rc-9",
+        "exam": "WAEC",
+        "year": null,
+        "source": "authored"
+      },
+      "status": "candidate",
+      "frequency": "candidate",
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://api.utmelab.com/api/v1/chapters/phy_circular_motion_and_gravitation/sections/sec-4",
+        "locator": "our practice question rc-9",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "trap-6",
+      "exam": "WAEC",
+      "subject": "physics",
+      "section_id": "sec-7",
+      "misconception": {
+        "text": "A satellite is held up by the engine that keeps it flying.",
+        "inline": []
+      },
+      "correction": {
+        "text": "Most of them coast. A satellite falls towards the Earth while moving sideways fast enough to keep missing it.",
+        "inline": []
+      },
+      "signal": {
+        "text": "Our own question offers the engine as the answer.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "check_id": "rc-10",
+        "exam": "WAEC",
+        "year": null,
+        "source": "authored"
+      },
+      "status": "candidate",
+      "frequency": "candidate",
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://api.utmelab.com/api/v1/chapters/phy_circular_motion_and_gravitation/sections/sec-7",
+        "locator": "our practice question rc-10",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "trap-7",
+      "exam": "WAEC",
+      "subject": "physics",
+      "section_id": "sec-6",
+      "misconception": {
+        "text": "A heavier body feels a greater pull from the Earth.",
+        "inline": []
+      },
+      "correction": {
+        "text": "Every body on the Earth feels the same pull per unit mass. The weight of a body on the Moon is one sixth of its weight on the Earth, whatever its mass.",
+        "inline": []
+      },
+      "signal": {
+        "text": "Our own question offers the same weight as an option.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "check_id": "rc-11",
+        "exam": "WAEC",
+        "year": null,
+        "source": "authored"
+      },
+      "status": "candidate",
+      "frequency": "candidate",
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://api.utmelab.com/api/v1/chapters/phy_circular_motion_and_gravitation/sections/sec-6",
+        "locator": "our practice question rc-11",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
     }
   ],
   "exam_recall_checks": [
@@ -5933,6 +6065,146 @@
       "answer": "b",
       "explanation": {
         "text": "The orbital speed grows as the radius shrinks, so a lower orbit is a faster one.",
+        "inline": []
+      },
+      "difficulty": 3,
+      "source": "authored against the WAEC physics syllabus"
+    },
+    {
+      "id": "rc-8",
+      "exam": "WAEC",
+      "subject": "physics",
+      "section_id": "sec-3",
+      "stem": {
+        "text": "A car travels at 20 m/s round a circle of radius 50 m. What is the centripetal acceleration?",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "2 m/s²"
+        },
+        {
+          "id": "b",
+          "text": "4 m/s²"
+        },
+        {
+          "id": "c",
+          "text": "8 m/s²"
+        },
+        {
+          "id": "d",
+          "text": "20 m/s²"
+        }
+      ],
+      "answer": "c",
+      "explanation": {
+        "text": "The centripetal acceleration is $v^2/r = 400/50 = 8$ m/s², directed to the centre.",
+        "inline": []
+      },
+      "difficulty": 3,
+      "source": "authored against the WAEC physics syllabus"
+    },
+    {
+      "id": "rc-9",
+      "exam": "WAEC",
+      "subject": "physics",
+      "section_id": "sec-4",
+      "stem": {
+        "text": "A 1000 kg car goes round a bend of radius 100 m at 20 m/s. What centripetal force is needed?",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "200 N"
+        },
+        {
+          "id": "b",
+          "text": "2000 N"
+        },
+        {
+          "id": "c",
+          "text": "4000 N"
+        },
+        {
+          "id": "d",
+          "text": "20000 N"
+        }
+      ],
+      "answer": "c",
+      "explanation": {
+        "text": "The centripetal force is $F = mv^2/r = 1000 \\times 400/100 = 4000$ N, supplied by the friction between the tyres and the road.",
+        "inline": []
+      },
+      "difficulty": 3,
+      "source": "authored against the WAEC physics syllabus"
+    },
+    {
+      "id": "rc-10",
+      "exam": "WAEC",
+      "subject": "physics",
+      "section_id": "sec-7",
+      "stem": {
+        "text": "A satellite moves in a circular orbit. What holds it in that orbit?",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "The engine firing continuously"
+        },
+        {
+          "id": "b",
+          "text": "Its forward motion, which makes it keep falling past the Earth"
+        },
+        {
+          "id": "c",
+          "text": "The pull of the Earth alone, with no motion"
+        },
+        {
+          "id": "d",
+          "text": "The air high above the atmosphere"
+        }
+      ],
+      "answer": "b",
+      "explanation": {
+        "text": "An orbit is a fall that keeps missing the ground. The forward motion carries the satellite sideways while gravity pulls it inward.",
+        "inline": []
+      },
+      "difficulty": 3,
+      "source": "authored against the WAEC physics syllabus"
+    },
+    {
+      "id": "rc-11",
+      "exam": "WAEC",
+      "subject": "physics",
+      "section_id": "sec-6",
+      "stem": {
+        "text": "A body has a weight of 60 N on the Earth. What is its weight on the Moon?",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "60 N"
+        },
+        {
+          "id": "b",
+          "text": "10 N"
+        },
+        {
+          "id": "c",
+          "text": "360 N"
+        },
+        {
+          "id": "d",
+          "text": "30 N"
+        }
+      ],
+      "answer": "b",
+      "explanation": {
+        "text": "The Moon's pull is one sixth of the Earth's, so the weight is 60/6 = 10 N. The mass has not changed.",
         "inline": []
       },
       "difficulty": 3,

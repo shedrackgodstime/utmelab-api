@@ -456,8 +456,10 @@ def validate(path):
                 # A trap without paper evidence is a chapter misconception.
                 errors.append((path, f"exam trap {trap_id} has no paper evidence"))
             else:
-                if not isinstance(evidence.get("question_id"), str) or not evidence.get("question_id", "").strip():
-                    errors.append((path, f"exam trap {trap_id} evidence has no question id"))
+                has_question = isinstance(evidence.get("question_id"), str) and evidence.get("question_id", "").strip()
+                has_check = isinstance(evidence.get("check_id"), str) and evidence.get("check_id", "").strip()
+                if not has_question and not has_check:
+                    errors.append((path, f"exam trap {trap_id} evidence names neither a question nor a practice check"))
                 status = trap.get("status")
                 source = evidence.get("source")
                 if status not in {"proven", "candidate"}:
@@ -466,6 +468,8 @@ def validate(path):
                     errors.append((path, f"exam trap {trap_id} claims a paper but its evidence is our own question"))
                 elif status == "candidate" and source != "authored":
                     errors.append((path, f"exam trap {trap_id} is a candidate but its evidence is a paper"))
+                elif status == "proven" and not has_question:
+                    errors.append((path, f"exam trap {trap_id} claims a paper but cites no paper question"))
             check_provenance(trap.get("provenance"), f"{path}.{trap_id}.provenance", errors)
 
     checks = document.get("exam_recall_checks", [])

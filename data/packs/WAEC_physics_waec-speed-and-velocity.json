@@ -19,13 +19,69 @@
       "subtopic_slug": "waec-concept-of-velocity-as-change-of-displacement-with-time-2"
     }
   ],
-  "traps": [],
+  "traps": [
+    {
+      "id": "trap-2",
+      "section_id": "sec-4",
+      "misconception": {
+        "text": "Average velocity tells you how fast an object is moving at this moment.",
+        "inline": []
+      },
+      "correction": {
+        "text": "It covers the whole journey. The speed at a moment is the instantaneous speed.",
+        "inline": []
+      },
+      "signal": {
+        "text": "Our own question offers the instantaneous reading as an option.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "check_id": "rc-9",
+        "exam": "WAEC",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    }
+  ],
   "recall_checks": [
     {
       "id": "rc-1",
       "section_id": "sec-4",
       "stem": {
         "text": "A car covers 100 km in 2 hours and its average speed is 50 km/h. It returns over the same road in another 2 hours. What is its average velocity for the round trip?",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "50 km/h"
+        },
+        {
+          "id": "b",
+          "text": "0 km/h"
+        },
+        {
+          "id": "c",
+          "text": "25 km/h"
+        },
+        {
+          "id": "d",
+          "text": "100 km/h"
+        }
+      ],
+      "answer": "b",
+      "explanation": {
+        "text": "The displacement over the round trip is zero, so the average velocity is zero, even though the average speed is 50 km/h.",
+        "inline": []
+      },
+      "difficulty": 2
+    },
+    {
+      "id": "rc-9",
+      "section_id": "sec-4",
+      "stem": {
+        "text": "A car travels 100 km in 2 hours and returns over the same road in another 2 hours. What is its average velocity for the round trip?",
         "inline": []
       },
       "options": [
@@ -66,12 +122,11 @@
   "past_papers": [],
   "coverage": {
     "sections": 1,
-    "traps": 0,
-    "recall_checks": 1,
+    "traps": 1,
+    "recall_checks": 2,
     "exercises": 7,
     "past_papers": 0,
     "gaps": [
-      "traps",
       "past_papers"
     ]
   }

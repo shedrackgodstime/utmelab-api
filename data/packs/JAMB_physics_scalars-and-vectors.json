@@ -21,7 +21,31 @@
       "subtopic_slug": "types-of-force-contact-force-and-field-force"
     }
   ],
-  "traps": [],
+  "traps": [
+    {
+      "id": "trap-3",
+      "section_id": "sec-2",
+      "misconception": {
+        "text": "A body can exert a force on itself.",
+        "inline": []
+      },
+      "correction": {
+        "text": "It cannot. A hawk that accelerates while gliding is pushed by the air and pulled by the Earth.",
+        "inline": []
+      },
+      "signal": {
+        "text": "Our own question offers the body as its own source of force.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "check_id": "rc-7",
+        "exam": "JAMB",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    }
+  ],
   "recall_checks": [
     {
       "id": "rc-3",
@@ -54,6 +78,38 @@
         "inline": []
       },
       "difficulty": 1
+    },
+    {
+      "id": "rc-7",
+      "section_id": "sec-2",
+      "stem": {
+        "text": "A hawk accelerates as it glides. What causes the acceleration?",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "The hawk's own wings pushing against the air"
+        },
+        {
+          "id": "b",
+          "text": "The force of the air on the hawk and the pull of the Earth"
+        },
+        {
+          "id": "c",
+          "text": "The speed the hawk already has"
+        },
+        {
+          "id": "d",
+          "text": "The heat from the sun"
+        }
+      ],
+      "answer": "b",
+      "explanation": {
+        "text": "A body cannot exert a force on itself. The hawk is pushed by the air and pulled by the Earth.",
+        "inline": []
+      },
+      "difficulty": 2
     }
   ],
   "exercises": [
@@ -63,12 +119,11 @@
   "past_papers": [],
   "coverage": {
     "sections": 1,
-    "traps": 0,
-    "recall_checks": 1,
+    "traps": 1,
+    "recall_checks": 2,
     "exercises": 2,
     "past_papers": 0,
     "gaps": [
-      "traps",
       "past_papers"
     ]
   }

@@ -41,7 +41,54 @@
       "subtopic_slug": "waec-simplification-and-rationalization-of-simple-surds"
     }
   ],
-  "traps": [],
+  "traps": [
+    {
+      "id": "trap-10",
+      "section_id": "sec-7",
+      "misconception": {
+        "text": "When surds are added, the numbers under the radical signs are added.",
+        "inline": []
+      },
+      "correction": {
+        "text": "Each surd is written as the same surd first, so $\\sqrt{12} + \\sqrt{27} = 2\\sqrt{3} + 3\\sqrt{3} = 5\\sqrt{3}$.",
+        "inline": []
+      },
+      "signal": {
+        "text": "Our own question offers the sum of the radicands as an option.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "check_id": "rc-13",
+        "exam": "WAEC",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    },
+    {
+      "id": "trap-11",
+      "section_id": "sec-9",
+      "misconception": {
+        "text": "A surd can be left in the denominator of a fraction.",
+        "inline": []
+      },
+      "correction": {
+        "text": "A fraction in simplest form has no surd in the denominator, so $6/\\sqrt{3}$ is written $2\\sqrt{3}$.",
+        "inline": []
+      },
+      "signal": {
+        "text": "Our own question offers the fraction with the surd still in it.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "check_id": "rc-14",
+        "exam": "WAEC",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    }
+  ],
   "recall_checks": [
     {
       "id": "rc-5",
@@ -138,6 +185,70 @@
         "inline": []
       },
       "difficulty": 1
+    },
+    {
+      "id": "rc-13",
+      "section_id": "sec-7",
+      "stem": {
+        "text": "What is the value of $\\sqrt{12} + \\sqrt{27}$?",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "$5\\sqrt{3}$"
+        },
+        {
+          "id": "b",
+          "text": "$39$"
+        },
+        {
+          "id": "c",
+          "text": "$15$"
+        },
+        {
+          "id": "d",
+          "text": "$2\\sqrt{3}$"
+        }
+      ],
+      "answer": "a",
+      "explanation": {
+        "text": "Write both surds with the same radical: $2\\sqrt{3} + 3\\sqrt{3} = 5\\sqrt{3}$. Adding the numbers under the radical gives 39, which is the mistake.",
+        "inline": []
+      },
+      "difficulty": 3
+    },
+    {
+      "id": "rc-14",
+      "section_id": "sec-9",
+      "stem": {
+        "text": "Write $\\dfrac{6}{\\sqrt{3}}$ in its simplest form.",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "$\\dfrac{6}{\\sqrt{3}}$"
+        },
+        {
+          "id": "b",
+          "text": "$2\\sqrt{3}$"
+        },
+        {
+          "id": "c",
+          "text": "$2$"
+        },
+        {
+          "id": "d",
+          "text": "$3\\sqrt{2}$"
+        }
+      ],
+      "answer": "b",
+      "explanation": {
+        "text": "Multiply the numerator and the denominator by $\\sqrt{3}$ to get $6\\sqrt{3}/3$, and that is $2\\sqrt{3}$.",
+        "inline": []
+      },
+      "difficulty": 2
     }
   ],
   "exercises": [
@@ -170,12 +281,11 @@
   "past_papers": [],
   "coverage": {
     "sections": 3,
-    "traps": 0,
-    "recall_checks": 3,
+    "traps": 2,
+    "recall_checks": 5,
     "exercises": 25,
     "past_papers": 0,
     "gaps": [
-      "traps",
       "past_papers"
     ]
   }

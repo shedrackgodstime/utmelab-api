@@ -7940,7 +7940,173 @@
       "question_ids": []
     }
   ],
-  "exam_traps": [],
+  "exam_traps": [
+    {
+      "id": "trap-1",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-2",
+      "misconception": {
+        "text": "Distance travelled and displacement are the same quantity.",
+        "inline": []
+      },
+      "correction": {
+        "text": "Distance is the length of the path, 10 m here. Displacement is the change in position, 2 m east.",
+        "inline": []
+      },
+      "signal": {
+        "text": "Our own question offers the distance as an option.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "check_id": "rc-8",
+        "exam": "JAMB",
+        "year": null,
+        "source": "authored"
+      },
+      "status": "candidate",
+      "frequency": "candidate",
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://api.utmelab.com/api/v1/chapters/phy_motion_along_a_straight_line/sections/sec-2",
+        "locator": "our practice question rc-8",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "trap-2",
+      "exam": "WAEC",
+      "subject": "physics",
+      "section_id": "sec-4",
+      "misconception": {
+        "text": "Average velocity tells you how fast an object is moving at this moment.",
+        "inline": []
+      },
+      "correction": {
+        "text": "It covers the whole journey. The speed at a moment is the instantaneous speed.",
+        "inline": []
+      },
+      "signal": {
+        "text": "Our own question offers the instantaneous reading as an option.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "check_id": "rc-9",
+        "exam": "WAEC",
+        "year": null,
+        "source": "authored"
+      },
+      "status": "candidate",
+      "frequency": "candidate",
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://api.utmelab.com/api/v1/chapters/phy_motion_along_a_straight_line/sections/sec-4",
+        "locator": "our practice question rc-9",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "trap-3",
+      "exam": "WAEC",
+      "subject": "physics",
+      "section_id": "sec-5",
+      "misconception": {
+        "text": "An object with zero acceleration must be at rest.",
+        "inline": []
+      },
+      "correction": {
+        "text": "Zero acceleration means the velocity is not changing. The object may be moving at a constant velocity.",
+        "inline": []
+      },
+      "signal": {
+        "text": "Our own question offers the stationary reading as an option.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "check_id": "rc-10",
+        "exam": "WAEC",
+        "year": null,
+        "source": "authored"
+      },
+      "status": "candidate",
+      "frequency": "candidate",
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://api.utmelab.com/api/v1/chapters/phy_motion_along_a_straight_line/sections/sec-5",
+        "locator": "our practice question rc-10",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "trap-4",
+      "exam": "WAEC",
+      "subject": "physics",
+      "section_id": "sec-6",
+      "misconception": {
+        "text": "The equations of constant acceleration hold for any motion.",
+        "inline": []
+      },
+      "correction": {
+        "text": "They hold only while the acceleration stays constant.",
+        "inline": []
+      },
+      "signal": {
+        "text": "Our own question offers the answer for a changing acceleration as an option.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "check_id": "rc-11",
+        "exam": "WAEC",
+        "year": null,
+        "source": "authored"
+      },
+      "status": "candidate",
+      "frequency": "candidate",
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://api.utmelab.com/api/v1/chapters/phy_motion_along_a_straight_line/sections/sec-6",
+        "locator": "our practice question rc-11",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "trap-5",
+      "exam": "WAEC",
+      "subject": "physics",
+      "section_id": "sec-2",
+      "misconception": {
+        "text": "Distance travelled and displacement are the same quantity.",
+        "inline": []
+      },
+      "correction": {
+        "text": "The distance here is 8 m, the length of the path. The displacement is zero, because the body ends where it started.",
+        "inline": []
+      },
+      "signal": {
+        "text": "Our own question offers the distance as an option.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "check_id": "rc-12",
+        "exam": "WAEC",
+        "year": null,
+        "source": "authored"
+      },
+      "status": "candidate",
+      "frequency": "candidate",
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://api.utmelab.com/api/v1/chapters/phy_motion_along_a_straight_line/sections/sec-2",
+        "locator": "our practice question rc-12",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    }
+  ],
   "exam_recall_checks": [
     {
       "id": "rc-1",
@@ -8182,6 +8348,181 @@
       "answer": "b",
       "explanation": {
         "text": "The gradient of a position against time graph is the velocity. The gradient of a velocity against time graph is the acceleration.",
+        "inline": []
+      },
+      "difficulty": 2,
+      "source": "authored against the WAEC physics syllabus"
+    },
+    {
+      "id": "rc-8",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-2",
+      "stem": {
+        "text": "A body moves 6 m east and then 4 m west. What is its displacement?",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "2 m east"
+        },
+        {
+          "id": "b",
+          "text": "4 m west"
+        },
+        {
+          "id": "c",
+          "text": "10 m"
+        },
+        {
+          "id": "d",
+          "text": "zero"
+        }
+      ],
+      "answer": "a",
+      "explanation": {
+        "text": "The displacement is the change in position, so 6 m east minus 4 m west is 2 m east. The distance travelled is 10 m.",
+        "inline": []
+      },
+      "difficulty": 2,
+      "source": "authored against the JAMB physics syllabus"
+    },
+    {
+      "id": "rc-9",
+      "exam": "WAEC",
+      "subject": "physics",
+      "section_id": "sec-4",
+      "stem": {
+        "text": "A car travels 100 km in 2 hours and returns over the same road in another 2 hours. What is its average velocity for the round trip?",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "50 km/h"
+        },
+        {
+          "id": "b",
+          "text": "0 km/h"
+        },
+        {
+          "id": "c",
+          "text": "25 km/h"
+        },
+        {
+          "id": "d",
+          "text": "100 km/h"
+        }
+      ],
+      "answer": "b",
+      "explanation": {
+        "text": "The displacement over the round trip is zero, so the average velocity is zero, even though the average speed is 50 km/h.",
+        "inline": []
+      },
+      "difficulty": 2,
+      "source": "authored against the WAEC physics syllabus"
+    },
+    {
+      "id": "rc-10",
+      "exam": "WAEC",
+      "subject": "physics",
+      "section_id": "sec-5",
+      "stem": {
+        "text": "A body moves at a steady 20 m/s along a straight road. What is its acceleration?",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "0 m/s²"
+        },
+        {
+          "id": "b",
+          "text": "20 m/s²"
+        },
+        {
+          "id": "c",
+          "text": "10 m/s²"
+        },
+        {
+          "id": "d",
+          "text": "400 m/s²"
+        }
+      ],
+      "answer": "a",
+      "explanation": {
+        "text": "The velocity is constant, so the acceleration is zero. The body is moving, not at rest.",
+        "inline": []
+      },
+      "difficulty": 2,
+      "source": "authored against the WAEC physics syllabus"
+    },
+    {
+      "id": "rc-11",
+      "exam": "WAEC",
+      "subject": "physics",
+      "section_id": "sec-6",
+      "stem": {
+        "text": "A body accelerates at 2 m/s² for 3 s and then at 5 m/s² for 2 s. Which set of equations gives its distance?",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "The constant acceleration equations, for the whole journey"
+        },
+        {
+          "id": "b",
+          "text": "The constant acceleration equations for each part, added together"
+        },
+        {
+          "id": "c",
+          "text": "Only the second part, which has the larger acceleration"
+        },
+        {
+          "id": "d",
+          "text": "No equations apply, because the acceleration changes"
+        }
+      ],
+      "answer": "b",
+      "explanation": {
+        "text": "The equations for constant acceleration hold for each part on its own. The distances from the two parts are added.",
+        "inline": []
+      },
+      "difficulty": 4,
+      "source": "authored against the WAEC physics syllabus"
+    },
+    {
+      "id": "rc-12",
+      "exam": "WAEC",
+      "subject": "physics",
+      "section_id": "sec-2",
+      "stem": {
+        "text": "A body walks 4 m east and then 4 m west. What is its displacement?",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "8 m"
+        },
+        {
+          "id": "b",
+          "text": "zero"
+        },
+        {
+          "id": "c",
+          "text": "4 m east"
+        },
+        {
+          "id": "d",
+          "text": "4 m west"
+        }
+      ],
+      "answer": "b",
+      "explanation": {
+        "text": "The displacement is the change in position, and the body ends where it started, so it is zero. The distance travelled is 8 m.",
         "inline": []
       },
       "difficulty": 2,

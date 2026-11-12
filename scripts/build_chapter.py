@@ -437,8 +437,15 @@ def build(spec):
             "provenance": {
                 "publisher": "OpenStax",
                 "title": "College Physics 2e",
-                "url": trap["paper_evidence"].get("url", ""),
-                "locator": f"paper question {trap['paper_evidence']['question_id']}",
+                "url": trap["paper_evidence"].get("url") or (
+                    "https://api.utmelab.com/api/v1/chapters/"
+                    f"{spec['chapter_id']}/sections/{trap['section_id']}"
+                ),
+                "locator": (
+                    f"paper question {trap['paper_evidence']['question_id']}"
+                    if trap["paper_evidence"].get("question_id")
+                    else f"our practice question {trap['paper_evidence'].get('check_id')}"
+                ),
                 "licence": spec.get("licence", ""),
             },
         })

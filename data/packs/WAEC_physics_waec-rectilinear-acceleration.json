@@ -54,7 +54,54 @@
       "subtopic_slug": "waec-velocity-time-graph-2"
     }
   ],
-  "traps": [],
+  "traps": [
+    {
+      "id": "trap-3",
+      "section_id": "sec-5",
+      "misconception": {
+        "text": "An object with zero acceleration must be at rest.",
+        "inline": []
+      },
+      "correction": {
+        "text": "Zero acceleration means the velocity is not changing. The object may be moving at a constant velocity.",
+        "inline": []
+      },
+      "signal": {
+        "text": "Our own question offers the stationary reading as an option.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "check_id": "rc-10",
+        "exam": "WAEC",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    },
+    {
+      "id": "trap-4",
+      "section_id": "sec-6",
+      "misconception": {
+        "text": "The equations of constant acceleration hold for any motion.",
+        "inline": []
+      },
+      "correction": {
+        "text": "They hold only while the acceleration stays constant.",
+        "inline": []
+      },
+      "signal": {
+        "text": "Our own question offers the answer for a changing acceleration as an option.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "check_id": "rc-11",
+        "exam": "WAEC",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    }
+  ],
   "recall_checks": [
     {
       "id": "rc-7",
@@ -87,6 +134,70 @@
         "inline": []
       },
       "difficulty": 2
+    },
+    {
+      "id": "rc-10",
+      "section_id": "sec-5",
+      "stem": {
+        "text": "A body moves at a steady 20 m/s along a straight road. What is its acceleration?",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "0 m/s²"
+        },
+        {
+          "id": "b",
+          "text": "20 m/s²"
+        },
+        {
+          "id": "c",
+          "text": "10 m/s²"
+        },
+        {
+          "id": "d",
+          "text": "400 m/s²"
+        }
+      ],
+      "answer": "a",
+      "explanation": {
+        "text": "The velocity is constant, so the acceleration is zero. The body is moving, not at rest.",
+        "inline": []
+      },
+      "difficulty": 2
+    },
+    {
+      "id": "rc-11",
+      "section_id": "sec-6",
+      "stem": {
+        "text": "A body accelerates at 2 m/s² for 3 s and then at 5 m/s² for 2 s. Which set of equations gives its distance?",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "The constant acceleration equations, for the whole journey"
+        },
+        {
+          "id": "b",
+          "text": "The constant acceleration equations for each part, added together"
+        },
+        {
+          "id": "c",
+          "text": "Only the second part, which has the larger acceleration"
+        },
+        {
+          "id": "d",
+          "text": "No equations apply, because the acceleration changes"
+        }
+      ],
+      "answer": "b",
+      "explanation": {
+        "text": "The equations for constant acceleration hold for each part on its own. The distances from the two parts are added.",
+        "inline": []
+      },
+      "difficulty": 4
     }
   ],
   "exercises": [
@@ -130,12 +241,10 @@
   ],
   "coverage": {
     "sections": 4,
-    "traps": 0,
-    "recall_checks": 1,
+    "traps": 2,
+    "recall_checks": 3,
     "exercises": 33,
     "past_papers": 2,
-    "gaps": [
-      "traps"
-    ]
+    "gaps": []
   }
 }

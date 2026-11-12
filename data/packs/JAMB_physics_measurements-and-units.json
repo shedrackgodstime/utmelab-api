@@ -19,7 +19,31 @@
       "subtopic_slug": "measurement-position-distance-and-displacement-coordinates-a"
     }
   ],
-  "traps": [],
+  "traps": [
+    {
+      "id": "trap-1",
+      "section_id": "sec-2",
+      "misconception": {
+        "text": "Distance travelled and displacement are the same quantity.",
+        "inline": []
+      },
+      "correction": {
+        "text": "Distance is the length of the path, 10 m here. Displacement is the change in position, 2 m east.",
+        "inline": []
+      },
+      "signal": {
+        "text": "Our own question offers the distance as an option.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "check_id": "rc-8",
+        "exam": "JAMB",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    }
+  ],
   "recall_checks": [
     {
       "id": "rc-3",
@@ -52,6 +76,38 @@
         "inline": []
       },
       "difficulty": 2
+    },
+    {
+      "id": "rc-8",
+      "section_id": "sec-2",
+      "stem": {
+        "text": "A body moves 6 m east and then 4 m west. What is its displacement?",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "2 m east"
+        },
+        {
+          "id": "b",
+          "text": "4 m west"
+        },
+        {
+          "id": "c",
+          "text": "10 m"
+        },
+        {
+          "id": "d",
+          "text": "zero"
+        }
+      ],
+      "answer": "a",
+      "explanation": {
+        "text": "The displacement is the change in position, so 6 m east minus 4 m west is 2 m east. The distance travelled is 10 m.",
+        "inline": []
+      },
+      "difficulty": 2
     }
   ],
   "exercises": [
@@ -62,12 +118,11 @@
   "past_papers": [],
   "coverage": {
     "sections": 1,
-    "traps": 0,
-    "recall_checks": 1,
+    "traps": 1,
+    "recall_checks": 2,
     "exercises": 3,
     "past_papers": 0,
     "gaps": [
-      "traps",
       "past_papers"
     ]
   }

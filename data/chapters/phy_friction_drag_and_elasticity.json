@@ -3590,6 +3590,72 @@
         "locator": "paper question q_waec_2023_physics_69369",
         "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
       }
+    },
+    {
+      "id": "trap-4",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-3",
+      "misconception": {
+        "text": "Drag is a small force that only matters at very high speed.",
+        "inline": []
+      },
+      "correction": {
+        "text": "At low speeds the drag grows with the square of the speed, so it matters for anything that moves quickly through air.",
+        "inline": []
+      },
+      "signal": {
+        "text": "Our own question offers the drag as negligible.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "check_id": "rc-5",
+        "exam": "JAMB",
+        "year": null,
+        "source": "authored"
+      },
+      "status": "candidate",
+      "frequency": "candidate",
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://api.utmelab.com/api/v1/chapters/phy_friction_drag_and_elasticity/sections/sec-3",
+        "locator": "our practice question rc-5",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "trap-5",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-4",
+      "misconception": {
+        "text": "A spring returns to its original length however hard it is pulled.",
+        "inline": []
+      },
+      "correction": {
+        "text": "Not past the elastic limit. Beyond it the material does not return to its shape.",
+        "inline": []
+      },
+      "signal": {
+        "text": "Our own question offers the unlimited stretch as an option.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "check_id": "rc-6",
+        "exam": "JAMB",
+        "year": null,
+        "source": "authored"
+      },
+      "status": "candidate",
+      "frequency": "candidate",
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://api.utmelab.com/api/v1/chapters/phy_friction_drag_and_elasticity/sections/sec-4",
+        "locator": "our practice question rc-6",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
     }
   ],
   "exam_recall_checks": [
@@ -3731,6 +3797,76 @@
         "inline": []
       },
       "difficulty": 2,
+      "source": "authored against the JAMB physics syllabus"
+    },
+    {
+      "id": "rc-5",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-3",
+      "stem": {
+        "text": "A car travels at 20 m/s and then at 40 m/s. How many times larger is the drag force?",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "Twice as large"
+        },
+        {
+          "id": "b",
+          "text": "Four times as large"
+        },
+        {
+          "id": "c",
+          "text": "Eight times as large"
+        },
+        {
+          "id": "d",
+          "text": "The same"
+        }
+      ],
+      "answer": "b",
+      "explanation": {
+        "text": "The drag grows with the square of the speed, so doubling the speed makes it four times as large.",
+        "inline": []
+      },
+      "difficulty": 2,
+      "source": "authored against the JAMB physics syllabus"
+    },
+    {
+      "id": "rc-6",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-4",
+      "stem": {
+        "text": "A spring is stretched and then released. What happens if it is stretched past its elastic limit?",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "It returns to its original length"
+        },
+        {
+          "id": "b",
+          "text": "It stays stretched and does not return"
+        },
+        {
+          "id": "c",
+          "text": "It breaks immediately"
+        },
+        {
+          "id": "d",
+          "text": "It becomes twice as stiff"
+        }
+      ],
+      "answer": "b",
+      "explanation": {
+        "text": "Past the elastic limit the material does not return to its original shape, so it stays stretched.",
+        "inline": []
+      },
+      "difficulty": 3,
       "source": "authored against the JAMB physics syllabus"
     }
   ],

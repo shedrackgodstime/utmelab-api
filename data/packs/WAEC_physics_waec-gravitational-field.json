@@ -20,7 +20,31 @@
       "subtopic_slug": "waec-gravitational-force-between-two"
     }
   ],
-  "traps": [],
+  "traps": [
+    {
+      "id": "trap-7",
+      "section_id": "sec-6",
+      "misconception": {
+        "text": "A heavier body feels a greater pull from the Earth.",
+        "inline": []
+      },
+      "correction": {
+        "text": "Every body on the Earth feels the same pull per unit mass. The weight of a body on the Moon is one sixth of its weight on the Earth, whatever its mass.",
+        "inline": []
+      },
+      "signal": {
+        "text": "Our own question offers the same weight as an option.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "check_id": "rc-11",
+        "exam": "WAEC",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    }
+  ],
   "recall_checks": [
     {
       "id": "rc-6",
@@ -53,6 +77,38 @@
         "inline": []
       },
       "difficulty": 2
+    },
+    {
+      "id": "rc-11",
+      "section_id": "sec-6",
+      "stem": {
+        "text": "A body has a weight of 60 N on the Earth. What is its weight on the Moon?",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "60 N"
+        },
+        {
+          "id": "b",
+          "text": "10 N"
+        },
+        {
+          "id": "c",
+          "text": "360 N"
+        },
+        {
+          "id": "d",
+          "text": "30 N"
+        }
+      ],
+      "answer": "b",
+      "explanation": {
+        "text": "The Moon's pull is one sixth of the Earth's, so the weight is 60/6 = 10 N. The mass has not changed.",
+        "inline": []
+      },
+      "difficulty": 3
     }
   ],
   "exercises": [
@@ -73,12 +129,10 @@
   ],
   "coverage": {
     "sections": 1,
-    "traps": 0,
-    "recall_checks": 1,
+    "traps": 1,
+    "recall_checks": 2,
     "exercises": 8,
     "past_papers": 4,
-    "gaps": [
-      "traps"
-    ]
+    "gaps": []
   }
 }
