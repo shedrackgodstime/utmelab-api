@@ -1,0 +1,238 @@
+# Content Chapter Spec: exam-independent textbook chapters
+
+Status: Active
+Last updated: 2026-11-12
+
+This document defines what a chapter is, how it is grounded, and how an exam
+refers to it. It replaces the exam-scoped note model described in
+`docs/CONTENT-WORKFLOW-CONTRACT.md` for teaching content.
+
+## Why this exists
+
+The note model in production is keyed by placement:
+
+```
+topic_notes(id, exam, subject, topic_slug, subtopic_slug, ...)
+```
+
+`exam` is `NOT NULL`. So a note belongs to an exam, and the same idea must be
+authored again for the next exam. The production numbers show the cost:
+
+- 26 notes for 3,870 questions, and 184 questions (4.8%) under any note.
+- 1,461 topics split into 583 JAMB and 878 WAEC rows with zero shared
+  slugs, while 17 subject slugs are shared between the two exams.
+- 23 question texts duplicated across JAMB and WAEC.
+- 7 WAEC notes whose subtopic slugs match no question at all.
+- 373 notes staged locally, every one of them with `linked_question_ids: []`.
+
+The direction of ownership is the fix: **a textbook owns the content, an exam
+references it.** A chapter is a piece of a book. An exam says which chapters
+it examines, with what weight, and which of its own past questions test them.
+
+## The document
+
+One JSON file per chapter, in `data/chapters/<chapter_id>.json`.
+
+```jsonc
+{
+  "chapter_id": "math_laws_of_indices_and_surds",
+  "schema_version": 1,
+  "updated_at": "2026-11-12",
+  "title": "Laws of Indices and Surds",
+
+  "book": {
+    "id": "secondary_mathematics",
+    "title": "Secondary Mathematics",
+    "subject_area": "mathematics",
+    "level": "secondary",
+    "edition": "draft-1"
+  },
+
+  "learning_objectives": [
+    {"id": "lo-1", "statement": "...", "bloom_level": "understand"}
+  ],
+
+  "sections": [
+    {
+      "id": "sec-1",
+      "order": 1,
+      "title": "Index notation and what a power means",
+      "est_minutes": 7,
+      "teaching_text": {"blocks": [ ... ]},
+      "worked_examples": [ ... ],
+      "misconceptions": [ ... ],
+      "summary_points": [ ... ],
+      "practice_exercise_ids": ["ex-01", "ex-02"],
+      "provenance": { ... }
+    }
+  ],
+
+  "exercises": [
+    {
+      "id": "ex-01",
+      "section_id": "sec-1",
+      "kind": "numeric",
+      "difficulty": 1,
+      "marks": 1,
+      "stem": {"text": "...", "inline": []},
+      "answer": {"text": "...", "inline": []},
+      "answer_kind": "expression",
+      "solution": [{"step_number": 1, "expression": "..."}],
+      "tags": ["indices"],
+      "provenance": { ... },
+      "solution_provenance": "..."
+    }
+  ],
+
+  "exam_links": [
+    {
+      "exam": "JAMB",
+      "subject": "mathematics",
+      "topic_slug": "indices-logarithms-and-surds",
+      "subtopic_slug": "laws-of-indices",
+      "weight_pct": null,
+      "expected_count": null,
+      "source_locator": "production catalog topic and subtopic (read-only fetch YYYY-MM-DD)",
+      "question_ids": ["q_authored_math_indices_001"]
+    }
+  ],
+
+  "sources": [ ... ]
+}
+```
+
+### Rules on the shape
+
+- The chapter root must not carry `exam`, `subject`, `topic_slug`,
+  `subtopic_slug` or `placements`. A chapter that names an exam is exam-scoped
+  content, which is what this model exists to remove.
+- `exam_links` is the only place an exam may appear on a chapter.
+- `sections[].order` is 1..n with no gaps and no repeats.
+- Every exercise belongs to exactly one section, and every section lists its
+  own exercises in `practice_exercise_ids`.
+- `sources` lists the sources for the teaching content. Every section, worked
+  example, misconception and exercise also carries its own `provenance`.
+
+## Teaching text blocks
+
+Block types are the ones the concept documents already use: `paragraph`,
+`definition`, `formula`, `table`, `list`, `summary`, plus `example` and
+`exercise` inside a section's arrays.
+
+```jsonc
+{"id": "b-1", "type": "paragraph", "content": {"text": "...", "inline": []}}
+{"id": "b-2", "type": "definition", "term": {...}, "definition": {...}}
+{"id": "b-3", "type": "formula", "expression": "a^m \\times a^n = a^{m+n}",
+ "caption": {...}, "conditions": {...}}
+```
+
+Text is RichText: `{"text": "...", "inline": []}`. Inline offsets are Unicode
+scalar offsets into the owning text, `start` inclusive and `end` exclusive.
+No HTML, no Markdown.
+
+## Exercises
+
+An exercise without an answer and a solution is not an exercise. Every
+exercise carries:
+
+- `stem`: the question, in RichText.
+- `answer`: the answer as the source states it. `answer_kind` is `expression`
+  for a value, `explanation` for a spoken answer.
+- `solution`: numbered steps. The steps come from the source's own solution.
+- `kind`: `numeric`, `algebraic`, `verbal` or `application`.
+- `difficulty`: 1 (recognition) to 5 (multi-step combination). This is
+  editorial judgement, not a fact from the source.
+- `marks`: the marks the exercise is worth. Also editorial.
+- `tags`: the skills it exercises, used for selection and coverage reporting.
+
+An exercise may carry `answer_note` when the source states the value before
+the commentary, so a reader can see why the answer was taken from that line.
+
+## Grounding
+
+The rules in `docs/CONTENT-WORKFLOW-CONTRACT.md` still hold and are not
+optional:
+
+- **No invention.** No fact, figure, example, answer or exercise that is not
+  in a source. Restructuring source material is allowed; adding to it is not.
+- **Provenance everywhere.** Every section, worked example, misconception and
+  exercise names a publisher, a title, a locator and a licence.
+- **Honest status.** When a source's licence is uncertain, record it as
+  uncertain. Do not guess.
+- **Exam facts stay on the exam side.** Examiner traps, mark schemes and
+  recall items written in exam language belong to an exam link or a separate
+  revision pack, not to the chapter.
+
+## Exam links
+
+An exam link says how one exam relates to this chapter.
+
+- `exam`, `subject`, `topic_slug`: required, and they must exist in the
+  production catalog.
+- `subtopic_slug`: the production subtopic, or null when the chapter maps to
+  a whole topic.
+- `weight_pct`, `expected_count`: the exam's weighting, when it is known.
+  Null means not known, which is different from zero.
+- `source_locator`: where the mapping came from, for example the production
+  catalog read on a given date.
+- `question_ids`: the exam's own questions that test this chapter. These stay
+  in the exam's bank; the chapter does not own them.
+
+## Identifier conventions
+
+- `chapter_id`: `<subject_area>_<topic>` in lower snake case, for example
+  `math_laws_of_indices_and_surds`.
+- Section ids: `sec-<n>`. Exercise ids: `ex-<nn>`, numbered within the
+  chapter.
+- Book ids: `<level>_<subject_area>`, for example `secondary_mathematics`.
+- Concept ids are unchanged, so a chapter can cite the concepts it was built
+  from.
+
+## Workflow
+
+1. Build or fetch the sourced concepts for the topic.
+2. Write the chapter: learning objectives, sections, teaching text, worked
+   examples, misconceptions, exercises with answers and solutions.
+3. Pull exercises and their solutions from the source. For OpenStax CNXML,
+   run `python3 scripts/scrape_openstax_solutions.py` first: the concept
+   scraper folds prose into the mathematics, and this script keeps them apart
+   so a solution reads as steps.
+4. Validate: `python3 scripts/validate_chapters.py` must report 0 errors.
+5. Review the rendered chapter by reading it end to end. A validator cannot
+   tell you that a chapter teaches badly.
+6. Add exam links against the production catalog, read only.
+
+## Definition of done
+
+- [ ] The chapter root names no exam.
+- [ ] Every section, worked example, misconception and exercise carries
+      provenance with a locator and a licence.
+- [ ] Every exercise has an answer, an answer kind, and a solution with at
+      least one step.
+- [ ] Every section has learning objectives behind it, at least two summary
+      points, and at least one worked example.
+- [ ] Every exercise is listed by the section it belongs to.
+- [ ] `scripts/validate_chapters.py` reports 0 errors.
+- [ ] A reader who has not taken the exam can learn the topic from the
+      chapter alone.
+- [ ] Exam links resolve against the production catalog.
+
+## Migration from exam-scoped notes
+
+`topic_notes` stays in place while chapters are authored. Each production note
+maps to one chapter section, and the note's `linked_question_ids` becomes the
+chapter's `exam_links[].question_ids` in reverse.
+
+| Old | New |
+| --- | --- |
+| `topic_notes.exam`, `.subject` | `exam_links[]` |
+| `topic_notes.topic_slug`, `.subtopic_slug` | `exam_links[].topic_slug`, `.subtopic_slug` |
+| `topic_notes.sections` | `sections[].teaching_text.blocks` |
+| `topic_notes.worked_examples` | `sections[].worked_examples` |
+| `topic_notes.active_recall_checks` | an exam-side revision pack, or chapter exercises |
+| `topic_notes.examiner_traps` | an exam-side revision pack, not the chapter |
+| `topic_notes.sources` | `sources[]` and per-object `provenance` |
+| `topic_notes.linked_question_ids` | `exam_links[].question_ids` |
+
+The notes API stays on v1 while v2 serves chapters. No client reads the notes
+API today, so the switch costs nothing yet.

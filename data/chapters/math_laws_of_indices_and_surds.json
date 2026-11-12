@@ -1,0 +1,3095 @@
+{
+  "chapter_id": "math_laws_of_indices_and_surds",
+  "schema_version": 1,
+  "updated_at": "2026-11-12",
+  "title": "Laws of Indices and Surds",
+  "book": {
+    "id": "secondary_mathematics",
+    "title": "Secondary Mathematics",
+    "subject_area": "mathematics",
+    "level": "secondary",
+    "edition": "draft-1"
+  },
+  "learning_objectives": [
+    {
+      "id": "lo-1",
+      "statement": "Interpret $a^n$ as repeated multiplication and use index notation correctly.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-2",
+      "statement": "Apply the product rule, the quotient rule and the power rule of exponents to expressions that share a base.",
+      "bloom_level": "apply"
+    },
+    {
+      "id": "lo-3",
+      "statement": "Apply the power of a product rule and the power of a quotient rule.",
+      "bloom_level": "apply"
+    },
+    {
+      "id": "lo-4",
+      "statement": "Use the zero exponent rule and the negative exponent rule, and write results with positive indices.",
+      "bloom_level": "apply"
+    },
+    {
+      "id": "lo-5",
+      "statement": "Convert between index and radical notation and simplify surds with the product and quotient rules for radicals.",
+      "bloom_level": "apply"
+    },
+    {
+      "id": "lo-6",
+      "statement": "Add and subtract like surds and rationalise a denominator that contains a surd.",
+      "bloom_level": "apply"
+    }
+  ],
+  "sections": [
+    {
+      "id": "sec-1",
+      "order": 1,
+      "title": "Index notation and what a power means",
+      "est_minutes": 7,
+      "teaching_text": {
+        "blocks": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Index notation is a short way of writing repeated multiplication. In $a^n$ the number $a$ is the base and $n$ is the index, sometimes called the exponent, and the expression means $a$ multiplied by itself $n$ times.",
+              "inline": []
+            },
+            "id": "b-1"
+          },
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "The order of the numbers matters. $3^4$ means three multiplied by itself four times, which is $3 \\times 3 \\times 3 \\times 3 = 81$. The expression $4^3$ means four multiplied by itself three times, which is $4 \\times 4 \\times 4 = 64$.",
+              "inline": []
+            },
+            "id": "b-2"
+          },
+          {
+            "type": "definition",
+            "term": {
+              "text": "index (exponent)",
+              "inline": []
+            },
+            "definition": {
+              "text": "The number that tells how many times the base is multiplied by itself. In $a^n$ the index is $n$.",
+              "inline": []
+            },
+            "id": "b-3"
+          },
+          {
+            "type": "formula",
+            "expression": "$a^n = \\underbrace{a \\times a \\times \\cdots \\times a}_{n\\ \\text{factors}}$",
+            "caption": {
+              "text": "Index notation",
+              "inline": []
+            },
+            "id": "b-4"
+          },
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Index notation is how very large and very small numbers are written in practice. A one hour digital film at full resolution can hold about $1.3 \\times 10^{13}$ bits of information, a number that has thirteen digits before the decimal point would start.",
+              "inline": []
+            },
+            "id": "b-5"
+          }
+        ]
+      },
+      "worked_examples": [
+        {
+          "id": "we-sec-1",
+          "statement": {
+            "text": "Is $2^3$ the same as $3^2$? Explain.",
+            "inline": []
+          },
+          "steps": [
+            {
+              "step_number": 1,
+              "expression": "An index tells how many times you multiply the base."
+            },
+            {
+              "step_number": 2,
+              "expression": "$2^3$ is $2 \\times 2 \\times 2$, which is 8."
+            },
+            {
+              "step_number": 3,
+              "expression": "$3^2$ is $3 \\times 3$, which is 9."
+            },
+            {
+              "step_number": 4,
+              "expression": "8 and 9 are different values, so the two expressions are not the same."
+            }
+          ],
+          "answer": {
+            "text": "No. $2^3 = 8$ and $3^2 = 9$.",
+            "inline": []
+          },
+          "provenance": {
+            "publisher": "OpenStax",
+            "title": "College Algebra, Exponents and Scientific Notation",
+            "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51241/index.cnxml",
+            "locator": "CNXML module m51241, exercise block exr-167",
+            "licence": "CC BY-NC-SA 4.0"
+          }
+        }
+      ],
+      "misconceptions": [
+        {
+          "id": "mis-CNXML module m51241, exercise block exr-167",
+          "claim": {
+            "text": "$2^3 = 3^2$ because both have a 2 and a 3 in them.",
+            "inline": []
+          },
+          "correction": {
+            "text": "An index tells how many times you multiply the base, so $2^3 = 2 \\times 2 \\times 2 = 8$ while $3^2 = 3 \\times 3 = 9$.",
+            "inline": []
+          },
+          "provenance": {
+            "publisher": "OpenStax",
+            "title": "College Algebra",
+            "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51241/index.cnxml",
+            "locator": "CNXML module m51241, exercise block exr-167",
+            "licence": "CC BY-NC-SA 4.0"
+          }
+        }
+      ],
+      "summary_points": [
+        {
+          "text": "$a^n$ means $a$ multiplied by itself $n$ times.",
+          "inline": []
+        },
+        {
+          "text": "The base comes first, the index second: $3^4$ is not $4^3$.",
+          "inline": []
+        },
+        {
+          "text": "Large and small numbers are written as $a \\times 10^n$ in scientific notation.",
+          "inline": []
+        }
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Algebra, Exponents and Scientific Notation",
+        "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51241/index.cnxml",
+        "locator": "CNXML module m51241, section 'introduction and Key Equations (rules of exponents)'",
+        "licence": "CC BY-NC-SA 4.0"
+      },
+      "practice_exercise_ids": [
+        "ex-01",
+        "ex-02"
+      ]
+    },
+    {
+      "id": "sec-2",
+      "order": 2,
+      "title": "Multiplying powers with the same base",
+      "est_minutes": 9,
+      "teaching_text": {
+        "blocks": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "When two powers have the same base you add the indices. Expand $x^3 \\times x^4$ and rewrite the product: the answer is $x^3 \\times x^4 = x^{3+4} = x^7$.",
+              "inline": []
+            },
+            "id": "b-1"
+          },
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "The rule holds for numbers too. $2^3 = 8$ and $2^4 = 16$, and $8 \\times 16 = 128 = 2^7$, which confirms $2^3 \\times 2^4 = 2^7$.",
+              "inline": []
+            },
+            "id": "b-2"
+          },
+          {
+            "type": "formula",
+            "expression": "$a^m \\times a^n = a^{m+n}$",
+            "caption": {
+              "text": "Product rule of exponents",
+              "inline": []
+            },
+            "conditions": {
+              "text": "For nonzero real numbers $a$ and natural numbers $m$ and $n$.",
+              "inline": []
+            },
+            "id": "b-3"
+          },
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Because the base must be the same, a product with different bases cannot be combined this way. Write each factor in index form first, then look for powers that share a base.",
+              "inline": []
+            },
+            "id": "b-4"
+          }
+        ]
+      },
+      "worked_examples": [
+        {
+          "id": "we-sec-2",
+          "statement": {
+            "text": "Simplify $x^3 \\times x^4$.",
+            "inline": []
+          },
+          "steps": [
+            {
+              "step_number": 1,
+              "expression": "Both factors have the base $x$."
+            },
+            {
+              "step_number": 2,
+              "expression": "By the product rule the indices are added: $x^{3+4}$."
+            },
+            {
+              "step_number": 3,
+              "expression": "$x^{3+4} = x^7$."
+            }
+          ],
+          "answer": {
+            "text": "$x^7$",
+            "inline": []
+          },
+          "provenance": {
+            "publisher": "OpenStax",
+            "title": "College Algebra, Exponents and Scientific Notation",
+            "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51241/index.cnxml",
+            "locator": "CNXML module m51241, section 'Using the Product Rule of Exponents'",
+            "licence": "CC BY-NC-SA 4.0"
+          }
+        }
+      ],
+      "misconceptions": [
+        {
+          "id": "mis-CNXML module m51241, sections 'Using the Product Rule of Exponents' and 'Using the Power Rule of Exponents'",
+          "claim": {
+            "text": "$2^3 \\times 2^4 = 2^{12}$ because $3 \\times 4 = 12$.",
+            "inline": []
+          },
+          "correction": {
+            "text": "The product rule adds the indices, so $2^3 \\times 2^4 = 2^{3+4} = 2^7 = 128$. Multiplying the indices is the power rule, which applies to $(a^m)^n$.",
+            "inline": []
+          },
+          "provenance": {
+            "publisher": "OpenStax",
+            "title": "College Algebra",
+            "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51241/index.cnxml",
+            "locator": "CNXML module m51241, sections 'Using the Product Rule of Exponents' and 'Using the Power Rule of Exponents'",
+            "licence": "CC BY-NC-SA 4.0"
+          }
+        }
+      ],
+      "summary_points": [
+        {
+          "text": "Powers with the same base are multiplied by adding the indices.",
+          "inline": []
+        },
+        {
+          "text": "$a^m \\times a^n = a^{m+n}$.",
+          "inline": []
+        },
+        {
+          "text": "The product rule and the power rule look alike but act differently: add indices for $a^m \\times a^n$, multiply indices for $(a^m)^n$.",
+          "inline": []
+        }
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Algebra, Exponents and Scientific Notation",
+        "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51241/index.cnxml",
+        "locator": "CNXML module m51241, section 'Using the Product Rule of Exponents'",
+        "licence": "CC BY-NC-SA 4.0"
+      },
+      "practice_exercise_ids": [
+        "ex-03",
+        "ex-04",
+        "ex-05"
+      ]
+    },
+    {
+      "id": "sec-3",
+      "order": 3,
+      "title": "Dividing powers with the same base",
+      "est_minutes": 8,
+      "teaching_text": {
+        "blocks": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "A quotient of two powers with the same base is simplified by subtracting the indices. Cancelling common factors in $\\frac{y^9}{y^5}$ leaves the base $y$ with the difference of the indices.",
+              "inline": []
+            },
+            "id": "b-1"
+          },
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "For now the rule is stated for $m > n$, so that the difference is positive. From here on, variables are taken to represent nonzero real numbers, which keeps the fractions meaningful.",
+              "inline": []
+            },
+            "id": "b-2"
+          },
+          {
+            "type": "formula",
+            "expression": "$\\frac{a^m}{a^n} = a^{m-n}$",
+            "caption": {
+              "text": "Quotient rule of exponents",
+              "inline": []
+            },
+            "conditions": {
+              "text": "For nonzero real numbers $a$ and natural numbers $m$ and $n$ with $m > n$.",
+              "inline": []
+            },
+            "id": "b-3"
+          },
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "When the divisor carries the larger index, the difference is negative, and a negative index means the reciprocal. That case is taken up in section 5.",
+              "inline": []
+            },
+            "id": "b-4"
+          }
+        ]
+      },
+      "worked_examples": [
+        {
+          "id": "we-sec-3",
+          "statement": {
+            "text": "Simplify $\\frac{a^3 a^2}{a}$.",
+            "inline": []
+          },
+          "steps": [
+            {
+              "step_number": 1,
+              "expression": "Write the denominator as $a^1$."
+            },
+            {
+              "step_number": 2,
+              "expression": "The numerator has one base $a$, so $a^3 \\times a^2 = a^{3+2} = a^5$."
+            },
+            {
+              "step_number": 3,
+              "expression": "Apply the quotient rule: $\\frac{a^5}{a^1} = a^{5-1}$."
+            }
+          ],
+          "answer": {
+            "text": "$a^4$",
+            "inline": []
+          },
+          "provenance": {
+            "publisher": "OpenStax",
+            "title": "College Algebra, Exponents and Scientific Notation",
+            "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51241/index.cnxml",
+            "locator": "CNXML module m51241, section 'Using the Quotient Rule of Exponents'",
+            "licence": "CC BY-NC-SA 4.0"
+          }
+        }
+      ],
+      "misconceptions": [
+        {
+          "id": "mis-CNXML module m51241, section 'Using the Quotient Rule of Exponents'",
+          "claim": {
+            "text": "In $\\frac{a^7}{a^3}$ subtract the bases to get $a^{7-3}$.",
+            "inline": []
+          },
+          "correction": {
+            "text": "The bases are already the same, so nothing is subtracted from them. Subtract the indices: $\\frac{a^7}{a^3} = a^{7-3} = a^4$.",
+            "inline": []
+          },
+          "provenance": {
+            "publisher": "OpenStax",
+            "title": "College Algebra",
+            "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51241/index.cnxml",
+            "locator": "CNXML module m51241, section 'Using the Quotient Rule of Exponents'",
+            "licence": "CC BY-NC-SA 4.0"
+          }
+        }
+      ],
+      "summary_points": [
+        {
+          "text": "Powers with the same base are divided by subtracting the indices.",
+          "inline": []
+        },
+        {
+          "text": "$\\frac{a^m}{a^n} = a^{m-n}$ when $m > n$.",
+          "inline": []
+        },
+        {
+          "text": "Every base in a quotient must be nonzero.",
+          "inline": []
+        }
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Algebra, Exponents and Scientific Notation",
+        "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51241/index.cnxml",
+        "locator": "CNXML module m51241, section 'Using the Quotient Rule of Exponents'",
+        "licence": "CC BY-NC-SA 4.0"
+      },
+      "practice_exercise_ids": [
+        "ex-06",
+        "ex-07"
+      ]
+    },
+    {
+      "id": "sec-4",
+      "order": 4,
+      "title": "Raising a power to a power, and powers of products and quotients",
+      "est_minutes": 11,
+      "teaching_text": {
+        "blocks": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "When an expression in index form is itself raised to a power, multiply the indices. The expression $(x^2)^3$ multiplies $x^2$ three times, so the index is $2 \\times 3 = 6$.",
+              "inline": []
+            },
+            "id": "b-1"
+          },
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Keep the two rules apart. The product rule applies to a product of two powers with the same base and adds the indices. The power rule applies to a single power raised to another power and multiplies the indices.",
+              "inline": []
+            },
+            "id": "b-2"
+          },
+          {
+            "type": "formula",
+            "expression": "$(a^m)^n = a^{m \\cdot n}$",
+            "caption": {
+              "text": "Power rule of exponents",
+              "inline": []
+            },
+            "conditions": {
+              "text": "For nonzero real numbers $a$ and positive integers $m$ and $n$.",
+              "inline": []
+            },
+            "id": "b-3"
+          },
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "A power can also be pushed into the parts of a product. Because $(pq)^3 = p \\times p \\times p \\times q \\times q \\times q$, the factors can be regrouped as $p^3 \\times q^3$.",
+              "inline": []
+            },
+            "id": "b-4"
+          },
+          {
+            "type": "formula",
+            "expression": "$(a \\times b)^n = a^n \\times b^n$",
+            "caption": {
+              "text": "Power of a product rule",
+              "inline": []
+            },
+            "conditions": {
+              "text": "For real numbers $a$ and $b$ and any integer $n$.",
+              "inline": []
+            },
+            "id": "b-5"
+          },
+          {
+            "type": "formula",
+            "expression": "$\\left(\\frac{a}{b}\\right)^n = \\frac{a^n}{b^n}$",
+            "caption": {
+              "text": "Power of a quotient rule",
+              "inline": []
+            },
+            "conditions": {
+              "text": "For real numbers $a$ and $b$ with $b \\ne 0$, and any integer $n$.",
+              "inline": []
+            },
+            "id": "b-6"
+          }
+        ]
+      },
+      "worked_examples": [
+        {
+          "id": "we-sec-4",
+          "statement": {
+            "text": "Simplify $(b^3 c^4)^2$.",
+            "inline": []
+          },
+          "steps": [
+            {
+              "step_number": 1,
+              "expression": "The whole product is raised to the index 2, so use the power of a product rule: $(b^3 c^4)^2 = (b^3)^2 (c^4)^2$."
+            },
+            {
+              "step_number": 2,
+              "expression": "Apply the power rule to each part: $(b^3)^2 = b^{3 \\times 2}$ and $(c^4)^2 = c^{4 \\times 2}$."
+            },
+            {
+              "step_number": 3,
+              "expression": "Collect the indices: $b^6 c^8$."
+            }
+          ],
+          "answer": {
+            "text": "$b^6 c^8$",
+            "inline": []
+          },
+          "provenance": {
+            "publisher": "OpenStax",
+            "title": "College Algebra, Exponents and Scientific Notation",
+            "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51241/index.cnxml",
+            "locator": "CNXML module m51241, section 'Finding the Power of a Product'",
+            "licence": "CC BY-NC-SA 4.0"
+          }
+        }
+      ],
+      "misconceptions": [
+        {
+          "id": "mis-CNXML module m51241, section 'Using the Power Rule of Exponents'",
+          "claim": {
+            "text": "$(x^2)^3 = x^{2+3} = x^5$.",
+            "inline": []
+          },
+          "correction": {
+            "text": "Raising a power to a power multiplies the indices: $(x^2)^3 = x^{2 \\times 3} = x^6$. Adding the indices is the product rule, which applies to $x^2 \\times x^3$.",
+            "inline": []
+          },
+          "provenance": {
+            "publisher": "OpenStax",
+            "title": "College Algebra",
+            "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51241/index.cnxml",
+            "locator": "CNXML module m51241, section 'Using the Power Rule of Exponents'",
+            "licence": "CC BY-NC-SA 4.0"
+          }
+        }
+      ],
+      "summary_points": [
+        {
+          "text": "$(a^m)^n = a^{m \\cdot n}$: multiply the indices.",
+          "inline": []
+        },
+        {
+          "text": "$(a \\times b)^n = a^n \\times b^n$, and $(a/b)^n = a^n / b^n$.",
+          "inline": []
+        },
+        {
+          "text": "The power rule multiplies indices; the product rule adds them.",
+          "inline": []
+        }
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Algebra, Exponents and Scientific Notation",
+        "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51241/index.cnxml",
+        "locator": "CNXML module m51241, section 'Using the Power Rule of Exponents'",
+        "licence": "CC BY-NC-SA 4.0"
+      },
+      "practice_exercise_ids": [
+        "ex-08",
+        "ex-09",
+        "ex-10",
+        "ex-11",
+        "ex-12",
+        "ex-13",
+        "ex-14"
+      ]
+    },
+    {
+      "id": "sec-5",
+      "order": 5,
+      "title": "Zero and negative indices",
+      "est_minutes": 10,
+      "teaching_text": {
+        "blocks": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "The quotient rule with equal indices leaves $t^0$, and simplifying $\\frac{t^7}{t^7}$ shows that the value is 1. The zero exponent rule holds for any nonzero real number.",
+              "inline": []
+            },
+            "id": "b-1"
+          },
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "The base must be nonzero. The expression $0^0$ is treated as undefined at this level, and it is the one exception to the rule.",
+              "inline": []
+            },
+            "id": "b-2"
+          },
+          {
+            "type": "formula",
+            "expression": "$a^0 = 1$",
+            "caption": {
+              "text": "Zero exponent rule",
+              "inline": []
+            },
+            "conditions": {
+              "text": "For any nonzero real number $a$.",
+              "inline": []
+            },
+            "id": "b-3"
+          },
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "When the divisor has the larger index, the difference of the indices is negative and the answer is the reciprocal. Dividing $\\frac{h^3}{h^5}$ gives $h^{-2} = \\frac{1}{h^2}$.",
+              "inline": []
+            },
+            "id": "b-4"
+          },
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "A factor with a negative index becomes the same factor with a positive index when it moves across the fraction bar, from numerator to denominator or the other way round.",
+              "inline": []
+            },
+            "id": "b-5"
+          },
+          {
+            "type": "formula",
+            "expression": "$a^{-n} = \\frac{1}{a^n}$",
+            "caption": {
+              "text": "Negative exponent rule",
+              "inline": []
+            },
+            "conditions": {
+              "text": "For any nonzero real number $a$ and natural number $n$.",
+              "inline": []
+            },
+            "id": "b-6"
+          }
+        ]
+      },
+      "worked_examples": [
+        {
+          "id": "we-sec-5",
+          "statement": {
+            "text": "Simplify $\\frac{h^3}{h^5}$.",
+            "inline": []
+          },
+          "steps": [
+            {
+              "step_number": 1,
+              "expression": "Apply the quotient rule with $m = 3$ and $n = 5$: $\\frac{h^3}{h^5} = h^{3-5}$."
+            },
+            {
+              "step_number": 2,
+              "expression": "The index $3 - 5 = -2$ is negative, so the answer is the reciprocal: $h^{-2} = \\frac{1}{h^2}$."
+            }
+          ],
+          "answer": {
+            "text": "$\\frac{1}{h^2}$",
+            "inline": []
+          },
+          "provenance": {
+            "publisher": "OpenStax",
+            "title": "College Algebra, Exponents and Scientific Notation",
+            "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51241/index.cnxml",
+            "locator": "CNXML module m51241, section 'Using the Negative Rule of Exponents'",
+            "licence": "CC BY-NC-SA 4.0"
+          }
+        }
+      ],
+      "misconceptions": [
+        {
+          "id": "mis-CNXML module m51241, section 'Using the Zero Exponent Rule of Exponents'",
+          "claim": {
+            "text": "$0^0 = 1$.",
+            "inline": []
+          },
+          "correction": {
+            "text": "The zero exponent rule needs a nonzero base. $0^0$ is treated as undefined at this level.",
+            "inline": []
+          },
+          "provenance": {
+            "publisher": "OpenStax",
+            "title": "College Algebra",
+            "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51241/index.cnxml",
+            "locator": "CNXML module m51241, section 'Using the Zero Exponent Rule of Exponents'",
+            "licence": "CC BY-NC-SA 4.0"
+          }
+        },
+        {
+          "id": "mis-CNXML module m51241, section 'Using the Negative Rule of Exponents'",
+          "claim": {
+            "text": "$a^{-n} = -a^n$.",
+            "inline": []
+          },
+          "correction": {
+            "text": "A negative index means the reciprocal, not a negative value: $a^{-n} = \\frac{1}{a^n}$.",
+            "inline": []
+          },
+          "provenance": {
+            "publisher": "OpenStax",
+            "title": "College Algebra",
+            "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51241/index.cnxml",
+            "locator": "CNXML module m51241, section 'Using the Negative Rule of Exponents'",
+            "licence": "CC BY-NC-SA 4.0"
+          }
+        }
+      ],
+      "summary_points": [
+        {
+          "text": "$a^0 = 1$ for any nonzero base; $0^0$ is undefined here.",
+          "inline": []
+        },
+        {
+          "text": "$a^{-n} = \\frac{1}{a^n}$.",
+          "inline": []
+        },
+        {
+          "text": "A negative index moves across the fraction bar and becomes positive.",
+          "inline": []
+        }
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Algebra, Exponents and Scientific Notation",
+        "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51241/index.cnxml",
+        "locator": "CNXML module m51241, section 'Using the Zero Exponent Rule of Exponents'",
+        "licence": "CC BY-NC-SA 4.0"
+      },
+      "practice_exercise_ids": [
+        "ex-15",
+        "ex-16",
+        "ex-17",
+        "ex-18",
+        "ex-19"
+      ]
+    },
+    {
+      "id": "sec-6",
+      "order": 6,
+      "title": "Roots and fractional indices",
+      "est_minutes": 11,
+      "teaching_text": {
+        "blocks": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "The square root function undoes squaring, the way subtraction undoes addition. If $a$ is a positive real number, the square root of $a$ is the nonnegative number that multiplied by itself gives $a$, and this is called the principal square root.",
+              "inline": []
+            },
+            "id": "b-1"
+          },
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "The radical symbol implies only the nonnegative root. Although both $5^2$ and $(-5)^2$ are 25, the principal square root of 25 is $\\sqrt{25} = 5$.",
+              "inline": []
+            },
+            "id": "b-2"
+          },
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "The term under the symbol is the radicand, and the whole expression is a radical expression. The order of operations still applies inside the radical: $\\sqrt{25+144} = \\sqrt{169} = 13$, not $\\sqrt{25} + \\sqrt{144} = 17$.",
+              "inline": []
+            },
+            "id": "b-3"
+          },
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "A root is an index that has been written as a fraction. In $343^{2/3}$ the 3 tells you the root and the 2 tells you the power, and $343^{2/3} = (\\sqrt[3]{343})^2 = 7^2 = 49$.",
+              "inline": []
+            },
+            "id": "b-4"
+          },
+          {
+            "type": "formula",
+            "expression": "$a^{1/n} = \\sqrt[n]{a}$",
+            "caption": {
+              "text": "Root as a fractional index",
+              "inline": []
+            },
+            "conditions": {
+              "text": "For $a \\ge 0$ and a positive integer $n$.",
+              "inline": []
+            },
+            "id": "b-5"
+          },
+          {
+            "type": "formula",
+            "expression": "$a^{m/n} = \\left(\\sqrt[n]{a}\\right)^m$",
+            "caption": {
+              "text": "Fractional index as a power of a root",
+              "inline": []
+            },
+            "conditions": {
+              "text": "For $a \\ge 0$ and a positive integer $n$.",
+              "inline": []
+            },
+            "id": "b-6"
+          }
+        ]
+      },
+      "worked_examples": [
+        {
+          "id": "we-sec-6",
+          "statement": {
+            "text": "Write $9^{5/2}$ as a radical and simplify.",
+            "inline": []
+          },
+          "steps": [
+            {
+              "step_number": 1,
+              "expression": "The denominator 2 gives the root and the numerator 5 gives the power: $9^{5/2} = (\\sqrt{9})^5$."
+            },
+            {
+              "step_number": 2,
+              "expression": "The principal square root of 9 is 3."
+            },
+            {
+              "step_number": 3,
+              "expression": "So $9^{5/2} = 3^5 = 243$."
+            }
+          ],
+          "answer": {
+            "text": "243",
+            "inline": []
+          },
+          "provenance": {
+            "publisher": "OpenStax",
+            "title": "College Algebra, Radicals and Rational Exponents",
+            "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51242/index.cnxml",
+            "locator": "CNXML module m51242, exercise block exr-139",
+            "licence": "CC BY-NC-SA 4.0"
+          }
+        }
+      ],
+      "misconceptions": [
+        {
+          "id": "mis-CNXML module m51242, section 'Evaluating Square Roots'",
+          "claim": {
+            "text": "$\\sqrt{25} = \\pm 5$.",
+            "inline": []
+          },
+          "correction": {
+            "text": "The radical symbol gives the principal, nonnegative root, so $\\sqrt{25} = 5$.",
+            "inline": []
+          },
+          "provenance": {
+            "publisher": "OpenStax",
+            "title": "College Algebra",
+            "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51241/index.cnxml",
+            "locator": "CNXML module m51242, section 'Evaluating Square Roots'",
+            "licence": "CC BY-NC-SA 4.0"
+          }
+        },
+        {
+          "id": "mis-CNXML module m51242, section 'Evaluating Square Roots'",
+          "claim": {
+            "text": "$\\sqrt{25+144} = \\sqrt{25} + \\sqrt{144} = 17$.",
+            "inline": []
+          },
+          "correction": {
+            "text": "The order of operations requires the radicand to be evaluated first: $\\sqrt{25+144} = \\sqrt{169} = 13$.",
+            "inline": []
+          },
+          "provenance": {
+            "publisher": "OpenStax",
+            "title": "College Algebra",
+            "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51241/index.cnxml",
+            "locator": "CNXML module m51242, section 'Evaluating Square Roots'",
+            "licence": "CC BY-NC-SA 4.0"
+          }
+        }
+      ],
+      "summary_points": [
+        {
+          "text": "$\\sqrt{a}$ is the principal, nonnegative square root of $a$.",
+          "inline": []
+        },
+        {
+          "text": "A fractional index is a root: $a^{1/n} = \\sqrt[n]{a}$ and $a^{m/n} = (\\sqrt[n]{a})^m$.",
+          "inline": []
+        },
+        {
+          "text": "Evaluate the radicand before taking the root.",
+          "inline": []
+        }
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Algebra, Radicals and Rational Exponents",
+        "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51242/index.cnxml",
+        "locator": "CNXML module m51242, section 'Evaluating Square Roots and Using Rational Exponents'",
+        "licence": "CC BY-NC-SA 4.0"
+      },
+      "practice_exercise_ids": [
+        "ex-20",
+        "ex-21",
+        "ex-22",
+        "ex-23",
+        "ex-24",
+        "ex-25",
+        "ex-26",
+        "ex-27"
+      ]
+    },
+    {
+      "id": "sec-7",
+      "order": 7,
+      "title": "Simplifying surds",
+      "est_minutes": 12,
+      "teaching_text": {
+        "blocks": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "To simplify a square root, rewrite it so that no perfect square remains in the radicand. The product rule separates the root of a product into the product of two roots, so $\\sqrt{15} = \\sqrt{3} \\times \\sqrt{5}$.",
+              "inline": []
+            },
+            "id": "b-1"
+          },
+          {
+            "type": "formula",
+            "expression": "$\\sqrt{ab} = \\sqrt{a} \\times \\sqrt{b}$",
+            "caption": {
+              "text": "Product rule for square roots",
+              "inline": []
+            },
+            "conditions": {
+              "text": "For nonnegative $a$ and $b$.",
+              "inline": []
+            },
+            "id": "b-2"
+          },
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "The quotient rule works the same way for a fraction under a radical, which is useful when the numerator and denominator have perfect squares of their own.",
+              "inline": []
+            },
+            "id": "b-3"
+          },
+          {
+            "type": "formula",
+            "expression": "$\\sqrt{\\frac{a}{b}} = \\frac{\\sqrt{a}}{\\sqrt{b}}$",
+            "caption": {
+              "text": "Quotient rule for square roots",
+              "inline": []
+            },
+            "conditions": {
+              "text": "For nonnegative $a$ and $b$ with $b \\ne 0$.",
+              "inline": []
+            },
+            "id": "b-4"
+          },
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Take the root of each factor separately, then pull out the square numbers and leave the rest under the radical. The rule does not extend over a sum, so a radicand such as $50x^2y^3z$ must be split into factors before the rule is used.",
+              "inline": []
+            },
+            "id": "b-5"
+          }
+        ]
+      },
+      "worked_examples": [
+        {
+          "id": "we-sec-7",
+          "statement": {
+            "text": "Simplify $\\sqrt{50x^2y^3z}$.",
+            "inline": []
+          },
+          "steps": [
+            {
+              "step_number": 1,
+              "expression": "Rewrite the radicand as a product of factors: $50x^2y^3z = 25 \\times 2 \\times x^2 \\times y^2 \\times y \\times z$."
+            },
+            {
+              "step_number": 2,
+              "expression": "Apply the product rule: $\\sqrt{50x^2y^3z} = \\sqrt{25} \\times \\sqrt{2} \\times \\sqrt{x^2} \\times \\sqrt{y^2} \\times \\sqrt{y} \\times \\sqrt{z}$."
+            },
+            {
+              "step_number": 3,
+              "expression": "Take the square roots of the perfect squares: $5 \\times \\sqrt{2} \\times x \\times y \\times \\sqrt{yz}$."
+            },
+            {
+              "step_number": 4,
+              "expression": "Collect: $5xy\\sqrt{2yz}$."
+            }
+          ],
+          "answer": {
+            "text": "$5xy\\sqrt{2yz}$",
+            "inline": []
+          },
+          "provenance": {
+            "publisher": "OpenStax",
+            "title": "College Algebra, Radicals and Rational Exponents",
+            "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51242/index.cnxml",
+            "locator": "CNXML module m51242, exercise block exr-51",
+            "licence": "CC BY-NC-SA 4.0"
+          }
+        }
+      ],
+      "misconceptions": [
+        {
+          "id": "mis-CNXML module m51242, section 'Using the Product Rule to Simplify Square Roots'",
+          "claim": {
+            "text": "$\\sqrt{25+144} = \\sqrt{25} + \\sqrt{144}$.",
+            "inline": []
+          },
+          "correction": {
+            "text": "The product rule separates a product, never a sum. $\\sqrt{25+144} = \\sqrt{169} = 13$.",
+            "inline": []
+          },
+          "provenance": {
+            "publisher": "OpenStax",
+            "title": "College Algebra",
+            "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51241/index.cnxml",
+            "locator": "CNXML module m51242, section 'Using the Product Rule to Simplify Square Roots'",
+            "licence": "CC BY-NC-SA 4.0"
+          }
+        }
+      ],
+      "summary_points": [
+        {
+          "text": "Simplify until no perfect square remains in the radicand.",
+          "inline": []
+        },
+        {
+          "text": "$\\sqrt{ab} = \\sqrt{a} \\times \\sqrt{b}$ and $\\sqrt{a/b} = \\sqrt{a} / \\sqrt{b}$.",
+          "inline": []
+        },
+        {
+          "text": "Split a radicand into factors before applying the product rule, and never split a sum.",
+          "inline": []
+        }
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Algebra, Radicals and Rational Exponents",
+        "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51242/index.cnxml",
+        "locator": "CNXML module m51242, section 'Using the Product Rule to Simplify Square Roots'",
+        "licence": "CC BY-NC-SA 4.0"
+      },
+      "practice_exercise_ids": [
+        "ex-28",
+        "ex-29",
+        "ex-30",
+        "ex-31",
+        "ex-32",
+        "ex-33",
+        "ex-34",
+        "ex-35",
+        "ex-36",
+        "ex-37",
+        "ex-38"
+      ]
+    },
+    {
+      "id": "sec-8",
+      "order": 8,
+      "title": "Adding and subtracting surds",
+      "est_minutes": 9,
+      "teaching_text": {
+        "blocks": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Surds can be added or subtracted only when they have the same radicand and the same radical type. The sum of $\\sqrt{2}$ and $3\\sqrt{2}$ is $4\\sqrt{2}$.",
+              "inline": []
+            },
+            "id": "b-1"
+          },
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Simplifying first often changes the radicand. Since $\\sqrt{18} = 3\\sqrt{2}$, the sum $\\sqrt{2} + \\sqrt{18} = \\sqrt{2} + 3\\sqrt{2} = 4\\sqrt{2}$.",
+              "inline": []
+            },
+            "id": "b-2"
+          },
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Work on one term at a time: pull out the square factors, then add or subtract the coefficients of the like surds.",
+              "inline": []
+            },
+            "id": "b-3"
+          }
+        ]
+      },
+      "worked_examples": [
+        {
+          "id": "we-sec-8",
+          "statement": {
+            "text": "Add $5\\sqrt{12} + 2\\sqrt{3}$.",
+            "inline": []
+          },
+          "steps": [
+            {
+              "step_number": 1,
+              "expression": "Simplify the first term: $5\\sqrt{12} = 5\\sqrt{4 \\times 3} = 5\\sqrt{4}\\sqrt{3}$."
+            },
+            {
+              "step_number": 2,
+              "expression": "The square root of 4 is 2, so the first term becomes $5(2)\\sqrt{3} = 10\\sqrt{3}$."
+            },
+            {
+              "step_number": 3,
+              "expression": "The terms now have the same radicand, so add the coefficients: $10\\sqrt{3} + 2\\sqrt{3}$."
+            },
+            {
+              "step_number": 4,
+              "expression": "$12\\sqrt{3}$."
+            }
+          ],
+          "answer": {
+            "text": "$12\\sqrt{3}$",
+            "inline": []
+          },
+          "provenance": {
+            "publisher": "OpenStax",
+            "title": "College Algebra, Radicals and Rational Exponents",
+            "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51242/index.cnxml",
+            "locator": "CNXML module m51242, section 'Adding and Subtracting Square Roots'",
+            "licence": "CC BY-NC-SA 4.0"
+          }
+        }
+      ],
+      "misconceptions": [
+        {
+          "id": "mis-CNXML module m51242, section 'Adding and Subtracting Square Roots'",
+          "claim": {
+            "text": "$\\sqrt{2} + \\sqrt{3} = \\sqrt{5}$.",
+            "inline": []
+          },
+          "correction": {
+            "text": "Surds can be combined only when they have the same radicand. $\\sqrt{2} + \\sqrt{3}$ cannot be combined, and $\\sqrt{2} + \\sqrt{8} = \\sqrt{2} + 2\\sqrt{2} = 3\\sqrt{2}$.",
+            "inline": []
+          },
+          "provenance": {
+            "publisher": "OpenStax",
+            "title": "College Algebra",
+            "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51241/index.cnxml",
+            "locator": "CNXML module m51242, section 'Adding and Subtracting Square Roots'",
+            "licence": "CC BY-NC-SA 4.0"
+          }
+        }
+      ],
+      "summary_points": [
+        {
+          "text": "Only like surds can be added or subtracted.",
+          "inline": []
+        },
+        {
+          "text": "Simplify each surd first, then add or subtract the coefficients.",
+          "inline": []
+        },
+        {
+          "text": "$\\sqrt{2} + \\sqrt{8} = 3\\sqrt{2}$, but $\\sqrt{2} + \\sqrt{3}$ stays as it is.",
+          "inline": []
+        }
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Algebra, Radicals and Rational Exponents",
+        "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51242/index.cnxml",
+        "locator": "CNXML module m51242, section 'Adding and Subtracting Square Roots'",
+        "licence": "CC BY-NC-SA 4.0"
+      },
+      "practice_exercise_ids": [
+        "ex-39",
+        "ex-40",
+        "ex-41",
+        "ex-42",
+        "ex-43",
+        "ex-44"
+      ]
+    },
+    {
+      "id": "sec-9",
+      "order": 9,
+      "title": "Rationalising the denominator",
+      "est_minutes": 10,
+      "teaching_text": {
+        "blocks": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "A radical expression in simplest form has no radical in the denominator. Removing a radical from the denominator is called rationalising the denominator, and it is done by multiplying by a form of 1 that cancels the radical.",
+              "inline": []
+            },
+            "id": "b-1"
+          },
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "When the denominator holds a single surd term $b\\sqrt{c}$, multiply by $\\frac{\\sqrt{c}}{\\sqrt{c}}$.",
+              "inline": []
+            },
+            "id": "b-2"
+          },
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "When the denominator holds a sum or difference of a rational and an irrational term, multiply by the conjugate, which is the denominator with the sign of the radical part changed: the conjugate of $a + b\\sqrt{c}$ is $a - b\\sqrt{c}$.",
+              "inline": []
+            },
+            "id": "b-3"
+          }
+        ]
+      },
+      "worked_examples": [
+        {
+          "id": "we-sec-9",
+          "statement": {
+            "text": "Write $\\frac{4}{1+\\sqrt{5}}$ in simplest form.",
+            "inline": []
+          },
+          "steps": [
+            {
+              "step_number": 1,
+              "expression": "The denominator has two terms, so use the conjugate of $1 + \\sqrt{5}$, which is $1 - \\sqrt{5}$."
+            },
+            {
+              "step_number": 2,
+              "expression": "Multiply numerator and denominator by $1 - \\sqrt{5}$."
+            },
+            {
+              "step_number": 3,
+              "expression": "The denominator becomes $(1 + \\sqrt{5})(1 - \\sqrt{5}) = 1 - 5 = -4$."
+            },
+            {
+              "step_number": 4,
+              "expression": "The numerator becomes $4(1 - \\sqrt{5}) = 4 - 4\\sqrt{5}$."
+            },
+            {
+              "step_number": 5,
+              "expression": "Divide by $-4$: the result is $\\sqrt{5} - 1$."
+            }
+          ],
+          "answer": {
+            "text": "$\\sqrt{5} - 1$",
+            "inline": []
+          },
+          "provenance": {
+            "publisher": "OpenStax",
+            "title": "College Algebra, Radicals and Rational Exponents",
+            "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51242/index.cnxml",
+            "locator": "CNXML module m51242, exercise block exr-110",
+            "licence": "CC BY-NC-SA 4.0"
+          }
+        }
+      ],
+      "misconceptions": [
+        {
+          "id": "mis-CNXML module m51242, section 'Rationalizing Denominators'",
+          "claim": {
+            "text": "Any surd denominator can be cleared by multiplying by the surd over itself.",
+            "inline": []
+          },
+          "correction": {
+            "text": "That works for a single surd term such as $b\\sqrt{c}$. For a denominator with two terms, such as $1 + \\sqrt{5}$, multiply by the conjugate $1 - \\sqrt{5}$.",
+            "inline": []
+          },
+          "provenance": {
+            "publisher": "OpenStax",
+            "title": "College Algebra",
+            "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51241/index.cnxml",
+            "locator": "CNXML module m51242, section 'Rationalizing Denominators'",
+            "licence": "CC BY-NC-SA 4.0"
+          }
+        }
+      ],
+      "summary_points": [
+        {
+          "text": "Simplest form has no radical in the denominator.",
+          "inline": []
+        },
+        {
+          "text": "One surd term: multiply by the surd over itself.",
+          "inline": []
+        },
+        {
+          "text": "Two terms: multiply by the conjugate.",
+          "inline": []
+        }
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Algebra, Radicals and Rational Exponents",
+        "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51242/index.cnxml",
+        "locator": "CNXML module m51242, section 'Rationalizing Denominators'",
+        "licence": "CC BY-NC-SA 4.0"
+      },
+      "practice_exercise_ids": [
+        "ex-45",
+        "ex-46",
+        "ex-47",
+        "ex-48",
+        "ex-49",
+        "ex-50"
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "id": "ex-01",
+      "section_id": "sec-1",
+      "kind": "numeric",
+      "difficulty": 1,
+      "marks": 1,
+      "stem": {
+        "text": "${9}^{2}$",
+        "inline": []
+      },
+      "answer": {
+        "text": "81",
+        "inline": []
+      },
+      "answer_kind": "expression",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "81"
+        }
+      ],
+      "tags": [
+        "indices",
+        "meaning-of-index"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Algebra, Exponents and Scientific Notation",
+        "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51241/index.cnxml",
+        "locator": "CNXML module m51241, exercise block exr-179",
+        "licence": "CC BY-NC-SA 4.0"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "ex-02",
+      "section_id": "sec-1",
+      "kind": "verbal",
+      "difficulty": 2,
+      "marks": 2,
+      "stem": {
+        "text": "Is ${2}^{3}$ the same as ${3}^{2}?$ Explain.",
+        "inline": []
+      },
+      "answer": {
+        "text": "No, the two expressions are not the same. An exponent tells how many times you multiply the base. So ${2}^{3}$ is the same as $2×2×2,$ which is 8. ${3}^{2}$ is the same as $3×3,$ which is 9.",
+        "inline": []
+      },
+      "answer_kind": "explanation",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "No, the two expressions are not the same. An exponent tells how many times you multiply the base. So ${2}^{3}$ is the same as $2×2×2,$ which is 8. ${3}^{2}$ is the same as $3×3,$ which is 9."
+        }
+      ],
+      "tags": [
+        "indices",
+        "meaning-of-index"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Algebra, Exponents and Scientific Notation",
+        "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51241/index.cnxml",
+        "locator": "CNXML module m51241, exercise block exr-167",
+        "licence": "CC BY-NC-SA 4.0"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "ex-03",
+      "section_id": "sec-2",
+      "kind": "numeric",
+      "difficulty": 1,
+      "marks": 1,
+      "stem": {
+        "text": "${3}^{2}×{3}^{3}$",
+        "inline": []
+      },
+      "answer": {
+        "text": "243",
+        "inline": []
+      },
+      "answer_kind": "expression",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "243"
+        }
+      ],
+      "tags": [
+        "product-rule"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Algebra, Exponents and Scientific Notation",
+        "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51241/index.cnxml",
+        "locator": "CNXML module m51241, exercise block exr-181",
+        "licence": "CC BY-NC-SA 4.0"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "ex-04",
+      "section_id": "sec-2",
+      "kind": "numeric",
+      "difficulty": 2,
+      "marks": 2,
+      "stem": {
+        "text": "${7}^{−6}×{7}^{−3}$",
+        "inline": []
+      },
+      "answer": {
+        "text": "\\frac{1}{{7}^{9}}",
+        "inline": []
+      },
+      "answer_kind": "expression",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "$\\frac{1}{{7}^{9}}$"
+        }
+      ],
+      "tags": [
+        "product-rule",
+        "negative-index"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Algebra, Exponents and Scientific Notation",
+        "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51241/index.cnxml",
+        "locator": "CNXML module m51241, exercise block exr-198",
+        "licence": "CC BY-NC-SA 4.0"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "ex-05",
+      "section_id": "sec-2",
+      "kind": "numeric",
+      "difficulty": 3,
+      "marks": 3,
+      "stem": {
+        "text": "${4}^{2}×{4}^{3}÷{4}^{−4}$",
+        "inline": []
+      },
+      "answer": {
+        "text": "{4}^{9}",
+        "inline": []
+      },
+      "answer_kind": "expression",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "${4}^{9}$"
+        }
+      ],
+      "tags": [
+        "product-rule",
+        "quotient-rule"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Algebra, Exponents and Scientific Notation",
+        "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51241/index.cnxml",
+        "locator": "CNXML module m51241, exercise block exr-190",
+        "licence": "CC BY-NC-SA 4.0"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "ex-06",
+      "section_id": "sec-3",
+      "kind": "numeric",
+      "difficulty": 2,
+      "marks": 2,
+      "stem": {
+        "text": "${11}^{3}÷{11}^{4}$",
+        "inline": []
+      },
+      "answer": {
+        "text": "\\frac{1}{11}",
+        "inline": []
+      },
+      "answer_kind": "expression",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "$\\frac{1}{11}$"
+        }
+      ],
+      "tags": [
+        "quotient-rule"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Algebra, Exponents and Scientific Notation",
+        "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51241/index.cnxml",
+        "locator": "CNXML module m51241, exercise block exr-185",
+        "licence": "CC BY-NC-SA 4.0"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "ex-07",
+      "section_id": "sec-3",
+      "kind": "algebraic",
+      "difficulty": 3,
+      "marks": 3,
+      "stem": {
+        "text": "$\\frac{{a}^{3}{a}^{2}}{a}$",
+        "inline": []
+      },
+      "answer": {
+        "text": "{a}^{4}",
+        "inline": []
+      },
+      "answer_kind": "expression",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "${a}^{4}$"
+        }
+      ],
+      "tags": [
+        "quotient-rule",
+        "product-rule"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Algebra, Exponents and Scientific Notation",
+        "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51241/index.cnxml",
+        "locator": "CNXML module m51241, exercise block exr-209",
+        "licence": "CC BY-NC-SA 4.0"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "ex-08",
+      "section_id": "sec-4",
+      "kind": "numeric",
+      "difficulty": 2,
+      "marks": 2,
+      "stem": {
+        "text": "${({2}^{2})}^{−2}$",
+        "inline": []
+      },
+      "answer": {
+        "text": "\\frac{1}{16}",
+        "inline": []
+      },
+      "answer_kind": "expression",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "$\\frac{1}{16}$"
+        }
+      ],
+      "tags": [
+        "power-rule"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Algebra, Exponents and Scientific Notation",
+        "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51241/index.cnxml",
+        "locator": "CNXML module m51241, exercise block exr-183",
+        "licence": "CC BY-NC-SA 4.0"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "ex-09",
+      "section_id": "sec-4",
+      "kind": "numeric",
+      "difficulty": 3,
+      "marks": 3,
+      "stem": {
+        "text": "${({12}^{3}×12)}^{10}$",
+        "inline": []
+      },
+      "answer": {
+        "text": "{12}^{40}",
+        "inline": []
+      },
+      "answer_kind": "expression",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "${12}^{40}$"
+        }
+      ],
+      "tags": [
+        "power-rule"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Algebra, Exponents and Scientific Notation",
+        "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51241/index.cnxml",
+        "locator": "CNXML module m51241, exercise block exr-194",
+        "licence": "CC BY-NC-SA 4.0"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "ex-10",
+      "section_id": "sec-4",
+      "kind": "algebraic",
+      "difficulty": 3,
+      "marks": 3,
+      "stem": {
+        "text": "${({b}^{3}{c}^{4})}^{2}$",
+        "inline": []
+      },
+      "answer": {
+        "text": "{b}^{6}{c}^{8}",
+        "inline": []
+      },
+      "answer_kind": "expression",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "${b}^{6}{c}^{8}$"
+        }
+      ],
+      "tags": [
+        "power-of-a-product"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Algebra, Exponents and Scientific Notation",
+        "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51241/index.cnxml",
+        "locator": "CNXML module m51241, exercise block exr-213",
+        "licence": "CC BY-NC-SA 4.0"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "ex-11",
+      "section_id": "sec-4",
+      "kind": "algebraic",
+      "difficulty": 4,
+      "marks": 4,
+      "stem": {
+        "text": "${({y}^{7})}^{3}÷{x}^{14}$",
+        "inline": []
+      },
+      "answer": {
+        "text": "\\frac{{y}^{21}}{{x}^{14}}",
+        "inline": []
+      },
+      "answer_kind": "expression",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "$\\frac{{y}^{21}}{{x}^{14}}$"
+        }
+      ],
+      "tags": [
+        "power-rule",
+        "quotient-rule"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Algebra, Exponents and Scientific Notation",
+        "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51241/index.cnxml",
+        "locator": "CNXML module m51241, exercise block exr-228",
+        "licence": "CC BY-NC-SA 4.0"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "ex-12",
+      "section_id": "sec-4",
+      "kind": "algebraic",
+      "difficulty": 4,
+      "marks": 4,
+      "stem": {
+        "text": "${({b}^{−3}c)}^{3}$",
+        "inline": []
+      },
+      "answer": {
+        "text": "\\frac{{c}^{3}}{{b}^{9}}",
+        "inline": []
+      },
+      "answer_kind": "expression",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "$\\frac{{c}^{3}}{{b}^{9}}$"
+        }
+      ],
+      "tags": [
+        "power-of-a-product",
+        "negative-index"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Algebra, Exponents and Scientific Notation",
+        "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51241/index.cnxml",
+        "locator": "CNXML module m51241, exercise block exr-240",
+        "licence": "CC BY-NC-SA 4.0"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "ex-13",
+      "section_id": "sec-4",
+      "kind": "algebraic",
+      "difficulty": 5,
+      "marks": 5,
+      "stem": {
+        "text": "${(9{z}^{3})}^{−2}y$",
+        "inline": []
+      },
+      "answer": {
+        "text": "\\frac{y}{81{z}^{6}}",
+        "inline": []
+      },
+      "answer_kind": "expression",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "$\\frac{y}{81{z}^{6}}$"
+        }
+      ],
+      "tags": [
+        "power-of-a-product",
+        "negative-index"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Algebra, Exponents and Scientific Notation",
+        "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51241/index.cnxml",
+        "locator": "CNXML module m51241, exercise block exr-244",
+        "licence": "CC BY-NC-SA 4.0"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "ex-14",
+      "section_id": "sec-4",
+      "kind": "algebraic",
+      "difficulty": 5,
+      "marks": 5,
+      "stem": {
+        "text": "${(\\frac{{3}^{2}}{{a}^{3}})}^{−2}{(\\frac{{a}^{4}}{{2}^{2}})}^{2}$",
+        "inline": []
+      },
+      "answer": {
+        "text": "\\frac{{a}^{14}}{1296}",
+        "inline": []
+      },
+      "answer_kind": "expression",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "$\\frac{{a}^{14}}{1296}$"
+        }
+      ],
+      "tags": [
+        "power-of-a-product",
+        "power-of-a-quotient"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Algebra, Exponents and Scientific Notation",
+        "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51241/index.cnxml",
+        "locator": "CNXML module m51241, exercise block exr-272",
+        "licence": "CC BY-NC-SA 4.0"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "ex-15",
+      "section_id": "sec-5",
+      "kind": "numeric",
+      "difficulty": 2,
+      "marks": 2,
+      "stem": {
+        "text": "${({8}^{0})}^{2}$",
+        "inline": []
+      },
+      "answer": {
+        "text": "1",
+        "inline": []
+      },
+      "answer_kind": "expression",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "1"
+        }
+      ],
+      "tags": [
+        "zero-index"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Algebra, Exponents and Scientific Notation",
+        "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51241/index.cnxml",
+        "locator": "CNXML module m51241, exercise block exr-187",
+        "licence": "CC BY-NC-SA 4.0"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "ex-16",
+      "section_id": "sec-5",
+      "kind": "algebraic",
+      "difficulty": 3,
+      "marks": 3,
+      "stem": {
+        "text": "$\\frac{{m}^{4}}{{n}^{0}}$",
+        "inline": []
+      },
+      "answer": {
+        "text": "{m}^{4}",
+        "inline": []
+      },
+      "answer_kind": "expression",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "${m}^{4}$"
+        }
+      ],
+      "tags": [
+        "zero-index"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Algebra, Exponents and Scientific Notation",
+        "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51241/index.cnxml",
+        "locator": "CNXML module m51241, exercise block exr-220",
+        "licence": "CC BY-NC-SA 4.0"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "ex-17",
+      "section_id": "sec-5",
+      "kind": "algebraic",
+      "difficulty": 4,
+      "marks": 4,
+      "stem": {
+        "text": "$\\frac{{p}^{−4}{q}^{2}}{{p}^{2}{q}^{−3}}$",
+        "inline": []
+      },
+      "answer": {
+        "text": "\\frac{{q}^{5}}{{p}^{6}}",
+        "inline": []
+      },
+      "answer_kind": "expression",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "$\\frac{{q}^{5}}{{p}^{6}}$"
+        }
+      ],
+      "tags": [
+        "negative-index",
+        "quotient-rule"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Algebra, Exponents and Scientific Notation",
+        "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51241/index.cnxml",
+        "locator": "CNXML module m51241, exercise block exr-224",
+        "licence": "CC BY-NC-SA 4.0"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "ex-18",
+      "section_id": "sec-5",
+      "kind": "algebraic",
+      "difficulty": 3,
+      "marks": 3,
+      "stem": {
+        "text": "$(25m)÷({5}^{0}m)$",
+        "inline": []
+      },
+      "answer": {
+        "text": "25",
+        "inline": []
+      },
+      "answer_kind": "expression",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "$25$"
+        }
+      ],
+      "tags": [
+        "zero-index"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Algebra, Exponents and Scientific Notation",
+        "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51241/index.cnxml",
+        "locator": "CNXML module m51241, exercise block exr-233",
+        "licence": "CC BY-NC-SA 4.0"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "ex-19",
+      "section_id": "sec-5",
+      "kind": "algebraic",
+      "difficulty": 4,
+      "marks": 4,
+      "stem": {
+        "text": "$\\frac{{2}^{3}}{{(3a)}^{−2}}$",
+        "inline": []
+      },
+      "answer": {
+        "text": "72{a}^{2}",
+        "inline": []
+      },
+      "answer_kind": "expression",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "$72{a}^{2}$"
+        }
+      ],
+      "tags": [
+        "negative-index",
+        "power-of-a-quotient"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Algebra, Exponents and Scientific Notation",
+        "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51241/index.cnxml",
+        "locator": "CNXML module m51241, exercise block exr-236",
+        "licence": "CC BY-NC-SA 4.0"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "ex-20",
+      "section_id": "sec-6",
+      "kind": "numeric",
+      "difficulty": 1,
+      "marks": 1,
+      "stem": {
+        "text": "$\\sqrt{256}$",
+        "inline": []
+      },
+      "answer": {
+        "text": "16",
+        "inline": []
+      },
+      "answer_kind": "expression",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "16"
+        }
+      ],
+      "tags": [
+        "square-roots"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Algebra, Radicals and Rational Exponents",
+        "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51242/index.cnxml",
+        "locator": "CNXML module m51242, exercise block exr-172",
+        "licence": "CC BY-NC-SA 4.0"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "ex-21",
+      "section_id": "sec-6",
+      "kind": "numeric",
+      "difficulty": 2,
+      "marks": 2,
+      "stem": {
+        "text": "$\\sqrt{4(9+16)}$",
+        "inline": []
+      },
+      "answer": {
+        "text": "10",
+        "inline": []
+      },
+      "answer_kind": "expression",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "10"
+        }
+      ],
+      "tags": [
+        "square-roots",
+        "order-of-operations"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Algebra, Radicals and Rational Exponents",
+        "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51242/index.cnxml",
+        "locator": "CNXML module m51242, exercise block exr-174",
+        "licence": "CC BY-NC-SA 4.0"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "ex-22",
+      "section_id": "sec-6",
+      "kind": "verbal",
+      "difficulty": 2,
+      "marks": 2,
+      "stem": {
+        "text": "Every number will have two square roots. What is the principal square root?",
+        "inline": []
+      },
+      "answer": {
+        "text": "The principal square root is the nonnegative root of the number.",
+        "inline": []
+      },
+      "answer_kind": "explanation",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "The principal square root is the nonnegative root of the number."
+        }
+      ],
+      "tags": [
+        "square-roots"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Algebra, Radicals and Rational Exponents",
+        "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51242/index.cnxml",
+        "locator": "CNXML module m51242, exercise block exr-165",
+        "licence": "CC BY-NC-SA 4.0"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "ex-23",
+      "section_id": "sec-6",
+      "kind": "verbal",
+      "difficulty": 2,
+      "marks": 2,
+      "stem": {
+        "text": "What does it mean when a radical does not have an index? Is the expression equal to the radicand? Explain.",
+        "inline": []
+      },
+      "answer": {
+        "text": "When there is no index, it is assumed to be 2 or the square root. The expression would only be equal to the radicand if the index were 1.",
+        "inline": []
+      },
+      "answer_kind": "explanation",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "When there is no index, it is assumed to be 2 or the square root. The expression would only be equal to the radicand if the index were 1."
+        }
+      ],
+      "tags": [
+        "square-roots"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Algebra, Radicals and Rational Exponents",
+        "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51242/index.cnxml",
+        "locator": "CNXML module m51242, exercise block exr-160",
+        "licence": "CC BY-NC-SA 4.0"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "ex-24",
+      "section_id": "sec-6",
+      "kind": "numeric",
+      "difficulty": 3,
+      "marks": 3,
+      "stem": {
+        "text": "Write ${9}^{\\frac{5}{2}}$ as a radical. Simplify.",
+        "inline": []
+      },
+      "answer": {
+        "text": "243",
+        "inline": []
+      },
+      "answer_kind": "expression",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "${(\\sqrt{9})}^{5}={3}^{5}=243$"
+        }
+      ],
+      "tags": [
+        "fractional-index"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Algebra, Radicals and Rational Exponents",
+        "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51242/index.cnxml",
+        "locator": "CNXML module m51242, exercise block exr-139",
+        "licence": "CC BY-NC-SA 4.0"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "ex-25",
+      "section_id": "sec-6",
+      "kind": "numeric",
+      "difficulty": 3,
+      "marks": 3,
+      "stem": {
+        "text": "Writing Rational Exponents as Radicals Write ${343}^{\\frac{2}{3}}$ as a radical. Simplify.",
+        "inline": []
+      },
+      "answer": {
+        "text": "49",
+        "inline": []
+      },
+      "answer_kind": "expression",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "The 2 tells us the power and the 3 tells us the root."
+        },
+        {
+          "step_number": 2,
+          "expression": "${343}^{\\frac{2}{3}}={(3433)}^{2}={343}^{2}3$"
+        },
+        {
+          "step_number": 3,
+          "expression": "We know that $3433=7$ because ${7}^{3}=343.$ Because the cube root is easy to find, it is easiest to find the cube root before squaring for this problem. In general, it is easier to find the root first and then raise it to a power."
+        },
+        {
+          "step_number": 4,
+          "expression": "${343}^{\\frac{2}{3}}={(3433)}^{2}={7}^{2}=49$"
+        }
+      ],
+      "tags": [
+        "fractional-index",
+        "cube-root"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Algebra, Radicals and Rational Exponents",
+        "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51242/index.cnxml",
+        "locator": "CNXML module m51242, exercise block exr-133",
+        "licence": "CC BY-NC-SA 4.0"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "ex-26",
+      "section_id": "sec-6",
+      "kind": "algebraic",
+      "difficulty": 4,
+      "marks": 4,
+      "stem": {
+        "text": "Write $x\\sqrt{{(5y)}^{9}}$ using a rational exponent.",
+        "inline": []
+      },
+      "answer": {
+        "text": "x{(5y)}^{\\frac{9}{2}}",
+        "inline": []
+      },
+      "answer_kind": "expression",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "$x{(5y)}^{\\frac{9}{2}}$"
+        }
+      ],
+      "tags": [
+        "fractional-index"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Algebra, Radicals and Rational Exponents",
+        "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51242/index.cnxml",
+        "locator": "CNXML module m51242, exercise block exr-146",
+        "licence": "CC BY-NC-SA 4.0"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "ex-27",
+      "section_id": "sec-6",
+      "kind": "algebraic",
+      "difficulty": 4,
+      "marks": 4,
+      "stem": {
+        "text": "${m}^{\\frac{5}{2}}\\sqrt{289}$",
+        "inline": []
+      },
+      "answer": {
+        "text": "17{m}^{2}\\sqrt{m}",
+        "inline": []
+      },
+      "answer_kind": "expression",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "$17{m}^{2}\\sqrt{m}$"
+        }
+      ],
+      "tags": [
+        "fractional-index"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Algebra, Radicals and Rational Exponents",
+        "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51242/index.cnxml",
+        "locator": "CNXML module m51242, exercise block exr-228",
+        "licence": "CC BY-NC-SA 4.0"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "ex-28",
+      "section_id": "sec-7",
+      "kind": "numeric",
+      "difficulty": 2,
+      "marks": 2,
+      "stem": {
+        "text": "$\\sqrt{98}$",
+        "inline": []
+      },
+      "answer": {
+        "text": "7\\sqrt{2}",
+        "inline": []
+      },
+      "answer_kind": "expression",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "$7\\sqrt{2}$"
+        }
+      ],
+      "tags": [
+        "simplifying-surds"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Algebra, Radicals and Rational Exponents",
+        "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51242/index.cnxml",
+        "locator": "CNXML module m51242, exercise block exr-179",
+        "licence": "CC BY-NC-SA 4.0"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "ex-29",
+      "section_id": "sec-7",
+      "kind": "numeric",
+      "difficulty": 2,
+      "marks": 2,
+      "stem": {
+        "text": "$\\sqrt{150}$",
+        "inline": []
+      },
+      "answer": {
+        "text": "5\\sqrt{6}",
+        "inline": []
+      },
+      "answer_kind": "expression",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "$5\\sqrt{6}$"
+        }
+      ],
+      "tags": [
+        "simplifying-surds"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Algebra, Radicals and Rational Exponents",
+        "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51242/index.cnxml",
+        "locator": "CNXML module m51242, exercise block exr-197",
+        "licence": "CC BY-NC-SA 4.0"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "ex-30",
+      "section_id": "sec-7",
+      "kind": "algebraic",
+      "difficulty": 2,
+      "marks": 2,
+      "stem": {
+        "text": "$\\sqrt{49p}$",
+        "inline": []
+      },
+      "answer": {
+        "text": "7\\sqrt{p}",
+        "inline": []
+      },
+      "answer_kind": "expression",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "$7\\sqrt{p}$"
+        }
+      ],
+      "tags": [
+        "simplifying-surds"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Algebra, Radicals and Rational Exponents",
+        "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51242/index.cnxml",
+        "locator": "CNXML module m51242, exercise block exr-225",
+        "licence": "CC BY-NC-SA 4.0"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "ex-31",
+      "section_id": "sec-7",
+      "kind": "algebraic",
+      "difficulty": 3,
+      "marks": 3,
+      "stem": {
+        "text": "$\\sqrt{400{x}^{4}}$",
+        "inline": []
+      },
+      "answer": {
+        "text": "20{x}^{2}",
+        "inline": []
+      },
+      "answer_kind": "expression",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "$20{x}^{2}$"
+        }
+      ],
+      "tags": [
+        "simplifying-surds"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Algebra, Radicals and Rational Exponents",
+        "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51242/index.cnxml",
+        "locator": "CNXML module m51242, exercise block exr-223",
+        "licence": "CC BY-NC-SA 4.0"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "ex-32",
+      "section_id": "sec-7",
+      "kind": "algebraic",
+      "difficulty": 3,
+      "marks": 3,
+      "stem": {
+        "text": "$\\sqrt{50{y}^{8}}$",
+        "inline": []
+      },
+      "answer": {
+        "text": "5{y}^{4}\\sqrt{2}",
+        "inline": []
+      },
+      "answer_kind": "expression",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "$5{y}^{4}\\sqrt{2}$"
+        }
+      ],
+      "tags": [
+        "simplifying-surds"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Algebra, Radicals and Rational Exponents",
+        "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51242/index.cnxml",
+        "locator": "CNXML module m51242, exercise block exr-240",
+        "licence": "CC BY-NC-SA 4.0"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "ex-33",
+      "section_id": "sec-7",
+      "kind": "algebraic",
+      "difficulty": 4,
+      "marks": 4,
+      "stem": {
+        "text": "$\\sqrt{125{n}^{10}}$",
+        "inline": []
+      },
+      "answer": {
+        "text": "5{n}^{5}\\sqrt{5}",
+        "inline": []
+      },
+      "answer_kind": "expression",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "$5{n}^{5}\\sqrt{5}$"
+        }
+      ],
+      "tags": [
+        "simplifying-surds"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Algebra, Radicals and Rational Exponents",
+        "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51242/index.cnxml",
+        "locator": "CNXML module m51242, exercise block exr-261",
+        "licence": "CC BY-NC-SA 4.0"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "ex-34",
+      "section_id": "sec-7",
+      "kind": "numeric",
+      "difficulty": 3,
+      "marks": 3,
+      "stem": {
+        "text": "Using the Product Rule to Simplify the Product of Multiple Square Roots Simplify the radical expression. $\\sqrt{12}\\cdot \\sqrt{3}$",
+        "inline": []
+      },
+      "answer": {
+        "text": "6",
+        "inline": []
+      },
+      "answer_kind": "expression",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "$\\sqrt{12\\cdot 3}$ Express the product as a single radical expression $.\\sqrt{36}$ Simplify $.6$"
+        }
+      ],
+      "tags": [
+        "simplifying-surds",
+        "product-rule"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Algebra, Radicals and Rational Exponents",
+        "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51242/index.cnxml",
+        "locator": "CNXML module m51242, exercise block exr-56",
+        "licence": "CC BY-NC-SA 4.0"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "ex-35",
+      "section_id": "sec-7",
+      "kind": "algebraic",
+      "difficulty": 4,
+      "marks": 4,
+      "stem": {
+        "text": "Simplify $\\sqrt{50x}\\cdot \\sqrt{2x}$ assuming $x>0.$",
+        "inline": []
+      },
+      "answer": {
+        "text": "10|x|",
+        "inline": []
+      },
+      "answer_kind": "expression",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "$10|x|$"
+        }
+      ],
+      "tags": [
+        "simplifying-surds",
+        "product-rule"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Algebra, Radicals and Rational Exponents",
+        "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51242/index.cnxml",
+        "locator": "CNXML module m51242, exercise block exr-59",
+        "licence": "CC BY-NC-SA 4.0"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "ex-36",
+      "section_id": "sec-7",
+      "kind": "algebraic",
+      "difficulty": 5,
+      "marks": 5,
+      "stem": {
+        "text": "Simplify $\\sqrt{50{x}^{2}{y}^{3}z}.$",
+        "inline": []
+      },
+      "answer": {
+        "text": "5|x||y|\\sqrt{2yz}",
+        "inline": []
+      },
+      "answer_kind": "expression",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "$5|x||y|\\sqrt{2yz}.$ Notice the absolute value signs around *x* and *y* ? That’s because their value must be positive!"
+        }
+      ],
+      "tags": [
+        "simplifying-surds",
+        "product-rule"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Algebra, Radicals and Rational Exponents",
+        "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51242/index.cnxml",
+        "locator": "CNXML module m51242, exercise block exr-51",
+        "licence": "CC BY-NC-SA 4.0"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "ex-37",
+      "section_id": "sec-7",
+      "kind": "algebraic",
+      "difficulty": 4,
+      "marks": 4,
+      "stem": {
+        "text": "Simplify $\\sqrt{\\frac{2{x}^{2}}{9{y}^{4}}}.$",
+        "inline": []
+      },
+      "answer": {
+        "text": "\\frac{x\\sqrt{2}}{3{y}^{2}}",
+        "inline": []
+      },
+      "answer_kind": "expression",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "$\\frac{x\\sqrt{2}}{3{y}^{2}}.$ We do not need the absolute value signs for ${y}^{2}$ because that term will always be nonnegative."
+        }
+      ],
+      "tags": [
+        "simplifying-surds",
+        "quotient-rule"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Algebra, Radicals and Rational Exponents",
+        "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51242/index.cnxml",
+        "locator": "CNXML module m51242, exercise block exr-70",
+        "licence": "CC BY-NC-SA 4.0"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)",
+      "answer_note": "the source solution gives the value first and then explains the missing absolute value signs"
+    },
+    {
+      "id": "ex-38",
+      "section_id": "sec-7",
+      "kind": "algebraic",
+      "difficulty": 5,
+      "marks": 5,
+      "stem": {
+        "text": "Simplify $\\frac{\\sqrt{9{a}^{5}{b}^{14}}}{\\sqrt{3{a}^{4}{b}^{5}}}.$",
+        "inline": []
+      },
+      "answer": {
+        "text": "{b}^{4}\\sqrt{3ab}",
+        "inline": []
+      },
+      "answer_kind": "expression",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "${b}^{4}\\sqrt{3ab}$"
+        }
+      ],
+      "tags": [
+        "simplifying-surds",
+        "quotient-rule"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Algebra, Radicals and Rational Exponents",
+        "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51242/index.cnxml",
+        "locator": "CNXML module m51242, exercise block exr-78",
+        "licence": "CC BY-NC-SA 4.0"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "ex-39",
+      "section_id": "sec-8",
+      "kind": "numeric",
+      "difficulty": 2,
+      "marks": 2,
+      "stem": {
+        "text": "Adding Square Roots Add $5\\sqrt{12}+2\\sqrt{3}.$",
+        "inline": []
+      },
+      "answer": {
+        "text": "12\\sqrt{3}",
+        "inline": []
+      },
+      "answer_kind": "expression",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "We can rewrite $5\\sqrt{12}$ as $5\\sqrt{4\\cdot 3}.$ According the product rule, this becomes $5\\sqrt{4}\\sqrt{3}.$ The square root of $\\sqrt{4}$ is 2, so the expression becomes $5(2)\\sqrt{3},$ which is $10\\sqrt{3}.$ Now the terms have the same radicand so we can add."
+        },
+        {
+          "step_number": 2,
+          "expression": "$10\\sqrt{3}+2\\sqrt{3}=12\\sqrt{3}$"
+        }
+      ],
+      "tags": [
+        "adding-surds"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Algebra, Radicals and Rational Exponents",
+        "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51242/index.cnxml",
+        "locator": "CNXML module m51242, exercise block exr-84",
+        "licence": "CC BY-NC-SA 4.0"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "ex-40",
+      "section_id": "sec-8",
+      "kind": "numeric",
+      "difficulty": 3,
+      "marks": 3,
+      "stem": {
+        "text": "Add $\\sqrt{5}+6\\sqrt{20}.$",
+        "inline": []
+      },
+      "answer": {
+        "text": "13\\sqrt{5}",
+        "inline": []
+      },
+      "answer_kind": "expression",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "$13\\sqrt{5}$"
+        }
+      ],
+      "tags": [
+        "adding-surds"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Algebra, Radicals and Rational Exponents",
+        "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51242/index.cnxml",
+        "locator": "CNXML module m51242, exercise block exr-88",
+        "licence": "CC BY-NC-SA 4.0"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "ex-41",
+      "section_id": "sec-8",
+      "kind": "algebraic",
+      "difficulty": 4,
+      "marks": 4,
+      "stem": {
+        "text": "Subtract $3\\sqrt{80x}-4\\sqrt{45x}.$",
+        "inline": []
+      },
+      "answer": {
+        "text": "0",
+        "inline": []
+      },
+      "answer_kind": "expression",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "$0$"
+        }
+      ],
+      "tags": [
+        "subtracting-surds"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Algebra, Radicals and Rational Exponents",
+        "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51242/index.cnxml",
+        "locator": "CNXML module m51242, exercise block exr-94",
+        "licence": "CC BY-NC-SA 4.0"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "ex-42",
+      "section_id": "sec-8",
+      "kind": "algebraic",
+      "difficulty": 5,
+      "marks": 5,
+      "stem": {
+        "text": "Subtracting Square Roots Subtract $20\\sqrt{72{a}^{3}{b}^{4}c}-14\\sqrt{8{a}^{3}{b}^{4}c}.$",
+        "inline": []
+      },
+      "answer": {
+        "text": "46\\sqrt{8}",
+        "inline": []
+      },
+      "answer_kind": "expression",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "Factor 9 out of the first term so that both terms have equal radicands."
+        },
+        {
+          "step_number": 2,
+          "expression": "$20\\sqrt{72{a}^{3}{b}^{4}c}=20\\sqrt{9}=20\\sqrt{9}\\sqrt{8}=20(3)\\sqrt{8}=60\\sqrt{8}$"
+        },
+        {
+          "step_number": 3,
+          "expression": "So"
+        },
+        {
+          "step_number": 4,
+          "expression": "$20\\sqrt{72}-14\\sqrt{8}=60\\sqrt{8}-14\\sqrt{8}=46\\sqrt{8}$"
+        }
+      ],
+      "tags": [
+        "subtracting-surds"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Algebra, Radicals and Rational Exponents",
+        "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51242/index.cnxml",
+        "locator": "CNXML module m51242, exercise block exr-91",
+        "licence": "CC BY-NC-SA 4.0"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "ex-43",
+      "section_id": "sec-8",
+      "kind": "numeric",
+      "difficulty": 3,
+      "marks": 3,
+      "stem": {
+        "text": "$14\\sqrt{6}-6\\sqrt{24}$",
+        "inline": []
+      },
+      "answer": {
+        "text": "2\\sqrt{6}",
+        "inline": []
+      },
+      "answer_kind": "expression",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "$2\\sqrt{6}$"
+        }
+      ],
+      "tags": [
+        "adding-surds",
+        "subtracting-surds"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Algebra, Radicals and Rational Exponents",
+        "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51242/index.cnxml",
+        "locator": "CNXML module m51242, exercise block exr-193",
+        "licence": "CC BY-NC-SA 4.0"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "ex-44",
+      "section_id": "sec-8",
+      "kind": "algebraic",
+      "difficulty": 5,
+      "marks": 5,
+      "stem": {
+        "text": "$3\\sqrt{a{b}^{2}}-b\\sqrt{a}$",
+        "inline": []
+      },
+      "answer": {
+        "text": "2b\\sqrt{a}",
+        "inline": []
+      },
+      "answer_kind": "expression",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "$2b\\sqrt{a}$"
+        }
+      ],
+      "tags": [
+        "adding-surds",
+        "subtracting-surds"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Algebra, Radicals and Rational Exponents",
+        "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51242/index.cnxml",
+        "locator": "CNXML module m51242, exercise block exr-232",
+        "licence": "CC BY-NC-SA 4.0"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "ex-45",
+      "section_id": "sec-9",
+      "kind": "numeric",
+      "difficulty": 3,
+      "marks": 3,
+      "stem": {
+        "text": "$\\frac{18}{\\sqrt{162}}$",
+        "inline": []
+      },
+      "answer": {
+        "text": "\\sqrt{2}",
+        "inline": []
+      },
+      "answer_kind": "expression",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "$\\sqrt{2}$"
+        }
+      ],
+      "tags": [
+        "rationalising-denominator"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Algebra, Radicals and Rational Exponents",
+        "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51242/index.cnxml",
+        "locator": "CNXML module m51242, exercise block exr-190",
+        "licence": "CC BY-NC-SA 4.0"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "ex-46",
+      "section_id": "sec-9",
+      "kind": "numeric",
+      "difficulty": 4,
+      "marks": 4,
+      "stem": {
+        "text": "Rationalizing a Denominator Containing a Single Term Write $\\frac{2\\sqrt{3}}{3\\sqrt{10}}$ in simplest form.",
+        "inline": []
+      },
+      "answer": {
+        "text": "\\frac{\\sqrt{30}}{15}",
+        "inline": []
+      },
+      "answer_kind": "expression",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "The radical in the denominator is $\\sqrt{10}.$ So multiply the fraction by $\\frac{\\sqrt{10}}{\\sqrt{10}}.$ Then simplify."
+        },
+        {
+          "step_number": 2,
+          "expression": "$\\frac{2\\sqrt{3}}{3\\sqrt{10}}\\cdot \\frac{\\sqrt{10}}{\\sqrt{10}}$ $\\frac{2\\sqrt{30}}{30}$ $\\frac{\\sqrt{30}}{15}$"
+        }
+      ],
+      "tags": [
+        "rationalising-denominator"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Algebra, Radicals and Rational Exponents",
+        "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51242/index.cnxml",
+        "locator": "CNXML module m51242, exercise block exr-103",
+        "licence": "CC BY-NC-SA 4.0"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "ex-47",
+      "section_id": "sec-9",
+      "kind": "numeric",
+      "difficulty": 3,
+      "marks": 3,
+      "stem": {
+        "text": "Write $\\frac{12\\sqrt{3}}{\\sqrt{2}}$ in simplest form.",
+        "inline": []
+      },
+      "answer": {
+        "text": "6\\sqrt{6}",
+        "inline": []
+      },
+      "answer_kind": "expression",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "$6\\sqrt{6}$"
+        }
+      ],
+      "tags": [
+        "rationalising-denominator"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Algebra, Radicals and Rational Exponents",
+        "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51242/index.cnxml",
+        "locator": "CNXML module m51242, exercise block exr-106",
+        "licence": "CC BY-NC-SA 4.0"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "ex-48",
+      "section_id": "sec-9",
+      "kind": "numeric",
+      "difficulty": 4,
+      "marks": 4,
+      "stem": {
+        "text": "Rationalizing a Denominator Containing Two Terms Write $\\frac{4}{1+\\sqrt{5}}$ in simplest form.",
+        "inline": []
+      },
+      "answer": {
+        "text": "\\sqrt{5}-1",
+        "inline": []
+      },
+      "answer_kind": "expression",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "Begin by finding the conjugate of the denominator by writing the denominator and changing the sign. So the conjugate of $1+\\sqrt{5}$ is $1-\\sqrt{5}.$ Then multiply the fraction by $\\frac{1-\\sqrt{5}}{1-\\sqrt{5}}.$"
+        },
+        {
+          "step_number": 2,
+          "expression": "$\\frac{4}{1+\\sqrt{5}}\\cdot \\frac{1-\\sqrt{5}}{1-\\sqrt{5}}\\frac{4-4\\sqrt{5}}{-4}$ Use the distributive property $.\\sqrt{5}-1$ Simplify $.$"
+        }
+      ],
+      "tags": [
+        "rationalising-denominator",
+        "conjugate"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Algebra, Radicals and Rational Exponents",
+        "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51242/index.cnxml",
+        "locator": "CNXML module m51242, exercise block exr-110",
+        "licence": "CC BY-NC-SA 4.0"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "ex-49",
+      "section_id": "sec-9",
+      "kind": "numeric",
+      "difficulty": 4,
+      "marks": 4,
+      "stem": {
+        "text": "Write $\\frac{7}{2+\\sqrt{3}}$ in simplest form.",
+        "inline": []
+      },
+      "answer": {
+        "text": "14−7\\sqrt{3}",
+        "inline": []
+      },
+      "answer_kind": "expression",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "$14−7\\sqrt{3}$"
+        }
+      ],
+      "tags": [
+        "rationalising-denominator",
+        "conjugate"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Algebra, Radicals and Rational Exponents",
+        "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51242/index.cnxml",
+        "locator": "CNXML module m51242, exercise block exr-113",
+        "licence": "CC BY-NC-SA 4.0"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "ex-50",
+      "section_id": "sec-9",
+      "kind": "numeric",
+      "difficulty": 5,
+      "marks": 5,
+      "stem": {
+        "text": "$\\frac{8}{1-\\sqrt{17}}$",
+        "inline": []
+      },
+      "answer": {
+        "text": "-\\frac{1+\\sqrt{17}}{2}",
+        "inline": []
+      },
+      "answer_kind": "expression",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "$-\\frac{1+\\sqrt{17}}{2}$"
+        }
+      ],
+      "tags": [
+        "rationalising-denominator",
+        "conjugate"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Algebra, Radicals and Rational Exponents",
+        "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51242/index.cnxml",
+        "locator": "CNXML module m51242, exercise block exr-213",
+        "licence": "CC BY-NC-SA 4.0"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    }
+  ],
+  "exam_links": [
+    {
+      "exam": "JAMB",
+      "subject": "mathematics",
+      "topic_slug": "indices-logarithms-and-surds",
+      "subtopic_slug": "laws-of-indices",
+      "weight_pct": null,
+      "expected_count": null,
+      "source_locator": "production catalog topic indices-logarithms-and-surds, subtopic laws-of-indices (read-only fetch 2026-11-12)",
+      "question_ids": [
+        "q_authored_math_indices_001",
+        "q_claim_2025_mathematics_74095",
+        "q_claim_2025_mathematics_74189"
+      ]
+    },
+    {
+      "exam": "JAMB",
+      "subject": "mathematics",
+      "topic_slug": "indices-logarithms-and-surds",
+      "subtopic_slug": "surds",
+      "weight_pct": null,
+      "expected_count": null,
+      "source_locator": "production catalog topic indices-logarithms-and-surds, subtopic surds (read-only fetch 2026-11-12)",
+      "question_ids": [
+        "q_authored_math_surds_001",
+        "q_claim_2025_mathematics_74194"
+      ]
+    },
+    {
+      "exam": "WAEC",
+      "subject": "general-mathematics",
+      "topic_slug": "waec-surds-radicals",
+      "subtopic_slug": "waec-simplification-and-rationalization-of-simple-surds",
+      "weight_pct": null,
+      "expected_count": null,
+      "source_locator": "production catalog topic waec-surds-radicals, subtopic waec-simplification-and-rationalization-of-simple-surds (read-only fetch 2026-11-12)",
+      "question_ids": []
+    }
+  ],
+  "sources": [
+    {
+      "publisher": "OpenStax",
+      "title": "College Algebra, Exponents and Scientific Notation",
+      "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51241/index.cnxml",
+      "locator": "CNXML module m51241, sections on the product, quotient, power, zero and negative rules of exponents, plus simplifying exponential expressions",
+      "licence": "CC BY-NC-SA 4.0"
+    },
+    {
+      "publisher": "OpenStax",
+      "title": "College Algebra, Radicals and Rational Exponents",
+      "url": "https://github.com/openstax/osbooks-college-algebra-bundle/blob/main/modules/m51242/index.cnxml",
+      "locator": "CNXML module m51242, sections on evaluating square roots, simplifying square roots, adding and subtracting square roots, rationalizing denominators and rational exponents",
+      "licence": "CC BY-NC-SA 4.0"
+    }
+  ]
+}

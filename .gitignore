@@ -57,6 +57,9 @@ data/concepts/
 # docs/STUDY-NOTES-SOURCE-MANIFEST.md is the source of truth
 data/notes-snapshots/
 data/notes-replacements/
+# Derived source extracts used while authoring chapters (local only).
+# The authored chapter documents in data/chapters/ are tracked.
+data/staging/
 
 # editor/backup artifacts: never commit (a .env backup already leaked once)
 *.bak
