@@ -414,6 +414,11 @@ mod tests {
         ),
         (
             "GET",
+            "/api/v1/chapters/{chapter_id}/sections/{section_id}",
+            "/api/v1/chapters/phy_forces_and_newtons_laws/sections/sec-1",
+        ),
+        (
+            "GET",
             "/api/v1/chapters/{chapter_id}/exercises",
             "/api/v1/chapters/phy_forces_and_newtons_laws/exercises",
         ),

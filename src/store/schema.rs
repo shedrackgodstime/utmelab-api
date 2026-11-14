@@ -25,7 +25,7 @@ pub const CONTRACT_VERSION: u64 = 1;
 
 /// Version of the API-owned schema. This is separate from
 /// [`CONTRACT_VERSION`], which belongs to the content pipeline.
-pub const API_SCHEMA_VERSION: u64 = 9;
+pub const API_SCHEMA_VERSION: u64 = 10;
 
 /// Tables the API owns and creates at boot.
 pub(crate) const DDL: &[&str] = &[
@@ -37,7 +37,7 @@ pub(crate) const DDL: &[&str] = &[
     "CREATE TABLE IF NOT EXISTS api_access_tokens (token_hash TEXT PRIMARY KEY, parent_prefix TEXT NOT NULL, scopes TEXT NOT NULL, expires_at INTEGER NOT NULL, revoked INTEGER NOT NULL DEFAULT 0, created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)",
     "CREATE TABLE IF NOT EXISTS reports (id TEXT PRIMARY KEY, target_type TEXT NOT NULL, target_id TEXT NOT NULL, reporter TEXT NOT NULL, reason TEXT NOT NULL, detail TEXT, created_at INTEGER NOT NULL, UNIQUE(reporter, target_type, target_id, reason))",
     "CREATE TABLE IF NOT EXISTS books (id TEXT PRIMARY KEY, title TEXT NOT NULL, subject_area TEXT NOT NULL, level TEXT NOT NULL, edition TEXT NOT NULL DEFAULT 'draft-1', description TEXT NOT NULL DEFAULT '', parts TEXT NOT NULL DEFAULT '[]', sources TEXT NOT NULL DEFAULT '[]', content_hash TEXT NOT NULL DEFAULT '', created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP, updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)",
-    "CREATE TABLE IF NOT EXISTS chapters (chapter_id TEXT PRIMARY KEY, book_id TEXT NOT NULL, part_id TEXT, title TEXT NOT NULL, schema_version INTEGER NOT NULL DEFAULT 2, updated_at TEXT NOT NULL, facts_inherited INTEGER NOT NULL DEFAULT 0, learning_objectives TEXT NOT NULL DEFAULT '[]', prerequisites TEXT NOT NULL DEFAULT '[]', formula_sheet TEXT NOT NULL DEFAULT '[]', glossary TEXT NOT NULL DEFAULT '[]', sources TEXT NOT NULL DEFAULT '[]', content_hash TEXT NOT NULL, created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)",
+    "CREATE TABLE IF NOT EXISTS chapters (chapter_id TEXT PRIMARY KEY, book_id TEXT NOT NULL, part_id TEXT, order_index INTEGER NOT NULL DEFAULT 0, title TEXT NOT NULL, schema_version INTEGER NOT NULL DEFAULT 2, updated_at TEXT NOT NULL, facts_inherited INTEGER NOT NULL DEFAULT 0, learning_objectives TEXT NOT NULL DEFAULT '[]', prerequisites TEXT NOT NULL DEFAULT '[]', formula_sheet TEXT NOT NULL DEFAULT '[]', glossary TEXT NOT NULL DEFAULT '[]', sources TEXT NOT NULL DEFAULT '[]', content_hash TEXT NOT NULL, created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)",
     "CREATE TABLE IF NOT EXISTS chapter_sections (id TEXT PRIMARY KEY, chapter_id TEXT NOT NULL, order_index INTEGER NOT NULL, slug TEXT NOT NULL, title TEXT NOT NULL, est_minutes INTEGER NOT NULL DEFAULT 0, facts_inherited INTEGER NOT NULL DEFAULT 0, learning_objectives TEXT NOT NULL DEFAULT '[]', teaching_text TEXT NOT NULL DEFAULT '{\"blocks\":[]}', worked_examples TEXT NOT NULL DEFAULT '[]', misconceptions TEXT NOT NULL DEFAULT '[]', summary_points TEXT NOT NULL DEFAULT '[]', exam_links TEXT NOT NULL DEFAULT '[]', provenance TEXT NOT NULL DEFAULT '{}', no_worked_example_reason TEXT, content_hash TEXT NOT NULL, created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP, updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)",
     "CREATE TABLE IF NOT EXISTS chapter_exercises (id TEXT PRIMARY KEY, chapter_id TEXT NOT NULL, section_id TEXT NOT NULL, tier TEXT NOT NULL, kind TEXT NOT NULL, difficulty INTEGER NOT NULL, marks REAL NOT NULL, stem TEXT NOT NULL, options TEXT NOT NULL DEFAULT '[]', answer TEXT NOT NULL, answer_kind TEXT NOT NULL, solution TEXT NOT NULL DEFAULT '[]', hints TEXT NOT NULL DEFAULT '[]', tags TEXT NOT NULL DEFAULT '[]', provenance TEXT NOT NULL DEFAULT '{}', solution_provenance TEXT NOT NULL DEFAULT '', answer_note TEXT, content_hash TEXT NOT NULL, created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP, updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)",
     "CREATE TABLE IF NOT EXISTS exam_traps (id TEXT PRIMARY KEY, chapter_id TEXT NOT NULL, exam TEXT NOT NULL, subject TEXT NOT NULL, section_id TEXT NOT NULL, misconception TEXT NOT NULL, correction TEXT NOT NULL, signal TEXT NOT NULL DEFAULT '{}', status TEXT NOT NULL DEFAULT 'candidate', paper_evidence TEXT NOT NULL DEFAULT '{}', frequency TEXT NOT NULL DEFAULT 'candidate', provenance TEXT NOT NULL DEFAULT '{}', content_hash TEXT NOT NULL, created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP, updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)",
@@ -123,6 +123,7 @@ pub const READ_SHAPES: &[(&str, &[&str])] = &[
         &[
             "chapter_id",
             "book_id",
+            "order_index",
             "title",
             "learning_objectives",
             "content_hash",
@@ -379,7 +380,7 @@ pub async fn ensure_schema(s: &DbState) -> Result<(), AppError> {
 /// API-owned migrations are numbered, applied once, and never rewritten.
 /// Fresh databases receive the current DDL first; upgraded databases receive
 /// the same DDL idempotently and then any missing migrations.
-const MIGRATIONS: &[u64] = &[1, 2, 3, 4, 5, 6, 7, 8, 9];
+const MIGRATIONS: &[u64] = &[1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 async fn apply_migrations(s: &DbState) -> Result<(), AppError> {
     for &version in MIGRATIONS {
@@ -543,7 +544,7 @@ async fn apply_migrations(s: &DbState) -> Result<(), AppError> {
                 .await?;
                 super::write::execute_ddl_local(
                     s,
-                    "CREATE TABLE IF NOT EXISTS chapters (chapter_id TEXT PRIMARY KEY, book_id TEXT NOT NULL, part_id TEXT, title TEXT NOT NULL, schema_version INTEGER NOT NULL DEFAULT 2, updated_at TEXT NOT NULL, facts_inherited INTEGER NOT NULL DEFAULT 0, learning_objectives TEXT NOT NULL DEFAULT '[]', prerequisites TEXT NOT NULL DEFAULT '[]', formula_sheet TEXT NOT NULL DEFAULT '[]', glossary TEXT NOT NULL DEFAULT '[]', sources TEXT NOT NULL DEFAULT '[]', content_hash TEXT NOT NULL, created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)",
+                    "CREATE TABLE IF NOT EXISTS chapters (chapter_id TEXT PRIMARY KEY, book_id TEXT NOT NULL, part_id TEXT, order_index INTEGER NOT NULL DEFAULT 0, title TEXT NOT NULL, schema_version INTEGER NOT NULL DEFAULT 2, updated_at TEXT NOT NULL, facts_inherited INTEGER NOT NULL DEFAULT 0, learning_objectives TEXT NOT NULL DEFAULT '[]', prerequisites TEXT NOT NULL DEFAULT '[]', formula_sheet TEXT NOT NULL DEFAULT '[]', glossary TEXT NOT NULL DEFAULT '[]', sources TEXT NOT NULL DEFAULT '[]', content_hash TEXT NOT NULL, created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)",
                 )
                 .await?;
                 super::write::execute_ddl_local(
@@ -589,6 +590,25 @@ async fn apply_migrations(s: &DbState) -> Result<(), AppError> {
                 super::write::execute_ddl_local(
                     s,
                     "CREATE INDEX IF NOT EXISTS idx_exam_recall_checks_exam ON exam_recall_checks (exam, subject)",
+                )
+                .await?;
+            }
+            10 => {
+                // Chapters carry the book's reading order. The column is
+                // added separately because migration 9 may already have
+                // created the table without it.
+                ensure_column(
+                    s,
+                    "chapters",
+                    "order_index",
+                    "order_index INTEGER NOT NULL DEFAULT 0",
+                )
+                .await?;
+                super::write::execute_ddl_local(s, "DROP INDEX IF EXISTS idx_chapters_book")
+                    .await?;
+                super::write::execute_ddl_local(
+                    s,
+                    "CREATE INDEX IF NOT EXISTS idx_chapters_book ON chapters (book_id, order_index)",
                 )
                 .await?;
             }

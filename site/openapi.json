@@ -103,7 +103,7 @@
         "tags": [
           "textbook"
         ],
-        "summary": "One chapter: its sections, its exercises and its exam side.",
+        "summary": "One chapter: its outline, learning objectives, and section index.",
         "operationId": "getChapter",
         "parameters": [
           {
@@ -121,7 +121,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Chapter"
+                  "$ref": "#/components/schemas/ChapterOutline"
                 }
               }
             }
@@ -246,6 +246,96 @@
           },
           "403": {
             "description": "The API key lacks the required scope.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "The caller has exceeded the applicable rate limit.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "The API is temporarily unavailable.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/chapters/{chapter_id}/sections/{section_id}": {
+      "get": {
+        "tags": [
+          "textbook"
+        ],
+        "summary": "Fully structured teaching content for one section of a chapter.",
+        "operationId": "getSectionDetail",
+        "parameters": [
+          {
+            "name": "chapter_id",
+            "in": "path",
+            "description": "Chapter id, e.g. `phy_forces_and_newtons_laws`.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "section_id",
+            "in": "path",
+            "description": "Section id, e.g. `sec-1` or `sec-2`.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SectionDetail"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "An API key is missing or invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key lacks the required scope.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No section with that id in this chapter",
             "content": {
               "application/json": {
                 "schema": {
@@ -4156,7 +4246,9 @@
           },
           "sources": {
             "type": "array",
-            "items": {}
+            "items": {
+              "$ref": "#/components/schemas/Provenance"
+            }
           },
           "subject_area": {
             "type": "string"
@@ -4233,57 +4325,131 @@
           }
         }
       },
-      "Chapter": {
+      "ChapterExercise": {
         "type": "object",
-        "description": "A chapter of a book.",
+        "description": "A practice item with its answer and its solution.",
         "required": [
-          "chapter_id",
+          "id",
+          "section_id",
+          "tier",
+          "kind",
+          "difficulty",
+          "marks",
+          "stem",
+          "answer",
+          "answer_kind",
+          "solution_provenance"
+        ],
+        "properties": {
+          "answer": {
+            "$ref": "#/components/schemas/RichText"
+          },
+          "answer_kind": {
+            "type": "string"
+          },
+          "answer_note": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "difficulty": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "hints": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ExerciseHint"
+            }
+          },
+          "id": {
+            "type": "string"
+          },
+          "kind": {
+            "type": "string"
+          },
+          "marks": {
+            "type": "number",
+            "format": "double"
+          },
+          "options": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ExerciseOption"
+            }
+          },
+          "provenance": {
+            "$ref": "#/components/schemas/Provenance"
+          },
+          "section_id": {
+            "type": "string"
+          },
+          "solution": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ExerciseSolutionStep"
+            }
+          },
+          "solution_provenance": {
+            "type": "string"
+          },
+          "stem": {
+            "$ref": "#/components/schemas/RichText"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "tier": {
+            "type": "string"
+          }
+        }
+      },
+      "ChapterOutline": {
+        "type": "object",
+        "description": "The typed outline of a chapter: metadata, learning objectives, prerequisites, and section index.",
+        "required": [
+          "id",
+          "book_id",
+          "order",
+          "title",
           "schema_version",
           "updated_at",
-          "title",
-          "book_id"
+          "learning_objectives",
+          "prerequisites",
+          "section_index"
         ],
         "properties": {
           "book_id": {
             "type": "string"
           },
-          "chapter_id": {
-            "type": "string"
-          },
-          "exam_recall_checks": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ExamRecallCheck"
-            }
-          },
-          "exam_traps": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ExamTrap"
-            }
-          },
-          "exercises": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ChapterExercise"
-            }
-          },
-          "facts_inherited": {
-            "type": "boolean"
-          },
           "formula_sheet": {
             "type": "array",
-            "items": {}
+            "items": {
+              "$ref": "#/components/schemas/FormulaSheetEntry"
+            }
           },
           "glossary": {
             "type": "array",
-            "items": {}
+            "items": {
+              "$ref": "#/components/schemas/GlossaryEntry"
+            }
+          },
+          "id": {
+            "type": "string"
           },
           "learning_objectives": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/LearningObjective"
             }
+          },
+          "order": {
+            "type": "integer",
+            "format": "int64"
           },
           "part_id": {
             "type": [
@@ -4302,162 +4468,23 @@
             "format": "int32",
             "minimum": 0
           },
-          "sections": {
+          "section_index": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/ChapterSection"
+              "$ref": "#/components/schemas/SectionSummary"
             }
           },
           "sources": {
             "type": "array",
-            "items": {}
+            "items": {
+              "$ref": "#/components/schemas/Provenance"
+            }
           },
           "title": {
             "type": "string"
           },
           "updated_at": {
             "type": "string"
-          }
-        }
-      },
-      "ChapterExercise": {
-        "type": "object",
-        "description": "A practice item with its answer and its solution.",
-        "required": [
-          "id",
-          "section_id",
-          "tier",
-          "kind",
-          "difficulty",
-          "marks",
-          "stem",
-          "answer",
-          "answer_kind"
-        ],
-        "properties": {
-          "answer": {},
-          "answer_kind": {
-            "type": "string"
-          },
-          "answer_note": {
-            "type": [
-              "string",
-              "null"
-            ]
-          },
-          "difficulty": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "hints": {
-            "type": "array",
-            "items": {}
-          },
-          "id": {
-            "type": "string"
-          },
-          "kind": {
-            "type": "string"
-          },
-          "marks": {
-            "type": "number",
-            "format": "double"
-          },
-          "options": {
-            "type": "array",
-            "items": {}
-          },
-          "provenance": {},
-          "section_id": {
-            "type": "string"
-          },
-          "solution": {
-            "type": "array",
-            "items": {}
-          },
-          "solution_provenance": {
-            "type": "string"
-          },
-          "stem": {},
-          "tags": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "tier": {
-            "type": "string"
-          }
-        }
-      },
-      "ChapterSection": {
-        "type": "object",
-        "description": "The teaching unit of a chapter.",
-        "required": [
-          "id",
-          "order",
-          "slug",
-          "title",
-          "est_minutes"
-        ],
-        "properties": {
-          "est_minutes": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "exam_links": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ExamLink"
-            }
-          },
-          "exercise_ids": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "facts_inherited": {
-            "type": "boolean"
-          },
-          "id": {
-            "type": "string"
-          },
-          "learning_objectives": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/LearningObjective"
-            }
-          },
-          "misconceptions": {
-            "type": "array",
-            "items": {}
-          },
-          "no_worked_example_reason": {
-            "type": [
-              "string",
-              "null"
-            ]
-          },
-          "order": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "provenance": {},
-          "slug": {
-            "type": "string"
-          },
-          "summary_points": {
-            "type": "array",
-            "items": {}
-          },
-          "teaching_text": {},
-          "title": {
-            "type": "string"
-          },
-          "worked_examples": {
-            "type": "array",
-            "items": {}
           }
         }
       },
@@ -4512,6 +4539,524 @@
             "$ref": "#/components/schemas/RichText"
           }
         }
+      },
+      "ContentBlock": {
+        "oneOf": [
+          {
+            "type": "object",
+            "required": [
+              "id",
+              "text",
+              "type"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "text": {
+                "$ref": "#/components/schemas/RichText"
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "paragraph"
+                ]
+              }
+            }
+          },
+          {
+            "type": "object",
+            "required": [
+              "id",
+              "text",
+              "type"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "level": {
+                "type": "integer",
+                "format": "int32",
+                "minimum": 0
+              },
+              "text": {
+                "$ref": "#/components/schemas/RichText"
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "heading"
+                ]
+              }
+            }
+          },
+          {
+            "type": "object",
+            "required": [
+              "id",
+              "term",
+              "definition",
+              "type"
+            ],
+            "properties": {
+              "definition": {
+                "$ref": "#/components/schemas/RichText"
+              },
+              "id": {
+                "type": "string"
+              },
+              "term": {
+                "$ref": "#/components/schemas/RichText"
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "definition"
+                ]
+              }
+            }
+          },
+          {
+            "type": "object",
+            "required": [
+              "id",
+              "statement",
+              "type"
+            ],
+            "properties": {
+              "conditions": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RichText"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "id": {
+                "type": "string"
+              },
+              "note": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RichText"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "statement": {
+                "$ref": "#/components/schemas/RichText"
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "rule"
+                ]
+              }
+            }
+          },
+          {
+            "type": "object",
+            "required": [
+              "id",
+              "expression",
+              "type"
+            ],
+            "properties": {
+              "caption": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RichText"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "conditions": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RichText"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "expression": {
+                "type": "string"
+              },
+              "id": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "formula"
+                ]
+              }
+            }
+          },
+          {
+            "type": "object",
+            "required": [
+              "id",
+              "prompt",
+              "type"
+            ],
+            "properties": {
+              "answer": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RichText"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "id": {
+                "type": "string"
+              },
+              "prompt": {
+                "$ref": "#/components/schemas/RichText"
+              },
+              "steps": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/WorkedStep"
+                }
+              },
+              "title": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/ExampleTitle"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "example"
+                ]
+              }
+            }
+          },
+          {
+            "type": "object",
+            "required": [
+              "id",
+              "asset_url",
+              "type"
+            ],
+            "properties": {
+              "alt": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "asset_url": {
+                "type": "string"
+              },
+              "caption": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RichText"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "id": {
+                "type": "string"
+              },
+              "licence": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "figure"
+                ]
+              }
+            }
+          },
+          {
+            "type": "object",
+            "required": [
+              "id",
+              "rows",
+              "type"
+            ],
+            "properties": {
+              "alt": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "id": {
+                "type": "string"
+              },
+              "rows": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TableCell"
+                  }
+                }
+              },
+              "title": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RichText"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "table"
+                ]
+              }
+            }
+          },
+          {
+            "type": "object",
+            "required": [
+              "id",
+              "items",
+              "type"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "items": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/RichText"
+                }
+              },
+              "ordered": {
+                "type": "boolean"
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "list"
+                ]
+              }
+            }
+          },
+          {
+            "type": "object",
+            "required": [
+              "id",
+              "kind",
+              "text",
+              "type"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "kind": {
+                "type": "string"
+              },
+              "text": {
+                "$ref": "#/components/schemas/RichText"
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "callout"
+                ]
+              }
+            }
+          },
+          {
+            "type": "object",
+            "required": [
+              "id",
+              "points",
+              "type"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "points": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/RichText"
+                }
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "summary"
+                ]
+              }
+            }
+          },
+          {
+            "type": "object",
+            "required": [
+              "id",
+              "exercise_id",
+              "type"
+            ],
+            "properties": {
+              "exercise_id": {
+                "type": "string"
+              },
+              "id": {
+                "type": "string"
+              },
+              "prompt": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RichText"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "exercise_ref"
+                ]
+              }
+            }
+          },
+          {
+            "type": "object",
+            "required": [
+              "id",
+              "term",
+              "definition",
+              "type"
+            ],
+            "properties": {
+              "definition": {
+                "$ref": "#/components/schemas/RichText"
+              },
+              "id": {
+                "type": "string"
+              },
+              "term": {
+                "$ref": "#/components/schemas/RichText"
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "glossary_entry"
+                ]
+              }
+            }
+          },
+          {
+            "type": "object",
+            "required": [
+              "id",
+              "url",
+              "type"
+            ],
+            "properties": {
+              "alt": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "caption": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/RichText"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "id": {
+                "type": "string"
+              },
+              "position": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/ImagePosition"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "image"
+                ]
+              },
+              "url": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "type": "object",
+            "required": [
+              "id",
+              "question",
+              "options",
+              "answer",
+              "type"
+            ],
+            "properties": {
+              "answer": {
+                "type": "string"
+              },
+              "id": {
+                "type": "string"
+              },
+              "options": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Choice"
+                }
+              },
+              "question": {
+                "$ref": "#/components/schemas/RichText"
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "question"
+                ]
+              }
+            }
+          }
+        ],
+        "description": "Discriminated content block in section teaching text."
       },
       "Coverage": {
         "type": "object",
@@ -4753,13 +5298,17 @@
           "exam": {
             "type": "string"
           },
-          "explanation": {},
+          "explanation": {
+            "$ref": "#/components/schemas/RichText"
+          },
           "id": {
             "type": "string"
           },
           "options": {
             "type": "array",
-            "items": {}
+            "items": {
+              "$ref": "#/components/schemas/ExerciseOption"
+            }
           },
           "section_id": {
             "type": "string"
@@ -4767,7 +5316,9 @@
           "source": {
             "type": "string"
           },
-          "stem": {},
+          "stem": {
+            "$ref": "#/components/schemas/RichText"
+          },
           "subject": {
             "type": "string"
           }
@@ -4785,7 +5336,9 @@
           "correction"
         ],
         "properties": {
-          "correction": {},
+          "correction": {
+            "$ref": "#/components/schemas/RichText"
+          },
           "exam": {
             "type": "string"
           },
@@ -4795,13 +5348,28 @@
           "id": {
             "type": "string"
           },
-          "misconception": {},
-          "paper_evidence": {},
-          "provenance": {},
+          "misconception": {
+            "$ref": "#/components/schemas/RichText"
+          },
+          "paper_evidence": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/PaperEvidence"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "provenance": {
+            "$ref": "#/components/schemas/Provenance"
+          },
           "section_id": {
             "type": "string"
           },
-          "signal": {},
+          "signal": {
+            "$ref": "#/components/schemas/RichText"
+          },
           "status": {
             "type": "string"
           },
@@ -4846,6 +5414,69 @@
           }
         }
       },
+      "ExampleTitle": {
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "$ref": "#/components/schemas/RichText"
+          }
+        ],
+        "description": "Title for an example block, supporting either plain text or RichText."
+      },
+      "ExerciseHint": {
+        "type": "object",
+        "description": "Hint for a chapter exercise.",
+        "required": [
+          "hint_number",
+          "text"
+        ],
+        "properties": {
+          "hint_number": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          },
+          "text": {
+            "$ref": "#/components/schemas/RichText"
+          }
+        }
+      },
+      "ExerciseOption": {
+        "type": "object",
+        "description": "Option for a chapter exercise.",
+        "required": [
+          "id",
+          "text"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          }
+        }
+      },
+      "ExerciseSolutionStep": {
+        "type": "object",
+        "description": "Solution step for a chapter exercise.",
+        "required": [
+          "step_number",
+          "expression"
+        ],
+        "properties": {
+          "expression": {
+            "type": "string"
+          },
+          "step_number": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          }
+        }
+      },
       "Explanation": {
         "type": "object",
         "description": "Why the answer is what it is: teaser, working, and the distractor\nthat catches people.",
@@ -4864,6 +5495,46 @@
             "oneOf": [
               {
                 "$ref": "#/components/schemas/RichText"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        }
+      },
+      "FormulaSheetEntry": {
+        "type": "object",
+        "description": "A gathered formula in a chapter formula sheet.",
+        "required": [
+          "id",
+          "expression",
+          "caption"
+        ],
+        "properties": {
+          "caption": {
+            "$ref": "#/components/schemas/RichText"
+          },
+          "conditions": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/RichText"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "expression": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "provenance": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Provenance"
               },
               {
                 "type": "null"
@@ -4907,6 +5578,36 @@
           },
           "variable_mapping": {
             "type": "string"
+          }
+        }
+      },
+      "GlossaryEntry": {
+        "type": "object",
+        "description": "A glossary term introduced in a chapter.",
+        "required": [
+          "id",
+          "term",
+          "definition"
+        ],
+        "properties": {
+          "definition": {
+            "$ref": "#/components/schemas/RichText"
+          },
+          "id": {
+            "type": "string"
+          },
+          "provenance": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Provenance"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "term": {
+            "$ref": "#/components/schemas/RichText"
           }
         }
       },
@@ -5885,6 +6586,50 @@
           }
         }
       },
+      "PaperEvidence": {
+        "type": "object",
+        "description": "Evidence from past papers backing an examiner trap.",
+        "properties": {
+          "exam": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "question_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "section_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "source": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "url": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "year": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "format": "int32",
+            "minimum": 0
+          }
+        }
+      },
       "PaperMode": {
         "type": "string",
         "description": "Which gate built a paper (D70). Disclosed on the wire: a consumer must\nbe able to tell a balanced mock from a full-length draw.",
@@ -6016,6 +6761,27 @@
           "total_records": {
             "type": "integer",
             "minimum": 0
+          }
+        }
+      },
+      "Provenance": {
+        "type": "object",
+        "description": "Provenance metadata indicating where content originated.",
+        "properties": {
+          "licence": {
+            "type": "string"
+          },
+          "locator": {
+            "type": "string"
+          },
+          "publisher": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
           }
         }
       },
@@ -6776,6 +7542,189 @@
           }
         }
       },
+      "SectionDetail": {
+        "type": "object",
+        "description": "Fully typed teaching section – the contract the UI will consume.",
+        "required": [
+          "schema_version",
+          "id",
+          "chapter_id",
+          "order",
+          "slug",
+          "title",
+          "est_minutes",
+          "learning_objectives",
+          "content",
+          "provenance"
+        ],
+        "properties": {
+          "chapter_id": {
+            "type": "string"
+          },
+          "content": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ContentBlock"
+            }
+          },
+          "est_minutes": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "exam_links": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ExamLink"
+            }
+          },
+          "exercise_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "id": {
+            "type": "string"
+          },
+          "learning_objectives": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LearningObjective"
+            }
+          },
+          "misconceptions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SectionMisconception"
+            }
+          },
+          "no_worked_example_reason": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "order": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "provenance": {
+            "$ref": "#/components/schemas/Provenance"
+          },
+          "schema_version": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          },
+          "slug": {
+            "type": "string"
+          },
+          "summary_points": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RichText"
+            }
+          },
+          "title": {
+            "type": "string"
+          },
+          "worked_examples": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SectionWorkedExample"
+            }
+          }
+        }
+      },
+      "SectionMisconception": {
+        "type": "object",
+        "description": "A misconception with its correction and provenance.",
+        "required": [
+          "id",
+          "claim",
+          "correction"
+        ],
+        "properties": {
+          "claim": {
+            "$ref": "#/components/schemas/RichText"
+          },
+          "correction": {
+            "$ref": "#/components/schemas/RichText"
+          },
+          "id": {
+            "type": "string"
+          },
+          "provenance": {
+            "$ref": "#/components/schemas/Provenance"
+          }
+        }
+      },
+      "SectionSummary": {
+        "type": "object",
+        "description": "Outline summary of a section within a chapter.",
+        "required": [
+          "id",
+          "order",
+          "slug",
+          "title",
+          "est_minutes"
+        ],
+        "properties": {
+          "est_minutes": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "id": {
+            "type": "string"
+          },
+          "learning_objectives": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LearningObjective"
+            }
+          },
+          "order": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "slug": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          }
+        }
+      },
+      "SectionWorkedExample": {
+        "type": "object",
+        "description": "A worked example in a chapter section.",
+        "required": [
+          "id",
+          "statement",
+          "steps",
+          "answer"
+        ],
+        "properties": {
+          "answer": {
+            "$ref": "#/components/schemas/RichText"
+          },
+          "id": {
+            "type": "string"
+          },
+          "provenance": {
+            "$ref": "#/components/schemas/Provenance"
+          },
+          "statement": {
+            "$ref": "#/components/schemas/RichText"
+          },
+          "steps": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WorkedStep"
+            }
+          }
+        }
+      },
       "SolutionStep": {
         "type": "object",
         "required": [
@@ -7064,6 +8013,17 @@
             "minimum": 0
           }
         }
+      },
+      "TableCell": {
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "$ref": "#/components/schemas/RichText"
+          }
+        ],
+        "description": "Single table cell supporting either plain string or RichText."
       },
       "TableRef": {
         "type": "object",
@@ -7483,6 +8443,26 @@
           },
           "title": {
             "type": "string"
+          }
+        }
+      },
+      "WorkedStep": {
+        "type": "object",
+        "description": "A step in a worked example.",
+        "properties": {
+          "description": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "expression": {
+            "type": "string"
+          },
+          "step_number": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
           }
         }
       }

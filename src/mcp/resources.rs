@@ -105,6 +105,11 @@ pub fn templates() -> Vec<ResourceTemplate> {
             "One chapter: its sections, its exercises and its exam side.",
         ),
         tmpl(
+            "chapters/{chapter_id}/sections/{section_id}",
+            "Section detail",
+            "Fully structured teaching content, worked examples, and misconceptions for one section.",
+        ),
+        tmpl(
             "chapters/{chapter_id}/exercises",
             "Chapter exercises",
             "The exercises of a chapter, each with its answer and its solution. \
@@ -245,6 +250,13 @@ pub async fn read(db: &DbState, auth: &Auth, uri: &str) -> Result<serde_json::Va
             AuthedKey(auth.clone()),
             Path(chapter_id.to_string()),
         )),
+        ["chapters", chapter_id, "sections", section_id] => {
+            read!(textbooks::get_section_detail(
+                State(db.clone()),
+                AuthedKey(auth.clone()),
+                Path((chapter_id.to_string(), section_id.to_string())),
+            ))
+        }
         ["chapters", chapter_id, "exercises"] => read!(textbooks::list_chapter_exercises(
             State(db.clone()),
             AuthedKey(auth.clone()),

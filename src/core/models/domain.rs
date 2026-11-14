@@ -8,7 +8,7 @@
 
 /// Plain text plus offset marks. `text` stays searchable as characters;
 /// structure rides in `inline` as Unicode-scalar offsets, never bytes.
-#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
+#[derive(Clone, Debug, Default, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
 pub struct RichText {
     pub text: String,
     pub inline: Vec<Inline>,
@@ -353,7 +353,22 @@ pub struct Book {
     #[serde(default)]
     pub parts: Vec<BookPart>,
     #[serde(default)]
-    pub sources: Vec<serde_json::Value>,
+    pub sources: Vec<Provenance>,
+}
+
+/// Provenance metadata indicating where content originated.
+#[derive(Clone, Debug, Default, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
+pub struct Provenance {
+    #[serde(default)]
+    pub publisher: String,
+    #[serde(default)]
+    pub title: String,
+    #[serde(default)]
+    pub url: String,
+    #[serde(default)]
+    pub locator: String,
+    #[serde(default)]
+    pub licence: String,
 }
 
 /// A named part of a book, the way a school textbook divides itself.
@@ -375,15 +390,17 @@ pub struct Chapter {
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub part_id: Option<String>,
     #[serde(default)]
+    pub order: i64,
+    #[serde(default)]
     pub facts_inherited: bool,
     #[serde(default)]
     pub learning_objectives: Vec<LearningObjective>,
     #[serde(default)]
     pub prerequisites: Vec<String>,
     #[serde(default)]
-    pub formula_sheet: Vec<serde_json::Value>,
+    pub formula_sheet: Vec<FormulaSheetEntry>,
     #[serde(default)]
-    pub glossary: Vec<serde_json::Value>,
+    pub glossary: Vec<GlossaryEntry>,
     #[serde(default)]
     pub sections: Vec<ChapterSection>,
     #[serde(default)]
@@ -393,7 +410,226 @@ pub struct Chapter {
     #[serde(default)]
     pub exam_recall_checks: Vec<ExamRecallCheck>,
     #[serde(default)]
-    pub sources: Vec<serde_json::Value>,
+    pub sources: Vec<Provenance>,
+}
+
+/// A gathered formula in a chapter formula sheet.
+#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
+pub struct FormulaSheetEntry {
+    pub id: String,
+    pub expression: String,
+    pub caption: RichText,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub conditions: Option<RichText>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub provenance: Option<Provenance>,
+}
+
+/// A glossary term introduced in a chapter.
+#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
+pub struct GlossaryEntry {
+    pub id: String,
+    pub term: RichText,
+    pub definition: RichText,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub provenance: Option<Provenance>,
+}
+
+/// Container for section teaching blocks accepting either `{"blocks": [...]}` or `[...]`.
+#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
+#[serde(untagged)]
+pub enum TeachingTextContainer {
+    Wrapped { blocks: Vec<ContentBlock> },
+    Raw(Vec<ContentBlock>),
+}
+
+impl Default for TeachingTextContainer {
+    fn default() -> Self {
+        Self::Wrapped { blocks: Vec::new() }
+    }
+}
+
+impl TeachingTextContainer {
+    pub fn blocks(&self) -> &[ContentBlock] {
+        match self {
+            Self::Wrapped { blocks } => blocks,
+            Self::Raw(blocks) => blocks,
+        }
+    }
+
+    pub fn into_blocks(self) -> Vec<ContentBlock> {
+        match self {
+            Self::Wrapped { blocks } => blocks,
+            Self::Raw(blocks) => blocks,
+        }
+    }
+}
+
+const fn default_heading_level() -> u8 {
+    1
+}
+
+const fn default_step_number() -> u32 {
+    1
+}
+
+/// Title for an example block, supporting either plain text or RichText.
+#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
+#[serde(untagged)]
+pub enum ExampleTitle {
+    Plain(String),
+    Rich(RichText),
+}
+
+/// Single table cell supporting either plain string or RichText.
+#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
+#[serde(untagged)]
+pub enum TableCell {
+    Text(String),
+    Rich(RichText),
+}
+
+/// A step in a worked example.
+#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
+pub struct WorkedStep {
+    #[serde(default = "default_step_number")]
+    pub step_number: u32,
+    #[serde(default)]
+    pub expression: String,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub description: Option<String>,
+}
+
+/// Discriminated content block in section teaching text.
+#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
+#[serde(tag = "type", rename_all = "snake_case")]
+pub enum ContentBlock {
+    Paragraph {
+        id: String,
+        #[serde(alias = "content")]
+        text: RichText,
+    },
+    Heading {
+        id: String,
+        #[serde(default = "default_heading_level")]
+        level: u8,
+        text: RichText,
+    },
+    Definition {
+        id: String,
+        term: RichText,
+        definition: RichText,
+    },
+    Rule {
+        id: String,
+        statement: RichText,
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        conditions: Option<RichText>,
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        note: Option<RichText>,
+    },
+    Formula {
+        id: String,
+        expression: String,
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        caption: Option<RichText>,
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        conditions: Option<RichText>,
+    },
+    Example {
+        id: String,
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        title: Option<ExampleTitle>,
+        #[serde(alias = "statement", alias = "problem")]
+        prompt: RichText,
+        #[serde(default)]
+        steps: Vec<WorkedStep>,
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        answer: Option<RichText>,
+    },
+    Figure {
+        id: String,
+        #[serde(alias = "url")]
+        asset_url: String,
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        caption: Option<RichText>,
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        alt: Option<String>,
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        licence: Option<String>,
+    },
+    Table {
+        id: String,
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        title: Option<RichText>,
+        rows: Vec<Vec<TableCell>>,
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        alt: Option<String>,
+    },
+    List {
+        id: String,
+        #[serde(default)]
+        ordered: bool,
+        items: Vec<RichText>,
+    },
+    Callout {
+        id: String,
+        kind: String,
+        #[serde(alias = "body")]
+        text: RichText,
+    },
+    Summary {
+        id: String,
+        points: Vec<RichText>,
+    },
+    ExerciseRef {
+        id: String,
+        exercise_id: String,
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        prompt: Option<RichText>,
+    },
+    GlossaryEntry {
+        id: String,
+        term: RichText,
+        definition: RichText,
+    },
+    Image {
+        id: String,
+        url: String,
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        caption: Option<RichText>,
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        alt: Option<String>,
+        #[serde(default, skip_serializing_if = "Option::is_none")]
+        position: Option<ImagePosition>,
+    },
+    Question {
+        id: String,
+        question: RichText,
+        options: Vec<Choice>,
+        answer: String,
+    },
+}
+
+/// A worked example in a chapter section.
+#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
+pub struct SectionWorkedExample {
+    pub id: String,
+    pub statement: RichText,
+    pub steps: Vec<WorkedStep>,
+    pub answer: RichText,
+    #[serde(default)]
+    pub provenance: Provenance,
+}
+
+/// A misconception with its correction and provenance.
+#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
+pub struct SectionMisconception {
+    pub id: String,
+    pub claim: RichText,
+    pub correction: RichText,
+    #[serde(default)]
+    pub provenance: Provenance,
 }
 
 /// One thing the reader will be able to do.
@@ -418,21 +654,42 @@ pub struct ChapterSection {
     #[serde(default)]
     pub learning_objectives: Vec<LearningObjective>,
     #[serde(default)]
-    pub teaching_text: serde_json::Value,
+    pub teaching_text: TeachingTextContainer,
     #[serde(default)]
-    pub worked_examples: Vec<serde_json::Value>,
+    pub worked_examples: Vec<SectionWorkedExample>,
     #[serde(default)]
-    pub misconceptions: Vec<serde_json::Value>,
+    pub misconceptions: Vec<SectionMisconception>,
     #[serde(default)]
-    pub summary_points: Vec<serde_json::Value>,
+    pub summary_points: Vec<RichText>,
     #[serde(default)]
     pub exercise_ids: Vec<String>,
     #[serde(default)]
     pub exam_links: Vec<ExamLink>,
     #[serde(default)]
-    pub provenance: serde_json::Value,
+    pub provenance: Provenance,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub no_worked_example_reason: Option<String>,
+}
+
+/// Option for a chapter exercise.
+#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
+pub struct ExerciseOption {
+    pub id: String,
+    pub text: String,
+}
+
+/// Solution step for a chapter exercise.
+#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
+pub struct ExerciseSolutionStep {
+    pub step_number: u32,
+    pub expression: String,
+}
+
+/// Hint for a chapter exercise.
+#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
+pub struct ExerciseHint {
+    pub hint_number: u32,
+    pub text: RichText,
 }
 
 /// A practice item with its answer and its solution.
@@ -444,20 +701,19 @@ pub struct ChapterExercise {
     pub kind: String,
     pub difficulty: i64,
     pub marks: f64,
-    pub stem: serde_json::Value,
+    pub stem: RichText,
     #[serde(default)]
-    pub options: Vec<serde_json::Value>,
-    pub answer: serde_json::Value,
+    pub options: Vec<ExerciseOption>,
+    pub answer: RichText,
     pub answer_kind: String,
     #[serde(default)]
-    pub solution: Vec<serde_json::Value>,
+    pub solution: Vec<ExerciseSolutionStep>,
     #[serde(default)]
-    pub hints: Vec<serde_json::Value>,
+    pub hints: Vec<ExerciseHint>,
     #[serde(default)]
     pub tags: Vec<String>,
     #[serde(default)]
-    pub provenance: serde_json::Value,
-    #[serde(default)]
+    pub provenance: Provenance,
     pub solution_provenance: String,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub answer_note: Option<String>,
@@ -496,6 +752,23 @@ pub struct ExamPaper {
     pub url: Option<String>,
 }
 
+/// Evidence from past papers backing an examiner trap.
+#[derive(Clone, Debug, Default, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
+pub struct PaperEvidence {
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub question_id: Option<String>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub section_id: Option<String>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub exam: Option<String>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub year: Option<u16>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub source: Option<String>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub url: Option<String>,
+}
+
 /// A mistake candidates make, with the evidence behind it.
 #[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
 pub struct ExamTrap {
@@ -503,18 +776,18 @@ pub struct ExamTrap {
     pub exam: String,
     pub subject: String,
     pub section_id: String,
-    pub misconception: serde_json::Value,
-    pub correction: serde_json::Value,
+    pub misconception: RichText,
+    pub correction: RichText,
     #[serde(default)]
-    pub signal: serde_json::Value,
+    pub signal: RichText,
     #[serde(default)]
     pub status: String,
-    #[serde(default)]
-    pub paper_evidence: serde_json::Value,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub paper_evidence: Option<PaperEvidence>,
     #[serde(default)]
     pub frequency: String,
     #[serde(default)]
-    pub provenance: serde_json::Value,
+    pub provenance: Provenance,
 }
 
 /// A practice item written in the exam's own wording.
@@ -524,11 +797,11 @@ pub struct ExamRecallCheck {
     pub exam: String,
     pub subject: String,
     pub section_id: String,
-    pub stem: serde_json::Value,
+    pub stem: RichText,
     #[serde(default)]
-    pub options: Vec<serde_json::Value>,
+    pub options: Vec<ExerciseOption>,
     pub answer: String,
-    pub explanation: serde_json::Value,
+    pub explanation: RichText,
     #[serde(default)]
     pub difficulty: i64,
     #[serde(default)]

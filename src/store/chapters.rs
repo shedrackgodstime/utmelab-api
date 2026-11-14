@@ -92,17 +92,17 @@ async fn import_chapter(s: &DbState, chapter: &Chapter) -> Result<(), AppError> 
     let glossary = json_of(&chapter.glossary, "chapters.glossary")?;
     let sources = json_of(&chapter.sources, "chapters.sources")?;
     let hash = hash_of(&format!(
-        "{}|{}|{}",
-        chapter.chapter_id, objectives, glossary
+        "{}|{}|{}|{}",
+        chapter.chapter_id, objectives, glossary, chapter.order
     ));
     execute_write_local(
         s,
-        "INSERT INTO chapters (chapter_id, book_id, part_id, title, schema_version, updated_at, \
+        "INSERT INTO chapters (chapter_id, book_id, part_id, order_index, title, schema_version, updated_at, \
          facts_inherited, learning_objectives, prerequisites, formula_sheet, glossary, sources, content_hash) \
-         VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13) \
-         ON CONFLICT(chapter_id) DO UPDATE SET book_id = ?2, part_id = ?3, title = ?4, schema_version = ?5, \
-         updated_at = ?6, facts_inherited = ?7, learning_objectives = ?8, prerequisites = ?9, \
-         formula_sheet = ?10, glossary = ?11, sources = ?12, content_hash = ?13",
+         VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14) \
+         ON CONFLICT(chapter_id) DO UPDATE SET book_id = ?2, part_id = ?3, order_index = ?4, title = ?5, schema_version = ?6, \
+         updated_at = ?7, facts_inherited = ?8, learning_objectives = ?9, prerequisites = ?10, \
+         formula_sheet = ?11, glossary = ?12, sources = ?13, content_hash = ?14",
         vec![
             turso::Value::Text(chapter.chapter_id.clone()),
             turso::Value::Text(chapter.book_id.clone()),
@@ -110,6 +110,7 @@ async fn import_chapter(s: &DbState, chapter: &Chapter) -> Result<(), AppError> 
                 Some(part) => turso::Value::Text(part.clone()),
                 None => turso::Value::Null,
             },
+            turso::Value::Integer(chapter.order),
             turso::Value::Text(chapter.title.clone()),
             turso::Value::Integer(i64::from(chapter.schema_version)),
             turso::Value::Text(chapter.updated_at.clone()),
@@ -356,7 +357,7 @@ fn map_book(row: &turso::Row) -> Result<Book, AppError> {
 }
 
 /// The short shape of a chapter, for a listing.
-#[derive(Clone, Debug, serde::Serialize, utoipa::ToSchema)]
+#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
 pub struct ChapterSummary {
     pub chapter_id: String,
     pub title: String,
@@ -390,7 +391,7 @@ pub async fn list_chapters(s: &DbState, book_id: &str) -> Result<Vec<ChapterSumm
          (SELECT COUNT(*) FROM chapter_sections s WHERE s.chapter_id = c.chapter_id) AS sections, \
          (SELECT COUNT(*) FROM chapter_exercises e WHERE e.chapter_id = c.chapter_id) AS exercises, \
          (SELECT COALESCE(SUM(s2.est_minutes), 0) FROM chapter_sections s2 WHERE s2.chapter_id = c.chapter_id) AS est_minutes \
-         FROM chapters c WHERE c.book_id = ?1 ORDER BY c.title",
+         FROM chapters c WHERE c.book_id = ?1 ORDER BY c.order_index, c.title",
         vec![turso::Value::Text(book_id.to_string())],
     )
     .await?;
@@ -420,7 +421,7 @@ pub async fn get_chapter(s: &DbState, chapter_id: &str) -> Result<Option<Chapter
     let Some(row) = super::catalog::rows(
         s,
         "SELECT chapter_id, book_id, part_id, title, schema_version, updated_at, facts_inherited, \
-         learning_objectives, prerequisites, formula_sheet, glossary, sources \
+         learning_objectives, prerequisites, formula_sheet, glossary, sources, order_index \
          FROM chapters WHERE chapter_id = ?1",
         vec![turso::Value::Text(chapter_id.to_string())],
     )
@@ -443,6 +444,7 @@ pub async fn get_chapter(s: &DbState, chapter_id: &str) -> Result<Option<Chapter
     let formula_sheet_raw: String = row.get(9).map_err(upstream)?;
     let glossary_raw: String = row.get(10).map_err(upstream)?;
     let sources_raw: String = row.get(11).map_err(upstream)?;
+    let order: i64 = row.get(12).map_err(upstream)?;
 
     let section_rows = super::catalog::rows(
         s,
@@ -503,6 +505,7 @@ pub async fn get_chapter(s: &DbState, chapter_id: &str) -> Result<Option<Chapter
         title,
         book_id,
         part_id,
+        order,
         facts_inherited: facts_inherited != 0,
         learning_objectives: super::catalog::json_col(
             &objectives_raw,
@@ -523,6 +526,50 @@ pub async fn get_chapter(s: &DbState, chapter_id: &str) -> Result<Option<Chapter
             .map(map_check)
             .collect::<Result<Vec<ExamRecallCheck>, AppError>>()?,
     }))
+}
+
+/// One section by id or slug within a chapter.
+pub async fn get_section(
+    s: &DbState,
+    chapter_id: &str,
+    section_id: &str,
+) -> Result<Option<ChapterSection>, AppError> {
+    let namespaced_id = namespaced(chapter_id, section_id);
+    let rows = super::catalog::rows(
+        s,
+        "SELECT id, order_index, slug, title, est_minutes, facts_inherited, learning_objectives, \
+         teaching_text, worked_examples, misconceptions, summary_points, exam_links, provenance, \
+         no_worked_example_reason FROM chapter_sections \
+         WHERE chapter_id = ?1 AND (id = ?2 OR id = ?3 OR slug = ?2) LIMIT 1",
+        vec![
+            turso::Value::Text(chapter_id.to_string()),
+            turso::Value::Text(section_id.to_string()),
+            turso::Value::Text(namespaced_id),
+        ],
+    )
+    .await?;
+
+    let Some(row) = rows.into_iter().next() else {
+        return Ok(None);
+    };
+
+    let mut section = map_section(&row)?;
+    let exercise_rows = super::catalog::rows(
+        s,
+        "SELECT id FROM chapter_exercises WHERE chapter_id = ?1 AND section_id = ?2 ORDER BY id",
+        vec![
+            turso::Value::Text(chapter_id.to_string()),
+            turso::Value::Text(section.id.clone()),
+        ],
+    )
+    .await?;
+
+    section.exercise_ids = exercise_rows
+        .into_iter()
+        .filter_map(|r| r.get::<String>(0).ok())
+        .collect();
+
+    Ok(Some(section))
 }
 
 fn map_section(row: &turso::Row) -> Result<ChapterSection, AppError> {
@@ -750,7 +797,11 @@ pub async fn list_recall_checks(
 mod tests {
     use super::ChapterBundle;
     use crate::{
-        core::models::{Book, BookPart, Chapter, ChapterExercise, ChapterSection, ExamTrap},
+        core::models::{
+            Book, BookPart, Chapter, ChapterExercise, ChapterSection, ContentBlock,
+            ExamTrap, ExerciseSolutionStep, PaperEvidence, Provenance, RichText,
+            TeachingTextContainer,
+        },
         testing::{api_schema, connect, replica},
     };
 
@@ -779,6 +830,7 @@ mod tests {
             title: "Forces and Newton's Laws of Motion".into(),
             book_id: "secondary_physics".into(),
             part_id: Some("part-1".into()),
+            order: 4,
             facts_inherited: true,
             learning_objectives: vec![],
             prerequisites: vec![],
@@ -793,13 +845,21 @@ mod tests {
                 est_minutes: 10,
                 facts_inherited: true,
                 learning_objectives: vec![],
-                teaching_text: serde_json::json!({"blocks": [{"type": "paragraph"}]}),
+                teaching_text: TeachingTextContainer::Wrapped {
+                    blocks: vec![ContentBlock::Paragraph {
+                        id: "p-1".into(),
+                        text: RichText {
+                            text: "Introduction to forces".into(),
+                            inline: vec![],
+                        },
+                    }],
+                },
                 worked_examples: vec![],
                 misconceptions: vec![],
                 summary_points: vec![],
                 exercise_ids: vec![],
                 exam_links: vec![],
-                provenance: serde_json::json!({}),
+                provenance: Provenance::default(),
                 no_worked_example_reason: None,
             }],
             exercises: vec![ChapterExercise {
@@ -809,16 +869,23 @@ mod tests {
                 kind: "numeric".into(),
                 difficulty: 3,
                 marks: 2.0,
-                stem: serde_json::json!({"text": "A 2 kg body moves at 6 m/s. Its kinetic energy is"}),
+                stem: RichText {
+                    text: "A 2 kg body moves at 6 m/s. Its kinetic energy is".into(),
+                    inline: vec![],
+                },
                 options: vec![],
-                answer: serde_json::json!({"text": "36 J"}),
+                answer: RichText {
+                    text: "36 J".into(),
+                    inline: vec![],
+                },
                 answer_kind: "expression".into(),
-                solution: vec![
-                    serde_json::json!({"step_number": 1, "expression": "K = 1/2 mv^2 = 36 J"}),
-                ],
+                solution: vec![ExerciseSolutionStep {
+                    step_number: 1,
+                    expression: "K = 1/2 mv^2 = 36 J".into(),
+                }],
                 hints: vec![],
                 tags: vec!["kinetic-energy".into()],
-                provenance: serde_json::json!({}),
+                provenance: Provenance::default(),
                 solution_provenance: "OpenStax".into(),
                 answer_note: None,
             }],
@@ -827,13 +894,25 @@ mod tests {
                 exam: "JAMB".into(),
                 subject: "physics".into(),
                 section_id: "sec-1".into(),
-                misconception: serde_json::json!({"text": "A body cannot exert a force on itself."}),
-                correction: serde_json::json!({"text": "It cannot. The hawk is pushed by the air."}),
-                signal: serde_json::json!({"text": "our own teaching"}),
+                misconception: RichText {
+                    text: "A body cannot exert a force on itself.".into(),
+                    inline: vec![],
+                },
+                correction: RichText {
+                    text: "It cannot. The hawk is pushed by the air.".into(),
+                    inline: vec![],
+                },
+                signal: RichText {
+                    text: "our own teaching".into(),
+                    inline: vec![],
+                },
                 status: "candidate".into(),
-                paper_evidence: serde_json::json!({"section_id": "sec-1"}),
+                paper_evidence: Some(PaperEvidence {
+                    section_id: Some("sec-1".into()),
+                    ..Default::default()
+                }),
                 frequency: "candidate".into(),
-                provenance: serde_json::json!({}),
+                provenance: Provenance::default(),
             }],
             exam_recall_checks: vec![],
         }
@@ -888,6 +967,51 @@ mod tests {
             vec!["phy_forces_and_newtons_laws:ex-sec-1-01".to_string()]
         );
         assert_eq!(chapter.sections[0].id, "phy_forces_and_newtons_laws:sec-1");
+
+        let sec_local = super::get_section(&state, "phy_forces_and_newtons_laws", "sec-1")
+            .await
+            .expect("section")
+            .expect("sec-1 found by local id");
+        assert_eq!(sec_local.title, "Introduction");
+        assert_eq!(sec_local.exercise_ids.len(), 1);
+
+        let sec_namespaced = super::get_section(
+            &state,
+            "phy_forces_and_newtons_laws",
+            "phy_forces_and_newtons_laws:sec-1",
+        )
+        .await
+        .expect("section")
+        .expect("sec-1 found by namespaced id");
+        assert_eq!(sec_namespaced.id, "phy_forces_and_newtons_laws:sec-1");
+    }
+
+    #[tokio::test]
+    async fn chapters_are_listed_in_book_order() {
+        let state = state().await;
+        let mut later = a_chapter();
+        later.chapter_id = "phy_later".into();
+        later.title = "Zulu Chapter".into();
+        later.order = 1;
+        let mut earlier = a_chapter();
+        earlier.chapter_id = "phy_earlier".into();
+        earlier.title = "Alpha Chapter".into();
+        earlier.order = 2;
+
+        let bundle = ChapterBundle {
+            books: vec![a_book()],
+            chapters: vec![earlier, later],
+        };
+        super::import_bundle(&state, &bundle).await.expect("import");
+
+        let listed = super::list_chapters(&state, "secondary_physics")
+            .await
+            .expect("chapters");
+        let titles: Vec<&str> = listed
+            .iter()
+            .map(|chapter| chapter.title.as_str())
+            .collect();
+        assert_eq!(titles, vec!["Zulu Chapter", "Alpha Chapter"]);
     }
 
     #[tokio::test]

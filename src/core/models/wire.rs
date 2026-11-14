@@ -9,8 +9,10 @@
 use std::collections::HashMap;
 
 use super::domain::{
-    Choice, DiagramRubric, ExaminerPenalty, Explanation, FormulationClause, MarkingMethod, Passage,
-    RichText, Subject, TheoryExaminerReport, TheorySubPart,
+    BookPart, Choice, ContentBlock, DiagramRubric, ExamLink, ExaminerPenalty, Explanation,
+    FormulaSheetEntry, FormulationClause, GlossaryEntry, LearningObjective, MarkingMethod, Passage,
+    Provenance, RichText, SectionMisconception, SectionWorkedExample, Subject,
+    TheoryExaminerReport, TheorySubPart,
 };
 
 /// Stable body returned by HTTP error responses.
@@ -432,6 +434,81 @@ pub struct AppliedPenalty {
     pub penalty_type: String,
     pub deduction: u32,
     pub reason: String,
+}
+
+/// A book with the chapters it holds.
+#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
+pub struct BookWithChapters {
+    pub id: String,
+    pub title: String,
+    pub subject_area: String,
+    pub level: String,
+    pub edition: String,
+    pub description: String,
+    pub parts: Vec<BookPart>,
+    pub chapters: Vec<crate::store::chapters::ChapterSummary>,
+}
+
+/// Outline summary of a section within a chapter.
+#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
+pub struct SectionSummary {
+    pub id: String,
+    pub order: i64,
+    pub slug: String,
+    pub title: String,
+    pub est_minutes: i64,
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub learning_objectives: Vec<LearningObjective>,
+}
+
+/// The typed outline of a chapter: metadata, learning objectives, prerequisites, and section index.
+#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
+pub struct ChapterOutline {
+    pub id: String,
+    pub book_id: String,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub part_id: Option<String>,
+    pub order: i64,
+    pub title: String,
+    pub schema_version: u32,
+    pub updated_at: String,
+    pub learning_objectives: Vec<LearningObjective>,
+    pub prerequisites: Vec<String>,
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub formula_sheet: Vec<FormulaSheetEntry>,
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub glossary: Vec<GlossaryEntry>,
+    #[serde(alias = "sections")]
+    pub section_index: Vec<SectionSummary>,
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub sources: Vec<Provenance>,
+}
+
+/// Fully typed teaching section – the contract the UI will consume.
+#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
+pub struct SectionDetail {
+    pub schema_version: u32,
+    pub id: String,
+    pub chapter_id: String,
+    pub order: i64,
+    pub slug: String,
+    pub title: String,
+    pub est_minutes: i64,
+    pub learning_objectives: Vec<LearningObjective>,
+    pub content: Vec<ContentBlock>,
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub worked_examples: Vec<SectionWorkedExample>,
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub misconceptions: Vec<SectionMisconception>,
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub summary_points: Vec<RichText>,
+    #[serde(default)]
+    pub exercise_ids: Vec<String>,
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub exam_links: Vec<ExamLink>,
+    pub provenance: Provenance,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub no_worked_example_reason: Option<String>,
 }
 
 #[cfg(test)]

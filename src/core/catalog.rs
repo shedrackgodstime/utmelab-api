@@ -1,9 +1,12 @@
 //! Pure catalog logic. No axum, no database client: every function here
 //! is a total transformation of plain data, unit-testable with no runtime.
 
+use crate::error::AppError;
 use super::models::{
-    Question, RenderedNovelQuestion, RenderedQuestion, Subject, Syllabus, SyllabusSubtopic,
-    SyllabusSummary, SyllabusTopic, TableRef, TopicNote,
+    Chapter, ChapterExercise, ChapterOutline, ChapterSection, ContentBlock, ExamRecallCheck,
+    ExamTrap, ExampleTitle, Question, RenderedNovelQuestion, RenderedQuestion, SectionDetail,
+    SectionSummary, Subject, Syllabus, SyllabusSubtopic, SyllabusSummary, SyllabusTopic, TableCell,
+    TableRef, TopicNote,
 };
 use super::papers;
 
@@ -71,6 +74,375 @@ pub fn resolve_teaching_text(teaching: &mut serde_json::Value, media_base_url: &
             }
         }
     }
+}
+
+/// Strip the chapter prefix if the section id is namespaced as `chapter_id:local_id`.
+pub fn local_id<'a>(chapter_id: &str, id: &'a str) -> &'a str {
+    let prefix = format!("{chapter_id}:");
+    id.strip_prefix(&prefix).unwrap_or(id)
+}
+
+/// Convert a domain ChapterSection into a product-facing wire SectionDetail with validation.
+pub fn section_to_detail(
+    chapter_id: &str,
+    schema_version: u32,
+    sec: &ChapterSection,
+) -> Result<SectionDetail, AppError> {
+    let local = local_id(chapter_id, &sec.id);
+    let content = sec.teaching_text.clone().into_blocks();
+    let detail = SectionDetail {
+        schema_version,
+        id: local.to_string(),
+        chapter_id: chapter_id.to_string(),
+        order: sec.order,
+        slug: sec.slug.clone(),
+        title: sec.title.clone(),
+        est_minutes: sec.est_minutes,
+        learning_objectives: sec.learning_objectives.clone(),
+        content,
+        worked_examples: sec.worked_examples.clone(),
+        misconceptions: sec.misconceptions.clone(),
+        summary_points: sec.summary_points.clone(),
+        exercise_ids: sec.exercise_ids.clone(),
+        exam_links: sec.exam_links.clone(),
+        provenance: sec.provenance.clone(),
+        no_worked_example_reason: sec.no_worked_example_reason.clone(),
+    };
+    validate_section_detail(&detail)?;
+    Ok(detail)
+}
+
+/// Convert a domain Chapter into a product-facing wire ChapterOutline with validation.
+pub fn chapter_to_outline(chapter: &Chapter) -> Result<ChapterOutline, AppError> {
+    let section_index = chapter
+        .sections
+        .iter()
+        .map(|sec| SectionSummary {
+            id: local_id(&chapter.chapter_id, &sec.id).to_string(),
+            order: sec.order,
+            slug: sec.slug.clone(),
+            title: sec.title.clone(),
+            est_minutes: sec.est_minutes,
+            learning_objectives: sec.learning_objectives.clone(),
+        })
+        .collect();
+    let outline = ChapterOutline {
+        id: chapter.chapter_id.clone(),
+        book_id: chapter.book_id.clone(),
+        part_id: chapter.part_id.clone(),
+        order: chapter.order,
+        title: chapter.title.clone(),
+        schema_version: chapter.schema_version,
+        updated_at: chapter.updated_at.clone(),
+        learning_objectives: chapter.learning_objectives.clone(),
+        prerequisites: chapter.prerequisites.clone(),
+        formula_sheet: chapter.formula_sheet.clone(),
+        glossary: chapter.glossary.clone(),
+        section_index,
+        sources: chapter.sources.clone(),
+    };
+    validate_chapter_outline(&outline)?;
+    Ok(outline)
+}
+
+/// Validate a single content block according to the schema rules.
+pub fn validate_content_block(block: &ContentBlock) -> Result<(), AppError> {
+    match block {
+        ContentBlock::Paragraph { id, text } => {
+            if id.trim().is_empty() {
+                return Err(AppError::Internal("paragraph missing id".into()));
+            }
+            if text.text.trim().is_empty() {
+                return Err(AppError::Internal(format!("paragraph {id} has empty text")));
+            }
+        }
+        ContentBlock::Heading { id, text, .. } => {
+            if id.trim().is_empty() {
+                return Err(AppError::Internal("heading missing id".into()));
+            }
+            if text.text.trim().is_empty() {
+                return Err(AppError::Internal(format!("heading {id} has empty text")));
+            }
+        }
+        ContentBlock::Definition { id, term, definition } => {
+            if id.trim().is_empty() {
+                return Err(AppError::Internal("definition missing id".into()));
+            }
+            if term.text.trim().is_empty() || definition.text.trim().is_empty() {
+                return Err(AppError::Internal(format!("definition {id} has empty term or definition")));
+            }
+        }
+        ContentBlock::Rule { id, statement, .. } => {
+            if id.trim().is_empty() {
+                return Err(AppError::Internal("rule missing id".into()));
+            }
+            if statement.text.trim().is_empty() {
+                return Err(AppError::Internal(format!("rule {id} has empty statement")));
+            }
+        }
+        ContentBlock::Formula { id, expression, .. } => {
+            if id.trim().is_empty() {
+                return Err(AppError::Internal("formula missing id".into()));
+            }
+            if expression.trim().is_empty() {
+                return Err(AppError::Internal(format!("formula {id} has empty expression")));
+            }
+        }
+        ContentBlock::Example { id, prompt, .. } => {
+            if id.trim().is_empty() {
+                return Err(AppError::Internal("example missing id".into()));
+            }
+            if prompt.text.trim().is_empty() {
+                return Err(AppError::Internal(format!("example {id} has empty prompt")));
+            }
+        }
+        ContentBlock::Figure { id, asset_url, .. } => {
+            if id.trim().is_empty() {
+                return Err(AppError::Internal("figure missing id".into()));
+            }
+            if asset_url.trim().is_empty() {
+                return Err(AppError::Internal(format!("figure {id} has empty asset_url")));
+            }
+        }
+        ContentBlock::Table { id, rows, .. } => {
+            if id.trim().is_empty() {
+                return Err(AppError::Internal("table missing id".into()));
+            }
+            if rows.is_empty() {
+                return Err(AppError::Internal(format!("table {id} has no rows")));
+            }
+        }
+        ContentBlock::List { id, items, .. } => {
+            if id.trim().is_empty() {
+                return Err(AppError::Internal("list missing id".into()));
+            }
+            if items.is_empty() {
+                return Err(AppError::Internal(format!("list {id} has no items")));
+            }
+        }
+        ContentBlock::Callout { id, kind, text } => {
+            if id.trim().is_empty() {
+                return Err(AppError::Internal("callout missing id".into()));
+            }
+            if kind.trim().is_empty() || text.text.trim().is_empty() {
+                return Err(AppError::Internal(format!("callout {id} has empty kind or text")));
+            }
+        }
+        ContentBlock::Summary { id, points } => {
+            if id.trim().is_empty() {
+                return Err(AppError::Internal("summary missing id".into()));
+            }
+            if points.is_empty() {
+                return Err(AppError::Internal(format!("summary {id} has no points")));
+            }
+        }
+        ContentBlock::ExerciseRef { id, exercise_id, .. } => {
+            if id.trim().is_empty() {
+                return Err(AppError::Internal("exercise_ref missing id".into()));
+            }
+            if exercise_id.trim().is_empty() {
+                return Err(AppError::Internal(format!("exercise_ref {id} has empty exercise_id")));
+            }
+        }
+        ContentBlock::GlossaryEntry { id, term, definition } => {
+            if id.trim().is_empty() {
+                return Err(AppError::Internal("glossary_entry missing id".into()));
+            }
+            if term.text.trim().is_empty() || definition.text.trim().is_empty() {
+                return Err(AppError::Internal(format!("glossary_entry {id} has empty term or definition")));
+            }
+        }
+        ContentBlock::Image { id, url, .. } => {
+            if id.trim().is_empty() {
+                return Err(AppError::Internal("image missing id".into()));
+            }
+            if url.trim().is_empty() {
+                return Err(AppError::Internal(format!("image {id} has empty url")));
+            }
+        }
+        ContentBlock::Question { id, question, answer, .. } => {
+            if id.trim().is_empty() {
+                return Err(AppError::Internal("question missing id".into()));
+            }
+            if question.text.trim().is_empty() || answer.trim().is_empty() {
+                return Err(AppError::Internal(format!("question {id} has empty question or answer")));
+            }
+        }
+    }
+    Ok(())
+}
+
+/// Validate a SectionDetail before serving.
+pub fn validate_section_detail(detail: &SectionDetail) -> Result<(), AppError> {
+    if detail.id.trim().is_empty() {
+        return Err(AppError::Internal("section detail missing id".into()));
+    }
+    if detail.title.trim().is_empty() {
+        return Err(AppError::Internal("section detail missing title".into()));
+    }
+    if detail.est_minutes <= 0 {
+        return Err(AppError::Internal("section detail est_minutes not positive".into()));
+    }
+    for block in &detail.content {
+        validate_content_block(block)?;
+    }
+    Ok(())
+}
+
+/// Validate a ChapterOutline before serving.
+pub fn validate_chapter_outline(outline: &ChapterOutline) -> Result<(), AppError> {
+    if outline.id.trim().is_empty() {
+        return Err(AppError::Internal("chapter outline missing id".into()));
+    }
+    if outline.title.trim().is_empty() {
+        return Err(AppError::Internal("chapter outline missing title".into()));
+    }
+    Ok(())
+}
+
+/// Resolve all media in a SectionDetail.
+pub fn resolve_section_detail(section: &mut SectionDetail, media_base_url: &str) {
+    for block in &mut section.content {
+        resolve_content_block(block, media_base_url);
+    }
+    for worked in &mut section.worked_examples {
+        resolve_rich_text(&mut worked.statement, media_base_url);
+        resolve_rich_text(&mut worked.answer, media_base_url);
+    }
+    for misconception in &mut section.misconceptions {
+        resolve_rich_text(&mut misconception.claim, media_base_url);
+        resolve_rich_text(&mut misconception.correction, media_base_url);
+    }
+    for summary in &mut section.summary_points {
+        resolve_rich_text(summary, media_base_url);
+    }
+}
+
+/// Resolve media inside a ContentBlock.
+pub fn resolve_content_block(block: &mut ContentBlock, media_base_url: &str) {
+    match block {
+        ContentBlock::Paragraph { text, .. } => {
+            resolve_rich_text(text, media_base_url);
+        }
+        ContentBlock::Heading { text, .. } => {
+            resolve_rich_text(text, media_base_url);
+        }
+        ContentBlock::Definition { term, definition, .. } => {
+            resolve_rich_text(term, media_base_url);
+            resolve_rich_text(definition, media_base_url);
+        }
+        ContentBlock::Rule { statement, conditions, note, .. } => {
+            resolve_rich_text(statement, media_base_url);
+            if let Some(c) = conditions {
+                resolve_rich_text(c, media_base_url);
+            }
+            if let Some(n) = note {
+                resolve_rich_text(n, media_base_url);
+            }
+        }
+        ContentBlock::Formula { caption, conditions, .. } => {
+            if let Some(c) = caption {
+                resolve_rich_text(c, media_base_url);
+            }
+            if let Some(cond) = conditions {
+                resolve_rich_text(cond, media_base_url);
+            }
+        }
+        ContentBlock::Example { title, prompt, answer, .. } => {
+            if let Some(ExampleTitle::Rich(t)) = title {
+                resolve_rich_text(t, media_base_url);
+            }
+            resolve_rich_text(prompt, media_base_url);
+            if let Some(a) = answer {
+                resolve_rich_text(a, media_base_url);
+            }
+        }
+        ContentBlock::Figure { asset_url, caption, .. } => {
+            *asset_url = resolve_media_url(asset_url, media_base_url);
+            if let Some(c) = caption {
+                resolve_rich_text(c, media_base_url);
+            }
+        }
+        ContentBlock::Table { title, rows, .. } => {
+            if let Some(t) = title {
+                resolve_rich_text(t, media_base_url);
+            }
+            for row in rows {
+                for cell in row {
+                    if let TableCell::Rich(rt) = cell {
+                        resolve_rich_text(rt, media_base_url);
+                    }
+                }
+            }
+        }
+        ContentBlock::List { items, .. } => {
+            for item in items {
+                resolve_rich_text(item, media_base_url);
+            }
+        }
+        ContentBlock::Callout { text, .. } => {
+            resolve_rich_text(text, media_base_url);
+        }
+        ContentBlock::Summary { points, .. } => {
+            for point in points {
+                resolve_rich_text(point, media_base_url);
+            }
+        }
+        ContentBlock::ExerciseRef { prompt, .. } => {
+            if let Some(p) = prompt {
+                resolve_rich_text(p, media_base_url);
+            }
+        }
+        ContentBlock::GlossaryEntry { term, definition, .. } => {
+            resolve_rich_text(term, media_base_url);
+            resolve_rich_text(definition, media_base_url);
+        }
+        ContentBlock::Image { url, caption, .. } => {
+            *url = resolve_media_url(url, media_base_url);
+            if let Some(c) = caption {
+                resolve_rich_text(c, media_base_url);
+            }
+        }
+        ContentBlock::Question { question, .. } => {
+            resolve_rich_text(question, media_base_url);
+        }
+    }
+}
+
+/// Resolve all media in a ChapterOutline.
+pub fn resolve_chapter_outline(outline: &mut ChapterOutline, media_base_url: &str) {
+    for entry in &mut outline.formula_sheet {
+        resolve_rich_text(&mut entry.caption, media_base_url);
+        if let Some(cond) = &mut entry.conditions {
+            resolve_rich_text(cond, media_base_url);
+        }
+    }
+    for entry in &mut outline.glossary {
+        resolve_rich_text(&mut entry.term, media_base_url);
+        resolve_rich_text(&mut entry.definition, media_base_url);
+    }
+}
+
+/// Resolve all media in a ChapterExercise.
+pub fn resolve_exercise(exercise: &mut ChapterExercise, media_base_url: &str) {
+    resolve_rich_text(&mut exercise.stem, media_base_url);
+    resolve_rich_text(&mut exercise.answer, media_base_url);
+    for hint in &mut exercise.hints {
+        resolve_rich_text(&mut hint.text, media_base_url);
+    }
+}
+
+/// Resolve all media in an ExamTrap.
+pub fn resolve_trap(trap: &mut ExamTrap, media_base_url: &str) {
+    resolve_rich_text(&mut trap.misconception, media_base_url);
+    resolve_rich_text(&mut trap.correction, media_base_url);
+    resolve_rich_text(&mut trap.signal, media_base_url);
+}
+
+/// Resolve all media in an ExamRecallCheck.
+pub fn resolve_recall_check(check: &mut ExamRecallCheck, media_base_url: &str) {
+    resolve_rich_text(&mut check.stem, media_base_url);
+    resolve_rich_text(&mut check.explanation, media_base_url);
 }
 
 /// Resolve every rich-text field a note carries. Notes are served from the

@@ -276,20 +276,48 @@ fn import_chapters_cmd(path_str: String) -> i32 {
             eprintln!("ensure schema failed: {e}");
             return 1;
         }
-        match store::chapters::import_bundle(&st, &bundle).await {
-            Ok(count) => {
-                println!(
-                    "imported {count} chapters and {} books from {path_str}",
-                    bundle.books.len()
-                );
-                let _ = store::sync::push_db(&db, &cfg).await;
-                0
-            }
-            Err(e) => {
-                eprintln!("import chapters failed: {e}");
-                1
-            }
+        let book_count = bundle.books.len();
+        let chapter_count = bundle.chapters.len();
+        let store::chapters::ChapterBundle { books, chapters } = bundle;
+
+        // A book is one write; the chapters are many. Push after each chapter
+        // so the pending-write budget never fills on a full textbook.
+        if let Err(e) = store::chapters::import_bundle(
+            &st,
+            &store::chapters::ChapterBundle {
+                books,
+                chapters: Vec::new(),
+            },
+        )
+        .await
+        {
+            eprintln!("import books failed: {e}");
+            return 1;
         }
+        if let Err(e) = store::sync::push_db(&db, &cfg).await {
+            eprintln!("push after books failed: {e}");
+            return 1;
+        }
+
+        let mut imported = 0;
+        for chapter in chapters {
+            let chunk = store::chapters::ChapterBundle {
+                books: Vec::new(),
+                chapters: vec![chapter],
+            };
+            if let Err(e) = store::chapters::import_bundle(&st, &chunk).await {
+                eprintln!("import chapter {imported} failed: {e}");
+                return 1;
+            }
+            if let Err(e) = store::sync::push_db(&db, &cfg).await {
+                eprintln!("push after chapter {imported} failed: {e}");
+                return 1;
+            }
+            imported += 1;
+        }
+        println!("imported {imported} chapters and {book_count} books from {path_str}");
+        debug_assert_eq!(imported, chapter_count);
+        0
     })
 }
 

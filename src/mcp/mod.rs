@@ -367,7 +367,7 @@ mod tests {
                 .as_array()
                 .expect("templates")
                 .len(),
-            21
+            22
         );
     }
 
