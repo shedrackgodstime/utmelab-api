@@ -1091,4 +1091,74 @@ mod tests {
             .expect("traps");
         assert!(waec.is_empty());
     }
+
+    #[test]
+    fn real_bank_chapters_bundle_parses_and_validates_cleanly() {
+        let bundle_path =
+            std::path::Path::new("/home/kristency/Projects/utmelab-bank/data/staging/chapters-bundle.json");
+        if !bundle_path.exists() {
+            return;
+        }
+        let data = std::fs::read_to_string(bundle_path).expect("read chapters bundle");
+        let bundle: ChapterBundle = match serde_json::from_str(&data) {
+            Ok(b) => b,
+            Err(e) => {
+                panic!("failed to deserialize bank bundle: {e}");
+            }
+        };
+        assert!(
+            bundle.chapters.len() >= 30,
+            "expected at least 30 chapters from real bank, got {}",
+            bundle.chapters.len()
+        );
+        assert!(
+            !bundle.books.is_empty(),
+            "expected at least 1 book from real bank"
+        );
+
+        let mut total_sections = 0;
+        let mut total_blocks = 0;
+        for chapter in &bundle.chapters {
+            let outline = crate::core::catalog::chapter_to_outline(chapter)
+                .unwrap_or_else(|e| panic!("invalid outline conversion for {}: {e}", chapter.chapter_id));
+            crate::core::catalog::validate_chapter_outline(&outline)
+                .unwrap_or_else(|e| panic!("invalid outline for chapter {}: {e}", chapter.chapter_id));
+
+            for section in &chapter.sections {
+                total_sections += 1;
+                for block in section.teaching_text.blocks() {
+                    total_blocks += 1;
+                    crate::core::catalog::validate_content_block(block).unwrap_or_else(|e| {
+                        panic!(
+                            "invalid content block in chapter {} section {}: {e}",
+                            chapter.chapter_id, section.id
+                        )
+                    });
+                }
+                let detail = crate::core::catalog::section_to_detail(
+                    &chapter.chapter_id,
+                    chapter.schema_version,
+                    section,
+                )
+                .unwrap_or_else(|e| {
+                    panic!(
+                        "invalid detail conversion for {}/{}: {e}",
+                        chapter.chapter_id, section.id
+                    )
+                });
+                crate::core::catalog::validate_section_detail(&detail).unwrap_or_else(|e| {
+                    panic!(
+                        "invalid section detail in chapter {} section {}: {e}",
+                        chapter.chapter_id, section.id
+                    )
+                });
+            }
+        }
+        println!(
+            "Validated {} bank chapters, {} sections, {} content blocks cleanly!",
+            bundle.chapters.len(),
+            total_sections,
+            total_blocks
+        );
+    }
 }

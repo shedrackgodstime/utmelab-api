@@ -416,6 +416,7 @@ pub struct Chapter {
 /// A gathered formula in a chapter formula sheet.
 #[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
 pub struct FormulaSheetEntry {
+    #[serde(default)]
     pub id: String,
     pub expression: String,
     pub caption: RichText,
@@ -428,7 +429,8 @@ pub struct FormulaSheetEntry {
 /// A glossary term introduced in a chapter.
 #[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
 pub struct GlossaryEntry {
-    pub id: String,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub id: Option<String>,
     pub term: RichText,
     pub definition: RichText,
     #[serde(default, skip_serializing_if = "Option::is_none")]

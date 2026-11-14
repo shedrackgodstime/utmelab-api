@@ -5507,7 +5507,6 @@
         "type": "object",
         "description": "A gathered formula in a chapter formula sheet.",
         "required": [
-          "id",
           "expression",
           "caption"
         ],
@@ -5585,7 +5584,6 @@
         "type": "object",
         "description": "A glossary term introduced in a chapter.",
         "required": [
-          "id",
           "term",
           "definition"
         ],
@@ -5594,7 +5592,10 @@
             "$ref": "#/components/schemas/RichText"
           },
           "id": {
-            "type": "string"
+            "type": [
+              "string",
+              "null"
+            ]
           },
           "provenance": {
             "oneOf": [

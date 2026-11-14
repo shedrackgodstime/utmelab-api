@@ -528,7 +528,7 @@ mod tests {
                 }),
             }],
             glossary: vec![GlossaryEntry {
-                id: "g-1".into(),
+                id: Some("g-1".into()),
                 term: RichText {
                     text: "force".into(),
                     inline: vec![],
@@ -1014,5 +1014,77 @@ mod tests {
         assert_eq!(checks[0]["exam"], "JAMB");
         assert_eq!(checks[0]["stem"]["text"], "The SI unit of force is");
         assert_eq!(checks[0]["answer"], "a");
+    }
+
+    #[tokio::test]
+    async fn real_bank_chapter_end_to_end_http_query() {
+        let chapter_path = std::path::Path::new(
+            "/home/kristency/Projects/utmelab-bank/data/chapters/phy_forces_and_newtons_laws.json",
+        );
+        if !chapter_path.exists() {
+            return;
+        }
+        let chapter_data = std::fs::read_to_string(chapter_path).expect("read chapter");
+        let chapter: crate::core::models::Chapter =
+            serde_json::from_str(&chapter_data).expect("deserialize bank chapter");
+
+        let db = replica().await;
+        {
+            let conn = connect(&db).await;
+            api_schema(&conn).await;
+            issue_key(&conn, "textbook.key", "commercial", "read:catalog", false).await;
+        }
+        let st = crate::state::DbState::detached(db.clone());
+        let bundle = store::chapters::ChapterBundle {
+            books: vec![sample_book()],
+            chapters: vec![chapter],
+        };
+        store::chapters::import_bundle(&st, &bundle)
+            .await
+            .expect("import real bank chapter");
+
+        let app = crate::routes::router(state(db), &crate::config::Config::default());
+
+        // 1. Get Chapter Outline
+        let (status, body) = call(
+            app.clone(),
+            "GET",
+            "/api/v1/chapters/phy_forces_and_newtons_laws",
+            Some("textbook.key"),
+            None,
+        )
+        .await;
+        assert_eq!(status, StatusCode::OK);
+        assert_eq!(body["id"], "phy_forces_and_newtons_laws");
+        let sections = body["section_index"].as_array().expect("sections");
+        assert!(!sections.is_empty(), "expected sections in chapter outline");
+        let first_sec_id = sections[0]["id"].as_str().expect("first section id");
+
+        // 2. Get Section Detail using local section ID
+        let (status, sec_body) = call(
+            app.clone(),
+            "GET",
+            &format!("/api/v1/chapters/phy_forces_and_newtons_laws/sections/{first_sec_id}"),
+            Some("textbook.key"),
+            None,
+        )
+        .await;
+        assert_eq!(status, StatusCode::OK);
+        assert_eq!(sec_body["id"], first_sec_id);
+        let blocks = sec_body["content"].as_array().expect("content blocks");
+        assert!(!blocks.is_empty(), "expected content blocks in section");
+
+        // 3. List Exercises for this chapter
+        let (status, ex_body) = call(
+            app.clone(),
+            "GET",
+            "/api/v1/chapters/phy_forces_and_newtons_laws/exercises",
+            Some("textbook.key"),
+            None,
+        )
+        .await;
+        assert_eq!(status, StatusCode::OK);
+        let exercises = ex_body.as_array().expect("exercises");
+        assert!(!exercises.is_empty(), "expected exercises in chapter");
     }
 }
