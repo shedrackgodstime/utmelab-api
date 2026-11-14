@@ -125,6 +125,23 @@ async fn import_chapter(s: &DbState, chapter: &Chapter) -> Result<(), AppError> 
     )
     .await?;
 
+    // The bundle is the source of truth for a chapter's children. An import
+    // replaces the chapter wholesale: a renumbered exercise set or a demoted
+    // trap must not survive as a leftover from an earlier build.
+    for table in [
+        "chapter_sections",
+        "chapter_exercises",
+        "exam_traps",
+        "exam_recall_checks",
+    ] {
+        execute_write_local(
+            s,
+            &format!("DELETE FROM {table} WHERE chapter_id = ?1"),
+            vec![turso::Value::Text(chapter.chapter_id.clone())],
+        )
+        .await?;
+    }
+
     for section in &chapter.sections {
         import_section(s, &chapter.chapter_id, section).await?;
     }
@@ -795,7 +812,7 @@ pub async fn list_recall_checks(
 
 #[cfg(test)]
 mod tests {
-    use super::ChapterBundle;
+    use super::{import_bundle, list_exercises, ChapterBundle};
     use crate::{
         core::models::{
             Book, BookPart, Chapter, ChapterExercise, ChapterSection, ContentBlock, ExamTrap,
@@ -1161,6 +1178,97 @@ mod tests {
             bundle.chapters.len(),
             total_sections,
             total_blocks
+        );
+    }
+
+    #[tokio::test]
+    async fn importing_a_chapter_replaces_its_leftover_children() {
+        let db = replica().await;
+        {
+            let conn = connect(&db).await;
+            api_schema(&conn).await;
+        }
+        let st = crate::state::DbState::detached(db.clone());
+        import_bundle(
+            &st,
+            &ChapterBundle {
+                books: vec![a_book()],
+                chapters: vec![a_chapter()],
+            },
+        )
+        .await
+        .expect("first import");
+
+        // A later build of the same chapter ships fewer exercises and no
+        // traps. The import must replace the children, not merge into them.
+        let mut rebuilt = a_chapter();
+        rebuilt.updated_at = "2026-11-14".into();
+        rebuilt.sections[0].teaching_text = TeachingTextContainer::Wrapped {
+            blocks: vec![ContentBlock::Paragraph {
+                id: "p-1".into(),
+                text: RichText {
+                    text: "Rewritten introduction".into(),
+                    inline: vec![],
+                },
+            }],
+        };
+        rebuilt.sections[0].worked_examples = vec![];
+        rebuilt.exercises = vec![];
+        rebuilt.exam_traps = vec![];
+        rebuilt.exam_recall_checks = vec![];
+        import_bundle(
+            &st,
+            &ChapterBundle {
+                books: vec![a_book()],
+                chapters: vec![rebuilt.clone()],
+            },
+        )
+        .await
+        .expect("replacement import");
+
+        let exercises = list_exercises(&st, &rebuilt.chapter_id, None, None)
+            .await
+            .expect("list exercises after replacement");
+        assert!(
+            exercises.is_empty(),
+            "leftover exercises survived the replacement import: {:?}",
+            exercises.iter().map(|e| e.id.clone()).collect::<Vec<_>>()
+        );
+
+        let trap_rows = crate::store::catalog::rows(
+            &st,
+            "SELECT COUNT(*) FROM exam_traps WHERE chapter_id = ?1",
+            vec![turso::Value::Text(rebuilt.chapter_id.clone())],
+        )
+        .await
+        .expect("count traps");
+        let count: i64 = trap_rows[0].get(0).expect("count traps");
+        assert_eq!(count, 0, "leftover traps survived the replacement import");
+
+        let check_rows = crate::store::catalog::rows(
+            &st,
+            "SELECT COUNT(*) FROM exam_recall_checks WHERE chapter_id = ?1",
+            vec![turso::Value::Text(rebuilt.chapter_id.clone())],
+        )
+        .await
+        .expect("count recall checks");
+        let count: i64 = check_rows[0].get(0).expect("count recall checks");
+        assert_eq!(
+            count, 0,
+            "leftover recall checks survived the replacement import"
+        );
+
+        let sections = crate::store::catalog::rows(
+            &st,
+            "SELECT COUNT(*) FROM chapter_sections WHERE chapter_id = ?1",
+            vec![turso::Value::Text(rebuilt.chapter_id.clone())],
+        )
+        .await
+        .expect("count sections");
+        let count: i64 = sections[0].get(0).expect("count sections");
+        assert_eq!(
+            count, 1,
+            "the replacement import must keep exactly the new sections"
         );
     }
 }
