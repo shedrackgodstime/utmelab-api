@@ -746,7 +746,8 @@ mod tests {
 
     #[test]
     fn paragraph_normalizes_content_alias_to_text() {
-        let json = r#"{"id":"b-p","type":"paragraph","content":{"text":"Prose content","inline":[]}}"#;
+        let json =
+            r#"{"id":"b-p","type":"paragraph","content":{"text":"Prose content","inline":[]}}"#;
         let block: ContentBlock = serde_json::from_str(json).expect("parse alias");
         match block {
             ContentBlock::Paragraph { id, text } => {
@@ -959,7 +960,10 @@ mod tests {
         assert_eq!(exercises[0]["options"][0]["id"], "a");
         assert_eq!(exercises[0]["options"][0]["text"], "10 N");
         assert_eq!(exercises[0]["answer"]["text"], "10 N");
-        assert_eq!(exercises[0]["solution"][0]["expression"], "F = 5 * 2 = 10 N");
+        assert_eq!(
+            exercises[0]["solution"][0]["expression"],
+            "F = 5 * 2 = 10 N"
+        );
 
         let (narrowed_status, narrowed_body) = call(
             app,

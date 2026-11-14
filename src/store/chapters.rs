@@ -798,9 +798,8 @@ mod tests {
     use super::ChapterBundle;
     use crate::{
         core::models::{
-            Book, BookPart, Chapter, ChapterExercise, ChapterSection, ContentBlock,
-            ExamTrap, ExerciseSolutionStep, PaperEvidence, Provenance, RichText,
-            TeachingTextContainer,
+            Book, BookPart, Chapter, ChapterExercise, ChapterSection, ContentBlock, ExamTrap,
+            ExerciseSolutionStep, PaperEvidence, Provenance, RichText, TeachingTextContainer,
         },
         testing::{api_schema, connect, replica},
     };
@@ -1094,8 +1093,9 @@ mod tests {
 
     #[test]
     fn real_bank_chapters_bundle_parses_and_validates_cleanly() {
-        let bundle_path =
-            std::path::Path::new("/home/kristency/Projects/utmelab-bank/data/staging/chapters-bundle.json");
+        let bundle_path = std::path::Path::new(
+            "/home/kristency/Projects/utmelab-bank/data/staging/chapters-bundle.json",
+        );
         if !bundle_path.exists() {
             return;
         }
@@ -1119,10 +1119,12 @@ mod tests {
         let mut total_sections = 0;
         let mut total_blocks = 0;
         for chapter in &bundle.chapters {
-            let outline = crate::core::catalog::chapter_to_outline(chapter)
-                .unwrap_or_else(|e| panic!("invalid outline conversion for {}: {e}", chapter.chapter_id));
-            crate::core::catalog::validate_chapter_outline(&outline)
-                .unwrap_or_else(|e| panic!("invalid outline for chapter {}: {e}", chapter.chapter_id));
+            let outline = crate::core::catalog::chapter_to_outline(chapter).unwrap_or_else(|e| {
+                panic!("invalid outline conversion for {}: {e}", chapter.chapter_id)
+            });
+            crate::core::catalog::validate_chapter_outline(&outline).unwrap_or_else(|e| {
+                panic!("invalid outline for chapter {}: {e}", chapter.chapter_id)
+            });
 
             for section in &chapter.sections {
                 total_sections += 1;

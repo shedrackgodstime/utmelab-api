@@ -8,7 +8,9 @@
 
 /// Plain text plus offset marks. `text` stays searchable as characters;
 /// structure rides in `inline` as Unicode-scalar offsets, never bytes.
-#[derive(Clone, Debug, Default, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
+#[derive(
+    Clone, Debug, Default, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema,
+)]
 pub struct RichText {
     pub text: String,
     pub inline: Vec<Inline>,
@@ -357,7 +359,9 @@ pub struct Book {
 }
 
 /// Provenance metadata indicating where content originated.
-#[derive(Clone, Debug, Default, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
+#[derive(
+    Clone, Debug, Default, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema,
+)]
 pub struct Provenance {
     #[serde(default)]
     pub publisher: String,
@@ -755,7 +759,9 @@ pub struct ExamPaper {
 }
 
 /// Evidence from past papers backing an examiner trap.
-#[derive(Clone, Debug, Default, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
+#[derive(
+    Clone, Debug, Default, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema,
+)]
 pub struct PaperEvidence {
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub question_id: Option<String>,

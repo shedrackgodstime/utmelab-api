@@ -1,7 +1,6 @@
 //! Pure catalog logic. No axum, no database client: every function here
 //! is a total transformation of plain data, unit-testable with no runtime.
 
-use crate::error::AppError;
 use super::models::{
     Chapter, ChapterExercise, ChapterOutline, ChapterSection, ContentBlock, ExamRecallCheck,
     ExamTrap, ExampleTitle, Question, RenderedNovelQuestion, RenderedQuestion, SectionDetail,
@@ -9,6 +8,7 @@ use super::models::{
     TableRef, TopicNote,
 };
 use super::papers;
+use crate::error::AppError;
 
 /// Compose a complete URL for a stored figure filename. If the reference is
 /// already an absolute URL (https://, http://, data:, or //), it is returned
@@ -164,12 +164,18 @@ pub fn validate_content_block(block: &ContentBlock) -> Result<(), AppError> {
                 return Err(AppError::Internal(format!("heading {id} has empty text")));
             }
         }
-        ContentBlock::Definition { id, term, definition } => {
+        ContentBlock::Definition {
+            id,
+            term,
+            definition,
+        } => {
             if id.trim().is_empty() {
                 return Err(AppError::Internal("definition missing id".into()));
             }
             if term.text.trim().is_empty() || definition.text.trim().is_empty() {
-                return Err(AppError::Internal(format!("definition {id} has empty term or definition")));
+                return Err(AppError::Internal(format!(
+                    "definition {id} has empty term or definition"
+                )));
             }
         }
         ContentBlock::Rule { id, statement, .. } => {
@@ -185,7 +191,9 @@ pub fn validate_content_block(block: &ContentBlock) -> Result<(), AppError> {
                 return Err(AppError::Internal("formula missing id".into()));
             }
             if expression.trim().is_empty() {
-                return Err(AppError::Internal(format!("formula {id} has empty expression")));
+                return Err(AppError::Internal(format!(
+                    "formula {id} has empty expression"
+                )));
             }
         }
         ContentBlock::Example { id, prompt, .. } => {
@@ -201,7 +209,9 @@ pub fn validate_content_block(block: &ContentBlock) -> Result<(), AppError> {
                 return Err(AppError::Internal("figure missing id".into()));
             }
             if asset_url.trim().is_empty() {
-                return Err(AppError::Internal(format!("figure {id} has empty asset_url")));
+                return Err(AppError::Internal(format!(
+                    "figure {id} has empty asset_url"
+                )));
             }
         }
         ContentBlock::Table { id, rows, .. } => {
@@ -225,7 +235,9 @@ pub fn validate_content_block(block: &ContentBlock) -> Result<(), AppError> {
                 return Err(AppError::Internal("callout missing id".into()));
             }
             if kind.trim().is_empty() || text.text.trim().is_empty() {
-                return Err(AppError::Internal(format!("callout {id} has empty kind or text")));
+                return Err(AppError::Internal(format!(
+                    "callout {id} has empty kind or text"
+                )));
             }
         }
         ContentBlock::Summary { id, points } => {
@@ -236,20 +248,30 @@ pub fn validate_content_block(block: &ContentBlock) -> Result<(), AppError> {
                 return Err(AppError::Internal(format!("summary {id} has no points")));
             }
         }
-        ContentBlock::ExerciseRef { id, exercise_id, .. } => {
+        ContentBlock::ExerciseRef {
+            id, exercise_id, ..
+        } => {
             if id.trim().is_empty() {
                 return Err(AppError::Internal("exercise_ref missing id".into()));
             }
             if exercise_id.trim().is_empty() {
-                return Err(AppError::Internal(format!("exercise_ref {id} has empty exercise_id")));
+                return Err(AppError::Internal(format!(
+                    "exercise_ref {id} has empty exercise_id"
+                )));
             }
         }
-        ContentBlock::GlossaryEntry { id, term, definition } => {
+        ContentBlock::GlossaryEntry {
+            id,
+            term,
+            definition,
+        } => {
             if id.trim().is_empty() {
                 return Err(AppError::Internal("glossary_entry missing id".into()));
             }
             if term.text.trim().is_empty() || definition.text.trim().is_empty() {
-                return Err(AppError::Internal(format!("glossary_entry {id} has empty term or definition")));
+                return Err(AppError::Internal(format!(
+                    "glossary_entry {id} has empty term or definition"
+                )));
             }
         }
         ContentBlock::Image { id, url, .. } => {
@@ -260,12 +282,19 @@ pub fn validate_content_block(block: &ContentBlock) -> Result<(), AppError> {
                 return Err(AppError::Internal(format!("image {id} has empty url")));
             }
         }
-        ContentBlock::Question { id, question, answer, .. } => {
+        ContentBlock::Question {
+            id,
+            question,
+            answer,
+            ..
+        } => {
             if id.trim().is_empty() {
                 return Err(AppError::Internal("question missing id".into()));
             }
             if question.text.trim().is_empty() || answer.trim().is_empty() {
-                return Err(AppError::Internal(format!("question {id} has empty question or answer")));
+                return Err(AppError::Internal(format!(
+                    "question {id} has empty question or answer"
+                )));
             }
         }
     }
@@ -281,7 +310,9 @@ pub fn validate_section_detail(detail: &SectionDetail) -> Result<(), AppError> {
         return Err(AppError::Internal("section detail missing title".into()));
     }
     if detail.est_minutes <= 0 {
-        return Err(AppError::Internal("section detail est_minutes not positive".into()));
+        return Err(AppError::Internal(
+            "section detail est_minutes not positive".into(),
+        ));
     }
     for block in &detail.content {
         validate_content_block(block)?;
@@ -327,11 +358,18 @@ pub fn resolve_content_block(block: &mut ContentBlock, media_base_url: &str) {
         ContentBlock::Heading { text, .. } => {
             resolve_rich_text(text, media_base_url);
         }
-        ContentBlock::Definition { term, definition, .. } => {
+        ContentBlock::Definition {
+            term, definition, ..
+        } => {
             resolve_rich_text(term, media_base_url);
             resolve_rich_text(definition, media_base_url);
         }
-        ContentBlock::Rule { statement, conditions, note, .. } => {
+        ContentBlock::Rule {
+            statement,
+            conditions,
+            note,
+            ..
+        } => {
             resolve_rich_text(statement, media_base_url);
             if let Some(c) = conditions {
                 resolve_rich_text(c, media_base_url);
@@ -340,7 +378,11 @@ pub fn resolve_content_block(block: &mut ContentBlock, media_base_url: &str) {
                 resolve_rich_text(n, media_base_url);
             }
         }
-        ContentBlock::Formula { caption, conditions, .. } => {
+        ContentBlock::Formula {
+            caption,
+            conditions,
+            ..
+        } => {
             if let Some(c) = caption {
                 resolve_rich_text(c, media_base_url);
             }
@@ -348,7 +390,12 @@ pub fn resolve_content_block(block: &mut ContentBlock, media_base_url: &str) {
                 resolve_rich_text(cond, media_base_url);
             }
         }
-        ContentBlock::Example { title, prompt, answer, .. } => {
+        ContentBlock::Example {
+            title,
+            prompt,
+            answer,
+            ..
+        } => {
             if let Some(ExampleTitle::Rich(t)) = title {
                 resolve_rich_text(t, media_base_url);
             }
@@ -357,7 +404,9 @@ pub fn resolve_content_block(block: &mut ContentBlock, media_base_url: &str) {
                 resolve_rich_text(a, media_base_url);
             }
         }
-        ContentBlock::Figure { asset_url, caption, .. } => {
+        ContentBlock::Figure {
+            asset_url, caption, ..
+        } => {
             *asset_url = resolve_media_url(asset_url, media_base_url);
             if let Some(c) = caption {
                 resolve_rich_text(c, media_base_url);
@@ -393,7 +442,9 @@ pub fn resolve_content_block(block: &mut ContentBlock, media_base_url: &str) {
                 resolve_rich_text(p, media_base_url);
             }
         }
-        ContentBlock::GlossaryEntry { term, definition, .. } => {
+        ContentBlock::GlossaryEntry {
+            term, definition, ..
+        } => {
             resolve_rich_text(term, media_base_url);
             resolve_rich_text(definition, media_base_url);
         }
