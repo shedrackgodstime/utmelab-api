@@ -472,27 +472,42 @@ pub async fn get_chapter(s: &DbState, chapter_id: &str) -> Result<Option<Chapter
     )
     .await?;
 
+    // Section ids are text (`sec-1`, `sec-10`), so ordering by them puts the
+    // tenth section after the first and before the second. Reading order lives
+    // in `chapter_sections.order_index`, so every child list joins to it.
     let exercise_rows = super::catalog::rows(
         s,
-        "SELECT id, section_id, tier, kind, difficulty, marks, stem, options, answer, answer_kind, \
-         solution, hints, tags, provenance, solution_provenance, answer_note \
-         FROM chapter_exercises WHERE chapter_id = ?1 ORDER BY section_id, id",
+        "SELECT e.id, e.section_id, e.tier, e.kind, e.difficulty, e.marks, e.stem, e.options, \
+         e.answer, e.answer_kind, e.solution, e.hints, e.tags, e.provenance, \
+         e.solution_provenance, e.answer_note \
+         FROM chapter_exercises e LEFT JOIN chapter_sections s \
+         ON s.chapter_id = e.chapter_id AND s.id = e.section_id \
+         WHERE e.chapter_id = ?1 \
+         ORDER BY COALESCE(s.order_index, 2147483647), e.section_id, e.id",
         vec![turso::Value::Text(chapter_id.clone())],
     )
     .await?;
 
     let trap_rows = super::catalog::rows(
         s,
-        "SELECT id, exam, subject, section_id, misconception, correction, signal, status, \
-         paper_evidence, frequency, provenance FROM exam_traps WHERE chapter_id = ?1 ORDER BY id",
+        "SELECT t.id, t.exam, t.subject, t.section_id, t.misconception, t.correction, t.signal, \
+         t.status, t.paper_evidence, t.frequency, t.provenance \
+         FROM exam_traps t LEFT JOIN chapter_sections s \
+         ON s.chapter_id = t.chapter_id AND s.id = t.section_id \
+         WHERE t.chapter_id = ?1 \
+         ORDER BY COALESCE(s.order_index, 2147483647), t.section_id, t.id",
         vec![turso::Value::Text(chapter_id.clone())],
     )
     .await?;
 
     let check_rows = super::catalog::rows(
         s,
-        "SELECT id, exam, subject, section_id, stem, options, answer, explanation, difficulty, source \
-         FROM exam_recall_checks WHERE chapter_id = ?1 ORDER BY id",
+        "SELECT c.id, c.exam, c.subject, c.section_id, c.stem, c.options, c.answer, c.explanation, \
+         c.difficulty, c.source \
+         FROM exam_recall_checks c LEFT JOIN chapter_sections s \
+         ON s.chapter_id = c.chapter_id AND s.id = c.section_id \
+         WHERE c.chapter_id = ?1 \
+         ORDER BY COALESCE(s.order_index, 2147483647), c.section_id, c.id",
         vec![turso::Value::Text(chapter_id.clone())],
     )
     .await?;
@@ -741,20 +756,23 @@ pub async fn list_exercises(
     tier: Option<&str>,
 ) -> Result<Vec<ChapterExercise>, AppError> {
     let mut sql = String::from(
-        "SELECT id, section_id, tier, kind, difficulty, marks, stem, options, answer, answer_kind, \
-         solution, hints, tags, provenance, solution_provenance, answer_note \
-         FROM chapter_exercises WHERE chapter_id = ?1",
+        "SELECT e.id, e.section_id, e.tier, e.kind, e.difficulty, e.marks, e.stem, e.options, \
+         e.answer, e.answer_kind, e.solution, e.hints, e.tags, e.provenance, \
+         e.solution_provenance, e.answer_note \
+         FROM chapter_exercises e LEFT JOIN chapter_sections s \
+         ON s.chapter_id = e.chapter_id AND s.id = e.section_id \
+         WHERE e.chapter_id = ?1",
     );
     let mut args = vec![turso::Value::Text(chapter_id.to_string())];
     if let Some(section) = section_id {
-        sql.push_str(&format!(" AND section_id = ?{}", args.len() + 1));
+        sql.push_str(&format!(" AND e.section_id = ?{}", args.len() + 1));
         args.push(turso::Value::Text(section.to_string()));
     }
     if let Some(tier) = tier {
-        sql.push_str(&format!(" AND tier = ?{}", args.len() + 1));
+        sql.push_str(&format!(" AND e.tier = ?{}", args.len() + 1));
         args.push(turso::Value::Text(tier.to_string()));
     }
-    sql.push_str(" ORDER BY section_id, id");
+    sql.push_str(" ORDER BY COALESCE(s.order_index, 2147483647), e.section_id, e.id");
 
     let rows = super::catalog::rows(s, &sql, args).await?;
     rows.iter().map(map_exercise).collect()
@@ -767,19 +785,21 @@ pub async fn list_traps(
     section_id: Option<&str>,
 ) -> Result<Vec<ExamTrap>, AppError> {
     let mut sql = String::from(
-        "SELECT id, exam, subject, section_id, misconception, correction, signal, status, \
-         paper_evidence, frequency, provenance FROM exam_traps WHERE 1 = 1",
+        "SELECT t.id, t.exam, t.subject, t.section_id, t.misconception, t.correction, t.signal, \
+         t.status, t.paper_evidence, t.frequency, t.provenance \
+         FROM exam_traps t LEFT JOIN chapter_sections s \
+         ON s.chapter_id = t.chapter_id AND s.id = t.section_id WHERE 1 = 1",
     );
     let mut args = Vec::new();
     if let Some(exam) = exam {
-        sql.push_str(&format!(" AND exam = ?{}", args.len() + 1));
+        sql.push_str(&format!(" AND t.exam = ?{}", args.len() + 1));
         args.push(turso::Value::Text(exam.to_string()));
     }
     if let Some(section) = section_id {
-        sql.push_str(&format!(" AND section_id = ?{}", args.len() + 1));
+        sql.push_str(&format!(" AND t.section_id = ?{}", args.len() + 1));
         args.push(turso::Value::Text(section.to_string()));
     }
-    sql.push_str(" ORDER BY exam, section_id, id");
+    sql.push_str(" ORDER BY t.exam, COALESCE(s.order_index, 2147483647), t.section_id, t.id");
 
     let rows = super::catalog::rows(s, &sql, args).await?;
     rows.iter().map(map_trap).collect()
@@ -792,19 +812,21 @@ pub async fn list_recall_checks(
     section_id: Option<&str>,
 ) -> Result<Vec<ExamRecallCheck>, AppError> {
     let mut sql = String::from(
-        "SELECT id, exam, subject, section_id, stem, options, answer, explanation, difficulty, source \
-         FROM exam_recall_checks WHERE 1 = 1",
+        "SELECT c.id, c.exam, c.subject, c.section_id, c.stem, c.options, c.answer, c.explanation, \
+         c.difficulty, c.source \
+         FROM exam_recall_checks c LEFT JOIN chapter_sections s \
+         ON s.chapter_id = c.chapter_id AND s.id = c.section_id WHERE 1 = 1",
     );
     let mut args = Vec::new();
     if let Some(exam) = exam {
-        sql.push_str(&format!(" AND exam = ?{}", args.len() + 1));
+        sql.push_str(&format!(" AND c.exam = ?{}", args.len() + 1));
         args.push(turso::Value::Text(exam.to_string()));
     }
     if let Some(section) = section_id {
-        sql.push_str(&format!(" AND section_id = ?{}", args.len() + 1));
+        sql.push_str(&format!(" AND c.section_id = ?{}", args.len() + 1));
         args.push(turso::Value::Text(section.to_string()));
     }
-    sql.push_str(" ORDER BY exam, section_id, id");
+    sql.push_str(" ORDER BY c.exam, COALESCE(s.order_index, 2147483647), c.section_id, c.id");
 
     let rows = super::catalog::rows(s, &sql, args).await?;
     rows.iter().map(map_check).collect()
@@ -1085,6 +1107,49 @@ mod tests {
                 .await
                 .expect("exercises");
         assert!(other_tier.is_empty());
+    }
+
+    #[tokio::test]
+    async fn exercises_follow_section_reading_order_past_ten_sections() {
+        // Section ids are text, so `sec-10` sorts before `sec-2`. Reading order
+        // has to come from `order_index`, or the tenth section's exercises
+        // appear second.
+        let state = state().await;
+        let mut chapter = a_chapter();
+        let template_section = chapter.sections[0].clone();
+        let template_exercise = chapter.exercises[0].clone();
+        chapter.sections = (1..=12)
+            .map(|n| {
+                let mut section = template_section.clone();
+                section.id = format!("sec-{n}");
+                section.order = n;
+                section.slug = format!("part-{n}");
+                section.title = format!("Part {n}");
+                section
+            })
+            .collect();
+        chapter.exercises = (1..=12)
+            .map(|n| {
+                let mut exercise = template_exercise.clone();
+                exercise.id = format!("ex-sec-{n}-01");
+                exercise.section_id = format!("sec-{n}");
+                exercise
+            })
+            .collect();
+        let bundle = ChapterBundle {
+            books: vec![a_book()],
+            chapters: vec![chapter],
+        };
+        super::import_bundle(&state, &bundle).await.expect("import");
+
+        let listed = super::list_exercises(&state, "phy_forces_and_newtons_laws", None, None)
+            .await
+            .expect("exercises");
+        let order: Vec<String> = listed.iter().map(|e| e.section_id.clone()).collect();
+        let expected: Vec<String> = (1..=12)
+            .map(|n| format!("phy_forces_and_newtons_laws:sec-{n}"))
+            .collect();
+        assert_eq!(order, expected);
     }
 
     #[tokio::test]
