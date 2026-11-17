@@ -85,6 +85,47 @@ fn namespaced(chapter_id: &str, local_id: &str) -> String {
     format!("{chapter_id}:{local_id}")
 }
 
+const INSERT_CHAPTER_SQL: &str = "INSERT INTO chapters (chapter_id, book_id, part_id, order_index, title, schema_version, updated_at, \
+ facts_inherited, learning_objectives, prerequisites, formula_sheet, glossary, sources, content_hash) \
+ VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14) \
+ ON CONFLICT(chapter_id) DO UPDATE SET book_id = ?2, part_id = ?3, order_index = ?4, title = ?5, schema_version = ?6, \
+ updated_at = ?7, facts_inherited = ?8, learning_objectives = ?9, prerequisites = ?10, \
+ formula_sheet = ?11, glossary = ?12, sources = ?13, content_hash = ?14";
+
+const INSERT_SECTION_SQL: &str = "INSERT INTO chapter_sections (id, chapter_id, order_index, slug, title, est_minutes, \
+ facts_inherited, learning_objectives, teaching_text, worked_examples, misconceptions, \
+ summary_points, exam_links, provenance, no_worked_example_reason, content_hash) \
+ VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15, ?16) \
+ ON CONFLICT(id) DO UPDATE SET chapter_id = ?2, order_index = ?3, slug = ?4, title = ?5, \
+ est_minutes = ?6, facts_inherited = ?7, learning_objectives = ?8, teaching_text = ?9, \
+ worked_examples = ?10, misconceptions = ?11, summary_points = ?12, exam_links = ?13, \
+ provenance = ?14, no_worked_example_reason = ?15, content_hash = ?16, updated_at = CURRENT_TIMESTAMP";
+
+const INSERT_EXERCISE_SQL: &str =
+    "INSERT INTO chapter_exercises (id, chapter_id, section_id, tier, kind, difficulty, marks, \
+ stem, options, answer, answer_kind, solution, hints, tags, provenance, solution_provenance, \
+ answer_note, content_hash) \
+ VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15, ?16, ?17, ?18) \
+ ON CONFLICT(id) DO UPDATE SET chapter_id = ?2, section_id = ?3, tier = ?4, kind = ?5, \
+ difficulty = ?6, marks = ?7, stem = ?8, options = ?9, answer = ?10, answer_kind = ?11, \
+ solution = ?12, hints = ?13, tags = ?14, provenance = ?15, solution_provenance = ?16, \
+ answer_note = ?17, content_hash = ?18, updated_at = CURRENT_TIMESTAMP";
+
+const INSERT_TRAP_SQL: &str = "INSERT INTO exam_traps (id, chapter_id, exam, subject, section_id, misconception, correction, \
+ signal, status, paper_evidence, frequency, provenance, content_hash) \
+ VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13) \
+ ON CONFLICT(id) DO UPDATE SET chapter_id = ?2, exam = ?3, subject = ?4, section_id = ?5, \
+ misconception = ?6, correction = ?7, signal = ?8, status = ?9, paper_evidence = ?10, \
+ frequency = ?11, provenance = ?12, content_hash = ?13, updated_at = CURRENT_TIMESTAMP";
+
+const INSERT_CHECK_SQL: &str =
+    "INSERT INTO exam_recall_checks (id, chapter_id, exam, subject, section_id, stem, options, \
+ answer, explanation, difficulty, source, content_hash) \
+ VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12) \
+ ON CONFLICT(id) DO UPDATE SET chapter_id = ?2, exam = ?3, subject = ?4, section_id = ?5, \
+ stem = ?6, options = ?7, answer = ?8, explanation = ?9, difficulty = ?10, source = ?11, \
+ content_hash = ?12, updated_at = CURRENT_TIMESTAMP";
+
 async fn import_chapter(s: &DbState, chapter: &Chapter) -> Result<(), AppError> {
     let objectives = json_of(&chapter.learning_objectives, "chapters.learning_objectives")?;
     let prerequisites = json_of(&chapter.prerequisites, "chapters.prerequisites")?;
@@ -95,14 +136,16 @@ async fn import_chapter(s: &DbState, chapter: &Chapter) -> Result<(), AppError> 
         "{}|{}|{}|{}",
         chapter.chapter_id, objectives, glossary, chapter.order
     ));
-    execute_write_local(
-        s,
-        "INSERT INTO chapters (chapter_id, book_id, part_id, order_index, title, schema_version, updated_at, \
-         facts_inherited, learning_objectives, prerequisites, formula_sheet, glossary, sources, content_hash) \
-         VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14) \
-         ON CONFLICT(chapter_id) DO UPDATE SET book_id = ?2, part_id = ?3, order_index = ?4, title = ?5, schema_version = ?6, \
-         updated_at = ?7, facts_inherited = ?8, learning_objectives = ?9, prerequisites = ?10, \
-         formula_sheet = ?11, glossary = ?12, sources = ?13, content_hash = ?14",
+
+    let mut statements: Vec<(&'static str, Vec<turso::Value>)> = Vec::with_capacity(
+        5 + chapter.sections.len()
+            + chapter.exercises.len()
+            + chapter.exam_traps.len()
+            + chapter.exam_recall_checks.len(),
+    );
+
+    statements.push((
+        INSERT_CHAPTER_SQL,
         vec![
             turso::Value::Text(chapter.chapter_id.clone()),
             turso::Value::Text(chapter.book_id.clone()),
@@ -122,46 +165,49 @@ async fn import_chapter(s: &DbState, chapter: &Chapter) -> Result<(), AppError> 
             turso::Value::Text(sources),
             turso::Value::Text(hash),
         ],
-    )
-    .await?;
+    ));
 
     // The bundle is the source of truth for a chapter's children. An import
     // replaces the chapter wholesale: a renumbered exercise set or a demoted
     // trap must not survive as a leftover from an earlier build.
-    for table in [
-        "chapter_sections",
-        "chapter_exercises",
-        "exam_traps",
-        "exam_recall_checks",
-    ] {
-        execute_write_local(
-            s,
-            &format!("DELETE FROM {table} WHERE chapter_id = ?1"),
-            vec![turso::Value::Text(chapter.chapter_id.clone())],
-        )
-        .await?;
-    }
+    statements.push((
+        "DELETE FROM chapter_sections WHERE chapter_id = ?1",
+        vec![turso::Value::Text(chapter.chapter_id.clone())],
+    ));
+    statements.push((
+        "DELETE FROM chapter_exercises WHERE chapter_id = ?1",
+        vec![turso::Value::Text(chapter.chapter_id.clone())],
+    ));
+    statements.push((
+        "DELETE FROM exam_traps WHERE chapter_id = ?1",
+        vec![turso::Value::Text(chapter.chapter_id.clone())],
+    ));
+    statements.push((
+        "DELETE FROM exam_recall_checks WHERE chapter_id = ?1",
+        vec![turso::Value::Text(chapter.chapter_id.clone())],
+    ));
 
     for section in &chapter.sections {
-        import_section(s, &chapter.chapter_id, section).await?;
+        statements.push(build_section_insert(&chapter.chapter_id, section)?);
     }
     for exercise in &chapter.exercises {
-        import_exercise(s, &chapter.chapter_id, exercise).await?;
+        statements.push(build_exercise_insert(&chapter.chapter_id, exercise)?);
     }
     for trap in &chapter.exam_traps {
-        import_trap(s, &chapter.chapter_id, trap).await?;
+        statements.push(build_trap_insert(&chapter.chapter_id, trap)?);
     }
     for check in &chapter.exam_recall_checks {
-        import_recall_check(s, &chapter.chapter_id, check).await?;
+        statements.push(build_recall_check_insert(&chapter.chapter_id, check)?);
     }
+
+    super::write::execute_write_batch(s, statements).await?;
     Ok(())
 }
 
-async fn import_section(
-    s: &DbState,
+fn build_section_insert(
     chapter_id: &str,
     section: &ChapterSection,
-) -> Result<(), AppError> {
+) -> Result<(&'static str, Vec<turso::Value>), AppError> {
     let objectives = json_of(
         &section.learning_objectives,
         "chapter_sections.learning_objectives",
@@ -177,16 +223,8 @@ async fn import_section(
         section.id, section.title, teaching_text
     ));
     let stored_id = namespaced(chapter_id, &section.id);
-    execute_write_local(
-        s,
-        "INSERT INTO chapter_sections (id, chapter_id, order_index, slug, title, est_minutes, \
-         facts_inherited, learning_objectives, teaching_text, worked_examples, misconceptions, \
-         summary_points, exam_links, provenance, no_worked_example_reason, content_hash) \
-         VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15, ?16) \
-         ON CONFLICT(id) DO UPDATE SET chapter_id = ?2, order_index = ?3, slug = ?4, title = ?5, \
-         est_minutes = ?6, facts_inherited = ?7, learning_objectives = ?8, teaching_text = ?9, \
-         worked_examples = ?10, misconceptions = ?11, summary_points = ?12, exam_links = ?13, \
-         provenance = ?14, no_worked_example_reason = ?15, content_hash = ?16, updated_at = CURRENT_TIMESTAMP",
+    Ok((
+        INSERT_SECTION_SQL,
         vec![
             turso::Value::Text(stored_id),
             turso::Value::Text(chapter_id.to_string()),
@@ -208,16 +246,13 @@ async fn import_section(
             },
             turso::Value::Text(hash),
         ],
-    )
-    .await?;
-    Ok(())
+    ))
 }
 
-async fn import_exercise(
-    s: &DbState,
+fn build_exercise_insert(
     chapter_id: &str,
     exercise: &ChapterExercise,
-) -> Result<(), AppError> {
+) -> Result<(&'static str, Vec<turso::Value>), AppError> {
     let stem = json_of(&exercise.stem, "chapter_exercises.stem")?;
     let options = json_of(&exercise.options, "chapter_exercises.options")?;
     let answer = json_of(&exercise.answer, "chapter_exercises.answer")?;
@@ -228,16 +263,8 @@ async fn import_exercise(
     let hash = hash_of(&format!("{}|{}|{}", exercise.id, stem, answer));
     let stored_id = namespaced(chapter_id, &exercise.id);
     let stored_section = namespaced(chapter_id, &exercise.section_id);
-    execute_write_local(
-        s,
-        "INSERT INTO chapter_exercises (id, chapter_id, section_id, tier, kind, difficulty, marks, \
-         stem, options, answer, answer_kind, solution, hints, tags, provenance, solution_provenance, \
-         answer_note, content_hash) \
-         VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15, ?16, ?17, ?18) \
-         ON CONFLICT(id) DO UPDATE SET chapter_id = ?2, section_id = ?3, tier = ?4, kind = ?5, \
-         difficulty = ?6, marks = ?7, stem = ?8, options = ?9, answer = ?10, answer_kind = ?11, \
-         solution = ?12, hints = ?13, tags = ?14, provenance = ?15, solution_provenance = ?16, \
-         answer_note = ?17, content_hash = ?18, updated_at = CURRENT_TIMESTAMP",
+    Ok((
+        INSERT_EXERCISE_SQL,
         vec![
             turso::Value::Text(stored_id),
             turso::Value::Text(chapter_id.to_string()),
@@ -261,12 +288,13 @@ async fn import_exercise(
             },
             turso::Value::Text(hash),
         ],
-    )
-    .await?;
-    Ok(())
+    ))
 }
 
-async fn import_trap(s: &DbState, chapter_id: &str, trap: &ExamTrap) -> Result<(), AppError> {
+fn build_trap_insert(
+    chapter_id: &str,
+    trap: &ExamTrap,
+) -> Result<(&'static str, Vec<turso::Value>), AppError> {
     let misconception = json_of(&trap.misconception, "exam_traps.misconception")?;
     let correction = json_of(&trap.correction, "exam_traps.correction")?;
     let signal = json_of(&trap.signal, "exam_traps.signal")?;
@@ -275,14 +303,8 @@ async fn import_trap(s: &DbState, chapter_id: &str, trap: &ExamTrap) -> Result<(
     let hash = hash_of(&format!("{}|{}|{}", trap.id, misconception, correction));
     let stored_id = namespaced(chapter_id, &trap.id);
     let stored_section = namespaced(chapter_id, &trap.section_id);
-    execute_write_local(
-        s,
-        "INSERT INTO exam_traps (id, chapter_id, exam, subject, section_id, misconception, correction, \
-         signal, status, paper_evidence, frequency, provenance, content_hash) \
-         VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13) \
-         ON CONFLICT(id) DO UPDATE SET chapter_id = ?2, exam = ?3, subject = ?4, section_id = ?5, \
-         misconception = ?6, correction = ?7, signal = ?8, status = ?9, paper_evidence = ?10, \
-         frequency = ?11, provenance = ?12, content_hash = ?13, updated_at = CURRENT_TIMESTAMP",
+    Ok((
+        INSERT_TRAP_SQL,
         vec![
             turso::Value::Text(stored_id),
             turso::Value::Text(chapter_id.to_string()),
@@ -298,30 +320,21 @@ async fn import_trap(s: &DbState, chapter_id: &str, trap: &ExamTrap) -> Result<(
             turso::Value::Text(provenance),
             turso::Value::Text(hash),
         ],
-    )
-    .await?;
-    Ok(())
+    ))
 }
 
-async fn import_recall_check(
-    s: &DbState,
+fn build_recall_check_insert(
     chapter_id: &str,
     check: &ExamRecallCheck,
-) -> Result<(), AppError> {
+) -> Result<(&'static str, Vec<turso::Value>), AppError> {
     let stem = json_of(&check.stem, "exam_recall_checks.stem")?;
     let options = json_of(&check.options, "exam_recall_checks.options")?;
     let explanation = json_of(&check.explanation, "exam_recall_checks.explanation")?;
     let hash = hash_of(&format!("{}|{}|{}", check.id, stem, check.answer));
     let stored_id = namespaced(chapter_id, &check.id);
     let stored_section = namespaced(chapter_id, &check.section_id);
-    execute_write_local(
-        s,
-        "INSERT INTO exam_recall_checks (id, chapter_id, exam, subject, section_id, stem, options, \
-         answer, explanation, difficulty, source, content_hash) \
-         VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12) \
-         ON CONFLICT(id) DO UPDATE SET chapter_id = ?2, exam = ?3, subject = ?4, section_id = ?5, \
-         stem = ?6, options = ?7, answer = ?8, explanation = ?9, difficulty = ?10, source = ?11, \
-         content_hash = ?12, updated_at = CURRENT_TIMESTAMP",
+    Ok((
+        INSERT_CHECK_SQL,
         vec![
             turso::Value::Text(stored_id),
             turso::Value::Text(chapter_id.to_string()),
@@ -336,9 +349,7 @@ async fn import_recall_check(
             turso::Value::Text(check.source.clone()),
             turso::Value::Text(hash),
         ],
-    )
-    .await?;
-    Ok(())
+    ))
 }
 
 /// Every book, with the number of chapters in each.
@@ -389,13 +400,16 @@ pub async fn get_book(
     s: &DbState,
     book_id: &str,
 ) -> Result<Option<(Book, Vec<ChapterSummary>)>, AppError> {
-    let Some(book) = list_books(s)
-        .await?
-        .into_iter()
-        .find(|book| book.id == book_id)
-    else {
+    let rows = super::catalog::rows(
+        s,
+        "SELECT id, title, subject_area, level, edition, description, parts, sources FROM books WHERE id = ?1 LIMIT 1",
+        vec![turso::Value::Text(book_id.to_string())],
+    )
+    .await?;
+    let Some(row) = rows.into_iter().next() else {
         return Ok(None);
     };
+    let book = map_book(&row)?;
     let chapters = list_chapters(s, book_id).await?;
     Ok(Some((book, chapters)))
 }
@@ -799,7 +813,9 @@ pub async fn list_traps(
         sql.push_str(&format!(" AND t.section_id = ?{}", args.len() + 1));
         args.push(turso::Value::Text(section.to_string()));
     }
-    sql.push_str(" ORDER BY t.exam, COALESCE(s.order_index, 2147483647), t.section_id, t.id");
+    sql.push_str(
+        " ORDER BY t.exam, COALESCE(s.order_index, 2147483647), t.section_id, t.id LIMIT 200",
+    );
 
     let rows = super::catalog::rows(s, &sql, args).await?;
     rows.iter().map(map_trap).collect()
@@ -826,7 +842,9 @@ pub async fn list_recall_checks(
         sql.push_str(&format!(" AND c.section_id = ?{}", args.len() + 1));
         args.push(turso::Value::Text(section.to_string()));
     }
-    sql.push_str(" ORDER BY c.exam, COALESCE(s.order_index, 2147483647), c.section_id, c.id");
+    sql.push_str(
+        " ORDER BY c.exam, COALESCE(s.order_index, 2147483647), c.section_id, c.id LIMIT 200",
+    );
 
     let rows = super::catalog::rows(s, &sql, args).await?;
     rows.iter().map(map_check).collect()

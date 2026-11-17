@@ -170,8 +170,8 @@ where
     let mut attempt = 0;
     loop {
         let outcome = {
-            let _permit = gate(s)?;
             let db = synced(s).await?;
+            let _permit = gate(s)?;
             let conn = s.conns.take(&db, s.sync.policy().budgets).await?;
             let outcome = op(conn.clone()).await;
             s.conns.put(conn).await;

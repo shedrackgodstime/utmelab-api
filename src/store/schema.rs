@@ -25,7 +25,7 @@ pub const CONTRACT_VERSION: u64 = 1;
 
 /// Version of the API-owned schema. This is separate from
 /// [`CONTRACT_VERSION`], which belongs to the content pipeline.
-pub const API_SCHEMA_VERSION: u64 = 10;
+pub const API_SCHEMA_VERSION: u64 = 11;
 
 /// Tables the API owns and creates at boot.
 pub(crate) const DDL: &[&str] = &[
@@ -60,6 +60,14 @@ pub(crate) const INDEXES: &[&str] = &[
     "CREATE INDEX IF NOT EXISTS idx_theory_lookup ON theory_questions (exam, subject, topic_slug)",
     "CREATE INDEX IF NOT EXISTS idx_theory_year_lookup ON theory_questions (exam, subject, year)",
     "CREATE UNIQUE INDEX IF NOT EXISTS idx_theory_unique ON theory_questions (exam, subject, year, paper, question_number)",
+    "CREATE INDEX IF NOT EXISTS idx_chapters_book ON chapters (book_id, order_index)",
+    "CREATE INDEX IF NOT EXISTS idx_chapter_sections_chapter ON chapter_sections (chapter_id, order_index)",
+    "CREATE INDEX IF NOT EXISTS idx_chapter_exercises_section ON chapter_exercises (section_id, tier)",
+    "CREATE INDEX IF NOT EXISTS idx_chapter_exercises_chapter ON chapter_exercises (chapter_id)",
+    "CREATE INDEX IF NOT EXISTS idx_exam_traps_exam ON exam_traps (exam, subject)",
+    "CREATE INDEX IF NOT EXISTS idx_exam_traps_chapter ON exam_traps (chapter_id, section_id)",
+    "CREATE INDEX IF NOT EXISTS idx_exam_recall_checks_exam ON exam_recall_checks (exam, subject)",
+    "CREATE INDEX IF NOT EXISTS idx_exam_recall_checks_chapter ON exam_recall_checks (chapter_id, section_id)",
 ];
 
 /// Every table the store reads, and the columns it depends on. This is the
@@ -380,7 +388,7 @@ pub async fn ensure_schema(s: &DbState) -> Result<(), AppError> {
 /// API-owned migrations are numbered, applied once, and never rewritten.
 /// Fresh databases receive the current DDL first; upgraded databases receive
 /// the same DDL idempotently and then any missing migrations.
-const MIGRATIONS: &[u64] = &[1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const MIGRATIONS: &[u64] = &[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 
 async fn apply_migrations(s: &DbState) -> Result<(), AppError> {
     for &version in MIGRATIONS {
@@ -609,6 +617,23 @@ async fn apply_migrations(s: &DbState) -> Result<(), AppError> {
                 super::write::execute_ddl_local(
                     s,
                     "CREATE INDEX IF NOT EXISTS idx_chapters_book ON chapters (book_id, order_index)",
+                )
+                .await?;
+            }
+            11 => {
+                super::write::execute_ddl_local(
+                    s,
+                    "CREATE INDEX IF NOT EXISTS idx_chapter_exercises_chapter ON chapter_exercises (chapter_id)",
+                )
+                .await?;
+                super::write::execute_ddl_local(
+                    s,
+                    "CREATE INDEX IF NOT EXISTS idx_exam_traps_chapter ON exam_traps (chapter_id, section_id)",
+                )
+                .await?;
+                super::write::execute_ddl_local(
+                    s,
+                    "CREATE INDEX IF NOT EXISTS idx_exam_recall_checks_chapter ON exam_recall_checks (chapter_id, section_id)",
                 )
                 .await?;
             }

@@ -107,12 +107,12 @@ pub async fn execute_write(
     sql: &str,
     params: Vec<turso::Value>,
 ) -> Result<u64, AppError> {
-    let _permit = gate(s)?;
     let wait_started = std::time::Instant::now();
     let _w = s.write_mutex.lock().await;
     record_write_wait(s, wait_started.elapsed());
     ensure_write_admitted(s)?;
     let db = synced(s).await?;
+    let _permit = gate(s)?;
     let conn = s.conns.take(&db, s.sync.policy().budgets).await?;
     let estimated = estimated_bytes(sql, &params);
     let local_started = std::time::Instant::now();
@@ -136,12 +136,12 @@ pub async fn execute_write_batch(
     if statements.is_empty() {
         return Ok(0);
     }
-    let _permit = gate(s)?;
     let wait_started = std::time::Instant::now();
     let _w = s.write_mutex.lock().await;
     record_write_wait(s, wait_started.elapsed());
     ensure_write_admitted(s)?;
     let db = synced(s).await?;
+    let _permit = gate(s)?;
     let conn = s.conns.take(&db, s.sync.policy().budgets).await?;
     let local_started = std::time::Instant::now();
 
@@ -192,12 +192,12 @@ pub async fn execute_write_batch(
 /// DDL twin of [`execute_write`]. `changes()` is meaningless for schema
 /// statements, so no visibility check: failure still surfaces as Err.
 pub async fn execute_ddl(s: &DbState, sql: &str) -> Result<(), AppError> {
-    let _permit = gate(s)?;
     let wait_started = std::time::Instant::now();
     let _w = s.write_mutex.lock().await;
     record_write_wait(s, wait_started.elapsed());
     ensure_write_admitted(s)?;
     let db = synced(s).await?;
+    let _permit = gate(s)?;
     let conn = s.conns.take(&db, s.sync.policy().budgets).await?;
     let estimated = estimated_bytes(sql, &[] as &[turso::Value]);
     let local_started = std::time::Instant::now();
@@ -215,12 +215,12 @@ pub async fn execute_ddl(s: &DbState, sql: &str) -> Result<(), AppError> {
 /// convergence. A read-only token can then boot and serve reads while writes
 /// keep reporting their own failure.
 pub async fn execute_ddl_local(s: &DbState, sql: &str) -> Result<(), AppError> {
-    let _permit = gate(s)?;
     let wait_started = std::time::Instant::now();
     let _w = s.write_mutex.lock().await;
     record_write_wait(s, wait_started.elapsed());
     ensure_write_admitted(s)?;
     let db = synced(s).await?;
+    let _permit = gate(s)?;
     let conn = s.conns.take(&db, s.sync.policy().budgets).await?;
     let estimated = estimated_bytes(sql, &[] as &[turso::Value]);
     let result = conn.execute(sql, ()).await.map_err(upstream);
@@ -243,12 +243,12 @@ pub async fn execute_write_local(
     sql: &str,
     params: Vec<turso::Value>,
 ) -> Result<u64, AppError> {
-    let _permit = gate(s)?;
     let wait_started = std::time::Instant::now();
     let _w = s.write_mutex.lock().await;
     record_write_wait(s, wait_started.elapsed());
     ensure_write_admitted(s)?;
     let db = synced(s).await?;
+    let _permit = gate(s)?;
     let conn = s.conns.take(&db, s.sync.policy().budgets).await?;
     let estimated = estimated_bytes(sql, &params);
     let result = execute_and_verify(&conn, sql, params).await;

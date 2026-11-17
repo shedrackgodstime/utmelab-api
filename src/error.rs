@@ -127,11 +127,26 @@ impl IntoResponse for AppError {
             }),
         )
             .into_response();
-        if matches!(self, AppError::RateLimited) {
-            res.headers_mut().insert(
-                axum::http::header::RETRY_AFTER,
-                axum::http::HeaderValue::from_static("60"),
-            );
+        match self {
+            AppError::RateLimited => {
+                res.headers_mut().insert(
+                    axum::http::header::RETRY_AFTER,
+                    axum::http::HeaderValue::from_static("60"),
+                );
+            }
+            AppError::DbSaturated | AppError::DbContended => {
+                res.headers_mut().insert(
+                    axum::http::header::RETRY_AFTER,
+                    axum::http::HeaderValue::from_static("1"),
+                );
+            }
+            AppError::RequestTimeout => {
+                res.headers_mut().insert(
+                    axum::http::header::RETRY_AFTER,
+                    axum::http::HeaderValue::from_static("2"),
+                );
+            }
+            _ => {}
         }
         res
     }
@@ -218,5 +233,25 @@ mod tests {
         .await;
         assert!(body.contains("need 2, have 1"), "{body}");
         assert!(body.contains("conflict"), "{body}");
+    }
+
+    #[test]
+    fn retry_after_headers_are_attached_to_transient_failures() {
+        use axum::http::header::RETRY_AFTER;
+
+        let res = AppError::RateLimited.into_response();
+        assert_eq!(res.headers().get(RETRY_AFTER).unwrap(), "60");
+
+        let res = AppError::DbSaturated.into_response();
+        assert_eq!(res.headers().get(RETRY_AFTER).unwrap(), "1");
+
+        let res = AppError::DbContended.into_response();
+        assert_eq!(res.headers().get(RETRY_AFTER).unwrap(), "1");
+
+        let res = AppError::RequestTimeout.into_response();
+        assert_eq!(res.headers().get(RETRY_AFTER).unwrap(), "2");
+
+        let res = AppError::Unauthorized.into_response();
+        assert!(res.headers().get(RETRY_AFTER).is_none());
     }
 }

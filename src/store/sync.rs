@@ -873,7 +873,14 @@ pub(crate) async fn wake_if_sleeping(s: &DbState) -> Result<(), crate::error::Ap
         Err(error) => {
             record_failure(&s.metrics);
             s.sync.record_wake_failure(&error, unix_now());
-            Err(crate::error::AppError::DbUnavailable("sync"))
+            if s.sync.readiness().allows_public_reads() {
+                s.sync.apply(SyncEvent::SleepEnded { at: unix_now() });
+                drop(guard);
+                s.pull_notify.notify_one();
+                Ok(())
+            } else {
+                Err(crate::error::AppError::DbUnavailable("sync"))
+            }
         }
     }
 }
@@ -1141,5 +1148,31 @@ mod tests {
                 std::fs::remove_file(entry.path()).expect("remove quarantine fixture");
             }
         }
+    }
+
+    #[tokio::test]
+    async fn wake_pull_failure_serves_degraded_reads_if_content_fresh() {
+        use super::SyncEvent;
+        use crate::testing::{db_state, replica};
+        let db = replica().await;
+        let s = db_state(db);
+        let now = super::unix_now();
+        s.sync.apply(SyncEvent::Heartbeat { at: now });
+        s.sync.apply(SyncEvent::PullSucceeded {
+            changes: false,
+            at: now,
+        });
+        s.sync.apply(SyncEvent::SleepStarted { at: now });
+
+        assert!(s.sync.sleeping());
+        assert!(s.sync.readiness().allows_public_reads());
+
+        let result = super::wake_if_sleeping(&s).await;
+        assert!(
+            result.is_ok(),
+            "wake failure should not block fresh content reads"
+        );
+        assert!(!s.sync.sleeping());
+        assert!(s.sync.readiness().allows_public_reads());
     }
 }
