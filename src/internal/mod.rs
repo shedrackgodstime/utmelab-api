@@ -22,6 +22,10 @@ pub fn router(state: AppState, cfg: &Config) -> Router<AppState> {
             get(admin::status).route_layer(cfg.fast_timeout()),
         )
         .route(
+            "/internal/admin/sync/pull",
+            post(admin::trigger_pull).route_layer(cfg.slow_timeout()),
+        )
+        .route(
             "/internal/login",
             post(dashboard::login).route_layer(cfg.slow_timeout()),
         )

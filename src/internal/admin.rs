@@ -99,6 +99,15 @@ pub async fn set_role(
     Ok(Json(Applied { ok: found }))
 }
 
+/// Trigger an on-demand pull from Turso Cloud.
+pub async fn trigger_pull(
+    State(s): State<DbState>,
+    AdminUser(_): AdminUser,
+) -> Result<Json<Applied>, AppError> {
+    let had = store::sync::pull_now(&s).await?;
+    Ok(Json(Applied { ok: had }))
+}
+
 /// Admin-only. `tier` decides the grant, so this mints a consumer key or a
 /// staff key and nothing in between; a consumer key also carries its `owner`.
 pub async fn create_key(

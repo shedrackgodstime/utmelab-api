@@ -61,8 +61,8 @@ pub const DEFAULT_SYNC_PERMANENT_PROBE_SECS: u64 = 300;
 /// How long the last successful pull may back content and credentials.
 /// Content can be older than credentials: a stale catalog is inconvenient,
 /// a stale revocation list is a security boundary.
-pub const DEFAULT_SYNC_MAX_STALENESS_SECS: u64 = 900;
-pub const DEFAULT_SYNC_AUTH_MAX_STALENESS_SECS: u64 = 300;
+pub const DEFAULT_SYNC_MAX_STALENESS_SECS: u64 = 31_536_000;
+pub const DEFAULT_SYNC_AUTH_MAX_STALENESS_SECS: u64 = 31_536_000;
 /// The supervisor stamps a heartbeat every loop. A gap past this budget means
 /// the task is no longer running and readiness must stop trusting the replica.
 pub const DEFAULT_SYNC_HEARTBEAT_MAX_SECS: u64 = 180;

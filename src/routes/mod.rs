@@ -293,9 +293,10 @@ mod tests {
 
         let s = db_state(replica().await);
         let now = unix_now();
+        let staleness = s.sync.policy().freshness.content_max_age.as_secs() + 1;
         s.sync.apply(SyncEvent::PullSucceeded {
             changes: false,
-            at: now.saturating_sub(1_000),
+            at: now.saturating_sub(staleness),
         });
         s.sync.apply(SyncEvent::Heartbeat { at: now });
         s.sync.apply(SyncEvent::SleepStarted { at: now });

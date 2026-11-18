@@ -20,6 +20,7 @@ pub const PUSH_COALESCE: Duration = Duration::from_millis(25);
 /// path.
 pub const PURGE_EVERY: Duration = Duration::from_secs(3600);
 /// How often a sleeping replica rechecks whether traffic has returned.
+#[allow(dead_code)]
 pub const SLEEP_RECHECK: Duration = Duration::from_secs(60);
 
 /// Wall-clock seconds since the Unix epoch. Zero means "not recorded"; no

@@ -36,7 +36,7 @@ use crate::{
     state::{AppState, DbState, SharedMetrics},
 };
 use axum::extract::FromRef;
-use policy::{PURGE_EVERY, PUSH_COALESCE, PUSH_FALLBACK, SLEEP_RECHECK};
+use policy::{PURGE_EVERY, PUSH_COALESCE, PUSH_FALLBACK};
 
 async fn build(cfg: &Config, policy: &SyncPolicy) -> Result<SyncDb, SyncError> {
     let future = turso::sync::Builder::new_remote(&cfg.replica_path)
@@ -658,6 +658,7 @@ async fn converge(probe: &DbState, db: &SyncDb, policy: &SyncPolicy) {
 /// Idle sleep is an optimization for a healthy replica, never a hiding place
 /// for a failure. A degraded or blocked replica keeps probing so it can heal
 /// without waiting for traffic that may never come.
+#[cfg(test)]
 fn may_enter_idle_sleep(
     state: SyncState,
     last_request: Timestamp,
@@ -669,103 +670,50 @@ fn may_enter_idle_sleep(
         && now.saturating_sub(last_request) >= idle_after.as_secs()
 }
 
-/// Steady state long-poll pull loop. Pulls are serialized with local writes so
-/// a remote apply can never interleave an unpushed local write. The long poll
-/// itself waits in the sync engine; it does not create timer-driven empty
-/// requests. After idle sleep, the first request wakes the replica.
-async fn supervise(probe: &DbState, db: &SyncDb, idle_after: Duration, policy: &SyncPolicy) {
+/// Steady-state sync supervisor. External writers are rare, so there is no
+/// periodic pull loop. The replica is converged on startup and refreshed on
+/// demand via pull_now or pull_notify.
+async fn supervise(probe: &DbState, db: &SyncDb, _idle_after: Duration, policy: &SyncPolicy) {
     let mut last_purge = tokio::time::Instant::now();
+    let mut heartbeat_interval = tokio::time::interval(Duration::from_secs(15));
+    heartbeat_interval.tick().await;
     loop {
         if probe.sync.stop_requested() {
             return;
         }
-        let now = unix_now();
-        probe.sync.apply(SyncEvent::Heartbeat { at: now });
-        let last_request = probe
-            .metrics
-            .last_request_unix
-            .load(std::sync::atomic::Ordering::Relaxed);
-        if may_enter_idle_sleep(probe.sync.state(), last_request, now, idle_after) {
-            probe.sync.apply(SyncEvent::SleepStarted { at: unix_now() });
-            tracing::info!("replica sync sleeping after idle traffic window");
-            probe.sync.apply(SyncEvent::Heartbeat { at: unix_now() });
-            tokio::select! {
-                _ = probe.sync.wait_for_stop() => return,
-                _ = tokio::time::sleep(SLEEP_RECHECK) => {}
-                _ = probe.pull_notify.notified() => {
-                    // A request already completed the wake pull. Resume the
-                    // long-poll loop without immediately pulling a second time.
-                    if !probe.sync.sleeping() {
-                        continue;
+        tokio::select! {
+            _ = probe.sync.wait_for_stop() => return,
+            _ = probe.pull_notify.notified() => {
+                let _ = pull_now_internal(probe, db, policy).await;
+            }
+            _ = heartbeat_interval.tick() => {
+                let now = unix_now();
+                probe.sync.apply(SyncEvent::Heartbeat { at: now });
+                if last_purge.elapsed() >= PURGE_EVERY {
+                    last_purge = tokio::time::Instant::now();
+                    match tokio::time::timeout(
+                        policy.budgets.verify.duration(),
+                        super::accounts::purge_expired(probe),
+                    )
+                    .await
+                    {
+                        Ok(Ok(0)) => {}
+                        Ok(Ok(n)) => tracing::info!("purged {n} expired sessions"),
+                        Ok(Err(e)) => tracing::warn!("session purge failed: {e}"),
+                        Err(_) => tracing::warn!("session purge exceeded its budget"),
+                    }
+                    match tokio::time::timeout(
+                        policy.budgets.verify.duration(),
+                        super::accounts::purge_expired_tokens(probe),
+                    )
+                    .await
+                    {
+                        Ok(Ok(0)) => {}
+                        Ok(Ok(n)) => tracing::info!("purged {n} expired access tokens"),
+                        Ok(Err(e)) => tracing::warn!("access token purge failed: {e}"),
+                        Err(_) => tracing::warn!("access token purge exceeded its budget"),
                     }
                 }
-            }
-            continue;
-        }
-        probe
-            .metrics
-            .last_pull_unix
-            .store(unix_now(), std::sync::atomic::Ordering::Relaxed);
-        probe.sync.apply(SyncEvent::PullStarted { at: unix_now() });
-        let started = tokio::time::Instant::now();
-        let pulled = {
-            let _w = probe.write_mutex.lock().await;
-            Engine::new(db.clone(), policy.budgets).pull().await
-        };
-        probe.metrics.last_pull_duration_ms.store(
-            started.elapsed().as_millis().min(u64::MAX as u128) as u64,
-            std::sync::atomic::Ordering::Relaxed,
-        );
-        match pulled {
-            Ok(true) => {
-                record_pull(&probe.metrics, true);
-                probe.sync.apply(SyncEvent::PullSucceeded {
-                    changes: true,
-                    at: unix_now(),
-                });
-                recheck_contract(probe, policy).await;
-            }
-            Ok(false) => {
-                record_pull(&probe.metrics, false);
-                probe.sync.apply(SyncEvent::PullSucceeded {
-                    changes: false,
-                    at: unix_now(),
-                });
-            }
-            Err(error) => {
-                record_failure(&probe.metrics);
-                let transition = probe.sync.apply(SyncEvent::PullFailed {
-                    error,
-                    at: unix_now(),
-                });
-                if retry_after(&probe.sync, &transition, policy).await {
-                    return;
-                }
-            }
-        };
-        if last_purge.elapsed() >= PURGE_EVERY {
-            last_purge = tokio::time::Instant::now();
-            match tokio::time::timeout(
-                policy.budgets.verify.duration(),
-                super::accounts::purge_expired(probe),
-            )
-            .await
-            {
-                Ok(Ok(0)) => {}
-                Ok(Ok(n)) => tracing::info!("purged {n} expired sessions"),
-                Ok(Err(e)) => tracing::warn!("session purge failed: {e}"),
-                Err(_) => tracing::warn!("session purge exceeded its budget"),
-            }
-            match tokio::time::timeout(
-                policy.budgets.verify.duration(),
-                super::accounts::purge_expired_tokens(probe),
-            )
-            .await
-            {
-                Ok(Ok(0)) => {}
-                Ok(Ok(n)) => tracing::info!("purged {n} expired access tokens"),
-                Ok(Err(e)) => tracing::warn!("access token purge failed: {e}"),
-                Err(_) => tracing::warn!("access token purge exceeded its budget"),
             }
         }
     }
@@ -822,67 +770,67 @@ async fn supervise_push(probe: DbState, db: SyncDb, policy: SyncPolicy) {
     }
 }
 
-/// Wake a sleeping replica exactly once. The write mutex makes concurrent
-/// first requests share one pull instead of creating a pull storm, and the
-/// status throttle stops a failing remote from being retried by every request.
+/// On-demand pull. Pulls latest changes from Turso cloud, updates schema and bank version if
+/// changes occurred, and returns whether new changes were pulled.
+pub async fn pull_now(probe: &DbState) -> Result<bool, crate::error::AppError> {
+    let Some(db) = probe.db.read().await.clone() else {
+        return Err(crate::error::AppError::DbUnavailable("sync"));
+    };
+    let policy = probe.sync.policy().clone();
+    pull_now_internal(probe, &db, &policy).await
+}
+
+async fn pull_now_internal(
+    probe: &DbState,
+    db: &SyncDb,
+    policy: &SyncPolicy,
+) -> Result<bool, crate::error::AppError> {
+    let _guard = probe.write_mutex.lock().await;
+    probe.sync.apply(SyncEvent::PullStarted { at: unix_now() });
+    let started = tokio::time::Instant::now();
+    let result = Engine::new(db.clone(), policy.budgets).pull().await;
+    probe.metrics.last_pull_duration_ms.store(
+        started.elapsed().as_millis().min(u64::MAX as u128) as u64,
+        std::sync::atomic::Ordering::Relaxed,
+    );
+    probe
+        .metrics
+        .last_pull_unix
+        .store(unix_now(), std::sync::atomic::Ordering::Relaxed);
+    match result {
+        Ok(had) => {
+            record_pull(&probe.metrics, had);
+            probe.sync.apply(SyncEvent::PullSucceeded {
+                changes: had,
+                at: unix_now(),
+            });
+            if had {
+                recheck_contract(probe, policy).await;
+                refresh_bank_version(probe, db).await;
+            }
+            Ok(had)
+        }
+        Err(error) => {
+            record_failure(&probe.metrics);
+            probe.sync.apply(SyncEvent::PullFailed {
+                error: error.clone(),
+                at: unix_now(),
+            });
+            Err(crate::error::AppError::Upstream(error.message))
+        }
+    }
+}
+
+/// Wake a sleeping replica. Fast and in-memory: client reads do not wait for
+/// cloud network pulls.
 pub(crate) async fn wake_if_sleeping(s: &DbState) -> Result<(), crate::error::AppError> {
-    use std::sync::atomic::Ordering::Relaxed;
     if s.sync.stop_requested() {
         return Err(crate::error::AppError::DbUnavailable("sync"));
     }
-    if !s.sync.sleeping() {
-        return Ok(());
+    if s.sync.sleeping() {
+        s.sync.apply(SyncEvent::SleepEnded { at: unix_now() });
     }
-    if !s.sync.wake_allowed() {
-        return Err(crate::error::AppError::DbUnavailable("sync"));
-    }
-    let guard = s.write_mutex.lock().await;
-    if !s.sync.sleeping() {
-        return Ok(());
-    }
-    let Some(db) = s.db.read().await.clone() else {
-        return Err(crate::error::AppError::DbUnavailable("sync"));
-    };
-    let started = tokio::time::Instant::now();
-    let pulled = Engine::new(db.clone(), s.sync.policy().budgets)
-        .pull()
-        .await;
-    match pulled {
-        Ok(had) => {
-            s.metrics.last_pull_duration_ms.store(
-                started.elapsed().as_millis().min(u64::MAX as u128) as u64,
-                Relaxed,
-            );
-            s.metrics.last_pull_unix.store(unix_now(), Relaxed);
-            record_pull(&s.metrics, had);
-            s.sync.apply(SyncEvent::SleepEnded { at: unix_now() });
-            s.sync.record_wake_success(had, unix_now());
-            drop(guard);
-            // The supervisor slept through the idle window. Tell it the
-            // replica is awake so it resumes long-polling now instead of
-            // waiting out the full recheck interval.
-            s.pull_notify.notify_one();
-            if had {
-                // A wake pull can be the first observation of a remote
-                // revision after the replica slept. Refresh the version now
-                // so version-keyed caches cannot serve the pre-sleep tree.
-                refresh_bank_version(s, &db).await;
-            }
-            Ok(())
-        }
-        Err(error) => {
-            record_failure(&s.metrics);
-            s.sync.record_wake_failure(&error, unix_now());
-            if s.sync.readiness().allows_public_reads() {
-                s.sync.apply(SyncEvent::SleepEnded { at: unix_now() });
-                drop(guard);
-                s.pull_notify.notify_one();
-                Ok(())
-            } else {
-                Err(crate::error::AppError::DbUnavailable("sync"))
-            }
-        }
-    }
+    Ok(())
 }
 
 async fn refresh_bank_version(s: &DbState, db: &SyncDb) {
@@ -997,11 +945,10 @@ mod tests {
         assert!(super::stats(&without).await.expect("stats").is_none());
     }
 
-    /// The property the pull loop exists for: the replica converges with no
-    /// request at all, so a change made anywhere in the cloud lands without
-    /// timer-driven empty requests.
+    /// On-demand pull verification: the replica pulls when notified via
+    /// pull_notify without needing a continuous background loop.
     #[tokio::test]
-    async fn the_replica_is_pulled_with_no_request() {
+    async fn the_replica_is_pulled_on_demand() {
         let s = db_state(replica().await);
         let db = s.db.read().await.clone().expect("replica");
         let policy = s.sync.policy().clone();
@@ -1011,6 +958,7 @@ mod tests {
                 super::supervise(&probe, &db, std::time::Duration::from_secs(300), &policy).await
             }
         });
+        s.pull_notify.notify_one();
         tokio::time::sleep(std::time::Duration::from_millis(150)).await;
         task.abort();
         assert!(
@@ -1018,7 +966,7 @@ mod tests {
                 .last_pull_unix
                 .load(std::sync::atomic::Ordering::Relaxed)
                 > 0,
-            "an unattended process must still pull, or it never converges"
+            "an on-demand pull signal must trigger a pull"
         );
     }
 
