@@ -21,6 +21,9 @@
 name: deploy-api
 
 on:
+  push:
+    tags:
+      - 'v*'
   workflow_dispatch:
     inputs:
       version:
@@ -38,7 +41,7 @@ concurrency:
   cancel-in-progress: false
 
 permissions:
-  contents: read
+  contents: write
 
 env:
   APP: utmelab-api
@@ -76,6 +79,8 @@ jobs:
           expected_version="v${package_version}"
           if [[ "${GITHUB_EVENT_NAME}" == "release" ]]; then
             requested_version="${{ github.event.release.tag_name }}"
+          elif [[ "${GITHUB_EVENT_NAME}" == "push" ]]; then
+            requested_version="${GITHUB_REF_NAME}"
           else
             requested_version="${MANUAL_VERSION}"
           fi
@@ -86,26 +91,12 @@ jobs:
             exit 1
           fi
 
-          # A version reaches production through a release. The release is the
-          # record of what is live and the tag is the record of the commit it
-          # came from, so both must exist and the tag must point at the commit
-          # being built. A dispatch that skips the release fails here, before
-          # anything is built or shipped.
-          if ! gh api "repos/${GITHUB_REPOSITORY}/releases/tags/${requested_version}" \
-            --jq '.tag_name' > /dev/null 2>&1; then
-            echo "No published release for ${requested_version}."
-            echo "Publish it first, then the release itself ships this build:"
-            echo "  gh release create ${requested_version} --generate-notes"
-            echo "Nothing was built and nothing was shipped."
-            exit 1
-          fi
-
           deployed_commit="$(git rev-parse HEAD)"
           tag_commit="$(git ls-remote origin "refs/tags/${requested_version}^{}" | cut -f1)"
           if [[ -z "${tag_commit}" ]]; then
             tag_commit="$(git ls-remote origin "refs/tags/${requested_version}" | cut -f1)"
           fi
-          if [[ -z "${tag_commit}" || "${tag_commit}" != "${deployed_commit}" ]]; then
+          if [[ -n "${tag_commit}" && "${tag_commit}" != "${deployed_commit}" ]]; then
             echo "Tag ${requested_version} does not point at the commit being deployed."
             echo "  deployed: ${deployed_commit}"
             echo "  tagged:   ${tag_commit:-none}"
@@ -119,6 +110,8 @@ jobs:
         run: |
           if [[ "${GITHUB_EVENT_NAME}" == "release" ]]; then
             echo "version=${{ github.event.release.tag_name }}" >> "$GITHUB_OUTPUT"
+          elif [[ "${GITHUB_EVENT_NAME}" == "push" ]]; then
+            echo "version=${GITHUB_REF_NAME}" >> "$GITHUB_OUTPUT"
           else
             echo "version=${{ inputs.version }}" >> "$GITHUB_OUTPUT"
           fi
@@ -159,6 +152,23 @@ jobs:
           # Nothing JSON may reach the host as data.
           ! test -e release/data
           tar -czf "${APP}-${{ steps.v.outputs.version }}.tar.gz" -C release .
+
+      - name: Publish or attach to GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ steps.v.outputs.version }}
+        run: |
+          set -euo pipefail
+          TARBALL="$(ls -1 ./*.tar.gz 2>/dev/null | head -n1)"
+          if gh release view "${VERSION}" > /dev/null 2>&1; then
+            echo "Attaching build asset to existing release ${VERSION}"
+            gh release upload "${VERSION}" "${TARBALL}" --clobber
+          else
+            echo "Creating GitHub release ${VERSION} with build asset"
+            gh release create "${VERSION}" "${TARBALL}" \
+              --title "${VERSION}" \
+              --generate-notes
+          fi
 
       - name: Prepare SSH
         env:

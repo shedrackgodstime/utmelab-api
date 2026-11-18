@@ -13,6 +13,10 @@ name: quality
 
 on:
   push:
+    branches:
+      - '**'
+    tags-ignore:
+      - 'v*'
   pull_request:
 
 concurrency:
