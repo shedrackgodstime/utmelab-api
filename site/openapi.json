@@ -4171,7 +4171,6 @@
       },
       "ExamPaper": {
         "type": "object",
-        "description": "A past paper the exam used, with the provenance it carries.",
         "required": [
           "question_id"
         ],
@@ -5252,7 +5251,6 @@
       },
       "PaperEvidence": {
         "type": "object",
-        "description": "Evidence from past papers backing an examiner trap.",
         "properties": {
           "exam": {
             "type": [
@@ -5430,7 +5428,6 @@
       },
       "Provenance": {
         "type": "object",
-        "description": "Provenance metadata indicating where content originated.",
         "properties": {
           "licence": {
             "type": "string"

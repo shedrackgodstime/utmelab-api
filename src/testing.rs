@@ -295,18 +295,6 @@ pub(crate) async fn seed_bank_topic(
     .expect("seed topic");
 }
 
-pub(crate) async fn seed_bank_subtopic(conn: &turso::Connection, topic: &str, subtopic: &str) {
-    conn.execute(
-        "INSERT INTO subtopics VALUES (?1, ?2, ?1, 1, '[]', '[]')",
-        vec![
-            turso::Value::Text(subtopic.to_string()),
-            turso::Value::Text(topic.to_string()),
-        ],
-    )
-    .await
-    .expect("seed subtopic");
-}
-
 #[allow(clippy::too_many_arguments)]
 /// `DbState` over a replica.
 pub(crate) fn db_state(db: SyncDb) -> DbState {

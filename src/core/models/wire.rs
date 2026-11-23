@@ -9,10 +9,8 @@
 use std::collections::HashMap;
 
 use super::domain::{
-    Choice, ContentBlock, ContentReference, DiagramRubric, ExamLink, ExaminerPenalty, Explanation,
-    FormulaSheetEntry, FormulationClause, GlossaryEntry, LearningObjective, MarkingMethod, Passage,
-    Provenance, RichText, SectionMisconception, SectionWorkedExample, StudyCheck, Subject,
-    TheoryExaminerReport, TheorySubPart,
+    Choice, ContentReference, DiagramRubric, ExaminerPenalty, Explanation, FormulationClause,
+    MarkingMethod, Passage, RichText, Subject, TheoryExaminerReport, TheorySubPart,
 };
 
 /// Stable body returned by HTTP error responses.
@@ -440,78 +438,9 @@ pub struct AppliedPenalty {
     pub reason: String,
 }
 
-/// Outline summary of a section within a chapter.
-#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
-pub struct SectionSummary {
-    pub id: String,
-    pub order: i64,
-    pub slug: String,
-    pub title: String,
-    pub est_minutes: i64,
-    #[serde(default, skip_serializing_if = "Vec::is_empty")]
-    pub learning_objectives: Vec<LearningObjective>,
-}
-
-/// The typed outline of a chapter: metadata, learning objectives, prerequisites, and section index.
-#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
-pub struct ChapterOutline {
-    pub id: String,
-    pub book_id: String,
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub part_id: Option<String>,
-    pub order: i64,
-    pub title: String,
-    pub schema_version: u32,
-    pub updated_at: String,
-    pub learning_objectives: Vec<LearningObjective>,
-    pub prerequisites: Vec<String>,
-    #[serde(default, skip_serializing_if = "Vec::is_empty")]
-    pub formula_sheet: Vec<FormulaSheetEntry>,
-    #[serde(default, skip_serializing_if = "Vec::is_empty")]
-    pub glossary: Vec<GlossaryEntry>,
-    #[serde(alias = "sections")]
-    pub section_index: Vec<SectionSummary>,
-    #[serde(default, skip_serializing_if = "Vec::is_empty")]
-    pub sources: Vec<Provenance>,
-}
-
-/// Fully typed teaching section – the contract the UI will consume.
-#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
-pub struct SectionDetail {
-    pub schema_version: u32,
-    pub id: String,
-    pub chapter_id: String,
-    pub order: i64,
-    pub slug: String,
-    pub title: String,
-    pub est_minutes: i64,
-    /// Opaque section revision token, changed whenever imported section content changes.
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub content_hash: Option<String>,
-    pub learning_objectives: Vec<LearningObjective>,
-    pub content: Vec<ContentBlock>,
-    /// Optional lesson-embedded checks; omitted when no checks are authored.
-    #[serde(default, skip_serializing_if = "Vec::is_empty")]
-    pub study_checks: Vec<StudyCheck>,
-    #[serde(default, skip_serializing_if = "Vec::is_empty")]
-    pub worked_examples: Vec<SectionWorkedExample>,
-    #[serde(default, skip_serializing_if = "Vec::is_empty")]
-    pub misconceptions: Vec<SectionMisconception>,
-    #[serde(default, skip_serializing_if = "Vec::is_empty")]
-    pub summary_points: Vec<RichText>,
-    #[serde(default)]
-    pub exercise_ids: Vec<String>,
-    #[serde(default, skip_serializing_if = "Vec::is_empty")]
-    pub exam_links: Vec<ExamLink>,
-    pub provenance: Provenance,
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub no_worked_example_reason: Option<String>,
-}
-
 #[cfg(test)]
 mod tests {
     use super::*;
-    use serde_json::json;
 
     #[test]
     fn page_envelope_counts_whole_and_partial_pages() {
@@ -528,25 +457,4 @@ mod tests {
         assert!(partial.includes_explanation);
     }
 
-    #[test]
-    fn older_section_details_default_to_no_study_checks_and_omit_empty_checks() {
-        let detail: SectionDetail = serde_json::from_value(json!({
-            "schema_version": 2,
-            "id": "sec-1",
-            "chapter_id": "chapter-1",
-            "order": 1,
-            "slug": "section-1",
-            "title": "Section",
-            "est_minutes": 10,
-            "learning_objectives": [],
-            "content": [],
-            "provenance": {}
-        }))
-        .expect("older section detail");
-
-        assert!(detail.study_checks.is_empty());
-        let encoded = serde_json::to_value(detail).expect("serialize section detail");
-        assert!(encoded.get("study_checks").is_none());
-        assert!(encoded.get("content_hash").is_none());
-    }
 }

@@ -395,133 +395,31 @@ pub struct ContentReference {
 fn default_lesson_version() -> u32 { 1 }
 fn default_lesson_status() -> String { "published".to_string() }
 
-/// A textbook. The textbook owns the teaching, so it never names an exam.
-#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
-pub struct Book {
-    pub id: String,
-    pub title: String,
-    pub subject_area: String,
-    pub level: String,
-    pub edition: String,
-    #[serde(default)]
-    pub description: String,
-    #[serde(default)]
-    pub parts: Vec<BookPart>,
-    #[serde(default)]
-    pub sources: Vec<Provenance>,
-}
-
-/// Provenance metadata indicating where content originated.
-#[derive(
-    Clone, Debug, Default, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema,
-)]
+#[derive(Clone, Debug, Default, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
 pub struct Provenance {
-    #[serde(default)]
-    pub publisher: String,
-    #[serde(default)]
-    pub title: String,
-    #[serde(default)]
-    pub url: String,
-    #[serde(default)]
-    pub locator: String,
-    #[serde(default)]
-    pub licence: String,
+    #[serde(default)] pub publisher: String,
+    #[serde(default)] pub title: String,
+    #[serde(default)] pub url: String,
+    #[serde(default)] pub locator: String,
+    #[serde(default)] pub licence: String,
 }
 
-/// A named part of a book, the way a school textbook divides itself.
 #[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
-pub struct BookPart {
-    pub id: String,
-    pub order: i64,
-    pub title: String,
+pub struct ExamPaper {
+    pub question_id: String,
+    #[serde(default, skip_serializing_if = "Option::is_none")] pub year: Option<i64>,
+    #[serde(default)] pub source: String,
+    #[serde(default, skip_serializing_if = "Option::is_none")] pub url: Option<String>,
 }
 
-/// A chapter of a book.
-#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
-pub struct Chapter {
-    pub chapter_id: String,
-    pub schema_version: u32,
-    pub updated_at: String,
-    pub title: String,
-    pub book_id: String,
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub part_id: Option<String>,
-    #[serde(default)]
-    pub order: i64,
-    #[serde(default)]
-    pub facts_inherited: bool,
-    #[serde(default)]
-    pub learning_objectives: Vec<LearningObjective>,
-    #[serde(default)]
-    pub prerequisites: Vec<String>,
-    #[serde(default)]
-    pub formula_sheet: Vec<FormulaSheetEntry>,
-    #[serde(default)]
-    pub glossary: Vec<GlossaryEntry>,
-    #[serde(default)]
-    pub sections: Vec<ChapterSection>,
-    #[serde(default)]
-    pub exercises: Vec<ChapterExercise>,
-    #[serde(default)]
-    pub exam_traps: Vec<ExamTrap>,
-    #[serde(default)]
-    pub exam_recall_checks: Vec<ExamRecallCheck>,
-    #[serde(default)]
-    pub sources: Vec<Provenance>,
-}
-
-/// A gathered formula in a chapter formula sheet.
-#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
-pub struct FormulaSheetEntry {
-    #[serde(default)]
-    pub id: String,
-    pub expression: String,
-    pub caption: RichText,
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub conditions: Option<RichText>,
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub provenance: Option<Provenance>,
-}
-
-/// A glossary term introduced in a chapter.
-#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
-pub struct GlossaryEntry {
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub id: Option<String>,
-    pub term: RichText,
-    pub definition: RichText,
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub provenance: Option<Provenance>,
-}
-
-/// Container for section teaching blocks accepting either `{"blocks": [...]}` or `[...]`.
-#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
-#[serde(untagged)]
-pub enum TeachingTextContainer {
-    Wrapped { blocks: Vec<ContentBlock> },
-    Raw(Vec<ContentBlock>),
-}
-
-impl Default for TeachingTextContainer {
-    fn default() -> Self {
-        Self::Wrapped { blocks: Vec::new() }
-    }
-}
-
-impl TeachingTextContainer {
-    pub fn blocks(&self) -> &[ContentBlock] {
-        match self {
-            Self::Wrapped { blocks } => blocks,
-            Self::Raw(blocks) => blocks,
-        }
-    }
-
-    pub fn into_blocks(self) -> Vec<ContentBlock> {
-        match self {
-            Self::Wrapped { blocks } => blocks,
-            Self::Raw(blocks) => blocks,
-        }
-    }
+#[derive(Clone, Debug, Default, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
+pub struct PaperEvidence {
+    #[serde(default, skip_serializing_if = "Option::is_none")] pub question_id: Option<String>,
+    #[serde(default, skip_serializing_if = "Option::is_none")] pub section_id: Option<String>,
+    #[serde(default, skip_serializing_if = "Option::is_none")] pub exam: Option<String>,
+    #[serde(default, skip_serializing_if = "Option::is_none")] pub year: Option<u16>,
+    #[serde(default, skip_serializing_if = "Option::is_none")] pub source: Option<String>,
+    #[serde(default, skip_serializing_if = "Option::is_none")] pub url: Option<String>,
 }
 
 const fn default_heading_level() -> u8 {
@@ -741,179 +639,6 @@ pub struct StudyCheck {
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub hint: Option<RichText>,
     pub provenance: Provenance,
-}
-
-/// The teaching unit of a chapter.
-#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
-pub struct ChapterSection {
-    pub id: String,
-    pub order: i64,
-    pub slug: String,
-    pub title: String,
-    pub est_minutes: i64,
-    #[serde(default)]
-    pub facts_inherited: bool,
-    #[serde(default)]
-    pub learning_objectives: Vec<LearningObjective>,
-    #[serde(default)]
-    pub teaching_text: TeachingTextContainer,
-    #[serde(default)]
-    pub study_checks: Vec<StudyCheck>,
-    #[serde(default, skip_serializing_if = "String::is_empty")]
-    pub content_hash: String,
-    #[serde(default)]
-    pub worked_examples: Vec<SectionWorkedExample>,
-    #[serde(default)]
-    pub misconceptions: Vec<SectionMisconception>,
-    #[serde(default)]
-    pub summary_points: Vec<RichText>,
-    #[serde(default)]
-    pub exercise_ids: Vec<String>,
-    #[serde(default)]
-    pub exam_links: Vec<ExamLink>,
-    #[serde(default)]
-    pub provenance: Provenance,
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub no_worked_example_reason: Option<String>,
-}
-
-/// Option for a chapter exercise.
-#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
-pub struct ExerciseOption {
-    pub id: String,
-    pub text: String,
-}
-
-/// Solution step for a chapter exercise.
-#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
-pub struct ExerciseSolutionStep {
-    pub step_number: u32,
-    pub expression: String,
-}
-
-/// Hint for a chapter exercise.
-#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
-pub struct ExerciseHint {
-    pub hint_number: u32,
-    pub text: RichText,
-}
-
-/// A practice item with its answer and its solution.
-#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
-pub struct ChapterExercise {
-    pub id: String,
-    pub section_id: String,
-    pub tier: String,
-    pub kind: String,
-    pub difficulty: i64,
-    pub marks: f64,
-    pub stem: RichText,
-    #[serde(default)]
-    pub options: Vec<ExerciseOption>,
-    pub answer: RichText,
-    pub answer_kind: String,
-    #[serde(default)]
-    pub solution: Vec<ExerciseSolutionStep>,
-    #[serde(default)]
-    pub hints: Vec<ExerciseHint>,
-    #[serde(default)]
-    pub tags: Vec<String>,
-    #[serde(default)]
-    pub provenance: Provenance,
-    pub solution_provenance: String,
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub answer_note: Option<String>,
-}
-
-/// How an exam examines a chapter section.
-#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
-pub struct ExamLink {
-    pub exam: String,
-    pub subject: String,
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub topic_slug: Option<String>,
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub subtopic_slug: Option<String>,
-    #[serde(default)]
-    pub status: String,
-    #[serde(default)]
-    pub weight_pct: Option<f64>,
-    #[serde(default)]
-    pub expected_count: Option<f64>,
-    #[serde(default)]
-    pub source_locator: String,
-    #[serde(default)]
-    pub papers: Vec<ExamPaper>,
-}
-
-/// A past paper the exam used, with the provenance it carries.
-#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
-pub struct ExamPaper {
-    pub question_id: String,
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub year: Option<i64>,
-    #[serde(default)]
-    pub source: String,
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub url: Option<String>,
-}
-
-/// Evidence from past papers backing an examiner trap.
-#[derive(
-    Clone, Debug, Default, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema,
-)]
-pub struct PaperEvidence {
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub question_id: Option<String>,
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub section_id: Option<String>,
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub exam: Option<String>,
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub year: Option<u16>,
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub source: Option<String>,
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub url: Option<String>,
-}
-
-/// A mistake candidates make, with the evidence behind it.
-#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
-pub struct ExamTrap {
-    pub id: String,
-    pub exam: String,
-    pub subject: String,
-    pub section_id: String,
-    pub misconception: RichText,
-    pub correction: RichText,
-    #[serde(default)]
-    pub signal: RichText,
-    #[serde(default)]
-    pub status: String,
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub paper_evidence: Option<PaperEvidence>,
-    #[serde(default)]
-    pub frequency: String,
-    #[serde(default)]
-    pub provenance: Provenance,
-}
-
-/// A practice item written in the exam's own wording.
-#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
-pub struct ExamRecallCheck {
-    pub id: String,
-    pub exam: String,
-    pub subject: String,
-    pub section_id: String,
-    pub stem: RichText,
-    #[serde(default)]
-    pub options: Vec<ExerciseOption>,
-    pub answer: String,
-    pub explanation: RichText,
-    #[serde(default)]
-    pub difficulty: i64,
-    #[serde(default)]
-    pub source: String,
 }
 
 /// A WAEC or NECO Paper 2 theory question with step-by-step marking scheme.
