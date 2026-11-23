@@ -21,13 +21,13 @@ help:
 check-version:
 	@echo "Checking version $(VERSION) and tag $(TAG)"
 	@# Ensure tag exists locally
-	@if ! git rev-parse $(TAG) >/dev/null 2>&1; then \
+	@if ! git rev-parse $(TAG)^{commit} >/dev/null 2>&1; then \
 	  echo "Error: tag $(TAG) does not exist. Create it with 'git tag $(TAG)'"; \
 	  exit 1; \
 	fi
 	@# Ensure tag points to HEAD
 	@CURRENT=$$(git rev-parse HEAD); \
-	TAG_COMMIT=$$(git rev-parse $(TAG)); \
+	TAG_COMMIT=$$(git rev-parse $(TAG)^{commit}); \
 	if [ "$$CURRENT" != "$$TAG_COMMIT" ]; then \
 	  echo "Error: tag $(TAG) does not point to current HEAD"; \
 	  exit 1; \
@@ -37,7 +37,7 @@ check-version:
 # Show the most recent tag on the remote
 latest-release:
 	@echo "Fetching remote tags..."
-	@git fetch --tags origin
+	@git fetch --tags --force origin
 	@echo "Latest tag on origin:" \
 	  && git describe --tags `git rev-list --tags --max-count=1`
 
