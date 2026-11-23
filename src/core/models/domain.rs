@@ -476,6 +476,13 @@ pub struct WorkedStep {
 #[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
 #[serde(tag = "type", rename_all = "snake_case")]
 pub enum ContentBlock {
+    /// The single concrete anchor that starts every lesson.
+    Opening {
+        id: String,
+        anchor: OpeningAnchor,
+        heading: String,
+        text: RichText,
+    },
     Paragraph {
         id: String,
         #[serde(alias = "content")]
@@ -581,6 +588,21 @@ pub enum ContentBlock {
         options: Vec<Choice>,
         answer: String,
     },
+}
+
+/// The kind of concrete anchor used to begin a lesson. The wording shown to
+/// learners is carried by the opening's heading; this keeps the contract
+/// useful across subjects without forcing every lesson to say "The situation".
+#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
+#[serde(rename_all = "snake_case")]
+pub enum OpeningAnchor {
+    Scenario,
+    Sentence,
+    Problem,
+    Observation,
+    Passage,
+    Event,
+    Case,
 }
 
 /// A worked example in a chapter section.

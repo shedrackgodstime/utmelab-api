@@ -3492,6 +3492,37 @@
         "oneOf": [
           {
             "type": "object",
+            "description": "The single concrete anchor that starts every lesson.",
+            "required": [
+              "id",
+              "anchor",
+              "heading",
+              "text",
+              "type"
+            ],
+            "properties": {
+              "anchor": {
+                "$ref": "#/components/schemas/OpeningAnchor"
+              },
+              "heading": {
+                "type": "string"
+              },
+              "id": {
+                "type": "string"
+              },
+              "text": {
+                "$ref": "#/components/schemas/RichText"
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "opening"
+                ]
+              }
+            }
+          },
+          {
+            "type": "object",
             "required": [
               "id",
               "text",
@@ -4833,6 +4864,19 @@
             "type": "string"
           }
         }
+      },
+      "OpeningAnchor": {
+        "type": "string",
+        "description": "The kind of concrete anchor used to begin a lesson. The wording shown to\nlearners is carried by the opening's heading; this keeps the contract\nuseful across subjects without forcing every lesson to say \"The situation\".",
+        "enum": [
+          "scenario",
+          "sentence",
+          "problem",
+          "observation",
+          "passage",
+          "event",
+          "case"
+        ]
       },
       "Page_RenderedNovelQuestion": {
         "type": "object",

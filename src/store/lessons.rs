@@ -179,6 +179,7 @@ pub async fn import_bundle(s: &DbState, bundle: &LessonBundle) -> Result<u64, Ap
         .map(|lesson| lesson.id.as_str())
         .collect();
     for lesson in &bundle.lessons {
+        crate::core::catalog::validate_lesson(lesson)?;
         if !lesson.content_hash.is_empty()
             && lesson.content_hash != calculated_content_hash(lesson)?
         {

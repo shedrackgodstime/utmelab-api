@@ -2,7 +2,7 @@
 //! is a total transformation of plain data, unit-testable with no runtime.
 
 use super::models::{
-    ContentBlock, ExampleTitle, Question, RenderedNovelQuestion, RenderedQuestion, Subject,
+    ContentBlock, ExampleTitle, Lesson, Question, RenderedNovelQuestion, RenderedQuestion, Subject,
     Syllabus, SyllabusSubtopic, SyllabusSummary, SyllabusTopic, TableCell, TableRef,
 };
 use super::papers;
@@ -76,6 +76,21 @@ pub fn resolve_teaching_text(teaching: &mut serde_json::Value, media_base_url: &
 
 pub fn validate_content_block(block: &ContentBlock) -> Result<(), AppError> {
     match block {
+        ContentBlock::Opening {
+            id,
+            heading,
+            text,
+            ..
+        } => {
+            if id.trim().is_empty() {
+                return Err(AppError::Internal("opening missing id".into()));
+            }
+            if heading.trim().is_empty() || text.text.trim().is_empty() {
+                return Err(AppError::Internal(format!(
+                    "opening {id} has empty heading or text"
+                )));
+            }
+        }
         ContentBlock::Paragraph { id, text } => {
             if id.trim().is_empty() {
                 return Err(AppError::Internal("paragraph missing id".into()));
@@ -229,9 +244,67 @@ pub fn validate_content_block(block: &ContentBlock) -> Result<(), AppError> {
     Ok(())
 }
 
+/// Validate the minimum teaching shape of a lesson. The opening is semantic
+/// rather than a particular heading, so this works for physics, English, and
+/// every other subject while keeping the learner's first step consistent.
+pub fn validate_lesson(lesson: &Lesson) -> Result<(), AppError> {
+    if lesson.content.is_empty() {
+        return Err(AppError::BadRequest(format!(
+            "lesson {} has no content",
+            lesson.id
+        )));
+    }
+    for block in &lesson.content {
+        validate_content_block(block)?;
+    }
+    if !matches!(lesson.content.first(), Some(ContentBlock::Opening { .. })) {
+        return Err(AppError::BadRequest(format!(
+            "lesson {} must begin with an opening block",
+            lesson.id
+        )));
+    }
+    let opening_count = lesson
+        .content
+        .iter()
+        .filter(|block| matches!(block, ContentBlock::Opening { .. }))
+        .count();
+    if opening_count != 1 {
+        return Err(AppError::BadRequest(format!(
+            "lesson {} must contain exactly one opening block",
+            lesson.id
+        )));
+    }
+    if !lesson
+        .content
+        .iter()
+        .any(|block| matches!(block, ContentBlock::Example { .. }))
+    {
+        return Err(AppError::BadRequest(format!(
+            "lesson {} must contain a worked example",
+            lesson.id
+        )));
+    }
+    if lesson.checks.is_empty() {
+        return Err(AppError::BadRequest(format!(
+            "lesson {} must contain at least one check",
+            lesson.id
+        )));
+    }
+    if lesson.summary.is_empty() {
+        return Err(AppError::BadRequest(format!(
+            "lesson {} must contain a summary",
+            lesson.id
+        )));
+    }
+    Ok(())
+}
+
 /// Resolve media inside a ContentBlock.
 pub fn resolve_content_block(block: &mut ContentBlock, media_base_url: &str) {
     match block {
+        ContentBlock::Opening { text, .. } => {
+            resolve_rich_text(text, media_base_url);
+        }
         ContentBlock::Paragraph { text, .. } => {
             resolve_rich_text(text, media_base_url);
         }
