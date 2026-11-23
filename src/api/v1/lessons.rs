@@ -1,6 +1,10 @@
 //! Exam-neutral lesson content.
 
-use axum::{extract::{Path, State}, routing::get, Json, Router};
+use axum::{
+    extract::{Path, State},
+    routing::get,
+    Json, Router,
+};
 
 use crate::{
     auth::{api_key::AuthedKey, SCOPE_READ_CATALOG},

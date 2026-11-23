@@ -402,11 +402,7 @@ mod tests {
     /// resources mirror. One list, so a route cannot be mounted but
     /// undocumented, or documented but unmounted.
     const API_ROUTES: &[(&str, &str, &str)] = &[
-        (
-            "GET",
-            "/api/v1/lessons/{id}",
-            "/api/v1/lessons/lesson-1",
-        ),
+        ("GET", "/api/v1/lessons/{id}", "/api/v1/lessons/lesson-1"),
         ("GET", "/api/v1/exams", "/api/v1/exams"),
         (
             "GET",

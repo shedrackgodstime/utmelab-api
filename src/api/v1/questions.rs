@@ -51,13 +51,9 @@ pub async fn one(
                 f.include_explanation.unwrap_or(false),
                 s.media_base_url.as_ref(),
             );
-            rendered.topic_slug = store::catalog::question_topic(
-                &s,
-                &q.exam,
-                &q.subject,
-                q.subtopic_id.as_deref(),
-            )
-            .await?;
+            rendered.topic_slug =
+                store::catalog::question_topic(&s, &q.exam, &q.subject, q.subtopic_id.as_deref())
+                    .await?;
             if f.include_passage.unwrap_or(false) {
                 if let Some(ref pid) = q.passage_id {
                     rendered.passage = crate::api::v1::passages::load_passage(&s, pid).await?;

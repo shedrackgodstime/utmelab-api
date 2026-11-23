@@ -139,7 +139,11 @@ pub fn templates() -> Vec<ResourceTemplate> {
             "Table rows",
             "A page of rows from an allowlisted table. `limit` caps it.",
         ),
-        tmpl("lessons/{id}", "Lesson", "One exam-neutral teaching lesson."),
+        tmpl(
+            "lessons/{id}",
+            "Lesson",
+            "One exam-neutral teaching lesson.",
+        ),
         tmpl(
             "theory/{exam}/{subject}",
             "Theory questions list",

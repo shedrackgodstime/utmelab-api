@@ -1112,9 +1112,14 @@ pub async fn question_topic(
     subject: &str,
     subtopic_id: Option<&str>,
 ) -> Result<Option<String>, AppError> {
-    let (exam, subject, subtopic_id) =
-        (exam.to_string(), subject.to_string(), subtopic_id.map(str::to_string));
-    let Some(subtopic_id) = subtopic_id else { return Ok(None) };
+    let (exam, subject, subtopic_id) = (
+        exam.to_string(),
+        subject.to_string(),
+        subtopic_id.map(str::to_string),
+    );
+    let Some(subtopic_id) = subtopic_id else {
+        return Ok(None);
+    };
     with_conn(s, |conn| {
         let (exam, subject, subtopic_id) = (exam.clone(), subject.clone(), subtopic_id.clone());
         async move {
@@ -1125,13 +1130,13 @@ pub async fn question_topic(
                 )
                 .await
                 .map_err(upstream)?;
-            Ok(rows
+            rows
                 .next()
                 .await
                 .map_err(upstream)?
                 .map(|row| row.get(0))
                 .transpose()
-                .map_err(upstream)?)
+                .map_err(upstream)
         }
     })
     .await

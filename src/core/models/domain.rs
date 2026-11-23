@@ -388,33 +388,53 @@ pub struct ContentReference {
     pub title: String,
 }
 
-fn default_lesson_status() -> String { "published".to_string() }
+fn default_lesson_status() -> String {
+    "published".to_string()
+}
 
-#[derive(Clone, Debug, Default, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
+#[derive(
+    Clone, Debug, Default, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema,
+)]
 pub struct Provenance {
-    #[serde(default)] pub publisher: String,
-    #[serde(default)] pub title: String,
-    #[serde(default)] pub url: String,
-    #[serde(default)] pub locator: String,
-    #[serde(default)] pub licence: String,
+    #[serde(default)]
+    pub publisher: String,
+    #[serde(default)]
+    pub title: String,
+    #[serde(default)]
+    pub url: String,
+    #[serde(default)]
+    pub locator: String,
+    #[serde(default)]
+    pub licence: String,
 }
 
 #[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
 pub struct ExamPaper {
     pub question_id: String,
-    #[serde(default, skip_serializing_if = "Option::is_none")] pub year: Option<i64>,
-    #[serde(default)] pub source: String,
-    #[serde(default, skip_serializing_if = "Option::is_none")] pub url: Option<String>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub year: Option<i64>,
+    #[serde(default)]
+    pub source: String,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub url: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
+#[derive(
+    Clone, Debug, Default, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema,
+)]
 pub struct PaperEvidence {
-    #[serde(default, skip_serializing_if = "Option::is_none")] pub question_id: Option<String>,
-    #[serde(default, skip_serializing_if = "Option::is_none")] pub section_id: Option<String>,
-    #[serde(default, skip_serializing_if = "Option::is_none")] pub exam: Option<String>,
-    #[serde(default, skip_serializing_if = "Option::is_none")] pub year: Option<u16>,
-    #[serde(default, skip_serializing_if = "Option::is_none")] pub source: Option<String>,
-    #[serde(default, skip_serializing_if = "Option::is_none")] pub url: Option<String>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub question_id: Option<String>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub section_id: Option<String>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub exam: Option<String>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub year: Option<u16>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub source: Option<String>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub url: Option<String>,
 }
 
 const fn default_heading_level() -> u8 {

@@ -1,7 +1,11 @@
 //! Reads for the exam-neutral lesson surface.
 
 use super::{upstream, with_conn};
-use crate::{core::models::{ContentReference, Lesson}, error::AppError, state::DbState};
+use crate::{
+    core::models::{ContentReference, Lesson},
+    error::AppError,
+    state::DbState,
+};
 
 #[derive(Clone, Debug, serde::Deserialize)]
 pub struct LessonBundle {
@@ -33,18 +37,33 @@ pub struct LessonExampleQuestionLink {
     pub order_index: i64,
 }
 
-fn json_col<T: serde::de::DeserializeOwned>(raw: String, name: &'static str) -> Result<T, AppError> {
+fn json_col<T: serde::de::DeserializeOwned>(
+    raw: String,
+    name: &'static str,
+) -> Result<T, AppError> {
     serde_json::from_str(&raw).map_err(|error| AppError::Upstream(format!("{name}: {error}")))
 }
 
 fn calculated_content_hash(lesson: &Lesson) -> Result<String, AppError> {
     use sha2::Digest;
     let payload = serde_json::to_vec(&(
-        &lesson.title, &lesson.description, &lesson.subject, &lesson.level,
-        lesson.estimated_minutes, &lesson.objectives, &lesson.content,
-        &lesson.checks, &lesson.misconceptions, &lesson.summary, &lesson.provenance,
-    )).map_err(|e| AppError::BadRequest(format!("lesson {} cannot be hashed: {e}", lesson.id)))?;
-    Ok(format!("sha256:{}", crate::core::hex::encode(&sha2::Sha256::digest(payload))))
+        &lesson.title,
+        &lesson.description,
+        &lesson.subject,
+        &lesson.level,
+        lesson.estimated_minutes,
+        &lesson.objectives,
+        &lesson.content,
+        &lesson.checks,
+        &lesson.misconceptions,
+        &lesson.summary,
+        &lesson.provenance,
+    ))
+    .map_err(|e| AppError::BadRequest(format!("lesson {} cannot be hashed: {e}", lesson.id)))?;
+    Ok(format!(
+        "sha256:{}",
+        crate::core::hex::encode(&sha2::Sha256::digest(payload))
+    ))
 }
 
 pub async fn get_lesson(s: &DbState, id: &str) -> Result<Option<Lesson>, AppError> {
@@ -100,8 +119,11 @@ pub async fn topic_lessons(
     subject: &str,
     topic_slug: &str,
 ) -> Result<Vec<ContentReference>, AppError> {
-    let (exam, subject, topic_slug) =
-        (exam.to_string(), subject.to_string(), topic_slug.to_string());
+    let (exam, subject, topic_slug) = (
+        exam.to_string(),
+        subject.to_string(),
+        topic_slug.to_string(),
+    );
     with_conn(s, |conn| {
         let (exam, subject, topic_slug) = (exam.clone(), subject.clone(), topic_slug.clone());
         async move {
@@ -112,7 +134,9 @@ pub async fn topic_lessons(
                 )
                 .await
                 .map_err(upstream)?;
-            let Some(row) = rows.next().await.map_err(upstream)? else { return Ok(Vec::new()); };
+            let Some(row) = rows.next().await.map_err(upstream)? else {
+                return Ok(Vec::new());
+            };
             let raw: String = row.get(0).map_err(upstream)?;
             json_col(raw, "topics.lesson_refs")
         }
@@ -131,37 +155,64 @@ pub async fn subtopic_lessons(
     with_conn(s, |conn| {
         let (topic_slug, subtopic_slug) = (topic_slug.clone(), subtopic_slug.clone());
         async move {
-            let mut rows = conn.query(
-                "SELECT lesson_refs FROM subtopics WHERE topic=?1 AND slug=?2",
-                [topic_slug.as_str(), subtopic_slug.as_str()],
-            ).await.map_err(upstream)?;
-            let Some(row) = rows.next().await.map_err(upstream)? else { return Ok(Vec::new()); };
+            let mut rows = conn
+                .query(
+                    "SELECT lesson_refs FROM subtopics WHERE topic=?1 AND slug=?2",
+                    [topic_slug.as_str(), subtopic_slug.as_str()],
+                )
+                .await
+                .map_err(upstream)?;
+            let Some(row) = rows.next().await.map_err(upstream)? else {
+                return Ok(Vec::new());
+            };
             let raw: String = row.get(0).map_err(upstream)?;
             json_col(raw, "subtopics.lesson_refs")
         }
-    }).await
+    })
+    .await
 }
 
 pub async fn import_bundle(s: &DbState, bundle: &LessonBundle) -> Result<u64, AppError> {
-    let lesson_ids: std::collections::HashSet<&str> =
-        bundle.lessons.iter().map(|lesson| lesson.id.as_str()).collect();
+    let lesson_ids: std::collections::HashSet<&str> = bundle
+        .lessons
+        .iter()
+        .map(|lesson| lesson.id.as_str())
+        .collect();
     for lesson in &bundle.lessons {
-        if !lesson.content_hash.is_empty() && lesson.content_hash != calculated_content_hash(lesson)? {
-            return Err(AppError::BadRequest(format!("lesson {} has an invalid content_hash", lesson.id)));
+        if !lesson.content_hash.is_empty()
+            && lesson.content_hash != calculated_content_hash(lesson)?
+        {
+            return Err(AppError::BadRequest(format!(
+                "lesson {} has an invalid content_hash",
+                lesson.id
+            )));
         }
     }
     for link in &bundle.topic_links {
-        let known_lesson = lesson_ids.contains(link.lesson_id.as_str()) || with_conn(s, |conn| {
-            let id = link.lesson_id.clone();
-            async move {
-                let mut rows = conn.query("SELECT 1 FROM lessons WHERE id=?1", [id.as_str()]).await.map_err(upstream)?;
-                Ok(rows.next().await.map_err(upstream)?.is_some())
-            }
-        }).await?;
+        let known_lesson = lesson_ids.contains(link.lesson_id.as_str())
+            || with_conn(s, |conn| {
+                let id = link.lesson_id.clone();
+                async move {
+                    let mut rows = conn
+                        .query("SELECT 1 FROM lessons WHERE id=?1", [id.as_str()])
+                        .await
+                        .map_err(upstream)?;
+                    Ok(rows.next().await.map_err(upstream)?.is_some())
+                }
+            })
+            .await?;
         if !known_lesson {
-            return Err(AppError::BadRequest(format!("topic lesson link names unknown lesson {}", link.lesson_id)));
+            return Err(AppError::BadRequest(format!(
+                "topic lesson link names unknown lesson {}",
+                link.lesson_id
+            )));
         }
-        let (exam, subject, topic, subtopic) = (link.exam.clone(), link.subject.clone(), link.topic_slug.clone(), link.subtopic_slug.clone().unwrap_or_default());
+        let (exam, subject, topic, subtopic) = (
+            link.exam.clone(),
+            link.subject.clone(),
+            link.topic_slug.clone(),
+            link.subtopic_slug.clone().unwrap_or_default(),
+        );
         let valid_topic = with_conn(s, |conn| {
             let exam = exam.clone(); let subject = subject.clone(); let topic = topic.clone(); let subtopic = subtopic.clone();
             async move {
@@ -170,42 +221,83 @@ pub async fn import_bundle(s: &DbState, bundle: &LessonBundle) -> Result<u64, Ap
             }
         }).await?;
         if !valid_topic {
-            return Err(AppError::BadRequest(format!("topic lesson link names unknown topic {}/{}/{}", link.exam, link.subject, link.topic_slug)));
+            return Err(AppError::BadRequest(format!(
+                "topic lesson link names unknown topic {}/{}/{}",
+                link.exam, link.subject, link.topic_slug
+            )));
         }
-        let lesson_subject = bundle.lessons.iter().find(|lesson| lesson.id == link.lesson_id).map(|lesson| lesson.subject.clone());
+        let lesson_subject = bundle
+            .lessons
+            .iter()
+            .find(|lesson| lesson.id == link.lesson_id)
+            .map(|lesson| lesson.subject.clone());
         if let Some(lesson_subject) = lesson_subject {
             if lesson_subject != link.subject {
-                return Err(AppError::BadRequest(format!("lesson {} subject does not match topic subject {}", link.lesson_id, link.subject)));
+                return Err(AppError::BadRequest(format!(
+                    "lesson {} subject does not match topic subject {}",
+                    link.lesson_id, link.subject
+                )));
             }
         }
     }
     for link in &bundle.example_question_links {
         if !lesson_ids.contains(link.lesson_id.as_str()) {
-            return Err(AppError::BadRequest(format!("question lesson link names unknown lesson {}", link.lesson_id)));
+            return Err(AppError::BadRequest(format!(
+                "question lesson link names unknown lesson {}",
+                link.lesson_id
+            )));
         }
         let question_id = link.question_id.clone();
         let known_question = with_conn(s, |conn| {
             let question_id = question_id.clone();
             async move {
-            let mut rows = conn.query("SELECT 1 FROM questions WHERE id=?1", [question_id.as_str()]).await.map_err(upstream)?;
-            Ok(rows.next().await.map_err(upstream)?.is_some())
+                let mut rows = conn
+                    .query(
+                        "SELECT 1 FROM questions WHERE id=?1",
+                        [question_id.as_str()],
+                    )
+                    .await
+                    .map_err(upstream)?;
+                Ok(rows.next().await.map_err(upstream)?.is_some())
             }
-        }).await?;
+        })
+        .await?;
         if !known_question {
-            return Err(AppError::BadRequest(format!("lesson link names unknown question {}", link.question_id)));
+            return Err(AppError::BadRequest(format!(
+                "lesson link names unknown question {}",
+                link.question_id
+            )));
         }
-        let lesson_subject = bundle.lessons.iter().find(|lesson| lesson.id == link.lesson_id).map(|lesson| lesson.subject.clone());
+        let lesson_subject = bundle
+            .lessons
+            .iter()
+            .find(|lesson| lesson.id == link.lesson_id)
+            .map(|lesson| lesson.subject.clone());
         if let Some(lesson_subject) = lesson_subject {
             let question_id = link.question_id.clone();
             let question_subject = with_conn(s, |conn| {
                 let question_id = question_id.clone();
                 async move {
-                    let mut rows = conn.query("SELECT subject FROM questions WHERE id=?1", [question_id.as_str()]).await.map_err(upstream)?;
-                    Ok(rows.next().await.map_err(upstream)?.and_then(|row| row.get::<String>(0).ok()))
+                    let mut rows = conn
+                        .query(
+                            "SELECT subject FROM questions WHERE id=?1",
+                            [question_id.as_str()],
+                        )
+                        .await
+                        .map_err(upstream)?;
+                    Ok(rows
+                        .next()
+                        .await
+                        .map_err(upstream)?
+                        .and_then(|row| row.get::<String>(0).ok()))
                 }
-            }).await?;
+            })
+            .await?;
             if question_subject.as_deref() != Some(lesson_subject.as_str()) {
-                return Err(AppError::BadRequest(format!("lesson {} subject does not match question {} subject", link.lesson_id, link.question_id)));
+                return Err(AppError::BadRequest(format!(
+                    "lesson {} subject does not match question {} subject",
+                    link.lesson_id, link.question_id
+                )));
             }
         }
     }
@@ -216,11 +308,17 @@ pub async fn import_bundle(s: &DbState, bundle: &LessonBundle) -> Result<u64, Ap
         } else {
             lesson.content_hash.clone()
         };
-        let example_refs: Vec<ContentReference> = bundle.example_question_links.iter()
+        let example_refs: Vec<ContentReference> = bundle
+            .example_question_links
+            .iter()
             .filter(|link| link.lesson_id == lesson.id)
-            .map(|link| ContentReference { id: link.question_id.clone(), title: link.question_id.clone() })
+            .map(|link| ContentReference {
+                id: link.question_id.clone(),
+                title: link.question_id.clone(),
+            })
             .collect();
-        let example_refs_json = serde_json::to_string(&example_refs).map_err(|e| AppError::Internal(e.to_string()))?;
+        let example_refs_json =
+            serde_json::to_string(&example_refs).map_err(|e| AppError::Internal(e.to_string()))?;
         statements.push((
             "INSERT INTO lessons (id, status, title, description, subject, level, estimated_minutes, objectives, content, checks, misconceptions, summary, example_question_refs, provenance, content_hash) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15) ON CONFLICT(id) DO UPDATE SET status=excluded.status, title=excluded.title, description=excluded.description, subject=excluded.subject, level=excluded.level, estimated_minutes=excluded.estimated_minutes, objectives=excluded.objectives, content=excluded.content, checks=excluded.checks, misconceptions=excluded.misconceptions, summary=excluded.summary, example_question_refs=excluded.example_question_refs, provenance=excluded.provenance, content_hash=excluded.content_hash, updated_at=CURRENT_TIMESTAMP",
             vec![
@@ -247,7 +345,12 @@ pub async fn import_bundle(s: &DbState, bundle: &LessonBundle) -> Result<u64, Ap
         statements.push(("UPDATE subtopics SET lesson_refs=COALESCE((SELECT json_group_array(json(value)) FROM json_each(COALESCE(subtopics.lesson_refs,'[]')) WHERE json_extract(value,'$.id')<>?1),'[]') WHERE EXISTS (SELECT 1 FROM json_each(COALESCE(subtopics.lesson_refs,'[]')) WHERE json_extract(value,'$.id')=?1)", vec![turso::Value::Text(lesson.id.clone())]));
     }
     for link in &bundle.topic_links {
-        let title = bundle.lessons.iter().find(|lesson| lesson.id == link.lesson_id).map(|lesson| lesson.title.clone()).unwrap_or_default();
+        let title = bundle
+            .lessons
+            .iter()
+            .find(|lesson| lesson.id == link.lesson_id)
+            .map(|lesson| lesson.title.clone())
+            .unwrap_or_default();
         if let Some(subtopic) = &link.subtopic_slug {
             statements.push(("UPDATE subtopics SET lesson_refs=json_insert(COALESCE(lesson_refs,'[]'),'$[#]',json_object('id',?1,'title',?2)) WHERE topic=?3 AND slug=?4", vec![turso::Value::Text(link.lesson_id.clone()), turso::Value::Text(title), turso::Value::Text(link.topic_slug.clone()), turso::Value::Text(subtopic.clone())]));
         } else {

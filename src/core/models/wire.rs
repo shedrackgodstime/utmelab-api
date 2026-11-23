@@ -456,5 +456,4 @@ mod tests {
         assert_eq!(partial.page, 3);
         assert!(partial.includes_explanation);
     }
-
 }

@@ -66,9 +66,21 @@ pub const READ_SHAPES: &[(&str, &[&str])] = &[
     (
         "lessons",
         &[
-            "id", "status", "title", "description", "subject", "level",
-            "estimated_minutes", "objectives", "content", "checks",
-            "misconceptions", "summary", "example_question_refs", "provenance", "content_hash",
+            "id",
+            "status",
+            "title",
+            "description",
+            "subject",
+            "level",
+            "estimated_minutes",
+            "objectives",
+            "content",
+            "checks",
+            "misconceptions",
+            "summary",
+            "example_question_refs",
+            "provenance",
+            "content_hash",
         ],
     ),
     ("api_schema_migrations", &["version", "applied_at"]),
@@ -183,7 +195,14 @@ pub const READ_SHAPES: &[(&str, &[&str])] = &[
     ),
     (
         "subtopics",
-        &["slug", "topic", "name", "order", "objectives", "lesson_refs"],
+        &[
+            "slug",
+            "topic",
+            "name",
+            "order",
+            "objectives",
+            "lesson_refs",
+        ],
     ),
     ("countries", &[]),
     (
@@ -311,7 +330,9 @@ pub async fn ensure_schema(s: &DbState) -> Result<(), AppError> {
 /// API-owned migrations are numbered, applied once, and never rewritten.
 /// Fresh databases receive the current DDL first; upgraded databases receive
 /// the same DDL idempotently and then any missing migrations.
-const MIGRATIONS: &[u64] = &[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18];
+const MIGRATIONS: &[u64] = &[
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,
+];
 
 async fn apply_migrations(s: &DbState) -> Result<(), AppError> {
     for &version in MIGRATIONS {
@@ -595,9 +616,27 @@ async fn apply_migrations(s: &DbState) -> Result<(), AppError> {
                 .await?;
             }
             14 => {
-                ensure_column(s, "lessons", "version", "version INTEGER NOT NULL DEFAULT 1").await?;
-                ensure_column(s, "lessons", "status", "status TEXT NOT NULL DEFAULT 'published'").await?;
-                ensure_column(s, "topic_lessons", "subtopic_slug", "subtopic_slug TEXT NOT NULL DEFAULT ''").await?;
+                ensure_column(
+                    s,
+                    "lessons",
+                    "version",
+                    "version INTEGER NOT NULL DEFAULT 1",
+                )
+                .await?;
+                ensure_column(
+                    s,
+                    "lessons",
+                    "status",
+                    "status TEXT NOT NULL DEFAULT 'published'",
+                )
+                .await?;
+                ensure_column(
+                    s,
+                    "topic_lessons",
+                    "subtopic_slug",
+                    "subtopic_slug TEXT NOT NULL DEFAULT ''",
+                )
+                .await?;
                 super::write::execute_ddl_local(
                     s,
                     "CREATE TABLE IF NOT EXISTS lesson_revisions (lesson_id TEXT NOT NULL, version INTEGER NOT NULL, status TEXT NOT NULL, title TEXT NOT NULL, description TEXT NOT NULL, subject TEXT NOT NULL, level TEXT NOT NULL, estimated_minutes INTEGER NOT NULL, objectives TEXT NOT NULL, content TEXT NOT NULL, checks TEXT NOT NULL, misconceptions TEXT NOT NULL, summary TEXT NOT NULL, provenance TEXT NOT NULL, content_hash TEXT NOT NULL, created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP, PRIMARY KEY (lesson_id, version))",
@@ -607,14 +646,28 @@ async fn apply_migrations(s: &DbState) -> Result<(), AppError> {
                 // Rebuild the relationship table so upgraded databases get
                 // the same subtopic-aware key as fresh databases.
                 for index in ["idx_topic_lessons_topic", "idx_topic_lessons_lesson"] {
-                    super::write::execute_ddl_local(s, &format!("DROP INDEX IF EXISTS {index}")).await?;
+                    super::write::execute_ddl_local(s, &format!("DROP INDEX IF EXISTS {index}"))
+                        .await?;
                 }
                 super::write::execute_ddl_local(s, "CREATE TABLE topic_lessons_v15 (exam TEXT NOT NULL, subject TEXT NOT NULL, topic_slug TEXT NOT NULL, subtopic_slug TEXT NOT NULL DEFAULT '', lesson_id TEXT NOT NULL, order_index INTEGER NOT NULL DEFAULT 0, PRIMARY KEY (exam, subject, topic_slug, subtopic_slug, lesson_id))").await?;
                 super::write::execute_write_local(s, "INSERT OR IGNORE INTO topic_lessons_v15 (exam, subject, topic_slug, subtopic_slug, lesson_id, order_index) SELECT exam, subject, topic_slug, COALESCE(subtopic_slug, ''), lesson_id, order_index FROM topic_lessons", vec![]).await?;
                 super::write::execute_ddl_local(s, "DROP TABLE topic_lessons").await?;
-                super::write::execute_ddl_local(s, "ALTER TABLE topic_lessons_v15 RENAME TO topic_lessons").await?;
-                for table in ["books", "chapters", "chapter_sections", "chapter_exercises", "exam_traps", "exam_recall_checks", "topic_notes"] {
-                    super::write::execute_ddl_local(s, &format!("DROP TABLE IF EXISTS {table}")).await?;
+                super::write::execute_ddl_local(
+                    s,
+                    "ALTER TABLE topic_lessons_v15 RENAME TO topic_lessons",
+                )
+                .await?;
+                for table in [
+                    "books",
+                    "chapters",
+                    "chapter_sections",
+                    "chapter_exercises",
+                    "exam_traps",
+                    "exam_recall_checks",
+                    "topic_notes",
+                ] {
+                    super::write::execute_ddl_local(s, &format!("DROP TABLE IF EXISTS {table}"))
+                        .await?;
                 }
             }
             16 => {
@@ -624,8 +677,16 @@ async fn apply_migrations(s: &DbState) -> Result<(), AppError> {
                     Ok(rows.next().await.map_err(upstream)?.is_some())
                 }).await?;
                 if old_exists {
-                    super::write::execute_ddl_local(s, "DROP INDEX IF EXISTS idx_lesson_questions_lesson").await?;
-                    super::write::execute_ddl_local(s, "DROP INDEX IF EXISTS idx_lesson_questions_question").await?;
+                    super::write::execute_ddl_local(
+                        s,
+                        "DROP INDEX IF EXISTS idx_lesson_questions_lesson",
+                    )
+                    .await?;
+                    super::write::execute_ddl_local(
+                        s,
+                        "DROP INDEX IF EXISTS idx_lesson_questions_question",
+                    )
+                    .await?;
                     super::write::execute_write_local(s, "INSERT OR IGNORE INTO lesson_example_questions (lesson_id, question_id, order_index) SELECT lesson_id, question_id, order_index FROM lesson_questions", vec![]).await?;
                     super::write::execute_ddl_local(s, "DROP TABLE lesson_questions").await?;
                 }
@@ -633,22 +694,55 @@ async fn apply_migrations(s: &DbState) -> Result<(), AppError> {
             }
             17 => {
                 let has_topics = with_conn(s, |conn| async move {
-                    let mut rows = conn.query("SELECT 1 FROM sqlite_master WHERE type='table' AND name='topics'", ()).await.map_err(upstream)?;
+                    let mut rows = conn
+                        .query(
+                            "SELECT 1 FROM sqlite_master WHERE type='table' AND name='topics'",
+                            (),
+                        )
+                        .await
+                        .map_err(upstream)?;
                     Ok(rows.next().await.map_err(upstream)?.is_some())
-                }).await?;
+                })
+                .await?;
                 let has_subtopics = with_conn(s, |conn| async move {
-                    let mut rows = conn.query("SELECT 1 FROM sqlite_master WHERE type='table' AND name='subtopics'", ()).await.map_err(upstream)?;
+                    let mut rows = conn
+                        .query(
+                            "SELECT 1 FROM sqlite_master WHERE type='table' AND name='subtopics'",
+                            (),
+                        )
+                        .await
+                        .map_err(upstream)?;
                     Ok(rows.next().await.map_err(upstream)?.is_some())
-                }).await?;
+                })
+                .await?;
                 let has_questions = with_conn(s, |conn| async move {
-                    let mut rows = conn.query("SELECT 1 FROM sqlite_master WHERE type='table' AND name='questions'", ()).await.map_err(upstream)?;
+                    let mut rows = conn
+                        .query(
+                            "SELECT 1 FROM sqlite_master WHERE type='table' AND name='questions'",
+                            (),
+                        )
+                        .await
+                        .map_err(upstream)?;
                     Ok(rows.next().await.map_err(upstream)?.is_some())
-                }).await?;
+                })
+                .await?;
                 if has_topics {
-                    ensure_column(s, "topics", "lesson_refs", "lesson_refs TEXT NOT NULL DEFAULT '[]'").await?;
+                    ensure_column(
+                        s,
+                        "topics",
+                        "lesson_refs",
+                        "lesson_refs TEXT NOT NULL DEFAULT '[]'",
+                    )
+                    .await?;
                 }
                 if has_subtopics {
-                    ensure_column(s, "subtopics", "lesson_refs", "lesson_refs TEXT NOT NULL DEFAULT '[]'").await?;
+                    ensure_column(
+                        s,
+                        "subtopics",
+                        "lesson_refs",
+                        "lesson_refs TEXT NOT NULL DEFAULT '[]'",
+                    )
+                    .await?;
                 }
                 super::write::execute_ddl_local(s, "CREATE TABLE lessons_v17 (id TEXT NOT NULL, version INTEGER NOT NULL, status TEXT NOT NULL DEFAULT 'published', title TEXT NOT NULL, description TEXT NOT NULL DEFAULT '{}', subject TEXT NOT NULL, level TEXT NOT NULL DEFAULT '', estimated_minutes INTEGER NOT NULL DEFAULT 0, objectives TEXT NOT NULL DEFAULT '[]', content TEXT NOT NULL DEFAULT '[]', checks TEXT NOT NULL DEFAULT '[]', misconceptions TEXT NOT NULL DEFAULT '[]', summary TEXT NOT NULL DEFAULT '[]', example_question_refs TEXT NOT NULL DEFAULT '[]', provenance TEXT NOT NULL DEFAULT '{}', content_hash TEXT NOT NULL, created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP, updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP, PRIMARY KEY (id, version))").await?;
                 if has_questions {
@@ -664,9 +758,15 @@ async fn apply_migrations(s: &DbState) -> Result<(), AppError> {
                     super::write::execute_write_local(s, "UPDATE subtopics SET lesson_refs=COALESCE((SELECT json_group_array(json_object('id',tl.lesson_id,'title',(SELECT title FROM lessons WHERE id=tl.lesson_id ORDER BY version DESC LIMIT 1))) FROM topic_lessons tl WHERE tl.topic_slug=subtopics.topic AND tl.subtopic_slug=subtopics.slug),'[]')", vec![]).await?;
                 }
                 super::write::execute_ddl_local(s, "DROP TABLE lessons").await?;
-                super::write::execute_ddl_local(s, "ALTER TABLE lessons_v17 RENAME TO lessons").await?;
-                for table in ["lesson_revisions", "lesson_example_questions", "topic_lessons"] {
-                    super::write::execute_ddl_local(s, &format!("DROP TABLE IF EXISTS {table}")).await?;
+                super::write::execute_ddl_local(s, "ALTER TABLE lessons_v17 RENAME TO lessons")
+                    .await?;
+                for table in [
+                    "lesson_revisions",
+                    "lesson_example_questions",
+                    "topic_lessons",
+                ] {
+                    super::write::execute_ddl_local(s, &format!("DROP TABLE IF EXISTS {table}"))
+                        .await?;
                 }
             }
             18 => {
@@ -676,7 +776,8 @@ async fn apply_migrations(s: &DbState) -> Result<(), AppError> {
                 super::write::execute_ddl_local(s, "CREATE TABLE lessons_v18 (id TEXT PRIMARY KEY, status TEXT NOT NULL DEFAULT 'published', title TEXT NOT NULL, description TEXT NOT NULL DEFAULT '{}', subject TEXT NOT NULL, level TEXT NOT NULL DEFAULT '', estimated_minutes INTEGER NOT NULL DEFAULT 0, objectives TEXT NOT NULL DEFAULT '[]', content TEXT NOT NULL DEFAULT '[]', checks TEXT NOT NULL DEFAULT '[]', misconceptions TEXT NOT NULL DEFAULT '[]', summary TEXT NOT NULL DEFAULT '[]', example_question_refs TEXT NOT NULL DEFAULT '[]', provenance TEXT NOT NULL DEFAULT '{}', content_hash TEXT NOT NULL, created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP, updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)").await?;
                 super::write::execute_write_local(s, "INSERT INTO lessons_v18 (id, status, title, description, subject, level, estimated_minutes, objectives, content, checks, misconceptions, summary, example_question_refs, provenance, content_hash, created_at, updated_at) SELECT id, status, title, description, subject, level, estimated_minutes, objectives, content, checks, misconceptions, summary, example_question_refs, provenance, content_hash, created_at, updated_at FROM lessons l WHERE version=(SELECT MAX(version) FROM lessons latest WHERE latest.id=l.id)", vec![]).await?;
                 super::write::execute_ddl_local(s, "DROP TABLE lessons").await?;
-                super::write::execute_ddl_local(s, "ALTER TABLE lessons_v18 RENAME TO lessons").await?;
+                super::write::execute_ddl_local(s, "ALTER TABLE lessons_v18 RENAME TO lessons")
+                    .await?;
                 super::write::execute_ddl_local(s, "DROP TABLE IF EXISTS lesson_revisions").await?;
             }
 

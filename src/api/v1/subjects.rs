@@ -111,17 +111,11 @@ pub async fn build_syllabus(
         country.as_deref(),
     );
     for topic in &mut syllabus.topics {
-        topic.lesson_refs = store::lessons::topic_lessons(
-            s,
-            exam,
-            slug,
-            &topic.slug,
-        )
-        .await?;
+        topic.lesson_refs = store::lessons::topic_lessons(s, exam, slug, &topic.slug).await?;
         for subtopic in &mut topic.subtopics {
-            subtopic.lesson_refs = store::lessons::subtopic_lessons(
-                s, exam, slug, &topic.slug, &subtopic.slug,
-            ).await?;
+            subtopic.lesson_refs =
+                store::lessons::subtopic_lessons(s, exam, slug, &topic.slug, &subtopic.slug)
+                    .await?;
         }
     }
     Ok(syllabus)
