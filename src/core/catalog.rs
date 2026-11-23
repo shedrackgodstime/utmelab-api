@@ -77,10 +77,7 @@ pub fn resolve_teaching_text(teaching: &mut serde_json::Value, media_base_url: &
 pub fn validate_content_block(block: &ContentBlock) -> Result<(), AppError> {
     match block {
         ContentBlock::Opening {
-            id,
-            heading,
-            text,
-            ..
+            id, heading, text, ..
         } => {
             if id.trim().is_empty() {
                 return Err(AppError::Internal("opening missing id".into()));
