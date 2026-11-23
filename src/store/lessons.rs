@@ -47,16 +47,15 @@ fn calculated_content_hash(lesson: &Lesson) -> Result<String, AppError> {
     Ok(format!("sha256:{}", crate::core::hex::encode(&sha2::Sha256::digest(payload))))
 }
 
-pub async fn get_lesson(s: &DbState, id: &str, version: Option<u32>) -> Result<Option<Lesson>, AppError> {
+pub async fn get_lesson(s: &DbState, id: &str) -> Result<Option<Lesson>, AppError> {
     let id = id.to_string();
     with_conn(s, |conn| {
         let id = id.clone();
         async move {
-            let version_value = version.map(|value| turso::Value::Integer(value as i64)).unwrap_or(turso::Value::Null);
             let mut rows = conn
                 .query(
-                    "SELECT id, version, status, title, description, subject, level, estimated_minutes, objectives, content, checks, misconceptions, summary, example_question_refs, provenance, content_hash FROM lessons WHERE id=?1 AND status='published' AND (?2 IS NULL OR version=?2) ORDER BY version DESC LIMIT 1",
-                    vec![turso::Value::Text(id.clone()), version_value],
+                    "SELECT id, status, title, description, subject, level, estimated_minutes, objectives, content, checks, misconceptions, summary, example_question_refs, provenance, content_hash FROM lessons WHERE id=?1 AND status='published' LIMIT 1",
+                    [id.as_str()],
                 )
                 .await
                 .map_err(upstream)?;
@@ -64,24 +63,23 @@ pub async fn get_lesson(s: &DbState, id: &str, version: Option<u32>) -> Result<O
                 return Ok(None);
             };
 
-            let description: String = row.get(4).map_err(upstream)?;
-            let objectives: String = row.get(8).map_err(upstream)?;
-            let content: String = row.get(9).map_err(upstream)?;
-            let checks: String = row.get(10).map_err(upstream)?;
-            let misconceptions: String = row.get(11).map_err(upstream)?;
-            let summary: String = row.get(12).map_err(upstream)?;
-            let example_question_refs: String = row.get(13).map_err(upstream)?;
-            let provenance: String = row.get(14).map_err(upstream)?;
+            let description: String = row.get(3).map_err(upstream)?;
+            let objectives: String = row.get(7).map_err(upstream)?;
+            let content: String = row.get(8).map_err(upstream)?;
+            let checks: String = row.get(9).map_err(upstream)?;
+            let misconceptions: String = row.get(10).map_err(upstream)?;
+            let summary: String = row.get(11).map_err(upstream)?;
+            let example_question_refs: String = row.get(12).map_err(upstream)?;
+            let provenance: String = row.get(13).map_err(upstream)?;
 
             Ok(Some(Lesson {
                 id: row.get(0).map_err(upstream)?,
-                version: row.get(1).map_err(upstream)?,
-                status: row.get(2).map_err(upstream)?,
-                title: row.get(3).map_err(upstream)?,
+                status: row.get(1).map_err(upstream)?,
+                title: row.get(2).map_err(upstream)?,
                 description: json_col(description, "lessons.description")?,
-                subject: row.get(5).map_err(upstream)?,
-                level: row.get(6).map_err(upstream)?,
-                estimated_minutes: row.get(7).map_err(upstream)?,
+                subject: row.get(4).map_err(upstream)?,
+                level: row.get(5).map_err(upstream)?,
+                estimated_minutes: row.get(6).map_err(upstream)?,
                 objectives: json_col(objectives, "lessons.objectives")?,
                 content: json_col(content, "lessons.content")?,
                 checks: json_col(checks, "lessons.checks")?,
@@ -89,7 +87,7 @@ pub async fn get_lesson(s: &DbState, id: &str, version: Option<u32>) -> Result<O
                 summary: json_col(summary, "lessons.summary")?,
                 example_question_refs: json_col(example_question_refs, "lessons.example_question_refs")?,
                 provenance: json_col(provenance, "lessons.provenance")?,
-                content_hash: row.get(15).map_err(upstream)?,
+                content_hash: row.get(14).map_err(upstream)?,
             }))
         }
     })
@@ -224,10 +222,9 @@ pub async fn import_bundle(s: &DbState, bundle: &LessonBundle) -> Result<u64, Ap
             .collect();
         let example_refs_json = serde_json::to_string(&example_refs).map_err(|e| AppError::Internal(e.to_string()))?;
         statements.push((
-            "INSERT INTO lessons (id, version, status, title, description, subject, level, estimated_minutes, objectives, content, checks, misconceptions, summary, example_question_refs, provenance, content_hash) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15, ?16) ON CONFLICT(id, version) DO NOTHING",
+            "INSERT INTO lessons (id, status, title, description, subject, level, estimated_minutes, objectives, content, checks, misconceptions, summary, example_question_refs, provenance, content_hash) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15) ON CONFLICT(id) DO UPDATE SET status=excluded.status, title=excluded.title, description=excluded.description, subject=excluded.subject, level=excluded.level, estimated_minutes=excluded.estimated_minutes, objectives=excluded.objectives, content=excluded.content, checks=excluded.checks, misconceptions=excluded.misconceptions, summary=excluded.summary, example_question_refs=excluded.example_question_refs, provenance=excluded.provenance, content_hash=excluded.content_hash, updated_at=CURRENT_TIMESTAMP",
             vec![
                 turso::Value::Text(lesson.id.clone()),
-                turso::Value::Integer(lesson.version as i64),
                 turso::Value::Text(lesson.status.clone()),
                 turso::Value::Text(lesson.title.clone()),
                 turso::Value::Text(serde_json::to_string(&lesson.description).map_err(|e| AppError::Internal(e.to_string()))?),

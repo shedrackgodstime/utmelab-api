@@ -1,7 +1,6 @@
 //! Exam-neutral lesson content.
 
-use axum::{extract::{Path, Query, State}, routing::get, Json, Router};
-use serde::Deserialize;
+use axum::{extract::{Path, State}, routing::get, Json, Router};
 
 use crate::{
     auth::{api_key::AuthedKey, SCOPE_READ_CATALOG},
@@ -19,7 +18,6 @@ use crate::{
     summary = "One exam-neutral teaching lesson.",
     params(
         ("id" = String, Path, description = "Lesson id."),
-        LessonQuery,
     ),
     responses(
         (status = 200, body = core::models::Lesson),
@@ -31,10 +29,9 @@ pub async fn one(
     State(s): State<DbState>,
     AuthedKey(auth): AuthedKey,
     Path(id): Path<String>,
-    Query(query): Query<LessonQuery>,
 ) -> Result<Json<core::models::Lesson>, AppError> {
     auth.require(SCOPE_READ_CATALOG)?;
-    let Some(mut lesson) = store::lessons::get_lesson(&s, &id, query.version).await? else {
+    let Some(mut lesson) = store::lessons::get_lesson(&s, &id).await? else {
         return Err(AppError::NotFound);
     };
     core::catalog::resolve_rich_text(&mut lesson.description, s.media_base_url.as_ref());
@@ -42,12 +39,6 @@ pub async fn one(
         core::catalog::resolve_content_block(block, s.media_base_url.as_ref());
     }
     Ok(Json(lesson))
-}
-
-#[derive(Deserialize, utoipa::IntoParams, Default)]
-pub struct LessonQuery {
-    /// Return one published revision; absent returns the current revision.
-    pub version: Option<u32>,
 }
 
 pub fn router(state: AppState) -> Router<AppState> {
@@ -67,7 +58,7 @@ mod tests {
         api_schema(&conn).await;
         crate::testing::bank_schema(&conn, &["questions"]).await;
         conn.execute(
-            "INSERT INTO lessons (id, version, title, description, subject, level, estimated_minutes, objectives, content, checks, misconceptions, summary, example_question_refs, provenance, content_hash) VALUES ('lesson-1', 1, 'Lesson One', '{\"text\":\"Intro\",\"inline\":[]}', 'physics', 'secondary', 10, '[]', '[]', '[]', '[]', '[]', '[{\"id\":\"question-1\",\"title\":\"Question one\"}]', '{}', 'hash-1')",
+            "INSERT INTO lessons (id, status, title, description, subject, level, estimated_minutes, objectives, content, checks, misconceptions, summary, example_question_refs, provenance, content_hash) VALUES ('lesson-1', 'published', 'Lesson One', '{\"text\":\"Intro\",\"inline\":[]}', 'physics', 'secondary', 10, '[]', '[]', '[]', '[]', '[]', '[{\"id\":\"question-1\",\"title\":\"Question one\"}]', '{}', 'hash-1')",
             (),
         )
         .await

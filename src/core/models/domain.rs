@@ -351,10 +351,6 @@ pub struct PaperReadiness {
 #[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
 pub struct Lesson {
     pub id: String,
-    /// Stable conceptual identity. Content revisions increment this number;
-    /// consumers may keep the id while deciding when to refresh.
-    #[serde(default = "default_lesson_version")]
-    pub version: u32,
     /// Consumer-visible lifecycle. Only `published` lessons are returned by
     /// normal catalog reads.
     #[serde(default = "default_lesson_status")]
@@ -392,7 +388,6 @@ pub struct ContentReference {
     pub title: String,
 }
 
-fn default_lesson_version() -> u32 { 1 }
 fn default_lesson_status() -> String { "published".to_string() }
 
 #[derive(Clone, Debug, Default, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]

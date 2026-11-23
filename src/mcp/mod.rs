@@ -466,7 +466,13 @@ mod tests {
     #[tokio::test]
     async fn the_catalog_surface_never_names_an_admin_tool() {
         let app = app().await;
-        const ADMIN_TOOLS: [&str; 4] = ["create_key", "revoke_key", "rotate_key", "unrevoke_key"];
+        const ADMIN_TOOLS: [&str; 5] = [
+            "create_key",
+            "pull_now",
+            "revoke_key",
+            "rotate_key",
+            "unrevoke_key",
+        ];
         for key in [
             "reader.secret",
             "writer.secret",
@@ -511,7 +517,13 @@ mod tests {
         .await;
         assert_eq!(
             tool_names(&tools["result"]),
-            ["create_key", "revoke_key", "rotate_key", "unrevoke_key"]
+            [
+                "create_key",
+                "pull_now",
+                "revoke_key",
+                "rotate_key",
+                "unrevoke_key",
+            ]
         );
 
         let (_, resources) = rpc(
@@ -729,7 +741,13 @@ mod tests {
             .expect("handshake against /mcp/admin");
         assert_eq!(
             tool_names_of(&admin.list_tools(None).await.expect("list tools")),
-            ["create_key", "revoke_key", "rotate_key", "unrevoke_key"]
+            [
+                "create_key",
+                "pull_now",
+                "revoke_key",
+                "rotate_key",
+                "unrevoke_key",
+            ]
         );
 
         assert!(

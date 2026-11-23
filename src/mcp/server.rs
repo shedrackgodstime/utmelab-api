@@ -297,6 +297,24 @@ impl McpServer {
 /// scope the router already enforced.
 #[tool_router(router = admin_router)]
 impl McpServer {
+    /// Pull the latest committed database changes from Turso. Needs an admin
+    /// API key with `manage:keys`.
+    #[tool(
+        description = "Pull the latest committed database changes from Turso. Needs manage:keys.",
+        meta = scope_meta(SCOPE_MANAGE_KEYS)
+    )]
+    async fn pull_now(
+        &self,
+        context: RequestContext<RoleServer>,
+    ) -> Result<CallToolResponse, ErrorData> {
+        let auth = auth_from(&context)?;
+        auth.require(SCOPE_MANAGE_KEYS).map_err(to_mcp)?;
+        let pulled = crate::store::sync::pull_now(&self.db)
+            .await
+            .map_err(to_mcp)?;
+        json_result(&core::models::Applied { ok: pulled })
+    }
+
     /// Grant a key. The tier decides the scopes, so this mints a consumer key
     /// or a staff key and nothing in between. Needs the `manage:keys` scope.
     #[tool(

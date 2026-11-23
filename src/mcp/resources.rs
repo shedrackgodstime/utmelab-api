@@ -194,9 +194,6 @@ pub async fn read(db: &DbState, auth: &Auth, uri: &str) -> Result<serde_json::Va
             State(db.clone()),
             AuthedKey(auth.clone()),
             Path(id.to_string()),
-            Query(lessons::LessonQuery {
-                version: num(&query, "version")?,
-            }),
         )),
         ["exams"] => read!(exams::list(State(db.clone()), AuthedKey(auth.clone()))),
         ["exams", exam, "subjects"] => read!(subjects::by_exam(

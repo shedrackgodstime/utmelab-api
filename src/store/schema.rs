@@ -25,7 +25,7 @@ pub const CONTRACT_VERSION: u64 = 1;
 
 /// Version of the API-owned schema. This is separate from
 /// [`CONTRACT_VERSION`], which belongs to the content pipeline.
-pub const API_SCHEMA_VERSION: u64 = 17;
+pub const API_SCHEMA_VERSION: u64 = 18;
 
 /// Tables the API owns and creates at boot.
 pub(crate) const DDL: &[&str] = &[
@@ -36,7 +36,7 @@ pub(crate) const DDL: &[&str] = &[
     "CREATE TABLE IF NOT EXISTS sessions (token_hash TEXT PRIMARY KEY, username TEXT NOT NULL, expires_at INTEGER NOT NULL)",
     "CREATE TABLE IF NOT EXISTS api_access_tokens (token_hash TEXT PRIMARY KEY, parent_prefix TEXT NOT NULL, scopes TEXT NOT NULL, expires_at INTEGER NOT NULL, revoked INTEGER NOT NULL DEFAULT 0, created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)",
     "CREATE TABLE IF NOT EXISTS reports (id TEXT PRIMARY KEY, target_type TEXT NOT NULL, target_id TEXT NOT NULL, reporter TEXT NOT NULL, reason TEXT NOT NULL, detail TEXT, created_at INTEGER NOT NULL, UNIQUE(reporter, target_type, target_id, reason))",
-    "CREATE TABLE IF NOT EXISTS lessons (id TEXT NOT NULL, version INTEGER NOT NULL DEFAULT 1, status TEXT NOT NULL DEFAULT 'published', title TEXT NOT NULL, description TEXT NOT NULL DEFAULT '{}', subject TEXT NOT NULL, level TEXT NOT NULL DEFAULT '', estimated_minutes INTEGER NOT NULL DEFAULT 0, objectives TEXT NOT NULL DEFAULT '[]', content TEXT NOT NULL DEFAULT '[]', checks TEXT NOT NULL DEFAULT '[]', misconceptions TEXT NOT NULL DEFAULT '[]', summary TEXT NOT NULL DEFAULT '[]', example_question_refs TEXT NOT NULL DEFAULT '[]', provenance TEXT NOT NULL DEFAULT '{}', content_hash TEXT NOT NULL, created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP, updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP, PRIMARY KEY (id, version))",
+    "CREATE TABLE IF NOT EXISTS lessons (id TEXT PRIMARY KEY, status TEXT NOT NULL DEFAULT 'published', title TEXT NOT NULL, description TEXT NOT NULL DEFAULT '{}', subject TEXT NOT NULL, level TEXT NOT NULL DEFAULT '', estimated_minutes INTEGER NOT NULL DEFAULT 0, objectives TEXT NOT NULL DEFAULT '[]', content TEXT NOT NULL DEFAULT '[]', checks TEXT NOT NULL DEFAULT '[]', misconceptions TEXT NOT NULL DEFAULT '[]', summary TEXT NOT NULL DEFAULT '[]', example_question_refs TEXT NOT NULL DEFAULT '[]', provenance TEXT NOT NULL DEFAULT '{}', content_hash TEXT NOT NULL, created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP, updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)",
     "CREATE TABLE IF NOT EXISTS theory_questions (id TEXT PRIMARY KEY, exam TEXT NOT NULL, subject TEXT NOT NULL, year INTEGER NOT NULL, paper INTEGER NOT NULL DEFAULT 2, section TEXT NOT NULL, question_number TEXT NOT NULL, topic_slug TEXT NOT NULL, subtopic_slug TEXT, total_marks INTEGER NOT NULL, stem TEXT NOT NULL, diagram_url TEXT, sub_parts TEXT NOT NULL DEFAULT '[]', formulation_bridge TEXT NOT NULL DEFAULT '[]', marking_methods TEXT NOT NULL DEFAULT '[]', diagram_rubric TEXT, penalties TEXT NOT NULL DEFAULT '[]', examiner_report TEXT NOT NULL, content_hash TEXT NOT NULL, created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)",
 ];
 
@@ -66,7 +66,7 @@ pub const READ_SHAPES: &[(&str, &[&str])] = &[
     (
         "lessons",
         &[
-            "id", "version", "status", "title", "description", "subject", "level",
+            "id", "status", "title", "description", "subject", "level",
             "estimated_minutes", "objectives", "content", "checks",
             "misconceptions", "summary", "example_question_refs", "provenance", "content_hash",
         ],
@@ -311,7 +311,7 @@ pub async fn ensure_schema(s: &DbState) -> Result<(), AppError> {
 /// API-owned migrations are numbered, applied once, and never rewritten.
 /// Fresh databases receive the current DDL first; upgraded databases receive
 /// the same DDL idempotently and then any missing migrations.
-const MIGRATIONS: &[u64] = &[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17];
+const MIGRATIONS: &[u64] = &[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18];
 
 async fn apply_migrations(s: &DbState) -> Result<(), AppError> {
     for &version in MIGRATIONS {
@@ -668,6 +668,16 @@ async fn apply_migrations(s: &DbState) -> Result<(), AppError> {
                 for table in ["lesson_revisions", "lesson_example_questions", "topic_lessons"] {
                     super::write::execute_ddl_local(s, &format!("DROP TABLE IF EXISTS {table}")).await?;
                 }
+            }
+            18 => {
+                // Lessons are current-by-id, like the other content surfaces.
+                // Keep the latest published row when upgrading the temporary
+                // revisioned shape, then remove the revision columns/tables.
+                super::write::execute_ddl_local(s, "CREATE TABLE lessons_v18 (id TEXT PRIMARY KEY, status TEXT NOT NULL DEFAULT 'published', title TEXT NOT NULL, description TEXT NOT NULL DEFAULT '{}', subject TEXT NOT NULL, level TEXT NOT NULL DEFAULT '', estimated_minutes INTEGER NOT NULL DEFAULT 0, objectives TEXT NOT NULL DEFAULT '[]', content TEXT NOT NULL DEFAULT '[]', checks TEXT NOT NULL DEFAULT '[]', misconceptions TEXT NOT NULL DEFAULT '[]', summary TEXT NOT NULL DEFAULT '[]', example_question_refs TEXT NOT NULL DEFAULT '[]', provenance TEXT NOT NULL DEFAULT '{}', content_hash TEXT NOT NULL, created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP, updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)").await?;
+                super::write::execute_write_local(s, "INSERT INTO lessons_v18 (id, status, title, description, subject, level, estimated_minutes, objectives, content, checks, misconceptions, summary, example_question_refs, provenance, content_hash, created_at, updated_at) SELECT id, status, title, description, subject, level, estimated_minutes, objectives, content, checks, misconceptions, summary, example_question_refs, provenance, content_hash, created_at, updated_at FROM lessons l WHERE version=(SELECT MAX(version) FROM lessons latest WHERE latest.id=l.id)", vec![]).await?;
+                super::write::execute_ddl_local(s, "DROP TABLE lessons").await?;
+                super::write::execute_ddl_local(s, "ALTER TABLE lessons_v18 RENAME TO lessons").await?;
+                super::write::execute_ddl_local(s, "DROP TABLE IF EXISTS lesson_revisions").await?;
             }
 
             _ => {

@@ -404,20 +404,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "version",
-            "in": "query",
-            "description": "Return one published revision; absent returns the current revision.",
-            "required": false,
-            "schema": {
-              "type": [
-                "integer",
-                "null"
-              ],
-              "format": "int32",
-              "minimum": 0
-            }
           }
         ],
         "responses": {
@@ -4542,12 +4528,6 @@
           },
           "title": {
             "type": "string"
-          },
-          "version": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Stable conceptual identity. Content revisions increment this number;\nconsumers may keep the id while deciding when to refresh.",
-            "minimum": 0
           }
         }
       },

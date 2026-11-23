@@ -35,9 +35,9 @@ removed; lessons are the teaching-content surface.
 7. A question may contain exam-specific fields.
 8. A passage is a reusable stimulus and may be referenced by many questions.
 9. Topic-to-lesson and lesson-to-question relationships are many-to-many.
-10. A lesson ID is a stable conceptual identity; each published content change
-    increments its `version`. Previous revisions remain recoverable and may be
-    requested with `?version=N`.
+10. A lesson ID is a stable identity and identifies the current published
+    payload. `content_hash` changes when the authored payload changes and is
+    used for integrity and cache invalidation.
 11. Consumers receive only published lessons. Draft and retired lessons are
     authoring states, not normal catalog content.
 
@@ -142,14 +142,13 @@ they do not represent learner progress.
 A lesson is the primary teaching unit. It teaches one coherent idea, skill, or
 connected group of ideas.
 
-The `id` remains stable for the same conceptual lesson. `version` changes when
-the authored content changes. This avoids breaking bookmarks while preserving
-the ability to identify the exact content version used by a client.
+The `id` remains stable for the lesson. When its authored content changes, the
+same row is replaced and its `content_hash` changes. This keeps bookmarks and
+topic links stable while giving consumers a precise cache/integrity key.
 
 ```json
 {
   "id": "lesson:newtons-second-law",
-  "version": 1,
   "status": "published",
   "title": "Newton’s Second Law",
   "description": {
@@ -325,8 +324,7 @@ must not remove the existing filtering capability without a versioned change.
 
 The Content API implements this contract:
 
-1. `GET /api/v1/lessons/{lesson_id}` returns the latest published version, or a
-   requested published version through `?version=`.
+1. `GET /api/v1/lessons/{lesson_id}` returns the current published lesson.
 2. Syllabus topics and subtopics expose `lesson_refs`, while topic detail does
    the same for topic-level placements.
 3. Note fields and note routes are absent from the replacement surface.
