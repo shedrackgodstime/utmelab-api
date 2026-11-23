@@ -1,0 +1,10 @@
+{
+  "id": "concept:system",
+  "kind": "Concept",
+  "label": "System (mechanics)",
+  "definition_refs": ["statement:system-definition"],
+  "definition_status": "complete",
+  "scope": {"text": "Newtonian/classical mechanics (introductory)", "basis": "inferred"},
+  "notes": "Minimal extraction from phy_m42073.json for pilot completeness.",
+  "source_refs": ["source:openstax-m42073"]
+}

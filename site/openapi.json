@@ -98,453 +98,6 @@
         }
       }
     },
-    "/api/v1/chapters/{chapter_id}": {
-      "get": {
-        "tags": [
-          "textbook"
-        ],
-        "summary": "One chapter: its outline, learning objectives, and section index.",
-        "operationId": "getChapter",
-        "parameters": [
-          {
-            "name": "chapter_id",
-            "in": "path",
-            "description": "Chapter id, e.g. `phy_forces_and_newtons_laws`.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ChapterOutline"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "An API key is missing or invalid.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "The API key lacks the required scope.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "No chapter with that id",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          },
-          "429": {
-            "description": "The caller has exceeded the applicable rate limit.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          },
-          "503": {
-            "description": "The API is temporarily unavailable.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/v1/chapters/{chapter_id}/exercises": {
-      "get": {
-        "tags": [
-          "textbook"
-        ],
-        "summary": "The exercises of a chapter, each with its answer and its solution.",
-        "operationId": "listChapterExercises",
-        "parameters": [
-          {
-            "name": "chapter_id",
-            "in": "path",
-            "description": "Chapter id.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "section_id",
-            "in": "query",
-            "description": "Only the exercises of this section.",
-            "required": false,
-            "schema": {
-              "type": [
-                "string",
-                "null"
-              ]
-            }
-          },
-          {
-            "name": "tier",
-            "in": "query",
-            "description": "Only the exercises of this tier: `warm_up`, `core` or `stretch`.",
-            "required": false,
-            "schema": {
-              "type": [
-                "string",
-                "null"
-              ]
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ChapterExercise"
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "An API key is missing or invalid.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "The API key lacks the required scope.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          },
-          "429": {
-            "description": "The caller has exceeded the applicable rate limit.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          },
-          "503": {
-            "description": "The API is temporarily unavailable.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/v1/chapters/{chapter_id}/sections/{section_id}": {
-      "get": {
-        "tags": [
-          "textbook"
-        ],
-        "summary": "Fully structured teaching content for one section of a chapter.",
-        "operationId": "getSectionDetail",
-        "parameters": [
-          {
-            "name": "chapter_id",
-            "in": "path",
-            "description": "Chapter id, e.g. `phy_forces_and_newtons_laws`.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "section_id",
-            "in": "path",
-            "description": "Section id, e.g. `sec-1` or `sec-2`.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/SectionDetail"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "An API key is missing or invalid.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "The API key lacks the required scope.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "No section with that id in this chapter",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          },
-          "429": {
-            "description": "The caller has exceeded the applicable rate limit.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          },
-          "503": {
-            "description": "The API is temporarily unavailable.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/v1/exam-practice": {
-      "get": {
-        "tags": [
-          "textbook"
-        ],
-        "summary": "Practice items written in an exam's own wording.",
-        "operationId": "listExamPractice",
-        "parameters": [
-          {
-            "name": "exam",
-            "in": "query",
-            "description": "Only the practice items of this exam, e.g. `WAEC`.",
-            "required": false,
-            "schema": {
-              "type": [
-                "string",
-                "null"
-              ]
-            }
-          },
-          {
-            "name": "section_id",
-            "in": "query",
-            "description": "Only the practice items of this section.",
-            "required": false,
-            "schema": {
-              "type": [
-                "string",
-                "null"
-              ]
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ExamRecallCheck"
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "An API key is missing or invalid.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "The API key lacks the required scope.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          },
-          "429": {
-            "description": "The caller has exceeded the applicable rate limit.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          },
-          "503": {
-            "description": "The API is temporarily unavailable.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/v1/exam-traps": {
-      "get": {
-        "tags": [
-          "textbook"
-        ],
-        "summary": "The mistakes candidates make, with the evidence behind each one.",
-        "operationId": "listExamTraps",
-        "parameters": [
-          {
-            "name": "exam",
-            "in": "query",
-            "description": "Only the traps of this exam, e.g. `JAMB`.",
-            "required": false,
-            "schema": {
-              "type": [
-                "string",
-                "null"
-              ]
-            }
-          },
-          {
-            "name": "section_id",
-            "in": "query",
-            "description": "Only the traps of this section.",
-            "required": false,
-            "schema": {
-              "type": [
-                "string",
-                "null"
-              ]
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/ExamTrap"
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "An API key is missing or invalid.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "The API key lacks the required scope.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          },
-          "429": {
-            "description": "The caller has exceeded the applicable rate limit.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          },
-          "503": {
-            "description": "The API is temporarily unavailable.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/api/v1/exams": {
       "get": {
         "tags": [
@@ -835,6 +388,101 @@
         }
       }
     },
+    "/api/v1/lessons/{id}": {
+      "get": {
+        "tags": [
+          "lessons"
+        ],
+        "summary": "One exam-neutral teaching lesson.",
+        "operationId": "getLesson",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Lesson id.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "version",
+            "in": "query",
+            "description": "Return one published revision; absent returns the current revision.",
+            "required": false,
+            "schema": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "format": "int32",
+              "minimum": 0
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Lesson"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "An API key is missing or invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key lacks the required scope.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No such lesson",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "The caller has exceeded the applicable rate limit.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "The API is temporarily unavailable.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/meta/rows/{table}": {
       "get": {
         "tags": [
@@ -962,204 +610,6 @@
           },
           "403": {
             "description": "The API key lacks the required scope.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          },
-          "429": {
-            "description": "The caller has exceeded the applicable rate limit.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          },
-          "503": {
-            "description": "The API is temporarily unavailable.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/v1/notes/subtopic/{exam}/{subject}/{subtopic_slug}": {
-      "get": {
-        "tags": [
-          "catalog"
-        ],
-        "summary": "High-yield study note for a specific syllabus subtopic.",
-        "operationId": "getSubtopicNote",
-        "parameters": [
-          {
-            "name": "exam",
-            "in": "path",
-            "description": "Exam code, e.g. `JAMB`.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "subject",
-            "in": "path",
-            "description": "Subject slug, e.g. `physics`.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "subtopic_slug",
-            "in": "path",
-            "description": "Subtopic slug, e.g. `projectiles`.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/TopicNote"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "An API key is missing or invalid.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "The API key lacks the required scope.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "No note found for this subtopic",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          },
-          "429": {
-            "description": "The caller has exceeded the applicable rate limit.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          },
-          "503": {
-            "description": "The API is temporarily unavailable.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/v1/notes/{exam}/{subject}/{topic_slug}": {
-      "get": {
-        "tags": [
-          "catalog"
-        ],
-        "summary": "High-yield study note for a syllabus topic.",
-        "operationId": "getTopicNote",
-        "parameters": [
-          {
-            "name": "exam",
-            "in": "path",
-            "description": "Exam code, e.g. `JAMB`.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "subject",
-            "in": "path",
-            "description": "Subject slug, e.g. `physics`.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "topic_slug",
-            "in": "path",
-            "description": "Topic slug, e.g. `motion`.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/TopicNote"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "An API key is missing or invalid.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "The API key lacks the required scope.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "No note found for this topic",
             "content": {
               "application/json": {
                 "schema": {
@@ -3174,150 +2624,6 @@
         }
       }
     },
-    "/api/v1/textbooks": {
-      "get": {
-        "tags": [
-          "textbook"
-        ],
-        "summary": "Every book, with the subject area and the level it teaches.",
-        "operationId": "listTextbooks",
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Book"
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "An API key is missing or invalid.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "The API key lacks the required scope.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          },
-          "429": {
-            "description": "The caller has exceeded the applicable rate limit.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          },
-          "503": {
-            "description": "The API is temporarily unavailable.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/v1/textbooks/{book_id}": {
-      "get": {
-        "tags": [
-          "textbook"
-        ],
-        "summary": "One book and the chapters it holds.",
-        "operationId": "getTextbook",
-        "parameters": [
-          {
-            "name": "book_id",
-            "in": "path",
-            "description": "Book id, e.g. `secondary_physics`.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BookWithChapters"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "An API key is missing or invalid.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "The API key lacks the required scope.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "No book with that id",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          },
-          "429": {
-            "description": "The caller has exceeded the applicable rate limit.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          },
-          "503": {
-            "description": "The API is temporarily unavailable.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/api/v1/theory/{exam}/{subject}": {
       "get": {
         "tags": [
@@ -3994,40 +3300,6 @@
           }
         }
       },
-      "ActiveRecallCheck": {
-        "type": "object",
-        "required": [
-          "check_number",
-          "prompt",
-          "options",
-          "correct_index",
-          "explanation"
-        ],
-        "properties": {
-          "check_number": {
-            "type": "integer",
-            "format": "int32",
-            "minimum": 0
-          },
-          "correct_index": {
-            "type": "integer",
-            "format": "int32",
-            "minimum": 0
-          },
-          "explanation": {
-            "type": "string"
-          },
-          "options": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "prompt": {
-            "type": "string"
-          }
-        }
-      },
       "AppliedPenalty": {
         "type": "object",
         "required": [
@@ -4212,316 +3484,6 @@
               "string",
               "null"
             ]
-          }
-        }
-      },
-      "Book": {
-        "type": "object",
-        "description": "A textbook. The textbook owns the teaching, so it never names an exam.",
-        "required": [
-          "id",
-          "title",
-          "subject_area",
-          "level",
-          "edition"
-        ],
-        "properties": {
-          "description": {
-            "type": "string"
-          },
-          "edition": {
-            "type": "string"
-          },
-          "id": {
-            "type": "string"
-          },
-          "level": {
-            "type": "string"
-          },
-          "parts": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/BookPart"
-            }
-          },
-          "sources": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Provenance"
-            }
-          },
-          "subject_area": {
-            "type": "string"
-          },
-          "title": {
-            "type": "string"
-          }
-        }
-      },
-      "BookPart": {
-        "type": "object",
-        "description": "A named part of a book, the way a school textbook divides itself.",
-        "required": [
-          "id",
-          "order",
-          "title"
-        ],
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "order": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "title": {
-            "type": "string"
-          }
-        }
-      },
-      "BookWithChapters": {
-        "type": "object",
-        "description": "A book with the chapters it holds.",
-        "required": [
-          "id",
-          "title",
-          "subject_area",
-          "level",
-          "edition",
-          "description",
-          "parts",
-          "chapters"
-        ],
-        "properties": {
-          "chapters": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ChapterSummary"
-            }
-          },
-          "description": {
-            "type": "string"
-          },
-          "edition": {
-            "type": "string"
-          },
-          "id": {
-            "type": "string"
-          },
-          "level": {
-            "type": "string"
-          },
-          "parts": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/BookPart"
-            }
-          },
-          "subject_area": {
-            "type": "string"
-          },
-          "title": {
-            "type": "string"
-          }
-        }
-      },
-      "ChapterExercise": {
-        "type": "object",
-        "description": "A practice item with its answer and its solution.",
-        "required": [
-          "id",
-          "section_id",
-          "tier",
-          "kind",
-          "difficulty",
-          "marks",
-          "stem",
-          "answer",
-          "answer_kind",
-          "solution_provenance"
-        ],
-        "properties": {
-          "answer": {
-            "$ref": "#/components/schemas/RichText"
-          },
-          "answer_kind": {
-            "type": "string"
-          },
-          "answer_note": {
-            "type": [
-              "string",
-              "null"
-            ]
-          },
-          "difficulty": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "hints": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ExerciseHint"
-            }
-          },
-          "id": {
-            "type": "string"
-          },
-          "kind": {
-            "type": "string"
-          },
-          "marks": {
-            "type": "number",
-            "format": "double"
-          },
-          "options": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ExerciseOption"
-            }
-          },
-          "provenance": {
-            "$ref": "#/components/schemas/Provenance"
-          },
-          "section_id": {
-            "type": "string"
-          },
-          "solution": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ExerciseSolutionStep"
-            }
-          },
-          "solution_provenance": {
-            "type": "string"
-          },
-          "stem": {
-            "$ref": "#/components/schemas/RichText"
-          },
-          "tags": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "tier": {
-            "type": "string"
-          }
-        }
-      },
-      "ChapterOutline": {
-        "type": "object",
-        "description": "The typed outline of a chapter: metadata, learning objectives, prerequisites, and section index.",
-        "required": [
-          "id",
-          "book_id",
-          "order",
-          "title",
-          "schema_version",
-          "updated_at",
-          "learning_objectives",
-          "prerequisites",
-          "section_index"
-        ],
-        "properties": {
-          "book_id": {
-            "type": "string"
-          },
-          "formula_sheet": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/FormulaSheetEntry"
-            }
-          },
-          "glossary": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/GlossaryEntry"
-            }
-          },
-          "id": {
-            "type": "string"
-          },
-          "learning_objectives": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/LearningObjective"
-            }
-          },
-          "order": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "part_id": {
-            "type": [
-              "string",
-              "null"
-            ]
-          },
-          "prerequisites": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "schema_version": {
-            "type": "integer",
-            "format": "int32",
-            "minimum": 0
-          },
-          "section_index": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/SectionSummary"
-            }
-          },
-          "sources": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Provenance"
-            }
-          },
-          "title": {
-            "type": "string"
-          },
-          "updated_at": {
-            "type": "string"
-          }
-        }
-      },
-      "ChapterSummary": {
-        "type": "object",
-        "description": "The short shape of a chapter, for a listing.",
-        "required": [
-          "chapter_id",
-          "title",
-          "sections",
-          "exercises",
-          "est_minutes"
-        ],
-        "properties": {
-          "chapter_id": {
-            "type": "string"
-          },
-          "est_minutes": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "exercises": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "part_id": {
-            "type": [
-              "string",
-              "null"
-            ]
-          },
-          "sections": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "title": {
-            "type": "string"
           }
         }
       },
@@ -5058,6 +4020,20 @@
         ],
         "description": "Discriminated content block in section teaching text."
       },
+      "ContentReference": {
+        "type": "object",
+        "required": [
+          "id"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          }
+        }
+      },
       "Coverage": {
         "type": "object",
         "description": "Coverage without the tree: the same counts and nothing else.",
@@ -5193,60 +4169,6 @@
           }
         }
       },
-      "ExamLink": {
-        "type": "object",
-        "description": "How an exam examines a chapter section.",
-        "required": [
-          "exam",
-          "subject"
-        ],
-        "properties": {
-          "exam": {
-            "type": "string"
-          },
-          "expected_count": {
-            "type": [
-              "number",
-              "null"
-            ],
-            "format": "double"
-          },
-          "papers": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ExamPaper"
-            }
-          },
-          "source_locator": {
-            "type": "string"
-          },
-          "status": {
-            "type": "string"
-          },
-          "subject": {
-            "type": "string"
-          },
-          "subtopic_slug": {
-            "type": [
-              "string",
-              "null"
-            ]
-          },
-          "topic_slug": {
-            "type": [
-              "string",
-              "null"
-            ]
-          },
-          "weight_pct": {
-            "type": [
-              "number",
-              "null"
-            ],
-            "format": "double"
-          }
-        }
-      },
       "ExamPaper": {
         "type": "object",
         "description": "A past paper the exam used, with the provenance it carries.",
@@ -5275,109 +4197,6 @@
           }
         }
       },
-      "ExamRecallCheck": {
-        "type": "object",
-        "description": "A practice item written in the exam's own wording.",
-        "required": [
-          "id",
-          "exam",
-          "subject",
-          "section_id",
-          "stem",
-          "answer",
-          "explanation"
-        ],
-        "properties": {
-          "answer": {
-            "type": "string"
-          },
-          "difficulty": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "exam": {
-            "type": "string"
-          },
-          "explanation": {
-            "$ref": "#/components/schemas/RichText"
-          },
-          "id": {
-            "type": "string"
-          },
-          "options": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ExerciseOption"
-            }
-          },
-          "section_id": {
-            "type": "string"
-          },
-          "source": {
-            "type": "string"
-          },
-          "stem": {
-            "$ref": "#/components/schemas/RichText"
-          },
-          "subject": {
-            "type": "string"
-          }
-        }
-      },
-      "ExamTrap": {
-        "type": "object",
-        "description": "A mistake candidates make, with the evidence behind it.",
-        "required": [
-          "id",
-          "exam",
-          "subject",
-          "section_id",
-          "misconception",
-          "correction"
-        ],
-        "properties": {
-          "correction": {
-            "$ref": "#/components/schemas/RichText"
-          },
-          "exam": {
-            "type": "string"
-          },
-          "frequency": {
-            "type": "string"
-          },
-          "id": {
-            "type": "string"
-          },
-          "misconception": {
-            "$ref": "#/components/schemas/RichText"
-          },
-          "paper_evidence": {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/PaperEvidence"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
-          "provenance": {
-            "$ref": "#/components/schemas/Provenance"
-          },
-          "section_id": {
-            "type": "string"
-          },
-          "signal": {
-            "$ref": "#/components/schemas/RichText"
-          },
-          "status": {
-            "type": "string"
-          },
-          "subject": {
-            "type": "string"
-          }
-        }
-      },
       "ExaminerPenalty": {
         "type": "object",
         "required": [
@@ -5399,21 +4218,6 @@
           }
         }
       },
-      "ExaminerTrap": {
-        "type": "object",
-        "required": [
-          "misconception",
-          "correction"
-        ],
-        "properties": {
-          "correction": {
-            "type": "string"
-          },
-          "misconception": {
-            "type": "string"
-          }
-        }
-      },
       "ExampleTitle": {
         "oneOf": [
           {
@@ -5424,58 +4228,6 @@
           }
         ],
         "description": "Title for an example block, supporting either plain text or RichText."
-      },
-      "ExerciseHint": {
-        "type": "object",
-        "description": "Hint for a chapter exercise.",
-        "required": [
-          "hint_number",
-          "text"
-        ],
-        "properties": {
-          "hint_number": {
-            "type": "integer",
-            "format": "int32",
-            "minimum": 0
-          },
-          "text": {
-            "$ref": "#/components/schemas/RichText"
-          }
-        }
-      },
-      "ExerciseOption": {
-        "type": "object",
-        "description": "Option for a chapter exercise.",
-        "required": [
-          "id",
-          "text"
-        ],
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "text": {
-            "type": "string"
-          }
-        }
-      },
-      "ExerciseSolutionStep": {
-        "type": "object",
-        "description": "Solution step for a chapter exercise.",
-        "required": [
-          "step_number",
-          "expression"
-        ],
-        "properties": {
-          "expression": {
-            "type": "string"
-          },
-          "step_number": {
-            "type": "integer",
-            "format": "int32",
-            "minimum": 0
-          }
-        }
       },
       "Explanation": {
         "type": "object",
@@ -5503,64 +4255,6 @@
           }
         }
       },
-      "FormulaSheetEntry": {
-        "type": "object",
-        "description": "A gathered formula in a chapter formula sheet.",
-        "required": [
-          "expression",
-          "caption"
-        ],
-        "properties": {
-          "caption": {
-            "$ref": "#/components/schemas/RichText"
-          },
-          "conditions": {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/RichText"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
-          "expression": {
-            "type": "string"
-          },
-          "id": {
-            "type": "string"
-          },
-          "provenance": {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/Provenance"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          }
-        }
-      },
-      "FormulaVariable": {
-        "type": "object",
-        "required": [
-          "symbol",
-          "name",
-          "unit"
-        ],
-        "properties": {
-          "name": {
-            "type": "string"
-          },
-          "symbol": {
-            "type": "string"
-          },
-          "unit": {
-            "type": "string"
-          }
-        }
-      },
       "FormulationClause": {
         "type": "object",
         "required": [
@@ -5577,38 +4271,6 @@
           },
           "variable_mapping": {
             "type": "string"
-          }
-        }
-      },
-      "GlossaryEntry": {
-        "type": "object",
-        "description": "A glossary term introduced in a chapter.",
-        "required": [
-          "term",
-          "definition"
-        ],
-        "properties": {
-          "definition": {
-            "$ref": "#/components/schemas/RichText"
-          },
-          "id": {
-            "type": [
-              "string",
-              "null"
-            ]
-          },
-          "provenance": {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/Provenance"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
-          "term": {
-            "$ref": "#/components/schemas/RichText"
           }
         }
       },
@@ -5807,6 +4469,89 @@
           }
         }
       },
+      "Lesson": {
+        "type": "object",
+        "description": "A reusable, exam-neutral teaching unit served by the Content API.\n\nExam syllabus topics and exam questions may reference a lesson, but a\nlesson never carries exam identity.",
+        "required": [
+          "id",
+          "title",
+          "subject"
+        ],
+        "properties": {
+          "checks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/StudyCheck"
+            }
+          },
+          "content": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ContentBlock"
+            }
+          },
+          "content_hash": {
+            "type": "string"
+          },
+          "description": {
+            "$ref": "#/components/schemas/RichText"
+          },
+          "estimated_minutes": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          },
+          "example_question_refs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ContentReference"
+            }
+          },
+          "id": {
+            "type": "string"
+          },
+          "level": {
+            "type": "string"
+          },
+          "misconceptions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SectionMisconception"
+            }
+          },
+          "objectives": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LearningObjective"
+            }
+          },
+          "provenance": {
+            "$ref": "#/components/schemas/Provenance"
+          },
+          "status": {
+            "type": "string",
+            "description": "Consumer-visible lifecycle. Only `published` lessons are returned by\nnormal catalog reads."
+          },
+          "subject": {
+            "type": "string"
+          },
+          "summary": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RichText"
+            }
+          },
+          "title": {
+            "type": "string"
+          },
+          "version": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Stable conceptual identity. Content revisions increment this number;\nconsumers may keep the id while deciding when to refresh.",
+            "minimum": 0
+          }
+        }
+      },
       "MarkingMethod": {
         "type": "object",
         "required": [
@@ -5870,102 +4615,6 @@
             "type": "string"
           },
           "step_id": {
-            "type": "string"
-          }
-        }
-      },
-      "NoteCallout": {
-        "type": "object",
-        "required": [
-          "kind",
-          "text"
-        ],
-        "properties": {
-          "kind": {
-            "type": "string"
-          },
-          "text": {
-            "$ref": "#/components/schemas/RichText"
-          }
-        }
-      },
-      "NoteFormula": {
-        "type": "object",
-        "required": [
-          "name",
-          "latex",
-          "variables"
-        ],
-        "properties": {
-          "conditions": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "latex": {
-            "type": "string"
-          },
-          "name": {
-            "type": "string"
-          },
-          "variables": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/FormulaVariable"
-            }
-          }
-        }
-      },
-      "NoteSection": {
-        "type": "object",
-        "required": [
-          "section_number",
-          "heading",
-          "content"
-        ],
-        "properties": {
-          "callout": {
-            "oneOf": [
-              {
-                "$ref": "#/components/schemas/NoteCallout"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
-          "content": {
-            "$ref": "#/components/schemas/RichText"
-          },
-          "heading": {
-            "type": "string"
-          },
-          "section_number": {
-            "type": "integer",
-            "format": "int32",
-            "minimum": 0
-          }
-        }
-      },
-      "NoteSource": {
-        "type": "object",
-        "description": "A citation for the claims in a study note. `locator` names the exact\nsection, page, or heading so a reviewer can check the source without\nsearching the whole document.",
-        "required": [
-          "title",
-          "url"
-        ],
-        "properties": {
-          "locator": {
-            "type": [
-              "string",
-              "null"
-            ]
-          },
-          "title": {
-            "type": "string"
-          },
-          "url": {
             "type": "string"
           }
         }
@@ -6395,6 +5044,13 @@
                 "id": {
                   "type": "string"
                 },
+                "lesson_refs": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ContentReference"
+                  },
+                  "description": "Lessons that teach the idea assessed by this question."
+                },
                 "marks": {
                   "type": "number",
                   "format": "float"
@@ -6443,6 +5099,13 @@
                 },
                 "text": {
                   "$ref": "#/components/schemas/RichText"
+                },
+                "topic_slug": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "description": "The syllabus topic tag for this question when the catalogue provides one."
                 },
                 "verified": {
                   "type": "boolean"
@@ -7016,6 +5679,13 @@
           "id": {
             "type": "string"
           },
+          "lesson_refs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ContentReference"
+            },
+            "description": "Lessons that teach the idea assessed by this question."
+          },
           "marks": {
             "type": "number",
             "format": "float"
@@ -7064,6 +5734,13 @@
           },
           "text": {
             "$ref": "#/components/schemas/RichText"
+          },
+          "topic_slug": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "The syllabus topic tag for this question when the catalogue provides one."
           },
           "verified": {
             "type": "boolean"
@@ -7543,100 +6220,6 @@
           }
         }
       },
-      "SectionDetail": {
-        "type": "object",
-        "description": "Fully typed teaching section – the contract the UI will consume.",
-        "required": [
-          "schema_version",
-          "id",
-          "chapter_id",
-          "order",
-          "slug",
-          "title",
-          "est_minutes",
-          "learning_objectives",
-          "content",
-          "provenance"
-        ],
-        "properties": {
-          "chapter_id": {
-            "type": "string"
-          },
-          "content": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ContentBlock"
-            }
-          },
-          "est_minutes": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "exam_links": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ExamLink"
-            }
-          },
-          "exercise_ids": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "id": {
-            "type": "string"
-          },
-          "learning_objectives": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/LearningObjective"
-            }
-          },
-          "misconceptions": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/SectionMisconception"
-            }
-          },
-          "no_worked_example_reason": {
-            "type": [
-              "string",
-              "null"
-            ]
-          },
-          "order": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "provenance": {
-            "$ref": "#/components/schemas/Provenance"
-          },
-          "schema_version": {
-            "type": "integer",
-            "format": "int32",
-            "minimum": 0
-          },
-          "slug": {
-            "type": "string"
-          },
-          "summary_points": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/RichText"
-            }
-          },
-          "title": {
-            "type": "string"
-          },
-          "worked_examples": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/SectionWorkedExample"
-            }
-          }
-        }
-      },
       "SectionMisconception": {
         "type": "object",
         "description": "A misconception with its correction and provenance.",
@@ -7660,92 +6243,107 @@
           }
         }
       },
-      "SectionSummary": {
+      "StudyCheck": {
         "type": "object",
-        "description": "Outline summary of a section within a chapter.",
         "required": [
           "id",
           "order",
-          "slug",
-          "title",
-          "est_minutes"
+          "kind",
+          "prompt",
+          "options",
+          "answer",
+          "feedback",
+          "provenance"
         ],
         "properties": {
-          "est_minutes": {
-            "type": "integer",
-            "format": "int64"
+          "answer": {
+            "$ref": "#/components/schemas/StudyCheckAnswer",
+            "description": "Correct option; clients must withhold it until the learner responds."
+          },
+          "feedback": {
+            "$ref": "#/components/schemas/RichText",
+            "description": "Source-authored feedback to show after an attempt or explicit reveal."
+          },
+          "hint": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/RichText"
+              },
+              {
+                "type": "null"
+              }
+            ]
           },
           "id": {
-            "type": "string"
+            "type": "string",
+            "description": "Stable identity within the owning section."
           },
-          "learning_objectives": {
+          "kind": {
+            "$ref": "#/components/schemas/StudyCheckKind"
+          },
+          "objective_id": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Learning objective this check supports when the relation is known."
+          },
+          "options": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/LearningObjective"
+              "$ref": "#/components/schemas/StudyCheckOption"
             }
           },
           "order": {
             "type": "integer",
-            "format": "int64"
+            "format": "int64",
+            "description": "One-based authored order within the section."
           },
-          "slug": {
-            "type": "string"
+          "position_after_block_id": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Insert the check immediately after this teaching block when present."
           },
-          "title": {
+          "prompt": {
+            "$ref": "#/components/schemas/RichText"
+          },
+          "provenance": {
+            "$ref": "#/components/schemas/Provenance"
+          }
+        }
+      },
+      "StudyCheckAnswer": {
+        "type": "object",
+        "required": [
+          "option_id"
+        ],
+        "properties": {
+          "option_id": {
             "type": "string"
           }
         }
       },
-      "SectionWorkedExample": {
+      "StudyCheckKind": {
+        "type": "string",
+        "description": "A short formative check authored for a teaching section, not drawn from\nan exam-practice bank.",
+        "enum": [
+          "multiple_choice"
+        ]
+      },
+      "StudyCheckOption": {
         "type": "object",
-        "description": "A worked example in a chapter section.",
         "required": [
           "id",
-          "statement",
-          "steps",
-          "answer"
+          "content"
         ],
         "properties": {
-          "answer": {
+          "content": {
             "$ref": "#/components/schemas/RichText"
           },
           "id": {
             "type": "string"
-          },
-          "provenance": {
-            "$ref": "#/components/schemas/Provenance"
-          },
-          "statement": {
-            "$ref": "#/components/schemas/RichText"
-          },
-          "steps": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/WorkedStep"
-            }
-          }
-        }
-      },
-      "SolutionStep": {
-        "type": "object",
-        "required": [
-          "step_number",
-          "description"
-        ],
-        "properties": {
-          "description": {
-            "type": "string"
-          },
-          "expression": {
-            "type": [
-              "string",
-              "null"
-            ]
-          },
-          "step_number": {
-            "type": "integer",
-            "format": "int32",
-            "minimum": 0
           }
         }
       },
@@ -7874,8 +6472,7 @@
           "order",
           "question_count",
           "objectives",
-          "countries",
-          "has_note"
+          "countries"
         ],
         "properties": {
           "countries": {
@@ -7885,17 +6482,14 @@
             },
             "description": "Inherited from the parent topic. A subtopic carries no scope of its own."
           },
-          "has_note": {
-            "type": "boolean"
+          "lesson_refs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ContentReference"
+            }
           },
           "name": {
             "type": "string"
-          },
-          "note_id": {
-            "type": [
-              "string",
-              "null"
-            ]
           },
           "objectives": {
             "type": "array",
@@ -7961,8 +6555,7 @@
           "question_count",
           "objectives",
           "countries",
-          "subtopics",
-          "has_note"
+          "subtopics"
         ],
         "properties": {
           "countries": {
@@ -7972,17 +6565,14 @@
             },
             "description": "Countries this topic belongs to. Empty means every member country."
           },
-          "has_note": {
-            "type": "boolean"
+          "lesson_refs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ContentReference"
+            }
           },
           "name": {
             "type": "string"
-          },
-          "note_id": {
-            "type": [
-              "string",
-              "null"
-            ]
           },
           "objectives": {
             "type": "array",
@@ -8299,6 +6889,12 @@
           "exam": {
             "type": "string"
           },
+          "lesson_refs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ContentReference"
+            }
+          },
           "name": {
             "type": "string"
           },
@@ -8325,125 +6921,6 @@
             "format": "int32",
             "description": "Marks the board gives this topic. Zero means \"not published\",\nnever \"worth nothing\". A fabricated weight would reach\nconsumers as a fact.",
             "minimum": 0
-          }
-        }
-      },
-      "TopicNote": {
-        "type": "object",
-        "description": "A high-yield study note mapped to a syllabus topic or subtopic.",
-        "required": [
-          "id",
-          "exam",
-          "subject",
-          "topic_slug",
-          "title",
-          "read_time_minutes",
-          "key_takeaway",
-          "sections"
-        ],
-        "properties": {
-          "active_recall_checks": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ActiveRecallCheck"
-            }
-          },
-          "exam": {
-            "type": "string"
-          },
-          "examiner_traps": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ExaminerTrap"
-            }
-          },
-          "formulas": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/NoteFormula"
-            }
-          },
-          "id": {
-            "type": "string"
-          },
-          "key_takeaway": {
-            "$ref": "#/components/schemas/RichText"
-          },
-          "linked_question_ids": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "read_time_minutes": {
-            "type": "integer",
-            "format": "int32",
-            "minimum": 0
-          },
-          "sections": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/NoteSection"
-            }
-          },
-          "sources": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/NoteSource"
-            }
-          },
-          "subject": {
-            "type": "string"
-          },
-          "subtopic_slug": {
-            "type": [
-              "string",
-              "null"
-            ]
-          },
-          "title": {
-            "type": "string"
-          },
-          "topic_slug": {
-            "type": "string"
-          },
-          "worked_examples": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/WorkedExample"
-            }
-          }
-        }
-      },
-      "WorkedExample": {
-        "type": "object",
-        "required": [
-          "title",
-          "problem_statement",
-          "steps",
-          "final_answer"
-        ],
-        "properties": {
-          "final_answer": {
-            "$ref": "#/components/schemas/RichText"
-          },
-          "method_tip": {
-            "type": [
-              "string",
-              "null"
-            ]
-          },
-          "problem_statement": {
-            "$ref": "#/components/schemas/RichText"
-          },
-          "steps": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/SolutionStep"
-            }
-          },
-          "title": {
-            "type": "string"
           }
         }
       },
@@ -8501,8 +6978,8 @@
       "description": "Exams, subjects, syllabi, topics, blueprints, passages and prescribed texts."
     },
     {
-      "name": "textbook",
-      "description": "The teaching half: books, chapters, sections, exercises, and the exam side that hangs off them."
+      "name": "lessons",
+      "description": "Exam-neutral teaching content linked to topics and questions."
     },
     {
       "name": "questions",

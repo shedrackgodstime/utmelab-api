@@ -22,8 +22,8 @@ use rmcp::model::{Resource, ResourceTemplate};
 
 use crate::{
     api::v1::{
-        blueprints, exams, keys, meta, notes, novels, papers, passages, questions, subjects,
-        textbooks, theory, topics,
+        blueprints, exams, keys, lessons, meta, novels, papers, passages, questions, subjects,
+        theory, topics,
     },
     auth::{api_key::AuthedKey, Auth},
     error::AppError,
@@ -39,22 +39,6 @@ const JSON: &str = "application/json";
 /// Concrete resources: catalog reads that take no parameter.
 pub fn list() -> Vec<Resource> {
     vec![
-        res(
-            "textbooks",
-            "Textbooks",
-            "Every book, with the subject area and the level it teaches.",
-        ),
-        res(
-            "exam-traps",
-            "Examiner traps",
-            "The mistakes candidates make, with the evidence behind each one. \
-Filter by `exam` or `section_id`.",
-        ),
-        res(
-            "exam-practice",
-            "Exam practice",
-            "Practice items written in an exam's own wording. Filter by `exam` or `section_id`.",
-        ),
         res("exams", "Exams", "Every exam the bank holds."),
         res(
             "novels",
@@ -94,27 +78,6 @@ Filter by `exam` or `section_id`.",
 /// with [`list`] these are the whole keyed read surface.
 pub fn templates() -> Vec<ResourceTemplate> {
     vec![
-        tmpl(
-            "textbooks/{book_id}",
-            "Textbook",
-            "One book and the chapters it holds.",
-        ),
-        tmpl(
-            "chapters/{chapter_id}",
-            "Chapter",
-            "One chapter: its sections, its exercises and its exam side.",
-        ),
-        tmpl(
-            "chapters/{chapter_id}/sections/{section_id}",
-            "Section detail",
-            "Fully structured teaching content, worked examples, and misconceptions for one section.",
-        ),
-        tmpl(
-            "chapters/{chapter_id}/exercises",
-            "Chapter exercises",
-            "The exercises of a chapter, each with its answer and its solution. \
-Filter by `section_id` or `tier`.",
-        ),
         tmpl(
             "exams/{exam}/subjects",
             "Exam subjects",
@@ -176,16 +139,7 @@ Filter by `section_id` or `tier`.",
             "Table rows",
             "A page of rows from an allowlisted table. `limit` caps it.",
         ),
-        tmpl(
-            "notes/{exam}/{subject}/{topic_slug}",
-            "Topic study note",
-            "High-yield study note for a syllabus topic.",
-        ),
-        tmpl(
-            "notes/subtopic/{exam}/{subject}/{subtopic_slug}",
-            "Subtopic study note",
-            "High-yield study note for a specific syllabus subtopic.",
-        ),
+        tmpl("lessons/{id}", "Lesson", "One exam-neutral teaching lesson."),
         tmpl(
             "theory/{exam}/{subject}",
             "Theory questions list",
@@ -236,50 +190,12 @@ pub async fn read(db: &DbState, auth: &Auth, uri: &str) -> Result<serde_json::Va
     };
     let seg: Vec<&str> = path.split('/').filter(|s| !s.is_empty()).collect();
     match seg.as_slice() {
-        ["textbooks"] => read!(textbooks::list_textbooks(
+        ["lessons", id] => read!(lessons::one(
             State(db.clone()),
             AuthedKey(auth.clone()),
-        )),
-        ["textbooks", book_id] => read!(textbooks::get_textbook(
-            State(db.clone()),
-            AuthedKey(auth.clone()),
-            Path(book_id.to_string()),
-        )),
-        ["chapters", chapter_id] => read!(textbooks::get_chapter(
-            State(db.clone()),
-            AuthedKey(auth.clone()),
-            Path(chapter_id.to_string()),
-        )),
-        ["chapters", chapter_id, "sections", section_id] => {
-            read!(textbooks::get_section_detail(
-                State(db.clone()),
-                AuthedKey(auth.clone()),
-                Path((chapter_id.to_string(), section_id.to_string())),
-            ))
-        }
-        ["chapters", chapter_id, "exercises"] => read!(textbooks::list_chapter_exercises(
-            State(db.clone()),
-            AuthedKey(auth.clone()),
-            Path(chapter_id.to_string()),
-            Query(textbooks::ExerciseQuery {
-                section_id: opt(&query, "section_id"),
-                tier: opt(&query, "tier"),
-            }),
-        )),
-        ["exam-traps"] => read!(textbooks::list_exam_traps(
-            State(db.clone()),
-            AuthedKey(auth.clone()),
-            Query(textbooks::TrapQuery {
-                exam: opt(&query, "exam"),
-                section_id: opt(&query, "section_id"),
-            }),
-        )),
-        ["exam-practice"] => read!(textbooks::list_exam_practice(
-            State(db.clone()),
-            AuthedKey(auth.clone()),
-            Query(textbooks::RecallQuery {
-                exam: opt(&query, "exam"),
-                section_id: opt(&query, "section_id"),
+            Path(id.to_string()),
+            Query(lessons::LessonQuery {
+                version: num(&query, "version")?,
             }),
         )),
         ["exams"] => read!(exams::list(State(db.clone()), AuthedKey(auth.clone()))),
@@ -321,24 +237,6 @@ pub async fn read(db: &DbState, auth: &Auth, uri: &str) -> Result<serde_json::Va
             State(db.clone()),
             AuthedKey(auth.clone()),
             Path((exam.to_string(), subject.to_string(), slug.to_string())),
-        )),
-        ["notes", exam, subject, topic_slug] => read!(notes::topic_note(
-            State(db.clone()),
-            AuthedKey(auth.clone()),
-            Path((
-                exam.to_string(),
-                subject.to_string(),
-                topic_slug.to_string()
-            )),
-        )),
-        ["notes", "subtopic", exam, subject, subtopic_slug] => read!(notes::subtopic_note(
-            State(db.clone()),
-            AuthedKey(auth.clone()),
-            Path((
-                exam.to_string(),
-                subject.to_string(),
-                subtopic_slug.to_string()
-            )),
         )),
         ["theory", exam, subject] => read!(theory::list_theory(
             State(db.clone()),

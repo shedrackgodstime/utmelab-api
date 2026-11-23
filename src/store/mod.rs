@@ -10,7 +10,7 @@
 
 pub mod accounts;
 pub mod catalog;
-pub mod chapters;
+pub mod lessons;
 pub mod schema;
 pub mod sync;
 pub mod write;

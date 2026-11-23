@@ -1,0 +1,24 @@
+{
+  "id": "procedure:locate-equilibrium",
+  "kind": "Procedure",
+  "label": "Locate market equilibrium from schedules or curves",
+  "inputs": [
+    "Demand schedule/curve",
+    "Supply schedule/curve"
+  ],
+  "steps": [
+    "Compare quantity demanded and quantity supplied across prices (or plot both curves).",
+    "Find the price where quantity demanded equals quantity supplied (or the intersection of the two curves).",
+    "Read off the equilibrium price and equilibrium quantity."
+  ],
+  "success_criteria": "A price-quantity pair where Qd = Qs; equilibrium price and quantity identified.",
+  "scope": {
+    "text": "Introductory economics; markets for goods and services",
+    "basis": "inferred"
+  },
+  "source_fidelity": "as-stated/condensed",
+  "notes": "Procedure candidate. The source states the method in prose (block p-26) and the summary (p-36); steps are lightly normalized. Review whether this is a Procedure or just an application of the equilibrium definition.",
+  "source_refs": [
+    "source:openstax-m63601"
+  ]
+}

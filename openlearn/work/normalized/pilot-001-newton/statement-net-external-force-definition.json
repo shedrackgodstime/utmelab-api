@@ -1,0 +1,13 @@
+{
+  "id": "statement:net-external-force-definition",
+  "kind": "Statement",
+  "about": ["concept:net-external-force"],
+  "status": "definitional",
+  "role": "definition",
+  "fidelity": "paraphrased",
+  "scope": {"text": "Newtonian/classical mechanics (introductory)", "basis": "inferred"},
+  "text": "A net external force is the vector sum of all external forces acting on a system; an external force acts from outside the system of interest.",
+  "block_refs": ["p-4", "p-8"],
+  "notes": "Minimal extraction from phy_m42073.json for pilot resolution.",
+  "source_refs": ["source:openstax-m42073"]
+}

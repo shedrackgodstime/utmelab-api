@@ -1,0 +1,22 @@
+{
+  "id": "study:proof:ftc-part1",
+  "kind": "StudyDerivation",
+  "label": "Proof of FTC Part 1 (specific derivation)",
+  "knowledge_refs": [
+    "statement:ftc-part1",
+    "procedure:prove-ftc-part1",
+    "concept:definite-integral",
+    "concept:antiderivative"
+  ],
+  "block_refs": [
+    "p-42",
+    "p-43",
+    "p-44",
+    "p-45"
+  ],
+  "summary": "Applies the derivative definition to F(x)=∫_a^x f(t)dt; rewrites the difference quotient as an average value; invokes the Mean Value Theorem for Integrals; takes h→0 using continuity to conclude F′(x)=f(x).",
+  "notes": "Specific proof/derivation belongs to Study (walkthrough). The reusable method is procedure:prove-ftc-part1. Mathematical notation is condensed in this pilot.",
+  "source_refs": [
+    "source:openstax-m53632"
+  ]
+}

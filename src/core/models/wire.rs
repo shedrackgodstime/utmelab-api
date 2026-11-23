@@ -9,9 +9,9 @@
 use std::collections::HashMap;
 
 use super::domain::{
-    BookPart, Choice, ContentBlock, DiagramRubric, ExamLink, ExaminerPenalty, Explanation,
+    Choice, ContentBlock, ContentReference, DiagramRubric, ExamLink, ExaminerPenalty, Explanation,
     FormulaSheetEntry, FormulationClause, GlossaryEntry, LearningObjective, MarkingMethod, Passage,
-    Provenance, RichText, SectionMisconception, SectionWorkedExample, Subject,
+    Provenance, RichText, SectionMisconception, SectionWorkedExample, StudyCheck, Subject,
     TheoryExaminerReport, TheorySubPart,
 };
 
@@ -204,9 +204,8 @@ pub struct SyllabusTopic {
     /// Countries this topic belongs to. Empty means every member country.
     pub countries: Vec<String>,
     pub subtopics: Vec<SyllabusSubtopic>,
-    pub has_note: bool,
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub note_id: Option<String>,
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub lesson_refs: Vec<ContentReference>,
 }
 
 #[derive(Clone, Debug, PartialEq, serde::Serialize, utoipa::ToSchema)]
@@ -218,9 +217,8 @@ pub struct SyllabusSubtopic {
     pub objectives: Vec<String>,
     /// Inherited from the parent topic. A subtopic carries no scope of its own.
     pub countries: Vec<String>,
-    pub has_note: bool,
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub note_id: Option<String>,
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub lesson_refs: Vec<ContentReference>,
 }
 
 /// Counts over a subject's syllabus, for progress bars and checklists.
@@ -281,6 +279,9 @@ pub struct RenderedQuestion {
     pub subject: String,
     pub year: u16,
     pub source: String,
+    /// The syllabus topic tag for this question when the catalogue provides one.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub topic_slug: Option<String>,
     pub text: RichText,
     pub options: Vec<Choice>,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -296,6 +297,9 @@ pub struct RenderedQuestion {
     pub marks: f32,
     pub difficulty: u8,
     pub verified: bool,
+    /// Lessons that teach the idea assessed by this question.
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub lesson_refs: Vec<ContentReference>,
     /// Present only when explanations were requested.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub answer: Option<String>,
@@ -436,19 +440,6 @@ pub struct AppliedPenalty {
     pub reason: String,
 }
 
-/// A book with the chapters it holds.
-#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
-pub struct BookWithChapters {
-    pub id: String,
-    pub title: String,
-    pub subject_area: String,
-    pub level: String,
-    pub edition: String,
-    pub description: String,
-    pub parts: Vec<BookPart>,
-    pub chapters: Vec<crate::store::chapters::ChapterSummary>,
-}
-
 /// Outline summary of a section within a chapter.
 #[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
 pub struct SectionSummary {
@@ -494,8 +485,14 @@ pub struct SectionDetail {
     pub slug: String,
     pub title: String,
     pub est_minutes: i64,
+    /// Opaque section revision token, changed whenever imported section content changes.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub content_hash: Option<String>,
     pub learning_objectives: Vec<LearningObjective>,
     pub content: Vec<ContentBlock>,
+    /// Optional lesson-embedded checks; omitted when no checks are authored.
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub study_checks: Vec<StudyCheck>,
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
     pub worked_examples: Vec<SectionWorkedExample>,
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
@@ -514,6 +511,7 @@ pub struct SectionDetail {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use serde_json::json;
 
     #[test]
     fn page_envelope_counts_whole_and_partial_pages() {
@@ -528,5 +526,27 @@ mod tests {
         assert_eq!(partial.total_pages, 3, "101 over 50 rounds up to three");
         assert_eq!(partial.page, 3);
         assert!(partial.includes_explanation);
+    }
+
+    #[test]
+    fn older_section_details_default_to_no_study_checks_and_omit_empty_checks() {
+        let detail: SectionDetail = serde_json::from_value(json!({
+            "schema_version": 2,
+            "id": "sec-1",
+            "chapter_id": "chapter-1",
+            "order": 1,
+            "slug": "section-1",
+            "title": "Section",
+            "est_minutes": 10,
+            "learning_objectives": [],
+            "content": [],
+            "provenance": {}
+        }))
+        .expect("older section detail");
+
+        assert!(detail.study_checks.is_empty());
+        let encoded = serde_json::to_value(detail).expect("serialize section detail");
+        assert!(encoded.get("study_checks").is_none());
+        assert!(encoded.get("content_hash").is_none());
     }
 }

@@ -1,0 +1,18 @@
+{
+  "id": "statement:definite-integral-definition",
+  "kind": "Statement",
+  "about": [
+    "concept:definite-integral"
+  ],
+  "status": "definitional",
+  "role": "definition",
+  "fidelity": "paraphrased",
+  "scope": {
+    "text": "Calculus; functions defined on an interval [a,b] (integrability conditions as stated)",
+    "basis": "mixed"
+  },
+  "text": "If f(x) is a function defined on an interval [a,b], the definite integral of f from a to b is the limit of a Riemann sum (when it exists), written as the integral from a to b of f(x) dx; when this limit exists f is said to be integrable on [a,b].",
+  "block_refs": ["p-4", "p-5", "p-6"],
+  "notes": "Extracted/paraphrased from math_integration_definite.json (m53631).",
+  "source_refs": ["source:openstax-m53631"]
+}

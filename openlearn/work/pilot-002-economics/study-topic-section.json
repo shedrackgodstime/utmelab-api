@@ -1,0 +1,32 @@
+{
+  "id": "study:topic:demand-supply-equilibrium",
+  "kind": "StudyTopic",
+  "title": "Demand, Supply, and Equilibrium in Markets for Goods and Services",
+  "source_capture": "utmelab-bank/data/concepts/eco_demand_supply_equilibrium.json",
+  "knowledge_refs": [
+    "concept:demand",
+    "concept:quantity-demanded",
+    "concept:supply",
+    "concept:quantity-supplied",
+    "concept:equilibrium",
+    "statement:law-of-demand",
+    "statement:law-of-supply",
+    "statement:equilibrium-condition",
+    "statement:above-equilibrium-surplus",
+    "statement:below-equilibrium-shortage",
+    "model:demand-supply-equilibrium",
+    "procedure:locate-equilibrium"
+  ],
+  "block_roles": {
+    "0-1": "learning objectives",
+    "2-19": "demand/supply definitions, schedules, curves, laws",
+    "20-32": "equilibrium model and adjustment predictions",
+    "33-36": "key concepts and summary",
+    "37-71": "self-check/review/critical-thinking questions and problems (Study/assessment)",
+    "72-75": "references"
+  },
+  "notes": "Section/topic is a Study container. The core Knowledge is the demand/supply concepts, laws, equilibrium condition, model, and adjustment predictions. Exercises/questions are Study/assessment.",
+  "source_refs": [
+    "source:openstax-m63601"
+  ]
+}

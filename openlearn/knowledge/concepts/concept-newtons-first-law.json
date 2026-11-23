@@ -1,0 +1,10 @@
+{
+  "id": "concept:newtons-first-law",
+  "kind": "Concept",
+  "label": "Newton’s First Law of Motion",
+  "definition_refs": ["statement:newtons-first-law-definition"],
+  "definition_status": "complete",
+  "scope": {"text": "Newtonian/classical mechanics (introductory)", "basis": "inferred"},
+  "notes": "Minimal extraction from phy_m42073.json for pilot completeness; referenced by Pilot 001 relation.",
+  "source_refs": ["source:openstax-m42073"]
+}

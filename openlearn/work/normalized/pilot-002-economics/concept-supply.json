@@ -1,0 +1,18 @@
+{
+  "id": "concept:supply",
+  "kind": "Concept",
+  "label": "Supply",
+  "definition_refs": ["statement:supply-definition"],
+  "definition_status": "complete",
+  "scope": {
+    "text": "Introductory economics; markets for goods and services",
+    "basis": "inferred"
+  },
+  "distinguished_from": [
+    "concept:quantity-supplied"
+  ],
+  "notes": "Source explicitly distinguishes supply (the curve/relationship) from quantity supplied (a point on the curve).",
+  "source_refs": [
+    "source:openstax-m63601"
+  ]
+}

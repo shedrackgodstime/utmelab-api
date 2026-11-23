@@ -30,20 +30,16 @@ fn main() {
         let role = args.get(3).cloned().unwrap_or_else(|| "admin".to_string());
         std::process::exit(seed_admin_cmd(username, role));
     }
-    if args.get(1).is_some_and(|a| a == "seed-reference-notes") {
-        std::process::exit(seed_reference_notes_cmd());
-    }
-    if args.get(1).is_some_and(|a| a == "import-notes") {
-        let path = args.get(2).cloned().unwrap_or_default();
-        std::process::exit(import_notes_cmd(path));
-    }
-    if args.get(1).is_some_and(|a| a == "import-chapters") {
-        let path = args.get(2).cloned().unwrap_or_default();
-        std::process::exit(import_chapters_cmd(path));
-    }
     if args.get(1).is_some_and(|a| a == "import-theory") {
         let path = args.get(2).cloned().unwrap_or_default();
         std::process::exit(import_theory_cmd(path));
+    }
+    if args.get(1).is_some_and(|a| a == "import-lessons") {
+        let path = args.get(2).cloned().unwrap_or_default();
+        std::process::exit(import_lessons_cmd(path));
+    }
+    if args.get(1).is_some_and(|a| a == "clean-content-schema") {
+        std::process::exit(clean_content_schema_cmd());
     }
     let cfg = match Config::from_env() {
         Ok(c) => c,
@@ -128,56 +124,22 @@ fn seed_admin_cmd(username: String, role: String) -> i32 {
     })
 }
 
-fn seed_reference_notes_cmd() -> i32 {
-    let cfg = match Config::from_env() {
-        Ok(c) => c,
-        Err(e) => {
-            eprintln!("{e}");
-            return 1;
-        }
-    };
-    if !cfg.has_db() {
-        eprintln!("no TURSO_DB_URL/TOKEN; nothing to seed into");
-        return 1;
-    }
-    let rt = match tokio::runtime::Builder::new_current_thread()
-        .enable_all()
-        .build()
-    {
-        Ok(r) => r,
-        Err(e) => {
-            eprintln!("failed to start command runtime: {e}");
-            return 1;
-        }
-    };
-    rt.block_on(async move {
-        let Some(db) = store::sync::ready_db(&cfg).await else {
-            eprintln!("could not open replica (is the server running?) or reach cloud");
-            return 1;
-        };
-        let st = utmelab_api::state::DbState::detached(db);
-        match store::catalog::seed_reference_notes(&st).await {
-            Ok(()) => {
-                println!("seeded reference study notes for JAMB physics motion and projectiles");
-                0
-            }
-            Err(e) => {
-                eprintln!("seed notes failed: {e}");
-                1
-            }
-        }
-    })
-}
-
-fn import_notes_cmd(path_str: String) -> i32 {
+fn import_lessons_cmd(path_str: String) -> i32 {
     if path_str.is_empty() {
-        eprintln!("usage: import-notes <path/to/notes.json>");
+        eprintln!("usage: import-lessons <path/to/lessons.json>");
         return 2;
     }
     let content = match std::fs::read_to_string(&path_str) {
         Ok(c) => c,
         Err(e) => {
             eprintln!("failed to read file '{path_str}': {e}");
+            return 1;
+        }
+    };
+    let bundle: store::lessons::LessonBundle = match serde_json::from_str(&content) {
+        Ok(bundle) => bundle,
+        Err(e) => {
+            eprintln!("invalid lessons json: {e}");
             return 1;
         }
     };
@@ -192,19 +154,16 @@ fn import_notes_cmd(path_str: String) -> i32 {
         eprintln!("no TURSO_DB_URL/TOKEN; nothing to import into");
         return 1;
     }
-    let rt = match tokio::runtime::Builder::new_current_thread()
-        .enable_all()
-        .build()
-    {
+    let rt = match tokio::runtime::Builder::new_current_thread().enable_all().build() {
         Ok(r) => r,
         Err(e) => {
-            eprintln!("failed to start command runtime: {e}");
+            eprintln!("failed to start runtime: {e}");
             return 1;
         }
     };
     rt.block_on(async move {
         let Some(db) = store::sync::ready_db(&cfg).await else {
-            eprintln!("could not open replica (is the server running?) or reach cloud");
+            eprintln!("could not open replica or reach cloud");
             return 1;
         };
         let st = utmelab_api::state::DbState::detached(db.clone());
@@ -212,112 +171,47 @@ fn import_notes_cmd(path_str: String) -> i32 {
             eprintln!("ensure schema failed: {e}");
             return 1;
         }
-        match store::catalog::import_notes_from_json(&st, &content).await {
+        match store::lessons::import_bundle(&st, &bundle).await {
             Ok(count) => {
-                println!("imported {count} study notes from {path_str}");
+                println!("imported {count} lesson records from {path_str}");
                 let _ = store::sync::push_db(&db, &cfg).await;
                 0
             }
             Err(e) => {
-                eprintln!("import notes failed: {e}");
+                eprintln!("import lessons failed: {e}");
                 1
             }
         }
     })
 }
 
-fn import_chapters_cmd(path_str: String) -> i32 {
-    if path_str.is_empty() {
-        eprintln!("usage: import-chapters <path/to/chapters.json>");
-        return 2;
-    }
-    let content = match std::fs::read_to_string(&path_str) {
-        Ok(c) => c,
-        Err(e) => {
-            eprintln!("failed to read file '{path_str}': {e}");
-            return 1;
-        }
-    };
-    let bundle: store::chapters::ChapterBundle = match serde_json::from_str(&content) {
-        Ok(b) => b,
-        Err(e) => {
-            eprintln!("invalid chapters json: {e}");
-            return 1;
-        }
-    };
+fn clean_content_schema_cmd() -> i32 {
     let cfg = match Config::from_env() {
         Ok(c) => c,
-        Err(e) => {
-            eprintln!("{e}");
-            return 1;
-        }
+        Err(e) => { eprintln!("{e}"); return 1; }
     };
     if !cfg.has_db() {
-        eprintln!("no TURSO_DB_URL/TOKEN; nothing to import into");
+        eprintln!("no TURSO_DB_URL/TOKEN; nothing to clean");
         return 1;
     }
-    let rt = match tokio::runtime::Builder::new_current_thread()
-        .enable_all()
-        .build()
-    {
+    let rt = match tokio::runtime::Builder::new_current_thread().enable_all().build() {
         Ok(r) => r,
-        Err(e) => {
-            eprintln!("failed to start command runtime: {e}");
-            return 1;
-        }
+        Err(e) => { eprintln!("failed to start command runtime: {e}"); return 1; }
     };
     rt.block_on(async move {
         let Some(db) = store::sync::ready_db(&cfg).await else {
-            eprintln!("could not open replica (is the server running?) or reach cloud");
+            eprintln!("could not open replica or reach cloud");
             return 1;
         };
         let st = utmelab_api::state::DbState::detached(db.clone());
         if let Err(e) = store::schema::ensure_schema(&st).await {
-            eprintln!("ensure schema failed: {e}");
+            eprintln!("content schema cleanup failed: {e}");
             return 1;
         }
-        let book_count = bundle.books.len();
-        let chapter_count = bundle.chapters.len();
-        let store::chapters::ChapterBundle { books, chapters } = bundle;
-
-        // A book is one write; the chapters are many. Push after each chapter
-        // so the pending-write budget never fills on a full textbook.
-        if let Err(e) = store::chapters::import_bundle(
-            &st,
-            &store::chapters::ChapterBundle {
-                books,
-                chapters: Vec::new(),
-            },
-        )
-        .await
-        {
-            eprintln!("import books failed: {e}");
-            return 1;
+        match store::sync::push_db(&db, &cfg).await {
+            Ok(()) => { println!("removed retired textbook and notes tables from the Turso database"); 0 }
+            Err(e) => { eprintln!("content schema cleanup push failed: {e}"); 1 }
         }
-        if let Err(e) = store::sync::push_db(&db, &cfg).await {
-            eprintln!("push after books failed: {e}");
-            return 1;
-        }
-
-        let mut imported = 0;
-        for chapter in chapters {
-            let chunk = store::chapters::ChapterBundle {
-                books: Vec::new(),
-                chapters: vec![chapter],
-            };
-            if let Err(e) = store::chapters::import_bundle(&st, &chunk).await {
-                eprintln!("import chapter {imported} failed: {e}");
-                return 1;
-            }
-            if let Err(e) = store::sync::push_db(&db, &cfg).await {
-                eprintln!("push after chapter {imported} failed: {e}");
-                return 1;
-            }
-            imported += 1;
-        }
-        println!("imported {imported} chapters and {book_count} books from {path_str}");
-        debug_assert_eq!(imported, chapter_count);
-        0
     })
 }
 

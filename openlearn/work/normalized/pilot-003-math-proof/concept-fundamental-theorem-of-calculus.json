@@ -1,0 +1,20 @@
+{
+  "id": "concept:fundamental-theorem-of-calculus",
+  "kind": "Concept",
+  "label": "Fundamental Theorem of Calculus",
+  "definition_refs": ["statement:fundamental-theorem-of-calculus-definition"],
+  "definition_status": "complete",
+  "scope": {
+    "text": "Calculus; real-valued functions continuous on a closed interval [a,b]",
+    "basis": "mixed"
+  },
+  "linked_statements": [
+    "statement:ftc-part1",
+    "statement:ftc-part2",
+    "statement:fundamental-theorem-of-calculus-definition"
+  ],
+  "notes": "Named theorem as a Concept anchor. The two parts are distinct theorem Statements. Proofs are recorded as reusable Procedures plus specific Study derivations.",
+  "source_refs": [
+    "source:openstax-m53632"
+  ]
+}

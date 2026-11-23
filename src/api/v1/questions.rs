@@ -51,6 +51,13 @@ pub async fn one(
                 f.include_explanation.unwrap_or(false),
                 s.media_base_url.as_ref(),
             );
+            rendered.topic_slug = store::catalog::question_topic(
+                &s,
+                &q.exam,
+                &q.subject,
+                q.subtopic_id.as_deref(),
+            )
+            .await?;
             if f.include_passage.unwrap_or(false) {
                 if let Some(ref pid) = q.passage_id {
                     rendered.passage = crate::api::v1::passages::load_passage(&s, pid).await?;
@@ -157,12 +164,21 @@ pub async fn list(
     } else {
         None
     };
-    let rendered = render_questions(
+    let mut rendered = render_questions(
         &questions,
         with_explanation,
         s.media_base_url.as_ref(),
         passages_opt,
     );
+    for question in &mut rendered {
+        question.topic_slug = store::catalog::question_topic(
+            &s,
+            &question.exam,
+            &question.subject,
+            question.subtopic_id.as_deref(),
+        )
+        .await?;
+    }
 
     Ok(Json(
         core::models::Page::new(rendered, page, per_page, total_records, with_explanation)
@@ -276,12 +292,21 @@ pub async fn sample(
     };
 
     let with_explanation = f.include_explanation.unwrap_or(false);
-    let rendered = render_questions(
+    let mut rendered = render_questions(
         &questions,
         with_explanation,
         s.media_base_url.as_ref(),
         passages.as_ref(),
     );
+    for question in &mut rendered {
+        question.topic_slug = store::catalog::question_topic(
+            &s,
+            &question.exam,
+            &question.subject,
+            question.subtopic_id.as_deref(),
+        )
+        .await?;
+    }
 
     Ok(Json(core::models::SampledQuestions {
         exam: f.exam,

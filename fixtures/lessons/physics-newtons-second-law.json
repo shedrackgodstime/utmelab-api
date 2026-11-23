@@ -1,0 +1,45 @@
+{
+  "lessons": [
+    {
+      "id": "lesson:physics:newtons-second-law",
+      "version": 1,
+      "status": "published",
+      "title": "Newton’s Second Law of Motion",
+      "description": {"text": "How net external force, mass, and acceleration are related for a constant-mass system.", "inline": []},
+      "subject": "physics",
+      "level": "senior_secondary",
+      "estimated_minutes": 25,
+      "objectives": [
+        {"id": "objective:newtons-second-law:define", "statement": "Define a system, external force, net external force, mass, and acceleration.", "bloom_level": "understand"},
+        {"id": "objective:newtons-second-law:state", "statement": "State Newton’s second law in words and as F_net = m a for constant mass.", "bloom_level": "understand"},
+        {"id": "objective:newtons-second-law:calculate", "statement": "Calculate acceleration from net external force and mass in a simple one-dimensional situation.", "bloom_level": "apply"}
+      ],
+      "content": [
+        {"type": "heading", "id": "block:scope", "level": 2, "text": {"text": "What this lesson covers", "inline": []}},
+        {"type": "paragraph", "id": "block:scope-text", "text": {"text": "This lesson treats a chosen system with constant mass in an inertial frame. We use the net external force and focus on simple one-dimensional situations. Variable-mass systems, rotation, non-inertial frames, and full two-dimensional vector resolution are outside this lesson.", "inline": []}},
+        {"type": "definition", "id": "block:system", "term": {"text": "System", "inline": []}, "definition": {"text": "The object or group of objects chosen for analysis.", "inline": []}},
+        {"type": "definition", "id": "block:net-force", "term": {"text": "Net external force", "inline": []}, "definition": {"text": "The vector sum of all external forces acting on the chosen system. It is the overall unbalanced external force, so direction matters.", "inline": []}},
+        {"type": "callout", "id": "block:mass-not-weight", "kind": "common_mistake", "text": {"text": "Mass measures inertia and is measured in kilograms. Weight is a gravitational force and is measured in newtons. They are not the same quantity.", "inline": []}},
+        {"type": "rule", "id": "block:law-in-words", "statement": {"text": "For constant mass, acceleration is directly proportional to the net external force, inversely proportional to mass, and points in the direction of the net external force.", "inline": []}, "conditions": {"text": "Use this form in a classical inertial frame with constant mass.", "inline": []}},
+        {"type": "formula", "id": "block:formula", "expression": "F_net = m a", "caption": {"text": "Net external force equals mass multiplied by acceleration.", "inline": []}, "conditions": {"text": "For calculation, rearrange as a = F_net / m.", "inline": []}},
+        {"type": "example", "id": "block:worked-example", "title": "Finding acceleration from net force", "prompt": {"text": "A 5.0 kg crate experiences a net horizontal external force of 20 N to the right. Find its acceleration.", "inline": []}, "steps": [{"step_number": 1, "expression": "a = F_net / m", "description": "Use the rearranged form of Newton’s second law."}, {"step_number": 2, "expression": "a = 20 N / 5.0 kg", "description": "Substitute the net force and mass."}, {"step_number": 3, "expression": "a = 4.0 m/s^2 to the right", "description": "The direction follows the direction of the net force."}], "answer": {"text": "The crate accelerates at 4.0 m/s^2 to the right.", "inline": []}},
+        {"type": "list", "id": "block:method", "ordered": true, "items": [{"text": "Choose and state the system.", "inline": []}, {"text": "Identify the external forces and combine them to obtain F_net.", "inline": []}, {"text": "Use a = F_net / m and include the direction.", "inline": []}, {"text": "Check the units and whether the result agrees with the force and mass changes.", "inline": []}]},
+        {"type": "summary", "id": "block:summary", "points": [{"text": "Use the net external force, not one force chosen in isolation.", "inline": []}, {"text": "F_net = m a and a = F_net / m for constant mass.", "inline": []}, {"text": "If F_net is zero, acceleration is zero in the stated direction.", "inline": []}]}
+      ],
+      "checks": [
+        {"id": "check:newtons-second-law:net-force", "order": 1, "position_after_block_id": "block:net-force", "objective_id": "objective:newtons-second-law:define", "kind": "multiple_choice", "prompt": {"text": "Which force should be used in F_net = m a?", "inline": []}, "options": [{"id": "a", "content": {"text": "The vector sum of all external forces on the chosen system", "inline": []}}, {"id": "b", "content": {"text": "Always the largest individual force", "inline": []}}, {"id": "c", "content": {"text": "The object’s weight only", "inline": []}}], "answer": {"option_id": "a"}, "feedback": {"text": "Newton’s second law uses the net external force: the vector sum of the external forces on the chosen system.", "inline": []}, "hint": {"text": "Look for the word net.", "inline": []}, "provenance": {}},
+        {"id": "check:newtons-second-law:calculation", "order": 2, "position_after_block_id": "block:worked-example", "objective_id": "objective:newtons-second-law:calculate", "kind": "multiple_choice", "prompt": {"text": "A 2.0 kg object has a net force of 10 N east. What is its acceleration?", "inline": []}, "options": [{"id": "a", "content": {"text": "5.0 m/s^2 east", "inline": []}}, {"id": "b", "content": {"text": "20 m/s^2 east", "inline": []}}, {"id": "c", "content": {"text": "0.2 m/s^2 west", "inline": []}}], "answer": {"option_id": "a"}, "feedback": {"text": "a = F_net / m = 10 N / 2.0 kg = 5.0 m/s^2, in the direction of the net force: east.", "inline": []}, "hint": {"text": "Divide force by mass, then keep the force direction.", "inline": []}, "provenance": {}},
+        {"id": "check:newtons-second-law:balanced", "order": 3, "position_after_block_id": "block:summary", "objective_id": "objective:newtons-second-law:state", "kind": "multiple_choice", "prompt": {"text": "Can forces act on an object while its acceleration is zero?", "inline": []}, "options": [{"id": "a", "content": {"text": "Yes, if the external forces balance so F_net = 0", "inline": []}}, {"id": "b", "content": {"text": "No, any force always causes acceleration", "inline": []}}], "answer": {"option_id": "a"}, "feedback": {"text": "Yes. Individual forces may be present, but balanced forces give zero net force and therefore zero acceleration.", "inline": []}, "hint": null, "provenance": {}}
+      ],
+      "misconceptions": [
+        {"id": "misconception:newtons-second-law:mass-weight", "claim": {"text": "Mass and weight are the same thing.", "inline": []}, "correction": {"text": "Mass measures inertia in kilograms; weight is a gravitational force in newtons.", "inline": []}, "provenance": {}},
+        {"id": "misconception:newtons-second-law:single-force", "claim": {"text": "The largest force acting on an object determines its acceleration.", "inline": []}, "correction": {"text": "Acceleration is determined by the vector sum of all external forces: the net external force.", "inline": []}, "provenance": {}}
+      ],
+      "summary": [{"text": "Choose a system and find its net external force.", "inline": []}, {"text": "Use F_net = m a, or a = F_net / m.", "inline": []}, {"text": "Acceleration has the direction of F_net.", "inline": []}],
+      "provenance": {"publisher": "OpenStax", "title": "College Physics, Newton’s Second Law of Motion", "url": "https://openstax.org/books/college-physics-2e/pages/4-3-newtons-second-law-of-motion-concept-of-a-system", "locator": "Newton’s Second Law of Motion: Concept of a System", "licence": "CC BY 4.0"},
+      "content_hash": "sha256:f6ef0137869e064311acea3ebee8105cfb60f0ebdd4d0d36501cc92277163cb6"
+    }
+  ],
+  "topic_links": [{"exam": "JAMB", "subject": "physics", "topic_slug": "motion", "subtopic_slug": "newton-s-laws-of-motion-inertia-mass-impulse-momentum-and-co", "lesson_id": "lesson:physics:newtons-second-law", "order_index": 1}],
+  "example_question_links": [{"lesson_id": "lesson:physics:newtons-second-law", "question_id": "q_claim_2025_physics_74552", "order_index": 1}, {"lesson_id": "lesson:physics:newtons-second-law", "question_id": "q_claim_2025_physics_74561", "order_index": 2}]
+}

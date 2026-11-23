@@ -1,0 +1,261 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://openlearn.local/schema/v0.1.json",
+  "title": "OpenLearn Knowledge Schema v0.1",
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z]+(:[a-z0-9][a-z0-9_-]*)+$"
+    },
+    "scope": {
+      "type": "object",
+      "required": ["text", "basis"],
+      "properties": {
+        "text": { "type": "string", "minLength": 1 },
+        "basis": { "enum": ["stated", "inferred", "mixed", "not_extractable"] },
+        "conditions": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": false
+    },
+    "fidelity": {
+      "enum": ["as-stated", "paraphrased", "verified", "corrected", "not-extractable"]
+    },
+    "statementStatus": {
+      "enum": ["definitional", "descriptive", "normative", "derived", "empirical", "provisional", "asserted"]
+    },
+    "statementRole": {
+      "enum": ["law", "theorem", "principle", "hypothesis", "fact", "prediction", "condition", "definition", "other"]
+    },
+    "definitionStatus": {
+      "enum": ["complete", "assumed", "not_extractable", "pending"]
+    },
+    "assumption": {
+      "type": "object",
+      "required": ["text", "basis"],
+      "properties": {
+        "text": { "type": "string", "minLength": 1 },
+        "basis": { "enum": ["stated", "inferred", "mixed", "not_extractable"] }
+      },
+      "additionalProperties": false
+    },
+    "formulation": {
+      "type": "object",
+      "required": ["type", "text"],
+      "properties": {
+        "type": { "enum": ["verbal", "mathematical", "other"] },
+        "text": { "type": "string", "minLength": 1 },
+        "block_refs": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": false
+    },
+    "Concept": {
+      "type": "object",
+      "required": ["id", "kind", "label", "scope", "definition_status", "source_refs"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "kind": { "const": "Concept" },
+        "label": { "type": "string", "minLength": 1 },
+        "definition_refs": { "type": "array", "items": { "$ref": "#/$defs/id" }, "minItems": 1 },
+        "definition": { "type": "string", "minLength": 1 },
+        "definition_status": { "$ref": "#/$defs/definitionStatus" },
+        "scope": { "$ref": "#/$defs/scope" },
+        "linked_statements": { "type": "array", "items": { "$ref": "#/$defs/id" } },
+        "distinguished_from": { "type": "array", "items": { "$ref": "#/$defs/id" } },
+        "notes": { "type": "string" },
+        "source_refs": { "type": "array", "items": { "$ref": "#/$defs/id" }, "minItems": 1 }
+      },
+      "additionalProperties": false,
+      "anyOf": [
+        { "required": ["definition_refs"] },
+        { "required": ["definition"] }
+      ]
+    },
+    "Statement": {
+      "type": "object",
+      "required": ["id", "kind", "about", "status", "fidelity", "scope", "source_refs"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "kind": { "const": "Statement" },
+        "about": { "type": "array", "items": { "$ref": "#/$defs/id" }, "minItems": 1 },
+        "status": { "$ref": "#/$defs/statementStatus" },
+        "role": { "$ref": "#/$defs/statementRole" },
+        "fidelity": { "$ref": "#/$defs/fidelity" },
+        "scope": { "$ref": "#/$defs/scope" },
+        "text": { "type": "string", "minLength": 1 },
+        "formulations": { "type": "array", "items": { "$ref": "#/$defs/formulation" }, "minItems": 1 },
+        "block_refs": { "type": "array", "items": { "type": "string" } },
+        "supports_relation": { "$ref": "#/$defs/id" },
+        "notes": { "type": "string" },
+        "source_refs": { "type": "array", "items": { "$ref": "#/$defs/id" }, "minItems": 1 }
+      },
+      "additionalProperties": false,
+      "anyOf": [
+        { "required": ["text"] },
+        { "required": ["formulations"] }
+      ]
+    },
+    "Procedure": {
+      "type": "object",
+      "required": ["id", "kind", "label", "inputs", "steps", "success_criteria", "scope", "source_fidelity", "source_refs"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "kind": { "const": "Procedure" },
+        "label": { "type": "string", "minLength": 1 },
+        "inputs": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "steps": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "success_criteria": { "type": "string", "minLength": 1 },
+        "scope": { "$ref": "#/$defs/scope" },
+        "source_fidelity": { "$ref": "#/$defs/fidelity" },
+        "notes": { "type": "string" },
+        "source_refs": { "type": "array", "items": { "$ref": "#/$defs/id" }, "minItems": 1 }
+      },
+      "additionalProperties": false
+    },
+    "Model": {
+      "type": "object",
+      "required": ["id", "kind", "label", "purpose", "components", "assumptions", "scope", "predictions", "limitations", "source_refs"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "kind": { "const": "Model" },
+        "label": { "type": "string", "minLength": 1 },
+        "purpose": { "type": "string", "minLength": 1 },
+        "components": { "type": "array", "items": { "$ref": "#/$defs/id" }, "minItems": 1 },
+        "assumptions": { "type": "array", "items": { "$ref": "#/$defs/assumption" }, "minItems": 1 },
+        "scope": { "$ref": "#/$defs/scope" },
+        "predictions": { "type": "array", "items": { "$ref": "#/$defs/id" }, "minItems": 1 },
+        "limitations": { "type": "string", "minLength": 1 },
+        "notes": { "type": "string" },
+        "source_refs": { "type": "array", "items": { "$ref": "#/$defs/id" }, "minItems": 1 }
+      },
+      "additionalProperties": false
+    },
+    "Relation": {
+      "type": "object",
+      "required": ["id", "kind", "from", "to", "type", "scope", "direction", "provenance", "source_refs"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "kind": { "const": "Relation" },
+        "from": { "$ref": "#/$defs/id" },
+        "to": { "$ref": "#/$defs/id" },
+        "type": { "type": "string", "minLength": 1 },
+        "scope": { "$ref": "#/$defs/scope" },
+        "direction": { "enum": ["directed", "symmetric", "unspecified"] },
+        "provenance": { "type": "array", "items": { "$ref": "#/$defs/id" }, "minItems": 1 },
+        "notes": { "type": "string" },
+        "source_refs": { "type": "array", "items": { "$ref": "#/$defs/id" }, "minItems": 1 }
+      },
+      "additionalProperties": false
+    },
+    "StudyTopic": {
+      "type": "object",
+      "required": ["id", "kind", "title", "source_capture", "knowledge_refs", "block_roles", "source_refs"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "kind": { "const": "StudyTopic" },
+        "title": { "type": "string", "minLength": 1 },
+        "source_capture": { "type": "string", "minLength": 1 },
+        "knowledge_refs": { "type": "array", "items": { "$ref": "#/$defs/id" }, "minItems": 1 },
+        "block_roles": { "type": "object", "additionalProperties": { "type": "string" } },
+        "notes": { "type": "string" },
+        "source_refs": { "type": "array", "items": { "$ref": "#/$defs/id" }, "minItems": 1 }
+      },
+      "additionalProperties": false
+    },
+    "StudyDerivation": {
+      "type": "object",
+      "required": ["id", "kind", "label", "knowledge_refs", "block_refs", "summary", "source_refs"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "kind": { "const": "StudyDerivation" },
+        "label": { "type": "string", "minLength": 1 },
+        "knowledge_refs": { "type": "array", "items": { "$ref": "#/$defs/id" }, "minItems": 1 },
+        "block_refs": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "summary": { "type": "string", "minLength": 1 },
+        "notes": { "type": "string" },
+        "source_refs": { "type": "array", "items": { "$ref": "#/$defs/id" }, "minItems": 1 }
+      },
+      "additionalProperties": false
+    },
+    "ExternalPlacement": {
+      "type": "object",
+      "required": ["id", "kind", "source_capture", "knowledge_refs", "placements"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "kind": { "const": "ExternalPlacement" },
+        "source_capture": { "type": "string", "minLength": 1 },
+        "knowledge_refs": { "type": "array", "items": { "$ref": "#/$defs/id" }, "minItems": 1 },
+        "placements": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["exam", "subject", "topic_slug", "subtopic_slug", "knowledge_refs"],
+            "properties": {
+              "exam": { "type": "string", "minLength": 1 },
+              "subject": { "type": "string", "minLength": 1 },
+              "topic_slug": { "type": "string", "minLength": 1 },
+              "subtopic_slug": { "type": ["string", "null"] },
+              "knowledge_refs": { "type": "array", "items": { "$ref": "#/$defs/id" }, "minItems": 1 }
+            },
+            "additionalProperties": false
+          }
+        },
+        "notes": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "SourceAttribution": {
+      "type": "object",
+      "required": ["id", "kind", "publisher", "book", "section", "url", "license", "license_basis", "locator"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "kind": { "const": "SourceAttribution" },
+        "publisher": { "type": "string", "minLength": 1 },
+        "book": { "type": "string", "minLength": 1 },
+        "section": { "type": "string", "minLength": 1 },
+        "url": { "type": "string", "minLength": 1 },
+        "license": { "type": "string", "minLength": 1 },
+        "license_basis": { "type": "string", "minLength": 1 },
+        "locator": { "type": "string", "minLength": 1 },
+        "notes": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "SourceFidelity": {
+      "type": "object",
+      "required": ["id", "kind", "source_ref", "items"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "kind": { "const": "SourceFidelity" },
+        "source_ref": { "$ref": "#/$defs/id" },
+        "items": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["ref", "fidelity", "note"],
+            "properties": {
+              "ref": { "$ref": "#/$defs/id" },
+              "fidelity": { "$ref": "#/$defs/fidelity" },
+              "note": { "type": "string", "minLength": 1 }
+            },
+            "additionalProperties": false
+          }
+        },
+        "notes": { "type": "string" }
+      },
+      "additionalProperties": false
+    }
+  },
+  "oneOf": [
+    { "$ref": "#/$defs/Concept" },
+    { "$ref": "#/$defs/Statement" },
+    { "$ref": "#/$defs/Procedure" },
+    { "$ref": "#/$defs/Model" },
+    { "$ref": "#/$defs/Relation" },
+    { "$ref": "#/$defs/StudyTopic" },
+    { "$ref": "#/$defs/StudyDerivation" },
+    { "$ref": "#/$defs/ExternalPlacement" },
+    { "$ref": "#/$defs/SourceAttribution" },
+    { "$ref": "#/$defs/SourceFidelity" }
+  ]
+}

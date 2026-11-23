@@ -1,0 +1,91 @@
+{
+  "id": "study-brief:newtons-second-law-intro",
+  "kind": "StudyBrief",
+  "version": "1.1",
+  "date": "2026-11-22",
+  "status": "ready",
+  "title": "Newton’s Second Law of Motion (constant mass, introductory)",
+  "format": "Small introductory study brief (standalone); not a full textbook treatment.",
+  "contract": {
+    "audience": "Introductory physics learner (e.g. senior secondary level) meeting the stated prerequisites",
+    "learning_outcome": [
+      "Define system, external force, net external force, mass, and acceleration.",
+      "State Newton’s second law in words and as F_net = m a for constant mass, including direction and proportional relationships.",
+      "Use a = F_net / m to calculate acceleration in a simple one-dimensional situation.",
+      "Explain, within scope, how changing net force or mass affects acceleration."
+    ]
+  },
+  "extent": {
+    "topic": "Newton’s second law for a chosen system with constant mass (introductory classical mechanics)",
+    "in_scope": [
+      "Chosen system with constant mass",
+      "External forces and net external force as the cause of acceleration",
+      "Qualitative meaning and basic quantitative use of F_net = m a",
+      "Simple one-dimensional situations or same-direction net force/acceleration"
+    ],
+    "conditions": [
+      "Classical (Newtonian) mechanics; everyday scales and speeds much less than c",
+      "Inertial frame of reference",
+      "Constant mass"
+    ],
+    "prerequisites": [
+      "Basic ideas of force, mass, velocity, and acceleration",
+      "Basic algebra and SI units (N, kg, m/s^2)"
+    ],
+    "out_of_scope": [
+      "Variable-mass systems, rotation/torque, non-inertial frames",
+      "Relativistic or quantum regimes",
+      "Multi-force 2D/3D vector component resolution beyond net force and direction",
+      "Detailed force models and complex multi-body setups except simple external forces",
+      "Extended problem-solving strategies or large question banks"
+    ],
+    "completeness_claim": "Complete for the stated learning outcome within the stated scope and conditions; limits explicitly stated."
+  },
+  "composition": {
+    "sections": [
+      "contract",
+      "scope_and_boundaries",
+      "core_ideas_and_definitions",
+      "explanation",
+      "demonstration",
+      "check_your_understanding",
+      "essentials",
+      "grounding_and_context"
+    ],
+    "canonical_knowledge_refs": [
+      "concept:newtons-second-law",
+      "concept:system",
+      "concept:net-external-force",
+      "concept:mass",
+      "concept:acceleration",
+      "statement:newtons-second-law-definition",
+      "statement:newtons-second-law"
+    ],
+    "source_refs": [
+      "source:openstax-m42073"
+    ],
+    "deliverable_files": [
+      "temp/study-brief-newtons-second-law-intro.brief.md",
+      "temp/study-brief-newtons-second-law-intro.brief.json"
+    ]
+  },
+  "grounding": {
+    "provenance": "OpenStax, College Physics, module m42073 (Newton’s Second Law of Motion: Concept of a System).",
+    "source_url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42073/index.cnxml",
+    "license_basis": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required), as recorded in source attribution. Verify reuse constraints before commercial use.",
+    "status_fidelity": "Authored from the attributed source and aligned with referenced canonical statements; scope conditions stated explicitly. Focused brief, not a substitute for the full source treatment."
+  },
+  "placement": {
+    "pinned": false,
+    "note": "No exam syllabus/topic placement pinned. Mapping to any specific external placement is handled outside this brief."
+  },
+  "readiness": {
+    "teachable": true,
+    "bounded_extent_declared": true,
+    "grounded": true,
+    "self_check_included": true,
+    "reviewed_for_declared_extent": true,
+    "ready_to_send": true,
+    "notes": "Learner-focused, consumer-agnostic brief. Complete for its declared outcome and scope; out-of-scope cases excluded."
+  }
+}

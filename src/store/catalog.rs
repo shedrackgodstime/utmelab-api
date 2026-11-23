@@ -1074,7 +1074,7 @@ pub async fn get_topic(
         let slug = slug.clone();
         async move {
             let mut stmt = conn
-            .prepare("SELECT slug,subject,exam,name,\"order\",weight,objectives FROM topics WHERE exam=?1 AND subject=?2 AND slug=?3")
+            .prepare("SELECT slug,subject,exam,name,\"order\",weight,objectives,lesson_refs FROM topics WHERE exam=?1 AND subject=?2 AND slug=?3")
             .await
             .map_err(upstream)?;
             let mut rows = stmt
@@ -1085,6 +1085,9 @@ pub async fn get_topic(
                 return Ok(None);
             };
             let objectives_raw: String = row.get(6).map_err(upstream)?;
+            let lesson_refs_raw: String = row.get(7).map_err(upstream)?;
+            let lesson_refs: Vec<core::models::ContentReference> = serde_json::from_str(&lesson_refs_raw)
+                .map_err(|error| AppError::Upstream(format!("topics.lesson_refs: {error}")))?;
             Ok(Some(core::models::Topic {
                 slug: row.get(0).map_err(upstream)?,
                 subject: row.get(1).map_err(upstream)?,
@@ -1093,202 +1096,48 @@ pub async fn get_topic(
                 order: req_int::<u32>(row.get_value(4).map_err(upstream)?, "topic.order")?,
                 weight: req_int::<u32>(row.get_value(5).map_err(upstream)?, "topic.weight")?,
                 objectives: json_list(&objectives_raw, "topic.objectives")?,
+                lesson_refs,
             }))
         }
     })
     .await
 }
 
-fn map_topic_note(row: &turso::Row) -> Result<core::models::TopicNote, AppError> {
-    let id: String = row.get(0).map_err(upstream)?;
-    let exam: String = row.get(1).map_err(upstream)?;
-    let subject: String = row.get(2).map_err(upstream)?;
-    let topic_slug: String = row.get(3).map_err(upstream)?;
-    let subtopic_slug = opt_string(
-        row.get_value(4).map_err(upstream)?,
-        "topic_notes.subtopic_slug",
-    )?;
-    let title: String = row.get(5).map_err(upstream)?;
-    let read_time_minutes = req_int::<u8>(
-        row.get_value(6).map_err(upstream)?,
-        "topic_notes.read_time_minutes",
-    )?;
-    let key_takeaway_raw: String = row.get(7).map_err(upstream)?;
-    let sections_raw: String = row.get(8).map_err(upstream)?;
-    let worked_examples_raw: String = row.get(9).map_err(upstream)?;
-    let formulas_raw: String = row.get(10).map_err(upstream)?;
-    let active_recall_checks_raw: String = row.get(11).map_err(upstream)?;
-    let examiner_traps_raw: String = row.get(12).map_err(upstream)?;
-    let sources_raw: String = row.get(13).map_err(upstream)?;
-    let linked_question_ids_raw: String = row.get(14).map_err(upstream)?;
-
-    Ok(core::models::TopicNote {
-        id,
-        exam,
-        subject,
-        topic_slug,
-        subtopic_slug,
-        title,
-        read_time_minutes,
-        key_takeaway: json_col(&key_takeaway_raw, "topic_notes.key_takeaway")?,
-        sections: json_col(&sections_raw, "topic_notes.sections")?,
-        worked_examples: json_col(&worked_examples_raw, "topic_notes.worked_examples")?,
-        formulas: json_col(&formulas_raw, "topic_notes.formulas")?,
-        active_recall_checks: json_col(
-            &active_recall_checks_raw,
-            "topic_notes.active_recall_checks",
-        )?,
-        examiner_traps: json_col(&examiner_traps_raw, "topic_notes.examiner_traps")?,
-        sources: json_col(&sources_raw, "topic_notes.sources")?,
-        linked_question_ids: json_col(&linked_question_ids_raw, "topic_notes.linked_question_ids")?,
-    })
-}
-
-/// Run a read and collect every row. The textbook layer reads whole
-/// chapters, so it wants the rows rather than one at a time.
-pub(crate) async fn rows(
-    s: &DbState,
-    sql: &str,
-    args: Vec<turso::Value>,
-) -> Result<Vec<turso::Row>, AppError> {
-    let sql = sql.to_string();
-    let args = std::sync::Arc::new(args);
-    with_conn(s, |conn| {
-        let sql = sql.clone();
-        let args = args.clone();
-        async move {
-            let mut stmt = conn.prepare(&sql).await.map_err(upstream)?;
-            let mut cursor = stmt.query(args.as_ref().clone()).await.map_err(upstream)?;
-            let mut collected = Vec::new();
-            while let Some(row) = cursor.next().await.map_err(upstream)? {
-                collected.push(row);
-            }
-            Ok(collected)
-        }
-    })
-    .await
-}
-pub async fn get_topic_note(
+/// Resolve the syllabus topic tag carried by a question's subtopic reference.
+/// Some older bank rows use a topic slug directly, so the direct topic lookup
+/// is the fallback rather than silently dropping the tag.
+pub async fn question_topic(
     s: &DbState,
     exam: &str,
     subject: &str,
-    topic_slug: &str,
-) -> Result<Option<core::models::TopicNote>, AppError> {
-    let exam = exam.to_string();
-    let subject = subject.to_string();
-    let topic_slug = topic_slug.to_string();
+    subtopic_id: Option<&str>,
+) -> Result<Option<String>, AppError> {
+    let (exam, subject, subtopic_id) =
+        (exam.to_string(), subject.to_string(), subtopic_id.map(str::to_string));
+    let Some(subtopic_id) = subtopic_id else { return Ok(None) };
     with_conn(s, |conn| {
-        let exam = exam.clone();
-        let subject = subject.clone();
-        let topic_slug = topic_slug.clone();
+        let (exam, subject, subtopic_id) = (exam.clone(), subject.clone(), subtopic_id.clone());
         async move {
-            let mut stmt = conn
-                .prepare(
-                    "SELECT n.id, n.exam, n.subject, n.topic_slug, n.subtopic_slug, n.title, \
-                     n.read_time_minutes, n.key_takeaway, n.sections, n.worked_examples, \
-                     n.formulas, n.active_recall_checks, n.examiner_traps, n.sources, n.linked_question_ids \
-                     FROM topic_notes n \
-                     WHERE n.exam = ?1 AND n.subject = ?2 AND n.topic_slug = ?3 \
-                       AND (n.subtopic_slug IS NULL OR n.subtopic_slug = '') \
-                       AND EXISTS ( \
-                         SELECT 1 FROM topics t \
-                         WHERE t.exam = n.exam AND t.subject = n.subject AND t.slug = n.topic_slug \
-                       ) \
-                     LIMIT 1",
+            let mut rows = conn
+                .query(
+                    "SELECT topic FROM subtopics WHERE slug = ?1 AND topic IN (SELECT slug FROM topics WHERE exam = ?2 AND subject = ?3) UNION SELECT slug FROM topics WHERE slug = ?1 AND exam = ?2 AND subject = ?3 LIMIT 1",
+                    [subtopic_id.as_str(), exam.as_str(), subject.as_str()],
                 )
                 .await
                 .map_err(upstream)?;
-            let mut rows = stmt
-                .query([exam.as_str(), subject.as_str(), topic_slug.as_str()])
+            Ok(rows
+                .next()
                 .await
-                .map_err(upstream)?;
-            let Some(row) = rows.next().await.map_err(upstream)? else {
-                return Ok(None);
-            };
-            Ok(Some(map_topic_note(&row)?))
+                .map_err(upstream)?
+                .map(|row| row.get(0))
+                .transpose()
+                .map_err(upstream)?)
         }
     })
     .await
 }
 
-pub async fn get_subtopic_note(
-    s: &DbState,
-    exam: &str,
-    subject: &str,
-    subtopic_slug: &str,
-) -> Result<Option<core::models::TopicNote>, AppError> {
-    let exam = exam.to_string();
-    let subject = subject.to_string();
-    let subtopic_slug = subtopic_slug.to_string();
-    with_conn(s, |conn| {
-        let exam = exam.clone();
-        let subject = subject.clone();
-        let subtopic_slug = subtopic_slug.clone();
-        async move {
-            let mut stmt = conn
-                .prepare(
-                    "SELECT n.id, n.exam, n.subject, n.topic_slug, n.subtopic_slug, n.title, \
-                     n.read_time_minutes, n.key_takeaway, n.sections, n.worked_examples, \
-                     n.formulas, n.active_recall_checks, n.examiner_traps, n.sources, n.linked_question_ids \
-                     FROM topic_notes n \
-                     WHERE n.exam = ?1 AND n.subject = ?2 AND n.subtopic_slug = ?3 \
-                       AND n.subtopic_slug <> '' \
-                       AND EXISTS ( \
-                         SELECT 1 FROM subtopics st \
-                         JOIN topics t ON t.slug = st.topic \
-                         WHERE t.exam = n.exam AND t.subject = n.subject \
-                           AND t.slug = n.topic_slug AND st.slug = n.subtopic_slug \
-                       ) \
-                     LIMIT 1",
-                )
-                .await
-                .map_err(upstream)?;
-            let mut rows = stmt
-                .query([exam.as_str(), subject.as_str(), subtopic_slug.as_str()])
-                .await
-                .map_err(upstream)?;
-            let Some(row) = rows.next().await.map_err(upstream)? else {
-                return Ok(None);
-            };
-            Ok(Some(map_topic_note(&row)?))
-        }
-    })
-    .await
-}
-
-pub async fn notes_index(
-    s: &DbState,
-    exam: &str,
-    subject: &str,
-) -> Result<std::collections::HashMap<(String, Option<String>), String>, AppError> {
-    let exam = exam.to_string();
-    let subject = subject.to_string();
-    with_conn(s, |conn| {
-        let exam = exam.clone();
-        let subject = subject.clone();
-        async move {
-            let mut stmt = conn
-                .prepare(
-                    "SELECT id, topic_slug, subtopic_slug FROM topic_notes WHERE exam = ?1 AND subject = ?2",
-                )
-                .await
-                .map_err(upstream)?;
-            let mut rows = stmt.query([exam.as_str(), subject.as_str()]).await.map_err(upstream)?;
-            let mut map = std::collections::HashMap::new();
-            while let Some(row) = rows.next().await.map_err(upstream)? {
-                let id: String = row.get(0).map_err(upstream)?;
-                let topic_slug: String = row.get(1).map_err(upstream)?;
-                let subtopic_slug = opt_string(row.get_value(2).map_err(upstream)?, "topic_notes.subtopic_slug")?
-                    .filter(|s| !s.is_empty());
-                map.insert((topic_slug, subtopic_slug), id);
-            }
-            Ok(map)
-        }
-    })
-    .await
-}
-
-fn note_content_hash(parts: &[&str]) -> String {
+fn content_hash(parts: &[&str]) -> String {
     use sha2::Digest;
     let mut hasher = sha2::Sha256::new();
     for part in parts {
@@ -1296,490 +1145,6 @@ fn note_content_hash(parts: &[&str]) -> String {
         hasher.update([0u8]);
     }
     crate::core::hex::encode(&hasher.finalize())
-}
-
-/// Seed reference study notes for testing and demonstration.
-pub async fn seed_reference_notes(s: &DbState) -> Result<(), AppError> {
-    let topic_takeaway = serde_json::json!({
-        "text": "Motion is the continuous change in position of an object relative to a reference frame over time.",
-        "inline": []
-    }).to_string();
-
-    let topic_sections = serde_json::json!([
-        {
-            "section_number": 1,
-            "heading": "1. Distance and Displacement",
-            "content": {
-                "text": "Distance is a scalar quantity representing the total ground covered. Displacement is a vector quantity pointing directly from the starting position to the final position.",
-                "inline": [
-                    { "start": 0, "len": 8, "kind": "bold" },
-                    { "start": 68, "len": 12, "kind": "bold" }
-                ]
-            },
-            "callout": {
-                "kind": "key_concept",
-                "text": {
-                    "text": "Displacement can be zero even after walking ten kilometers if you return to your starting point.",
-                    "inline": []
-                }
-            }
-        },
-        {
-            "section_number": 2,
-            "heading": "2. Equations of Uniformly Accelerated Motion",
-            "content": {
-                "text": "When acceleration remains constant, kinematic equations connect initial velocity (u), final velocity (v), acceleration (a), time (t), and displacement (s).",
-                "inline": []
-            },
-            "callout": null
-        }
-    ]).to_string();
-
-    let topic_formulas = serde_json::json!([
-        {
-            "name": "Velocity Equation",
-            "latex": "v = u + at",
-            "variables": [
-                { "symbol": "v", "name": "Final velocity", "unit": "m/s" },
-                { "symbol": "u", "name": "Initial velocity", "unit": "m/s" },
-                { "symbol": "a", "name": "Acceleration", "unit": "m/s²" },
-                { "symbol": "t", "name": "Time", "unit": "s" }
-            ],
-            "conditions": ["Constant linear acceleration"]
-        },
-        {
-            "name": "Displacement Equation",
-            "latex": "s = ut + \\frac{1}{2}at^2",
-            "variables": [
-                { "symbol": "s", "name": "Displacement", "unit": "m" }
-            ],
-            "conditions": ["Constant linear acceleration"]
-        }
-    ])
-    .to_string();
-
-    let topic_checks = serde_json::json!([
-        {
-            "check_number": 1,
-            "prompt": "Which of the following is a vector quantity?",
-            "options": ["Speed", "Distance", "Displacement", "Mass"],
-            "correct_index": 2,
-            "explanation": "Displacement has both magnitude and direction, whereas speed, distance, and mass are scalar quantities."
-        }
-    ]).to_string();
-
-    let topic_traps = serde_json::json!([
-        {
-            "misconception": "Confusing average speed with average velocity.",
-            "correction": "Average speed uses total distance divided by total time. Average velocity uses total displacement divided by total time."
-        }
-    ]).to_string();
-
-    let topic_sources = serde_json::json!([
-        {
-            "title": "College Physics 2e, Section 2.1: Displacement",
-            "url": "https://openstax.org/books/college-physics-2e/pages/2-1-displacement",
-            "locator": "Section 2.1"
-        },
-        {
-            "title": "College Physics 2e, Section 2.5: Motion Equations for Constant Acceleration in One Dimension",
-            "url": "https://openstax.org/books/college-physics-2e/pages/2-5-motion-equations-for-constant-acceleration-in-one-dimension",
-            "locator": "Section 2.5"
-        }
-    ])
-    .to_string();
-
-    let subtopic_takeaway = serde_json::json!({
-        "text": "Projectile motion combines constant horizontal velocity with constant vertical gravitational acceleration.",
-        "inline": []
-    }).to_string();
-
-    let subtopic_sections = serde_json::json!([
-        {
-            "section_number": 1,
-            "heading": "1. Independence of Motion",
-            "content": {
-                "text": "A projectile launched into the air moves in two dimensions at the same time. The horizontal motion experiences zero acceleration when air resistance is neglected. Gravity pulls downward, accelerating the vertical motion at 9.8 m/s² (or 10 m/s² in standard JAMB calculations). Because gravity acts only downward, the horizontal velocity component never changes throughout the flight.",
-                "inline": [
-                    { "start": 80, "len": 17, "kind": "bold" },
-                    { "start": 169, "len": 7, "kind": "italic" }
-                ]
-            },
-            "callout": {
-                "kind": "examiner_tip",
-                "text": {
-                    "text": "Horizontal velocity (u_x = u cos θ) remains constant at every point on the trajectory, including at maximum height.",
-                    "inline": [
-                        { "start": 21, "len": 13, "kind": "bold" }
-                    ]
-                }
-            }
-        },
-        {
-            "section_number": 2,
-            "heading": "2. Velocity at Maximum Height",
-            "content": {
-                "text": "At the peak of flight, the projectile stops climbing for an instant. The vertical velocity component becomes zero (v_y = 0). However, the total velocity at maximum height is not zero: the object still moves forward with its original horizontal speed (u cos θ).",
-                "inline": [
-                    { "start": 98, "len": 9, "kind": "bold" }
-                ]
-            },
-            "callout": {
-                "kind": "warning",
-                "text": {
-                    "text": "Never set total velocity to zero at the maximum height. Only the vertical component is zero.",
-                    "inline": [
-                        { "start": 0, "len": 55, "kind": "bold" }
-                    ]
-                }
-            }
-        }
-    ]).to_string();
-
-    let subtopic_examples = serde_json::json!([
-        {
-            "title": "Finding Time of Flight and Maximum Height",
-            "problem_statement": {
-                "text": "A stone is projected from the ground with a velocity of 40 m/s at an angle of 30 degrees to the horizontal. Calculate: (a) the time taken to reach the maximum height, (b) the total time of flight. (Take g = 10 m/s²)",
-                "inline": []
-            },
-            "steps": [
-                {
-                    "step_number": 1,
-                    "description": "Identify known variables and formula for time to maximum height",
-                    "expression": "u = 40\\text{ m/s}, \\quad \\theta = 30^\\circ, \\quad g = 10\\text{ m/s}^2, \\quad t = \\frac{u \\sin \\theta}{g}"
-                },
-                {
-                    "step_number": 2,
-                    "description": "Substitute values into the formula to find t",
-                    "expression": "t = \\frac{40 \\times \\sin(30^\\circ)}{10} = \\frac{40 \\times 0.5}{10} = \\frac{20}{10} = 2.0\\text{ seconds}"
-                },
-                {
-                    "step_number": 3,
-                    "description": "Calculate total time of flight by doubling the time to maximum height",
-                    "expression": "T = 2 \\times t = 2 \\times 2.0 = 4.0\\text{ seconds}"
-                }
-            ],
-            "final_answer": {
-                "text": "Time to maximum height is 2.0 seconds. Total time of flight is 4.0 seconds.",
-                "inline": []
-            },
-            "method_tip": "Always evaluate sin(30°) = 0.5 first before multiplying by velocity."
-        }
-    ]).to_string();
-
-    let subtopic_formulas = serde_json::json!([
-        {
-            "name": "Time to Maximum Height",
-            "latex": "t = \\frac{u \\sin \\theta}{g}",
-            "variables": [
-                { "symbol": "u", "name": "Initial velocity", "unit": "m/s" },
-                { "symbol": "\\theta", "name": "Angle of projection to horizontal", "unit": "degrees" },
-                { "symbol": "g", "name": "Gravitational acceleration", "unit": "m/s²" }
-            ],
-            "conditions": [
-                "Level ground launch and landing",
-                "Air resistance ignored"
-            ]
-        },
-        {
-            "name": "Maximum Height Reached",
-            "latex": "H = \\frac{u^2 \\sin^2 \\theta}{2g}",
-            "variables": [
-                { "symbol": "H", "name": "Maximum vertical height", "unit": "m" }
-            ],
-            "conditions": [
-                "Measured relative to launch plane"
-            ]
-        },
-        {
-            "name": "Horizontal Range",
-            "latex": "R = \\frac{u^2 \\sin 2\\theta}{g}",
-            "variables": [
-                { "symbol": "R", "name": "Total horizontal distance", "unit": "m" }
-            ],
-            "conditions": [
-                "Maximum range happens at 45 degrees launch angle"
-            ]
-        }
-    ]).to_string();
-
-    let subtopic_checks = serde_json::json!([
-        {
-            "check_number": 1,
-            "prompt": "What happens to the horizontal velocity of a projectile during flight when air resistance is ignored?",
-            "options": [
-                "It decreases to zero at maximum height",
-                "It increases steadily until landing",
-                "It remains constant throughout the entire flight",
-                "It reverses direction after reaching the peak"
-            ],
-            "correct_index": 2,
-            "explanation": "Because gravity only acts downward (vertically), there is zero horizontal acceleration. The horizontal speed never changes."
-        },
-        {
-            "check_number": 2,
-            "prompt": "At what launch angle does a projectile achieve its maximum horizontal range on flat ground?",
-            "options": [
-                "30 degrees",
-                "45 degrees",
-                "60 degrees",
-                "90 degrees"
-            ],
-            "correct_index": 1,
-            "explanation": "The range formula depends on sin(2θ). The maximum possible value for sine is 1, which happens when 2θ = 90 degrees, meaning θ = 45 degrees."
-        }
-    ]).to_string();
-
-    let subtopic_traps = serde_json::json!([
-        {
-            "misconception": "Thinking acceleration at the top of the flight path is zero.",
-            "correction": "Gravitational acceleration stays 9.8 m/s² downward at all times, even when vertical velocity is momentarily zero at the peak."
-        },
-        {
-            "misconception": "Using the angle to the vertical instead of horizontal.",
-            "correction": "If an exam question states 'projected at 30 degrees to the vertical', you must subtract it from 90 degrees to get 60 degrees to the horizontal before using the standard formulas."
-        }
-    ]).to_string();
-
-    let subtopic_sources = serde_json::json!([
-        {
-            "title": "College Physics 2e, Section 3.4: Projectile Motion",
-            "url": "https://openstax.org/books/college-physics-2e/pages/3-4-projectile-motion",
-            "locator": "Section 3.4"
-        }
-    ])
-    .to_string();
-
-    // A note without a verified placement is not storable. Fail before any
-    // write so a bad seed cannot leave a half-applied pair behind.
-    let tree = list_syllabus(s, "JAMB", "physics").await?;
-    let Some(topic) = tree.iter().find(|t| t.slug == "motion") else {
-        return Err(AppError::BadRequest(
-            "JAMB physics has no topic 'motion'; note placement is unverified".to_string(),
-        ));
-    };
-    if !topic
-        .subtopics
-        .iter()
-        .any(|st| st.slug == "projectiles-range-maximum-height-time-of-flight-and-applicat")
-    {
-        return Err(AppError::BadRequest(
-            "JAMB physics topic 'motion' has no projectiles subtopic; note placement is unverified"
-                .to_string(),
-        ));
-    }
-
-    let topic_hash = note_content_hash(&[
-        &topic_takeaway,
-        &topic_sections,
-        &topic_formulas,
-        &topic_checks,
-        &topic_traps,
-        &topic_sources,
-    ]);
-    let subtopic_hash = note_content_hash(&[
-        &subtopic_takeaway,
-        &subtopic_sections,
-        &subtopic_examples,
-        &subtopic_formulas,
-        &subtopic_checks,
-        &subtopic_traps,
-        &subtopic_sources,
-    ]);
-
-    super::write::execute_write(
-        s,
-        "INSERT OR REPLACE INTO topic_notes (id, exam, subject, topic_slug, subtopic_slug, title, read_time_minutes, key_takeaway, sections, worked_examples, formulas, active_recall_checks, examiner_traps, sources, linked_question_ids, content_hash) \
-         VALUES (?1, ?2, ?3, ?4, NULL, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15)",
-        vec![
-            turso::Value::Text("note_phys_jamb_motion".to_string()),
-            turso::Value::Text("JAMB".to_string()),
-            turso::Value::Text("physics".to_string()),
-            turso::Value::Text("motion".to_string()),
-            turso::Value::Text("General Principles of Motion and Dynamics".to_string()),
-            turso::Value::Integer(4),
-            turso::Value::Text(topic_takeaway),
-            turso::Value::Text(topic_sections),
-            turso::Value::Text("[]".to_string()),
-            turso::Value::Text(topic_formulas),
-            turso::Value::Text(topic_checks),
-            turso::Value::Text(topic_traps),
-            turso::Value::Text(topic_sources),
-            turso::Value::Text("[]".to_string()),
-            turso::Value::Text(topic_hash),
-        ],
-    ).await?;
-
-    super::write::execute_write(
-        s,
-        "INSERT OR REPLACE INTO topic_notes (id, exam, subject, topic_slug, subtopic_slug, title, read_time_minutes, key_takeaway, sections, worked_examples, formulas, active_recall_checks, examiner_traps, sources, linked_question_ids, content_hash) \
-         VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15, ?16)",
-        vec![
-            turso::Value::Text("note_phys_jamb_projectile_motion".to_string()),
-            turso::Value::Text("JAMB".to_string()),
-            turso::Value::Text("physics".to_string()),
-            turso::Value::Text("motion".to_string()),
-            turso::Value::Text("projectiles-range-maximum-height-time-of-flight-and-applicat".to_string()),
-            turso::Value::Text("Projectile Motion: Flight Path, Range, and Maximum Height".to_string()),
-            turso::Value::Integer(5),
-            turso::Value::Text(subtopic_takeaway),
-            turso::Value::Text(subtopic_sections),
-            turso::Value::Text(subtopic_examples),
-            turso::Value::Text(subtopic_formulas),
-            turso::Value::Text(subtopic_checks),
-            turso::Value::Text(subtopic_traps),
-            turso::Value::Text(subtopic_sources),
-            turso::Value::Text("[]".to_string()),
-            turso::Value::Text(subtopic_hash),
-        ],
-    ).await?;
-
-    Ok(())
-}
-
-/// Import an array of notes from a JSON string into the topic_notes table.
-pub async fn import_notes_from_json(s: &DbState, json_str: &str) -> Result<usize, AppError> {
-    let notes: Vec<core::models::TopicNote> = serde_json::from_str(json_str)
-        .map_err(|e| AppError::BadRequest(format!("invalid notes json: {e}")))?;
-
-    // Pre-validation pass: every note must satisfy size ceiling and placement in the syllabus.
-    for note in &notes {
-        let size = serde_json::to_vec(note)
-            .map_err(|e| AppError::Internal(e.to_string()))?
-            .len();
-        if size >= crate::routes::MAX_BODY_BYTES {
-            return Err(AppError::BadRequest(format!(
-                "note {} serializes to {size} bytes, exceeding ceiling of {} bytes",
-                note.id,
-                crate::routes::MAX_BODY_BYTES
-            )));
-        }
-
-        let placement_valid = with_conn(s, |conn| {
-            let exam = note.exam.clone();
-            let subject = note.subject.clone();
-            let topic_slug = note.topic_slug.clone();
-            let subtopic_slug = note.subtopic_slug.clone();
-            async move {
-                if let Some(ref st_slug) = subtopic_slug {
-                    if !st_slug.is_empty() {
-                        let mut stmt = conn
-                            .prepare(
-                                "SELECT 1 FROM subtopics st \
-                                 JOIN topics t ON t.slug = st.topic \
-                                 WHERE ( \
-                                   (t.exam = ?1 AND t.subject = ?2) \
-                                   OR EXISTS ( \
-                                     SELECT 1 FROM subjects s \
-                                     WHERE s.exam = ?1 AND s.slug = ?2 \
-                                       AND t.exam = s.syllabus_exam AND t.subject = s.syllabus_subject \
-                                   ) \
-                                 ) AND t.slug = ?3 AND st.slug = ?4 \
-                                 LIMIT 1",
-                            )
-                            .await
-                            .map_err(upstream)?;
-                        let mut rows = stmt
-                            .query([exam.as_str(), subject.as_str(), topic_slug.as_str(), st_slug.as_str()])
-                            .await
-                            .map_err(upstream)?;
-                        return Ok(rows.next().await.map_err(upstream)?.is_some());
-                    }
-                }
-                let mut stmt = conn
-                    .prepare(
-                        "SELECT 1 FROM topics t \
-                         WHERE ( \
-                           (t.exam = ?1 AND t.subject = ?2) \
-                           OR EXISTS ( \
-                             SELECT 1 FROM subjects s \
-                             WHERE s.exam = ?1 AND s.slug = ?2 \
-                               AND t.exam = s.syllabus_exam AND t.subject = s.syllabus_subject \
-                           ) \
-                         ) AND t.slug = ?3 \
-                         LIMIT 1",
-                    )
-                    .await
-                    .map_err(upstream)?;
-                let mut rows = stmt
-                    .query([exam.as_str(), subject.as_str(), topic_slug.as_str()])
-                    .await
-                    .map_err(upstream)?;
-                Ok(rows.next().await.map_err(upstream)?.is_some())
-            }
-        })
-        .await?;
-
-        if !placement_valid {
-            return Err(AppError::BadRequest(format!(
-                "note {} references topic '{}' and subtopic '{:?}' which do not exist in {} {}",
-                note.id, note.topic_slug, note.subtopic_slug, note.exam, note.subject
-            )));
-        }
-    }
-
-    let mut statements = Vec::with_capacity(notes.len());
-    for note in &notes {
-        let takeaway_json = serde_json::to_string(&note.key_takeaway)
-            .map_err(|e| AppError::Internal(e.to_string()))?;
-        let sections_json =
-            serde_json::to_string(&note.sections).map_err(|e| AppError::Internal(e.to_string()))?;
-        let examples_json = serde_json::to_string(&note.worked_examples)
-            .map_err(|e| AppError::Internal(e.to_string()))?;
-        let formulas_json =
-            serde_json::to_string(&note.formulas).map_err(|e| AppError::Internal(e.to_string()))?;
-        let checks_json = serde_json::to_string(&note.active_recall_checks)
-            .map_err(|e| AppError::Internal(e.to_string()))?;
-        let traps_json = serde_json::to_string(&note.examiner_traps)
-            .map_err(|e| AppError::Internal(e.to_string()))?;
-        let sources_json =
-            serde_json::to_string(&note.sources).map_err(|e| AppError::Internal(e.to_string()))?;
-        let linked_q_json = serde_json::to_string(&note.linked_question_ids)
-            .map_err(|e| AppError::Internal(e.to_string()))?;
-
-        let hash = note_content_hash(&[
-            &takeaway_json,
-            &sections_json,
-            &examples_json,
-            &formulas_json,
-            &checks_json,
-            &traps_json,
-            &sources_json,
-        ]);
-
-        let subtopic_val = match &note.subtopic_slug {
-            Some(slug) if !slug.is_empty() => turso::Value::Text(slug.clone()),
-            _ => turso::Value::Null,
-        };
-
-        statements.push((
-            "INSERT OR REPLACE INTO topic_notes (id, exam, subject, topic_slug, subtopic_slug, title, read_time_minutes, key_takeaway, sections, worked_examples, formulas, active_recall_checks, examiner_traps, sources, linked_question_ids, content_hash) \
-             VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15, ?16)",
-            vec![
-                turso::Value::Text(note.id.clone()),
-                turso::Value::Text(note.exam.clone()),
-                turso::Value::Text(note.subject.clone()),
-                turso::Value::Text(note.topic_slug.clone()),
-                subtopic_val,
-                turso::Value::Text(note.title.clone()),
-                turso::Value::Integer(note.read_time_minutes as i64),
-                turso::Value::Text(takeaway_json),
-                turso::Value::Text(sections_json),
-                turso::Value::Text(examples_json),
-                turso::Value::Text(formulas_json),
-                turso::Value::Text(checks_json),
-                turso::Value::Text(traps_json),
-                turso::Value::Text(sources_json),
-                turso::Value::Text(linked_q_json),
-                turso::Value::Text(hash),
-            ],
-        ));
-    }
-
-    super::write::execute_write_batch(s, statements).await?;
-
-    Ok(notes.len())
 }
 
 fn map_theory_question(row: &turso::Row) -> Result<core::models::TheoryQuestion, AppError> {
@@ -2342,7 +1707,7 @@ pub async fn import_theory_questions_from_json(
         let report_json = serde_json::to_string(&q.examiner_report)
             .map_err(|e| AppError::Internal(e.to_string()))?;
 
-        let hash = note_content_hash(&[
+        let hash = content_hash(&[
             &stem_json,
             &sub_parts_json,
             &bridge_json,
@@ -3229,19 +2594,19 @@ mod tests {
         .await
         .expect("insert waec english");
         conn.execute(
-            "INSERT INTO topics VALUES ('algebra','mathematics','JAMB','Algebra',3,15,'[\"solve\"]','[]')",
+            "INSERT INTO topics VALUES ('algebra','mathematics','JAMB','Algebra',3,15,'[\"solve\"]','[]','[]')",
             (),
         )
         .await
         .expect("insert algebra");
         conn.execute(
-            "INSERT INTO topics VALUES ('geometry','mathematics','JAMB','Geometry',4,0,'[]','[]')",
+            "INSERT INTO topics VALUES ('geometry','mathematics','JAMB','Geometry',4,0,'[]','[]','[]')",
             (),
         )
         .await
         .expect("insert geometry");
         conn.execute(
-            "INSERT INTO subtopics VALUES ('geometry-basics','geometry','Geometry basics',1,'[]')",
+            "INSERT INTO subtopics VALUES ('geometry-basics','geometry','Geometry basics',1,'[]','[]')",
             (),
         )
         .await
@@ -3951,7 +3316,7 @@ mod tests {
         // Every other question has no subtopic, so it stays universal.
         let conn = crate::testing::connect(&db).await;
         conn.execute(
-            "INSERT INTO subtopics VALUES ('algebra','algebra','Algebra basics',1,'[]')",
+            "INSERT INTO subtopics VALUES ('algebra','algebra','Algebra basics',1,'[]','[]')",
             (),
         )
         .await

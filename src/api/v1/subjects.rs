@@ -110,8 +110,20 @@ pub async fn build_syllabus(
         &counts,
         country.as_deref(),
     );
-    let notes = store::catalog::notes_index(s, &syllabus_exam, &syllabus_subject).await?;
-    core::catalog::attach_notes_to_syllabus(&mut syllabus, &notes);
+    for topic in &mut syllabus.topics {
+        topic.lesson_refs = store::lessons::topic_lessons(
+            s,
+            exam,
+            slug,
+            &topic.slug,
+        )
+        .await?;
+        for subtopic in &mut topic.subtopics {
+            subtopic.lesson_refs = store::lessons::subtopic_lessons(
+                s, exam, slug, &topic.slug, &subtopic.slug,
+            ).await?;
+        }
+    }
     Ok(syllabus)
 }
 
@@ -224,13 +236,13 @@ mod tests {
         .await
         .expect("insert subject");
         conn.execute(
-            "INSERT INTO topics VALUES ('mechanics','physics','JAMB','Mechanics',1,0,'[\"state newton laws\"]','[]')",
+            "INSERT INTO topics VALUES ('mechanics','physics','JAMB','Mechanics',1,0,'[\"state newton laws\"]','[]','[]')",
             (),
         )
         .await
         .expect("insert topic");
         conn.execute(
-            "INSERT INTO subtopics VALUES ('newton','mechanics','Newton laws',1,'[]')",
+            "INSERT INTO subtopics VALUES ('newton','mechanics','Newton laws',1,'[]','[]')",
             (),
         )
         .await
@@ -241,20 +253,6 @@ mod tests {
         )
         .await
         .expect("insert question");
-        conn.execute(
-            "INSERT INTO topic_notes (id, exam, subject, topic_slug, subtopic_slug, title, read_time_minutes, key_takeaway, sections, worked_examples, formulas, active_recall_checks, examiner_traps, linked_question_ids, content_hash) \
-             VALUES ('note_mech', 'JAMB', 'physics', 'mechanics', NULL, 'Mechanics Overview', 4, '{\"text\":\"Takeaway\",\"inline\":[]}', '[]', '[]', '[]', '[]', '[]', '[]', 'h1')",
-            (),
-        )
-        .await
-        .expect("insert topic note");
-        conn.execute(
-            "INSERT INTO topic_notes (id, exam, subject, topic_slug, subtopic_slug, title, read_time_minutes, key_takeaway, sections, worked_examples, formulas, active_recall_checks, examiner_traps, linked_question_ids, content_hash) \
-             VALUES ('note_newton', 'JAMB', 'physics', 'mechanics', 'newton', 'Newton Laws', 3, '{\"text\":\"Takeaway\",\"inline\":[]}', '[]', '[]', '[]', '[]', '[]', '[]', 'h2')",
-            (),
-        )
-        .await
-        .expect("insert subtopic note");
         issue_key(&conn, "reader.secret", "commercial", "read:catalog", false).await;
         issue_key(
             &conn,
@@ -341,11 +339,7 @@ mod tests {
         assert_eq!(v["topics"][0]["slug"], "mechanics");
         assert_eq!(v["topics"][0]["question_count"], 1);
         assert_eq!(v["topics"][0]["objectives"][0], "state newton laws");
-        assert_eq!(v["topics"][0]["has_note"], true);
-        assert_eq!(v["topics"][0]["note_id"], "note_mech");
         assert_eq!(v["topics"][0]["subtopics"][0]["question_count"], 1);
-        assert_eq!(v["topics"][0]["subtopics"][0]["has_note"], true);
-        assert_eq!(v["topics"][0]["subtopics"][0]["note_id"], "note_newton");
 
         // A country JAMB does not run in is refused, not silently unscoped.
         assert_eq!(

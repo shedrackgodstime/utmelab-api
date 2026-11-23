@@ -1,0 +1,25 @@
+{
+  "id": "statement:ftc-part2",
+  "kind": "Statement",
+  "about": [
+    "concept:fundamental-theorem-of-calculus",
+    "concept:definite-integral",
+    "concept:antiderivative"
+  ],
+  "status": "derived/proved",
+  "fidelity": "as-stated",
+  "scope": {
+    "text": "Calculus; f continuous over [a,b]; F any antiderivative of f",
+    "basis": "as-stated for continuity/antiderivative; broader calculus scope inferred"
+  },
+  "text": "If f is continuous over the interval [a,b] and F(x) is any antiderivative of f(x), then ∫_a^b f(x)dx = F(b) − F(a).",
+  "block_refs": [
+    "p-75",
+    "p-76",
+    "p-77"
+  ],
+  "notes": "Part 2 (evaluation theorem) of the Fundamental Theorem of Calculus. Source proof in blocks p-79–p-82; reusable proof method recorded as procedure:prove-ftc-part2.",
+  "source_refs": [
+    "source:openstax-m53632"
+  ]
+}

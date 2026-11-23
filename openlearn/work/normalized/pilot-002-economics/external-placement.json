@@ -1,0 +1,47 @@
+{
+  "id": "external:placement:demand-supply-equilibrium-jamb",
+  "kind": "ExternalPlacement",
+  "source_capture": "utmelab-bank/data/concepts/eco_demand_supply_equilibrium.json",
+  "knowledge_refs": [
+    "concept:demand",
+    "concept:supply",
+    "concept:equilibrium",
+    "model:demand-supply-equilibrium"
+  ],
+  "placements": [
+    {
+      "exam": "JAMB",
+      "subject": "economics",
+      "topic_slug": "the-theory-of-demand",
+      "subtopic_slug": null,
+      "knowledge_refs": [
+        "concept:demand",
+        "statement:law-of-demand"
+      ]
+    },
+    {
+      "exam": "JAMB",
+      "subject": "economics",
+      "topic_slug": "the-theory-of-supply",
+      "subtopic_slug": null,
+      "knowledge_refs": [
+        "concept:supply",
+        "statement:law-of-supply"
+      ]
+    },
+    {
+      "exam": "JAMB",
+      "subject": "economics",
+      "topic_slug": "the-theory-of-price-determination",
+      "subtopic_slug": null,
+      "knowledge_refs": [
+        "concept:equilibrium",
+        "model:demand-supply-equilibrium",
+        "statement:equilibrium-condition",
+        "statement:above-equilibrium-surplus",
+        "statement:below-equilibrium-shortage"
+      ]
+    }
+  ],
+  "notes": "External JAMB topics mapped to core Knowledge IDs. No exam identifiers appear inside Knowledge records; this record is the only place the referrer lives."
+}

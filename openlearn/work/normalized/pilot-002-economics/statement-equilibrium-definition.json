@@ -1,0 +1,19 @@
+{
+  "id": "statement:equilibrium-definition",
+  "kind": "Statement",
+  "about": [
+    "concept:equilibrium"
+  ],
+  "status": "definitional",
+  "role": "definition",
+  "fidelity": "as-stated",
+  "scope": {
+    "text": "Introductory economics; markets for goods and services",
+    "basis": "inferred"
+  },
+  "text": "Market equilibrium is the point where the supply curve and demand curve cross; the equilibrium price is the only price where quantity demanded equals quantity supplied, and the common quantity is the equilibrium quantity.",
+  "notes": "Definitional Statement extracted from the capture’s Concept definition.",
+  "source_refs": [
+    "source:openstax-m63601"
+  ]
+}

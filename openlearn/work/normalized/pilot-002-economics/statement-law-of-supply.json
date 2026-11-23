@@ -1,0 +1,23 @@
+{
+  "id": "statement:law-of-supply",
+  "kind": "Statement",
+  "about": [
+    "concept:supply",
+    "concept:quantity-supplied"
+  ],
+  "status": "empirical",
+  "fidelity": "as-stated",
+  "scope": {
+    "text": "Introductory economics; markets for goods and services; all other supply determinants held constant",
+    "basis": "mixed"
+  },
+  "text": "A rise in price almost always leads to an increase in the quantity supplied, while a fall in price decreases the quantity supplied. Economists call this positive relationship the law of supply, assuming all other variables that affect supply are held constant.",
+  "block_refs": [
+    "p-13",
+    "p-35"
+  ],
+  "notes": "Status empirical: source states 'almost always' and explicitly notes ceteris paribus.",
+  "source_refs": [
+    "source:openstax-m63601"
+  ]
+}

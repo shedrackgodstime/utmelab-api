@@ -1,0 +1,24 @@
+{
+  "id": "statement:equilibrium-condition",
+  "kind": "Statement",
+  "about": [
+    "concept:equilibrium",
+    "concept:quantity-demanded",
+    "concept:quantity-supplied"
+  ],
+  "status": "definitional",
+  "fidelity": "as-stated",
+  "scope": {
+    "text": "Introductory economics; markets for goods and services",
+    "basis": "inferred"
+  },
+  "text": "Equilibrium occurs where the quantity demanded equals the quantity supplied; the equilibrium price and equilibrium quantity occur where the supply and demand curves cross.",
+  "block_refs": [
+    "p-25",
+    "p-36"
+  ],
+  "notes": "This is the defining condition of market equilibrium in the model, not an empirical prediction.",
+  "source_refs": [
+    "source:openstax-m63601"
+  ]
+}

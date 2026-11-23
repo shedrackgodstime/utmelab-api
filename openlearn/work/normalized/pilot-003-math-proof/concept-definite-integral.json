@@ -1,0 +1,18 @@
+{
+  "id": "concept:definite-integral",
+  "kind": "Concept",
+  "label": "Definite integral",
+  "definition_refs": [
+    "statement:definite-integral-definition"
+  ],
+  "definition_status": "complete",
+  "scope": {
+    "text": "Calculus; real-valued functions on a closed interval",
+    "basis": "inferred"
+  },
+  "notes": "Definition extracted from math_integration_definite.json (m53631).",
+  "source_refs": [
+    "source:openstax-m53632",
+    "source:openstax-m53631"
+  ]
+}

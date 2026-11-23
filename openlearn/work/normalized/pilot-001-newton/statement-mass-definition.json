@@ -1,0 +1,13 @@
+{
+  "id": "statement:mass-definition",
+  "kind": "Statement",
+  "about": ["concept:mass"],
+  "status": "definitional",
+  "role": "definition",
+  "fidelity": "paraphrased",
+  "scope": {"text": "Newtonian/classical mechanics (introductory)", "basis": "inferred"},
+  "text": "Mass is a measure of the amount of matter (inertia) of an object or system; in this context it is treated as the quantity that relates net external force to acceleration (and does not vary in classical physics as described).",
+  "block_refs": ["p-9", "p-34", "p-35"],
+  "notes": "Minimal extraction from phy_m42073.json; source contrasts mass and weight.",
+  "source_refs": ["source:openstax-m42073"]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "statement:system-definition",
+  "kind": "Statement",
+  "about": ["concept:system"],
+  "status": "definitional",
+  "role": "definition",
+  "fidelity": "paraphrased",
+  "scope": {"text": "Newtonian/classical mechanics (introductory)", "basis": "inferred"},
+  "text": "A system is the object or collection of objects of interest; external forces act from outside the system, while internal forces act between elements of the system.",
+  "block_refs": ["p-4"],
+  "notes": "Minimal extraction from phy_m42073.json for pilot resolution.",
+  "source_refs": ["source:openstax-m42073"]
+}

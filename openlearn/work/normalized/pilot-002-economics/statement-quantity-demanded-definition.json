@@ -1,0 +1,19 @@
+{
+  "id": "statement:quantity-demanded-definition",
+  "kind": "Statement",
+  "about": [
+    "concept:quantity-demanded"
+  ],
+  "status": "definitional",
+  "role": "definition",
+  "fidelity": "as-stated",
+  "scope": {
+    "text": "Introductory economics; markets for goods and services",
+    "basis": "inferred"
+  },
+  "text": "Quantity demanded is the total number of units that consumers would purchase at a given price; a specific point on the demand curve or one quantity on the demand schedule.",
+  "notes": "Definitional Statement extracted from the capture’s Concept definition.",
+  "source_refs": [
+    "source:openstax-m63601"
+  ]
+}

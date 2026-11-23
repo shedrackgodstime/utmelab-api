@@ -1,0 +1,27 @@
+{
+  "id": "statement:above-equilibrium-surplus",
+  "kind": "Statement",
+  "about": [
+    "model:demand-supply-equilibrium",
+    "concept:equilibrium",
+    "concept:quantity-demanded",
+    "concept:quantity-supplied"
+  ],
+  "status": "derived",
+  "fidelity": "as-stated",
+  "scope": {
+    "text": "Introductory economics; markets for goods and services",
+    "basis": "inferred"
+  },
+  "text": "If the price is above the equilibrium level, quantity supplied exceeds quantity demanded (a surplus), creating pressures for the price to fall toward equilibrium.",
+  "block_refs": [
+    "p-28",
+    "p-29",
+    "p-30",
+    "p-36"
+  ],
+  "notes": "Model-derived prediction, not a definition. Source describes the adjustment mechanism via seller incentives.",
+  "source_refs": [
+    "source:openstax-m63601"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "id": "concept:equilibrium",
+  "kind": "Concept",
+  "label": "Market equilibrium",
+  "definition": "The point where the supply curve and demand curve cross; the equilibrium price is the only price where quantity demanded equals quantity supplied, and the common quantity is the equilibrium quantity.",
+  "definition_fidelity": "as-stated",
+  "scope": {
+    "text": "Introductory economics; markets for goods and services",
+    "basis": "inferred"
+  },
+  "notes": "Equilibrium is both a concept and the central outcome of the demand-and-supply model. Source also uses 'equilibrium price' and 'equilibrium quantity' as related terms.",
+  "source_refs": [
+    "source:openstax-m63601"
+  ]
+}

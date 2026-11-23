@@ -1,0 +1,38 @@
+{
+  "id": "external:placements:math_integration_fundamental",
+  "kind": "ExternalPlacement",
+  "source_capture": "utmelab-bank/data/concepts/math_integration_fundamental.json",
+  "placements": [
+    {
+      "exam": "JAMB",
+      "subject": "mathematics",
+      "topic_slug": "integration",
+      "subtopic_slug": "area-under-the-curve"
+    },
+    {
+      "exam": "JAMB",
+      "subject": "mathematics",
+      "topic_slug": "integration",
+      "subtopic_slug": "integration-of-explicit-algebraic-and-simple-trigonometrical"
+    },
+    {
+      "exam": "WAEC",
+      "subject": "further-mathematics",
+      "topic_slug": "waec-further-mathematics-16-integration",
+      "subtopic_slug": "waec-further-mathematics-16-1-indefinite-integral"
+    },
+    {
+      "exam": "WAEC",
+      "subject": "further-mathematics",
+      "topic_slug": "waec-further-mathematics-16-integration",
+      "subtopic_slug": "waec-further-mathematics-16-2-definite-integral"
+    },
+    {
+      "exam": "WAEC",
+      "subject": "further-mathematics",
+      "topic_slug": "waec-further-mathematics-16-integration",
+      "subtopic_slug": "waec-further-mathematics-16-3-applications-of-the-definite-integral"
+    }
+  ],
+  "notes": "External JAMB/WAEC integration topics are kept outside core identity. They reference the same section capture; no exam codes/weights leak into Knowledge records."
+}

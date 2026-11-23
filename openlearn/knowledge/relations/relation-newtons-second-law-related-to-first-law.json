@@ -1,0 +1,19 @@
+{
+  "id": "relation:newtons-second-law-related-to-first-law",
+  "kind": "Relation",
+  "from": "concept:newtons-second-law",
+  "to": "concept:newtons-first-law",
+  "type": "related-to",
+  "scope": {
+    "text": "Newtonian/classical mechanics (introductory)",
+    "basis": "inferred"
+  },
+  "direction": "unspecified",
+  "provenance": [
+    "statement:newtons-second-law-related-to-first-law"
+  ],
+  "notes": "Reified for pilot only; “closely related” is vague and may need a more specific type after review.",
+  "source_refs": [
+    "source:openstax-m42073"
+  ]
+}

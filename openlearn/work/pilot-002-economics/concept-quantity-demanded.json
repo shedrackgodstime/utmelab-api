@@ -1,0 +1,18 @@
+{
+  "id": "concept:quantity-demanded",
+  "kind": "Concept",
+  "label": "Quantity demanded",
+  "definition": "The total number of units that consumers would purchase at a given price; a specific point on the demand curve or one quantity on the demand schedule.",
+  "definition_fidelity": "as-stated",
+  "scope": {
+    "text": "Introductory economics; markets for goods and services",
+    "basis": "inferred"
+  },
+  "distinguished_from": [
+    "concept:demand"
+  ],
+  "notes": "The source stresses that demand is not the same as quantity demanded (blocks p-4, p-11).",
+  "source_refs": [
+    "source:openstax-m63601"
+  ]
+}

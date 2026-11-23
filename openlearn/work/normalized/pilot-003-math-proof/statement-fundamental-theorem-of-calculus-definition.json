@@ -1,0 +1,19 @@
+{
+  "id": "statement:fundamental-theorem-of-calculus-definition",
+  "kind": "Statement",
+  "about": [
+    "concept:fundamental-theorem-of-calculus"
+  ],
+  "status": "definitional",
+  "role": "definition",
+  "fidelity": "paraphrased",
+  "scope": {
+    "text": "Calculus; real-valued functions continuous on a closed interval [a,b]",
+    "basis": "mixed"
+  },
+  "text": "The Fundamental Theorem of Calculus is a theorem in calculus with two parts connecting differentiation and integration: Part 1 shows that the definite integral function is an antiderivative, and Part 2 (the evaluation theorem) evaluates a definite integral using any antiderivative.",
+  "notes": "Definitional Statement for the theorem anchor Concept, assembled from the source summary.",
+  "source_refs": [
+    "source:openstax-m53632"
+  ]
+}

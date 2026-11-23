@@ -1,0 +1,23 @@
+{
+  "id": "statement:newtons-second-law-related-to-first-law",
+  "kind": "Statement",
+  "about": [
+    "concept:newtons-second-law",
+    "concept:newtons-first-law"
+  ],
+  "status": "asserted",
+  "fidelity": "as-stated",
+  "scope": {
+    "text": "Newtonian/classical mechanics (introductory)",
+    "basis": "inferred"
+  },
+  "text": "Newton’s second law of motion is closely related to Newton’s first law of motion.",
+  "block_refs": [
+    "p-2"
+  ],
+  "supports_relation": "relation:newtons-second-law-related-to-first-law",
+  "notes": "The sentence is a Statement making a relational claim; it supports the typed Relation rather than being the Relation itself.",
+  "source_refs": [
+    "source:openstax-m42073"
+  ]
+}

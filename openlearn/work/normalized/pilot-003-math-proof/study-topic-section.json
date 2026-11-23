@@ -1,0 +1,31 @@
+{
+  "id": "study:topic:fundamental-theorem-of-calculus",
+  "kind": "StudyTopic",
+  "title": "The Fundamental Theorem of Calculus",
+  "source_capture": "utmelab-bank/data/concepts/math_integration_fundamental.json",
+  "knowledge_refs": [
+    "concept:fundamental-theorem-of-calculus",
+    "concept:definite-integral",
+    "concept:antiderivative",
+    "statement:ftc-part1",
+    "statement:ftc-part2",
+    "procedure:prove-ftc-part1",
+    "procedure:prove-ftc-part2",
+    "study:proof:ftc-part1",
+    "study:proof:ftc-part2"
+  ],
+  "block_roles": {
+    "0-3": "intro/context",
+    "4-12": "Mean Value Theorem for Integrals + proof",
+    "13-34": "worked examples (Study)",
+    "35-45": "FTC Part 1 theorem + proof",
+    "46-71": "worked examples (Study)",
+    "72-82": "FTC Part 2 theorem + proof",
+    "83-116": "worked examples/applications (Study)",
+    "117-277": "key concepts, summary, exercises"
+  },
+  "notes": "Section/topic is a Study container. The core Knowledge is the theorem Statements, proof Procedures, and referenced Concepts; proofs as specific derivations are Study. Examples/exercises are Study/assessment.",
+  "source_refs": [
+    "source:openstax-m53632"
+  ]
+}

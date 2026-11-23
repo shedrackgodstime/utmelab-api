@@ -1,0 +1,19 @@
+{
+  "id": "concept:fundamental-theorem-of-calculus",
+  "kind": "Concept",
+  "label": "Fundamental Theorem of Calculus",
+  "definition": "A theorem in calculus with two parts connecting differentiation and integration: Part 1 establishes that a definite integral function is an antiderivative; Part 2 (the evaluation theorem) evaluates a definite integral using any antiderivative.",
+  "definition_fidelity": "as-stated/condensed",
+  "scope": {
+    "text": "Calculus; real-valued functions continuous on a closed interval [a,b]",
+    "basis": "as-stated for continuity conditions; broader calculus scope inferred"
+  },
+  "linked_statements": [
+    "statement:ftc-part1",
+    "statement:ftc-part2"
+  ],
+  "notes": "Named theorem as a Concept anchor. The two parts are distinct theorem Statements. Proofs are recorded as reusable Procedures plus specific Study derivations.",
+  "source_refs": [
+    "source:openstax-m53632"
+  ]
+}

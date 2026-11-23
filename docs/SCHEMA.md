@@ -1,4 +1,10 @@
-# UTME-Lab schema
+# UTME-Lab schema (obsolete)
+
+> This document describes the removed textbook/notes transition and is kept
+> only as historical context. The active schema is defined by
+> [`CONTENT-API-CONTRACT.md`](./CONTENT-API-CONTRACT.md) and the Rust models,
+> routes, and migrations. Do not implement books, chapters, sections, or notes
+> from this document.
 
 Status: Active
 Last updated: 2026-11-12
@@ -92,6 +98,7 @@ CREATE TABLE IF NOT EXISTS chapter_sections (
   title TEXT NOT NULL,
   learning_objectives TEXT NOT NULL DEFAULT '[]',
   teaching_text TEXT NOT NULL DEFAULT '{"blocks":[]}',
+  study_checks TEXT NOT NULL DEFAULT '[]',
   worked_examples TEXT NOT NULL DEFAULT '[]',
   misconceptions TEXT NOT NULL DEFAULT '[]',
   summary_points TEXT NOT NULL DEFAULT '[]',
@@ -190,6 +197,19 @@ chapter_sections(id, chapter_id, order_index, slug, title, learning_objectives,
 
 The document is the author facing view, the row is storage, the response is
 the read view with the exercises inlined. One shape, three views.
+
+`study_checks` is an optional section-owned collection of formative checks,
+separate from exam-practice recall checks and chapter exercises. Each check has
+a stable ID, authored order, optional content-block and learning-objective
+anchors, a typed response kind, prompt, options, answer, feedback, optional
+hint, and provenance. The current response kind is `multiple_choice`.
+Unspecified checks stay empty; the API does not infer or fabricate them.
+Section detail omits the field when empty for wire compatibility. Check changes
+are included in the section content hash. That opaque revision token is also
+returned on section detail so a client can detect a changed local copy.
+Existing databases add the column through API schema migration 12. The response
+includes the answer and feedback for the lesson renderer; clients must withhold
+both until the learner responds or explicitly reveals the answer.
 
 ## 4. The exam layer, canonical
 

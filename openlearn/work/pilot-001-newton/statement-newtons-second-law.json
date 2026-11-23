@@ -1,0 +1,38 @@
+{
+  "id": "statement:newtons-second-law",
+  "kind": "Statement",
+  "about": [
+    "concept:newtons-second-law",
+    "concept:acceleration",
+    "concept:net-external-force",
+    "concept:mass",
+    "concept:system"
+  ],
+  "status": "empirical",
+  "fidelity": "as-stated",
+  "scope": {
+    "text": "Newtonian/classical mechanics (introductory)",
+    "basis": "inferred"
+  },
+  "formulations": [
+    {
+      "type": "verbal",
+      "text": "The acceleration of a system is directly proportional to and in the same direction as the net external force acting on the system, and inversely proportional to its mass.",
+      "block_refs": [
+        "p-13"
+      ]
+    },
+    {
+      "type": "mathematical",
+      "text": "a = F_net / m; F_net = m a",
+      "block_refs": [
+        "p-15",
+        "p-17"
+      ]
+    }
+  ],
+  "notes": "Status empirical: source says the proportionalities were found/verified experimentally (blocks p-6, p-10, p-12). Verbal and mathematical formulations are treated as representations of one underlying Statement.",
+  "source_refs": [
+    "source:openstax-m42073"
+  ]
+}

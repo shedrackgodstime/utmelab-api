@@ -1,0 +1,18 @@
+{
+  "id": "concept:demand",
+  "kind": "Concept",
+  "label": "Demand",
+  "definition": "The amount of some good or service consumers are willing and able to purchase at each price; in economic terminology, the relationship between a range of prices and the quantities demanded at those prices.",
+  "definition_fidelity": "as-stated",
+  "scope": {
+    "text": "Introductory economics; markets for goods and services",
+    "basis": "inferred"
+  },
+  "distinguished_from": [
+    "concept:quantity-demanded"
+  ],
+  "notes": "Source explicitly distinguishes demand (the curve/relationship) from quantity demanded (a point on the curve). Definition is embedded here as a deliberate pilot variation; review whether it should be a separate definitional Statement.",
+  "source_refs": [
+    "source:openstax-m63601"
+  ]
+}

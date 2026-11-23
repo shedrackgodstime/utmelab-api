@@ -1,0 +1,40 @@
+{
+  "id": "model:demand-supply-equilibrium",
+  "kind": "Model",
+  "label": "Demand-and-supply market equilibrium model",
+  "purpose": "Explain and predict how price and quantity are determined in a market for a good or service.",
+  "components": [
+    "concept:demand",
+    "concept:quantity-demanded",
+    "concept:supply",
+    "concept:quantity-supplied",
+    "concept:equilibrium"
+  ],
+  "assumptions": [
+    {
+      "text": "A single market for a good or service; other variables affecting demand/supply are held constant (ceteris paribus as stated for the laws of demand and supply).",
+      "basis": "mixed"
+    },
+    {
+      "text": "Price is on the vertical axis and quantity on the horizontal axis; demand and supply curves can be plotted together.",
+      "basis": "stated"
+    },
+    {
+      "text": "Buyers and sellers respond to price incentives; markets tend toward equilibrium.",
+      "basis": "mixed"
+    }
+  ],
+  "scope": {
+    "text": "Introductory economics; markets for goods and services",
+    "basis": "inferred"
+  },
+  "predictions": [
+    "statement:above-equilibrium-surplus",
+    "statement:below-equilibrium-shortage"
+  ],
+  "limitations": "Not spelled out in the captured blocks. The source presents a standard partial-equilibrium demand/supply model; shifts, elasticity, efficiency, and market-structure caveats are outside this pilot.",
+  "notes": "True Model candidate: has components, assumptions, scope, predictions, and an implicit representational structure. This is not a mere convention/frame.",
+  "source_refs": [
+    "source:openstax-m63601"
+  ]
+}

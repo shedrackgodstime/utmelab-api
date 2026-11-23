@@ -1,0 +1,26 @@
+{
+  "id": "statement:below-equilibrium-shortage",
+  "kind": "Statement",
+  "about": [
+    "model:demand-supply-equilibrium",
+    "concept:equilibrium",
+    "concept:quantity-demanded",
+    "concept:quantity-supplied"
+  ],
+  "status": "derived",
+  "fidelity": "as-stated",
+  "scope": {
+    "text": "Introductory economics; markets for goods and services",
+    "basis": "inferred"
+  },
+  "text": "If the price is below the equilibrium level, quantity demanded exceeds quantity supplied (a shortage), creating pressures for the price to rise toward equilibrium.",
+  "block_refs": [
+    "p-31",
+    "p-32",
+    "p-36"
+  ],
+  "notes": "Model-derived prediction, not a definition. Source describes buyer competition and seller price incentives.",
+  "source_refs": [
+    "source:openstax-m63601"
+  ]
+}

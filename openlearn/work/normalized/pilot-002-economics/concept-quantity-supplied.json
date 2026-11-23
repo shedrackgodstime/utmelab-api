@@ -1,0 +1,18 @@
+{
+  "id": "concept:quantity-supplied",
+  "kind": "Concept",
+  "label": "Quantity supplied",
+  "definition_refs": ["statement:quantity-supplied-definition"],
+  "definition_status": "complete",
+  "scope": {
+    "text": "Introductory economics; markets for goods and services",
+    "basis": "inferred"
+  },
+  "distinguished_from": [
+    "concept:supply"
+  ],
+  "notes": "The source stresses that supply is not the same as quantity supplied (blocks p-13, p-15).",
+  "source_refs": [
+    "source:openstax-m63601"
+  ]
+}

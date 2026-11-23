@@ -4,11 +4,12 @@
 use super::models::{
     Chapter, ChapterExercise, ChapterOutline, ChapterSection, ContentBlock, ExamRecallCheck,
     ExamTrap, ExampleTitle, Question, RenderedNovelQuestion, RenderedQuestion, SectionDetail,
-    SectionSummary, Subject, Syllabus, SyllabusSubtopic, SyllabusSummary, SyllabusTopic, TableCell,
-    TableRef, TopicNote,
+    SectionSummary, StudyCheckKind, Subject, Syllabus, SyllabusSubtopic, SyllabusSummary,
+    SyllabusTopic, TableCell, TableRef,
 };
 use super::papers;
 use crate::error::AppError;
+use std::collections::HashSet;
 
 /// Compose a complete URL for a stored figure filename. If the reference is
 /// already an absolute URL (https://, http://, data:, or //), it is returned
@@ -98,8 +99,14 @@ pub fn section_to_detail(
         slug: sec.slug.clone(),
         title: sec.title.clone(),
         est_minutes: sec.est_minutes,
+        content_hash: (!sec.content_hash.is_empty()).then(|| sec.content_hash.clone()),
         learning_objectives: sec.learning_objectives.clone(),
         content,
+        study_checks: {
+            let mut checks = sec.study_checks.clone();
+            checks.sort_by_key(|check| check.order);
+            checks
+        },
         worked_examples: sec.worked_examples.clone(),
         misconceptions: sec.misconceptions.clone(),
         summary_points: sec.summary_points.clone(),
@@ -301,6 +308,26 @@ pub fn validate_content_block(block: &ContentBlock) -> Result<(), AppError> {
     Ok(())
 }
 
+fn content_block_id(block: &ContentBlock) -> &str {
+    match block {
+        ContentBlock::Paragraph { id, .. }
+        | ContentBlock::Heading { id, .. }
+        | ContentBlock::Definition { id, .. }
+        | ContentBlock::Rule { id, .. }
+        | ContentBlock::Formula { id, .. }
+        | ContentBlock::Example { id, .. }
+        | ContentBlock::Figure { id, .. }
+        | ContentBlock::Table { id, .. }
+        | ContentBlock::List { id, .. }
+        | ContentBlock::Callout { id, .. }
+        | ContentBlock::Summary { id, .. }
+        | ContentBlock::ExerciseRef { id, .. }
+        | ContentBlock::GlossaryEntry { id, .. }
+        | ContentBlock::Image { id, .. }
+        | ContentBlock::Question { id, .. } => id,
+    }
+}
+
 /// Validate a SectionDetail before serving.
 pub fn validate_section_detail(detail: &SectionDetail) -> Result<(), AppError> {
     if detail.id.trim().is_empty() {
@@ -316,6 +343,123 @@ pub fn validate_section_detail(detail: &SectionDetail) -> Result<(), AppError> {
     }
     for block in &detail.content {
         validate_content_block(block)?;
+    }
+    if !detail.study_checks.is_empty() {
+        let block_ids: HashSet<&str> = detail.content.iter().map(content_block_id).collect();
+        if block_ids.len() != detail.content.len() {
+            return Err(AppError::Internal(
+                "section content block ids must be unique when study checks are present".into(),
+            ));
+        }
+        let objective_ids: HashSet<&str> = detail
+            .learning_objectives
+            .iter()
+            .map(|objective| objective.id.as_str())
+            .collect();
+        if objective_ids.len() != detail.learning_objectives.len() {
+            return Err(AppError::Internal(
+                "section learning objective ids must be unique when study checks are present"
+                    .into(),
+            ));
+        }
+
+        let mut check_ids = HashSet::new();
+        let mut check_orders = HashSet::new();
+        for check in &detail.study_checks {
+            if check.id.trim().is_empty() || !check_ids.insert(check.id.as_str()) {
+                return Err(AppError::Internal(
+                    "study check ids must be non-empty and unique within a section".into(),
+                ));
+            }
+            if block_ids.contains(check.id.as_str()) {
+                return Err(AppError::Internal(format!(
+                    "study check {} reuses a content block id",
+                    check.id
+                )));
+            }
+            if check.order < 1 || !check_orders.insert(check.order) {
+                return Err(AppError::Internal(
+                    "study check order values must be positive and unique within a section".into(),
+                ));
+            }
+            if let Some(block_id) = &check.position_after_block_id {
+                if block_id.trim().is_empty() || !block_ids.contains(block_id.as_str()) {
+                    return Err(AppError::Internal(format!(
+                        "study check {} refers to an unknown content block",
+                        check.id
+                    )));
+                }
+            }
+            if let Some(objective_id) = &check.objective_id {
+                if objective_id.trim().is_empty() || !objective_ids.contains(objective_id.as_str())
+                {
+                    return Err(AppError::Internal(format!(
+                        "study check {} refers to an unknown learning objective",
+                        check.id
+                    )));
+                }
+            }
+            if !matches!(check.kind, StudyCheckKind::MultipleChoice) {
+                return Err(AppError::Internal(format!(
+                    "study check {} has an unsupported kind",
+                    check.id
+                )));
+            }
+            if check.prompt.text.trim().is_empty() || check.feedback.text.trim().is_empty() {
+                return Err(AppError::Internal(format!(
+                    "study check {} needs a prompt and feedback",
+                    check.id
+                )));
+            }
+            if check.options.len() < 2 {
+                return Err(AppError::Internal(format!(
+                    "study check {} needs at least two options",
+                    check.id
+                )));
+            }
+            let mut option_ids = HashSet::new();
+            for option in &check.options {
+                if option.id.trim().is_empty()
+                    || option.content.text.trim().is_empty()
+                    || !option_ids.insert(option.id.as_str())
+                {
+                    return Err(AppError::Internal(format!(
+                        "study check {} has an empty or duplicate option",
+                        check.id
+                    )));
+                }
+            }
+            if !option_ids.contains(check.answer.option_id.as_str()) {
+                return Err(AppError::Internal(format!(
+                    "study check {} answer does not identify an option",
+                    check.id
+                )));
+            }
+            if check
+                .hint
+                .as_ref()
+                .is_some_and(|hint| hint.text.trim().is_empty())
+            {
+                return Err(AppError::Internal(format!(
+                    "study check {} has an empty hint",
+                    check.id
+                )));
+            }
+            if [
+                &check.provenance.publisher,
+                &check.provenance.title,
+                &check.provenance.url,
+                &check.provenance.locator,
+            ]
+            .iter()
+            .all(|value| value.trim().is_empty())
+            {
+                return Err(AppError::Internal(format!(
+                    "study check {} needs source provenance",
+                    check.id
+                )));
+            }
+        }
     }
     Ok(())
 }
@@ -335,6 +479,16 @@ pub fn validate_chapter_outline(outline: &ChapterOutline) -> Result<(), AppError
 pub fn resolve_section_detail(section: &mut SectionDetail, media_base_url: &str) {
     for block in &mut section.content {
         resolve_content_block(block, media_base_url);
+    }
+    for check in &mut section.study_checks {
+        resolve_rich_text(&mut check.prompt, media_base_url);
+        for option in &mut check.options {
+            resolve_rich_text(&mut option.content, media_base_url);
+        }
+        resolve_rich_text(&mut check.feedback, media_base_url);
+        if let Some(hint) = &mut check.hint {
+            resolve_rich_text(hint, media_base_url);
+        }
     }
     for worked in &mut section.worked_examples {
         resolve_rich_text(&mut worked.statement, media_base_url);
@@ -496,23 +650,6 @@ pub fn resolve_recall_check(check: &mut ExamRecallCheck, media_base_url: &str) {
     resolve_rich_text(&mut check.explanation, media_base_url);
 }
 
-/// Resolve every rich-text field a note carries. Notes are served from the
-/// same media host as questions and passages, so a stored filename must never
-/// leak to a client unresolved.
-pub fn resolve_note(note: &mut TopicNote, media_base_url: &str) {
-    resolve_rich_text(&mut note.key_takeaway, media_base_url);
-    for section in &mut note.sections {
-        resolve_rich_text(&mut section.content, media_base_url);
-        if let Some(callout) = &mut section.callout {
-            resolve_rich_text(&mut callout.text, media_base_url);
-        }
-    }
-    for example in &mut note.worked_examples {
-        resolve_rich_text(&mut example.problem_statement, media_base_url);
-        resolve_rich_text(&mut example.final_answer, media_base_url);
-    }
-}
-
 /// Present one novel quiz row. Same withholding contract as [`render`];
 /// `novel_id` is stamped by the caller. The stored row does not carry it.
 pub fn render_novel_question(
@@ -667,8 +804,7 @@ pub fn assemble_syllabus_from_counts(
                 question_count: count,
                 objectives: st.objectives.clone(),
                 countries: t.countries.clone(),
-                has_note: false,
-                note_id: None,
+                lesson_refs: Vec::new(),
             });
         }
         let count: usize = subtopics.iter().map(|s| s.question_count).sum();
@@ -685,8 +821,7 @@ pub fn assemble_syllabus_from_counts(
             objectives: t.objectives.clone(),
             countries: t.countries.clone(),
             subtopics,
-            has_note: false,
-            note_id: None,
+            lesson_refs: Vec::new(),
         });
     }
 
@@ -706,24 +841,6 @@ pub fn syllabus_owner(exam: &str, slug: &str, subject: &Subject) -> (String, Str
             (syllabus_exam.clone(), syllabus_subject.clone())
         }
         _ => (exam.to_string(), slug.to_string()),
-    }
-}
-
-pub fn attach_notes_to_syllabus(
-    syllabus: &mut Syllabus,
-    notes: &std::collections::HashMap<(String, Option<String>), String>,
-) {
-    for t in &mut syllabus.topics {
-        if let Some(note_id) = notes.get(&(t.slug.clone(), None)) {
-            t.has_note = true;
-            t.note_id = Some(note_id.clone());
-        }
-        for st in &mut t.subtopics {
-            if let Some(note_id) = notes.get(&(t.slug.clone(), Some(st.slug.clone()))) {
-                st.has_note = true;
-                st.note_id = Some(note_id.clone());
-            }
-        }
     }
 }
 
@@ -773,6 +890,7 @@ pub fn render(q: &Question, include_explanation: bool, media_base_url: &str) -> 
         subject: q.subject.clone(),
         year: q.year,
         source: q.source.clone(),
+        topic_slug: None,
         text,
         options,
         subtopic_id: q.subtopic_id.clone(),
@@ -782,6 +900,7 @@ pub fn render(q: &Question, include_explanation: bool, media_base_url: &str) -> 
         marks: q.marks,
         difficulty: q.difficulty,
         verified: q.verified,
+        lesson_refs: Vec::new(),
         answer: include_explanation.then(|| q.answer.clone()),
         explanation,
     }
@@ -1122,105 +1241,6 @@ mod tests {
         assert_eq!(s.topics[0].question_count, 1);
         assert_eq!(s.topics[1].question_count, 0);
         assert_eq!(s.topics[0].objectives, vec!["solve".to_string()]);
-        assert!(!s.topics[0].has_note);
-        assert!(!s.topics[0].subtopics[0].has_note);
-    }
-
-    #[test]
-    fn attach_notes_marks_only_the_nodes_that_have_notes() {
-        let mut s = assemble_syllabus("JAMB", subject_fixture(), &tree_fixture(), &[], None);
-        let mut notes = std::collections::HashMap::new();
-        notes.insert(("algebra".to_string(), None), "note_algebra".to_string());
-        notes.insert(
-            ("algebra".to_string(), Some("linear".to_string())),
-            "note_linear".to_string(),
-        );
-
-        attach_notes_to_syllabus(&mut s, &notes);
-
-        assert!(s.topics[0].has_note);
-        assert_eq!(s.topics[0].note_id.as_deref(), Some("note_algebra"));
-        assert!(s.topics[0].subtopics[0].has_note);
-        assert_eq!(
-            s.topics[0].subtopics[0].note_id.as_deref(),
-            Some("note_linear")
-        );
-        assert!(!s.topics[1].has_note);
-        assert!(!s.topics[1].subtopics[0].has_note);
-    }
-
-    #[test]
-    fn resolve_note_reaches_every_rich_text_field() {
-        use crate::core::models::*;
-        let image = |url: &str| Inline {
-            start: 0,
-            len: 0,
-            kind: InlineKind::Image {
-                url: url.to_string(),
-                position: ImagePosition::Above,
-                alt: None,
-            },
-        };
-        let rich = |url: &str| RichText {
-            text: "see".to_string(),
-            inline: vec![image(url)],
-        };
-        let mut note = TopicNote {
-            id: "n".to_string(),
-            exam: "JAMB".to_string(),
-            subject: "physics".to_string(),
-            topic_slug: "motion".to_string(),
-            subtopic_slug: None,
-            title: "Motion".to_string(),
-            read_time_minutes: 3,
-            key_takeaway: rich("key.png"),
-            sections: vec![NoteSection {
-                section_number: 1,
-                heading: "One".to_string(),
-                content: rich("section.png"),
-                callout: Some(NoteCallout {
-                    kind: "tip".to_string(),
-                    text: rich("callout.png"),
-                }),
-            }],
-            worked_examples: vec![WorkedExample {
-                title: "Example".to_string(),
-                problem_statement: rich("problem.png"),
-                steps: vec![],
-                final_answer: rich("answer.png"),
-                method_tip: None,
-            }],
-            formulas: vec![],
-            active_recall_checks: vec![],
-            examiner_traps: vec![],
-            sources: vec![],
-            linked_question_ids: vec![],
-        };
-
-        resolve_note(&mut note, crate::config::DEFAULT_MEDIA_BASE_URL);
-
-        let url = |rt: &RichText| match &rt.inline[0].kind {
-            InlineKind::Image { url, .. } => url.clone(),
-            _ => panic!("expected image"),
-        };
-        let base = crate::config::DEFAULT_MEDIA_BASE_URL.trim_end_matches('/');
-        assert_eq!(url(&note.key_takeaway), format!("{base}/images/key.png"));
-        assert_eq!(
-            url(&note.sections[0].content),
-            format!("{base}/images/section.png")
-        );
-        assert_eq!(
-            url(&note.sections[0].callout.as_ref().expect("callout").text),
-            format!("{base}/images/callout.png")
-        );
-        assert_eq!(
-            url(&note.worked_examples[0].problem_statement),
-            format!("{base}/images/problem.png")
-        );
-        assert_eq!(
-            url(&note.worked_examples[0].final_answer),
-            format!("{base}/images/answer.png")
-        );
     }
 
     #[test]

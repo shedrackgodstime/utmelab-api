@@ -1,0 +1,19 @@
+{
+  "id": "statement:supply-definition",
+  "kind": "Statement",
+  "about": [
+    "concept:supply"
+  ],
+  "status": "definitional",
+  "role": "definition",
+  "fidelity": "as-stated",
+  "scope": {
+    "text": "Introductory economics; markets for goods and services",
+    "basis": "inferred"
+  },
+  "text": "Supply is the amount of some good or service a producer is willing to produce and/or bring to market at each price; in economic terminology, the relationship between a range of prices and the quantities supplied at those prices.",
+  "notes": "Definitional Statement extracted from the capture’s Concept definition.",
+  "source_refs": [
+    "source:openstax-m63601"
+  ]
+}

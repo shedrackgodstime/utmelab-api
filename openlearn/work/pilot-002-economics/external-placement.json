@@ -1,0 +1,26 @@
+{
+  "id": "external:placements:eco_demand_supply_equilibrium",
+  "kind": "ExternalPlacement",
+  "source_capture": "utmelab-bank/data/concepts/eco_demand_supply_equilibrium.json",
+  "placements": [
+    {
+      "exam": "JAMB",
+      "subject": "economics",
+      "topic_slug": "the-theory-of-demand",
+      "subtopic_slug": null
+    },
+    {
+      "exam": "JAMB",
+      "subject": "economics",
+      "topic_slug": "the-theory-of-supply",
+      "subtopic_slug": null
+    },
+    {
+      "exam": "JAMB",
+      "subject": "economics",
+      "topic_slug": "the-theory-of-price-determination",
+      "subtopic_slug": null
+    }
+  ],
+  "notes": "External JAMB topics are kept outside core identity. They reference the same section capture; no exam codes/weights leak into Knowledge records."
+}

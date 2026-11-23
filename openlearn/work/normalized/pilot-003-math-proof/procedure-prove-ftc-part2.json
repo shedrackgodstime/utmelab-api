@@ -1,0 +1,26 @@
+{
+  "id": "procedure:prove-ftc-part2",
+  "kind": "Procedure",
+  "label": "Prove FTC Part 2 using a partition, the Mean Value Theorem, and a telescoping sum",
+  "inputs": [
+    "Continuous function f on [a,b]",
+    "Any antiderivative F of f"
+  ],
+  "steps": [
+    "Take a regular partition P={x_i} of [a,b].",
+    "Apply the Mean Value Theorem on each subinterval [x_{i-1},x_i] to find c_i with F(x_i)−F(x_{i-1})=f(c_i)Δx.",
+    "Sum over i to get a telescoping sum equal to F(b)−F(a).",
+    "Take the limit as n→∞; the sum tends to the definite integral of f over [a,b].",
+    "Conclude ∫_a^b f(x)dx = F(b)−F(a)."
+  ],
+  "success_criteria": "Derivation establishes the evaluation theorem for continuous f and any antiderivative F.",
+  "scope": {
+    "text": "Calculus; f continuous on [a,b]; F an antiderivative of f",
+    "basis": "stated"
+  },
+  "source_fidelity": "paraphrased",
+  "notes": "Reusable proof method. The specific derivation/walkthrough is recorded separately as Study (study:proof:ftc-part2).",
+  "source_refs": [
+    "source:openstax-m53632"
+  ]
+}

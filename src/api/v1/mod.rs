@@ -19,8 +19,8 @@
 pub mod blueprints;
 pub mod exams;
 pub mod keys;
+pub mod lessons;
 pub mod meta;
-pub mod notes;
 pub mod novels;
 pub mod papers;
 pub mod passages;
@@ -28,7 +28,6 @@ pub mod public;
 pub mod questions;
 pub mod reports;
 pub mod subjects;
-pub mod textbooks;
 pub mod theory;
 pub mod tokens;
 pub mod topics;
@@ -43,6 +42,7 @@ pub fn router(state: AppState) -> Router<AppState> {
     Router::new()
         .merge(meta::router(state.clone()))
         .merge(keys::router(state.clone()))
+        .merge(lessons::router(state.clone()))
         .merge(novels::router(state.clone()))
         .merge(exams::router(state.clone()))
         .merge(papers::router(state.clone()))
@@ -51,7 +51,5 @@ pub fn router(state: AppState) -> Router<AppState> {
         .merge(questions::router(state.clone()))
         .merge(passages::router(state.clone()))
         .merge(blueprints::router(state.clone()))
-        .merge(notes::router(state.clone()))
-        .merge(textbooks::router(state.clone()))
         .merge(theory::router(state))
 }

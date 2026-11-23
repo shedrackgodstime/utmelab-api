@@ -1,0 +1,13 @@
+{
+  "id": "statement:newtons-first-law-definition",
+  "kind": "Statement",
+  "about": ["concept:newtons-first-law"],
+  "status": "definitional",
+  "role": "definition",
+  "fidelity": "paraphrased",
+  "scope": {"text": "Newtonian/classical mechanics (introductory)", "basis": "inferred"},
+  "text": "Newton’s first law of motion states that a net external force causes a change in motion (i.e. produces acceleration); in the absence of a net external force, motion does not change in the way described here.",
+  "block_refs": ["p-2", "p-3"],
+  "notes": "Minimal definition extracted from phy_m42073.json for pilot resolution; fuller statement may be in another capture.",
+  "source_refs": ["source:openstax-m42073"]
+}

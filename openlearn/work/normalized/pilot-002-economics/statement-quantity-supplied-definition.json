@@ -1,0 +1,19 @@
+{
+  "id": "statement:quantity-supplied-definition",
+  "kind": "Statement",
+  "about": [
+    "concept:quantity-supplied"
+  ],
+  "status": "definitional",
+  "role": "definition",
+  "fidelity": "as-stated",
+  "scope": {
+    "text": "Introductory economics; markets for goods and services",
+    "basis": "inferred"
+  },
+  "text": "Quantity supplied is the amount producers want to sell at a given price; a specific point on the supply curve or one quantity on the supply schedule.",
+  "notes": "Definitional Statement extracted from the capture’s Concept definition.",
+  "source_refs": [
+    "source:openstax-m63601"
+  ]
+}

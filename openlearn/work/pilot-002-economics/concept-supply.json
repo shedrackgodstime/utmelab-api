@@ -1,0 +1,18 @@
+{
+  "id": "concept:supply",
+  "kind": "Concept",
+  "label": "Supply",
+  "definition": "The amount of some good or service a producer is willing to produce and/or bring to market at each price; in economic terminology, the relationship between a range of prices and the quantities supplied at those prices.",
+  "definition_fidelity": "as-stated",
+  "scope": {
+    "text": "Introductory economics; markets for goods and services",
+    "basis": "inferred"
+  },
+  "distinguished_from": [
+    "concept:quantity-supplied"
+  ],
+  "notes": "Source explicitly distinguishes supply (the curve/relationship) from quantity supplied (a point on the curve). Definition is embedded here as a deliberate pilot variation.",
+  "source_refs": [
+    "source:openstax-m63601"
+  ]
+}

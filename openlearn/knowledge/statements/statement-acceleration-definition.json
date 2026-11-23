@@ -1,0 +1,13 @@
+{
+  "id": "statement:acceleration-definition",
+  "kind": "Statement",
+  "about": ["concept:acceleration"],
+  "status": "definitional",
+  "role": "definition",
+  "fidelity": "paraphrased",
+  "scope": {"text": "Newtonian/classical mechanics (introductory)", "basis": "inferred"},
+  "text": "Acceleration is defined as a change in velocity (equivalently, a change in motion).",
+  "block_refs": ["p-3"],
+  "notes": "Extracted from the Newton’s Second Law capture; minimal definition for pilot resolution.",
+  "source_refs": ["source:openstax-m42073"]
+}

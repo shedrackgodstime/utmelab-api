@@ -1,0 +1,53 @@
+{
+  "id": "fidelity:openstax-m53632",
+  "kind": "SourceFidelity",
+  "source_ref": "source:openstax-m53632",
+  "items": [
+    {
+      "ref": "concept:fundamental-theorem-of-calculus",
+      "fidelity": "as-stated",
+      "note": "Label and two-part framing from headings/blocks p-35–p-36 and p-72–p-77; concept summary is extractor-condensed."
+    },
+    {
+      "ref": "concept:definite-integral",
+      "fidelity": "not extractable from this capture",
+      "note": "Referenced as prior knowledge; not defined in this capture."
+    },
+    {
+      "ref": "concept:antiderivative",
+      "fidelity": "not extractable from this capture",
+      "note": "Referenced as prior knowledge; not defined in this capture."
+    },
+    {
+      "ref": "statement:ftc-part1",
+      "fidelity": "as-stated",
+      "note": "Theorem statement from blocks p-37–p-38, with implications in p-40."
+    },
+    {
+      "ref": "statement:ftc-part2",
+      "fidelity": "as-stated",
+      "note": "Theorem statement from blocks p-75–p-77."
+    },
+    {
+      "ref": "procedure:prove-ftc-part1",
+      "fidelity": "as-stated/condensed",
+      "note": "Proof method condensed from blocks p-42–p-45; mathematical notation omitted in this pilot record."
+    },
+    {
+      "ref": "procedure:prove-ftc-part2",
+      "fidelity": "as-stated/condensed",
+      "note": "Proof method condensed from blocks p-79–p-82; mathematical notation omitted in this pilot record."
+    },
+    {
+      "ref": "study:proof:ftc-part1",
+      "fidelity": "as-stated/condensed",
+      "note": "Specific derivation summarized from blocks p-42–p-45."
+    },
+    {
+      "ref": "study:proof:ftc-part2",
+      "fidelity": "as-stated/condensed",
+      "note": "Specific derivation summarized from blocks p-79–p-82."
+    }
+  ],
+  "notes": "No corrections applied in this pilot. Proof text is condensed, not fully transcribed; review before treating as complete."
+}

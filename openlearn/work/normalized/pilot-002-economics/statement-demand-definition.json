@@ -1,0 +1,19 @@
+{
+  "id": "statement:demand-definition",
+  "kind": "Statement",
+  "about": [
+    "concept:demand"
+  ],
+  "status": "definitional",
+  "role": "definition",
+  "fidelity": "as-stated",
+  "scope": {
+    "text": "Introductory economics; markets for goods and services",
+    "basis": "inferred"
+  },
+  "text": "Demand is the amount of some good or service consumers are willing and able to purchase at each price; in economic terminology, the relationship between a range of prices and the quantities demanded at those prices.",
+  "notes": "Definitional Statement extracted from the capture’s Concept definition.",
+  "source_refs": [
+    "source:openstax-m63601"
+  ]
+}

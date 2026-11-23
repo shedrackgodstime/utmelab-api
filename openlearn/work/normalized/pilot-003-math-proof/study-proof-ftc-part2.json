@@ -1,0 +1,22 @@
+{
+  "id": "study:proof:ftc-part2",
+  "kind": "StudyDerivation",
+  "label": "Proof of FTC Part 2 (specific derivation)",
+  "knowledge_refs": [
+    "statement:ftc-part2",
+    "procedure:prove-ftc-part2",
+    "concept:definite-integral",
+    "concept:antiderivative"
+  ],
+  "block_refs": [
+    "p-79",
+    "p-80",
+    "p-81",
+    "p-82"
+  ],
+  "summary": "Takes a regular partition of [a,b]; uses the Mean Value Theorem on each subinterval; forms a telescoping sum equal to F(b)−F(a); takes n→∞ to obtain the definite integral and concludes ∫_a^b f(x)dx=F(b)−F(a).",
+  "notes": "Specific proof/derivation belongs to Study (walkthrough). Reusable method is procedure:prove-ftc-part2. Mathematical notation is condensed in this pilot.",
+  "source_refs": [
+    "source:openstax-m53632"
+  ]
+}

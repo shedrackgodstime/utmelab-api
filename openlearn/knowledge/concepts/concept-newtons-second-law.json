@@ -1,0 +1,22 @@
+{
+  "id": "concept:newtons-second-law",
+  "kind": "Concept",
+  "label": "Newton’s Second Law of Motion",
+  "scope": {
+    "text": "Newtonian/classical mechanics (introductory)",
+    "basis": "inferred"
+  },
+  "linked_statements": [
+    "statement:newtons-second-law",
+    "statement:newtons-second-law-definition",
+    "statement:newtons-second-law-related-to-first-law"
+  ],
+  "notes": "Named law as a Concept anchor per convention (a); the law’s empirical content is carried by statement:newtons-second-law, and its name is fixed by statement:newtons-second-law-definition. Scope conditions (inertial frame, non-relativistic speeds) are not stated in the captured blocks and remain inferred/unresolved.",
+  "source_refs": [
+    "source:openstax-m42073"
+  ],
+  "definition_refs": [
+    "statement:newtons-second-law-definition"
+  ],
+  "definition_status": "complete"
+}

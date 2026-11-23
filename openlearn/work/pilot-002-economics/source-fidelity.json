@@ -1,0 +1,43 @@
+{
+  "id": "fidelity:openstax-m63601",
+  "kind": "SourceFidelity",
+  "source_ref": "source:openstax-m63601",
+  "items": [
+    {
+      "ref": "concept:demand",
+      "fidelity": "as-stated",
+      "note": "Definition quoted/condensed from blocks p-3 and p-11; the demand/quantity-demanded distinction is source-stated."
+    },
+    {
+      "ref": "concept:supply",
+      "fidelity": "as-stated",
+      "note": "Definition quoted/condensed from blocks p-13 and p-15; the supply/quantity-supplied distinction is source-stated."
+    },
+    {
+      "ref": "statement:law-of-demand",
+      "fidelity": "as-stated",
+      "note": "Law and ceteris-paribus condition from block p-4; summary wording also in p-34."
+    },
+    {
+      "ref": "statement:law-of-supply",
+      "fidelity": "as-stated",
+      "note": "Law and ceteris-paribus condition from block p-13; summary wording also in p-35."
+    },
+    {
+      "ref": "model:demand-supply-equilibrium",
+      "fidelity": "as-stated",
+      "note": "Model is presented implicitly through curves, intersection, and adjustment narrative (blocks p-21–p-32, p-36). The model label and some assumptions are inferred/extractor-supplied."
+    },
+    {
+      "ref": "statement:above-equilibrium-surplus",
+      "fidelity": "as-stated",
+      "note": "Adjustment claim from blocks p-28–p-30 and p-36."
+    },
+    {
+      "ref": "statement:below-equilibrium-shortage",
+      "fidelity": "as-stated",
+      "note": "Adjustment claim from blocks p-31–p-32 and p-36."
+    }
+  ],
+  "notes": "No corrections applied in this pilot. Model-level assumptions (e.g. competitive market) are noted as inferred where the source does not spell them out in the captured blocks."
+}

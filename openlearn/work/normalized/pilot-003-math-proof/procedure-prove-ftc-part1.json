@@ -1,0 +1,26 @@
+{
+  "id": "procedure:prove-ftc-part1",
+  "kind": "Procedure",
+  "label": "Prove FTC Part 1 using the derivative definition and the Mean Value Theorem for Integrals",
+  "inputs": [
+    "Continuous function f on [a,b]",
+    "F(x)=∫_a^x f(t)dt"
+  ],
+  "steps": [
+    "Apply the definition of the derivative to F(x).",
+    "Express the resulting difference quotient as 1/h ∫_x^{x+h} f(t)dt, the average value of f over [x,x+h].",
+    "Apply the Mean Value Theorem for Integrals to get a point c in [x,x+h] with f(c) equal to that average value.",
+    "Let h→0; since c→x and f is continuous, f(c)→f(x).",
+    "Conclude F′(x)=f(x)."
+  ],
+  "success_criteria": "Derivation establishes F′(x)=f(x) for x in (a,b).",
+  "scope": {
+    "text": "Calculus; f continuous on [a,b]",
+    "basis": "stated"
+  },
+  "source_fidelity": "paraphrased",
+  "notes": "Reusable proof method. The specific derivation/walkthrough is recorded separately as Study (study:proof:ftc-part1).",
+  "source_refs": [
+    "source:openstax-m53632"
+  ]
+}

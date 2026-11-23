@@ -1,0 +1,18 @@
+{
+  "id": "concept:demand",
+  "kind": "Concept",
+  "label": "Demand",
+  "definition_refs": ["statement:demand-definition"],
+  "definition_status": "complete",
+  "scope": {
+    "text": "Introductory economics; markets for goods and services",
+    "basis": "inferred"
+  },
+  "distinguished_from": [
+    "concept:quantity-demanded"
+  ],
+  "notes": "Source explicitly distinguishes demand (the curve/relationship) from quantity demanded (a point on the curve).",
+  "source_refs": [
+    "source:openstax-m63601"
+  ]
+}

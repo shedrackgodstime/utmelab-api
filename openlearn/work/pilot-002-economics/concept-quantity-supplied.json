@@ -1,0 +1,18 @@
+{
+  "id": "concept:quantity-supplied",
+  "kind": "Concept",
+  "label": "Quantity supplied",
+  "definition": "The amount producers want to sell at a given price; a specific point on the supply curve or one quantity on the supply schedule.",
+  "definition_fidelity": "as-stated",
+  "scope": {
+    "text": "Introductory economics; markets for goods and services",
+    "basis": "inferred"
+  },
+  "distinguished_from": [
+    "concept:supply"
+  ],
+  "notes": "The source stresses that supply is not the same as quantity supplied (blocks p-13, p-15).",
+  "source_refs": [
+    "source:openstax-m63601"
+  ]
+}

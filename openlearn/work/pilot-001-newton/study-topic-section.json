@@ -1,0 +1,21 @@
+{
+  "id": "study:topic:newtons-second-law",
+  "kind": "StudyTopic",
+  "title": "Newton’s Second Law of Motion: Concept of a System",
+  "source_capture": "utmelab-bank/data/concepts/phy_m42073.json",
+  "knowledge_refs": [
+    "concept:newtons-second-law",
+    "statement:newtons-second-law",
+    "statement:newtons-second-law-related-to-first-law"
+  ],
+  "block_roles": {
+    "0-1": "learning objectives",
+    "2-18": "framing + knowledge-bearing statements",
+    "39-63": "worked examples (Study walkthroughs/executions/results)",
+    "68-124": "questions/exercises/prompts (Study/assessment)"
+  },
+  "notes": "Section/topic is a Study container; worked examples are not treated as Procedures unless a general method is separately extracted. Blocks 64 and 67 are not individually classified here; full block coverage still pending.",
+  "source_refs": [
+    "source:openstax-m42073"
+  ]
+}

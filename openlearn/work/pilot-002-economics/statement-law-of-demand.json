@@ -1,0 +1,23 @@
+{
+  "id": "statement:law-of-demand",
+  "kind": "Statement",
+  "about": [
+    "concept:demand",
+    "concept:quantity-demanded"
+  ],
+  "status": "empirical",
+  "fidelity": "as-stated",
+  "scope": {
+    "text": "Introductory economics; markets for goods and services; all other demand determinants held constant",
+    "basis": "as-stated for ceteris paribus; broader scope inferred"
+  },
+  "text": "A rise in price of a good or service almost always decreases the quantity demanded; conversely, a fall in price increases the quantity demanded. Economists call this inverse relationship the law of demand, assuming all other variables that affect demand are held constant.",
+  "block_refs": [
+    "p-4",
+    "p-34"
+  ],
+  "notes": "Status empirical: source states 'almost always' and explicitly notes ceteris paribus. Not a definitional identity.",
+  "source_refs": [
+    "source:openstax-m63601"
+  ]
+}

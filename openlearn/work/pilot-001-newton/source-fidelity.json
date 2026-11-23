@@ -1,0 +1,23 @@
+{
+  "id": "fidelity:openstax-m42073",
+  "kind": "SourceFidelity",
+  "source_ref": "source:openstax-m42073",
+  "items": [
+    {
+      "ref": "concept:newtons-second-law",
+      "fidelity": "as-stated",
+      "note": "Label/title from source; scope conditions (inertial frame, non-relativistic speeds) are inferred, not stated in the captured blocks."
+    },
+    {
+      "ref": "statement:newtons-second-law",
+      "fidelity": "as-stated",
+      "note": "Verbal and mathematical formulations quoted from blocks p-13, p-15, p-17; empirical status supported by blocks p-6, p-10, p-12."
+    },
+    {
+      "ref": "statement:newtons-second-law-related-to-first-law",
+      "fidelity": "as-stated",
+      "note": "Quoted from block p-2."
+    }
+  ],
+  "notes": "No corrections applied in this pilot. Source is preserved as stated so it can be vetted separately later."
+}

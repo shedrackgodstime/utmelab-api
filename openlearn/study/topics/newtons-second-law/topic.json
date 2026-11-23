@@ -1,0 +1,27 @@
+{
+  "id": "study:topic:newtons-second-law",
+  "kind": "StudyTopic",
+  "title": "Newton’s Second Law of Motion: Concept of a System",
+  "source_capture": "utmelab-bank/data/concepts/phy_m42073.json",
+  "knowledge_refs": [
+    "concept:newtons-second-law",
+    "statement:newtons-second-law",
+    "statement:newtons-second-law-definition",
+    "statement:newtons-second-law-related-to-first-law",
+    "concept:acceleration",
+    "concept:net-external-force",
+    "concept:mass",
+    "concept:system",
+    "concept:newtons-first-law"
+  ],
+  "block_roles": {
+    "0-1": "learning objectives",
+    "2-18": "framing + knowledge-bearing statements",
+    "39-63": "worked examples (source reference)",
+    "68-124": "questions/exercises/prompts (source reference)"
+  },
+  "notes": "Modular Study (folder-per-topic): topic.md, explanation.md, examples/lawnmower.md, media/ (optional). This JSON is metadata linking to Knowledge IDs and source provenance.",
+  "source_refs": [
+    "source:openstax-m42073"
+  ]
+}

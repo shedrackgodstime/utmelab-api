@@ -1,0 +1,48 @@
+{
+  "id": "external:placement:fundamental-theorem-of-calculus-unmapped",
+  "kind": "ExternalPlacement",
+  "source_capture": "utmelab-bank/data/concepts/math_integration_fundamental.json",
+  "knowledge_refs": [
+    "concept:fundamental-theorem-of-calculus",
+    "statement:ftc-part1",
+    "statement:ftc-part2"
+  ],
+  "placements": [
+    {
+      "exam": "JAMB",
+      "subject": "mathematics",
+      "topic_slug": "integration",
+      "subtopic_slug": "area-under-the-curve",
+      "knowledge_refs": ["statement:ftc-part2"]
+    },
+    {
+      "exam": "JAMB",
+      "subject": "mathematics",
+      "topic_slug": "integration",
+      "subtopic_slug": "integration-of-explicit-algebraic-and-simple-trigonometrical",
+      "knowledge_refs": ["statement:ftc-part2"]
+    },
+    {
+      "exam": "WAEC",
+      "subject": "further-mathematics",
+      "topic_slug": "waec-further-mathematics-16-integration",
+      "subtopic_slug": "waec-further-mathematics-16-1-indefinite-integral",
+      "knowledge_refs": ["statement:ftc-part1"]
+    },
+    {
+      "exam": "WAEC",
+      "subject": "further-mathematics",
+      "topic_slug": "waec-further-mathematics-16-integration",
+      "subtopic_slug": "waec-further-mathematics-16-2-definite-integral",
+      "knowledge_refs": ["statement:ftc-part1", "statement:ftc-part2"]
+    },
+    {
+      "exam": "WAEC",
+      "subject": "further-mathematics",
+      "topic_slug": "waec-further-mathematics-16-integration",
+      "subtopic_slug": "waec-further-mathematics-16-3-applications-of-the-definite-integral",
+      "knowledge_refs": ["statement:ftc-part2"]
+    }
+  ],
+  "notes": "External JAMB/WAEC integration topics mapped to core Knowledge IDs (theorem parts). No exam identifiers appear in Knowledge records."
+}

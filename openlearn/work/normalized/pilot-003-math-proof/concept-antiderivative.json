@@ -1,0 +1,15 @@
+{
+  "id": "concept:antiderivative",
+  "kind": "Concept",
+  "label": "Antiderivative",
+  "definition": "A function F whose derivative is f (F′(x)=f(x)). Referenced but not defined in this capture.",
+  "scope": {
+    "text": "Calculus; differentiable functions on an interval",
+    "basis": "inferred"
+  },
+  "notes": "Placeholder Concept. The source assumes this from prior sections; a full definition Statement must be extracted from its own capture before this theorem is treated as complete.",
+  "source_refs": [
+    "source:openstax-m53632"
+  ],
+  "definition_status": "not_extractable"
+}

@@ -402,29 +402,11 @@ mod tests {
     /// resources mirror. One list, so a route cannot be mounted but
     /// undocumented, or documented but unmounted.
     const API_ROUTES: &[(&str, &str, &str)] = &[
-        ("GET", "/api/v1/textbooks", "/api/v1/textbooks"),
         (
             "GET",
-            "/api/v1/textbooks/{book_id}",
-            "/api/v1/textbooks/secondary_physics",
+            "/api/v1/lessons/{id}",
+            "/api/v1/lessons/lesson-1",
         ),
-        (
-            "GET",
-            "/api/v1/chapters/{chapter_id}",
-            "/api/v1/chapters/phy_forces_and_newtons_laws",
-        ),
-        (
-            "GET",
-            "/api/v1/chapters/{chapter_id}/sections/{section_id}",
-            "/api/v1/chapters/phy_forces_and_newtons_laws/sections/sec-1",
-        ),
-        (
-            "GET",
-            "/api/v1/chapters/{chapter_id}/exercises",
-            "/api/v1/chapters/phy_forces_and_newtons_laws/exercises",
-        ),
-        ("GET", "/api/v1/exam-traps", "/api/v1/exam-traps"),
-        ("GET", "/api/v1/exam-practice", "/api/v1/exam-practice"),
         ("GET", "/api/v1/exams", "/api/v1/exams"),
         (
             "GET",
@@ -455,16 +437,6 @@ mod tests {
             "GET",
             "/api/v1/topics/{exam}/{subject}/{slug}",
             "/api/v1/topics/JAMB/physics/mechanics",
-        ),
-        (
-            "GET",
-            "/api/v1/notes/{exam}/{subject}/{topic_slug}",
-            "/api/v1/notes/JAMB/physics/motion",
-        ),
-        (
-            "GET",
-            "/api/v1/notes/subtopic/{exam}/{subject}/{subtopic_slug}",
-            "/api/v1/notes/subtopic/JAMB/physics/projectiles",
         ),
         (
             "GET",

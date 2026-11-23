@@ -1,0 +1,15 @@
+{
+  "id": "concept:equilibrium",
+  "kind": "Concept",
+  "label": "Market equilibrium",
+  "definition_refs": ["statement:equilibrium-definition"],
+  "definition_status": "complete",
+  "scope": {
+    "text": "Introductory economics; markets for goods and services",
+    "basis": "inferred"
+  },
+  "notes": "Equilibrium is both a concept and the central outcome of the demand-and-supply model. Source also uses 'equilibrium price' and 'equilibrium quantity' as related terms.",
+  "source_refs": [
+    "source:openstax-m63601"
+  ]
+}

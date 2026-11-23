@@ -1,0 +1,25 @@
+{
+  "id": "statement:ftc-part1",
+  "kind": "Statement",
+  "about": [
+    "concept:fundamental-theorem-of-calculus",
+    "concept:definite-integral",
+    "concept:antiderivative"
+  ],
+  "status": "derived/proved",
+  "fidelity": "as-stated",
+  "scope": {
+    "text": "Calculus; f continuous over [a,b]; F(x)=∫_a^x f(t)dt",
+    "basis": "as-stated for continuity/definition; broader calculus scope inferred"
+  },
+  "text": "If f(x) is continuous over an interval [a,b], and the function F(x) is defined by F(x)=∫_a^x f(t)dt, then F′(x)=f(x) over (a,b).",
+  "block_refs": [
+    "p-37",
+    "p-38",
+    "p-40"
+  ],
+  "notes": "Part 1 of the Fundamental Theorem of Calculus. Source proof in blocks p-42–p-45; reusable proof method recorded as procedure:prove-ftc-part1.",
+  "source_refs": [
+    "source:openstax-m53632"
+  ]
+}
