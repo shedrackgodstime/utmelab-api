@@ -6,7 +6,7 @@ import tailwindcss from '@tailwindcss/vite';
 // Own shell (MarketingLayout). base '/' + static. Detachable to
 // utmelab.com with zero rewrite (NOTES §6).
 export default defineConfig({
-  site: 'https://api.utmelab.com',
+  site: 'https://api.jambmax.com',
   base: '/',
   output: 'static',
   build: { format: 'directory' },

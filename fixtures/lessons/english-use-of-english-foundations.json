@@ -1,0 +1,207 @@
+{
+  "lessons": [
+    {
+      "id": "lesson:use-of-english:meaning-from-context",
+      "status": "published",
+      "title": "Meaning from Context",
+      "description": {"text": "Work out what an unfamiliar word means by using the sentence around it.", "inline": []},
+      "subject": "use-of-english",
+      "level": "senior_secondary",
+      "estimated_minutes": 6,
+      "objectives": [
+        {"id": "objective:meaning-from-context:clues", "statement": "Identify definition, contrast, example and cause clues around an unfamiliar word.", "bloom_level": "understand"},
+        {"id": "objective:meaning-from-context:choose", "statement": "Choose the option that preserves the meaning of a word in its sentence.", "bloom_level": "apply"}
+      ],
+      "content": [
+        {"type": "opening", "id": "block:meaning-from-context:opening", "anchor": "sentence", "heading": "The sentence", "text": {"text": "After the audit, the manager knew the figures would not add up. What does the underlined expression mean in this sentence?", "inline": []}},
+        {"type": "heading", "id": "block:meaning-from-context:idea-heading", "level": 2, "text": {"text": "Do not guess from the word alone", "inline": []}},
+        {"type": "paragraph", "id": "block:meaning-from-context:idea", "text": {"text": "A word or expression can have several meanings. In an exam, the sentence chooses the meaning. Read the whole sentence, locate the clues, replace the expression with a possible answer, and check whether the sentence still makes sense. For idioms such as not add up, do not calculate the literal words; identify the situation they describe.", "inline": []}},
+        {"type": "heading", "id": "block:meaning-from-context:clues-heading", "level": 2, "text": {"text": "Four useful clues", "inline": []}},
+        {"type": "list", "id": "block:meaning-from-context:clues", "items": [
+          {"text": "Definition: the sentence explains the word directly — The terrain, meaning the shape of the land, was difficult to cross.", "inline": []},
+          {"text": "Contrast: words such as but, unlike and although signal an opposite — Unlike his gregarious brother, Tunde avoided crowds.", "inline": []},
+          {"text": "Example: a list or example narrows the meaning — The vendor sold perishable goods such as fish, milk and vegetables.", "inline": []},
+          {"text": "Cause or result: what happens before or after the word gives its function — The road was flooded, so the journey was arduous.", "inline": []}
+        ]},
+        {"type": "example", "id": "block:meaning-from-context:example", "title": "Reading an idiom in context", "prompt": {"text": "What does not add up mean in 'After the audit, the manager knew the figures would not add up'?", "inline": []}, "steps": [{"step_number": 1, "expression": "figures + audit", "description": "The sentence is about checking whether financial numbers agree."}, {"step_number": 2, "expression": "not add up = fail to agree", "description": "The expression means that the figures are inconsistent, not that someone failed to perform addition."}, {"step_number": 3, "expression": "inconsistent figures", "description": "Replace the expression and reread the sentence: the meaning remains clear."}], "answer": {"text": "Not add up means fail to agree or be inconsistent, especially when discussing figures or an explanation.", "inline": []}},
+        {"type": "callout", "id": "block:meaning-from-context:remember", "kind": "key-point", "title": "Remember", "text": {"text": "Sentence-interpretation options often test idioms such as not add up, call someone's bluff and below par. The correct answer must express the whole phrase's meaning, not one literal word.", "inline": []}},
+        {"type": "summary", "id": "block:meaning-from-context:summary", "points": [{"text": "Read beyond the target word.", "inline": []}, {"text": "Name the clue: definition, contrast, example, cause or result.", "inline": []}, {"text": "Substitute the option and test the whole sentence.", "inline": []}]}
+      ],
+      "checks": [
+        {"id": "check:meaning-from-context:01", "order": 1, "position_after_block_id": "block:meaning-from-context:clues", "objective_id": "objective:meaning-from-context:clues", "kind": "multiple_choice", "prompt": {"text": "In 'The medicine is potent; only a small dose is needed to produce a strong effect', potent most nearly means:", "inline": []}, "options": [{"id": "a", "content": {"text": "powerful", "inline": []}}, {"id": "b", "content": {"text": "expensive", "inline": []}}, {"id": "c", "content": {"text": "bitter", "inline": []}}, {"id": "d", "content": {"text": "scarce", "inline": []}}], "answer": {"option_id": "a"}, "feedback": {"text": "The clue 'only a small dose...strong effect' shows that potent means powerful. The sentence does not give evidence about price, taste or availability.", "inline": []}, "hint": {"text": "Use the result of taking only a small dose.", "inline": []}, "provenance": {}},
+        {"id": "check:meaning-from-context:02", "order": 2, "position_after_block_id": "block:meaning-from-context:summary", "objective_id": "objective:meaning-from-context:choose", "kind": "multiple_choice", "prompt": {"text": "In 'The new rule was arbitrary: no reason was given, and different students received different penalties', arbitrary means:", "inline": []}, "options": [{"id": "a", "content": {"text": "based on a clear law", "inline": []}}, {"id": "b", "content": {"text": "chosen without a consistent reason", "inline": []}}, {"id": "c", "content": {"text": "supported by everyone", "inline": []}}, {"id": "d", "content": {"text": "announced in advance", "inline": []}}], "answer": {"option_id": "b"}, "feedback": {"text": "The absence of a reason and the unequal penalties are context clues that the decision was inconsistent or made without a clear principle.", "inline": []}, "hint": {"text": "Notice 'no reason' and 'different penalties'.", "inline": []}, "provenance": {}}
+      ],
+      "misconceptions": [],
+      "summary": [{"text": "Use context before using memory.", "inline": []}, {"text": "A synonym must fit the exact sentence.", "inline": []}],
+      "provenance": {"publisher": "UtmeLab", "title": "Context clues for reading", "url": "https://takeielts.britishcouncil.org/blog/mastering-context-clues-boost-your-ielts-reading-skills?language=en", "locator": "Strategies to detect and use context clues; syllabus alignment: WASSCE English Language Paper 1 Lexis", "licence": "UtmeLab-authored content informed by cited reference"},
+      "content_hash": ""
+    },
+    {
+      "id": "lesson:use-of-english:subject-verb-agreement",
+      "status": "published",
+      "title": "Subject–Verb Agreement in Real Sentences",
+      "description": {"text": "Find the true subject and choose the verb that agrees with it, even when other words get in the way.", "inline": []},
+      "subject": "use-of-english",
+      "level": "senior_secondary",
+      "estimated_minutes": 7,
+      "objectives": [
+        {"id": "objective:agreement:subject", "statement": "Find the head subject of a sentence before selecting its finite verb.", "bloom_level": "understand"},
+        {"id": "objective:agreement:apply", "statement": "Apply agreement rules to intervening phrases, indefinite pronouns and paired subjects.", "bloom_level": "apply"}
+      ],
+      "content": [
+        {"type": "opening", "id": "block:agreement:opening", "anchor": "sentence", "heading": "The sentence", "text": {"text": "Neither the teacher nor the students were present at the assembly. Why is were correct even though teacher is singular?", "inline": []}},
+        {"type": "heading", "id": "block:agreement:idea-heading", "level": 2, "text": {"text": "Find the head subject", "inline": []}},
+        {"type": "paragraph", "id": "block:agreement:idea", "text": {"text": "The finite verb agrees with the sentence's subject, but some structures need special attention. With neither...nor, either...or and not only...but also, the verb normally agrees with the subject nearest to it. In the opening sentence, students is nearest and plural, so were is correct. Other common questions test the base form after insist that and the earlier of two past actions with by the time.", "inline": []}},
+        {"type": "heading", "id": "block:agreement:rules-heading", "level": 2, "text": {"text": "Three checks before choosing", "inline": []}},
+        {"type": "list", "id": "block:agreement:rules", "items": [{"text": "Cross out an interrupting phrase beginning with of, with, together with, as well as or along with. Then match the verb to the remaining subject.", "inline": []}, {"text": "Treat each, every, everyone, somebody, neither and either as singular: Each of the players has a number.", "inline": []}, {"text": "With either...or and neither...nor, check the subject nearest the verb: Neither the coach nor the players were ready; neither the players nor the coach was ready.", "inline": []}]},
+        {"type": "example", "id": "block:agreement:example", "title": "Following the nearest subject", "prompt": {"text": "Choose the correct verb: Neither the teacher nor the students (was/were) present at the assembly.", "inline": []}, "steps": [{"step_number": 1, "expression": "neither A nor B + verb", "description": "Identify the paired-subject structure."}, {"step_number": 2, "expression": "nearest subject = students = plural", "description": "Students stands immediately before the verb and is plural."}, {"step_number": 3, "expression": "Neither the teacher nor the students were present.", "description": "Choose the plural past form were."}], "answer": {"text": "Were is correct because the nearer subject, students, is plural.", "inline": []}},
+        {"type": "callout", "id": "block:agreement:remember", "kind": "warning", "title": "Do not count nearby nouns", "text": {"text": "Words inside an of-phrase or an alongside/as-well-as phrase do not become a second subject. First find the noun doing the action or carrying the description.", "inline": []}},
+        {"type": "summary", "id": "block:agreement:summary", "points": [{"text": "Find the head subject.", "inline": []}, {"text": "Ignore intervening phrases while matching subject and verb.", "inline": []}, {"text": "Check proximity with either/or and neither/nor.", "inline": []}]}
+      ],
+      "checks": [
+        {"id": "check:agreement:01", "order": 1, "position_after_block_id": "block:agreement:rules", "objective_id": "objective:agreement:subject", "kind": "multiple_choice", "prompt": {"text": "The quality of the locally made shoes (has/have) improved.", "inline": []}, "options": [{"id": "a", "content": {"text": "has", "inline": []}}, {"id": "b", "content": {"text": "have", "inline": []}}, {"id": "c", "content": {"text": "are", "inline": []}}, {"id": "d", "content": {"text": "were", "inline": []}}], "answer": {"option_id": "a"}, "feedback": {"text": "Quality is the head subject and it is singular. 'Of the locally made shoes' only describes quality, so has is correct.", "inline": []}, "hint": {"text": "Ask: what has improved—the quality or the shoes?", "inline": []}, "provenance": {}},
+        {"id": "check:agreement:02", "order": 2, "position_after_block_id": "block:agreement:summary", "objective_id": "objective:agreement:apply", "kind": "multiple_choice", "prompt": {"text": "Neither the driver nor the passengers (was/were) injured.", "inline": []}, "options": [{"id": "a", "content": {"text": "was", "inline": []}}, {"id": "b", "content": {"text": "were", "inline": []}}, {"id": "c", "content": {"text": "is", "inline": []}}, {"id": "d", "content": {"text": "has", "inline": []}}], "answer": {"option_id": "b"}, "feedback": {"text": "With neither...nor, the verb follows the nearer subject. Passengers is plural, so were is correct.", "inline": []}, "hint": {"text": "Look at the subject immediately before the verb.", "inline": []}, "provenance": {}}
+      ],
+      "misconceptions": [],
+      "summary": [{"text": "Agreement follows the true subject, not the nearest distracting noun.", "inline": []}, {"text": "Use proximity with either/or and neither/nor.", "inline": []}],
+      "provenance": {"publisher": "UtmeLab", "title": "Subject-Verb Agreement", "url": "https://owl.purdue.edu/owl/general_writing/grammar/subject_verb_agreement.html", "locator": "Making Subjects and Verbs Agree; syllabus alignment: WASSCE English Language Structure", "licence": "UtmeLab-authored content informed by cited reference"},
+      "content_hash": ""
+    },
+    {
+      "id": "lesson:use-of-english:comprehension-inference",
+      "status": "published",
+      "title": "Comprehension: Evidence and Inference",
+      "description": {"text": "Read a passage for what it says, what it suggests and how its details support the main idea.", "inline": []},
+      "subject": "use-of-english",
+      "level": "senior_secondary",
+      "estimated_minutes": 8,
+      "objectives": [
+        {"id": "objective:inference:retrieve", "statement": "Separate information stated directly from information that must be inferred.", "bloom_level": "understand"},
+        {"id": "objective:inference:evidence", "statement": "Choose an inference that is supported by several details in a passage.", "bloom_level": "analyse"}
+      ],
+      "content": [
+        {"type": "opening", "id": "block:inference:opening", "anchor": "passage", "heading": "Read the passage", "text": {"text": "When the library opened at six o'clock, Amaka was already waiting outside. She had finished her chores before dawn so that she could study early; fortunately, the electricity had returned during the night and helped her finish them. By seven, three other students had joined her, each carrying a notebook. They did not speak loudly; instead, they compared the topics they had found difficult and planned how to divide the morning's revision. When the librarian unlocked the door, Amaka smiled and moved to a table near the window.", "inline": []}},
+        {"type": "heading", "id": "block:inference:idea-heading", "level": 2, "text": {"text": "Answer from evidence", "inline": []}},
+        {"type": "paragraph", "id": "block:inference:idea", "text": {"text": "A retrieval answer is stated in the passage: Amaka was waiting outside the library. An inference is not copied word for word; it is a conclusion supported by details. The passage never says that Amaka is disciplined, but finishing chores before dawn and arriving early support that conclusion.", "inline": []}},
+        {"type": "heading", "id": "block:inference:method-heading", "level": 2, "text": {"text": "A four-step reading method", "inline": []}},
+        {"type": "list", "id": "block:inference:method", "items": [{"text": "Predict the situation from the title or opening, then read to confirm or correct the prediction.", "inline": []}, {"text": "Underline the exact sentence that answers a factual question.", "inline": []}, {"text": "For an inference, collect at least two clues and combine them.", "inline": []}, {"text": "Reject options that introduce information the passage never supports, even if the option sounds reasonable in real life.", "inline": []}]},
+        {"type": "example", "id": "block:inference:example", "title": "Making a supported inference", "prompt": {"text": "What can be inferred about the students from the passage?", "inline": []}, "steps": [{"step_number": 1, "expression": "clue 1 + clue 2", "description": "The students carry notebooks, compare difficult topics and plan their revision."}, {"step_number": 2, "expression": "evidence leads to serious preparation", "description": "These actions show purposeful preparation, not merely waiting for the library to open."}, {"step_number": 3, "expression": "supported answer", "description": "They are preparing deliberately for their studies."}], "answer": {"text": "The students are serious about preparing for their studies. This is an inference from their notebooks, discussion and revision plan.", "inline": []}},
+        {"type": "callout", "id": "block:inference:remember", "kind": "examiner-tip", "title": "Evidence beats imagination", "text": {"text": "For inference questions, ask: Which words in the passage make this option likely? If you cannot point to evidence, do not choose it.", "inline": []}},
+        {"type": "summary", "id": "block:inference:summary", "points": [{"text": "Retrieve facts directly from the text.", "inline": []}, {"text": "Build inferences from more than one clue.", "inline": []}, {"text": "Do not import outside information into the answer.", "inline": []}]}
+      ],
+      "checks": [
+        {"id": "check:inference:01", "order": 1, "position_after_block_id": "block:inference:idea", "objective_id": "objective:inference:retrieve", "kind": "multiple_choice", "prompt": {"text": "Why did Amaka finish her chores before dawn?", "inline": []}, "options": [{"id": "a", "content": {"text": "So that she could study early at the library.", "inline": []}}, {"id": "b", "content": {"text": "The librarian asked her to finish them.", "inline": []}}, {"id": "c", "content": {"text": "She was punished for delaying them.", "inline": []}}, {"id": "d", "content": {"text": "She wanted to avoid the other students.", "inline": []}}], "answer": {"option_id": "a"}, "feedback": {"text": "The passage directly says that she finished her chores before dawn so that she could study early. The other options add unsupported information.", "inline": []}, "hint": {"text": "Look for the purpose phrase after 'before dawn'.", "inline": []}, "provenance": {}},
+        {"id": "check:inference:02", "order": 2, "position_after_block_id": "block:inference:summary", "objective_id": "objective:inference:evidence", "kind": "multiple_choice", "prompt": {"text": "What is the best inference about the students' behaviour?", "inline": []}, "options": [{"id": "a", "content": {"text": "They are deliberately preparing for their studies.", "inline": []}}, {"id": "b", "content": {"text": "They have never used a library before.", "inline": []}}, {"id": "c", "content": {"text": "They dislike reading near windows.", "inline": []}}, {"id": "d", "content": {"text": "They are waiting for a sports event.", "inline": []}}], "answer": {"option_id": "a"}, "feedback": {"text": "Their notebooks, comparison of difficult topics and revision plan all support deliberate study. The other options are not supported by the passage.", "inline": []}, "hint": {"text": "Combine the actions the students take.", "inline": []}, "provenance": {}}
+      ],
+      "misconceptions": [],
+      "summary": [{"text": "A factual answer is stated; an inference is supported but not copied.", "inline": []}, {"text": "Every chosen answer needs evidence in the passage.", "inline": []}],
+      "provenance": {"publisher": "UtmeLab", "title": "Think before you read", "url": "https://learnenglishteens.britishcouncil.org/exams/reading-exams/think-you-read", "locator": "Prediction, text type and using clues before reading; syllabus alignment: WASSCE English Language Comprehension", "licence": "UtmeLab-authored content informed by cited reference"},
+      "content_hash": ""
+    },
+    {
+      "id": "lesson:use-of-english:contextual-synonyms-antonyms",
+      "status": "published",
+      "title": "Synonyms and Antonyms in Context",
+      "description": {"text": "Choose a word with the same or opposite meaning without losing the sentence's context or tone.", "inline": []},
+      "subject": "use-of-english",
+      "level": "senior_secondary",
+      "estimated_minutes": 6,
+      "objectives": [{"id": "objective:synonyms:meaning", "statement": "Distinguish a dictionary relationship from a context-appropriate replacement.", "bloom_level": "understand"}, {"id": "objective:synonyms:apply", "statement": "Select a synonym or antonym that preserves the sentence meaning and grammar.", "bloom_level": "apply"}],
+      "content": [
+        {"type": "opening", "id": "block:synonyms:opening", "anchor": "sentence", "heading": "The sentence", "text": {"text": "The manager's decision was arbitrary. Which option is nearest in meaning: well-considered, capricious, collective or delayed?", "inline": []}},
+        {"type": "paragraph", "id": "block:synonyms:idea", "text": {"text": "A synonym is not merely a word from the same topic. It must fit the meaning, part of speech and tone of the original sentence. Arbitrary means decided by whim or without a consistent reason, so capricious is the nearest option. In the same way, meticulous is nearer to thorough, lucid to clear, and an antonym must reverse the relevant quality rather than merely describe a different one.", "inline": []}},
+        {"type": "heading", "id": "block:synonyms:method-heading", "level": 2, "text": {"text": "Test the replacement", "inline": []}},
+        {"type": "list", "id": "block:synonyms:method", "ordered": true, "items": [{"text": "Read the whole sentence and identify the target word's role.", "inline": []}, {"text": "Predict a short meaning before looking at the options.", "inline": []}, {"text": "Replace the word and check meaning, grammar and tone.", "inline": []}, {"text": "For an antonym, reverse the relationship without changing the sentence structure.", "inline": []}]},
+        {"type": "example", "id": "block:synonyms:example", "title": "Separating meaning from association", "prompt": {"text": "The committee commended her meticulous preparation. Which option is closest in meaning to meticulous: hasty, thorough, lengthy or secret?", "inline": []}, "steps": [{"step_number": 1, "expression": "meticulous = ?", "description": "Preparation is being praised for the care put into it, not for its length."}, {"step_number": 2, "expression": "meticulous = very careful and detailed", "description": "The nearest option is thorough."}, {"step_number": 3, "expression": "thorough preparation", "description": "The replacement keeps the adjective role and the positive tone."}], "answer": {"text": "Thorough is correct. Lengthy is tempting because careful work may take time, but length is not the meaning of meticulous.", "inline": []}},
+        {"type": "callout", "id": "block:synonyms:remember", "kind": "examiner-tip", "title": "Do not choose by topic alone", "text": {"text": "Two words may be related but not interchangeable. Check what the word is doing in this sentence before choosing an option.", "inline": []}},
+        {"type": "summary", "id": "block:synonyms:summary", "points": [{"text": "Predict the meaning before viewing options.", "inline": []}, {"text": "Check meaning, grammar and tone after substitution.", "inline": []}, {"text": "The same word can have different meanings in different sentences.", "inline": []}]}
+      ],
+      "checks": [{"id": "check:synonyms:01", "order": 1, "position_after_block_id": "block:synonyms:method", "objective_id": "objective:synonyms:apply", "kind": "multiple_choice", "prompt": {"text": "The chairman gave a candid answer. Candid means:", "inline": []}, "options": [{"id": "a", "content": {"text": "honest and direct", "inline": []}}, {"id": "b", "content": {"text": "angry and loud", "inline": []}}, {"id": "c", "content": {"text": "long and detailed", "inline": []}}, {"id": "d", "content": {"text": "secret and confusing", "inline": []}}], "answer": {"option_id": "a"}, "feedback": {"text": "Candid means honest and direct. The noun answer and the context support this meaning.", "inline": []}, "hint": {"text": "What kind of answer is the opposite of hidden or misleading?", "inline": []}, "provenance": {}}, {"id": "check:synonyms:02", "order": 2, "position_after_block_id": "block:synonyms:summary", "objective_id": "objective:synonyms:meaning", "kind": "multiple_choice", "prompt": {"text": "The opposite of 'scarce' in 'Clean water is scarce in the dry season' is:", "inline": []}, "options": [{"id": "a", "content": {"text": "plentiful", "inline": []}}, {"id": "b", "content": {"text": "polluted", "inline": []}}, {"id": "c", "content": {"text": "expensive", "inline": []}}, {"id": "d", "content": {"text": "distant", "inline": []}}], "answer": {"option_id": "a"}, "feedback": {"text": "Scarce means in short supply, so plentiful is its opposite. The other options describe possible properties but do not reverse the meaning.", "inline": []}, "hint": {"text": "Reverse 'in short supply'.", "inline": []}, "provenance": {}}],
+      "misconceptions": [],
+      "summary": [{"text": "Context decides which relationship and meaning fit.", "inline": []}, {"text": "A replacement must preserve grammar and tone.", "inline": []}],
+      "provenance": {"publisher": "UtmeLab", "title": "Collocation", "url": "https://dictionary.cambridge.org/grammar/british-grammar/collocation_2", "locator": "Typical and untypical word combinations; syllabus alignment: JAMB Lexis and Structure", "licence": "UtmeLab-authored content informed by cited reference"},
+      "content_hash": ""
+    },
+    {
+      "id": "lesson:use-of-english:cloze-by-context",
+      "status": "published",
+      "title": "Cloze: Let the Passage Choose",
+      "description": {"text": "Use grammar, meaning and nearby clues to restore a missing word in a connected passage.", "inline": []},
+      "subject": "use-of-english",
+      "level": "senior_secondary",
+      "estimated_minutes": 7,
+      "objectives": [{"id": "objective:cloze:grammar", "statement": "Use the sentence structure and word class to narrow a cloze answer.", "bloom_level": "analyse"}, {"id": "objective:cloze:meaning", "statement": "Use neighbouring sentences and collocation to choose the best missing word.", "bloom_level": "apply"}],
+      "content": [
+        {"type": "opening", "id": "block:cloze:opening", "anchor": "passage", "heading": "Complete the passage", "text": {"text": "The court had declared him _____. Choose the word that completes the sentence: illegal, illegitimate, illicit, unlawful or untenable.", "inline": []}},
+        {"type": "paragraph", "id": "block:cloze:idea", "text": {"text": "A cloze blank is solved at three levels. Grammar tells you what kind of word can fit. Meaning tells you what idea the sentence needs. Collocation tells you which word naturally belongs with the surrounding words. In the opening, the legal expression is declared him illegitimate; illegal and unlawful usually describe acts or things, while untenable describes an argument or position.", "inline": []}},
+        {"type": "heading", "id": "block:cloze:method-heading", "level": 2, "text": {"text": "Three passes through a blank", "inline": []}},
+        {"type": "list", "id": "block:cloze:method", "ordered": true, "items": [{"text": "Read the entire passage before choosing.", "inline": []}, {"text": "Predict the word class and rough meaning.", "inline": []}, {"text": "Test each option in the sentence and in the wider passage.", "inline": []}]},
+        {"type": "example", "id": "block:cloze:example", "title": "Collocation before guessing", "prompt": {"text": "Complete the sentence: A student with no money for textbooks could _____ a whole education between the library shelves. Choose assemble, purchase, borrow or ignore.", "inline": []}, "steps": [{"step_number": 1, "expression": "no money means not purchase", "description": "The first clause rules out purchase."}, {"step_number": 2, "expression": "education = assembled, not borrowed", "description": "Books may be borrowed, but the education built from them remains with the student."}, {"step_number": 3, "expression": "could assemble a whole education", "description": "Assemble means piece together from available parts and fits the collocation and meaning."}], "answer": {"text": "Assemble is correct. The sentence describes building knowledge from available books, not buying or returning an education.", "inline": []}},
+        {"type": "callout", "id": "block:cloze:remember", "kind": "key-point", "title": "Read around the blank", "text": {"text": "Do not solve a cloze item from the two words touching the blank only. The sentence before or after it may supply the decisive contrast, cause or example.", "inline": []}},
+        {"type": "summary", "id": "block:cloze:summary", "points": [{"text": "Read the whole passage first.", "inline": []}, {"text": "Use grammar to identify possible forms.", "inline": []}, {"text": "Use meaning and collocation to make the final choice.", "inline": []}]}
+      ],
+      "checks": [{"id": "check:cloze:01", "order": 1, "position_after_block_id": "block:cloze:method", "objective_id": "objective:cloze:grammar", "kind": "multiple_choice", "prompt": {"text": "The manager insisted that every worker _____ the safety rule. Choose the best option.", "inline": []}, "options": [{"id": "a", "content": {"text": "follows", "inline": []}}, {"id": "b", "content": {"text": "follow", "inline": []}}, {"id": "c", "content": {"text": "following", "inline": []}}, {"id": "d", "content": {"text": "followed", "inline": []}}], "answer": {"option_id": "b"}, "feedback": {"text": "After insisted that in this formal structure, follow is the base form required by the subjunctive pattern. The blank also needs a verb, not a noun or participle.", "inline": []}, "hint": {"text": "Look at the structure after 'insisted that'.", "inline": []}, "provenance": {}}, {"id": "check:cloze:02", "order": 2, "position_after_block_id": "block:cloze:summary", "objective_id": "objective:cloze:meaning", "kind": "multiple_choice", "prompt": {"text": "The path was so _____ that the hikers had to hold the rail. Choose the best option.", "inline": []}, "options": [{"id": "a", "content": {"text": "slippery", "inline": []}}, {"id": "b", "content": {"text": "generous", "inline": []}}, {"id": "c", "content": {"text": "polite", "inline": []}}, {"id": "d", "content": {"text": "silent", "inline": []}}], "answer": {"option_id": "a"}, "feedback": {"text": "Holding the rail is evidence that the path was slippery. The other adjectives do not explain the action.", "inline": []}, "hint": {"text": "What condition would make hikers need support?", "inline": []}, "provenance": {}}],
+      "misconceptions": [],
+      "summary": [{"text": "Cloze is reading plus grammar, not isolated guessing.", "inline": []}, {"text": "The best answer fits both the blank and the passage.", "inline": []}],
+      "provenance": {"publisher": "UtmeLab", "title": "Cloze Procedure in the Teaching of Reading", "url": "https://teslcanadajournal.ca/index.php/tesl/article/download/544/375", "locator": "Cloze as prediction, context search and reading strategy; syllabus alignment: JAMB Comprehension and Summary", "licence": "UtmeLab-authored content informed by cited reference"},
+      "content_hash": ""
+    },
+    {
+      "id": "lesson:use-of-english:vowel-contrasts",
+      "status": "published",
+      "title": "Vowel Contrasts: Hear the Sound, Not the Letter",
+      "description": {"text": "Recognise vowel sounds by listening to the word, because one spelling can represent different sounds.", "inline": []},
+      "subject": "use-of-english",
+      "level": "senior_secondary",
+      "estimated_minutes": 7,
+      "objectives": [{"id": "objective:vowels:recognise", "statement": "Distinguish common short, long and diphthong vowel contrasts in spoken words.", "bloom_level": "understand"}, {"id": "objective:vowels:apply", "statement": "Use a phonemic contrast to identify the word with a different vowel sound.", "bloom_level": "apply"}],
+      "content": [
+        {"type": "opening", "id": "block:vowels:opening", "anchor": "observation", "heading": "Listen to the contrast", "text": {"text": "Say ship and sheep aloud. The spelling changes by one letter, but the important difference is the vowel sound: ship has /ɪ/ and sheep has /iː/.", "inline": []}},
+        {"type": "paragraph", "id": "block:vowels:idea", "text": {"text": "Oral English questions test sounds, not the number of vowel letters in a word. The same letter can represent different sounds, and different spellings can represent the same sound. Compare the spoken vowel in sit, seat, pull and pool rather than guessing from i, ea, u or oo.", "inline": []}},
+        {"type": "heading", "id": "block:vowels:method-heading", "level": 2, "text": {"text": "How to solve a vowel item", "inline": []}},
+        {"type": "list", "id": "block:vowels:method", "ordered": true, "items": [{"text": "Say the target word naturally, without exaggerating the spelling.", "inline": []}, {"text": "Compare the vowel sound, not the first or last letter.", "inline": []}, {"text": "Group the words that sound alike and find the odd one.", "inline": []}]},
+        {"type": "table", "id": "block:vowels:examples", "title": {"text": "Useful contrasts", "inline": []}, "rows": [["Sound type", "Examples"], ["Pure vowel /iː/", "seat, seed, sheep"], ["Pure vowel /ɪ/", "sit, ship, busy"], ["Diphthong /aɪ/", "site, time, high"], ["Diphthong /aʊ/", "house, now, sound"], ["Irregular spelling /ʌ/", "blood, flood, enough"]], "alt": "Examples of pure vowels, diphthongs and an irregular spelling contrast."},
+        {"type": "example", "id": "block:vowels:example", "title": "Find the matching sound", "prompt": {"text": "Which word has the same vowel sound as the underlined letters in seat: sit, site, seed or said?", "inline": []}, "steps": [{"step_number": 1, "expression": "seat = /iː/", "description": "Identify the sound, not the spelling pattern."}, {"step_number": 2, "expression": "seed = /siːd/", "description": "Seed has the same long vowel /iː/."}, {"step_number": 3, "expression": "sit /ɪ/, site /aɪ/, said /e/", "description": "The other options contain different vowel sounds."}], "answer": {"text": "Seed is correct because seat and seed share /iː/. Site looks similar but contains /aɪ/.", "inline": []}},
+        {"type": "callout", "id": "block:vowels:remember", "kind": "examiner-tip", "title": "Spelling is not sound", "text": {"text": "Oral English is heard. If you cannot hear the contrast yet, practise the pair aloud and use a phonemic chart or reliable audio reference rather than relying on spelling.", "inline": []}},
+        {"type": "summary", "id": "block:vowels:summary", "points": [{"text": "Compare phonemes, not letters.", "inline": []}, {"text": "Practise short/long pairs such as ship/sheep and pull/pool.", "inline": []}, {"text": "The odd option is the word with a different sound.", "inline": []}]}
+      ],
+      "checks": [{"id": "check:vowels:01", "order": 1, "position_after_block_id": "block:vowels:examples", "objective_id": "objective:vowels:recognise", "kind": "multiple_choice", "prompt": {"text": "Which word has the same vowel sound as ship?", "inline": []}, "options": [{"id": "a", "content": {"text": "sit", "inline": []}}, {"id": "b", "content": {"text": "sheep", "inline": []}}, {"id": "c", "content": {"text": "seat", "inline": []}}, {"id": "d", "content": {"text": "pool", "inline": []}}], "answer": {"option_id": "a"}, "feedback": {"text": "Ship and sit use the short vowel /ɪ/. Sheep and seat use /iː/, while pool uses /uː/.", "inline": []}, "hint": {"text": "Say ship and each option aloud.", "inline": []}, "provenance": {}}, {"id": "check:vowels:02", "order": 2, "position_after_block_id": "block:vowels:summary", "objective_id": "objective:vowels:apply", "kind": "multiple_choice", "prompt": {"text": "Which word has a different vowel sound from the others: pull, good, pool, should?", "inline": []}, "options": [{"id": "a", "content": {"text": "pull", "inline": []}}, {"id": "b", "content": {"text": "good", "inline": []}}, {"id": "c", "content": {"text": "pool", "inline": []}}, {"id": "d", "content": {"text": "should", "inline": []}}], "answer": {"option_id": "c"}, "feedback": {"text": "Pull, good and should use /ʊ/. Pool uses the long /uː/ sound, so it is the odd word.", "inline": []}, "hint": {"text": "Compare /ʊ/ with /uː/.", "inline": []}, "provenance": {}}],
+      "misconceptions": [],
+      "summary": [{"text": "English letters do not reliably identify vowel sounds.", "inline": []}, {"text": "Use sound contrasts and the phonemic chart.", "inline": []}],
+      "provenance": {"publisher": "UtmeLab", "title": "Cambridge Phonemic Chart", "url": "https://www.cambridgeenglish.org/fr/Images/742179-cambridge-phonetic-chart-poster.pdf", "locator": "Vowels, diphthongs and common spellings; syllabus alignment: JAMB Oral Forms", "licence": "UtmeLab-authored content informed by cited reference"},
+      "content_hash": ""
+    }
+  ],
+  "topic_links": [
+    {"exam": "JAMB", "subject": "use-of-english", "topic_slug": "lexis-and-structure", "subtopic_slug": "sentence-interpretation", "lesson_id": "lesson:use-of-english:meaning-from-context", "order_index": 1},
+    {"exam": "JAMB", "subject": "use-of-english", "topic_slug": "lexis-and-structure", "subtopic_slug": "basic-grammar", "lesson_id": "lesson:use-of-english:subject-verb-agreement", "order_index": 1},
+    {"exam": "JAMB", "subject": "use-of-english", "topic_slug": "comprehension", "subtopic_slug": "comprehension", "lesson_id": "lesson:use-of-english:comprehension-inference", "order_index": 1},
+    {"exam": "JAMB", "subject": "use-of-english", "topic_slug": "lexis-and-structure", "subtopic_slug": "synonyms", "lesson_id": "lesson:use-of-english:contextual-synonyms-antonyms", "order_index": 1},
+    {"exam": "JAMB", "subject": "use-of-english", "topic_slug": "lexis-and-structure", "subtopic_slug": "antonyms", "lesson_id": "lesson:use-of-english:contextual-synonyms-antonyms", "order_index": 2},
+    {"exam": "JAMB", "subject": "use-of-english", "topic_slug": "comprehension", "subtopic_slug": "cloze", "lesson_id": "lesson:use-of-english:cloze-by-context", "order_index": 1},
+    {"exam": "JAMB", "subject": "use-of-english", "topic_slug": "oral-forms", "subtopic_slug": "vowels", "lesson_id": "lesson:use-of-english:vowel-contrasts", "order_index": 1}
+  ],
+  "example_question_links": [
+    {"lesson_id": "lesson:use-of-english:meaning-from-context", "question_id": "q_authored_eng_sentinterp_001", "order_index": 1},
+    {"lesson_id": "lesson:use-of-english:meaning-from-context", "question_id": "q_authored_eng_sentinterp_002", "order_index": 2},
+    {"lesson_id": "lesson:use-of-english:meaning-from-context", "question_id": "q_authored_eng_sentinterp_003", "order_index": 3},
+    {"lesson_id": "lesson:use-of-english:subject-verb-agreement", "question_id": "q_authored_eng_grammar_001", "order_index": 1},
+    {"lesson_id": "lesson:use-of-english:subject-verb-agreement", "question_id": "q_authored_eng_grammar_002", "order_index": 2},
+    {"lesson_id": "lesson:use-of-english:subject-verb-agreement", "question_id": "q_authored_eng_grammar_003", "order_index": 3},
+    {"lesson_id": "lesson:use-of-english:comprehension-inference", "question_id": "q_claim_2025_english-language_74769", "order_index": 1},
+    {"lesson_id": "lesson:use-of-english:comprehension-inference", "question_id": "q_claim_2025_english-language_74770", "order_index": 2},
+    {"lesson_id": "lesson:use-of-english:comprehension-inference", "question_id": "q_claim_2025_english-language_74771", "order_index": 3},
+    {"lesson_id": "lesson:use-of-english:contextual-synonyms-antonyms", "question_id": "q_authored_eng_synonym_001", "order_index": 1},
+    {"lesson_id": "lesson:use-of-english:contextual-synonyms-antonyms", "question_id": "q_authored_eng_synonym_002", "order_index": 2},
+    {"lesson_id": "lesson:use-of-english:contextual-synonyms-antonyms", "question_id": "q_authored_eng_synonym_003", "order_index": 3},
+    {"lesson_id": "lesson:use-of-english:contextual-synonyms-antonyms", "question_id": "q_authored_eng_antonym_001", "order_index": 4},
+    {"lesson_id": "lesson:use-of-english:contextual-synonyms-antonyms", "question_id": "q_authored_eng_antonym_002", "order_index": 5},
+    {"lesson_id": "lesson:use-of-english:contextual-synonyms-antonyms", "question_id": "q_authored_eng_antonym_003", "order_index": 6},
+    {"lesson_id": "lesson:use-of-english:cloze-by-context", "question_id": "q_authored_eng_cloze_001", "order_index": 1},
+    {"lesson_id": "lesson:use-of-english:cloze-by-context", "question_id": "q_authored_eng_cloze_002", "order_index": 2},
+    {"lesson_id": "lesson:use-of-english:cloze-by-context", "question_id": "q_authored_eng_cloze_003", "order_index": 3},
+    {"lesson_id": "lesson:use-of-english:vowel-contrasts", "question_id": "q_authored_eng_oral_001", "order_index": 1},
+    {"lesson_id": "lesson:use-of-english:vowel-contrasts", "question_id": "q_authored_eng_vowel_002", "order_index": 2},
+    {"lesson_id": "lesson:use-of-english:vowel-contrasts", "question_id": "q_authored_eng_vowel_003", "order_index": 3}
+  ]
+}

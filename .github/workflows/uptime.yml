@@ -73,7 +73,7 @@ jobs:
 
       - name: Check the public edge
         env:
-          BASE_URL: https://api.utmelab.com
+          BASE_URL: https://api.jambmax.com
           # Fail fast. The deploy retries /ready for 180 s because it is booting
           # a replica and the boot is the thing being tested; an uptime check
           # that waits three minutes to report an outage is an outage that has

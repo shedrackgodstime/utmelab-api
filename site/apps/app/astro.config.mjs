@@ -7,7 +7,7 @@ import tailwindcss from '@tailwindcss/vite';
 // Real shadcn components live in src/components/ui. React does NOT touch docs/landing.
 // base '/dashboard' + static → detachable to app.utmelab.com with zero rewrite.
 export default defineConfig({
-  site: 'https://api.utmelab.com',
+  site: 'https://api.jambmax.com',
   base: '/dashboard',
   output: 'static',
   build: { format: 'directory' },

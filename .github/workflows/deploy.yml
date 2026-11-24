@@ -244,4 +244,4 @@ jobs:
       - name: Edge smoke check (public path, not loopback)
         run: |
           cd site
-          BASE_URL=https://api.utmelab.com node scripts/smoke.mjs
+          BASE_URL=https://api.jambmax.com node scripts/smoke.mjs

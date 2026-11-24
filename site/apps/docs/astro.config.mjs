@@ -13,7 +13,7 @@ import tailwindcss from '@tailwindcss/vite';
 // `UPDATE_SPEC=1 cargo test --lib openapi` to regenerate it. Sidebar rule
 // lives in site/docs/docs-IA-PLAN.md.
 export default defineConfig({
-  site: 'https://api.utmelab.com',
+  site: 'https://api.jambmax.com',
   base: '/docs',
   output: 'static',
   build: { format: 'directory' },

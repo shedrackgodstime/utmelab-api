@@ -9,7 +9,7 @@ description: Get your first question from the UTME Lab API in under a minute.
 2. Copy the code below, replace `YOUR_KEY`, and run it:
 
 ```bash
-curl -s "https://api.utmelab.com/api/v1/questions?exam=JAMB&subject=use-of-english&page=1&per_page=5" \
+curl -s "https://api.jambmax.com/api/v1/questions?exam=JAMB&subject=use-of-english&page=1&per_page=5" \
   -H 'x-api-key: YOUR_KEY'
 ```
 
@@ -33,7 +33,7 @@ for them on the [request coverage](/docs/guides/catalog/request/) page.
 
 ## Key details that matter
 
-- **Base URL:** `https://api.utmelab.com` (production).
+- **Base URL:** `https://api.jambmax.com` (production).
 - **Auth header:** every metered call needs `x-api-key: <key>` (raw key, no
   scheme), or a short-lived bearer token as described below.
   Keys are issued by email for now; dashboard issue/rotation comes with accounts.
@@ -48,7 +48,7 @@ If the client must call the API directly, mint a short-lived token on your
 backend and hand the client that instead:
 
 ```bash
-curl -s -X POST "https://api.utmelab.com/api/v1/tokens" \
+curl -s -X POST "https://api.jambmax.com/api/v1/tokens" \
   -H 'x-api-key: YOUR_KEY' \
   -H 'content-type: application/json' \
   -d '{"expires_in": 300}'
@@ -66,7 +66,7 @@ curl -s -X POST "https://api.utmelab.com/api/v1/tokens" \
 The client then sends the token in the standard header:
 
 ```bash
-curl -s "https://api.utmelab.com/api/v1/questions?exam=JAMB&subject=use-of-english" \
+curl -s "https://api.jambmax.com/api/v1/questions?exam=JAMB&subject=use-of-english" \
   -H 'authorization: Bearer tok_...'
 ```
 

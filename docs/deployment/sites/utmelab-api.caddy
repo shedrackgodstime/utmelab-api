@@ -2,7 +2,7 @@
 #
 # This is the service's own site file. `/etc/caddy/Caddyfile` imports
 # /etc/caddy/sites/*.caddy once, so this file is the whole edge story for
-# api.utmelab.com. `system provision utmelab-api` writes a file here only when
+# api.jambmax.com. `system provision utmelab-api` writes a file here only when
 # none exists, and never rewrites it afterwards: custom routing lives here, in
 # the repo, where it can be reviewed. bootstrap.sh installs it on a fresh host;
 # after any change, install it and reload:
@@ -10,7 +10,7 @@
 #   install -m 0644 sites/utmelab-api.caddy /etc/caddy/sites/utmelab-api.caddy
 #   caddy validate --config /etc/caddy/Caddyfile --adapter caddyfile && systemctl reload caddy
 #
-# Requires DNS api.utmelab.com -> this host, after which Caddy obtains a real
+# Requires DNS api.jambmax.com -> this host, after which Caddy obtains a real
 # Let's Encrypt cert automatically (no `tls internal`).
 #
 # Routing:
@@ -43,7 +43,7 @@
 # `auth::session::client_ip` in the same breath. The loopback bind above is the
 # other half: nothing but this proxy can reach the binary to claim anything.
 
-api.utmelab.com {
+api.jambmax.com {
 	encode gzip zstd
 
 	handle /api/* {

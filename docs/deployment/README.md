@@ -1,6 +1,6 @@
 # Deploying utmelab-api — one manifest, one gate, no SSH per release
 
-**Status: live.** `api.utmelab.com` serves this binary and its static site. The
+**Status: live.** `api.jambmax.com` serves this binary and its static site. The
 host also runs the parent UTME-Lab app through the same framework, so the
 framework itself lives in `docs/deployment/host/` — it is not API-specific.
 
@@ -53,7 +53,7 @@ is:
 SERVICE_NAME=utmelab-api
 BINARY_NAME=utmelab-api
 RUNTIME_USER=utmelab-api         # the process user
-DOMAIN=api.utmelab.com
+DOMAIN=api.jambmax.com
 IP=127.0.0.1
 PORT=8081
 HEALTH_ENDPOINT=/ready           # the honest signal: /health only proves it bound
@@ -205,8 +205,8 @@ After changing any of them: `sudo system verify`, then `caddy validate --config
 
 ## First run, in this order
 
-1. **DNS first** — A record `api.utmelab.com` → `209.74.85.163`, then wait for it
-   to resolve (`getent hosts api.utmelab.com`). Nothing TLS works until it does,
+1. **DNS first** — A record `api.jambmax.com` → `209.74.85.163`, then wait for it
+   to resolve (`getent hosts api.jambmax.com`). Nothing TLS works until it does,
    and it is the only step with real lead time.
 2. **Host** — the framework is installed and the manifest is in place
    (`sudo system verify` says so).
@@ -232,11 +232,11 @@ The deploy job's last step runs `site/scripts/smoke.mjs` against the public orig
 and fails the run on any mismatch. To check by hand:
 
 ```bash
-curl -s -o /dev/null -w '%{http_code}\n' https://api.utmelab.com/ready          # 200
-curl -s https://api.utmelab.com/health                                          # "ok" (text, not HTML)
-curl -s -o /dev/null -w '%{http_code}\n' https://api.utmelab.com/api/v1/exams   # 401 (keyed)
-curl -s https://api.utmelab.com/openapi.json | head -c 40                       # {"openapi":...
-curl -s -o /dev/null -w '%{http_code}\n' https://api.utmelab.com/               # 200 (landing)
+curl -s -o /dev/null -w '%{http_code}\n' https://api.jambmax.com/ready          # 200
+curl -s https://api.jambmax.com/health                                          # "ok" (text, not HTML)
+curl -s -o /dev/null -w '%{http_code}\n' https://api.jambmax.com/api/v1/exams   # 401 (keyed)
+curl -s https://api.jambmax.com/openapi.json | head -c 40                       # {"openapi":...
+curl -s -o /dev/null -w '%{http_code}\n' https://api.jambmax.com/               # 200 (landing)
 ```
 
 Use `handle` blocks for both tiers. A bare matcher plus `reverse_proxy` will lose to
@@ -265,7 +265,7 @@ Use `handle` blocks for both tiers. A bare matcher plus `reverse_proxy` will los
 - The replica is the only thing written at runtime: libsql keeps `<db>-wal`,
   `<db>-log` and `<db>-changes` beside the file. Everything else is read from
   Turso or served from memory.
-- Caddy obtains a real Let's Encrypt cert for `api.utmelab.com` automatically — no
+- Caddy obtains a real Let's Encrypt cert for `api.jambmax.com` automatically — no
   `tls internal`. Nothing TLS works until DNS resolves.
 - `TURSO_*` env names: the local `.env` also carries `TURSO_DB_TOKEN_READONLY` /
   `TURSO_API_KEY`; the service needs only `TURSO_DB_URL` + `TURSO_DB_TOKEN`, and
@@ -285,7 +285,7 @@ Use `handle` blocks for both tiers. A bare matcher plus `reverse_proxy` will los
 ## The edge smoke check
 
 Implemented as `site/scripts/smoke.mjs`, run as the last step of the deploy job
-against `https://api.utmelab.com`. It asserts distinct rendered content, not just
+against `https://api.jambmax.com`. It asserts distinct rendered content, not just
 status codes, because two real outages shipped green by returning `200` with the
 identical home page. Four groups:
 

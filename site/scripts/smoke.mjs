@@ -6,10 +6,10 @@
 // every broken route returned 200 with the identical home page. Titles are
 // compared as an array — never word-split, titles contain spaces.
 //
-// Usage: BASE_URL=https://api.utmelab.com node scripts/smoke.mjs
+// Usage: BASE_URL=https://api.jambmax.com node scripts/smoke.mjs
 // Exit non-zero on any failure so the deploy run goes red.
 
-const BASE = (process.env.BASE_URL || 'https://api.utmelab.com').replace(/\/+$/, '');
+const BASE = (process.env.BASE_URL || 'https://api.jambmax.com').replace(/\/+$/, '');
 
 let failures = 0;
 

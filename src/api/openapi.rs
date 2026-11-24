@@ -75,7 +75,7 @@ carry the trap that catches people. Send your long-lived key in the `X-API-Key` 
 a short-lived client token at `POST /api/v1/tokens` and send it as `Authorization: Bearer \
 tok_...`; every data route accepts either credential.",
     ),
-    servers((url = "https://api.utmelab.com", description = "Production")),
+    servers((url = "https://api.jambmax.com", description = "Production")),
     paths(
         exams::list,
         subjects::by_exam,
