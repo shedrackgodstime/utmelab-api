@@ -253,6 +253,8 @@ pub struct Subject {
     pub slug: String,
     pub exam: String,
     pub name: String,
+    /// Canonical subject position within an exam curriculum.
+    pub order: u32,
     pub is_compulsory: bool,
     /// MCQs the objective paper holds. Null where unverified: absence
     /// is data, never a zero masquerading as a fact.
@@ -386,6 +388,9 @@ pub struct ContentReference {
     pub id: String,
     #[serde(default)]
     pub title: String,
+    /// Canonical position of this reference within its parent.
+    #[serde(default)]
+    pub order: u32,
 }
 
 fn default_lesson_status() -> String {

@@ -510,19 +510,19 @@ mod tests {
         .await
         .expect("insert waec exam");
         conn.execute(
-            "INSERT INTO subjects VALUES ('biology','WAEC','Biology',0,50,'[]',NULL,NULL)",
+            "INSERT INTO subjects VALUES ('biology','WAEC','Biology',0,0,50,'[]',NULL,NULL)",
             (),
         )
         .await
         .expect("insert waec biology");
         conn.execute(
-            "INSERT INTO subjects VALUES ('physics','JAMB','Physics',0,40,'[]',NULL,NULL)",
+            "INSERT INTO subjects VALUES ('physics','JAMB','Physics',0,0,40,'[]',NULL,NULL)",
             (),
         )
         .await
         .expect("insert subject");
         conn.execute(
-            "INSERT INTO subjects VALUES ('math','JAMB','Math',0,1,'[]',NULL,NULL)",
+            "INSERT INTO subjects VALUES ('math','JAMB','Math',1,0,1,'[]',NULL,NULL)",
             (),
         )
         .await

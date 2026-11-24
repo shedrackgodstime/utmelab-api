@@ -4046,6 +4046,12 @@
           "id": {
             "type": "string"
           },
+          "order": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Canonical position of this reference within its parent.",
+            "minimum": 0
+          },
           "title": {
             "type": "string"
           }
@@ -6375,6 +6381,7 @@
           "slug",
           "exam",
           "name",
+          "order",
           "is_compulsory",
           "countries"
         ],
@@ -6402,6 +6409,12 @@
             ],
             "format": "int32",
             "description": "MCQs the objective paper holds. Null where unverified: absence\nis data, never a zero masquerading as a fact.",
+            "minimum": 0
+          },
+          "order": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Canonical subject position within an exam curriculum.",
             "minimum": 0
           },
           "slug": {

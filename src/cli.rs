@@ -202,11 +202,16 @@ fn import_lessons_cmd(path_str: String) -> i32 {
             return 1;
         }
         match store::lessons::import_bundle(&st, &bundle).await {
-            Ok(count) => {
-                println!("imported {count} lesson records from {path_str}");
-                let _ = store::sync::push_db(&db, &cfg).await;
-                0
-            }
+            Ok(count) => match store::sync::push_db(&db, &cfg).await {
+                Ok(()) => {
+                    println!("imported and pushed {count} lesson records from {path_str}");
+                    0
+                }
+                Err(e) => {
+                    eprintln!("lesson import committed locally but cloud push failed: {e}");
+                    1
+                }
+            },
             Err(e) => {
                 eprintln!("import lessons failed: {e}");
                 1
@@ -304,11 +309,16 @@ fn import_theory_cmd(path_str: String) -> i32 {
             return 1;
         }
         match store::catalog::import_theory_questions_from_json(&st, &content).await {
-            Ok(count) => {
-                println!("imported {count} theory questions from {path_str}");
-                let _ = store::sync::push_db(&db, &cfg).await;
-                0
-            }
+            Ok(count) => match store::sync::push_db(&db, &cfg).await {
+                Ok(()) => {
+                    println!("imported and pushed {count} theory questions from {path_str}");
+                    0
+                }
+                Err(e) => {
+                    eprintln!("theory import committed locally but cloud push failed: {e}");
+                    1
+                }
+            },
             Err(e) => {
                 eprintln!("import theory failed: {e}");
                 1

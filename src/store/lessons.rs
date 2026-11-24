@@ -129,16 +129,20 @@ pub async fn topic_lessons(
         async move {
             let mut rows = conn
                 .query(
-                    "SELECT lesson_refs FROM topics WHERE exam=?1 AND subject=?2 AND slug=?3",
+                    "SELECT tl.lesson_id, l.title, tl.order_index FROM topic_lessons tl JOIN lessons l ON l.id=tl.lesson_id WHERE tl.exam=?1 AND tl.subject=?2 AND tl.topic_slug=?3 AND tl.subtopic_slug='' AND l.status='published' ORDER BY tl.order_index, tl.lesson_id",
                     [exam.as_str(), subject.as_str(), topic_slug.as_str()],
                 )
                 .await
                 .map_err(upstream)?;
-            let Some(row) = rows.next().await.map_err(upstream)? else {
-                return Ok(Vec::new());
-            };
-            let raw: String = row.get(0).map_err(upstream)?;
-            json_col(raw, "topics.lesson_refs")
+            let mut out = Vec::new();
+            while let Some(row) = rows.next().await.map_err(upstream)? {
+                out.push(ContentReference {
+                    id: row.get(0).map_err(upstream)?,
+                    title: row.get(1).map_err(upstream)?,
+                    order: row.get(2).map_err(upstream)?,
+                });
+            }
+            Ok(out)
         }
     })
     .await
@@ -146,33 +150,102 @@ pub async fn topic_lessons(
 
 pub async fn subtopic_lessons(
     s: &DbState,
-    _exam: &str,
-    _subject: &str,
+    exam: &str,
+    subject: &str,
     topic_slug: &str,
     subtopic_slug: &str,
 ) -> Result<Vec<ContentReference>, AppError> {
-    let (topic_slug, subtopic_slug) = (topic_slug.to_string(), subtopic_slug.to_string());
+    let (exam, subject, topic_slug, subtopic_slug) = (
+        exam.to_string(),
+        subject.to_string(),
+        topic_slug.to_string(),
+        subtopic_slug.to_string(),
+    );
     with_conn(s, |conn| {
-        let (topic_slug, subtopic_slug) = (topic_slug.clone(), subtopic_slug.clone());
+        let (exam, subject, topic_slug, subtopic_slug) = (exam.clone(), subject.clone(), topic_slug.clone(), subtopic_slug.clone());
         async move {
             let mut rows = conn
                 .query(
-                    "SELECT lesson_refs FROM subtopics WHERE topic=?1 AND slug=?2",
-                    [topic_slug.as_str(), subtopic_slug.as_str()],
+                    "SELECT tl.lesson_id, l.title, tl.order_index FROM topic_lessons tl JOIN lessons l ON l.id=tl.lesson_id WHERE tl.exam=?1 AND tl.subject=?2 AND tl.topic_slug=?3 AND tl.subtopic_slug=?4 AND l.status='published' ORDER BY tl.order_index, tl.lesson_id",
+                    [exam.as_str(), subject.as_str(), topic_slug.as_str(), subtopic_slug.as_str()],
                 )
                 .await
                 .map_err(upstream)?;
-            let Some(row) = rows.next().await.map_err(upstream)? else {
-                return Ok(Vec::new());
-            };
-            let raw: String = row.get(0).map_err(upstream)?;
-            json_col(raw, "subtopics.lesson_refs")
+            let mut out = Vec::new();
+            while let Some(row) = rows.next().await.map_err(upstream)? {
+                out.push(ContentReference {
+                    id: row.get(0).map_err(upstream)?,
+                    title: row.get(1).map_err(upstream)?,
+                    order: row.get(2).map_err(upstream)?,
+                });
+            }
+            Ok(out)
         }
     })
     .await
 }
 
 pub async fn import_bundle(s: &DbState, bundle: &LessonBundle) -> Result<u64, AppError> {
+    let mut topic_link_orders = std::collections::HashSet::new();
+    let mut topic_link_keys = std::collections::HashSet::new();
+    for link in &bundle.topic_links {
+        if link.order_index < 0 {
+            return Err(AppError::BadRequest(format!(
+                "lesson link {} has a negative order_index",
+                link.lesson_id
+            )));
+        }
+        let subtopic = link.subtopic_slug.as_deref().unwrap_or_default();
+        let parent = (
+            link.exam.as_str(),
+            link.subject.as_str(),
+            link.topic_slug.as_str(),
+            subtopic,
+        );
+        if !topic_link_keys.insert((parent, link.lesson_id.as_str())) {
+            return Err(AppError::BadRequest(format!(
+                "duplicate lesson link {} for {}/{}/{}{}",
+                link.lesson_id,
+                link.exam,
+                link.subject,
+                link.topic_slug,
+                if subtopic.is_empty() {
+                    String::new()
+                } else {
+                    format!("/{subtopic}")
+                }
+            )));
+        }
+        if !topic_link_orders.insert((parent, link.order_index)) {
+            return Err(AppError::BadRequest(format!(
+                "duplicate lesson order_index {} for {}/{}/{}{}",
+                link.order_index,
+                link.exam,
+                link.subject,
+                link.topic_slug,
+                if subtopic.is_empty() {
+                    String::new()
+                } else {
+                    format!("/{subtopic}")
+                }
+            )));
+        }
+    }
+    let mut example_link_orders = std::collections::HashSet::new();
+    for link in &bundle.example_question_links {
+        if link.order_index < 0 {
+            return Err(AppError::BadRequest(format!(
+                "example question link {} has a negative order_index",
+                link.question_id
+            )));
+        }
+        if !example_link_orders.insert((link.lesson_id.as_str(), link.order_index)) {
+            return Err(AppError::BadRequest(format!(
+                "duplicate example question order_index {} for lesson {}",
+                link.order_index, link.lesson_id
+            )));
+        }
+    }
     let lesson_ids: std::collections::HashSet<&str> = bundle
         .lessons
         .iter()
@@ -316,6 +389,7 @@ pub async fn import_bundle(s: &DbState, bundle: &LessonBundle) -> Result<u64, Ap
             .map(|link| ContentReference {
                 id: link.question_id.clone(),
                 title: link.question_id.clone(),
+                order: link.order_index as u32,
             })
             .collect();
         let example_refs_json =

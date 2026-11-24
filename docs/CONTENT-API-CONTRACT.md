@@ -13,6 +13,19 @@ The contract is intentionally small:
 exam → subject → syllabus topic → lessons
 exam question → syllabus topic
 exam question ↔ lesson
+
+## Curriculum order
+
+Consumers use the published order fields as the default curriculum sequence:
+
+`subject.order` → `topic.order` → `subtopic.order` → `lesson_ref.order`
+
+The API owns the response ordering as well as exposing the fields. Subject rows
+must carry a canonical order within an exam; topics and subtopics use their
+existing syllabus order; lesson references use `topic_lessons.order_index`.
+Consumers must not sort these records alphabetically or invent a second default
+sequence. Learner progress belongs to the consumer's study engine and only
+decides which ordered item comes next.
 question → passage
 ```
 

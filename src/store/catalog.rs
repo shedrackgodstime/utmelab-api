@@ -1809,21 +1809,22 @@ fn map_subject(row: &turso::Row) -> Result<core::models::Subject, AppError> {
         slug: row.get(0).map_err(upstream)?,
         exam: row.get(1).map_err(upstream)?,
         name: row.get(2).map_err(upstream)?,
-        is_compulsory: req_bool(row.get_value(3).map_err(upstream)?, "subject.is_compulsory")?,
+        order: req_int(row.get_value(3).map_err(upstream)?, "subject.order")?,
+        is_compulsory: req_bool(row.get_value(4).map_err(upstream)?, "subject.is_compulsory")?,
         objective_paper_questions: opt_int(
-            row.get_value(4).map_err(upstream)?,
+            row.get_value(5).map_err(upstream)?,
             "subject.objective_paper_questions",
         )?,
         countries: {
-            let raw: String = row.get(5).map_err(upstream)?;
+            let raw: String = row.get(6).map_err(upstream)?;
             json_list(&raw, "subject.countries")?
         },
         syllabus_exam: {
-            let raw: Option<String> = row.get(6).map_err(upstream)?;
+            let raw: Option<String> = row.get(7).map_err(upstream)?;
             raw.filter(|s| !s.is_empty())
         },
         syllabus_subject: {
-            let raw: Option<String> = row.get(7).map_err(upstream)?;
+            let raw: Option<String> = row.get(8).map_err(upstream)?;
             raw.filter(|s| !s.is_empty())
         },
     })
@@ -1839,7 +1840,7 @@ pub async fn list_subjects(
         let exam = exam.clone();
         async move {
             let mut stmt = conn
-                .prepare("SELECT slug,exam,name,is_compulsory,objective_paper_questions,countries,syllabus_exam,syllabus_subject FROM subjects WHERE exam=?1")
+                .prepare("SELECT slug,exam,name,\"order\",is_compulsory,objective_paper_questions,countries,syllabus_exam,syllabus_subject FROM subjects WHERE exam=?1 ORDER BY \"order\", slug")
                 .await
                 .map_err(upstream)?;
             let mut rows = stmt.query([exam.as_str()]).await.map_err(upstream)?;
@@ -1867,7 +1868,7 @@ pub async fn get_subject(
         let slug = slug.clone();
         async move {
             let mut stmt = conn
-                .prepare("SELECT slug,exam,name,is_compulsory,objective_paper_questions,countries,syllabus_exam,syllabus_subject FROM subjects WHERE exam=?1 AND slug=?2")
+                .prepare("SELECT slug,exam,name,\"order\",is_compulsory,objective_paper_questions,countries,syllabus_exam,syllabus_subject FROM subjects WHERE exam=?1 AND slug=?2")
                 .await
                 .map_err(upstream)?;
             let mut rows = stmt
@@ -2581,19 +2582,19 @@ mod tests {
         .await
         .expect("insert elective requirement");
         conn.execute(
-            "INSERT INTO subjects VALUES ('use-of-english','JAMB','Use of English',1,50,'[]',NULL,NULL)",
+            "INSERT INTO subjects VALUES ('use-of-english','JAMB','Use of English',0,1,50,'[]',NULL,NULL)",
             (),
         )
         .await
         .expect("insert english");
         conn.execute(
-            "INSERT INTO subjects VALUES ('physics','JAMB','Physics',0,NULL,'[]',NULL,NULL)",
+            "INSERT INTO subjects VALUES ('physics','JAMB','Physics',0,0,NULL,'[]',NULL,NULL)",
             (),
         )
         .await
         .expect("insert physics");
         conn.execute(
-            "INSERT INTO subjects VALUES ('english-language','WAEC','English Language',1,60,'[]',NULL,NULL)",
+            "INSERT INTO subjects VALUES ('english-language','WAEC','English Language',0,1,60,'[]',NULL,NULL)",
             (),
         )
         .await
@@ -3240,7 +3241,7 @@ mod tests {
         crate::testing::connect(&db)
             .await
             .execute(
-                "INSERT INTO subjects VALUES ('odd','JAMB','Odd',2,NULL,'[]',NULL,NULL)",
+                "INSERT INTO subjects VALUES ('odd','JAMB','Odd',0,2,NULL,'[]',NULL,NULL)",
                 (),
             )
             .await

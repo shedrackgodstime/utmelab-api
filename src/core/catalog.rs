@@ -935,6 +935,7 @@ mod tests {
             slug: "physics".to_string(),
             exam: "JAMB".to_string(),
             name: "Physics".to_string(),
+            order: 1,
             is_compulsory: false,
             objective_paper_questions: Some(2),
             countries: Vec::new(),

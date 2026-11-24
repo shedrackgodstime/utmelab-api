@@ -139,7 +139,7 @@ const BANK_DDL: &[(&str, &str)] = &[
     ),
     (
         "subjects",
-        "CREATE TABLE subjects (slug TEXT, exam TEXT, name TEXT, is_compulsory INTEGER, objective_paper_questions INTEGER, countries TEXT NOT NULL DEFAULT '[]', syllabus_exam TEXT, syllabus_subject TEXT)",
+        "CREATE TABLE subjects (slug TEXT, exam TEXT, name TEXT, \"order\" INTEGER NOT NULL DEFAULT 0, is_compulsory INTEGER, objective_paper_questions INTEGER, countries TEXT NOT NULL DEFAULT '[]', syllabus_exam TEXT, syllabus_subject TEXT)",
     ),
     (
         "topics",
@@ -265,7 +265,7 @@ pub(crate) async fn seed_bank_exam(
         None => (turso::Value::Null, turso::Value::Null),
     };
     conn.execute(
-        "INSERT INTO subjects VALUES (?1, ?2, ?1, 0, 40, '[]', ?3, ?4)",
+        "INSERT INTO subjects VALUES (?1, ?2, ?1, 0, 0, 40, '[]', ?3, ?4)",
         vec![
             turso::Value::Text(subject.to_string()),
             turso::Value::Text(exam.to_string()),

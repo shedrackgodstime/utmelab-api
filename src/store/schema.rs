@@ -37,6 +37,7 @@ pub(crate) const DDL: &[&str] = &[
     "CREATE TABLE IF NOT EXISTS api_access_tokens (token_hash TEXT PRIMARY KEY, parent_prefix TEXT NOT NULL, scopes TEXT NOT NULL, expires_at INTEGER NOT NULL, revoked INTEGER NOT NULL DEFAULT 0, created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)",
     "CREATE TABLE IF NOT EXISTS reports (id TEXT PRIMARY KEY, target_type TEXT NOT NULL, target_id TEXT NOT NULL, reporter TEXT NOT NULL, reason TEXT NOT NULL, detail TEXT, created_at INTEGER NOT NULL, UNIQUE(reporter, target_type, target_id, reason))",
     "CREATE TABLE IF NOT EXISTS lessons (id TEXT PRIMARY KEY, status TEXT NOT NULL DEFAULT 'published', title TEXT NOT NULL, description TEXT NOT NULL DEFAULT '{}', subject TEXT NOT NULL, level TEXT NOT NULL DEFAULT '', estimated_minutes INTEGER NOT NULL DEFAULT 0, objectives TEXT NOT NULL DEFAULT '[]', content TEXT NOT NULL DEFAULT '[]', checks TEXT NOT NULL DEFAULT '[]', misconceptions TEXT NOT NULL DEFAULT '[]', summary TEXT NOT NULL DEFAULT '[]', example_question_refs TEXT NOT NULL DEFAULT '[]', provenance TEXT NOT NULL DEFAULT '{}', content_hash TEXT NOT NULL, created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP, updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)",
+    "CREATE TABLE IF NOT EXISTS topic_lessons (exam TEXT NOT NULL, subject TEXT NOT NULL, topic_slug TEXT NOT NULL, subtopic_slug TEXT NOT NULL DEFAULT '', lesson_id TEXT NOT NULL, order_index INTEGER NOT NULL DEFAULT 0, PRIMARY KEY (exam, subject, topic_slug, subtopic_slug, lesson_id))",
     "CREATE TABLE IF NOT EXISTS theory_questions (id TEXT PRIMARY KEY, exam TEXT NOT NULL, subject TEXT NOT NULL, year INTEGER NOT NULL, paper INTEGER NOT NULL DEFAULT 2, section TEXT NOT NULL, question_number TEXT NOT NULL, topic_slug TEXT NOT NULL, subtopic_slug TEXT, total_marks INTEGER NOT NULL, stem TEXT NOT NULL, diagram_url TEXT, sub_parts TEXT NOT NULL DEFAULT '[]', formulation_bridge TEXT NOT NULL DEFAULT '[]', marking_methods TEXT NOT NULL DEFAULT '[]', diagram_rubric TEXT, penalties TEXT NOT NULL DEFAULT '[]', examiner_report TEXT NOT NULL, content_hash TEXT NOT NULL, created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)",
 ];
 
@@ -172,11 +173,23 @@ pub const READ_SHAPES: &[(&str, &[&str])] = &[
             "slug",
             "exam",
             "name",
+            "order",
             "is_compulsory",
             "objective_paper_questions",
             "countries",
             "syllabus_exam",
             "syllabus_subject",
+        ],
+    ),
+    (
+        "topic_lessons",
+        &[
+            "exam",
+            "subject",
+            "topic_slug",
+            "subtopic_slug",
+            "lesson_id",
+            "order_index",
         ],
     ),
     (
