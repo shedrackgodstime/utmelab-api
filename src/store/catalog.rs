@@ -1068,10 +1068,12 @@ pub async fn get_topic(
     let exam = exam.to_string();
     let subject = subject.to_string();
     let slug = slug.to_string();
+    let titles = crate::store::lessons::published_lesson_titles(s).await?;
     with_conn(s, |conn| {
         let exam = exam.clone();
         let subject = subject.clone();
         let slug = slug.clone();
+        let titles = titles.clone();
         async move {
             let mut stmt = conn
             .prepare("SELECT slug,subject,exam,name,\"order\",weight,objectives,lesson_refs FROM topics WHERE exam=?1 AND subject=?2 AND slug=?3")
@@ -1086,8 +1088,11 @@ pub async fn get_topic(
             };
             let objectives_raw: String = row.get(6).map_err(upstream)?;
             let lesson_refs_raw: String = row.get(7).map_err(upstream)?;
-            let lesson_refs: Vec<core::models::ContentReference> = serde_json::from_str(&lesson_refs_raw)
-                .map_err(|error| AppError::Upstream(format!("topics.lesson_refs: {error}")))?;
+            let lesson_refs = crate::store::lessons::visible_refs(
+                &lesson_refs_raw,
+                "topics.lesson_refs",
+                &titles,
+            )?;
             Ok(Some(core::models::Topic {
                 slug: row.get(0).map_err(upstream)?,
                 subject: row.get(1).map_err(upstream)?,

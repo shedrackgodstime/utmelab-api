@@ -22,7 +22,8 @@ Consumers use the published order fields as the default curriculum sequence:
 
 The API owns the response ordering as well as exposing the fields. Subject rows
 must carry a canonical order within an exam; topics and subtopics use their
-existing syllabus order; lesson references use `topic_lessons.order_index`.
+existing syllabus order; lesson references use the JSON array order in the
+exam-owned topic or subtopic row, mirrored by `lesson_ref.order`.
 Consumers must not sort these records alphabetically or invent a second default
 sequence. Learner progress belongs to the consumer's study engine and only
 decides which ordered item comes next.
@@ -141,7 +142,8 @@ mean zero.
 
 The topic is exam-owned. Its `lesson_refs` connect the syllabus topic to
 exam-neutral lessons. One topic may reference many lessons, and one lesson may
-be referenced by topics from many exams.
+be referenced by topics from many exams. The relationship lives on the topic
+or subtopic row. Lessons carry no exam identity.
 
 The replacement syllabus response may retain `subtopics` when the source
 syllabus has them. It must remove the legacy `has_note` and `note_id` fields.

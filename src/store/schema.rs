@@ -25,7 +25,7 @@ pub const CONTRACT_VERSION: u64 = 1;
 
 /// Version of the API-owned schema. This is separate from
 /// [`CONTRACT_VERSION`], which belongs to the content pipeline.
-pub const API_SCHEMA_VERSION: u64 = 18;
+pub const API_SCHEMA_VERSION: u64 = 19;
 
 /// Tables the API owns and creates at boot.
 pub(crate) const DDL: &[&str] = &[
@@ -37,7 +37,6 @@ pub(crate) const DDL: &[&str] = &[
     "CREATE TABLE IF NOT EXISTS api_access_tokens (token_hash TEXT PRIMARY KEY, parent_prefix TEXT NOT NULL, scopes TEXT NOT NULL, expires_at INTEGER NOT NULL, revoked INTEGER NOT NULL DEFAULT 0, created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)",
     "CREATE TABLE IF NOT EXISTS reports (id TEXT PRIMARY KEY, target_type TEXT NOT NULL, target_id TEXT NOT NULL, reporter TEXT NOT NULL, reason TEXT NOT NULL, detail TEXT, created_at INTEGER NOT NULL, UNIQUE(reporter, target_type, target_id, reason))",
     "CREATE TABLE IF NOT EXISTS lessons (id TEXT PRIMARY KEY, status TEXT NOT NULL DEFAULT 'published', title TEXT NOT NULL, description TEXT NOT NULL DEFAULT '{}', subject TEXT NOT NULL, level TEXT NOT NULL DEFAULT '', estimated_minutes INTEGER NOT NULL DEFAULT 0, objectives TEXT NOT NULL DEFAULT '[]', content TEXT NOT NULL DEFAULT '[]', checks TEXT NOT NULL DEFAULT '[]', misconceptions TEXT NOT NULL DEFAULT '[]', summary TEXT NOT NULL DEFAULT '[]', example_question_refs TEXT NOT NULL DEFAULT '[]', provenance TEXT NOT NULL DEFAULT '{}', content_hash TEXT NOT NULL, created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP, updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)",
-    "CREATE TABLE IF NOT EXISTS topic_lessons (exam TEXT NOT NULL, subject TEXT NOT NULL, topic_slug TEXT NOT NULL, subtopic_slug TEXT NOT NULL DEFAULT '', lesson_id TEXT NOT NULL, order_index INTEGER NOT NULL DEFAULT 0, PRIMARY KEY (exam, subject, topic_slug, subtopic_slug, lesson_id))",
     "CREATE TABLE IF NOT EXISTS theory_questions (id TEXT PRIMARY KEY, exam TEXT NOT NULL, subject TEXT NOT NULL, year INTEGER NOT NULL, paper INTEGER NOT NULL DEFAULT 2, section TEXT NOT NULL, question_number TEXT NOT NULL, topic_slug TEXT NOT NULL, subtopic_slug TEXT, total_marks INTEGER NOT NULL, stem TEXT NOT NULL, diagram_url TEXT, sub_parts TEXT NOT NULL DEFAULT '[]', formulation_bridge TEXT NOT NULL DEFAULT '[]', marking_methods TEXT NOT NULL DEFAULT '[]', diagram_rubric TEXT, penalties TEXT NOT NULL DEFAULT '[]', examiner_report TEXT NOT NULL, content_hash TEXT NOT NULL, created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)",
 ];
 
@@ -179,17 +178,6 @@ pub const READ_SHAPES: &[(&str, &[&str])] = &[
             "countries",
             "syllabus_exam",
             "syllabus_subject",
-        ],
-    ),
-    (
-        "topic_lessons",
-        &[
-            "exam",
-            "subject",
-            "topic_slug",
-            "subtopic_slug",
-            "lesson_id",
-            "order_index",
         ],
     ),
     (
@@ -344,7 +332,7 @@ pub async fn ensure_schema(s: &DbState) -> Result<(), AppError> {
 /// Fresh databases receive the current DDL first; upgraded databases receive
 /// the same DDL idempotently and then any missing migrations.
 const MIGRATIONS: &[u64] = &[
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
 ];
 
 async fn apply_migrations(s: &DbState) -> Result<(), AppError> {
@@ -793,6 +781,13 @@ async fn apply_migrations(s: &DbState) -> Result<(), AppError> {
                     .await?;
                 super::write::execute_ddl_local(s, "DROP TABLE IF EXISTS lesson_revisions").await?;
             }
+            19 => {
+                // The exam-owned JSON refs now carry the relationship and its
+                // order. Fold any remaining rows into them before dropping the
+                // table, so an older replica does not lose authored links.
+                super::lessons::backfill_lesson_refs(s).await?;
+                super::write::execute_ddl_local(s, "DROP TABLE IF EXISTS topic_lessons").await?;
+            }
 
             _ => {
                 return Err(AppError::Internal(
@@ -989,7 +984,7 @@ pub async fn read_bank_version(s: &DbState) -> String {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::testing::{conn_of, db_state, replica};
+    use crate::testing::{api_schema, bank_schema, conn_of, db_state, replica};
 
     async fn local_db() -> crate::state::DbState {
         db_state(replica().await)
@@ -1044,6 +1039,103 @@ mod tests {
         )
         .await;
         assert!(accepted.is_ok(), "a request write is accepted locally");
+    }
+
+    #[tokio::test]
+    async fn fresh_api_schema_has_no_topic_lessons_table() {
+        let s = local_db().await;
+        ensure_schema(&s).await.expect("schema work");
+        let conn = conn_of(&s).await;
+        let mut rows = conn
+            .query(
+                "SELECT 1 FROM sqlite_master WHERE type='table' AND name='topic_lessons'",
+                (),
+            )
+            .await
+            .expect("sqlite_master");
+        assert!(
+            rows.next().await.expect("next").is_none(),
+            "the relationship table must not survive a fresh schema"
+        );
+    }
+
+    #[tokio::test]
+    async fn migration_nineteen_folds_relationship_rows_into_json_refs() {
+        let s = local_db().await;
+        let conn = conn_of(&s).await;
+        api_schema(&conn).await;
+        bank_schema(&conn, &["topics", "subtopics"]).await;
+        for version in 1..=18 {
+            conn.execute(
+                "INSERT INTO api_schema_migrations (version) VALUES (?1)",
+                [version as i64],
+            )
+            .await
+            .expect("record applied migration");
+        }
+        conn.execute(
+            "CREATE TABLE topic_lessons (exam TEXT, subject TEXT, topic_slug TEXT, subtopic_slug TEXT NOT NULL DEFAULT '', lesson_id TEXT, order_index INTEGER NOT NULL DEFAULT 0)",
+            (),
+        )
+        .await
+        .expect("relationship table");
+        conn.execute(
+            "INSERT INTO lessons (id,status,title,description,subject,level,estimated_minutes,objectives,content,checks,misconceptions,summary,example_question_refs,provenance,content_hash) VALUES ('lesson:english:first','published','First lesson','{}','english-language','secondary',5,'[]','[]','[]','[]','[]','[]','{}','hash')",
+            (),
+        )
+        .await
+        .expect("lesson");
+        conn.execute(
+            "INSERT INTO topics VALUES ('comprehension','english-language','JAMB','Comprehension',1,0,'[]','[]','[]')",
+            (),
+        )
+        .await
+        .expect("topic");
+        conn.execute(
+            "INSERT INTO subtopics VALUES ('comprehension','comprehension','Comprehension',1,'[]','[]')",
+            (),
+        )
+        .await
+        .expect("subtopic");
+        for subtopic in ["", "comprehension"] {
+            conn.execute(
+                "INSERT INTO topic_lessons VALUES ('JAMB','english-language','comprehension',?1,'lesson:english:first',1)",
+                [subtopic],
+            )
+            .await
+            .expect("relationship row");
+        }
+
+        apply_migrations(&s).await.expect("migration nineteen");
+
+        let mut rows = conn
+            .query(
+                "SELECT 1 FROM sqlite_master WHERE type='table' AND name='topic_lessons'",
+                (),
+            )
+            .await
+            .expect("sqlite_master");
+        assert!(rows.next().await.expect("next").is_none(), "table dropped");
+
+        for sql in [
+            "SELECT lesson_refs FROM topics WHERE slug='comprehension'",
+            "SELECT lesson_refs FROM subtopics WHERE slug='comprehension'",
+        ] {
+            let mut rows = conn.query(sql, ()).await.expect("refs query");
+            let raw: String = rows
+                .next()
+                .await
+                .expect("row")
+                .expect("result")
+                .get(0)
+                .expect("json");
+            let refs: Vec<crate::core::models::ContentReference> =
+                serde_json::from_str(&raw).expect("refs json");
+            assert_eq!(refs.len(), 1);
+            assert_eq!(refs[0].id, "lesson:english:first");
+            assert_eq!(refs[0].title, "First lesson");
+            assert_eq!(refs[0].order, 1);
+        }
     }
 
     #[tokio::test]

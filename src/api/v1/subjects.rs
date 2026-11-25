@@ -110,12 +110,13 @@ pub async fn build_syllabus(
         &counts,
         country.as_deref(),
     );
+    // The refs live on the same topic rows as the tree, including mapped
+    // syllabuses such as NECO pointing at WAEC.
+    let refs = store::lessons::syllabus_lesson_refs(s, &syllabus_exam, &syllabus_subject).await?;
     for topic in &mut syllabus.topics {
-        topic.lesson_refs = store::lessons::topic_lessons(s, exam, slug, &topic.slug).await?;
+        topic.lesson_refs = refs.topic(&topic.slug);
         for subtopic in &mut topic.subtopics {
-            subtopic.lesson_refs =
-                store::lessons::subtopic_lessons(s, exam, slug, &topic.slug, &subtopic.slug)
-                    .await?;
+            subtopic.lesson_refs = refs.subtopic(&topic.slug, &subtopic.slug);
         }
     }
     Ok(syllabus)
