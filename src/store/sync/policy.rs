@@ -317,9 +317,13 @@ pub struct SyncPolicy {
     pub retry: RetryPolicy,
     pub freshness: FreshnessPolicy,
     /// Whether a full replica rebuild may be requested. Off by default: the
-    /// operation is deliberate, discards local work, and is not a migration
-    /// tool. Both admin surfaces consult this one value.
+    /// operation is deliberate and is not a migration tool. Both admin
+    /// surfaces consult this one value.
     pub resync_enabled: bool,
+    /// How long a rebuild may pause writes and drain pending local work. A
+    /// drain that cannot finish in this window aborts the rebuild and leaves
+    /// the serving replica untouched.
+    pub resync_drain: Duration,
     pub write_admission: WriteAdmissionPolicy,
 }
 
@@ -349,6 +353,7 @@ impl SyncPolicy {
                 heartbeat_max_age: secs(cfg.sync_heartbeat_max_secs),
             },
             resync_enabled: cfg.sync_resync_enabled,
+            resync_drain: Duration::from_secs(cfg.sync_resync_drain_secs),
             write_admission: WriteAdmissionPolicy {
                 max_pending_operations: cfg.sync_max_pending_operations,
                 max_pending_bytes: cfg.sync_max_pending_bytes,
@@ -511,6 +516,10 @@ mod tests {
         assert!(
             !p.resync_enabled,
             "the default policy must gate full resync"
+        );
+        assert_eq!(
+            p.resync_drain,
+            Duration::from_secs(cfg.sync_resync_drain_secs)
         );
         let mut enabled = cfg.clone();
         enabled.sync_resync_enabled = true;

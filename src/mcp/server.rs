@@ -303,7 +303,7 @@ impl McpServer {
     /// Read the same sync and request telemetry the session status route
     /// reports. Needs an admin API key with `manage:keys`.
     #[tool(
-        description = "Read sync and request telemetry, including resync gate and pending state. Needs manage:keys.",
+        description = "Read sync and request telemetry, including resync gate, pending state, and write-drain state. Needs manage:keys.",
         meta = scope_meta(SCOPE_MANAGE_KEYS)
     )]
     async fn status(

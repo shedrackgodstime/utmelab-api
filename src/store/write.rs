@@ -27,6 +27,15 @@ fn ensure_write_admitted(s: &DbState) -> Result<(), AppError> {
     if s.sync.stop_requested() {
         return Err(AppError::DbUnavailable("sync"));
     }
+    if s.sync.resync_draining() {
+        tracing::warn!(
+            event = "write_paused_for_resync",
+            "write refused while local work drains for a full replica rebuild"
+        );
+        return Err(AppError::Conflict(
+            "replica rebuild in progress; writes are paused".to_string(),
+        ));
+    }
     match admit_write(s.sync.pending_work(), &s.sync.policy().write_admission) {
         WriteDecision::Admit => Ok(()),
         WriteDecision::Reject(reason) => {
@@ -368,5 +377,47 @@ mod tests {
             .and_then(|r| r.get(0).ok())
             .expect("count");
         assert_eq!(count, 0, "the refused write must not reach the local store");
+    }
+
+    #[tokio::test]
+    async fn a_rebuild_drain_pauses_writes_before_they_reach_the_local_store() {
+        use crate::store::sync::{SyncPolicy, SyncStatus};
+        use std::sync::Arc;
+
+        let db = replica().await;
+        api_schema(&connect(&db).await).await;
+        let policy = SyncPolicy {
+            resync_enabled: true,
+            ..SyncPolicy::default()
+        };
+        let mut s = db_state(db);
+        s.sync = Arc::new(SyncStatus::verified(policy));
+        assert!(crate::store::sync::request_resync(&s)
+            .await
+            .expect("the operator gate is open"));
+
+        let result = super::execute_write(
+            &s,
+            "INSERT INTO meta (key, value) VALUES ('paused', 'v')",
+            vec![],
+        )
+        .await;
+        let crate::error::AppError::Conflict(message) = result.expect_err("write is paused") else {
+            panic!("expected a conflict while the replica rebuild drains");
+        };
+        assert!(message.contains("writes are paused"), "{message}");
+
+        let conn = conn_of(&s).await;
+        let mut rows = conn
+            .query("SELECT COUNT(*) FROM meta WHERE key='paused'", ())
+            .await
+            .expect("query");
+        let count: i64 = rows
+            .next()
+            .await
+            .expect("next")
+            .and_then(|r| r.get(0).ok())
+            .expect("count");
+        assert_eq!(count, 0, "a paused write must not be committed locally");
     }
 }

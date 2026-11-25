@@ -62,6 +62,7 @@ pub(crate) async fn status_payload(s: &DbState) -> Result<ServiceStatus, AppErro
         sync_last_error_unix: health.last_error_unix,
         sync_resync_enabled: s.sync.policy().resync_enabled,
         sync_resync_pending: s.sync.resync_pending(),
+        sync_resync_draining: s.sync.resync_draining(),
         sync: store::sync::stats(s).await?,
         gate_rejections: m.gate_rejections,
         pulls_applied: m.pulls_applied,

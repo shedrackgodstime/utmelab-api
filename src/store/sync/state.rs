@@ -11,12 +11,12 @@
 use std::{
     sync::{
         atomic::{AtomicBool, Ordering},
-        Mutex, MutexGuard,
+        Arc, Mutex, MutexGuard,
     },
     time::Duration,
 };
 
-use tokio::sync::watch;
+use tokio::sync::{watch, Notify};
 
 use super::{
     policy::{classify_app, ErrorClass, FreshnessPolicy, SyncError, SyncPolicy, Timestamp},
@@ -532,7 +532,11 @@ pub struct SyncStatus {
     stop_notify: std::sync::Arc<tokio::sync::Notify>,
     resync_notify: watch::Sender<u64>,
     resync_receiver: watch::Receiver<u64>,
+    resync_start: Arc<Notify>,
     resync_pending: AtomicBool,
+    /// True from request until the outcome is known. Writes are refused while
+    /// it is set so pending local work cannot grow during the drain.
+    resync_draining: AtomicBool,
 }
 
 #[derive(Clone, Debug)]
@@ -562,7 +566,9 @@ impl SyncStatus {
             stop_notify: std::sync::Arc::new(tokio::sync::Notify::new()),
             resync_notify,
             resync_receiver,
+            resync_start: Arc::new(Notify::new()),
             resync_pending: AtomicBool::new(false),
+            resync_draining: AtomicBool::new(false),
         }
     }
 
@@ -587,7 +593,9 @@ impl SyncStatus {
             stop_notify: std::sync::Arc::new(tokio::sync::Notify::new()),
             resync_notify,
             resync_receiver,
+            resync_start: Arc::new(Notify::new()),
             resync_pending: AtomicBool::new(false),
+            resync_draining: AtomicBool::new(false),
         }
     }
 
@@ -610,7 +618,9 @@ impl SyncStatus {
             stop_notify: std::sync::Arc::new(tokio::sync::Notify::new()),
             resync_notify,
             resync_receiver,
+            resync_start: Arc::new(Notify::new()),
             resync_pending: AtomicBool::new(false),
+            resync_draining: AtomicBool::new(false),
         }
     }
 
@@ -681,9 +691,9 @@ impl SyncStatus {
         snapshot.health.push_pending = true;
     }
 
-    /// Ask the supervisor to abandon the current replica and bootstrap a new
-    /// one. The watch channel carries an epoch, so a request made between two
-    /// supervisor loop iterations is still observed.
+    /// Ask the supervisor to pause writes, drain pending local work, and then
+    /// build a staged replacement. The epoch is deliberately not advanced yet:
+    /// the active push task must stay alive until the drain succeeds.
     pub fn request_resync(&self) -> bool {
         if self.stop_requested() {
             return false;
@@ -695,8 +705,8 @@ impl SyncStatus {
         {
             return false;
         }
-        self.resync_notify
-            .send_modify(|epoch| *epoch = epoch.wrapping_add(1));
+        self.resync_draining.store(true, Ordering::Release);
+        self.resync_start.notify_waiters();
         true
     }
 
@@ -705,23 +715,53 @@ impl SyncStatus {
         self.resync_pending.load(Ordering::Acquire)
     }
 
+    /// True while writes are paused so pending local work can drain.
+    pub fn resync_draining(&self) -> bool {
+        self.resync_draining.load(Ordering::Acquire)
+    }
+
     /// Monotonic rebuild generation. Long-running tasks retire themselves if
     /// this changes underneath them.
     pub fn resync_epoch(&self) -> u64 {
         *self.resync_notify.borrow()
     }
 
+    /// Retire the current sync root and push task once the drain succeeds.
+    /// The returned epoch pins the staged build to this one rebuild.
+    pub fn begin_resync_epoch(&self) -> u64 {
+        let mut epoch = 0;
+        self.resync_notify.send_modify(|value| {
+            *value = value.wrapping_add(1);
+            epoch = *value;
+        });
+        epoch
+    }
+
     pub fn finish_resync(&self) {
         self.resync_pending.store(false, Ordering::Release);
+        self.resync_draining.store(false, Ordering::Release);
+    }
+
+    /// Wait for an operator resync request. Returns immediately when one is
+    /// already pending, so a request made before the supervisor reaches its
+    /// select cannot be lost.
+    pub async fn wait_for_resync(&self) {
+        loop {
+            let notified = self.resync_start.notified();
+            if self.resync_pending() {
+                return;
+            }
+            notified.await;
+        }
     }
 
     pub fn subscribe_resync(&self) -> watch::Receiver<u64> {
         self.resync_receiver.clone()
     }
 
-    /// Local work is intentionally discarded by a full resync. Clear its
-    /// admission counters so writes can resume against the new replica after
-    /// the replacement has converged.
+    /// Final safety net after a successful drain and swap. Pending work should
+    /// already be zero; clearing it ensures writes resume against the new
+    /// replica with a clean admission budget.
     pub fn clear_pending_for_rebuild(&self, at: Timestamp) {
         let mut snapshot = self.lock();
         snapshot.health.pending_operations = 0;
@@ -941,6 +981,7 @@ mod tests {
                 heartbeat_max_age: Duration::from_secs(180),
             },
             resync_enabled: false,
+            resync_drain: Duration::from_secs(120),
             write_admission: super::super::policy::WriteAdmissionPolicy {
                 max_pending_operations: 16,
                 max_pending_bytes: 1024,
@@ -1368,25 +1409,40 @@ mod tests {
     }
 
     #[test]
-    fn resync_requests_are_single_flight_and_carry_an_epoch() {
+    fn resync_requests_pause_writes_before_the_epoch_advances() {
         let status = SyncStatus::verified(policy());
         let mut watcher = status.subscribe_resync();
         assert_eq!(status.resync_epoch(), 0);
 
         assert!(status.request_resync());
-        assert_eq!(status.resync_epoch(), 1);
-        assert!(watcher.has_changed().expect("resync watcher stays open"));
-        assert_eq!(*watcher.borrow_and_update(), 1);
+        assert!(
+            status.resync_draining(),
+            "writes must pause while local work drains"
+        );
+        assert_eq!(
+            status.resync_epoch(),
+            0,
+            "the push task must stay alive through the drain"
+        );
+        assert!(!watcher
+            .has_changed()
+            .expect("watch stays open before drain"));
         assert!(
             !status.request_resync(),
             "a queued rebuild cannot be queued twice"
         );
         assert!(status.resync_pending());
 
+        assert_eq!(status.begin_resync_epoch(), 1);
+        assert!(watcher.has_changed().expect("watch fires after drain"));
+        assert_eq!(*watcher.borrow_and_update(), 1);
+
         status.finish_resync();
         assert!(!status.resync_pending());
+        assert!(!status.resync_draining());
         assert!(status.request_resync());
-        assert_eq!(status.resync_epoch(), 2);
+        assert_eq!(status.begin_resync_epoch(), 2);
+        status.finish_resync();
 
         status.begin_stop();
         assert!(!status.request_resync(), "shutdown refuses new rebuilds");

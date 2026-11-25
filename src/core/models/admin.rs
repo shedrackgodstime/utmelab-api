@@ -37,6 +37,9 @@ pub struct ServiceStatus {
     pub sync_resync_enabled: bool,
     /// Whether a full-resync rebuild is currently queued or in flight.
     pub sync_resync_pending: bool,
+    /// Whether writes are paused while local work drains and the staged
+    /// replacement is prepared. Reads continue from the serving replica.
+    pub sync_resync_draining: bool,
     /// Engine-side sync figures, read-only. Null when no replica is attached
     /// (or the engine cannot answer): absence is honest, never zeros. This
     /// never checkpoints; checkpointing is the engine's own job.

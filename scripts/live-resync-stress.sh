@@ -92,7 +92,8 @@ wait_pending_false() {
     mcp_status || true
     if [[ -s "$OUTDIR/status.json" ]] \
       && [[ "$(jq -r '.sync_resync_enabled // false' "$OUTDIR/status.json")" == "true" ]] \
-      && [[ "$(jq -r 'if has("sync_resync_pending") then .sync_resync_pending else true end' "$OUTDIR/status.json")" == "false" ]]; then
+      && [[ "$(jq -r 'if has("sync_resync_pending") then .sync_resync_pending else true end' "$OUTDIR/status.json")" == "false" ]] \
+      && [[ "$(jq -r 'if has("sync_resync_draining") then .sync_resync_draining else true end' "$OUTDIR/status.json")" == "false" ]]; then
       return 0
     fi
     sleep 1
@@ -134,8 +135,15 @@ echo "start $(now)" > "$OUTDIR/events.tsv"
 
 [[ "$(health_code)" == "200" ]] || fail "health failed before the run"
 wait_ready || fail "keyed reads were not ready before the run"
-mcp_status || true
-cp "$OUTDIR/status.json" "$OUTDIR/status-before.json" 2>/dev/null || true
+mcp_status || fail "MCP status failed before the run"
+cp "$OUTDIR/status.json" "$OUTDIR/status-before.json"
+jq -e '
+  .sync_state == "ready" and
+  .sync_readiness == "ready" and
+  .sync_resync_enabled == true and
+  .sync_resync_pending == false and
+  .sync_resync_draining == false
+' "$OUTDIR/status-before.json" >/dev/null || fail "service was not ready with the resync gate open"
 
 wrk -t"$WRK_THREADS" -c"$WRK_CONNS" -d"${DURATION}s" --latency \
   -H "X-API-Key: $API_KEY" "$BASE_URL/api/v1/exams" \
@@ -168,8 +176,14 @@ SAMPLER_PID=""
 
 [[ "$(health_code)" == "200" ]] || fail "health failed after the run"
 wait_ready || fail "keyed reads did not recover after the run"
-mcp_status || true
-cp "$OUTDIR/status.json" "$OUTDIR/status-after.json" 2>/dev/null || true
+mcp_status || fail "MCP status failed after the run"
+cp "$OUTDIR/status.json" "$OUTDIR/status-after.json"
+jq -e '
+  .sync_state == "ready" and
+  .sync_readiness == "ready" and
+  .sync_resync_pending == false and
+  .sync_resync_draining == false
+' "$OUTDIR/status-after.json" >/dev/null || fail "service did not return to a ready, undrained state"
 printf '%s\tend\n' "$(now)" >> "$OUTDIR/events.tsv"
 
 pgrep -af "$PROCESS_PATTERN" > "$OUTDIR/processes.txt" || true

@@ -703,6 +703,7 @@ mod tests {
         assert!(payload["sync_state"].is_string(), "{payload}");
         assert!(!payload["sync_resync_enabled"].as_bool().unwrap_or(true));
         assert!(!payload["sync_resync_pending"].as_bool().unwrap_or(true));
+        assert!(!payload["sync_resync_draining"].as_bool().unwrap_or(true));
     }
 
     /// The full rebuild tool reaches the same store operation as the session

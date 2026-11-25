@@ -66,10 +66,14 @@ pub const DEFAULT_SYNC_AUTH_MAX_STALENESS_SECS: u64 = 31_536_000;
 /// The supervisor stamps a heartbeat every loop. A gap past this budget means
 /// the task is no longer running and readiness must stop trusting the replica.
 pub const DEFAULT_SYNC_HEARTBEAT_MAX_SECS: u64 = 180;
-/// A full resync replaces the serving replica and discards local un-pushed
-/// work. It is an explicit operator action, not a routine recovery knob, so it
-/// stays off until an operator opts in for the current process.
+/// A full resync replaces the serving replica. It first pauses writes and
+/// drains local work to Turso, so committed rows are not lost. It is an
+/// explicit operator action, not a routine recovery knob, so it stays off
+/// until an operator opts in for the current process.
 pub const DEFAULT_SYNC_RESYNC_ENABLED: bool = false;
+/// How long a rebuild may wait for pending local work to reach Turso before it
+/// aborts and leaves the serving replica untouched.
+pub const DEFAULT_SYNC_RESYNC_DRAIN_SECS: u64 = 120;
 /// Local work committed during a push outage is bounded. New writes are
 /// refused once the process-local pending counter reaches either limit.
 pub const DEFAULT_SYNC_MAX_PENDING_OPERATIONS: u64 = 256;
@@ -123,6 +127,7 @@ pub struct Config {
     pub sync_auth_max_staleness_secs: u64,
     pub sync_heartbeat_max_secs: u64,
     pub sync_resync_enabled: bool,
+    pub sync_resync_drain_secs: u64,
     pub sync_max_pending_operations: u64,
     pub sync_max_pending_bytes: u64,
     pub db_max_concurrent: usize,
@@ -163,6 +168,7 @@ impl Default for Config {
             sync_auth_max_staleness_secs: DEFAULT_SYNC_AUTH_MAX_STALENESS_SECS,
             sync_heartbeat_max_secs: DEFAULT_SYNC_HEARTBEAT_MAX_SECS,
             sync_resync_enabled: DEFAULT_SYNC_RESYNC_ENABLED,
+            sync_resync_drain_secs: DEFAULT_SYNC_RESYNC_DRAIN_SECS,
             sync_max_pending_operations: DEFAULT_SYNC_MAX_PENDING_OPERATIONS,
             sync_max_pending_bytes: DEFAULT_SYNC_MAX_PENDING_BYTES,
             db_max_concurrent: DEFAULT_DB_MAX_CONCURRENT,
@@ -306,6 +312,11 @@ impl Config {
                 d.sync_heartbeat_max_secs,
             )?,
             sync_resync_enabled: boolean(source, "SYNC_RESYNC_ENABLED", d.sync_resync_enabled)?,
+            sync_resync_drain_secs: number(
+                source,
+                "SYNC_RESYNC_DRAIN_SECS",
+                d.sync_resync_drain_secs,
+            )?,
             sync_max_pending_operations: number(
                 source,
                 "SYNC_MAX_PENDING_OPERATIONS",
@@ -483,8 +494,9 @@ mod tests {
         assert!(c.cookie_secure, "secure must be the default, not opt-in");
         assert!(
             !c.sync_resync_enabled,
-            "a destructive resync must be opt-in, not a default"
+            "a replica rebuild must be opt-in, not a default"
         );
+        assert_eq!(c.sync_resync_drain_secs, DEFAULT_SYNC_RESYNC_DRAIN_SECS);
     }
 
     #[test]
@@ -575,6 +587,17 @@ mod tests {
                 .sync_resync_enabled
         );
         assert!(parse(&[("SYNC_RESYNC_ENABLED", "sometimes")]).is_err());
+    }
+
+    #[test]
+    fn resync_drain_budget_is_configurable_and_rejects_junk() {
+        assert_eq!(
+            parse(&[("SYNC_RESYNC_DRAIN_SECS", "45")])
+                .expect("numeric drain budget")
+                .sync_resync_drain_secs,
+            45
+        );
+        assert!(parse(&[("SYNC_RESYNC_DRAIN_SECS", "soon")]).is_err());
     }
 
     /// The listener is loopback-only, and that is what makes the address the

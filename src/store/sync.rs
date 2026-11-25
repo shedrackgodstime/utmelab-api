@@ -405,6 +405,119 @@ fn restart_delay(policy: &SyncPolicy, attempts: u32, state: SyncState) -> Durati
     }
 }
 
+enum SupervisorExit {
+    RootFinished(Result<(), tokio::task::JoinError>),
+    ResyncDrained,
+    Stopping,
+    Stalled,
+}
+
+/// Wait for committed local work to reach Turso. Writes are already paused by
+/// `request_resync`, so this budget closes instead of growing. A timeout aborts
+/// the rebuild and keeps the serving replica; it never clears the counters.
+async fn drain_before_resync(probe: &DbState, policy: &SyncPolicy) -> bool {
+    let started = tokio::time::Instant::now();
+    let budget = policy.resync_drain;
+    let initial = probe.sync.health();
+    tracing::warn!(
+        event = "sync_resync_drain_started",
+        pending_operations = initial.pending_operations,
+        pending_bytes = initial.pending_bytes,
+        budget_secs = budget.as_secs(),
+        "writes paused while pending local work drains to Turso"
+    );
+    loop {
+        if probe.sync.stop_requested() {
+            tracing::warn!(
+                event = "sync_resync_drain_aborted",
+                reason = "stopping",
+                "rebuild aborted during shutdown; serving replica was kept"
+            );
+            return false;
+        }
+        let health = probe.sync.health();
+        if !health.push_pending {
+            tracing::warn!(
+                event = "sync_resync_drain_complete",
+                waited_ms = started.elapsed().as_millis(),
+                "all committed local work reached Turso; staging can begin"
+            );
+            return true;
+        }
+        if started.elapsed() >= budget {
+            tracing::error!(
+                event = "sync_resync_drain_timeout",
+                budget_secs = budget.as_secs(),
+                pending_operations = health.pending_operations,
+                pending_bytes = health.pending_bytes,
+                "rebuild aborted; serving replica was kept and writes resumed"
+            );
+            return false;
+        }
+        probe.push_notify.notify_waiters();
+        let remaining = budget.saturating_sub(started.elapsed()).min(PUSH_COALESCE);
+        if sleep_or_stop(&probe.sync, remaining).await {
+            tracing::warn!(
+                event = "sync_resync_drain_aborted",
+                reason = "stopping",
+                "rebuild aborted during shutdown; serving replica was kept"
+            );
+            return false;
+        }
+    }
+}
+
+/// Retirement happens only after the drain succeeds. Advancing the epoch here
+/// is what retires the push task; doing it earlier would drop pending work.
+async fn prepare_staged_rebuild(
+    probe: &DbState,
+    root: Option<&mut tokio::task::JoinHandle<()>>,
+) -> u64 {
+    let epoch = probe.sync.begin_resync_epoch();
+    if let Some(handle) = root {
+        if !handle.is_finished() {
+            handle.abort();
+        }
+        let _ = handle.await;
+    }
+    let at = unix_now();
+    probe.sync.apply(SyncEvent::Heartbeat { at });
+    tracing::warn!(
+        event = "sync_resync_started",
+        epoch,
+        "local work drained; building a staged full replica"
+    );
+    epoch
+}
+
+async fn finish_staged_rebuild(
+    probe: &DbState,
+    cfg: &Config,
+    policy: &SyncPolicy,
+    epoch: u64,
+) -> bool {
+    // The serving replica stays published while the replacement is built off
+    // to the side. Only the short swap below can interrupt readers, and a
+    // failed swap restores the displaced files. Writes stay paused until then
+    // so no committed row is left behind the candidate.
+    let swapped = staged_resync(probe, cfg, policy, epoch).await;
+    probe.sync.finish_resync();
+    if swapped {
+        tracing::warn!(
+            event = "sync_resync_complete",
+            epoch,
+            "staged replica is now serving; writes resumed"
+        );
+    } else {
+        tracing::warn!(
+            event = "sync_resync_failed",
+            epoch,
+            "serving replica was kept after a failed staged rebuild; writes resumed"
+        );
+    }
+    swapped
+}
+
 async fn run_sync_supervisor(
     probe: DbState,
     cfg: Config,
@@ -412,7 +525,6 @@ async fn run_sync_supervisor(
     idle_after: Duration,
 ) {
     let mut attempts = 0u32;
-    let mut resync = probe.sync.subscribe_resync();
     // A swapped candidate is already verified. Its replacement root must not
     // move the serving replica back through a verifying state, or readers
     // would fail closed again after a successful swap.
@@ -437,20 +549,21 @@ async fn run_sync_supervisor(
         let heartbeat_interval =
             Duration::from_secs(policy.freshness.heartbeat_max_age.as_secs().max(3) / 3);
         let mut heartbeat_tick = tokio::time::interval(heartbeat_interval);
-        let mut intentional_restart = false;
-        let outcome = loop {
+        let exit = loop {
             tokio::select! {
-                result = &mut root => break result,
-                _ = resync.changed() => {
-                    let _ = resync.borrow_and_update();
-                    intentional_restart = true;
-                    root.abort();
-                    break root.await;
+                result = &mut root => break SupervisorExit::RootFinished(result),
+                _ = probe.sync.wait_for_resync() => {
+                    if drain_before_resync(&probe, &policy).await {
+                        break SupervisorExit::ResyncDrained;
+                    }
+                    probe.sync.finish_resync();
+                    tracing::error!(
+                        event = "sync_resync_aborted",
+                        "the drain did not finish; serving replica and queued work were kept"
+                    );
+                    continue;
                 }
-                _ = probe.sync.wait_for_stop() => {
-                    root.abort();
-                    break Ok(());
-                }
+                _ = probe.sync.wait_for_stop() => break SupervisorExit::Stopping,
                 _ = heartbeat_tick.tick() => {
                     let now = unix_now();
                     let health = probe.sync.health();
@@ -461,48 +574,33 @@ async fn run_sync_supervisor(
                             "sync root heartbeat is stale; aborting it for restart"
                         );
                         probe.sync.mark_blocked(BlockedReason::SupervisorStalled);
-                        root.abort();
-                        break root.await;
+                        break SupervisorExit::Stalled;
                     }
                 }
             }
         };
-        if probe.sync.stop_requested() {
+        if probe.sync.stop_requested() || matches!(exit, SupervisorExit::Stopping) {
+            root.abort();
+            let _ = root.await;
             return;
         }
-        if intentional_restart {
+        if matches!(exit, SupervisorExit::ResyncDrained) {
             attempts = 0;
-            let epoch = probe.sync.resync_epoch();
-            let at = unix_now();
-            probe.sync.apply(SyncEvent::Heartbeat { at });
-            tracing::warn!(
-                event = "sync_resync_started",
-                epoch,
-                "abandoned sync root for a staged full replica rebuild"
-            );
-            // The serving replica stays published while the replacement is
-            // built off to the side. Only the short swap below can interrupt
-            // readers, and a failed swap restores the displaced files.
-            let swapped = staged_resync(&probe, &cfg, &policy, epoch).await;
-            already_verified = swapped;
-            probe.sync.finish_resync();
-            if swapped {
-                tracing::warn!(
-                    event = "sync_resync_complete",
-                    epoch,
-                    "staged replica is now serving"
-                );
-            } else {
-                tracing::warn!(
-                    event = "sync_resync_failed",
-                    epoch,
-                    "serving replica was kept after a failed staged rebuild"
-                );
-            }
+            let epoch = prepare_staged_rebuild(&probe, Some(&mut root)).await;
+            already_verified = finish_staged_rebuild(&probe, &cfg, &policy, epoch).await;
             continue;
+        }
+        if matches!(exit, SupervisorExit::Stalled) {
+            root.abort();
+            let _ = root.await;
         }
         already_verified = false;
         attempts = attempts.saturating_add(1);
+        let outcome = match exit {
+            SupervisorExit::RootFinished(result) => result,
+            SupervisorExit::Stalled => Ok(()),
+            SupervisorExit::ResyncDrained | SupervisorExit::Stopping => unreachable!(),
+        };
         match outcome {
             Ok(()) => {
                 if !matches!(probe.sync.state(), SyncState::Blocked(_)) {
@@ -540,8 +638,17 @@ async fn run_sync_supervisor(
         let delay = restart_delay(&policy, attempts, probe.sync.state());
         let stopped = tokio::select! {
             stopped = sleep_or_stop(&probe.sync, delay) => stopped,
-            _ = resync.changed() => {
-                let _ = resync.borrow_and_update();
+            _ = probe.sync.wait_for_resync() => {
+                if drain_before_resync(&probe, &policy).await {
+                    let epoch = prepare_staged_rebuild(&probe, None).await;
+                    already_verified = finish_staged_rebuild(&probe, &cfg, &policy, epoch).await;
+                    continue;
+                }
+                probe.sync.finish_resync();
+                tracing::error!(
+                    event = "sync_resync_aborted",
+                    "the drain did not finish; serving replica and queued work were kept"
+                );
                 false
             }
         };
@@ -603,71 +710,38 @@ async fn open(probe: &DbState, cfg: &Config, policy: &SyncPolicy) -> Option<Sync
             return None;
         }
         probe.sync.apply(SyncEvent::Heartbeat { at: unix_now() });
-        let forced = probe.sync.resync_pending();
-        if !forced {
-            if let Some(db) = probe.db.read().await.clone() {
-                // This handle is already published and verified. Reporting a
-                // fresh build here would push a ready replica back through
-                // verifying, which makes reads fail closed for no reason.
-                probe.sync.apply(SyncEvent::Heartbeat { at: unix_now() });
-                return Some(db);
-            }
+        if let Some(db) = probe.db.read().await.clone() {
+            // This handle is already published and verified. Reporting a
+            // fresh build here would push a ready replica back through
+            // verifying, which makes reads fail closed for no reason. An
+            // operator rebuild never takes this path; it uses staged_resync
+            // after the pending work has drained.
+            probe.sync.apply(SyncEvent::Heartbeat { at: unix_now() });
+            return Some(db);
         }
-        if forced {
-            match quarantine_replica(&cfg.replica_path) {
-                Ok(_) => {
-                    tracing::warn!(
-                        event = "sync_resync_quarantined",
+        match replica_header_is_invalid(&cfg.replica_path) {
+            Ok(true) => match quarantine_replica(&cfg.replica_path) {
+                Ok(true) => {
+                    tracing::error!(
+                        event = "sync_replica_quarantined",
                         path = %cfg.replica_path,
-                        "full resync moved the serving replica aside"
+                        "local replica header is invalid; rebuilding"
                     );
                     probe
                         .sync
                         .apply(SyncEvent::RebuildStarted { at: unix_now() });
-                }
-                Err(error) => {
-                    record_failure(&probe.metrics);
-                    let failure = SyncError::new(ErrorClass::LocalStorage, error.clone());
-                    let transition = probe.sync.apply(SyncEvent::BuildFailed {
-                        error: failure,
-                        at: unix_now(),
-                    });
-                    tracing::error!(
-                        event = "sync_resync_quarantine_failed",
-                        error = %error,
-                        "could not move the serving replica aside for a full resync"
-                    );
-                    if retry_after(&probe.sync, &transition, policy).await {
-                        return None;
-                    }
                     continue;
                 }
-            }
-        } else {
-            match replica_header_is_invalid(&cfg.replica_path) {
-                Ok(true) => match quarantine_replica(&cfg.replica_path) {
-                    Ok(true) => {
-                        tracing::error!(
-                            event = "sync_replica_quarantined",
-                            path = %cfg.replica_path,
-                            "local replica header is invalid; rebuilding"
-                        );
-                        probe
-                            .sync
-                            .apply(SyncEvent::RebuildStarted { at: unix_now() });
-                        continue;
-                    }
-                    Ok(false) => {}
-                    Err(error) => tracing::error!(
-                        event = "sync_replica_quarantine_failed",
-                        error = %error,
-                        "could not quarantine local replica with an invalid header"
-                    ),
-                },
                 Ok(false) => {}
-                Err(error) => {
-                    tracing::warn!(error = %error, "could not inspect local replica header")
-                }
+                Err(error) => tracing::error!(
+                    event = "sync_replica_quarantine_failed",
+                    error = %error,
+                    "could not quarantine local replica with an invalid header"
+                ),
+            },
+            Ok(false) => {}
+            Err(error) => {
+                tracing::warn!(error = %error, "could not inspect local replica header")
             }
         }
         probe.conns.clear().await;
@@ -821,7 +895,6 @@ async fn converge(
                 update_bank_version(probe, policy).await;
                 *probe.discovery_cache.write().await = None;
                 *probe.paper_metadata_cache.write().await = None;
-                probe.sync.finish_resync();
                 return true;
             }
             Ok(Ok(Some(why))) => {
@@ -1188,23 +1261,31 @@ async fn staged_resync(probe: &DbState, cfg: &Config, policy: &SyncPolicy, epoch
     true
 }
 
-/// Ask the supervisor to build a fresh replica beside the serving one and
-/// swap it in. The call is single-flight and gated. It returns `false` when a
-/// rebuild is already queued, not when the rebuild failed; the outcome is
-/// reported in the supervisor's logs and status fields.
+/// Ask the supervisor to pause writes, drain committed local work to Turso,
+/// then build a fresh replica beside the serving one and swap it in. The call
+/// is single-flight and gated. It returns `false` when a rebuild is already
+/// queued, not when the rebuild failed; the outcome is reported in the
+/// supervisor's logs and status fields. The epoch is still the active one when
+/// this returns, so the push task can finish the drain.
 pub async fn request_resync(probe: &DbState) -> Result<bool, crate::error::AppError> {
     if !probe.sync.policy().resync_enabled {
         return Err(crate::error::AppError::Conflict(
             "full resync is disabled; set SYNC_RESYNC_ENABLED=1 on this process".to_string(),
         ));
     }
+    // Take the write lock before pausing writes. A writer already inside the
+    // critical section finishes and records its pending work before this call
+    // returns, so the drain cannot miss an in-flight commit.
+    let _guard = probe.write_mutex.lock().await;
     if !probe.sync.request_resync() {
         return Ok(false);
     }
     tracing::warn!(
         event = "sync_resync_requested",
         epoch = probe.sync.resync_epoch(),
-        "operator requested a staged full replica rebuild"
+        pending_operations = probe.sync.health().pending_operations,
+        pending_bytes = probe.sync.health().pending_bytes,
+        "operator requested a drain-first staged full replica rebuild"
     );
     Ok(true)
 }
@@ -1629,7 +1710,7 @@ mod tests {
     }
 
     #[tokio::test]
-    async fn request_resync_is_single_flight_and_keeps_serving_until_the_swap() {
+    async fn request_resync_pauses_writes_before_the_epoch_advances() {
         let s = resync_state().await;
         s.sync.mark_write_committed(3, 96);
         *s.bank_version.write().expect("bank lock") = "stale".to_string();
@@ -1645,8 +1726,16 @@ mod tests {
 
         assert!(super::request_resync(&s).await.expect("first resync"));
         assert!(!super::request_resync(&s).await.expect("second resync"));
-        assert_eq!(s.sync.resync_epoch(), before + 1);
+        assert_eq!(
+            s.sync.resync_epoch(),
+            before,
+            "the push task must stay alive until the drain succeeds"
+        );
         assert!(s.sync.resync_pending());
+        assert!(
+            s.sync.resync_draining(),
+            "new writes pause while committed work drains"
+        );
         assert!(
             s.db.read().await.is_some(),
             "requesting a rebuild must not take the serving replica down"
@@ -1664,8 +1753,74 @@ mod tests {
         assert_eq!(health.pending_bytes, 96);
         assert!(health.push_pending);
 
+        assert_eq!(s.sync.begin_resync_epoch(), before + 1);
         s.sync.finish_resync();
         assert!(!s.sync.resync_pending());
+        assert!(!s.sync.resync_draining());
+    }
+
+    #[tokio::test]
+    async fn requesting_a_rebuild_waits_for_an_in_flight_write() {
+        let s = resync_state().await;
+        let in_flight = s.write_mutex.lock().await;
+        let requester = s.clone();
+        let handle = tokio::spawn(async move { super::request_resync(&requester).await });
+        tokio::time::sleep(Duration::from_millis(10)).await;
+        assert!(
+            !handle.is_finished(),
+            "the request must not pause writes inside an active write"
+        );
+
+        s.sync.mark_write_committed(1, 1);
+        drop(in_flight);
+        assert!(handle.await.expect("join").expect("gate is open"));
+        assert_eq!(s.sync.health().pending_operations, 1);
+        assert!(
+            s.sync.resync_draining(),
+            "the in-flight commit is now the closed set the drain must clear"
+        );
+        s.sync.finish_resync();
+    }
+
+    #[tokio::test]
+    async fn drain_waits_for_committed_local_work_to_clear() {
+        let s = db_state(replica().await);
+        s.sync.mark_write_committed(2, 64);
+        let policy = s.sync.policy().clone();
+        let clearer = s.clone();
+        tokio::spawn(async move {
+            tokio::time::sleep(Duration::from_millis(25)).await;
+            clearer.sync.apply(super::SyncEvent::PushSucceeded {
+                at: super::unix_now(),
+            });
+        });
+
+        let drained = tokio::time::timeout(Duration::from_secs(2), async {
+            super::drain_before_resync(&s, &policy).await
+        })
+        .await
+        .expect("drain finishes inside the test budget");
+        assert!(drained, "a completed push must satisfy the drain");
+        assert!(!s.sync.push_pending());
+    }
+
+    #[tokio::test]
+    async fn drain_timeout_aborts_without_clearing_pending_work() {
+        let s = db_state(replica().await);
+        s.sync.mark_write_committed(2, 64);
+        let mut policy = s.sync.policy().clone();
+        policy.resync_drain = Duration::from_millis(40);
+
+        let drained = tokio::time::timeout(Duration::from_secs(2), async {
+            super::drain_before_resync(&s, &policy).await
+        })
+        .await
+        .expect("drain timeout is bounded");
+        assert!(!drained, "an unmovable push must abort the rebuild");
+        let health = s.sync.health();
+        assert_eq!(health.pending_operations, 2);
+        assert_eq!(health.pending_bytes, 64);
+        assert!(health.push_pending);
     }
 
     #[tokio::test]
@@ -1759,6 +1914,11 @@ mod tests {
         tokio::time::sleep(Duration::from_millis(25)).await;
         assert!(!handle.is_finished(), "the push task should be waiting");
         assert!(s.sync.request_resync());
+        assert!(
+            !handle.is_finished(),
+            "the push task must survive until the drain advances the epoch"
+        );
+        s.sync.begin_resync_epoch();
 
         let joined = tokio::time::timeout(Duration::from_millis(500), handle)
             .await
