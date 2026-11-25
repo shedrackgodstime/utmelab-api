@@ -33,6 +33,10 @@ pub struct ServiceStatus {
     pub sync_consecutive_push_failures: u64,
     pub sync_heartbeat_unix: u64,
     pub sync_last_error_unix: u64,
+    /// Whether the operator full-resync gate is open in this process.
+    pub sync_resync_enabled: bool,
+    /// Whether a full-resync rebuild is currently queued or in flight.
+    pub sync_resync_pending: bool,
     /// Engine-side sync figures, read-only. Null when no replica is attached
     /// (or the engine cannot answer): absence is honest, never zeros. This
     /// never checkpoints; checkpointing is the engine's own job.

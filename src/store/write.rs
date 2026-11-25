@@ -113,11 +113,11 @@ pub async fn execute_write(
     ensure_write_admitted(s)?;
     let db = synced(s).await?;
     let _permit = gate(s)?;
-    let conn = s.conns.take(&db, s.sync.policy().budgets).await?;
+    let (conn, generation) = s.conns.take(&db, s.sync.policy().budgets).await?;
     let estimated = estimated_bytes(sql, &params);
     let local_started = std::time::Instant::now();
     let result = execute_and_verify(&conn, sql, params).await;
-    s.conns.put(conn).await;
+    s.conns.put(conn, generation).await;
     record_local_write(s, local_started);
     let n = result?;
     if n > 0 {
@@ -142,11 +142,11 @@ pub async fn execute_write_batch(
     ensure_write_admitted(s)?;
     let db = synced(s).await?;
     let _permit = gate(s)?;
-    let conn = s.conns.take(&db, s.sync.policy().budgets).await?;
+    let (conn, generation) = s.conns.take(&db, s.sync.policy().budgets).await?;
     let local_started = std::time::Instant::now();
 
     if let Err(e) = conn.execute("BEGIN TRANSACTION", ()).await {
-        s.conns.put(conn).await;
+        s.conns.put(conn, generation).await;
         record_local_write(s, local_started);
         return Err(upstream(e));
     }
@@ -167,19 +167,19 @@ pub async fn execute_write_batch(
 
     if let Some(e) = err {
         let _ = conn.execute("ROLLBACK", ()).await;
-        s.conns.put(conn).await;
+        s.conns.put(conn, generation).await;
         record_local_write(s, local_started);
         return Err(e);
     }
 
     if let Err(e) = conn.execute("COMMIT", ()).await {
         let _ = conn.execute("ROLLBACK", ()).await;
-        s.conns.put(conn).await;
+        s.conns.put(conn, generation).await;
         record_local_write(s, local_started);
         return Err(upstream(e));
     }
 
-    s.conns.put(conn).await;
+    s.conns.put(conn, generation).await;
     record_local_write(s, local_started);
 
     if total_rows > 0 {
@@ -198,11 +198,11 @@ pub async fn execute_ddl(s: &DbState, sql: &str) -> Result<(), AppError> {
     ensure_write_admitted(s)?;
     let db = synced(s).await?;
     let _permit = gate(s)?;
-    let conn = s.conns.take(&db, s.sync.policy().budgets).await?;
+    let (conn, generation) = s.conns.take(&db, s.sync.policy().budgets).await?;
     let estimated = estimated_bytes(sql, &[] as &[turso::Value]);
     let local_started = std::time::Instant::now();
     let result = conn.execute(sql, ()).await.map_err(upstream);
-    s.conns.put(conn).await;
+    s.conns.put(conn, generation).await;
     record_local_write(s, local_started);
     result?;
     s.sync.mark_write_committed(1, estimated);
@@ -221,10 +221,10 @@ pub async fn execute_ddl_local(s: &DbState, sql: &str) -> Result<(), AppError> {
     ensure_write_admitted(s)?;
     let db = synced(s).await?;
     let _permit = gate(s)?;
-    let conn = s.conns.take(&db, s.sync.policy().budgets).await?;
+    let (conn, generation) = s.conns.take(&db, s.sync.policy().budgets).await?;
     let estimated = estimated_bytes(sql, &[] as &[turso::Value]);
     let result = conn.execute(sql, ()).await.map_err(upstream);
-    s.conns.put(conn).await;
+    s.conns.put(conn, generation).await;
     result?;
     s.sync.mark_write_committed(1, estimated);
     s.sync.apply(SyncEvent::PushStarted { at: unix_now() });
@@ -249,10 +249,10 @@ pub async fn execute_write_local(
     ensure_write_admitted(s)?;
     let db = synced(s).await?;
     let _permit = gate(s)?;
-    let conn = s.conns.take(&db, s.sync.policy().budgets).await?;
+    let (conn, generation) = s.conns.take(&db, s.sync.policy().budgets).await?;
     let estimated = estimated_bytes(sql, &params);
     let result = execute_and_verify(&conn, sql, params).await;
-    s.conns.put(conn).await;
+    s.conns.put(conn, generation).await;
     let n = result?;
     if n > 0 {
         s.sync.mark_write_committed(n, estimated);

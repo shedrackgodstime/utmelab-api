@@ -89,28 +89,104 @@ fn replica_header_is_invalid(path: &str) -> Result<bool, String> {
     Ok(read >= 16 && header != *b"SQLite format 3\0")
 }
 
-fn quarantine_replica(path: &str) -> Result<bool, String> {
-    let source = std::path::Path::new(path);
-    if !source.exists() {
-        return Ok(false);
+fn replica_files(path: &str) -> Vec<String> {
+    let mut files = vec![path.to_string()];
+    for suffix in ["-wal", "-shm", "-log", "-changes", "-info", "-wal-revert"] {
+        files.push(format!("{path}{suffix}"));
     }
-    let suffix = format!(".corrupt-{}-{}", unix_now(), std::process::id());
-    let mut moved = false;
-    for candidate in [
-        path.to_string(),
-        format!("{path}-wal"),
-        format!("{path}-shm"),
-    ] {
+    files
+}
+
+/// Rename every replica artifact aside and return the move pairs so a failed
+/// staged swap can restore the exact files it displaced. Nothing is deleted.
+fn quarantine_replica_files(path: &str, label: &str) -> Result<Vec<(String, String)>, String> {
+    let candidates = replica_files(path);
+    if !candidates
+        .iter()
+        .any(|candidate| std::path::Path::new(candidate).exists())
+    {
+        return Ok(Vec::new());
+    }
+    let nanos = std::time::SystemTime::now()
+        .duration_since(std::time::UNIX_EPOCH)
+        .unwrap_or_default()
+        .subsec_nanos();
+    let suffix = format!(".{label}-{}-{nanos}-{}", unix_now(), std::process::id());
+    let mut moved = Vec::new();
+    for candidate in candidates {
         let candidate_path = std::path::Path::new(&candidate);
         if !candidate_path.exists() {
             continue;
         }
         let target = format!("{candidate}{suffix}");
-        std::fs::rename(candidate_path, &target)
-            .map_err(|error| format!("rename {candidate} to {target}: {error}"))?;
-        moved = true;
+        if let Err(error) = std::fs::rename(candidate_path, &target) {
+            restore_quarantined(&moved);
+            return Err(format!("rename {candidate} to {target}: {error}"));
+        }
+        moved.push((candidate, target));
     }
     Ok(moved)
+}
+
+fn quarantine_replica(path: &str) -> Result<bool, String> {
+    Ok(!quarantine_replica_files(path, "corrupt")?.is_empty())
+}
+
+fn staging_replica_path(path: &str, epoch: u64) -> String {
+    format!("{path}.resync-{epoch}-{}", std::process::id())
+}
+
+/// Move a verified candidate into the serving path. Refuses to overwrite a
+/// replica artifact: the caller must quarantine the serving set first.
+fn promote_staged_replica(staging: &str, serving: &str) -> Result<Vec<(String, String)>, String> {
+    let occupied = replica_files(serving)
+        .into_iter()
+        .find(|candidate| std::path::Path::new(candidate).exists());
+    if let Some(candidate) = occupied {
+        return Err(format!(
+            "serving replica artifact still exists: {candidate}"
+        ));
+    }
+    let mut moved = Vec::new();
+    for source in replica_files(staging) {
+        if !std::path::Path::new(&source).exists() {
+            continue;
+        }
+        let target = source.replacen(staging, serving, 1);
+        if let Err(error) = std::fs::rename(&source, &target) {
+            for (restored_source, restored_target) in moved.drain(..).rev() {
+                if let Err(restore_error) = std::fs::rename(&restored_target, &restored_source) {
+                    tracing::error!(
+                        event = "sync_resync_promote_rollback_failed",
+                        from = %restored_target,
+                        to = %restored_source,
+                        error = %restore_error,
+                        "could not return a staged artifact after a failed promotion"
+                    );
+                }
+            }
+            return Err(format!("rename {source} to {target}: {error}"));
+        }
+        moved.push((source, target));
+    }
+    if moved.is_empty() {
+        return Err(format!("staged replica has no files at {staging}"));
+    }
+    Ok(moved)
+}
+
+fn restore_quarantined(files: &[(String, String)]) {
+    for (original, quarantined) in files {
+        if let Err(error) = std::fs::rename(quarantined, original) {
+            tracing::error!(
+                event = "sync_resync_restore_failed",
+                from = %quarantined,
+                to = %original,
+                error = %error,
+                "could not restore the displaced replica during rollback"
+            );
+        }
+    }
 }
 
 /// One-shot connect for commands: build, converge once, hand over.
@@ -265,12 +341,24 @@ impl SyncTaskHandle {
     }
 }
 
-async fn run_sync_root(probe: DbState, cfg: Config, policy: SyncPolicy, idle_after: Duration) {
+async fn run_sync_root(
+    probe: DbState,
+    cfg: Config,
+    policy: SyncPolicy,
+    idle_after: Duration,
+    already_verified: bool,
+) {
+    let epoch = probe.sync.resync_epoch();
     let Some(db) = open(&probe, &cfg, &policy).await else {
         return;
     };
-    converge(&probe, &db, &policy).await;
-    if probe.sync.stop_requested() {
+    if probe.sync.resync_epoch() != epoch {
+        return;
+    }
+    if !converge(&probe, &probe.sync, &db, &policy, epoch, already_verified).await {
+        return;
+    }
+    if probe.sync.stop_requested() || probe.sync.resync_epoch() != epoch {
         return;
     }
     recover_pending_from_change_log(&probe, &db, &policy).await;
@@ -278,7 +366,7 @@ async fn run_sync_root(probe: DbState, cfg: Config, policy: SyncPolicy, idle_aft
     let push_db = db.clone();
     let push_policy = policy.clone();
     let mut push_handle =
-        tokio::spawn(async move { supervise_push(push_probe, push_db, push_policy).await });
+        tokio::spawn(async move { supervise_push(push_probe, push_db, push_policy, epoch).await });
     supervise(&probe, &db, idle_after, &policy).await;
     if tokio::time::timeout(policy.budgets.shutdown.duration(), &mut push_handle)
         .await
@@ -324,6 +412,11 @@ async fn run_sync_supervisor(
     idle_after: Duration,
 ) {
     let mut attempts = 0u32;
+    let mut resync = probe.sync.subscribe_resync();
+    // A swapped candidate is already verified. Its replacement root must not
+    // move the serving replica back through a verifying state, or readers
+    // would fail closed again after a successful swap.
+    let mut already_verified = false;
     loop {
         if probe.sync.stop_requested() {
             return;
@@ -332,14 +425,28 @@ async fn run_sync_supervisor(
         let root_cfg = cfg.clone();
         let root_policy = policy.clone();
         let mut root = tokio::spawn(async move {
-            run_sync_root(root_probe, root_cfg, root_policy, idle_after).await
+            run_sync_root(
+                root_probe,
+                root_cfg,
+                root_policy,
+                idle_after,
+                already_verified,
+            )
+            .await
         });
         let heartbeat_interval =
             Duration::from_secs(policy.freshness.heartbeat_max_age.as_secs().max(3) / 3);
         let mut heartbeat_tick = tokio::time::interval(heartbeat_interval);
+        let mut intentional_restart = false;
         let outcome = loop {
             tokio::select! {
                 result = &mut root => break result,
+                _ = resync.changed() => {
+                    let _ = resync.borrow_and_update();
+                    intentional_restart = true;
+                    root.abort();
+                    break root.await;
+                }
                 _ = probe.sync.wait_for_stop() => {
                     root.abort();
                     break Ok(());
@@ -363,6 +470,38 @@ async fn run_sync_supervisor(
         if probe.sync.stop_requested() {
             return;
         }
+        if intentional_restart {
+            attempts = 0;
+            let epoch = probe.sync.resync_epoch();
+            let at = unix_now();
+            probe.sync.apply(SyncEvent::Heartbeat { at });
+            tracing::warn!(
+                event = "sync_resync_started",
+                epoch,
+                "abandoned sync root for a staged full replica rebuild"
+            );
+            // The serving replica stays published while the replacement is
+            // built off to the side. Only the short swap below can interrupt
+            // readers, and a failed swap restores the displaced files.
+            let swapped = staged_resync(&probe, &cfg, &policy, epoch).await;
+            already_verified = swapped;
+            probe.sync.finish_resync();
+            if swapped {
+                tracing::warn!(
+                    event = "sync_resync_complete",
+                    epoch,
+                    "staged replica is now serving"
+                );
+            } else {
+                tracing::warn!(
+                    event = "sync_resync_failed",
+                    epoch,
+                    "serving replica was kept after a failed staged rebuild"
+                );
+            }
+            continue;
+        }
+        already_verified = false;
         attempts = attempts.saturating_add(1);
         match outcome {
             Ok(()) => {
@@ -399,7 +538,14 @@ async fn run_sync_supervisor(
             }
         }
         let delay = restart_delay(&policy, attempts, probe.sync.state());
-        if sleep_or_stop(&probe.sync, delay).await {
+        let stopped = tokio::select! {
+            stopped = sleep_or_stop(&probe.sync, delay) => stopped,
+            _ = resync.changed() => {
+                let _ = resync.borrow_and_update();
+                false
+            }
+        };
+        if stopped {
             return;
         }
     }
@@ -457,35 +603,74 @@ async fn open(probe: &DbState, cfg: &Config, policy: &SyncPolicy) -> Option<Sync
             return None;
         }
         probe.sync.apply(SyncEvent::Heartbeat { at: unix_now() });
-        if let Some(db) = probe.db.read().await.clone() {
-            probe
-                .sync
-                .apply(SyncEvent::BuildSucceeded { at: unix_now() });
-            return Some(db);
+        let forced = probe.sync.resync_pending();
+        if !forced {
+            if let Some(db) = probe.db.read().await.clone() {
+                // This handle is already published and verified. Reporting a
+                // fresh build here would push a ready replica back through
+                // verifying, which makes reads fail closed for no reason.
+                probe.sync.apply(SyncEvent::Heartbeat { at: unix_now() });
+                return Some(db);
+            }
         }
-        match replica_header_is_invalid(&cfg.replica_path) {
-            Ok(true) => match quarantine_replica(&cfg.replica_path) {
-                Ok(true) => {
-                    tracing::error!(
-                        event = "sync_replica_quarantined",
+        if forced {
+            match quarantine_replica(&cfg.replica_path) {
+                Ok(_) => {
+                    tracing::warn!(
+                        event = "sync_resync_quarantined",
                         path = %cfg.replica_path,
-                        "local replica header is invalid; rebuilding"
+                        "full resync moved the serving replica aside"
                     );
                     probe
                         .sync
                         .apply(SyncEvent::RebuildStarted { at: unix_now() });
+                }
+                Err(error) => {
+                    record_failure(&probe.metrics);
+                    let failure = SyncError::new(ErrorClass::LocalStorage, error.clone());
+                    let transition = probe.sync.apply(SyncEvent::BuildFailed {
+                        error: failure,
+                        at: unix_now(),
+                    });
+                    tracing::error!(
+                        event = "sync_resync_quarantine_failed",
+                        error = %error,
+                        "could not move the serving replica aside for a full resync"
+                    );
+                    if retry_after(&probe.sync, &transition, policy).await {
+                        return None;
+                    }
                     continue;
                 }
+            }
+        } else {
+            match replica_header_is_invalid(&cfg.replica_path) {
+                Ok(true) => match quarantine_replica(&cfg.replica_path) {
+                    Ok(true) => {
+                        tracing::error!(
+                            event = "sync_replica_quarantined",
+                            path = %cfg.replica_path,
+                            "local replica header is invalid; rebuilding"
+                        );
+                        probe
+                            .sync
+                            .apply(SyncEvent::RebuildStarted { at: unix_now() });
+                        continue;
+                    }
+                    Ok(false) => {}
+                    Err(error) => tracing::error!(
+                        event = "sync_replica_quarantine_failed",
+                        error = %error,
+                        "could not quarantine local replica with an invalid header"
+                    ),
+                },
                 Ok(false) => {}
-                Err(error) => tracing::error!(
-                    event = "sync_replica_quarantine_failed",
-                    error = %error,
-                    "could not quarantine local replica with an invalid header"
-                ),
-            },
-            Ok(false) => {}
-            Err(error) => tracing::warn!(error = %error, "could not inspect local replica header"),
+                Err(error) => {
+                    tracing::warn!(error = %error, "could not inspect local replica header")
+                }
+            }
         }
+        probe.conns.clear().await;
         probe.sync.apply(SyncEvent::BuildStarted { at: unix_now() });
         match build(cfg, policy).await {
             Ok(db) => {
@@ -537,14 +722,29 @@ async fn open(probe: &DbState, cfg: &Config, policy: &SyncPolicy) -> Option<Sync
     }
 }
 
-/// Bring the replica to a known state before serving reads: converge with
-/// cloud, ensure our tables, confirm the schema contract. The first pull is
-/// serialized with local writes exactly like a steady-state pull.
-async fn converge(probe: &DbState, db: &SyncDb, policy: &SyncPolicy) {
+/// Bring a replica to a known state before serving reads: converge with cloud,
+/// ensure our tables, confirm the schema contract. `control` owns the epoch
+/// and shutdown decision, so a staged candidate can be verified without
+/// changing the health or readiness of the replica that is still serving.
+/// Returns true only when the contract was verified.
+async fn converge(
+    probe: &DbState,
+    control: &SyncStatus,
+    db: &SyncDb,
+    policy: &SyncPolicy,
+    epoch: u64,
+    already_verified: bool,
+) -> bool {
+    if already_verified && matches!(control.state(), SyncState::Ready) {
+        return true;
+    }
     probe
         .sync
         .apply(SyncEvent::VerifyStarted { at: unix_now() });
     loop {
+        if control.stop_requested() || control.resync_epoch() != epoch {
+            return false;
+        }
         // Converge first: the file may predate cloud changes, and the check
         // below must read the truth, not a stale copy. The write lock makes
         // this pull indistinguishable from the steady-state one.
@@ -569,7 +769,7 @@ async fn converge(probe: &DbState, db: &SyncDb, policy: &SyncPolicy) {
                     at: unix_now(),
                 });
                 if retry_after(&probe.sync, &transition, policy).await {
-                    return;
+                    return false;
                 }
                 continue;
             }
@@ -590,7 +790,7 @@ async fn converge(probe: &DbState, db: &SyncDb, policy: &SyncPolicy) {
                     at: unix_now(),
                 });
                 if retry_after(&probe.sync, &transition, policy).await {
-                    return;
+                    return false;
                 }
                 continue;
             }
@@ -602,7 +802,7 @@ async fn converge(probe: &DbState, db: &SyncDb, policy: &SyncPolicy) {
                     at: unix_now(),
                 });
                 if retry_after(&probe.sync, &transition, policy).await {
-                    return;
+                    return false;
                 }
                 continue;
             }
@@ -619,7 +819,10 @@ async fn converge(probe: &DbState, db: &SyncDb, policy: &SyncPolicy) {
                     .sync
                     .apply(SyncEvent::ContractVerified { at: unix_now() });
                 update_bank_version(probe, policy).await;
-                return;
+                *probe.discovery_cache.write().await = None;
+                *probe.paper_metadata_cache.write().await = None;
+                probe.sync.finish_resync();
+                return true;
             }
             Ok(Ok(Some(why))) => {
                 probe.sync.apply(SyncEvent::ContractMismatch {
@@ -627,7 +830,7 @@ async fn converge(probe: &DbState, db: &SyncDb, policy: &SyncPolicy) {
                     at: unix_now(),
                 });
                 tracing::error!("schema contract broken ({why}): data surfaces now fail closed");
-                return;
+                return false;
             }
             Ok(Err(error)) => {
                 record_failure(&probe.metrics);
@@ -637,7 +840,7 @@ async fn converge(probe: &DbState, db: &SyncDb, policy: &SyncPolicy) {
                     at: unix_now(),
                 });
                 if retry_after(&probe.sync, &transition, policy).await {
-                    return;
+                    return false;
                 }
             }
             Err(_) => {
@@ -648,7 +851,7 @@ async fn converge(probe: &DbState, db: &SyncDb, policy: &SyncPolicy) {
                     at: unix_now(),
                 });
                 if retry_after(&probe.sync, &transition, policy).await {
-                    return;
+                    return false;
                 }
             }
         }
@@ -724,15 +927,16 @@ async fn supervise(probe: &DbState, db: &SyncDb, _idle_after: Duration, policy: 
 /// does not issue an empty push on every pull timeout. The long fallback
 /// rechecks pending state so a local commit recoverable after a restart is
 /// not forgotten, but it does not push when no work is known to be pending.
-async fn supervise_push(probe: DbState, db: SyncDb, policy: SyncPolicy) {
+async fn supervise_push(probe: DbState, db: SyncDb, policy: SyncPolicy, epoch: u64) {
+    let mut resync = probe.sync.subscribe_resync();
     loop {
-        if probe.sync.stop_requested() {
+        if probe.sync.stop_requested() || probe.sync.resync_epoch() != epoch {
             return;
         }
         if probe.sync.push_pending() {
             tokio::time::sleep(PUSH_COALESCE).await;
             loop {
-                if probe.sync.stop_requested() {
+                if probe.sync.stop_requested() || probe.sync.resync_epoch() != epoch {
                     return;
                 }
                 probe.sync.apply(SyncEvent::PushStarted { at: unix_now() });
@@ -755,7 +959,14 @@ async fn supervise_push(probe: DbState, db: SyncDb, policy: SyncPolicy) {
                             error,
                             at: unix_now(),
                         });
-                        if retry_after(&probe.sync, &transition, &policy).await {
+                        let stopped = tokio::select! {
+                            stopped = retry_after(&probe.sync, &transition, &policy) => stopped,
+                            _ = resync.changed() => {
+                                let _ = resync.borrow_and_update();
+                                true
+                            }
+                        };
+                        if stopped {
                             return;
                         }
                     }
@@ -764,10 +975,238 @@ async fn supervise_push(probe: DbState, db: SyncDb, policy: SyncPolicy) {
         }
         tokio::select! {
             _ = probe.sync.wait_for_stop() => return,
+            _ = resync.changed() => {
+                let _ = resync.borrow_and_update();
+                return;
+            }
             _ = probe.push_notify.notified() => {}
             _ = tokio::time::sleep(PUSH_FALLBACK) => {}
         }
     }
+}
+
+/// A private probe for the candidate replica. It shares metrics so the pull
+/// is observable, but owns its own status, pool, gate, write lock, and caches
+/// so verification cannot retire a connection or change readiness for the
+/// replica that is still serving.
+fn staged_probe(probe: &DbState, db: SyncDb, cfg: &Config, policy: &SyncPolicy) -> DbState {
+    let version = probe
+        .bank_version
+        .read()
+        .map(|value| value.clone())
+        .unwrap_or_default();
+    DbState {
+        sync: std::sync::Arc::new(SyncStatus::new(policy.clone())),
+        db: std::sync::Arc::new(tokio::sync::RwLock::new(Some(db))),
+        db_gate: std::sync::Arc::new(tokio::sync::Semaphore::new(cfg.db_max_concurrent)),
+        conns: std::sync::Arc::new(super::ConnPool::new(cfg.db_max_concurrent)),
+        metrics: std::sync::Arc::clone(&probe.metrics),
+        cookie_secure: probe.cookie_secure,
+        read_timeout_secs: probe.read_timeout_secs,
+        write_mutex: std::sync::Arc::new(tokio::sync::Mutex::new(())),
+        push_notify: std::sync::Arc::new(tokio::sync::Notify::new()),
+        pull_notify: std::sync::Arc::new(tokio::sync::Notify::new()),
+        limiter: std::sync::Arc::clone(&probe.limiter),
+        bank_version: std::sync::Arc::new(std::sync::RwLock::new(version)),
+        discovery_cache: std::sync::Arc::new(tokio::sync::RwLock::new(None)),
+        paper_metadata_cache: std::sync::Arc::new(tokio::sync::RwLock::new(None)),
+        media_base_url: std::sync::Arc::clone(&probe.media_base_url),
+    }
+}
+
+async fn rollback_swap(cfg: &Config, displaced: &[(String, String)]) {
+    if let Err(error) = quarantine_replica_files(&cfg.replica_path, "resync-failed") {
+        tracing::error!(
+            event = "sync_resync_rollback_quarantine_failed",
+            error = %error,
+            "could not move the failed replacement aside during rollback"
+        );
+    }
+    restore_quarantined(displaced);
+    // The serving handle and its pool were never retired, so the rollback is
+    // only a file restore: no reader ever saw the failed replacement.
+    tracing::warn!(
+        event = "sync_resync_rollback",
+        path = %cfg.replica_path,
+        "serving replica was restored after a failed swap"
+    );
+}
+
+/// Build and verify a fresh replica beside the serving one, then swap only
+/// after the candidate is ready. A failed candidate leaves the serving replica
+/// untouched. A failed swap restores the displaced files; the serving handle
+/// and pool are only replaced once a prepared set of connections is ready.
+async fn staged_resync(probe: &DbState, cfg: &Config, policy: &SyncPolicy, epoch: u64) -> bool {
+    let staging = staging_replica_path(&cfg.replica_path, epoch);
+    let mut stage_cfg = cfg.clone();
+    stage_cfg.replica_path = staging.clone();
+    let candidate = match build(&stage_cfg, policy).await {
+        Ok(db) => db,
+        Err(error) => {
+            tracing::error!(
+                event = "sync_resync_stage_failed",
+                class = error.class.as_str(),
+                error = %error.message,
+                path = %staging,
+                "could not build a staged replica"
+            );
+            return false;
+        }
+    };
+    let stage_probe = staged_probe(probe, candidate.clone(), &stage_cfg, policy);
+    stage_probe.conns.fill(&candidate, policy.budgets).await;
+    let verified = converge(&stage_probe, &probe.sync, &candidate, policy, epoch, false).await;
+    if !verified {
+        tracing::error!(
+            event = "sync_resync_stage_not_verified",
+            path = %staging,
+            "staged replica did not reach the contract; serving replica was kept"
+        );
+        *stage_probe.db.write().await = None;
+        stage_probe.conns.clear().await;
+        drop(stage_probe);
+        drop(candidate);
+        if let Err(error) = quarantine_replica_files(&staging, "resync-failed") {
+            tracing::error!(event = "sync_resync_stage_quarantine_failed", error = %error);
+        }
+        return false;
+    }
+    let version = stage_probe
+        .bank_version
+        .read()
+        .map(|value| value.clone())
+        .unwrap_or_default();
+
+    drop(stage_probe);
+    drop(candidate);
+
+    if probe.db.read().await.is_none() {
+        tracing::error!(
+            event = "sync_resync_no_serving_replica",
+            "cannot stage a swap without a serving replica"
+        );
+        return false;
+    }
+    let _guard = probe.write_mutex.lock().await;
+    if probe.sync.stop_requested() || probe.sync.resync_epoch() != epoch {
+        return false;
+    }
+
+    // Only the files move here. The published handle and its pool stay live:
+    // the displaced main file and sidecars keep serving under their new names
+    // until the prepared replacement is installed below.
+    let displaced = match quarantine_replica_files(&cfg.replica_path, "resync-superseded") {
+        Ok(files) => files,
+        Err(error) => {
+            record_failure(&probe.metrics);
+            tracing::error!(
+                event = "sync_resync_displace_failed",
+                error = %error,
+                "could not move the serving replica aside"
+            );
+            return false;
+        }
+    };
+
+    let _promoted = match promote_staged_replica(&staging, &cfg.replica_path) {
+        Ok(files) => files,
+        Err(error) => {
+            record_failure(&probe.metrics);
+            tracing::error!(event = "sync_resync_promote_failed", error = %error);
+            rollback_swap(cfg, &displaced).await;
+            return false;
+        }
+    };
+    let final_db = match build(cfg, policy).await {
+        Ok(db) => db,
+        Err(error) => {
+            record_failure(&probe.metrics);
+            tracing::error!(
+                event = "sync_resync_final_build_failed",
+                class = error.class.as_str(),
+                error = %error.message,
+                path = %cfg.replica_path,
+                "could not reopen the promoted replica"
+            );
+            rollback_swap(cfg, &displaced).await;
+            if let Err(error) = quarantine_replica_files(&cfg.replica_path, "resync-failed") {
+                tracing::error!(event = "sync_resync_promoted_quarantine_failed", error = %error);
+            }
+            return false;
+        }
+    };
+
+    // Fill a replacement pool before touching the published handle. The swap
+    // itself is then two in-memory assignments under the replica write lock,
+    // so readers never see an empty handle or an unprimed pool.
+    let (generation, replacement_conns) = match probe.conns.prepare(&final_db, policy.budgets).await
+    {
+        Ok(prepared) => prepared,
+        Err(error) => {
+            record_failure(&probe.metrics);
+            tracing::error!(
+                event = "sync_resync_pool_prepare_failed",
+                class = error.class.as_str(),
+                error = %error.message,
+                "could not open replacement connections"
+            );
+            drop(final_db);
+            rollback_swap(cfg, &displaced).await;
+            if let Err(error) = quarantine_replica_files(&cfg.replica_path, "resync-failed") {
+                tracing::error!(event = "sync_resync_promoted_quarantine_failed", error = %error);
+            }
+            return false;
+        }
+    };
+    {
+        let mut published = probe.db.write().await;
+        probe
+            .conns
+            .install(&final_db, generation, replacement_conns)
+            .await;
+        *published = Some(final_db);
+    }
+    if let Ok(mut stored) = probe.bank_version.write() {
+        *stored = version;
+    }
+    *probe.discovery_cache.write().await = None;
+    *probe.paper_metadata_cache.write().await = None;
+    let now = unix_now();
+    probe.sync.clear_pending_for_rebuild(now);
+    probe.sync.apply(SyncEvent::Heartbeat { at: now });
+    probe.sync.apply(SyncEvent::PullSucceeded {
+        changes: true,
+        at: now,
+    });
+    probe.sync.apply(SyncEvent::ContractVerified { at: now });
+    tracing::warn!(
+        event = "sync_resync_swapped",
+        epoch,
+        path = %cfg.replica_path,
+        "verified staged replica replaced the serving replica"
+    );
+    true
+}
+
+/// Ask the supervisor to build a fresh replica beside the serving one and
+/// swap it in. The call is single-flight and gated. It returns `false` when a
+/// rebuild is already queued, not when the rebuild failed; the outcome is
+/// reported in the supervisor's logs and status fields.
+pub async fn request_resync(probe: &DbState) -> Result<bool, crate::error::AppError> {
+    if !probe.sync.policy().resync_enabled {
+        return Err(crate::error::AppError::Conflict(
+            "full resync is disabled; set SYNC_RESYNC_ENABLED=1 on this process".to_string(),
+        ));
+    }
+    if !probe.sync.request_resync() {
+        return Ok(false);
+    }
+    tracing::warn!(
+        event = "sync_resync_requested",
+        epoch = probe.sync.resync_epoch(),
+        "operator requested a staged full replica rebuild"
+    );
+    Ok(true)
 }
 
 /// On-demand pull. Pulls latest changes from Turso cloud, updates schema and bank version if
@@ -928,7 +1367,17 @@ pub async fn stats(
 #[cfg(test)]
 mod tests {
     use crate::testing::{db_state, db_state_without_db, replica};
-    use std::time::Duration;
+    use std::{sync::Arc, time::Duration};
+
+    /// A serving replica whose operator gate is open. The default gate stays
+    /// closed everywhere else so a test cannot accidentally rely on it.
+    async fn resync_state() -> crate::state::DbState {
+        let mut s = db_state(replica().await);
+        let mut policy = s.sync.policy().clone();
+        policy.resync_enabled = true;
+        s.sync = Arc::new(super::SyncStatus::verified(policy));
+        s
+    }
 
     /// A replica answers engine figures; with none attached the field is
     /// honestly absent, so the ops status never invents zeros.
@@ -1080,13 +1529,40 @@ mod tests {
         ));
         let path = base.to_string_lossy().into_owned();
         std::fs::write(&path, b"corrupt").expect("create replica fixture");
-        std::fs::write(format!("{path}-wal"), b"wal").expect("create wal fixture");
-        std::fs::write(format!("{path}-shm"), b"shm").expect("create shm fixture");
+        for suffix in ["-wal", "-shm", "-log", "-changes", "-info", "-wal-revert"] {
+            std::fs::write(format!("{path}{suffix}"), suffix.as_bytes())
+                .expect("create replica sidecar fixture");
+        }
 
         assert!(super::quarantine_replica(&path).expect("quarantine fixture"));
         assert!(!std::path::Path::new(&path).exists());
-        assert!(!std::path::Path::new(&format!("{path}-wal")).exists());
-        assert!(!std::path::Path::new(&format!("{path}-shm")).exists());
+        for suffix in ["-wal", "-shm", "-log", "-changes", "-info", "-wal-revert"] {
+            assert!(!std::path::Path::new(&format!("{path}{suffix}")).exists());
+        }
+
+        let prefix = format!("{}.corrupt-", path);
+        for entry in std::fs::read_dir(std::env::temp_dir()).expect("read temp directory") {
+            let entry = entry.expect("read quarantine entry");
+            let name = entry.path().to_string_lossy().into_owned();
+            if name.starts_with(&prefix) {
+                std::fs::remove_file(entry.path()).expect("remove quarantine fixture");
+            }
+        }
+    }
+
+    #[test]
+    fn orphaned_sidecars_are_quarantined_without_a_main_replica() {
+        let base = std::env::temp_dir().join(format!(
+            "utmelab-sync-sidecar-{}-{}",
+            std::process::id(),
+            super::unix_now()
+        ));
+        let path = base.to_string_lossy().into_owned();
+        let wal = format!("{path}-wal");
+        std::fs::write(&wal, b"wal").expect("create orphaned wal fixture");
+
+        assert!(super::quarantine_replica(&path).expect("quarantine sidecar"));
+        assert!(!std::path::Path::new(&wal).exists());
 
         let prefix = format!("{}.corrupt-", path);
         for entry in std::fs::read_dir(std::env::temp_dir()).expect("read temp directory") {
@@ -1122,5 +1598,171 @@ mod tests {
         );
         assert!(!s.sync.sleeping());
         assert!(s.sync.readiness().allows_public_reads());
+    }
+
+    fn stale_paper_metadata() -> std::sync::Arc<crate::state::PaperMetadata> {
+        std::sync::Arc::new(crate::state::PaperMetadata {
+            exam: crate::core::models::Exam {
+                code: "STALE".into(),
+                name: "Stale".into(),
+                countries: vec![],
+                status: "live".into(),
+                has_full_paper: None,
+                subjects_required: None,
+                duration_minutes: None,
+                rules: vec![],
+            },
+            subject: crate::core::models::Subject {
+                slug: "stale".into(),
+                exam: "STALE".into(),
+                name: "Stale".into(),
+                order: 0,
+                is_compulsory: false,
+                objective_paper_questions: None,
+                countries: vec![],
+                syllabus_exam: None,
+                syllabus_subject: None,
+            },
+            blueprints: vec![],
+            syllabus: vec![],
+        })
+    }
+
+    #[tokio::test]
+    async fn request_resync_is_single_flight_and_keeps_serving_until_the_swap() {
+        let s = resync_state().await;
+        s.sync.mark_write_committed(3, 96);
+        *s.bank_version.write().expect("bank lock") = "stale".to_string();
+        *s.discovery_cache.write().await =
+            Some(("stale".to_string(), std::sync::Arc::new(Vec::new())));
+        *s.paper_metadata_cache.write().await = Some((
+            "stale".to_string(),
+            "STALE".to_string(),
+            "stale".to_string(),
+            stale_paper_metadata(),
+        ));
+        let before = s.sync.resync_epoch();
+
+        assert!(super::request_resync(&s).await.expect("first resync"));
+        assert!(!super::request_resync(&s).await.expect("second resync"));
+        assert_eq!(s.sync.resync_epoch(), before + 1);
+        assert!(s.sync.resync_pending());
+        assert!(
+            s.db.read().await.is_some(),
+            "requesting a rebuild must not take the serving replica down"
+        );
+        assert!(
+            s.sync.readiness().allows_public_reads(),
+            "staging happens before any readiness change"
+        );
+        assert!(s.discovery_cache.read().await.is_some());
+        assert!(s.paper_metadata_cache.read().await.is_some());
+        assert_eq!(s.bank_version.read().expect("bank lock").as_str(), "stale");
+
+        let health = s.sync.health();
+        assert_eq!(health.pending_operations, 3);
+        assert_eq!(health.pending_bytes, 96);
+        assert!(health.push_pending);
+
+        s.sync.finish_resync();
+        assert!(!s.sync.resync_pending());
+    }
+
+    #[tokio::test]
+    async fn a_full_resync_is_refused_while_the_operator_gate_is_closed() {
+        let s = db_state(replica().await);
+        assert!(!s.sync.policy().resync_enabled);
+        let before = s.sync.resync_epoch();
+        let error = super::request_resync(&s)
+            .await
+            .expect_err("a closed gate refuses the operation");
+        let crate::error::AppError::Conflict(message) = error else {
+            panic!("expected a conflict, got {error:?}");
+        };
+        assert!(message.contains("SYNC_RESYNC_ENABLED"), "{message}");
+        assert_eq!(s.sync.resync_epoch(), before);
+        assert!(!s.sync.resync_pending());
+    }
+
+    #[test]
+    fn a_staged_path_never_collides_with_the_serving_path() {
+        let path = "/var/lib/utmelab-api/sync.db";
+        let staging = super::staging_replica_path(path, 7);
+        assert!(staging.starts_with(path));
+        assert!(staging.contains(".resync-7-"));
+        assert_ne!(staging, path);
+        assert!(!super::replica_files(&staging).contains(&path.to_string()));
+    }
+
+    #[test]
+    fn a_verified_staged_replica_promotes_every_artifact() {
+        let base = std::env::temp_dir().join(format!(
+            "utmelab-sync-promote-{}-{}",
+            std::process::id(),
+            super::unix_now()
+        ));
+        let staging = format!("{}.resync-9", base.to_string_lossy());
+        let serving = base.to_string_lossy().into_owned();
+        std::fs::write(&staging, b"database").expect("staged replica");
+        std::fs::write(format!("{staging}-wal"), b"wal").expect("staged wal");
+
+        let moved = super::promote_staged_replica(&staging, &serving).expect("promotion");
+        assert_eq!(moved.len(), 2);
+        assert_eq!(std::fs::read(&serving).expect("promoted"), b"database");
+        assert_eq!(
+            std::fs::read(format!("{serving}-wal")).expect("promoted wal"),
+            b"wal"
+        );
+        assert!(!std::path::Path::new(&staging).exists());
+
+        for entry in std::fs::read_dir(std::env::temp_dir()).expect("read temp directory") {
+            let path = entry.expect("entry").path();
+            let name = path.to_string_lossy();
+            if name.starts_with(&format!("{serving}.resync-9"))
+                || name == serving
+                || name.starts_with(&format!("{serving}-wal"))
+            {
+                let _ = std::fs::remove_file(path);
+            }
+        }
+    }
+
+    /// A root restart must reuse a published handle without reporting a new
+    /// build. `BuildSucceeded` would move a ready replica back to verifying
+    /// and fail reads even though nothing changed on disk.
+    #[tokio::test]
+    async fn opening_a_published_replica_keeps_the_ready_state() {
+        let s = resync_state().await;
+        let published = s.db.read().await.clone().expect("replica");
+        let policy = s.sync.policy().clone();
+
+        let opened = super::open(&s, &crate::config::Config::default(), &policy)
+            .await
+            .expect("published replica is reused");
+
+        assert!(Arc::ptr_eq(&opened, &published));
+        assert!(matches!(s.sync.state(), super::SyncState::Ready));
+    }
+
+    #[tokio::test]
+    async fn a_resync_retires_a_waiting_push_task() {
+        let s = db_state(replica().await);
+        s.sync.clear_pending_for_rebuild(super::unix_now());
+        let db = s.db.read().await.clone().expect("replica");
+        let policy = s.sync.policy().clone();
+        let epoch = s.sync.resync_epoch();
+        let handle = tokio::spawn({
+            let probe = s.clone();
+            async move { super::supervise_push(probe, db, policy, epoch).await }
+        });
+
+        tokio::time::sleep(Duration::from_millis(25)).await;
+        assert!(!handle.is_finished(), "the push task should be waiting");
+        assert!(s.sync.request_resync());
+
+        let joined = tokio::time::timeout(Duration::from_millis(500), handle)
+            .await
+            .expect("push task retires when the epoch changes");
+        assert!(joined.is_ok(), "push task should exit cleanly");
     }
 }

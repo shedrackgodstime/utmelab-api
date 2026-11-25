@@ -1,6 +1,6 @@
-//! Admin-only operations. Same core/store calls the MCP admin tools
-//! use: one operation, two surfaces, never duplicated. Every mutation
-//! passes the acting admin to the store so the audit event is attributable.
+//! Admin-only operations. The key tools and sync controls have MCP twins, so
+//! one operation is written once and mounted twice. Mutations pass the acting
+//! admin to the store so the audit event is attributable.
 
 use axum::{extract::State, http::HeaderMap, Json};
 
@@ -25,6 +25,13 @@ pub async fn status(
     State(s): State<DbState>,
     AdminUser(_): AdminUser,
 ) -> Result<Json<ServiceStatus>, AppError> {
+    Ok(Json(status_payload(&s).await?))
+}
+
+/// One status snapshot for both admin surfaces. The session route and the MCP
+/// tool must report the same sync facts, including the resync gate and pending
+/// flag an operator watches during a rebuild.
+pub(crate) async fn status_payload(s: &DbState) -> Result<ServiceStatus, AppError> {
     let m = s.metrics.snapshot();
     let health = s.sync.health();
     let now = store::sync::unix_now();
@@ -33,7 +40,7 @@ pub async fn status(
     } else {
         now.saturating_sub(health.last_success_pull_unix)
     };
-    Ok(Json(ServiceStatus {
+    Ok(ServiceStatus {
         service: "utmelab-api",
         has_sync: s.db.read().await.is_some(),
         contract_ok: s.sync.readiness().allows_public_reads(),
@@ -53,7 +60,9 @@ pub async fn status(
         sync_consecutive_push_failures: health.consecutive_push_failures as u64,
         sync_heartbeat_unix: health.heartbeat_unix,
         sync_last_error_unix: health.last_error_unix,
-        sync: store::sync::stats(&s).await?,
+        sync_resync_enabled: s.sync.policy().resync_enabled,
+        sync_resync_pending: s.sync.resync_pending(),
+        sync: store::sync::stats(s).await?,
         gate_rejections: m.gate_rejections,
         pulls_applied: m.pulls_applied,
         pulls_empty: m.pulls_empty,
@@ -80,7 +89,7 @@ pub async fn status(
         latency_fast: m.latency_fast,
         latency_ok: m.latency_ok,
         latency_slow: m.latency_slow,
-    }))
+    })
 }
 
 pub async fn list_users(
@@ -106,6 +115,18 @@ pub async fn trigger_pull(
 ) -> Result<Json<Applied>, AppError> {
     let had = store::sync::pull_now(&s).await?;
     Ok(Json(Applied { ok: had }))
+}
+
+/// Ask the sync supervisor to replace the serving replica with a fresh
+/// bootstrap from Turso Cloud. The store owns the operator gate and the
+/// blue/green swap, so this handler and the MCP twin cannot bypass either.
+/// Returns `false` when a rebuild is already queued.
+pub async fn trigger_resync(
+    State(s): State<DbState>,
+    AdminUser(_): AdminUser,
+) -> Result<Json<Applied>, AppError> {
+    let queued = store::sync::request_resync(&s).await?;
+    Ok(Json(Applied { ok: queued }))
 }
 
 /// Admin-only. `tier` decides the grant, so this mints a consumer key or a
@@ -197,6 +218,7 @@ mod tests {
     use axum::http::StatusCode;
 
     const CREATE: &str = "/api/internal/admin/keys/create";
+    const RESYNC: &str = "/api/internal/admin/sync/resync";
 
     /// A replica with the account tables and two signed-in dashboard users:
     /// `ada` is an admin, `sam` a customer. The returned tokens are the raw
@@ -256,6 +278,25 @@ mod tests {
             Some(r#"{"tier":"commercial","owner":"utmelab-app"}"#),
         )
         .await;
+        assert_eq!(status, StatusCode::FORBIDDEN);
+    }
+
+    /// The session route shares the store gate with the MCP mirror. With the
+    /// gate closed, an admin session is refused before a rebuild is queued.
+    #[tokio::test]
+    async fn an_admin_session_cannot_resync_while_the_gate_is_closed() {
+        let (app, _db, admin, customer) = app().await;
+        let (status, body) = call_session(app.clone(), "POST", RESYNC, &admin, None).await;
+        assert_eq!(status, StatusCode::CONFLICT, "{body}");
+        assert_eq!(body["code"], "conflict", "{body}");
+        assert!(
+            body["error"]
+                .as_str()
+                .is_some_and(|m| m.contains("SYNC_RESYNC_ENABLED")),
+            "{body}"
+        );
+
+        let (status, _) = call_session(app, "POST", RESYNC, &customer, None).await;
         assert_eq!(status, StatusCode::FORBIDDEN);
     }
 

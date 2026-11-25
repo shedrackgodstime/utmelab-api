@@ -15,14 +15,20 @@ pub mod schema;
 pub mod sync;
 pub mod write;
 
-use std::{future::Future, sync::Arc};
+use std::{
+    future::Future,
+    sync::{
+        atomic::{AtomicU64, Ordering},
+        Arc,
+    },
+};
 
 use tokio::sync::{Mutex, OwnedSemaphorePermit, Semaphore};
 
 use crate::{
     error::AppError,
     state::DbState,
-    store::sync::{BudgetSet, Engine, ErrorClass},
+    store::sync::{BudgetSet, Engine, ErrorClass, SyncError},
 };
 
 pub type SyncDb = Arc<turso::sync::Database>;
@@ -39,25 +45,47 @@ const RETRIES: u32 = 5;
 /// keeps reads on the local file and off the worker entirely. Capacity matches
 /// the gate, so a permit always finds an idle connection.
 pub struct ConnPool {
-    idle: Mutex<Vec<turso::Connection>>,
+    idle: Mutex<Vec<(u64, turso::Connection)>>,
+    /// The replica these pooled connections belong to. A stale request that
+    /// already read the old handle must never open a replacement connection
+    /// against it: it retries so it re-reads the published handle instead.
+    owner: std::sync::RwLock<Option<SyncDb>>,
     capacity: usize,
+    generation: AtomicU64,
 }
 
 impl ConnPool {
     pub fn new(capacity: usize) -> Self {
         Self {
             idle: Mutex::new(Vec::with_capacity(capacity)),
+            owner: std::sync::RwLock::new(None),
             capacity,
+            generation: AtomicU64::new(0),
         }
+    }
+
+    fn write_owner(&self, db: &SyncDb) {
+        let mut owner = self.owner.write().unwrap_or_else(|e| e.into_inner());
+        *owner = Some(db.clone());
+    }
+
+    fn owns(&self, db: &SyncDb) -> bool {
+        self.owner
+            .read()
+            .unwrap_or_else(|e| e.into_inner())
+            .as_ref()
+            .is_none_or(|owner| Arc::ptr_eq(owner, db))
     }
 
     /// Open connections up to capacity. Called at boot, before the pull loop
     /// starts, while the IO worker is still free. Each connect spends the
     /// shared connect budget.
     pub(crate) async fn fill(&self, db: &SyncDb, budgets: BudgetSet) {
+        self.write_owner(db);
+        let generation = self.generation.load(Ordering::Acquire);
         for _ in 0..self.capacity {
             match Engine::new(db.clone(), budgets).connect().await {
-                Ok(conn) => self.put(conn).await,
+                Ok(conn) => self.put(conn, generation).await,
                 Err(e) => {
                     tracing::warn!(class = e.class.as_str(), error = %e.message, "connection pool fill stopped");
                     return;
@@ -66,31 +94,96 @@ impl ConnPool {
         }
     }
 
-    /// Take an idle connection. Opening one here only happens for one-shot
-    /// commands or if the boot fill came up short; it is cheap then because no
-    /// pull is in flight.
-    async fn take(&self, db: &SyncDb, budgets: BudgetSet) -> Result<turso::Connection, AppError> {
-        let idle = self.idle.lock().await.pop();
-        match idle {
-            Some(conn) => Ok(conn),
-            None => Engine::new(db.clone(), budgets)
-                .connect()
-                .await
-                .map_err(|e| {
-                    if matches!(e.class, ErrorClass::Contention) {
-                        AppError::DbContended
-                    } else {
-                        AppError::Upstream(e.message)
-                    }
-                }),
+    /// Open a full replacement set for a replica that is not published yet.
+    /// The connections carry the next generation but stay outside the pool, so
+    /// serving reads keep their current handle and pool until `install`.
+    pub(crate) async fn prepare(
+        &self,
+        db: &SyncDb,
+        budgets: BudgetSet,
+    ) -> Result<(u64, Vec<(u64, turso::Connection)>), SyncError> {
+        let generation = self.generation.load(Ordering::Acquire).wrapping_add(1);
+        let mut prepared = Vec::with_capacity(self.capacity);
+        for _ in 0..self.capacity {
+            match Engine::new(db.clone(), budgets).connect().await {
+                Ok(conn) => prepared.push((generation, conn)),
+                Err(error) => {
+                    drop(prepared);
+                    return Err(error);
+                }
+            }
+        }
+        Ok((generation, prepared))
+    }
+
+    /// Publish a prepared set in one step. The caller holds the replica write
+    /// lock, so no request can read a half-swapped pair of handles.
+    pub(crate) async fn install(
+        &self,
+        db: &SyncDb,
+        generation: u64,
+        conns: Vec<(u64, turso::Connection)>,
+    ) {
+        debug_assert!(conns.iter().all(|(tag, _)| *tag == generation));
+        self.write_owner(db);
+        let mut idle = self.idle.lock().await;
+        self.generation.store(generation, Ordering::Release);
+        *idle = conns;
+    }
+
+    /// Retire every pooled connection. The generation makes any connection
+    /// returned by an in-flight request after this point stale, so it is
+    /// dropped instead of being reused against the replacement replica.
+    pub(crate) async fn clear(&self) {
+        self.generation.fetch_add(1, Ordering::AcqRel);
+        self.idle.lock().await.clear();
+    }
+
+    /// Take an idle connection from the current generation. Opening one here
+    /// only happens for one-shot commands or if the boot fill came up short;
+    /// it is cheap then because no pull is in flight.
+    async fn take(
+        &self,
+        db: &SyncDb,
+        budgets: BudgetSet,
+    ) -> Result<(turso::Connection, u64), AppError> {
+        let generation = self.generation.load(Ordering::Acquire);
+        loop {
+            let idle = self.idle.lock().await.pop();
+            match idle {
+                Some((conn_generation, conn)) if conn_generation == generation => {
+                    return Ok((conn, generation));
+                }
+                Some((_, conn)) => drop(conn),
+                None if !self.owns(db) => {
+                    // The request read a replica that has since been replaced.
+                    // Give it back to the caller so it re-reads the published
+                    // handle; never open a pooled connection for the old file.
+                    return Err(AppError::DbContended);
+                }
+                None => {
+                    return Engine::new(db.clone(), budgets)
+                        .connect()
+                        .await
+                        .map(|conn| (conn, generation))
+                        .map_err(|e| {
+                            if matches!(e.class, ErrorClass::Contention) {
+                                AppError::DbContended
+                            } else {
+                                AppError::Upstream(e.message)
+                            }
+                        });
+                }
+            }
         }
     }
 
-    /// Return a connection for reuse, never growing past capacity.
-    async fn put(&self, conn: turso::Connection) {
+    /// Return a connection for reuse. A stale generation is dropped, never
+    /// growing past capacity.
+    async fn put(&self, conn: turso::Connection, generation: u64) {
         let mut idle = self.idle.lock().await;
-        if idle.len() < self.capacity {
-            idle.push(conn);
+        if generation == self.generation.load(Ordering::Acquire) && idle.len() < self.capacity {
+            idle.push((generation, conn));
         }
     }
 }
@@ -171,9 +264,9 @@ where
         let outcome = {
             let db = synced(s).await?;
             let _permit = gate(s)?;
-            let conn = s.conns.take(&db, s.sync.policy().budgets).await?;
+            let (conn, generation) = s.conns.take(&db, s.sync.policy().budgets).await?;
             let outcome = op(conn.clone()).await;
-            s.conns.put(conn).await;
+            s.conns.put(conn, generation).await;
             outcome
         };
         match outcome {
@@ -247,6 +340,56 @@ mod tests {
         task.await
             .expect("retry task joins")
             .expect("second attempt succeeds");
+    }
+
+    /// A staged swap installs a prepared set without ever emptying the live
+    /// pool. Stale connections are retired by the generation bump, not by a
+    /// window where readers have no handle.
+    #[tokio::test]
+    async fn install_publishes_a_prepared_pool_and_retires_stale_connections() {
+        let old = replica().await;
+        let new = replica().await;
+        let pool = ConnPool::new(1);
+        let budgets = crate::store::sync::SyncPolicy::default().budgets;
+
+        pool.fill(&old, budgets).await;
+        let (old_conn, old_gen) = pool.take(&old, budgets).await.expect("old connection");
+
+        let (gen, prepared) = pool.prepare(&new, budgets).await.expect("prepared pool");
+        assert_eq!(gen, old_gen + 1);
+        assert!(pool.owns(&old), "prepare must not publish the new replica");
+        assert!(!pool.owns(&new));
+
+        pool.install(&new, gen, prepared).await;
+        assert!(pool.owns(&new));
+        assert!(!pool.owns(&old));
+
+        pool.put(old_conn, old_gen).await;
+        let (conn, tag) = pool.take(&new, budgets).await.expect("new connection");
+        assert_eq!(tag, gen, "a stale connection must never be reused");
+        pool.put(conn, tag).await;
+    }
+
+    /// Once the owner changes, a request holding the old handle retries
+    /// instead of opening a new pooled connection against the discarded file.
+    #[tokio::test]
+    async fn a_stale_request_cannot_open_a_connection_for_the_replaced_replica() {
+        let old = replica().await;
+        let new = replica().await;
+        let pool = ConnPool::new(1);
+        let budgets = crate::store::sync::SyncPolicy::default().budgets;
+
+        pool.fill(&old, budgets).await;
+        let (_old_conn, _) = pool.take(&old, budgets).await.expect("old connection");
+        let (gen, prepared) = pool.prepare(&new, budgets).await.expect("prepared pool");
+        pool.install(&new, gen, prepared).await;
+
+        let (new_conn, tag) = pool.take(&new, budgets).await.expect("new connection");
+        assert!(matches!(
+            pool.take(&old, budgets).await,
+            Err(AppError::DbContended)
+        ));
+        pool.put(new_conn, tag).await;
     }
 
     #[tokio::test]

@@ -170,14 +170,27 @@ mod tests {
     use serde_json::{json, Value};
     use tower::ServiceExt;
 
-    use crate::testing::{api_schema, bank_schema, call, connect, issue_key, replica, state};
+    use crate::testing::{
+        api_schema, bank_schema, call, connect, db_state, issue_key, replica, state_from,
+    };
+    use std::sync::Arc;
 
     const CATALOG: &str = "/mcp";
     const ADMIN: &str = "/mcp/admin";
 
     /// A replica the surface can answer from: one exam, and keys that cover the
     /// scopes a tool can declare (read, report write, none) plus an admin key.
+    /// The operator gate defaults closed; tests that exercise resync opt in
+    /// explicitly through `resync_app`.
     async fn app() -> Router {
+        app_with_resync(false).await
+    }
+
+    async fn resync_app() -> Router {
+        app_with_resync(true).await
+    }
+
+    async fn app_with_resync(resync_enabled: bool) -> Router {
         let db = replica().await;
         let conn = connect(&db).await;
         api_schema(&conn).await;
@@ -192,7 +205,13 @@ mod tests {
         issue_key(&conn, "writer.secret", "commercial", "write:reports", false).await;
         issue_key(&conn, "nobody.secret", "commercial", "", false).await;
         issue_key(&conn, "admin.secret", "admin", "manage:keys", false).await;
-        crate::routes::router(state(db), &crate::config::Config::default())
+        let mut probe = db_state(db);
+        if resync_enabled {
+            let mut policy = probe.sync.policy().clone();
+            policy.resync_enabled = true;
+            probe.sync = Arc::new(crate::store::sync::SyncStatus::verified(policy));
+        }
+        crate::routes::router(state_from(probe), &crate::config::Config::default())
     }
 
     /// One JSON-RPC message POSTed to `path` with the headers a Streamable HTTP
@@ -466,9 +485,10 @@ mod tests {
     #[tokio::test]
     async fn the_catalog_surface_never_names_an_admin_tool() {
         let app = app().await;
-        const ADMIN_TOOLS: [&str; 5] = [
+        const ADMIN_TOOLS: [&str; 6] = [
             "create_key",
             "pull_now",
+            "resync_now",
             "revoke_key",
             "rotate_key",
             "unrevoke_key",
@@ -520,8 +540,10 @@ mod tests {
             [
                 "create_key",
                 "pull_now",
+                "resync_now",
                 "revoke_key",
                 "rotate_key",
+                "status",
                 "unrevoke_key",
             ]
         );
@@ -656,6 +678,81 @@ mod tests {
         );
     }
 
+    /// The admin status snapshot is mirrored for operators who reach the
+    /// service through the proxy instead of the session-only admin route.
+    #[tokio::test]
+    async fn an_admin_key_can_read_status_through_mcp() {
+        let app = app().await;
+        let (status, body) = rpc(
+            &app,
+            ADMIN,
+            Some("admin.secret"),
+            msg(
+                1,
+                "tools/call",
+                json!({ "name": "status", "arguments": {} }),
+            ),
+        )
+        .await;
+        assert_eq!(status, StatusCode::OK, "{body}");
+        assert!(body["error"].is_null(), "{body}");
+        let text = body["result"]["content"][0]["text"]
+            .as_str()
+            .expect("status text");
+        let payload: Value = serde_json::from_str(text).expect("status json");
+        assert!(payload["sync_state"].is_string(), "{payload}");
+        assert!(!payload["sync_resync_enabled"].as_bool().unwrap_or(true));
+        assert!(!payload["sync_resync_pending"].as_bool().unwrap_or(true));
+    }
+
+    /// The full rebuild tool reaches the same store operation as the session
+    /// route. It is the reachable operator path when the internal route sits
+    /// behind the proxy and SSH is unavailable.
+    #[tokio::test]
+    async fn an_admin_key_can_request_a_full_resync() {
+        let app = resync_app().await;
+        let (status, body) = rpc(
+            &app,
+            ADMIN,
+            Some("admin.secret"),
+            msg(
+                1,
+                "tools/call",
+                json!({ "name": "resync_now", "arguments": {} }),
+            ),
+        )
+        .await;
+        assert_eq!(status, StatusCode::OK, "{body}");
+        assert!(body["error"].is_null(), "{body}");
+        assert!(body["result"].is_object(), "{body}");
+    }
+
+    /// The keyed mirror carries the same operator gate as the session route.
+    /// Without `SYNC_RESYNC_ENABLED`, an admin key cannot start a rebuild.
+    #[tokio::test]
+    async fn an_admin_key_cannot_resync_while_the_gate_is_closed() {
+        let app = app().await;
+        let (status, body) = rpc(
+            &app,
+            ADMIN,
+            Some("admin.secret"),
+            msg(
+                1,
+                "tools/call",
+                json!({ "name": "resync_now", "arguments": {} }),
+            ),
+        )
+        .await;
+        assert_eq!(status, StatusCode::OK, "{body}");
+        assert_eq!(body["error"]["data"]["code"], "conflict", "{body}");
+        assert!(
+            body["error"]["message"]
+                .as_str()
+                .is_some_and(|m| m.contains("SYNC_RESYNC_ENABLED")),
+            "{body}"
+        );
+    }
+
     /// The admin surface can hand out a consumer key: the tool dispatches into
     /// the store, which derives the grant from the tier and refuses one it does
     /// not know. (The grant itself is pinned in the store tests; the test
@@ -744,8 +841,10 @@ mod tests {
             [
                 "create_key",
                 "pull_now",
+                "resync_now",
                 "revoke_key",
                 "rotate_key",
+                "status",
                 "unrevoke_key",
             ]
         );

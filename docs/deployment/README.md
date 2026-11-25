@@ -267,11 +267,10 @@ Use `handle` blocks for both tiers. A bare matcher plus `reverse_proxy` will los
   Turso or served from memory.
 - Caddy obtains a real Let's Encrypt cert for `api.jambmax.com` automatically — no
   `tls internal`. Nothing TLS works until DNS resolves.
-- `TURSO_*` env names: the local `.env` also carries `TURSO_DB_TOKEN_READONLY` /
-  `TURSO_API_KEY`; the service needs only `TURSO_DB_URL` + `TURSO_DB_TOKEN`, and
-  it must be the **rw** token. The parent's `.env` points at a **different**
-  database (`utmelab-…`, not `utmelab-api-…`) — separate products, do not mix the
-  tokens up.
+- `TURSO_*` env names: the local `.env` may carry `TURSO_DB_TOKEN_READONLY` for
+  local testing; the service needs only `TURSO_DB_URL` + `TURSO_DB_TOKEN`, and it
+  must be the **rw** token. This repo's `.env` now points at the
+  `dollar-drab-july` `utmelab-api` database.
 - This binary reads no `JWT_SECRET`. A manifest that carries one is carrying dead
   config.
 - There is no `data/` in this repo and nothing JSON is embedded: the release is

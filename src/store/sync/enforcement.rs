@@ -120,6 +120,22 @@ fn every_sync_environment_variable_is_documented() {
 }
 
 #[test]
+fn resync_controls_go_through_the_gated_store_function() {
+    let owners = ["src/store/sync.rs", "src/store/sync/state.rs"];
+    for path in scanned_files() {
+        let relative = relative(&path);
+        if owners.contains(&relative.as_str()) {
+            continue;
+        }
+        let text = source(&path);
+        assert!(
+            !text.contains(".request_resync()"),
+            "{relative} calls the raw state request; the gated store function owns the operator gate"
+        );
+    }
+}
+
+#[test]
 fn every_sync_health_fact_is_exposed_by_admin_status() {
     let model = source(&root().join("src/core/models/admin.rs"));
     let handler = source(&root().join("src/internal/admin.rs"));

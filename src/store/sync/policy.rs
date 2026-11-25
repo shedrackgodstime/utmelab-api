@@ -316,6 +316,10 @@ pub struct SyncPolicy {
     pub budgets: BudgetSet,
     pub retry: RetryPolicy,
     pub freshness: FreshnessPolicy,
+    /// Whether a full replica rebuild may be requested. Off by default: the
+    /// operation is deliberate, discards local work, and is not a migration
+    /// tool. Both admin surfaces consult this one value.
+    pub resync_enabled: bool,
     pub write_admission: WriteAdmissionPolicy,
 }
 
@@ -344,6 +348,7 @@ impl SyncPolicy {
                 auth_max_age: secs(cfg.sync_auth_max_staleness_secs),
                 heartbeat_max_age: secs(cfg.sync_heartbeat_max_secs),
             },
+            resync_enabled: cfg.sync_resync_enabled,
             write_admission: WriteAdmissionPolicy {
                 max_pending_operations: cfg.sync_max_pending_operations,
                 max_pending_bytes: cfg.sync_max_pending_bytes,
@@ -503,6 +508,13 @@ mod tests {
             p.freshness.heartbeat_max_age,
             Duration::from_secs(cfg.sync_heartbeat_max_secs)
         );
+        assert!(
+            !p.resync_enabled,
+            "the default policy must gate full resync"
+        );
+        let mut enabled = cfg.clone();
+        enabled.sync_resync_enabled = true;
+        assert!(SyncPolicy::from_config(&enabled).resync_enabled);
         assert_eq!(
             p.write_admission.max_pending_operations,
             cfg.sync_max_pending_operations

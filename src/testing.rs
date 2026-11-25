@@ -337,6 +337,12 @@ pub(crate) fn state(db: SyncDb) -> AppState {
     app_from(db_state(db))
 }
 
+/// `AppState` assembled from an explicitly prepared `DbState`, for tests that
+/// need a non-default sync policy such as the operator resync gate.
+pub(crate) fn state_from(db: DbState) -> AppState {
+    app_from(db)
+}
+
 /// `AppState` with no replica and a chosen readiness state.
 pub(crate) fn state_without_db(ready: bool) -> AppState {
     app_from(db_state_without_db(ready, 1))

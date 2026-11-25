@@ -66,6 +66,10 @@ pub const DEFAULT_SYNC_AUTH_MAX_STALENESS_SECS: u64 = 31_536_000;
 /// The supervisor stamps a heartbeat every loop. A gap past this budget means
 /// the task is no longer running and readiness must stop trusting the replica.
 pub const DEFAULT_SYNC_HEARTBEAT_MAX_SECS: u64 = 180;
+/// A full resync replaces the serving replica and discards local un-pushed
+/// work. It is an explicit operator action, not a routine recovery knob, so it
+/// stays off until an operator opts in for the current process.
+pub const DEFAULT_SYNC_RESYNC_ENABLED: bool = false;
 /// Local work committed during a push outage is bounded. New writes are
 /// refused once the process-local pending counter reaches either limit.
 pub const DEFAULT_SYNC_MAX_PENDING_OPERATIONS: u64 = 256;
@@ -118,6 +122,7 @@ pub struct Config {
     pub sync_max_staleness_secs: u64,
     pub sync_auth_max_staleness_secs: u64,
     pub sync_heartbeat_max_secs: u64,
+    pub sync_resync_enabled: bool,
     pub sync_max_pending_operations: u64,
     pub sync_max_pending_bytes: u64,
     pub db_max_concurrent: usize,
@@ -157,6 +162,7 @@ impl Default for Config {
             sync_max_staleness_secs: DEFAULT_SYNC_MAX_STALENESS_SECS,
             sync_auth_max_staleness_secs: DEFAULT_SYNC_AUTH_MAX_STALENESS_SECS,
             sync_heartbeat_max_secs: DEFAULT_SYNC_HEARTBEAT_MAX_SECS,
+            sync_resync_enabled: DEFAULT_SYNC_RESYNC_ENABLED,
             sync_max_pending_operations: DEFAULT_SYNC_MAX_PENDING_OPERATIONS,
             sync_max_pending_bytes: DEFAULT_SYNC_MAX_PENDING_BYTES,
             db_max_concurrent: DEFAULT_DB_MAX_CONCURRENT,
@@ -299,6 +305,7 @@ impl Config {
                 "SYNC_HEARTBEAT_MAX_SECS",
                 d.sync_heartbeat_max_secs,
             )?,
+            sync_resync_enabled: boolean(source, "SYNC_RESYNC_ENABLED", d.sync_resync_enabled)?,
             sync_max_pending_operations: number(
                 source,
                 "SYNC_MAX_PENDING_OPERATIONS",
@@ -474,6 +481,10 @@ mod tests {
         assert_eq!(c.worker_threads, DEFAULT_WORKER_THREADS);
         assert_eq!(c.replica_path, DEFAULT_REPLICA_PATH);
         assert!(c.cookie_secure, "secure must be the default, not opt-in");
+        assert!(
+            !c.sync_resync_enabled,
+            "a destructive resync must be opt-in, not a default"
+        );
     }
 
     #[test]
@@ -553,6 +564,17 @@ mod tests {
                 .cookie_secure
         );
         assert!(parse(&[("COOKIE_SECURE", "maybe")]).is_err());
+        assert!(
+            parse(&[("SYNC_RESYNC_ENABLED", "yes")])
+                .expect("yes")
+                .sync_resync_enabled
+        );
+        assert!(
+            !parse(&[("SYNC_RESYNC_ENABLED", "off")])
+                .expect("off")
+                .sync_resync_enabled
+        );
+        assert!(parse(&[("SYNC_RESYNC_ENABLED", "sometimes")]).is_err());
     }
 
     /// The listener is loopback-only, and that is what makes the address the

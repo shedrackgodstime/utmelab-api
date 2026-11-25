@@ -6,7 +6,7 @@
 #   sudo system enroll <key>              register a CI public key for the
 #                                         one deploy identity
 #   sudo system verify                    check every service against its manifest
-#   sudo system report                    resource + service health
+#   sudo system report                    resource + service health + host map
 #   sudo system deploy preview            what a deploy would do (read-only)
 #   sudo system rollback <service>        flip back to the previous release
 #   sudo system service list|show <svc>   the manifests on this host
@@ -419,6 +419,33 @@ cmd_report() {
       "$([ -n "$domain" ] && http_code "https://${domain}$(env_or "$svc" HEALTH_ENDPOINT /)" 15 || printf 'n/a')"
   done; hr
 
+  # This is the host map people need when returning to the VPS after a while.
+  # Print paths, domains and ports only; manifests contain secrets and must not
+  # be rendered by the report.
+  say "${B}HOST MAP${D}"
+  say "  Environment files: ${CONFIG_DIR}/*.env (0600 root:root; values hidden)"
+  say "  Systemd template:  ${UNIT_DIR}/utmelab@.service"
+  say "  Caddy entrypoint:   ${CADDY_FILE}"
+  say "  Caddy site files:   ${SITE_DIR}/*.caddy"
+  say "  Release directories: ${BASE_DIR}/<service>/releases"
+  for svc in $(list_services); do
+    local domain ip port site route
+    domain="$(env_of "$svc" DOMAIN)"; ip="$(env_or "$svc" IP 127.0.0.1)"; port="$(env_of "$svc" PORT)"
+    site="${SITE_DIR}/${svc}.caddy"
+    if [ -f "$site" ]; then
+      route="$(awk '/^[^#[:space:]][^{]*\{/{sub(/[[:space:]]*\{.*/, ""); print; exit}' "$site")"
+      printf '  %-20s env=%s  listen=%s:%s  route=%s  file=%s\n' "$svc" "$(manifest "$svc")" "$ip" "$port" "${route:-custom/none}" "$site"
+    else
+      printf '  %-20s env=%s  listen=%s:%s  route=%s  file=none\n' "$svc" "$(manifest "$svc")" "$ip" "$port" "${domain:-loopback-only}"
+    fi
+  done
+  if [ -f "${SITE_DIR}/utmelab-web.caddy" ]; then
+    say "  Consumer web app:   app.utmelab.com -> ${BASE_DIR}/utmelab-app-server/current/site"
+    say "  Web Caddy route:    ${SITE_DIR}/utmelab-web.caddy"
+  else
+    say "  Future web app:     app.utmelab.com (no VPS route configured yet)"
+  fi; hr
+
   say "${B}FLAGS${D}"
   say "  Failed systemd units: $(systemctl --failed --plain --no-legend 2>/dev/null | wc -l)"
   say "  UFW: $(ufw status 2>/dev/null | head -1)"
@@ -666,7 +693,7 @@ system — one admin tool for every service on this host
   system provision <service>        create/repair everything the manifest implies
   system enroll <key>               register a CI public key for the deploy identity
   system verify                     check every service against its manifest
-  system report                     resource + service health
+  system report                     resource + service health + host map
   system journal [-n N] [-u UNIT] [-p LEVEL] [-s SINCE] [-g PATTERN]
                                     read the journal (default: last 100)
   system journal clear [SIZE]       rotate and vacuum the journal (default: 50M)

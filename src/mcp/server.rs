@@ -5,10 +5,12 @@
 //! decides what a caller can even see. `/mcp` is the catalog surface (reads
 //! plus the consumer actions); `/mcp/admin` is key management.
 //!
-//! Every tool mounts the same function its HTTP twin does (`api::v1`), so a
-//! capability is written once. The admin key tools have no twin on the keyed
-//! HTTP surface; they call the same `store::accounts` functions the dashboard
-//! does. Scope is checked with the same [`Auth::require`] HTTP uses, read from
+//! Every tool mounts the same store function its HTTP twin uses where one
+//! exists, so a capability is written once. The admin key tools have no twin on
+//! the keyed HTTP surface; they call the same `store::accounts` functions the
+//! dashboard does. Sync controls reach the same store functions their
+//! session-only HTTP routes use. Scope is checked with the same [`Auth::require`]
+//! HTTP uses, read from
 //! the request the transport carried into `context.extensions`. Each tool
 //! declares the scope it needs at its registration, and that one declaration
 //! both hides the tool from `tools/list` for a caller who cannot call it and
@@ -292,11 +294,30 @@ impl McpServer {
     }
 }
 
-/// The admin surface's actions. These have no keyed HTTP twin; they call the
-/// same store functions the dashboard does, behind the same `manage:keys`
-/// scope the router already enforced.
+/// The admin surface's actions. The key tools have no keyed HTTP twin; they
+/// call the same store functions the dashboard does. The sync controls mirror
+/// their session routes. All sit behind the same `manage:keys` scope the router
+/// already enforced.
 #[tool_router(router = admin_router)]
 impl McpServer {
+    /// Read the same sync and request telemetry the session status route
+    /// reports. Needs an admin API key with `manage:keys`.
+    #[tool(
+        description = "Read sync and request telemetry, including resync gate and pending state. Needs manage:keys.",
+        meta = scope_meta(SCOPE_MANAGE_KEYS)
+    )]
+    async fn status(
+        &self,
+        context: RequestContext<RoleServer>,
+    ) -> Result<CallToolResponse, ErrorData> {
+        let auth = auth_from(&context)?;
+        auth.require(SCOPE_MANAGE_KEYS).map_err(to_mcp)?;
+        let status = crate::internal::admin::status_payload(&self.db)
+            .await
+            .map_err(to_mcp)?;
+        json_result(&status)
+    }
+
     /// Pull the latest committed database changes from Turso. Needs an admin
     /// API key with `manage:keys`.
     #[tool(
@@ -313,6 +334,25 @@ impl McpServer {
             .await
             .map_err(to_mcp)?;
         json_result(&core::models::Applied { ok: pulled })
+    }
+
+    /// Replace the serving replica with a fresh build from Turso. Local work
+    /// that has not reached Turso is discarded. Needs an admin API key with
+    /// `manage:keys` and `SYNC_RESYNC_ENABLED=1` on the running process.
+    #[tool(
+        description = "Rebuild the replica from Turso. Needs manage:keys and SYNC_RESYNC_ENABLED=1. Local un-pushed work is discarded.",
+        meta = scope_meta(SCOPE_MANAGE_KEYS)
+    )]
+    async fn resync_now(
+        &self,
+        context: RequestContext<RoleServer>,
+    ) -> Result<CallToolResponse, ErrorData> {
+        let auth = auth_from(&context)?;
+        auth.require(SCOPE_MANAGE_KEYS).map_err(to_mcp)?;
+        let queued = crate::store::sync::request_resync(&self.db)
+            .await
+            .map_err(to_mcp)?;
+        json_result(&core::models::Applied { ok: queued })
     }
 
     /// Grant a key. The tier decides the scopes, so this mints a consumer key
