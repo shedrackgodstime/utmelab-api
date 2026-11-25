@@ -25,7 +25,7 @@ pub const CONTRACT_VERSION: u64 = 1;
 
 /// Version of the API-owned schema. This is separate from
 /// [`CONTRACT_VERSION`], which belongs to the content pipeline.
-pub const API_SCHEMA_VERSION: u64 = 19;
+pub const API_SCHEMA_VERSION: u64 = 20;
 
 /// Tables the API owns and creates at boot.
 pub(crate) const DDL: &[&str] = &[
@@ -332,7 +332,7 @@ pub async fn ensure_schema(s: &DbState) -> Result<(), AppError> {
 /// Fresh databases receive the current DDL first; upgraded databases receive
 /// the same DDL idempotently and then any missing migrations.
 const MIGRATIONS: &[u64] = &[
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
 ];
 
 async fn apply_migrations(s: &DbState) -> Result<(), AppError> {
@@ -753,19 +753,15 @@ async fn apply_migrations(s: &DbState) -> Result<(), AppError> {
                 }
                 super::write::execute_write_local(s, "INSERT OR IGNORE INTO lessons_v17 (id, version, status, title, description, subject, level, estimated_minutes, objectives, content, checks, misconceptions, summary, example_question_refs, provenance, content_hash, created_at, updated_at) SELECT lesson_id, version, status, title, description, subject, level, estimated_minutes, objectives, content, checks, misconceptions, summary, '[]', provenance, content_hash, created_at, created_at FROM lesson_revisions", vec![]).await?;
                 if has_topics {
-                    super::write::execute_write_local(s, "UPDATE topics SET lesson_refs=COALESCE((SELECT json_group_array(json_object('id',tl.lesson_id,'title',(SELECT title FROM lessons WHERE id=tl.lesson_id ORDER BY version DESC LIMIT 1))) FROM topic_lessons tl WHERE tl.exam=topics.exam AND tl.subject=topics.subject AND tl.topic_slug=topics.slug),'[]')", vec![]).await?;
+                    super::write::execute_write_local(s, "UPDATE topics SET lesson_refs=CASE WHEN COALESCE(topics.lesson_refs,'[]')<>'[]' THEN topics.lesson_refs ELSE COALESCE((SELECT json_group_array(json_object('id',ordered.lesson_id,'title',(SELECT title FROM lessons WHERE id=ordered.lesson_id ORDER BY version DESC LIMIT 1))) FROM (SELECT tl.lesson_id FROM topic_lessons tl WHERE tl.exam=topics.exam AND tl.subject=topics.subject AND tl.topic_slug=topics.slug AND COALESCE(tl.subtopic_slug,'')='' ORDER BY tl.order_index,tl.lesson_id) ordered),'[]') END", vec![]).await?;
                 }
                 if has_subtopics {
-                    super::write::execute_write_local(s, "UPDATE subtopics SET lesson_refs=COALESCE((SELECT json_group_array(json_object('id',tl.lesson_id,'title',(SELECT title FROM lessons WHERE id=tl.lesson_id ORDER BY version DESC LIMIT 1))) FROM topic_lessons tl WHERE tl.topic_slug=subtopics.topic AND tl.subtopic_slug=subtopics.slug),'[]')", vec![]).await?;
+                    super::write::execute_write_local(s, "UPDATE subtopics SET lesson_refs=CASE WHEN COALESCE(subtopics.lesson_refs,'[]')<>'[]' THEN subtopics.lesson_refs ELSE COALESCE((SELECT json_group_array(json_object('id',ordered.lesson_id,'title',(SELECT title FROM lessons WHERE id=ordered.lesson_id ORDER BY version DESC LIMIT 1))) FROM (SELECT tl.lesson_id FROM topic_lessons tl JOIN topics t ON t.slug=subtopics.topic AND t.exam=tl.exam AND t.subject=tl.subject WHERE tl.topic_slug=subtopics.topic AND COALESCE(tl.subtopic_slug,'')=subtopics.slug ORDER BY tl.order_index,tl.lesson_id) ordered),'[]') END", vec![]).await?;
                 }
                 super::write::execute_ddl_local(s, "DROP TABLE lessons").await?;
                 super::write::execute_ddl_local(s, "ALTER TABLE lessons_v17 RENAME TO lessons")
                     .await?;
-                for table in [
-                    "lesson_revisions",
-                    "lesson_example_questions",
-                    "topic_lessons",
-                ] {
+                for table in ["lesson_revisions", "lesson_example_questions"] {
                     super::write::execute_ddl_local(s, &format!("DROP TABLE IF EXISTS {table}"))
                         .await?;
                 }
@@ -785,8 +781,14 @@ async fn apply_migrations(s: &DbState) -> Result<(), AppError> {
                 // The exam-owned JSON refs now carry the relationship and its
                 // order. Fold any remaining rows into them before dropping the
                 // table, so an older replica does not lose authored links.
-                super::lessons::backfill_lesson_refs(s).await?;
+                super::lessons::backfill_lesson_refs_local(s).await?;
                 super::write::execute_ddl_local(s, "DROP TABLE IF EXISTS topic_lessons").await?;
+            }
+            20 => {
+                // Replicas upgraded before ordering was written copied refs
+                // without the order field. Number every stored array from its
+                // position so the published contract is true on upgrade too.
+                super::lessons::normalize_lesson_ref_orders_local(s).await?;
             }
 
             _ => {
@@ -1136,6 +1138,105 @@ mod tests {
             assert_eq!(refs[0].title, "First lesson");
             assert_eq!(refs[0].order, 1);
         }
+    }
+
+    #[tokio::test]
+    async fn migration_nineteen_skips_ambiguous_shared_subtopic_rows() {
+        let s = local_db().await;
+        let conn = conn_of(&s).await;
+        api_schema(&conn).await;
+        bank_schema(&conn, &["topics", "subtopics"]).await;
+        for version in 1..=18 {
+            conn.execute(
+                "INSERT INTO api_schema_migrations (version) VALUES (?1)",
+                [version as i64],
+            )
+            .await
+            .expect("record applied migration");
+        }
+        conn.execute(
+            "CREATE TABLE topic_lessons (exam TEXT, subject TEXT, topic_slug TEXT, subtopic_slug TEXT NOT NULL DEFAULT '', lesson_id TEXT, order_index INTEGER NOT NULL DEFAULT 0)",
+            (),
+        )
+        .await
+        .expect("relationship table");
+        conn.execute(
+            "INSERT INTO lessons (id,status,title,description,subject,level,estimated_minutes,objectives,content,checks,misconceptions,summary,example_question_refs,provenance,content_hash) VALUES ('lesson:shared','published','Shared lesson','{}','english-language','secondary',5,'[]','[]','[]','[]','[]','[]','{}','hash')",
+            (),
+        )
+        .await
+        .expect("lesson");
+        for exam in ["JAMB", "WAEC"] {
+            conn.execute(
+                "INSERT INTO topics VALUES ('comprehension','english-language',?1,'Comprehension',1,0,'[]','[]','[]')",
+                [exam],
+            )
+            .await
+            .expect("topic owner");
+        }
+        conn.execute(
+            "INSERT INTO subtopics VALUES ('intro','comprehension','Intro',1,'[]','[]')",
+            (),
+        )
+        .await
+        .expect("shared subtopic");
+        for (subtopic, lesson) in [("", "lesson:shared"), ("intro", "lesson:shared")] {
+            conn.execute(
+                "INSERT INTO topic_lessons VALUES ('WAEC','english-language','comprehension',?1,?2,1)",
+                [subtopic, lesson],
+            )
+            .await
+            .expect("relationship row");
+        }
+
+        apply_migrations(&s)
+            .await
+            .expect("schema work completes with a shared subtopic");
+
+        let mut rows = conn
+            .query(
+                "SELECT 1 FROM sqlite_master WHERE type='table' AND name='topic_lessons'",
+                (),
+            )
+            .await
+            .expect("sqlite_master");
+        assert!(rows.next().await.expect("next").is_none(), "table dropped");
+
+        let mut rows = conn
+            .query(
+                "SELECT lesson_refs FROM subtopics WHERE topic='comprehension' AND slug='intro'",
+                (),
+            )
+            .await
+            .expect("shared subtopic refs");
+        let raw: String = rows
+            .next()
+            .await
+            .expect("row")
+            .expect("result")
+            .get(0)
+            .expect("json");
+        assert_eq!(raw, "[]", "shared row cannot carry one owner's refs");
+
+        let mut rows = conn
+            .query(
+                "SELECT lesson_refs FROM topics WHERE slug='comprehension' AND exam='WAEC'",
+                (),
+            )
+            .await
+            .expect("topic refs");
+        let raw: String = rows
+            .next()
+            .await
+            .expect("row")
+            .expect("result")
+            .get(0)
+            .expect("json");
+        let refs: Vec<crate::core::models::ContentReference> =
+            serde_json::from_str(&raw).expect("refs json");
+        assert_eq!(refs.len(), 1);
+        assert_eq!(refs[0].id, "lesson:shared");
+        assert_eq!(refs[0].order, 1);
     }
 
     #[tokio::test]
@@ -1543,5 +1644,233 @@ mod tests {
             .expect("record migration");
 
         assert_eq!(owned_shape(&upgraded_conn).await, fresh_shape);
+    }
+
+    #[tokio::test]
+    async fn legacy_lesson_upgrade_keeps_authored_link_order() {
+        let s = local_db().await;
+        let conn = conn_of(&s).await;
+        api_schema(&conn).await;
+        bank_schema(
+            &conn,
+            &["exams", "subjects", "topics", "subtopics", "questions"],
+        )
+        .await;
+        for version in 1..=16 {
+            conn.execute(
+                "INSERT INTO api_schema_migrations (version) VALUES (?1)",
+                [version],
+            )
+            .await
+            .expect("record previous migration");
+        }
+
+        conn.execute("DROP TABLE lessons", ())
+            .await
+            .expect("replace current lesson shape");
+        conn.execute(
+            "CREATE TABLE lessons (id TEXT NOT NULL, version INTEGER NOT NULL, status TEXT NOT NULL, title TEXT NOT NULL, description TEXT NOT NULL, subject TEXT NOT NULL, level TEXT NOT NULL, estimated_minutes INTEGER NOT NULL, objectives TEXT NOT NULL, content TEXT NOT NULL, checks TEXT NOT NULL, misconceptions TEXT NOT NULL, summary TEXT NOT NULL, provenance TEXT NOT NULL, content_hash TEXT NOT NULL, created_at TEXT NOT NULL, updated_at TEXT NOT NULL, PRIMARY KEY (id, version))",
+            (),
+        )
+        .await
+        .expect("legacy lessons");
+        conn.execute(
+            "CREATE TABLE lesson_revisions (lesson_id TEXT NOT NULL, version INTEGER NOT NULL, status TEXT NOT NULL, title TEXT NOT NULL, description TEXT NOT NULL, subject TEXT NOT NULL, level TEXT NOT NULL, estimated_minutes INTEGER NOT NULL, objectives TEXT NOT NULL, content TEXT NOT NULL, checks TEXT NOT NULL, misconceptions TEXT NOT NULL, summary TEXT NOT NULL, provenance TEXT NOT NULL, content_hash TEXT NOT NULL, created_at TEXT NOT NULL)",
+            (),
+        )
+        .await
+        .expect("legacy revisions");
+        conn.execute(
+            "CREATE TABLE lesson_example_questions (lesson_id TEXT NOT NULL, question_id TEXT NOT NULL)",
+            (),
+        )
+        .await
+        .expect("legacy lesson questions");
+        conn.execute(
+            "CREATE TABLE topic_lessons (exam TEXT NOT NULL, subject TEXT NOT NULL, topic_slug TEXT NOT NULL, subtopic_slug TEXT NOT NULL DEFAULT '', lesson_id TEXT NOT NULL, order_index INTEGER NOT NULL DEFAULT 0)",
+            (),
+        )
+        .await
+        .expect("legacy relationship table");
+
+        for (id, version, title) in [
+            ("lesson:second", 1, "Second v1"),
+            ("lesson:second", 2, "Second v2"),
+            ("lesson:first", 1, "First"),
+        ] {
+            conn.execute(
+                "INSERT INTO lessons (id,version,status,title,description,subject,level,estimated_minutes,objectives,content,checks,misconceptions,summary,provenance,content_hash,created_at,updated_at) VALUES (?1,?2,'published',?3,'{}','english-language','secondary',5,'[]','[]','[]','[]','[]','{}','hash',CURRENT_TIMESTAMP,CURRENT_TIMESTAMP)",
+                vec![
+                    turso::Value::Text(id.to_string()),
+                    turso::Value::Integer(version),
+                    turso::Value::Text(title.to_string()),
+                ],
+            )
+            .await
+            .expect("legacy lesson");
+        }
+        conn.execute(
+            "INSERT INTO exams VALUES ('JAMB','JAMB','[\"NG\"]','active',1,NULL,NULL,'[]')",
+            (),
+        )
+        .await
+        .expect("exam");
+        conn.execute(
+            "INSERT INTO subjects VALUES ('english-language','JAMB','English Language',0,0,50,'[]',NULL,NULL)",
+            (),
+        )
+        .await
+        .expect("subject");
+        conn.execute(
+            "INSERT INTO topics VALUES ('comprehension','english-language','JAMB','Comprehension',1,0,'[]','[]','[]')",
+            (),
+        )
+        .await
+        .expect("topic");
+        conn.execute(
+            "INSERT INTO subtopics VALUES ('intro','comprehension','Intro',1,'[]','[]')",
+            (),
+        )
+        .await
+        .expect("subtopic");
+        for (subtopic, lesson, order) in [
+            ("", "lesson:second", 2),
+            ("", "lesson:first", 1),
+            ("intro", "lesson:second", 1),
+        ] {
+            conn.execute(
+                "INSERT INTO topic_lessons VALUES ('JAMB','english-language','comprehension',?1,?2,?3)",
+                vec![
+                    turso::Value::Text(subtopic.to_string()),
+                    turso::Value::Text(lesson.to_string()),
+                    turso::Value::Integer(order),
+                ],
+            )
+            .await
+            .expect("legacy relationship row");
+        }
+
+        ensure_schema(&s).await.expect("real legacy upgrade");
+
+        let mut rows = conn
+            .query("SELECT MAX(version) FROM api_schema_migrations", ())
+            .await
+            .expect("migration version");
+        let version: i64 = rows
+            .next()
+            .await
+            .expect("row")
+            .expect("result")
+            .get(0)
+            .expect("version");
+        assert_eq!(version, API_SCHEMA_VERSION as i64);
+
+        let mut rows = conn
+            .query(
+                "SELECT 1 FROM sqlite_master WHERE type='table' AND name='topic_lessons'",
+                (),
+            )
+            .await
+            .expect("sqlite_master");
+        assert!(
+            rows.next().await.expect("next").is_none(),
+            "the relationship table must not survive the upgrade"
+        );
+
+        let mut rows = conn
+            .query(
+                "SELECT lesson_refs FROM topics WHERE slug='comprehension'",
+                (),
+            )
+            .await
+            .expect("topic refs");
+        let raw: String = rows
+            .next()
+            .await
+            .expect("row")
+            .expect("result")
+            .get(0)
+            .expect("json");
+        let refs: Vec<crate::core::models::ContentReference> =
+            serde_json::from_str(&raw).expect("topic json");
+        assert_eq!(
+            refs.iter().map(|r| r.id.as_str()).collect::<Vec<_>>(),
+            ["lesson:first", "lesson:second"]
+        );
+        assert_eq!(
+            refs.iter().map(|r| r.title.as_str()).collect::<Vec<_>>(),
+            ["First", "Second v2"]
+        );
+        assert_eq!(refs.iter().map(|r| r.order).collect::<Vec<_>>(), [1, 2]);
+
+        let mut rows = conn
+            .query("SELECT lesson_refs FROM subtopics WHERE slug='intro'", ())
+            .await
+            .expect("subtopic refs");
+        let raw: String = rows
+            .next()
+            .await
+            .expect("row")
+            .expect("result")
+            .get(0)
+            .expect("json");
+        let refs: Vec<crate::core::models::ContentReference> =
+            serde_json::from_str(&raw).expect("subtopic json");
+        assert_eq!(refs.len(), 1);
+        assert_eq!(refs[0].id, "lesson:second");
+        assert_eq!(refs[0].title, "Second v2");
+        assert_eq!(refs[0].order, 1);
+    }
+
+    #[tokio::test]
+    async fn migration_twenty_numbers_stored_refs_from_array_position() {
+        let s = local_db().await;
+        let conn = conn_of(&s).await;
+        api_schema(&conn).await;
+        bank_schema(&conn, &["topics", "subtopics"]).await;
+        for version in 1..=19 {
+            conn.execute(
+                "INSERT INTO api_schema_migrations (version) VALUES (?1)",
+                [version],
+            )
+            .await
+            .expect("record previous migration");
+        }
+        let raw = r#"[{"id":"lesson:one","title":"One","order":9},{"id":"lesson:two","title":"Two","order":4}]"#;
+        conn.execute(
+            "INSERT INTO topics VALUES ('comprehension','english-language','JAMB','Comprehension',1,0,'[]','[]',?1)",
+            [raw],
+        )
+        .await
+        .expect("topic refs");
+        conn.execute(
+            "INSERT INTO subtopics VALUES ('intro','comprehension','Intro',1,'[]',?1)",
+            [raw],
+        )
+        .await
+        .expect("subtopic refs");
+
+        apply_migrations(&s).await.expect("migration twenty");
+
+        for sql in [
+            "SELECT lesson_refs FROM topics WHERE slug='comprehension'",
+            "SELECT lesson_refs FROM subtopics WHERE slug='intro'",
+        ] {
+            let mut rows = conn.query(sql, ()).await.expect("refs query");
+            let stored: String = rows
+                .next()
+                .await
+                .expect("row")
+                .expect("result")
+                .get(0)
+                .expect("json");
+            let refs: Vec<crate::core::models::ContentReference> =
+                serde_json::from_str(&stored).expect("refs json");
+            assert_eq!(
+                refs.iter().map(|r| r.id.as_str()).collect::<Vec<_>>(),
+                ["lesson:one", "lesson:two"]
+            );
+            assert_eq!(refs.iter().map(|r| r.order).collect::<Vec<_>>(), [1, 2]);
+        }
     }
 }

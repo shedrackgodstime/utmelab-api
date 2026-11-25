@@ -232,6 +232,19 @@ pub async fn syllabus_lesson_refs(
                     .insert(slug, visible_refs(&raw, "topics.lesson_refs", &titles)?);
             }
 
+            let mut ambiguous = conn
+                .query(
+                    "SELECT st.topic FROM subtopics st JOIN topics t ON t.slug=st.topic WHERE t.exam=?1 AND t.subject=?2 GROUP BY st.topic HAVING (SELECT COUNT(DISTINCT t2.exam || '/' || t2.subject) FROM topics t2 WHERE t2.slug=st.topic) > 1 LIMIT 1",
+                    [exam.as_str(), subject.as_str()],
+                )
+                .await
+                .map_err(upstream)?;
+            if let Some(row) = ambiguous.next().await.map_err(upstream)? {
+                return Err(ambiguous_topic_error(
+                    &row.get::<String>(0).map_err(upstream)?,
+                ));
+            }
+
             let mut rows = conn
                 .query(
                     "SELECT st.topic, st.slug, COALESCE(st.lesson_refs,'[]') FROM subtopics st JOIN topics t ON t.slug=st.topic WHERE t.exam=?1 AND t.subject=?2 ORDER BY st.topic, st.slug",
@@ -272,28 +285,119 @@ async fn has_table(s: &DbState, name: &str) -> Result<bool, AppError> {
     .await
 }
 
-fn append_link_refs<'a>(
+/// Place links at their authored position. Existing refs keep their relative
+/// order, and links already present keep their stored position.
+fn insert_link_refs<'a>(
     mut refs: Vec<ContentReference>,
     links: impl Iterator<Item = &'a TopicLessonLink>,
     titles: &HashMap<String, String>,
 ) -> Vec<ContentReference> {
+    let mut links: Vec<_> = links.collect();
+    links.sort_by_key(|link| link.order_index);
     let mut seen: HashSet<String> = refs.iter().map(|reference| reference.id.clone()).collect();
     for link in links {
         if !seen.insert(link.lesson_id.clone()) {
             continue;
         }
-        refs.push(ContentReference {
-            id: link.lesson_id.clone(),
-            title: titles.get(&link.lesson_id).cloned().unwrap_or_default(),
-            order: 0,
-        });
+        let at = (link.order_index as usize)
+            .saturating_sub(1)
+            .min(refs.len());
+        refs.insert(
+            at,
+            ContentReference {
+                id: link.lesson_id.clone(),
+                title: titles.get(&link.lesson_id).cloned().unwrap_or_default(),
+                order: 0,
+            },
+        );
     }
     numbered_refs(refs)
 }
 
+/// A subtopic row is keyed by topic slug only. If two exams own one topic slug,
+/// the shared row cannot carry exam-specific refs, so readers and writers fail
+/// closed instead of serving one exam's refs to another.
+fn ambiguous_topic_error(slug: &str) -> AppError {
+    AppError::Internal(format!(
+        "topic slug {slug} has multiple syllabus owners; subtopic lesson refs cannot be scoped"
+    ))
+}
+
+async fn ambiguous_topic_slugs(s: &DbState) -> Result<Vec<String>, AppError> {
+    with_conn(s, |conn| async move {
+        let mut rows = conn
+            .query(
+                "SELECT t.slug FROM topics t JOIN subtopics st ON st.topic=t.slug GROUP BY t.slug HAVING COUNT(DISTINCT t.exam || '/' || t.subject) > 1",
+                (),
+            )
+            .await
+            .map_err(upstream)?;
+        let mut out = Vec::new();
+        while let Some(row) = rows.next().await.map_err(upstream)? {
+            out.push(row.get::<String>(0).map_err(upstream)?);
+        }
+        Ok(out)
+    })
+    .await
+}
+
+async fn assert_topic_owner_unambiguous(s: &DbState, slug: &str) -> Result<(), AppError> {
+    let slug = slug.to_string();
+    if ambiguous_topic_slugs(s)
+        .await?
+        .iter()
+        .any(|candidate| candidate == &slug)
+    {
+        return Err(ambiguous_topic_error(&slug));
+    }
+    Ok(())
+}
+
+/// Rewrite stored refs with array positions in the `order` field. This repairs
+/// refs copied before the canonical ordering field was written.
+pub(crate) async fn normalize_lesson_ref_orders_local(s: &DbState) -> Result<(), AppError> {
+    for (table, where_sql) in [
+        ("topics", "exam IS NOT NULL"),
+        ("subtopics", "topic IS NOT NULL"),
+    ] {
+        if !has_table(s, table).await? {
+            continue;
+        }
+        let rows: Vec<(i64, String)> = with_conn(s, |conn| {
+            let sql =
+                format!("SELECT rowid, COALESCE(lesson_refs,'[]') FROM {table} WHERE {where_sql}");
+            async move {
+                let mut rows = conn.query(&sql, ()).await.map_err(upstream)?;
+                let mut out = Vec::new();
+                while let Some(row) = rows.next().await.map_err(upstream)? {
+                    out.push((row.get(0).map_err(upstream)?, row.get(1).map_err(upstream)?));
+                }
+                Ok(out)
+            }
+        })
+        .await?;
+        for (rowid, raw) in rows {
+            let refs = numbered_refs(parse_refs(&raw, "lesson_refs")?);
+            let json =
+                serde_json::to_string(&refs).map_err(|e| AppError::Internal(e.to_string()))?;
+            if json != raw {
+                let sql = format!("UPDATE {table} SET lesson_refs=?1 WHERE rowid=?2");
+                super::write::execute_write_local(
+                    s,
+                    &sql,
+                    vec![turso::Value::Text(json), turso::Value::Integer(rowid)],
+                )
+                .await?;
+            }
+        }
+    }
+    Ok(())
+}
+
 /// Fold the retired relationship table into the JSON refs before it is
-/// dropped. Existing JSON wins when both sources name the same lesson.
-pub(crate) async fn backfill_lesson_refs(s: &DbState) -> Result<(), AppError> {
+/// dropped. Existing JSON wins when both sources name the same lesson. Shared
+/// subtopic rows with more than one syllabus owner are left untouched.
+pub(crate) async fn backfill_lesson_refs_local(s: &DbState) -> Result<(), AppError> {
     let titles = published_lesson_titles(s).await?;
     let has_topics = has_table(s, "topics").await?;
     let has_subtopics = has_table(s, "subtopics").await?;
@@ -301,6 +405,11 @@ pub(crate) async fn backfill_lesson_refs(s: &DbState) -> Result<(), AppError> {
     if !has_topics && !has_subtopics {
         return Ok(());
     }
+    let ambiguous = if has_topics && has_subtopics {
+        ambiguous_topic_slugs(s).await?
+    } else {
+        Vec::new()
+    };
 
     let links: Vec<TopicLessonLink> = if has_links {
         with_conn(s, |conn| async move {
@@ -358,7 +467,7 @@ pub(crate) async fn backfill_lesson_refs(s: &DbState) -> Result<(), AppError> {
         .await?;
         for (slug, exam, subject, raw) in topics {
             let refs = parse_refs(&raw, "topics.lesson_refs")?;
-            let refs = append_link_refs(
+            let refs = insert_link_refs(
                 refs,
                 links.iter().filter(|link| {
                     link.exam == exam
@@ -370,6 +479,9 @@ pub(crate) async fn backfill_lesson_refs(s: &DbState) -> Result<(), AppError> {
             );
             let json =
                 serde_json::to_string(&refs).map_err(|e| AppError::Internal(e.to_string()))?;
+            if json == raw {
+                continue;
+            }
             statements.push((
                 "UPDATE topics SET lesson_refs=?1 WHERE exam=?2 AND subject=?3 AND slug=?4",
                 vec![
@@ -406,8 +518,11 @@ pub(crate) async fn backfill_lesson_refs(s: &DbState) -> Result<(), AppError> {
             })
             .await?;
         for (slug, topic, exam, subject, raw) in subtopics {
+            if ambiguous.iter().any(|candidate| candidate == &topic) {
+                continue;
+            }
             let refs = parse_refs(&raw, "subtopics.lesson_refs")?;
-            let refs = append_link_refs(
+            let refs = insert_link_refs(
                 refs,
                 links.iter().filter(|link| {
                     link.exam == exam
@@ -419,6 +534,9 @@ pub(crate) async fn backfill_lesson_refs(s: &DbState) -> Result<(), AppError> {
             );
             let json =
                 serde_json::to_string(&refs).map_err(|e| AppError::Internal(e.to_string()))?;
+            if json == raw {
+                continue;
+            }
             statements.push((
                 "UPDATE subtopics SET lesson_refs=?1 WHERE topic=?2 AND slug=?3 AND EXISTS (SELECT 1 FROM topics t WHERE t.slug=subtopics.topic AND t.exam=?4 AND t.subject=?5)",
                 vec![
@@ -431,7 +549,9 @@ pub(crate) async fn backfill_lesson_refs(s: &DbState) -> Result<(), AppError> {
             ));
         }
     }
-    super::write::execute_write_batch(s, statements).await?;
+    for (sql, params) in statements {
+        super::write::execute_write_local(s, sql, params).await?;
+    }
     Ok(())
 }
 
@@ -461,6 +581,7 @@ async fn raw_parent_refs(s: &DbState, parent: &LinkParent) -> Result<String, App
         })
         .await
     } else {
+        assert_topic_owner_unambiguous(s, &parent.topic_slug).await?;
         with_conn(s, |conn| {
             let parent = parent.clone();
             async move {
@@ -492,9 +613,9 @@ pub async fn import_bundle(s: &DbState, bundle: &LessonBundle) -> Result<u64, Ap
     let mut topic_link_orders = std::collections::HashSet::new();
     let mut topic_link_keys = std::collections::HashSet::new();
     for link in &bundle.topic_links {
-        if link.order_index < 0 {
+        if link.order_index < 1 {
             return Err(AppError::BadRequest(format!(
-                "lesson link {} has a negative order_index",
+                "lesson link {} has an order_index below 1",
                 link.lesson_id
             )));
         }
@@ -610,6 +731,9 @@ pub async fn import_bundle(s: &DbState, bundle: &LessonBundle) -> Result<u64, Ap
                 "topic lesson link names unknown topic {}/{}/{}",
                 link.exam, link.subject, link.topic_slug
             )));
+        }
+        if !subtopic.is_empty() {
+            assert_topic_owner_unambiguous(s, &topic).await?;
         }
         let lesson_subject = bundle
             .lessons
@@ -747,9 +871,10 @@ pub async fn import_bundle(s: &DbState, bundle: &LessonBundle) -> Result<u64, Ap
     for (parent, mut links) in link_groups {
         links.sort_by_key(|link| link.order_index);
         let raw = raw_parent_refs(s, &parent).await?;
+        let link_ids: HashSet<&str> = links.iter().map(|link| link.lesson_id.as_str()).collect();
         let mut refs: Vec<ContentReference> = parse_refs(&raw, "lesson_refs")?
             .into_iter()
-            .filter(|reference| !lesson_ids.contains(reference.id.as_str()))
+            .filter(|reference| !link_ids.contains(reference.id.as_str()))
             .collect();
         for link in links {
             let title = bundle_titles
@@ -757,11 +882,17 @@ pub async fn import_bundle(s: &DbState, bundle: &LessonBundle) -> Result<u64, Ap
                 .cloned()
                 .or_else(|| existing_titles.get(&link.lesson_id).cloned())
                 .unwrap_or_default();
-            refs.push(ContentReference {
-                id: link.lesson_id.clone(),
-                title,
-                order: 0,
-            });
+            let at = (link.order_index as usize)
+                .saturating_sub(1)
+                .min(refs.len());
+            refs.insert(
+                at,
+                ContentReference {
+                    id: link.lesson_id.clone(),
+                    title,
+                    order: 0,
+                },
+            );
         }
         let json = serde_json::to_string(&numbered_refs(refs))
             .map_err(|e| AppError::Internal(e.to_string()))?;
@@ -887,15 +1018,16 @@ mod tests {
             )
             .await
             .expect("subject");
+            let slug = format!("{}-comprehension", exam.to_ascii_lowercase());
             conn.execute(
-                "INSERT INTO topics VALUES ('comprehension','english-language',?1,'Comprehension',1,0,'[]','[]','[]')",
-                [exam],
+                "INSERT INTO topics VALUES (?1,'english-language',?2,'Comprehension',1,0,'[]','[]','[]')",
+                [slug.as_str(), exam],
             )
             .await
             .expect("topic");
         }
         conn.execute(
-            "INSERT INTO subtopics VALUES ('comprehension','comprehension','Comprehension',1,'[]','[]')",
+            "INSERT INTO subtopics VALUES ('comprehension','jamb-comprehension','Comprehension',1,'[]','[]')",
             (),
         )
         .await
@@ -912,21 +1044,47 @@ mod tests {
             .expect("lesson");
         }
 
-        let link = |exam: &str, subtopic: Option<&str>, id: &str, order: i64| TopicLessonLink {
-            exam: exam.to_string(),
-            subject: "english-language".to_string(),
-            topic_slug: "comprehension".to_string(),
-            subtopic_slug: subtopic.map(str::to_string),
-            lesson_id: id.to_string(),
-            order_index: order,
+        let link = |exam: &str, topic: &str, subtopic: Option<&str>, id: &str, order: i64| {
+            TopicLessonLink {
+                exam: exam.to_string(),
+                subject: "english-language".to_string(),
+                topic_slug: topic.to_string(),
+                subtopic_slug: subtopic.map(str::to_string),
+                lesson_id: id.to_string(),
+                order_index: order,
+            }
         };
         let bundle = LessonBundle {
             lessons: Vec::new(),
             topic_links: vec![
-                link("JAMB", None, "lesson:english:second", 2),
-                link("JAMB", None, "lesson:english:first", 1),
-                link("WAEC", None, "lesson:english:first", 1),
-                link("JAMB", Some("comprehension"), "lesson:english:first", 1),
+                link(
+                    "JAMB",
+                    "jamb-comprehension",
+                    None,
+                    "lesson:english:second",
+                    2,
+                ),
+                link(
+                    "JAMB",
+                    "jamb-comprehension",
+                    None,
+                    "lesson:english:first",
+                    1,
+                ),
+                link(
+                    "WAEC",
+                    "waec-comprehension",
+                    None,
+                    "lesson:english:first",
+                    1,
+                ),
+                link(
+                    "JAMB",
+                    "jamb-comprehension",
+                    Some("comprehension"),
+                    "lesson:english:first",
+                    1,
+                ),
             ],
             example_question_links: Vec::new(),
         };
@@ -939,7 +1097,7 @@ mod tests {
             .await
             .expect("jamb refs");
         assert_eq!(
-            refs.topic("comprehension"),
+            refs.topic("jamb-comprehension"),
             vec![
                 ContentReference {
                     id: "lesson:english:first".to_string(),
@@ -954,15 +1112,18 @@ mod tests {
             ]
         );
         assert_eq!(
-            refs.subtopic("comprehension", "comprehension")[0].id,
+            refs.subtopic("jamb-comprehension", "comprehension")[0].id,
             "lesson:english:first"
         );
 
         let waec = syllabus_lesson_refs(&s, "WAEC", "english-language")
             .await
             .expect("waec refs");
-        assert_eq!(waec.topic("comprehension").len(), 1);
-        assert_eq!(waec.topic("comprehension")[0].id, "lesson:english:first");
+        assert_eq!(waec.topic("waec-comprehension").len(), 1);
+        assert_eq!(
+            waec.topic("waec-comprehension")[0].id,
+            "lesson:english:first"
+        );
 
         let jamb_syllabus =
             crate::api::v1::subjects::build_syllabus(&s, "JAMB", "english-language", None)
@@ -979,11 +1140,11 @@ mod tests {
         );
 
         let topic =
-            crate::store::catalog::get_topic(&s, "JAMB", "english-language", "comprehension")
+            crate::store::catalog::get_topic(&s, "JAMB", "english-language", "jamb-comprehension")
                 .await
                 .expect("topic read")
                 .expect("topic present");
-        assert_eq!(topic.lesson_refs, refs.topic("comprehension"));
+        assert_eq!(topic.lesson_refs, refs.topic("jamb-comprehension"));
     }
 
     #[tokio::test]
@@ -1041,15 +1202,16 @@ mod tests {
             )
             .await
             .expect("subject");
+            let slug = format!("{}-comprehension", exam.to_ascii_lowercase());
             conn.execute(
-                "INSERT INTO topics VALUES ('comprehension','english-language',?1,'Comprehension',1,0,'[]','[]',?2)",
-                [exam, "[]"],
+                "INSERT INTO topics VALUES (?1,'english-language',?2,'Comprehension',1,0,'[]','[]','[]')",
+                [slug.as_str(), exam],
             )
             .await
             .expect("topic");
         }
         conn.execute(
-            "INSERT INTO subtopics VALUES ('comprehension','comprehension','Comprehension',1,'[]','[]')",
+            "INSERT INTO subtopics VALUES ('comprehension','jamb-comprehension','Comprehension',1,'[]','[]')",
             (),
         )
         .await
@@ -1086,7 +1248,7 @@ mod tests {
             topic_links: vec![TopicLessonLink {
                 exam: "WAEC".to_string(),
                 subject: "english-language".to_string(),
-                topic_slug: "comprehension".to_string(),
+                topic_slug: "waec-comprehension".to_string(),
                 subtopic_slug: None,
                 lesson_id: "lesson:a".to_string(),
                 order_index: 1,
@@ -1098,20 +1260,20 @@ mod tests {
         let jamb = syllabus_lesson_refs(&s, "JAMB", "english-language")
             .await
             .expect("jamb refs");
-        assert_eq!(jamb.topic("comprehension").len(), 2);
-        assert_eq!(jamb.topic("comprehension")[0].id, "lesson:a");
-        assert_eq!(jamb.topic("comprehension")[0].title, "New A");
-        assert_eq!(jamb.topic("comprehension")[1].id, "lesson:b");
+        assert_eq!(jamb.topic("jamb-comprehension").len(), 2);
+        assert_eq!(jamb.topic("jamb-comprehension")[0].id, "lesson:a");
+        assert_eq!(jamb.topic("jamb-comprehension")[0].title, "New A");
+        assert_eq!(jamb.topic("jamb-comprehension")[1].id, "lesson:b");
         assert_eq!(
-            jamb.subtopic("comprehension", "comprehension")[0].id,
+            jamb.subtopic("jamb-comprehension", "comprehension")[0].id,
             "lesson:a"
         );
 
         let waec = syllabus_lesson_refs(&s, "WAEC", "english-language")
             .await
             .expect("waec refs");
-        assert_eq!(waec.topic("comprehension").len(), 1);
-        assert_eq!(waec.topic("comprehension")[0].id, "lesson:a");
+        assert_eq!(waec.topic("waec-comprehension").len(), 1);
+        assert_eq!(waec.topic("waec-comprehension")[0].id, "lesson:a");
     }
 
     #[tokio::test]
@@ -1237,6 +1399,295 @@ mod tests {
         {
             AppError::BadRequest(message) => {
                 assert!(message.contains("subject does not match"), "{message}")
+            }
+            other => panic!("expected BadRequest, got {other:?}"),
+        }
+    }
+
+    #[tokio::test]
+    async fn import_bundle_inserts_links_at_authored_position_in_existing_refs() {
+        let s = db_state(replica().await);
+        let conn = conn_of(&s).await;
+        api_schema(&conn).await;
+        bank_schema(&conn, &["topics", "subtopics"]).await;
+        conn.execute(
+            "INSERT INTO topics VALUES ('comprehension','english-language','JAMB','Comprehension',1,0,'[]','[]',?1)",
+            [r#"[{"id":"lesson:old","title":"Old","order":1},{"id":"lesson:tail","title":"Tail","order":2}]"#],
+        )
+        .await
+        .expect("topic with existing refs");
+        conn.execute(
+            "INSERT INTO subtopics VALUES ('intro','comprehension','Intro',1,'[]',?1)",
+            [r#"[{"id":"lesson:old","title":"Old","order":1},{"id":"lesson:tail","title":"Tail","order":2}]"#],
+        )
+        .await
+        .expect("subtopic with existing refs");
+        for (id, title) in [("lesson:old", "Old"), ("lesson:tail", "Tail")] {
+            conn.execute(
+                "INSERT INTO lessons (id,status,title,description,subject,level,estimated_minutes,objectives,content,checks,misconceptions,summary,example_question_refs,provenance,content_hash) VALUES (?1,'published',?2,'{}','english-language','secondary',5,'[]','[]','[]','[]','[]','[]','{}','hash')",
+                [id, title],
+            )
+            .await
+            .expect("existing lesson");
+        }
+
+        let bundle = LessonBundle {
+            lessons: vec![valid_lesson("lesson:new", "english-language", "New")],
+            topic_links: vec![
+                TopicLessonLink {
+                    exam: "JAMB".to_string(),
+                    subject: "english-language".to_string(),
+                    topic_slug: "comprehension".to_string(),
+                    subtopic_slug: None,
+                    lesson_id: "lesson:new".to_string(),
+                    order_index: 1,
+                },
+                TopicLessonLink {
+                    exam: "JAMB".to_string(),
+                    subject: "english-language".to_string(),
+                    topic_slug: "comprehension".to_string(),
+                    subtopic_slug: Some("intro".to_string()),
+                    lesson_id: "lesson:new".to_string(),
+                    order_index: 1,
+                },
+            ],
+            example_question_links: Vec::new(),
+        };
+        import_bundle(&s, &bundle).await.expect("import");
+
+        let refs = syllabus_lesson_refs(&s, "JAMB", "english-language")
+            .await
+            .expect("refs");
+        let visible = refs.topic("comprehension");
+        let ids: Vec<_> = visible.iter().map(|r| r.id.as_str()).collect();
+        assert_eq!(ids, ["lesson:new", "lesson:old", "lesson:tail"]);
+        let orders: Vec<_> = visible.iter().map(|r| r.order).collect();
+        assert_eq!(orders, [1, 2, 3]);
+        let visible_subtopic = refs.subtopic("comprehension", "intro");
+        assert_eq!(
+            visible_subtopic
+                .iter()
+                .map(|r| r.id.as_str())
+                .collect::<Vec<_>>(),
+            ["lesson:new", "lesson:old", "lesson:tail"]
+        );
+
+        let mut rows = conn
+            .query(
+                "SELECT lesson_refs FROM topics WHERE exam='JAMB' AND subject='english-language' AND slug='comprehension'",
+                (),
+            )
+            .await
+            .expect("stored refs");
+        let raw: String = rows
+            .next()
+            .await
+            .expect("row")
+            .expect("result")
+            .get(0)
+            .expect("json");
+        let stored: Vec<ContentReference> = serde_json::from_str(&raw).expect("stored json");
+        assert_eq!(
+            stored.iter().map(|r| r.id.as_str()).collect::<Vec<_>>(),
+            ["lesson:new", "lesson:old", "lesson:tail"]
+        );
+        assert_eq!(
+            stored.iter().map(|r| r.order).collect::<Vec<_>>(),
+            [1, 2, 3]
+        );
+    }
+
+    #[tokio::test]
+    async fn duplicate_topic_slug_fails_closed_for_subtopic_refs() {
+        let s = db_state(replica().await);
+        let conn = conn_of(&s).await;
+        api_schema(&conn).await;
+        bank_schema(
+            &conn,
+            &["exams", "subjects", "topics", "subtopics", "questions"],
+        )
+        .await;
+        for exam in ["JAMB", "WAEC"] {
+            conn.execute(
+                "INSERT INTO exams VALUES (?1,?1,'[\"NG\"]','active',1,NULL,NULL,'[]')",
+                [exam],
+            )
+            .await
+            .expect("exam");
+            conn.execute(
+                "INSERT INTO subjects VALUES ('english-language',?1,'English Language',0,0,50,'[]',NULL,NULL)",
+                [exam],
+            )
+            .await
+            .expect("subject");
+            conn.execute(
+                "INSERT INTO topics VALUES ('comprehension','english-language',?1,'Comprehension',1,0,'[]','[]','[]')",
+                [exam],
+            )
+            .await
+            .expect("topic");
+        }
+        conn.execute(
+            "INSERT INTO exams VALUES ('NECO','NECO','[\"NG\"]','active',1,NULL,NULL,'[]')",
+            (),
+        )
+        .await
+        .expect("unrelated exam");
+        conn.execute(
+            "INSERT INTO subjects VALUES ('physics','NECO','Physics',0,0,50,'[]',NULL,NULL)",
+            (),
+        )
+        .await
+        .expect("unrelated subject");
+        conn.execute(
+            "INSERT INTO topics VALUES ('motion','physics','NECO','Motion',1,0,'[]','[]','[]')",
+            (),
+        )
+        .await
+        .expect("unrelated topic");
+        conn.execute(
+            "INSERT INTO subtopics VALUES ('intro','comprehension','Intro',1,'[]','[]')",
+            (),
+        )
+        .await
+        .expect("subtopic");
+
+        let topic_bundle = LessonBundle {
+            lessons: vec![valid_lesson(
+                "lesson:shared",
+                "english-language",
+                "Shared lesson",
+            )],
+            topic_links: vec![TopicLessonLink {
+                exam: "JAMB".to_string(),
+                subject: "english-language".to_string(),
+                topic_slug: "comprehension".to_string(),
+                subtopic_slug: None,
+                lesson_id: "lesson:shared".to_string(),
+                order_index: 1,
+            }],
+            example_question_links: Vec::new(),
+        };
+        import_bundle(&s, &topic_bundle).await.expect("topic link");
+
+        let subtopic_bundle = LessonBundle {
+            lessons: Vec::new(),
+            topic_links: vec![TopicLessonLink {
+                exam: "WAEC".to_string(),
+                subject: "english-language".to_string(),
+                topic_slug: "comprehension".to_string(),
+                subtopic_slug: Some("intro".to_string()),
+                lesson_id: "lesson:shared".to_string(),
+                order_index: 1,
+            }],
+            example_question_links: Vec::new(),
+        };
+        match import_bundle(&s, &subtopic_bundle)
+            .await
+            .expect_err("ambiguous subtopic owner")
+        {
+            AppError::Internal(message) => {
+                assert!(message.contains("multiple syllabus owners"), "{message}")
+            }
+            other => panic!("expected Internal, got {other:?}"),
+        }
+
+        let mut rows = conn
+            .query(
+                "SELECT COALESCE(lesson_refs,'[]') FROM subtopics WHERE topic='comprehension' AND slug='intro'",
+                (),
+            )
+            .await
+            .expect("subtopic refs");
+        let raw: String = rows
+            .next()
+            .await
+            .expect("row")
+            .expect("result")
+            .get(0)
+            .expect("json");
+        assert_eq!(raw, "[]");
+
+        match syllabus_lesson_refs(&s, "JAMB", "english-language").await {
+            Err(AppError::Internal(message)) => {
+                assert!(message.contains("multiple syllabus owners"), "{message}")
+            }
+            other => panic!("expected a fail-closed read, got {other:?}"),
+        }
+        let unrelated = syllabus_lesson_refs(&s, "NECO", "physics")
+            .await
+            .expect("unrelated syllabus still reads");
+        assert!(unrelated.topic("motion").is_empty());
+    }
+
+    #[tokio::test]
+    async fn import_bundle_keeps_bundle_lessons_without_a_link_on_that_parent() {
+        let s = db_state(replica().await);
+        let conn = conn_of(&s).await;
+        api_schema(&conn).await;
+        bank_schema(&conn, &["topics", "subtopics"]).await;
+        conn.execute(
+            "INSERT INTO topics VALUES ('comprehension','english-language','JAMB','Comprehension',1,0,'[]','[]',?1)",
+            [r#"[{"id":"lesson:a","title":"Old A","order":1}]"#],
+        )
+        .await
+        .expect("topic with existing ref");
+        conn.execute(
+            "INSERT INTO lessons (id,status,title,description,subject,level,estimated_minutes,objectives,content,checks,misconceptions,summary,example_question_refs,provenance,content_hash) VALUES ('lesson:a','published','Old A','{}','english-language','secondary',5,'[]','[]','[]','[]','[]','[]','{}','hash')",
+            (),
+        )
+        .await
+        .expect("existing lesson");
+
+        let bundle = LessonBundle {
+            lessons: vec![
+                valid_lesson("lesson:a", "english-language", "New A"),
+                valid_lesson("lesson:c", "english-language", "C"),
+            ],
+            topic_links: vec![TopicLessonLink {
+                exam: "JAMB".to_string(),
+                subject: "english-language".to_string(),
+                topic_slug: "comprehension".to_string(),
+                subtopic_slug: None,
+                lesson_id: "lesson:c".to_string(),
+                order_index: 1,
+            }],
+            example_question_links: Vec::new(),
+        };
+        import_bundle(&s, &bundle).await.expect("partial import");
+
+        let refs = syllabus_lesson_refs(&s, "JAMB", "english-language")
+            .await
+            .expect("refs");
+        let visible = refs.topic("comprehension");
+        assert_eq!(
+            visible.iter().map(|r| r.id.as_str()).collect::<Vec<_>>(),
+            ["lesson:c", "lesson:a"]
+        );
+        assert_eq!(visible[1].title, "New A");
+    }
+
+    #[tokio::test]
+    async fn import_bundle_rejects_zero_order_index() {
+        let s = db_state(replica().await);
+        let bundle = LessonBundle {
+            lessons: Vec::new(),
+            topic_links: vec![TopicLessonLink {
+                exam: "JAMB".to_string(),
+                subject: "english-language".to_string(),
+                topic_slug: "comprehension".to_string(),
+                subtopic_slug: None,
+                lesson_id: "lesson:one".to_string(),
+                order_index: 0,
+            }],
+            example_question_links: Vec::new(),
+        };
+        match import_bundle(&s, &bundle)
+            .await
+            .expect_err("zero is not a one-based position")
+        {
+            AppError::BadRequest(message) => {
+                assert!(message.contains("order_index below 1"), "{message}")
             }
             other => panic!("expected BadRequest, got {other:?}"),
         }

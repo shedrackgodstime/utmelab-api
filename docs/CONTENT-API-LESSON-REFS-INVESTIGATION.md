@@ -26,24 +26,32 @@ capability the topic row did not already have.
 
 The API now uses the JSON refs as the single source of truth.
 
-- `import_bundle()` writes ordered refs into the target topic or subtopic row.
-  Array position is the curriculum order, and `ContentReference.order` mirrors
-  it.
+- `import_bundle()` inserts refs at the authored `order_index` position in the
+  target topic or subtopic row. Array position is the curriculum order, and
+  `ContentReference.order` mirrors it.
 - `build_syllabus()` reads those JSON refs for the syllabus owner. JAMB and
   WAEC topics can both point at the same exam-neutral lesson.
 - `get_topic()` uses the same visible refs, so topic detail and syllabus cannot
   disagree.
 - Only published lessons are served, and each served title is the current
   lesson title.
-- Schema migration 19 folds any remaining `topic_lessons` rows into the JSON
-  refs, drops the table, and removes it from the declared shapes. Fresh
-  databases no longer create it.
+- Subtopic rows are keyed by topic slug only. If two exams own one topic slug,
+  subtopic ref reads and writes fail closed instead of serving one exam's refs
+  to another.
+- Schema migration 17 keeps existing JSON refs and copies legacy rows in
+  authored order when the JSON array is empty. Migration 19 folds remaining
+  `topic_lessons` rows into the JSON refs, skips shared subtopic rows with more
+  than one syllabus owner, drops the table, and removes it from the declared
+  shapes. Fresh databases no longer create it.
+- Schema migration 20 renumbers stored refs from their array position, so a
+  replica upgraded through schema 18 publishes the same order contract.
 
 ## Verification
 
 Automated coverage checks import to syllabus, import to topic detail, order,
-idempotent reimport, draft filtering, JAMB and WAEC reuse, fresh schema shape,
-and migration backfill.
+authored position insertion, idempotent reimport, draft filtering, JAMB and
+WAEC reuse, partial bundle preservation, ambiguous topic owners, fresh schema
+shape, migration backfill, a real legacy upgrade, and order normalization.
 
 Deployment still needs live proof on `api.jambmax.com` for both syllabus
 endpoints before any production claim is made.

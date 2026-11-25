@@ -22,8 +22,9 @@ Consumers use the published order fields as the default curriculum sequence:
 
 The API owns the response ordering as well as exposing the fields. Subject rows
 must carry a canonical order within an exam; topics and subtopics use their
-existing syllabus order; lesson references use the JSON array order in the
-exam-owned topic or subtopic row, mirrored by `lesson_ref.order`.
+existing syllabus order. Importers place lesson references at the authored
+`order_index` position in the exam-owned topic or subtopic row. The API numbers
+the final JSON array from that position and mirrors it in `lesson_ref.order`.
 Consumers must not sort these records alphabetically or invent a second default
 sequence. Learner progress belongs to the consumer's study engine and only
 decides which ordered item comes next.
@@ -74,11 +75,13 @@ offsets, not byte offsets.
 ```json
 {
   "id": "lesson:newtons-second-law",
-  "title": "Newton’s Second Law"
+  "title": "Newton’s Second Law",
+  "order": 1
 }
 ```
 
-The ID is authoritative. `title` is a display convenience.
+The ID is authoritative. `title` is a display convenience. `order` is the
+one-based position in the parent's ordered reference array.
 
 ### Provenance
 
@@ -130,7 +133,7 @@ The ID is authoritative. `title` is a display convenience.
       "objectives": ["Explain the relationship between force and motion."],
       "subtopics": [],
       "lesson_refs": [
-        {"id": "lesson:newtons-second-law", "title": "Newton’s Second Law"}
+        {"id": "lesson:newtons-second-law", "title": "Newton’s Second Law", "order": 1}
       ]
     }
   ]
@@ -228,7 +231,7 @@ topic links stable while giving consumers a precise cache/integrity key.
     {"text": "Acceleration depends on force and mass.", "inline": []}
   ],
   "example_question_refs": [
-    {"id": "question:jamb-2024-physics-001", "title": "..."}
+    {"id": "question:jamb-2024-physics-001", "title": "...", "order": 1}
   ],
   "provenance": {},
   "content_hash": "sha256:..."
